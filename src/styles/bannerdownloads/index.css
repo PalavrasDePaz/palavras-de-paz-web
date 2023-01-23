@@ -1,0 +1,18 @@
+.banner-downloads {
+    font-family: 'Baloo', cursive, Arial, Helvetica, sans-serif;
+    width: 1416px;
+    max-width: 100%;
+    margin: 0 auto;
+    height: 176px;
+    background: rgba(33, 170, 133, 0.8);
+    background: -webkit-linear-gradient(to right, rgba(33, 170, 133, 0.8), #0FE0AA);
+    background: linear-gradient(to right, rgba(33, 170, 133, 0.8), #0FE0AA);
+  }
+
+  .banner-downloads p {
+    font-size: 52px;
+    color: #ffffff;
+    text-align: end;
+    padding-top: 100px;
+    padding-right: 50px;
+  }

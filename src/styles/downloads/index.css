@@ -1,0 +1,25 @@
+.containerDoacao{
+    width: 100%;
+    height: 100%;
+    max-width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+   justify-content: space-around;
+    background-color: #f7f6f6;
+}
+.cardOneDoacao{
+    text-align: justify;
+    padding-top: 3%;
+    color: #00A97E;;
+}
+.cardDoisInscrever{
+    text-align: justify;
+    padding-top: 3%;
+    color: #00A97E;;
+}
+
+.cardTresVoluntario{
+    text-align: justify;
+    padding-top: 3%;
+    color: #00A97E;
+}

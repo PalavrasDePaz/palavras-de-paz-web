@@ -1,0 +1,36 @@
+
+.container1{
+  display: flex;
+  padding-top: 56px;
+  padding: 10px;
+  margin-top: 56px;
+}
+.container2 {
+  padding-left:10px ;
+}
+.container3{
+  padding-left: 14px;
+}
+.container4{
+  display: flex;
+  padding: 10px;
+  gap:10px
+
+}
+
+.container5 *{
+  padding: 10px;
+}
+.container6{
+  display: flex;
+  padding: 10px;
+  gap:10px
+}
+.container7{
+  display: flex;
+  padding: 10px;
+
+}
+.container8 *{
+ padding: 10px;
+}

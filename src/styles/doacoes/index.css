@@ -1,0 +1,139 @@
+
+.doacao-main {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  padding: 20px;
+}
+
+.doacao-main-texto {
+  width: 64%;
+  display: flex;
+  flex-direction: column;
+  font-size: 32px;
+
+}
+
+.doacao-texto {
+  font-size: 24px;
+}
+
+.doacao-texto p {
+  margin: 96px 0;
+}
+
+.doacoes-icones {
+  display: flex;
+  justify-content: center;
+  gap: 183px;
+}
+
+.doacoes-image {
+  width: 456px;
+  height: 680px;
+  display: flex;
+  justify-content: center;
+}
+
+.doacoes-texto-icones {
+  display: flex;
+  justify-content: center;
+  gap: 80px;
+  margin: 40px auto 80px auto;
+}
+
+.doacoes-atraves {
+  display: flex;
+  justify-content: center;
+  font-size: 56px;
+  padding-top: 10px;
+  font-family: 'Baloo', cursive, Arial, Helvetica, sans-serif;
+}
+
+.doacoes-pix {
+  display: flex;
+  align-items: center;
+  border: 1px solid #18CA99;
+  width: 45%;
+  justify-content: space-between;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.doacoes-empresas {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.doacoes-images-empresas {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  border: 1px solid #18CA99;
+  width: 45%;
+  border-radius: 10px;
+  padding: 10px;
+
+}
+
+.doacoes-icones-empresas {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+}
+
+.banner-paz  {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: justify;
+  margin-top: 50px;
+  background-color: #21AA85;
+  font-size: 36px;
+  color: white;
+  margin-bottom: 56px;
+  width: 1416px;
+  max-width: 100%;
+  margin: 88px auto 62px auto;
+}
+
+.doacoes-banner-texto{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.doacoes-contas{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-size: 36px;
+  text-align: center;
+
+}
+.doacoes-contas a {
+  text-decoration: none;
+  color:#2A2A2A;
+  font-family: Open Sans;
+
+}
+
+.doacoes-button{
+  display: flex;
+  justify-content: center;
+  margin: 40px 0;
+}
+@media(max-width: 720px) {
+  .doacoes-texto-icones {
+    font-size: 20px;
+  }
+
+}
+
+@media(max-width: 477px) {
+  .doacoes-texto-icones {
+    gap: 35px;
+  }
+
+}

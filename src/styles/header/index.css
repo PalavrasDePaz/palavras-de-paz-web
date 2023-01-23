@@ -1,0 +1,69 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@600&family=Raleway:wght@500;700&family=Roboto&display=swap');
+
+.styles-header * {
+  font-family: 'Open Sans', sans-serif;
+  background-color: white !important;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  z-index: 2;
+}
+
+.navbar-light {
+  padding: 0 0 0 0 !important;
+  z-index: 2;
+}
+
+a.nav-link {
+  width: max-content;
+}
+
+.container-fluid {
+  background-color: white !important;
+  height: 156px;
+  max-width: 100%;
+  box-shadow:  0 2px 5px -2px rgba(0, 0, 0, 0.479);
+  margin: 0;
+  z-index: 2;
+}
+
+#buttons-header {
+  gap: 80px;
+  font-size: 24px;
+}
+
+a.nav-link {
+  color: #2A2A2A;
+  text-decoration: none;
+
+}
+
+
+.navbar-toggler .collapsed {
+  outline: transparent !important;
+  border: none !important;
+}
+
+@media (max-width: 1293px) {
+  #buttons-header {
+    gap: 24px;
+  }
+
+}
+
+@media (max-width: 718px) {
+  .container-fluid {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    padding: 0 24px !important;
+  }
+
+  .styles-header * {
+    font-size: 20px;
+  }
+
+  .logo-header {
+    width: 50%;
+  }
+}

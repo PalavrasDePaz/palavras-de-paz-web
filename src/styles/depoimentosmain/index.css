@@ -1,0 +1,65 @@
+
+
+
+.depoimentos-principal{
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+.depoimentos-container-main {
+  width: 40rem;
+}
+.depoimentos-photos{
+  text-align: center;
+  margin-bottom: -58px;
+  padding-top: 40px;
+}
+.depoimentos-text{
+  border: 1px solid #18CA99;
+  border-radius: 10px;
+  text-align: center;
+  min-height: 500px;
+  display: flex;
+  align-items: center;
+  padding-top: 16px;
+}
+.depoimentos-text p {
+ font-size: 20px;
+  padding-top: 50px;
+  padding: 50px;
+}
+
+
+.depoimentos-principal-solo{
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+
+}
+.depoimentos-container-main-solo {
+  width: 82rem;
+  margin-top: 20px;
+
+}
+
+.depoimentos-photos-solo{
+  text-align: center;
+  margin-bottom: -50px;
+  padding-top: 20px;
+
+}
+.depoimentos-text-solo{
+  border: 1px solid #18CA99;
+  border-radius: 10px;
+  font-size: 24px;
+  text-align: center;
+
+
+
+}
+
+.depoimentos-text-solo p {
+
+  padding-top: 50px;
+  padding: 50px;
+}
