@@ -1,7 +1,9 @@
-import styled, { css } from "styled-components";
+import styled, { css } from 'styled-components';
 
 export const Button = styled.a`
-  ${({ align, bg, margin, padding, width, height, shadow, color, familyFont, justify, fontWeight }) => css`
+  ${({
+    align, bg, margin, padding, width, height, shadow, color, familyFont, justify, fontWeight,
+  }) => css`
     display: flex;
     flex-direction: row;
     justify-content: ${justify};

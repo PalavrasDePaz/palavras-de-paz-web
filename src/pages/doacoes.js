@@ -1,12 +1,10 @@
-import React from 'react'
-import DoacoesTemplate from '../templates/doacoes/doacoes.template'
+import React from 'react';
+import DoacoesTemplate from '../templates/doacoes/doacoes.template';
 
 function doacoes() {
   return (
-    <>
-    <DoacoesTemplate/>
-    </>
-  )
+    <DoacoesTemplate />
+  );
 }
 
-export default doacoes
+export default doacoes;

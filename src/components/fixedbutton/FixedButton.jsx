@@ -1,15 +1,13 @@
-import * as S from "./styled";
 import React, { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
-import { Typography } from "../atoms/typography/Typography";
-import Box from "../atoms/box/Box";
-
+import * as S from './styled';
+import { Typography } from '../atoms/typography/Typography';
+import Box from '../atoms/box/Box';
 
 export default function FixedButton() {
   const [smShow, setSmShow] = useState(false);
   const [lgShow, setLgShow] = useState(false);
-
 
   return (
 
@@ -31,8 +29,10 @@ export default function FixedButton() {
             </Modal.Title>
             <div>
               <p className="text-center">
-                <br />Fique à vontade.
-                Retornaremos em breve.</p>
+                <br />
+                Fique à vontade.
+                Retornaremos em breve.
+              </p>
             </div>
           </Box>
         </Modal.Header>
@@ -54,14 +54,21 @@ export default function FixedButton() {
               <textarea type="text" name="Mensagem" className="form-control" required />
             </div>
             <Box display="flex" justify="center">
-              <button type="submit" style={{ background: "rgba(33,170,133,1)", border: "none", borderRadius: "10px", textAlign: "center", padding: "8px 24px", color: "white", fontWeight: "bold", letterSpacing: "0.1em" }}>ENVIAR</button>
+              <button
+                type="submit"
+                style={{
+                  background: 'rgba(33,170,133,1)', border: 'none', borderRadius: '10px', textAlign: 'center', padding: '8px 24px', color: 'white', fontWeight: 'bold', letterSpacing: '0.1em',
+                }}
+              >
+                ENVIAR
+              </button>
             </Box>
           </form>
         </Modal.Body>
       </Modal>
 
       <Modal
-        style={{ width: "476px" }}
+        style={{ width: '476px' }}
         size="lg"
         show={lgShow}
         onHide={() => setLgShow(false)}
@@ -76,5 +83,5 @@ export default function FixedButton() {
       </Modal>
     </>
 
-  )
+  );
 }

@@ -1,3 +1,11 @@
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  max-width: 1416px;
+  margin-top: 56px;
+}
+
 .titulo-devs{
   font-size: 48px;
   font-family: 'Baloo', cursive, Arial, Helvetica, sans-serif;
@@ -10,13 +18,6 @@
   }
 }
 
-.primeiro-container{
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-evenly;
-  max-width: 1416px;
-  margin: 0 auto;
-}
 .adjust-dev{
   border-radius: 50%;
   text-align: center;
@@ -26,15 +27,6 @@
 }
 .adjust-dev a{
   color: black
-}
-
-.segundo-container{
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-evenly;
-  padding-top: 57px;
-  max-width: 1416px;
-  margin: 0 auto;
 }
 
 .button-devs{
