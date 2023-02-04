@@ -1,13 +1,16 @@
-
 .banner-programa {
-  font-family: 'Baloo', cursive, Arial, Helvetica, sans-serif;
+  font-family: "Baloo", cursive, Arial, Helvetica, sans-serif;
   width: 1416px;
   max-width: 100%;
   margin: 0 auto;
   height: 176px;
   background: rgba(33, 170, 133, 0.8);
-  background: -webkit-linear-gradient(to right, rgba(33, 170, 133, 0.8), #0FE0AA);
-  background: linear-gradient(to right, rgba(33, 170, 133, 0.8), #0FE0AA);
+  background: -webkit-linear-gradient(
+    to right,
+    rgba(33, 170, 133, 0.8),
+    #0fe0aa
+  );
+  background: linear-gradient(to right, rgba(33, 170, 133, 0.8), #0fe0aa);
 }
 
 .banner-programa p {
@@ -18,65 +21,63 @@
   padding-right: 50px;
 }
 
-.programa-texto{
+.programa-texto {
   width: 88%;
-  margin:auto;
+  margin: auto;
   font-size: 24px;
   letter-spacing: 1px;
-  font-family: 'opan sans', Arial, Helvetica, sans-serif;
+  font-family: "opan sans", Arial, Helvetica, sans-serif;
 }
-.container-programa{
- display: flex;
- justify-content: center;
- flex-wrap: wrap;
-gap: 160px;
-margin: 40px 0;
-
+.container-programa {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 160px;
+  margin: 40px 0;
 }
 
-.paz-icon{
+.paz-icon {
   display: flex;
   align-items: center;
   font-size: 36px;
   gap: 24px;
   padding: 10px;
 }
-.programa-button{
-display: flex;
-align-items: center;
-justify-content: center;
-
+.programa-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .programa-button p {
   display: flex;
   align-items: center;
   justify-content: center;
-background-color: #B4EFE0;
-width: 456px;
-height: 88px;
-border-radius: 10px;
-font-size: 24px;
+  background-color: #b4efe0;
+  width: 456px;
+  height: 88px;
+  border-radius: 10px;
+  font-size: 24px;
 }
 
-.container-programa-button{
+.container-programa-button {
   display: flex;
   align-items: center;
   justify-content: center;
- gap:40px;
- margin: 40px 0;
+  gap: 40px;
+  margin: 40px 0;
 }
 .programa-button2 {
-display: flex;
-align-items: center;
+  display: flex;
+  align-items: center;
 
-justify-content: center;
+  justify-content: center;
   width: 200px;
   height: 56px;
-  border: 1px solid #18CA99;
+  border: 1px solid #18ca99;
   border-radius: 10px;
 }
-.programa-button2 p{
+.programa-button2 p {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -84,15 +85,14 @@ justify-content: center;
   margin-top: 15px;
 }
 
-@media(max-width: 492px) {
+@media (max-width: 492px) {
   .banner-photos p {
     font-size: 30px;
   }
 }
 
-@media(max-width: 368px) {
-  .banner-programa p{
+@media (max-width: 368px) {
+  .banner-programa p {
     font-size: 40px;
-    
   }
 }

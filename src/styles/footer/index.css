@@ -1,10 +1,18 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@600&family=Raleway:wght@500;700&family=Roboto&display=swap');
 
+.footer-title, .acesso-paragraph  {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 18px;
+  color: black;
+  font-weight: bold;
+  line-height: 25px;
+  letter-spacing: 0.02em;
+  text-align: center;
+}
+
 .footer{
   font-family: 'Open Sans', sans-serif;
-  margin-top: 32px;
-  margin: 0 auto;
-  margin-top: 40px;
+  margin-top: 56px;
 }
 
 .line-footer{
@@ -12,37 +20,34 @@
 }
 
 .medias-footer {
-display: flex;
-justify-content: center;
-gap: 48px;
-padding-top: 16px;
-padding-bottom: 16px;
-background-color: #F2F2F2;
+  display: flex;
+  justify-content: center;
+  padding: 16px 0px 10px 0px;
+  gap: 48px;
+  background-color: #F2F2F2;
 }
-
 
 .acesso-footer{
   display: flex;
   justify-content: center;
   padding-top: 16.26px;
   background-color: #F2F2F2;
-
 }
 
 .titulos-acesso-rapido{
   display: flex;
   background-color: #F2F2F2;
   gap: 136px;
-justify-content: center;
-margin-left: -52px;
-width: 100vw;
+  justify-content: center;
+  margin-left: -52px;
+  width: 100vw;
 }
+
 .opcoes-footer{
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
   background-color: #F2F2F2;
-
 }
 
 .colunas-footer{
@@ -50,30 +55,32 @@ width: 100vw;
   flex-direction: column;
   text-align: center;
   padding-bottom: 30px;
-
 }
+
 .colunas-footer a{
   text-decoration: none;
   color: #000000;
-
 }
+
 .colunas-footer :hover{
   transition: 1s;
   color: #18CA99;
   text-decoration: underline;
 }
+
 .colunas-footer h6:hover {
   color: #000000 !important;
   text-decoration: none !important;
 }
+
 .rodape-footer{
   display: flex;
   justify-content: space-between;
   background-color: #F2F2F2;
   padding-left: 20px;
   padding-right: 20px;
-
 }
+
 .copyright-footer p{
   margin-left: -80px;
 }
@@ -89,7 +96,6 @@ width: 100vw;
   color: #000000;
 }
 
-
 @media (max-width: 733px) {
   .opcoes-footer *{
     font-size: 10px;
@@ -99,16 +105,16 @@ width: 100vw;
     display: flex;
     flex-wrap: wrap;
   }
-
 }
+
 @media (max-width: 581px) {
   .opcoes-footer {
     margin-left: 0px;
   }
 }
+
 @media (max-width: 462px) {
   .copyright-footer p{
     margin-left: 0px;
   }
-
 }

@@ -1,12 +1,10 @@
-import React from 'react'
-import ProgramaTemplate from '../templates/programa/programa.template'
+import React from 'react';
+import ProgramaTemplate from '../templates/programa/programa.template';
 
 function Programa() {
   return (
-    <>
-  <ProgramaTemplate/>
-    </>
-  )
+    <ProgramaTemplate />
+  );
 }
 
-export default Programa
+export default Programa;

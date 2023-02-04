@@ -1,8 +1,8 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const SlideContainer = styled.div`
     display: flex;
-`
+`;
 
 export const TextSlide = styled.h1`
     position: absolute;
@@ -16,4 +16,4 @@ export const TextSlide = styled.h1`
     padding: 24px 40px;
     font-weight: 600;
     line-height: 1.55;
-`
+`;

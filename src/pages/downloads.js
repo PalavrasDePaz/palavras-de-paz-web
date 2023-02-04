@@ -1,12 +1,10 @@
-import React from 'react'
-import DownloadsTemplate from '../templates/downloads/downloads.template'
+import React from 'react';
+import DownloadsTemplate from '../templates/downloads/downloads.template';
 
 function downloads() {
   return (
-    <>
-    <DownloadsTemplate/>
-    </>
-  )
+    <DownloadsTemplate />
+  );
 }
 
-export default downloads
+export default downloads;

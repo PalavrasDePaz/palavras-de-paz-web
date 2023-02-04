@@ -1,4 +1,4 @@
-import styled, { css } from "styled-components";
+import styled, { css } from 'styled-components';
 
 export const Typography = styled.p`
   ${({
@@ -16,7 +16,7 @@ export const Typography = styled.p`
     padding,
     spacing,
     textAlign,
-    
+
   }) => css`
     width: ${width};
     height: ${height};
