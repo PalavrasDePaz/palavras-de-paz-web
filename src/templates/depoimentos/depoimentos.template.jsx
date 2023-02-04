@@ -1,9 +1,9 @@
-import React from 'react'
-import Center from '../../components/atoms/center/Center'
-import BannerDepoimentos from '../../components/bannerdepoimentos/BannerDepoimentos'
-import DepoimentosMain from '../../components/depoimentosmain/DepoimentosMain'
-import Footer from '../../components/footer/Footer'
-import Header from '../../components/header/Header'
+import React from 'react';
+import Center from '../../components/atoms/center/Center';
+import BannerDepoimentos from '../../components/bannerdepoimentos/BannerDepoimentos';
+import DepoimentosMain from '../../components/depoimentosmain/DepoimentosMain';
+import Footer from '../../components/footer/Footer';
+import Header from '../../components/header/Header';
 
 function DepoimentosTemplate() {
   return (
@@ -15,7 +15,7 @@ function DepoimentosTemplate() {
       </Center>
       <Footer />
     </>
-  )
+  );
 }
 
-export default DepoimentosTemplate
+export default DepoimentosTemplate;

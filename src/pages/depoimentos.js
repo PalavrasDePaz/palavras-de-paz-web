@@ -1,9 +1,9 @@
-import React from 'react'
-import DepoimentosTemplate from '../templates/depoimentos/depoimentos.template'
+import React from 'react';
+import DepoimentosTemplate from '../templates/depoimentos/depoimentos.template';
 
 function depoimentos() {
   return (
-    <DepoimentosTemplate/>
-  )
+    <DepoimentosTemplate />
+  );
 }
-export default depoimentos
+export default depoimentos;

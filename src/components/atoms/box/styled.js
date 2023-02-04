@@ -1,25 +1,25 @@
-import styled, { css } from "styled-components";
+import styled, { css } from 'styled-components';
 
 export const Box = styled.div`
   ${({
-  bg,
-  width,
-  justify,
-  align,
-  height,
-  direction,
-  shadow,
-  color,
-  margin,
-  padding,
-  position,
-  gap,
-  radius,
-  textAlign,
-  flexWrap,
-  maxWidth,
-  border
-}) => css`
+    bg,
+    width,
+    justify,
+    align,
+    height,
+    direction,
+    shadow,
+    color,
+    margin,
+    padding,
+    position,
+    gap,
+    radius,
+    textAlign,
+    flexWrap,
+    maxWidth,
+    border,
+  }) => css`
     background-color: ${bg};
     width: ${width};
     height: ${height};

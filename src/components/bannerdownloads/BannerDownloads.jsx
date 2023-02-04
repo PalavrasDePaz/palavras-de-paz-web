@@ -1,14 +1,11 @@
-import React from 'react'
+import React from 'react';
 
 function BannerDownloads() {
   return (
-    <>
-  <div className='banner-downloads'>
-      <p style={{fontWeight:"700"}}>Downloads</p>
+    <div className="banner-downloads">
+      <p style={{ fontWeight: '700' }}>Downloads</p>
     </div>
-
-    </>
-  )
+  );
 }
 
-export default BannerDownloads
+export default BannerDownloads;

@@ -124,6 +124,26 @@
   justify-content: center;
   margin: 40px 0;
 }
+
+.btn-voluntario {
+  background-color: white;
+  style: none;
+  color: white;
+  border: 2px solid #18CA99;
+  border-radius: 10px;
+  padding: 10px 20px;
+  font-size: 24px;
+  font-family: 'Baloo', cursive, Arial, Helvetica, sans-serif;
+  cursor: pointer;
+  transition: 0.5s;
+}
+
+.btn-voluntario:hover {
+  background-color: transparent;
+  border: 2px solid #18CA99;
+  color: #18CA99;
+}
+
 @media(max-width: 720px) {
   .doacoes-texto-icones {
     font-size: 20px;

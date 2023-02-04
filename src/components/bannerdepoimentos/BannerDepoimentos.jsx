@@ -1,14 +1,11 @@
-import React from 'react'
+import React from 'react';
 
 function BannerDepoimentos() {
   return (
-   <>
-    <div className='banner-depoimentos'>
+    <div className="banner-depoimentos">
       <p>DEPOIMENTOS</p>
     </div>
-
-   </>
-  )
+  );
 }
 
-export default BannerDepoimentos
+export default BannerDepoimentos;

@@ -1,13 +1,10 @@
-import React from 'react'
-import DevsTemplate from '../templates/devs/devs.template'
+import React from 'react';
+import DevsTemplate from '../templates/devs/devs.template';
 
 function Desenvolvedores() {
   return (
-   <>
-   <DevsTemplate/>
-
-   </>
-  )
+    <DevsTemplate />
+  );
 }
 
-export default Desenvolvedores
+export default Desenvolvedores;

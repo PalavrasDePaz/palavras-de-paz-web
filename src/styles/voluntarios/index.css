@@ -121,8 +121,22 @@ a:hover {
   font-size: 18px;
   font-weight: bold;
   color: black;
-
 }
+
+.voluntarios-button-doacao > a {
+  color: black;
+  font-weight: 400;
+  filter: brightness(1.1);
+  font-size: 18px;
+}
+
+.voluntarios-button-doacao > a:hover {
+  color: #18CA99;
+  filter: brightness(1.1);
+  font-size: 20px;
+  transition: 0.3s ease;
+}
+
 #link{
   color: #18CA99;
 }

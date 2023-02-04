@@ -1,15 +1,11 @@
-import React from 'react'
+import React from 'react';
 
 function BannerDevs() {
   return (
-    <>
-    <div className='banner-devs'>
+    <div className="banner-devs">
       <p>DESENVOLVEDORES</p>
     </div>
-
-
-    </>
-  )
+  );
 }
 
-export default BannerDevs
+export default BannerDevs;

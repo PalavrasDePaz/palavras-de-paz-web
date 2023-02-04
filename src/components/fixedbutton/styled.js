@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const FixedBtn = styled.a`
     position: fixed;
@@ -17,4 +17,4 @@ export const FixedBtn = styled.a`
     &:hover {
         color: #fff
     }
-`
+`;
