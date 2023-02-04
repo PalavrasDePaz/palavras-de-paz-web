@@ -14,14 +14,14 @@
   z-index: 2;
 }
 
-.nav-link {
+a.nav-link {
   width: max-content;
   color: #2A2A2A;
   text-decoration: none;
 }
 
-.nav-link:hover {
-  color: #21AA85;
+a.nav-link:hover {
+  color: rgba(33, 170, 133, 1);
   font-size: 26px;
   transition: 0.3s ease;
 }
