@@ -23,7 +23,7 @@ a.nav-link {
 a.nav-link:hover {
   color: rgba(33, 170, 133, 1);
   font-size: 26px;
-  transition: 0.3s ease;
+  transition: 0.3s ease-in-out;
 }
 
 .container-fluid {
