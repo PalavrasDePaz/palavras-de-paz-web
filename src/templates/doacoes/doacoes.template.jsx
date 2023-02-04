@@ -4,7 +4,6 @@ import Doacoes from '../../components/doacoes/Doacoes';
 import Footer from '../../components/footer/Footer';
 import Header from '../../components/header/Header';
 import FixedButton from '../../components/fixedbutton/FixedButton';
-import Center from '../../components/atoms/center/Center';
 
 function DoacoesTemplate() {
   return (

@@ -1,8 +1,20 @@
-import styled, { css } from 'styled-components';
+import styled, { css } from "styled-components";
 
 export const Button = styled.a`
   ${({
-    align, bg, margin, padding, width, height, shadow, color, familyFont, justify, fontWeight,
+    align,
+    bg,
+    margin,
+    padding,
+    width,
+    height,
+    shadow,
+    color,
+    familyFont,
+    justify,
+    fontWeight,
+    hover,
+    font_size,
   }) => css`
     display: flex;
     flex-direction: row;
@@ -25,5 +37,9 @@ export const Button = styled.a`
     text-align: ${align};
     transition: all 0.3s ease-in-out;
     &:hover {
+      color: ${hover};
+     ${font_size}: 20px;
+      transition: 0.3s ease;
       filter: brightness(1.1);
-    `}`;
+    }
+`}`;

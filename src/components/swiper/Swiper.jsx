@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
 // import required modules
-import { Pagination, Navigation } from 'swiper';
+import { Pagination, Navigation, Scrollbar, Ally } from 'swiper';
 import Image from 'next/image';
 import Box from '../atoms/box/Box';
 import SwiperImgs from './images';
@@ -68,6 +68,7 @@ export default function SwiperJs() {
             margin: '40px 0',
           }}
           spaceBetween={48}
+          slidesPerView={5}
           centeredSlides
           navigation
           modules={[Pagination, Navigation]}

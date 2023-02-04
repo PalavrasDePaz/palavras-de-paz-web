@@ -2,7 +2,7 @@
 
 .styles-header * {
   font-family: 'Open Sans', sans-serif;
-  background-color: white !important;
+  background-color: white;
   margin: 0 auto;
   display: flex;
   align-items: center;
@@ -10,12 +10,20 @@
 }
 
 .navbar-light {
-  padding: 0 0 0 0 !important;
+  padding: 0 !important;
   z-index: 2;
 }
 
-a.nav-link {
+.nav-link {
   width: max-content;
+  color: #2A2A2A;
+  text-decoration: none;
+}
+
+.nav-link:hover {
+  color: #21AA85;
+  font-size: 26px;
+  transition: 0.3s ease;
 }
 
 .container-fluid {
@@ -32,16 +40,10 @@ a.nav-link {
   font-size: 24px;
 }
 
-a.nav-link {
-  color: #2A2A2A;
-  text-decoration: none;
-
-}
-
 
 .navbar-toggler .collapsed {
-  outline: transparent !important;
-  border: none !important;
+  outline: 0 !important;
+  border: 0 !important;
 }
 
 @media (max-width: 1293px) {
