@@ -1,17 +1,17 @@
-import Image from "next/image";
-import Box from "../../components/atoms/box/Box";
-import Typography from "../../components/atoms/typography/Typography";
-import Header from "../../components/header/Header";
-import card_1 from "../../../public/static/images/parceiro/Building.svg";
-import card_2 from "../../../public/static/images/parceiro/Enterprise.svg";
-import card_3 from "../../../public/static/images/parceiro/GraduationScroll.svg";
-import card_4 from "../../../public/static/images/parceiro/NonProfit.svg";
-import card_5 from "../../../public/static/images/parceiro/School.svg";
-import banner from "../../../public/static/images/parceiro/image1.svg";
-import Footer from "../../components/footer/Footer";
-import Button from "../../components/button/button";
-import FixedButton from "../../components/fixedbutton/FixedButton";
-import Center from "../../components/atoms/center/Center";
+import Image from 'next/image';
+import Box from '../../components/box';
+import Typography from '../../components/typography';
+import Header from '../../components/header/Header';
+import card_1 from '../../../public/static/images/parceiro/Building.svg';
+import card_2 from '../../../public/static/images/parceiro/Enterprise.svg';
+import card_3 from '../../../public/static/images/parceiro/GraduationScroll.svg';
+import card_4 from '../../../public/static/images/parceiro/NonProfit.svg';
+import card_5 from '../../../public/static/images/parceiro/School.svg';
+import banner from '../../../public/static/images/parceiro/image1.svg';
+import Footer from '../../components/footer/Footer';
+import Button from '../../components/button/button';
+import FixedButton from '../../components/fixedbutton/FixedButton';
+import Center from '../../components/center';
 
 export default function ParceirosTemplate() {
   return (
@@ -20,14 +20,14 @@ export default function ParceirosTemplate() {
 
       <div
         className="banner-gradient"
-        style={{
+        style={ {
           zIndex: -2,
-          display: "flex",
-          height: "176px",
-          padding: "10px",
-          alignItems: "end",
-          justifyContent: "end",
-        }}
+          display: 'flex',
+          height: '176px',
+          padding: '10px',
+          alignItems: 'end',
+          justifyContent: 'end',
+        } }
       >
         <Typography
           margin="100px 0 0 0"
@@ -56,10 +56,12 @@ export default function ParceirosTemplate() {
               width="160px"
               textAlign="center"
             >
-              <Image src={card_1} alt="" width="100%" height="100%" />
+              <Image src={ card_1 } alt="" width="100%" height="100%" />
               <p>
                 Entidades
-                <br /> públicas
+                <br />
+                {' '}
+                públicas
               </p>
             </Box>
 
@@ -69,7 +71,7 @@ export default function ParceirosTemplate() {
               width="160px"
               textAlign="center"
             >
-              <Image src={card_2} alt="" width="100%" height="100%" />
+              <Image src={ card_2 } alt="" width="100%" height="100%" />
               <p>
                 Empresas
                 <br />
@@ -83,10 +85,12 @@ export default function ParceirosTemplate() {
               width="160px"
               textAlign="center"
             >
-              <Image src={card_4} alt="" width="100%" height="100%" />
+              <Image src={ card_4 } alt="" width="100%" height="100%" />
               <p>
                 Órgãos
-                <br /> governamentais
+                <br />
+                {' '}
+                governamentais
               </p>
             </Box>
 
@@ -96,7 +100,7 @@ export default function ParceirosTemplate() {
               width="160px"
               textAlign="center"
             >
-              <Image src={card_3} alt="" width="100%" height="100%" />
+              <Image src={ card_3 } alt="" width="100%" height="100%" />
               <p>Universidades</p>
             </Box>
 
@@ -106,7 +110,7 @@ export default function ParceirosTemplate() {
               width="160px"
               textAlign="center"
             >
-              <Image src={card_5} alt="" width="100%" height="100%" />
+              <Image src={ card_5 } alt="" width="100%" height="100%" />
               <p>Escolas</p>
             </Box>
           </Box>
@@ -126,7 +130,7 @@ export default function ParceirosTemplate() {
             gap="8px"
             margin="24px auto"
           >
-            <Image src={banner} alt="" />
+            <Image src={ banner } alt="" />
           </Box>
         </Box>
 

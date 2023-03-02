@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import Center from '../../components/atoms/center/Center';
+import Center from '../../components/center';
 import BannerPhotos from '../../components/bannerphotos/BannerPhotos';
 import FixedButton from '../../components/fixedbutton/FixedButton';
 import Footer from '../../components/footer/Footer';

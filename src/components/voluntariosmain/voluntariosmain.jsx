@@ -1,9 +1,8 @@
 import React from 'react';
 import Image from 'next/image';
-import { Button } from 'react-bootstrap';
 import Link from 'next/link';
 import LogoVoluntarios from '../../../public/static/images/voluntarios.png';
-import Center from '../atoms/center/Center';
+import Center from '../center';
 
 function VoluntariosMain() {
   return (
@@ -18,7 +17,7 @@ function VoluntariosMain() {
             <p>Em nosso programa há várias modalidades de voluntariado, você pode contribuir tanto presencial quanto remoto, mas atenção aos requisitos.</p>
           </div>
           <div>
-            <Image src={LogoVoluntarios} alt="imagens-voluntarios" width="576px" height="462px" />
+            <Image src={ LogoVoluntarios } alt="imagens-voluntarios" width="576px" height="462px" />
           </div>
         </container>
 
@@ -75,11 +74,11 @@ function VoluntariosMain() {
         <container className="voluntarios-container-button">
 
           <div className="voluntarios-style-button">
-            <p><Link style={{ color: 'white' }} href="https://form.jotform.com/220305437068653" alt="formulario de inscrição">CADASTRO</Link></p>
+            <p><Link style={ { color: 'white' } } href="https://form.jotform.com/220305437068653" alt="formulario de inscrição">CADASTRO</Link></p>
           </div>
 
           <div className="voluntarios-style-button">
-            <p><Link style={{ color: 'white' }} href="https://www.atados.com.br/ong/programa-de-educacao-para-paz/vagas" alt="link atados">ATADOS</Link></p>
+            <p><Link style={ { color: 'white' } } href="https://www.atados.com.br/ong/programa-de-educacao-para-paz/vagas" alt="link atados">ATADOS</Link></p>
 
           </div>
 

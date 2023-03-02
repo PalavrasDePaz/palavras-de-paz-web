@@ -1,9 +1,9 @@
-import React, { useState } from "react";
-import Button from "react-bootstrap/Button";
-import Modal from "react-bootstrap/Modal";
-import * as S from "./styled";
-import { Typography } from "../atoms/typography/Typography";
-import Box from "../atoms/box/Box";
+import React, { useState } from 'react';
+import Button from 'react-bootstrap/Button';
+import Modal from 'react-bootstrap/Modal';
+import * as S from './styled';
+import Typography from '../typography';
+import Box from '../box';
 
 export default function FixedButton() {
   const [smShow, setSmShow] = useState(false);
@@ -12,7 +12,7 @@ export default function FixedButton() {
   return (
     <>
       <S.FixedBtn
-        onClick={() => setSmShow(true)}
+        onClick={ () => setSmShow(true) }
         className="animate__animated animate__fadeInRight animate__delay-4s"
       >
         CONTATO
@@ -21,8 +21,8 @@ export default function FixedButton() {
       <Modal
         width="100%"
         size="sm"
-        show={smShow}
-        onHide={() => setSmShow(false)}
+        show={ smShow }
+        onHide={ () => setSmShow(false) }
         aria-labelledby="example-modal-sizes-title-sm"
       >
         <Modal.Header closeButton>
@@ -98,16 +98,16 @@ export default function FixedButton() {
             <Box display="flex" justify="center">
               <button
                 type="submit"
-                style={{
-                  background: "rgba(33,170,133,1)",
-                  border: "none",
-                  borderRadius: "10px",
-                  textAlign: "center",
-                  padding: "8px 24px",
-                  color: "white",
-                  fontWeight: "bold",
-                  letterSpacing: "0.1em",
-                }}
+                style={ {
+                  background: 'rgba(33,170,133,1)',
+                  border: 'none',
+                  borderRadius: '10px',
+                  textAlign: 'center',
+                  padding: '8px 24px',
+                  color: 'white',
+                  fontWeight: 'bold',
+                  letterSpacing: '0.1em',
+                } }
               >
                 ENVIAR
               </button>
@@ -117,10 +117,10 @@ export default function FixedButton() {
       </Modal>
 
       <Modal
-        style={{ width: "476px" }}
+        style={ { width: '476px' } }
         size="lg"
-        show={lgShow}
-        onHide={() => setLgShow(false)}
+        show={ lgShow }
+        onHide={ () => setLgShow(false) }
         aria-labelledby="example-modal-sizes-title-lg"
       >
         <Modal.Header closeButton>

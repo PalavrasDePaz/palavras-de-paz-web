@@ -1,14 +1,14 @@
-import Footer from "../../components/footer/Footer";
-import Header from "../../components/header/Header";
-import CarouselSlide from "../../components/carousel/Carousel";
-import GreenBar from "../../components/molecules/greenbar/GreenBar";
-import Typography from "../../components/atoms/typography/Typography";
-import Box from "../../components/atoms/box/Box";
-import Card from "../../components/card/Card";
-import Button from "../../components/button/button";
-import SwiperJs from "../../components/swiper/Swiper";
-import FixedButton from "../../components/fixedbutton/FixedButton";
-import Center from "../../components/atoms/center/Center";
+import Footer from '../../components/footer/Footer';
+import Header from '../../components/header/Header';
+import CarouselSlide from '../../components/carousel/Carousel';
+import GreenBar from '../../components/molecules/greenbar/GreenBar';
+import Typography from '../../components/typography';
+import Box from '../../components/box';
+import Card from '../../components/card/Card';
+import Button from '../../components/button/button';
+import SwiperJs from '../../components/swiper/Swiper';
+import FixedButton from '../../components/fixedbutton/FixedButton';
+import Center from '../../components/center';
 
 export default function HomeTemplate() {
   return (
@@ -28,6 +28,7 @@ export default function HomeTemplate() {
             color="black"
             text="Depoimentos"
           />
+
         </Box>
 
         <Card />
@@ -42,7 +43,7 @@ export default function HomeTemplate() {
             color="black"
             text="Mais Depoimentos"
             hover="rgba(33, 170, 133, 1)"
-            font_size='font-size'
+            font_size="font-size"
           />
           <Button
             href="/galeria"
@@ -53,7 +54,7 @@ export default function HomeTemplate() {
             color="black"
             text="Galeria de Fotos"
             hover="rgba(33, 170, 133, 1)"
-            font_size='font-size'
+            font_size="font-size"
           />
         </Box>
 
@@ -63,13 +64,18 @@ export default function HomeTemplate() {
             height="618"
             src="https://www.youtube.com/embed/X3cphCj9YVc"
             title="YouTube video player"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allow="accelerometer;
+            autoplay;
+            clipboard-write;
+            encrypted-media;
+            gyroscope;
+            picture-in-picture"
           />
         </Box>
       </Center>
 
       <Box
-        style={{ zIndex: -2 }}
+        style={ { zIndex: -2 } }
         maxWidth="100%"
         width="1416px"
         margin="80px auto"

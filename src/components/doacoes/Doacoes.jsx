@@ -1,8 +1,8 @@
 /* eslint-disable react/no-unescaped-entities */
-import React from "react";
-import Image from "next/image";
-import { Button } from "react-bootstrap";
-import Center from "../atoms/center/Center";
+import React from 'react';
+import Image from 'next/image';
+import { Button } from 'react-bootstrap';
+import Center from '../center';
 
 function Doacoes() {
   return (
@@ -18,7 +18,7 @@ function Doacoes() {
               </p>
 
               <p>
-                {" "}
+                {' '}
                 Também nos tornamos mais justos e igualitários, pois ao
                 contribuir para suprir as necessidades do próximo, contribuimos
                 para a melhora das instituições, das pessoas e da sociedade como
@@ -163,10 +163,10 @@ function Doacoes() {
             <p>Prestação de contas</p>
           </a>
           <div>
-            {" "}
+            {' '}
             <Button
               href="/voluntarios"
-              className='btn-voluntario'
+              className="btn-voluntario"
             >
               Seja um voluntário
             </Button>
