@@ -164,8 +164,8 @@ function Devs() {
             height="248px"
             alt="pedro-image"
           />
-          <p>Ana Carolina</p>
-          <p>Product Owner</p>
+          <p>ANA CAROLINA</p>
+          <p>PRODUCT OWNER</p>
           <Link href="https://www.linkedin.com/in/ana-carolina-brito-9890b068/">
             <a target="_blank">Linkedin</a>
           </Link>
