@@ -16,9 +16,11 @@ import '../styles/desenvolvedores/index.css';
 import '../styles/programa/index.css';
 import '../styles/globalstyles.css';
 import '../styles/swiper/index.css';
+import '../styles/fixedBtn/index.css';
 import 'animate.css';
 import Head from 'next/head';
 import React from 'react';
+import propTypes from 'prop-types';
 
 function MyApp({ Component, pageProps }) {
   return (
@@ -30,5 +32,10 @@ function MyApp({ Component, pageProps }) {
     </>
   );
 }
+
+MyApp.propTypes = {
+  Component: propTypes.func.isRequired,
+  pageProps: propTypes.shape().isRequired,
+};
 
 export default MyApp;

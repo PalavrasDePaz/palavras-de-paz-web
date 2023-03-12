@@ -35,7 +35,6 @@ function Button({
       hover={ hover }
       font_size={ font_size }
     >
-      {' '}
       {props.text}
     </S.Button>
   );
