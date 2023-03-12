@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 
-export const Typography = styled.p`
-  ${({
+export const Typography = styled.p `
+  ${ ({
     family,
     width,
     justify,
@@ -17,21 +17,21 @@ export const Typography = styled.p`
     spacing,
     textAlign,
 
-  }) => css`
-    width: ${width};
-    height: ${height};
-    font-size: ${fontSize};
-    font-weight: ${fontWeight};
-    line-height: ${lineHeight};
+  }) => css `
+    width: ${ width };
+    height: ${ height };
+    font-size: ${ fontSize };
+    font-weight: ${ fontWeight };
+    line-height: ${ lineHeight };
     display: flex;
-    flex-direction: ${direction};
-    justify-content: ${justify};
-    align-items: ${align};
-    color: ${color};
-    margin: ${margin};
-    padding: ${padding};
-    font-family: ${family};
-    letter-spacing: ${spacing};
-    text-align: ${textAlign};
-  `}
+    flex-direction: ${ direction };
+    justify-content: ${ justify };
+    align-items: ${ align };
+    color: ${ color };
+    margin: ${ margin };
+    padding: ${ padding };
+    font-family: ${ family };
+    letter-spacing: ${ spacing };
+    text-align: ${ textAlign };
+  ` }
 `;

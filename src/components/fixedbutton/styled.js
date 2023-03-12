@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const FixedBtn = styled.a`
+export const FixedBtn = styled.a `
     position: fixed;
     bottom: 333px;
     right: 0;

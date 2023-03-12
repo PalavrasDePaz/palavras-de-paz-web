@@ -1,7 +1,7 @@
-import styled, { css } from "styled-components";
+import styled, { css } from 'styled-components';
 
-export const Button = styled.a`
-  ${({
+export const Button = styled.a `
+  ${ ({
     align,
     bg,
     margin,
@@ -15,31 +15,31 @@ export const Button = styled.a`
     fontWeight,
     hover,
     font_size,
-  }) => css`
+  }) => css `
     display: flex;
     flex-direction: row;
-    justify-content: ${justify};
+    justify-content: ${ justify };
     align-items: center;
-    width: ${width};
-    height: ${height};
+    width: ${ width };
+    height: ${ height };
     border-radius: 15px;
-    color: ${color};
-    background-color: ${bg};
-    margin: ${margin};
-    padding: ${padding};
-    box-shadow: ${shadow};
-    font-family: ${familyFont};
-    font-weight: ${fontWeight}; 
+    color: ${ color };
+    background-color: ${ bg };
+    margin: ${ margin };
+    padding: ${ padding };
+    box-shadow: ${ shadow };
+    font-family: ${ familyFont };
+    font-weight: ${ fontWeight }; 
     cursor: pointer;
     border: 1px solid rgba(24, 202, 153, 1);
     outline: 0;
     text-decoration: none;
-    text-align: ${align};
+    text-align: ${ align };
     transition: all 0.3s ease-in-out;
     &:hover {
-      color: ${hover};
-     ${font_size}: 20px;
+      color: ${ hover };
+     ${ font_size }: 20px;
       transition: 0.3s ease;
       filter: brightness(1.1);
     }
-`}`;
+` }`;

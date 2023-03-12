@@ -1,3 +1,4 @@
+import propTypes from 'prop-types';
 import * as S from './styled';
 
 function Box({
@@ -44,5 +45,26 @@ function Box({
     </S.Box>
   );
 }
+
+Box.propTypes = {
+  bg: propTypes.string,
+  width: propTypes.string,
+  justify: propTypes.string,
+  align: propTypes.string,
+  height: propTypes.string,
+  direction: propTypes.string,
+  shadow: propTypes.string,
+  color: propTypes.string,
+  margin: propTypes.string,
+  padding: propTypes.string,
+  position: propTypes.string,
+  radius: propTypes.string,
+  gap: propTypes.string,
+  textAlign: propTypes.string,
+  flexWrap: propTypes.string,
+  maxWidth: propTypes.string,
+  border: propTypes.string,
+  children: propTypes.node.isRequired,
+}.isRequired;
 
 export default Box;
