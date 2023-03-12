@@ -1,73 +1,46 @@
-import React, { useRef, useState } from 'react';
-// Import Swiper React components
+/* eslint-disable import/no-unresolved */
+import React from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
-
-// Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
+import 'swiper/css/autoplay';
 
-// import required modules
-import {
-  Navigation, Pagination, Mousewheel, Keyboard,
-} from 'swiper';
+import { Navigation, Pagination, Mousewheel, Keyboard } from 'swiper';
 import Image from 'next/image';
-import Carousel_1 from '../../../public/static/images/Carrossel_1.png';
-import Carousel_2 from '../../../public/static/images/Carrossel_2.png';
-import Carousel_3 from '../../../public/static/images/Carrossel_3.png';
+import imagesMainCarousel from './imagesMainCarousel';
 import Box from '../box';
-import Typography from '../typography';
 import * as S from './styled';
 
 function CarouselSlide() {
   return (
     <Swiper
-      style={ { zIndex: 5 } }
+      modules={ [Navigation, Pagination, Mousewheel, Keyboard] }
+      slidesPerView={ 1 }
       cssMode
       navigation
       pagination
       mousewheel
       keyboard
-      modules={ [Navigation, Pagination, Mousewheel, Keyboard] }
-      className="mySwiper"
       loop
+      autoplay
+      className="mySwiper"
     >
-      <SwiperSlide>
-        <S.SlideContainer>
-          <Image layout="fixed" width="10000%" height="616px" src={ Carousel_1 } alt="" />
-          <S.TextSlide>
-            Projeto com
-            <br />
-            {' '}
-            Moradores de Rua
-          </S.TextSlide>
-        </S.SlideContainer>
-
-      </SwiperSlide>
-
-      <SwiperSlide>
-        <Box justify="center" align="center">
-          <Image layout="fixed" width="10000%" height="616px" src={ Carousel_3 } alt="" />
-          <S.TextSlide>
-            Projeto nos
-            <br />
-            Presídios
-          </S.TextSlide>
-        </Box>
-      </SwiperSlide>
-
-      <SwiperSlide>
-        <Box justify="center" align="center">
-          <Image objectFit="cover" layout="fixed" width="10000%" height="616px" src={ Carousel_2 } alt="" />
-          <S.TextSlide>
-            Projeto nas
-            <br />
-            {' '}
-            Escolas
-          </S.TextSlide>
-        </Box>
-      </SwiperSlide>
-
+      {imagesMainCarousel.map((item) => (
+        <SwiperSlide key={ item.id }>
+          <S.SlideContainer>
+            <Box>
+              <Image
+                src={ item.image }
+                alt={ item.text }
+                width={ 1920 }
+                height={ 840 }
+              />
+              <S.TextSlide>{item.text}</S.TextSlide>
+            </Box>
+          </S.SlideContainer>
+        </SwiperSlide>
+      ))}
     </Swiper>
   );
 }
