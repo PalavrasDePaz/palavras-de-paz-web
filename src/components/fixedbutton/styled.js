@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const FixedBtn = styled.a `
     position: fixed;
-    bottom: 22rem;
+    bottom: 20.62rem;
     right: 0;
     width: 10rem;
     text-align: center;

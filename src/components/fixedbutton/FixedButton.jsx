@@ -9,7 +9,7 @@ export default function FixedButton() {
   const [height, setHeight] = useState(0);
   const [width, setWidth] = useState(0);
 
-  const HEIGHT_TO_SHOW_BUTTON = 400;
+  const HEIGHT_TO_SHOW_BUTTON = 500;
   const HEIGHT_TO_SHOW_BUTTON_MOBILE = 3500;
   const WIDTH_TO_SHOW_BUTTON_MOBILE = 768;
 
