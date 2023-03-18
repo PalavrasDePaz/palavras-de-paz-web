@@ -54,7 +54,7 @@ export default function FixedButton() {
 
       {width >= WIDTH_TO_SHOW_BUTTON_MOBILE && height >= HEIGHT_TO_SHOW_BUTTON && (
         <S.FixedBtn
-          onClick={ () => setLgShow(true) }
+          onClick={ () => setSmShow(true) }
           className="animate__animated animate__fadeInRight"
         >
           CONTATO
