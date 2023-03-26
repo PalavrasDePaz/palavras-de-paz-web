@@ -1,5 +1,5 @@
 import {
-  Container, Nav, Navbar, Offcanvas, Stack,
+  Container, Nav, Navbar, Offcanvas,
 } from 'react-bootstrap';
 import Image from 'next/image';
 import Link from 'next/link';
