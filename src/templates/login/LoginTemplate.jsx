@@ -11,7 +11,9 @@ function LoginTemplate() {
       <Image
         style={ { cursor: 'pointer' } }
         src={ Logo }
-        alt="logo-header"
+        alt="logo com a frase Palavras de Paz,
+        programa de educação para a paz,
+        escrito em verde"
         width="333px"
         height="150px"
       />

@@ -12,39 +12,47 @@ function LoginForm() {
 
   return (
     <div className={ styles.login_form_section }>
+
       <h1 className={ styles.login_form_section_title }>
         Faça seu login
       </h1>
 
       <div className={ styles.login_form_section_input_container }>
+
         <label
           className="login_form_section_input_label"
           htmlFor="email"
         >
           <b>E-mail</b>
         </label>
+
         <input
           placeholder="nome@palavrasdepaz.com.br"
           id="email"
           type="email"
           className={ styles.login_form_section_input_email }
+          onChange={ (event) => setEmail(event.target.value) }
         />
       </div>
 
       <div className={ styles.login_form_section_input_container }>
+
         <label
           className="login_form_section_input_label"
           htmlFor="password"
         >
           <b>Senha</b>
         </label>
+
         <div className={ styles.password_container }>
           <input
             placeholder="Digite sua senha"
             id="password"
             className={ styles.login_form_section_input_password }
             type={ isPasswordVisible ? 'text' : 'password' }
+            onChange={ (event) => setPassword(event.target.value) }
           />
+
           <button
             className={ styles.login_form_section_input_password_visibility }
             type="button"
@@ -80,6 +88,7 @@ function LoginForm() {
           Voltar para a página inicial
         </button>
       </Link>
+
     </div>
   );
 }
