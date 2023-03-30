@@ -8,6 +8,7 @@ function Devs() {
       <div className="titulo-devs">
         <p>EQUIPE RESPONSÁVEL PELA CRIAÇÃO DO SITE</p>
       </div>
+
       <container className="container">
         <div className="adjust-dev">
           <Image
@@ -158,7 +159,7 @@ function Devs() {
 
         <div className="adjust-dev">
           <Image
-            style={{ border: "10px solid #18CA99", borderRadius: "50%" }}
+            style={ { border: '10px solid #18CA99', borderRadius: '50%' } }
             src="/static/images/devs/carol.jpg"
             width="248px"
             height="248px"
@@ -167,7 +168,7 @@ function Devs() {
           <p>ANA CAROLINA</p>
           <p>PRODUCT OWNER</p>
           <Link href="https://www.linkedin.com/in/ana-carolina-brito-9890b068/">
-            <a target="_blank">Linkedin</a>
+            Linkedin
           </Link>
         </div>
       </container>
