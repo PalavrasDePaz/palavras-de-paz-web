@@ -158,16 +158,16 @@ function Devs() {
 
         <div className="adjust-dev">
           <Image
-            style={ { border: '10px solid #18CA99', borderRadius: '50%' } }
-            src="/static/images/devs/pedro.svg"
+            style={{ border: "10px solid #18CA99", borderRadius: "50%" }}
+            src="/static/images/devs/carol.jpg"
             width="248px"
             height="248px"
-            alt="pedro-image"
+            alt="carol-image"
           />
-          <p>PEDRO HENRIQUE</p>
-          <p>DEV. FRONTEND</p>
-          <Link href="https://www.linkedin.com/in/opedrodev/">
-            <p>Linkedin</p>
+          <p>ANA CAROLINA</p>
+          <p>PRODUCT OWNER</p>
+          <Link href="https://www.linkedin.com/in/ana-carolina-brito-9890b068/">
+            <a target="_blank">Linkedin</a>
           </Link>
         </div>
       </container>
