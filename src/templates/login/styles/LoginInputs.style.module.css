@@ -14,7 +14,7 @@
 
 @media (min-width: 1224px) {
     .login_form_section {
-        width: 25rem;
+        max-width: 25rem;
     }
 }
 
