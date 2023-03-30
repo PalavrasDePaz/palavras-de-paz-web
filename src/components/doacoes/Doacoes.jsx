@@ -2,10 +2,11 @@
 import React from 'react';
 import Image from 'next/image';
 import { Button } from 'react-bootstrap';
+import Center from '../center';
 
 function Doacoes() {
   return (
-    <>
+    <Center>
       <container className="doacao-main">
         <div className="doacao-main-texto">
           <div className="doacao-texto">
@@ -155,7 +156,7 @@ function Doacoes() {
         </div>
 
       </container>
-    </>
+    </Center>
   );
 }
 
