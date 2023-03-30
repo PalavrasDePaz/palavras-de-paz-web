@@ -10,7 +10,7 @@ export default class MyDocument extends Document {
 
     try {
       ctx.renderPage = () => originalRenderPage({
-        enhanceApp: (App) => (props) => sheet.collectStyles(<App {...props} />),
+        enhanceApp: (App) => (props) => sheet.collectStyles(<App { ...props } />),
       });
 
       const initialProps = await Document.getInitialProps(ctx);
@@ -38,13 +38,23 @@ export default class MyDocument extends Document {
           <link rel="shortcut icon" href="/favicon.ico" />
           <meta name="description" content="Palavras de Paz" />
           <meta name="title" content="ONG Palavras de Paz" />
-          <meta name="description" content="Voluntário é um cidadão que ao perceber diferenças sociais, disponibiliza o seu tempo para atuar em pró de outros seres humanos e assim contribui com um mundo novo." />
+          <meta
+            name="description"
+            content="Voluntário é um cidadão que ao perceber diferenças sociais,
+          disponibiliza o seu tempo para atuar em pró de outros seres humanos e
+          assim contribui com um mundo novo."
+          />
 
           {/* <!-- Open Graph / Facebook --/> */}
           <meta property="og:type" content="website" />
           <meta property="og:url" content="https://www.facebook.com/palavrasdepaz.br/" />
           <meta property="og:title" content="ONG Palavras de Paz" />
-          <meta property="og:description" content="Voluntário é um cidadão que ao perceber diferenças sociais, disponibiliza o seu tempo para atuar em pró de outros seres humanos e assim contribui com um mundo novo." />
+          <meta
+            property="og:description"
+            content="Voluntário é um cidadão que ao perceber diferenças sociais,
+          disponibiliza o seu tempo para atuar em pró de outros seres humanos e
+          assim contribui com um mundo novo."
+          />
           <meta property="og:image" content="https://www.palavrasdepaz.org/_next/static/media/logo.a78a7b1d.svg" />
 
         </Head>

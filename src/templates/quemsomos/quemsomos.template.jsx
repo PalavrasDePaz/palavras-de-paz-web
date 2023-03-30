@@ -1,14 +1,14 @@
-import Image from "next/image";
-import Box from "../../components/atoms/box/Box";
-import Typography from "../../components/atoms/typography/Typography";
-import Header from "../../components/header/Header";
-import card_1 from "../../../public/static/images/quemsomos/CameraIdentification.svg";
-import card_2 from "../../../public/static/images/quemsomos/PuzzleMatching.svg";
-import card_3 from "../../../public/static/images/quemsomos/ValorSecundario.svg";
-import Footer from "../../components/footer/Footer";
-import Button from "../../components/button/button";
-import FixedButton from "../../components/fixedbutton/FixedButton";
-import Center from "../../components/atoms/center/Center";
+import Image from 'next/image';
+import Box from '../../components/box';
+import Typography from '../../components/typography';
+import Header from '../../components/header/Header';
+import card_1 from '../../../public/static/images/quemsomos/CameraIdentification.svg';
+import card_2 from '../../../public/static/images/quemsomos/PuzzleMatching.svg';
+import card_3 from '../../../public/static/images/quemsomos/ValorSecundario.svg';
+import Footer from '../../components/footer/Footer';
+import Button from '../../components/button/button';
+import FixedButton from '../../components/fixedbutton/FixedButton';
+import Center from '../../components/center';
 
 export default function QuemSomosTemplate() {
   return (
@@ -16,14 +16,14 @@ export default function QuemSomosTemplate() {
       <Header />
       <div
         className="banner-gradient"
-        style={{
+        style={ {
           zIndex: -2,
-          display: "flex",
-          height: "176px",
-          padding: "10px",
-          alignItems: "end",
-          justifyContent: "end",
-        }}
+          display: 'flex',
+          height: '176px',
+          padding: '10px',
+          alignItems: 'end',
+          justifyContent: 'end',
+        } }
       >
         <Typography
           margin="100px 0 0 0"
@@ -64,7 +64,7 @@ Esse objetivo é perseguido através de uma licença obtida para pelo TPRF (Prog
               width="160px"
               textAlign="center"
             >
-              <Image src={card_1} alt="" width="100%" height="100%" />
+              <Image src={ card_1 } alt="" width="100%" height="100%" />
               <p>
                 MISSÃO
                 <br />
@@ -78,7 +78,7 @@ Esse objetivo é perseguido através de uma licença obtida para pelo TPRF (Prog
               width="160px"
               textAlign="center"
             >
-              <Image src={card_2} alt="" width="100%" height="100%" />
+              <Image src={ card_2 } alt="" width="100%" height="100%" />
               <p>
                 VISÃO
                 <br />
@@ -92,7 +92,7 @@ Esse objetivo é perseguido através de uma licença obtida para pelo TPRF (Prog
               width="160px"
               textAlign="center"
             >
-              <Image src={card_3} alt="" width="100%" height="100%" />
+              <Image src={ card_3 } alt="" width="100%" height="100%" />
               <p>
                 VALORES
                 <br />
@@ -106,14 +106,14 @@ Esse objetivo é perseguido através de uma licença obtida para pelo TPRF (Prog
 
       <div
         className="banner-gradient"
-        style={{
+        style={ {
           zIndex: -2,
-          display: "flex",
-          height: "176px",
-          padding: "10px",
-          alignItems: "end",
-          justifyContent: "end",
-        }}
+          display: 'flex',
+          height: '176px',
+          padding: '10px',
+          alignItems: 'end',
+          justifyContent: 'end',
+        } }
       >
         <Typography
           margin="100px 0 0 0"
@@ -156,7 +156,7 @@ Nos últimos anos conseguimos alcançar outras comunidades, levando o programa t
             height="56px"
             color="black"
             hover="rgba(33, 170, 133, 1)"
-            font_size='font-size'
+            font_size="font-size"
           />
         </Box>
       </Center>

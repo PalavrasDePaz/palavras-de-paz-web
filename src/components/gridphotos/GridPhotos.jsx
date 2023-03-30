@@ -1,6 +1,6 @@
 import React from 'react';
 import Image from 'next/image';
-import Box from '../atoms/box/Box';
+import Box from '../box';
 import Button from '../button/button';
 
 function GridPhotos() {
@@ -8,7 +8,7 @@ function GridPhotos() {
     <Box direction="column" justify="center" align="center" margin="32px auto">
       <container className="container1">
         <div>
-          <Image style={{ paddingTop: '56px' }} alt="" src="/static/images/foto1.png" width="815px" height="841px" />
+          <Image style={ { paddingTop: '56px' } } alt="" src="/static/images/foto1.png" width="815px" height="841px" />
         </div>
 
         <container>

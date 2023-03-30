@@ -1,10 +1,10 @@
-import Box from '../../atoms/box/Box';
-import Typography from '../../atoms/typography/Typography';
+import Box from '../../box';
+import Typography from '../../typography';
 import * as S from './styled';
 
 export default function GreenBar(...props) {
   return (
-    <div style={{ zIndex: 5 }}>
+    <div style={ { zIndex: 5 } }>
       <S.GreenContainer>
 
         <Box padding="10px" height="198px" bg="rgba(33, 170, 133, 1)" justify="center" align="center" direction="column">

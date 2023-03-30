@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const IconContainer = styled.div`
+export const IconContainer = styled.div `
     position: relative;
     width: 120px;
     height: 120px;
@@ -9,7 +9,7 @@ export const IconContainer = styled.div`
     top: -60px;
 `;
 
-export const CardContent = styled.div`
+export const CardContent = styled.div `
     display: flex;
     flex-direction: column;
     text-align: center;
@@ -22,7 +22,7 @@ export const CardContent = styled.div`
     margin: 64px 0;
 `;
 
-export const CardContainer = styled.div`
+export const CardContainer = styled.div `
     display: flex;
     justify-content: center;
     gap: 24px;

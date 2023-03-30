@@ -1,5 +1,5 @@
 import React from 'react';
-import Center from '../../components/atoms/center/Center';
+import Center from '../../components/center';
 import BannerDepoimentos from '../../components/bannerdepoimentos/BannerDepoimentos';
 import DepoimentosMain from '../../components/depoimentosmain/DepoimentosMain';
 import Footer from '../../components/footer/Footer';

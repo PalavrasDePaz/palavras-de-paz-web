@@ -31,8 +31,8 @@ function Downloads() {
       <div className="containerDoacao">
 
         <div className="cardOneDoacao">
-          <Card style={{ width: '18rem', height: '31rem' }}>
-            <Card.Img variant="top" src="/static/images/downloads/espelho.png" style={{ maxWidth: '90%' }} />
+          <Card style={ { width: '18rem', height: '31rem' } }>
+            <Card.Img variant="top" src="/static/images/downloads/espelho.png" style={ { maxWidth: '90%' } } />
             <Card.Body>
               <Card.Title>O Espelho na Parede</Card.Title>
               <Card.Text>
@@ -40,15 +40,15 @@ function Downloads() {
               </Card.Text>
               <a href="downloads/arquivos/Artigo%201-%20O%20Espelho%20na%20Parede%20-%20Paz.pdf" target="blank">
                 {' '}
-                <Button variant="success" style={{ marginTop: '22px' }}>Download</Button>
+                <Button variant="success" style={ { marginTop: '22px' } }>Download</Button>
               </a>
             </Card.Body>
 
           </Card>
         </div>
         <div className="cardDoisInscrever">
-          <Card style={{ width: '18rem', height: '31rem' }}>
-            <Card.Img variant="top" src="/static/images/downloads/pedra.png" style={{ maxWidth: '80%' }} />
+          <Card style={ { width: '18rem', height: '31rem' } }>
+            <Card.Img variant="top" src="/static/images/downloads/pedra.png" style={ { maxWidth: '80%' } } />
             <Card.Body>
               <Card.Title>O Empresário e a Pedra Mágica - Apreciação</Card.Title>
               <Card.Text>
@@ -56,13 +56,13 @@ function Downloads() {
               </Card.Text>
               <a href="downloads/arquivos/Artigo%202-%20O%20Empres%C3%A1rio%20e%20a%20Pedra%20M%C3%A1gica%20-%20Aprecia%C3%A7%C3%A3o.pdf" target="blank">
                 {' '}
-                <Button variant="success" style={{ marginTop: '22px' }}>Download</Button>
+                <Button variant="success" style={ { marginTop: '22px' } }>Download</Button>
               </a>
             </Card.Body>
           </Card>
         </div>
         <div className="cardTresVoluntario">
-          <Card style={{ width: '18rem', height: '31rem' }}>
+          <Card style={ { width: '18rem', height: '31rem' } }>
             <Card.Img src="/static/images/downloads/jornada.png" />
             <Card.Body>
               <Card.Title>A Jornada da vida - Força Interior</Card.Title>
@@ -77,14 +77,14 @@ function Downloads() {
           </Card>
         </div>
         <div className="cardTresVoluntario">
-          <Card style={{ width: '18rem', height: '31rem' }}>
+          <Card style={ { width: '18rem', height: '31rem' } }>
             <Card.Img src="/static/images/downloads/leao.png" />
             <Card.Body>
               <Card.Title>O Leão e a Ovelha - Auto Conhecimento</Card.Title>
               <Card.Text>
                 <p>Às vezes esquecemos quem somos. por Prem Rawat Ficamos tão envolvidos em nossas causas e definições que não vemos que cada ser humano tem a mesma ambição: ser feliz, estar em paz.</p>
               </Card.Text>
-              <a href="downloads/arquivos/Artigo_4-_O_Le%C3%A3o_e_a_Ovelha_-_Auto_Conhecimento.pdf" target="blank"><Button variant="success" style={{ marginTop: '14px' }}>Download</Button></a>
+              <a href="downloads/arquivos/Artigo_4-_O_Le%C3%A3o_e_a_Ovelha_-_Auto_Conhecimento.pdf" target="blank"><Button variant="success" style={ { marginTop: '14px' } }>Download</Button></a>
             </Card.Body>
           </Card>
         </div>
@@ -94,7 +94,7 @@ function Downloads() {
       <div className="containerDoacao">
 
         <div className="cardOneDoacao">
-          <Card style={{ width: '18rem', height: '31rem' }}>
+          <Card style={ { width: '18rem', height: '31rem' } }>
             <Card.Img variant="top" src="/static/images/downloads/formiga.png" />
             <Card.Body>
               <Card.Title>A História da Formiga</Card.Title>
@@ -109,22 +109,22 @@ function Downloads() {
           </Card>
         </div>
         <div className="cardDoisInscrever">
-          <Card style={{ width: '18rem', height: '31rem' }}>
-            <Card.Img variant="top" src="/static/images/downloads/arqueiro.png" style={{ maxWidth: '97%' }} />
+          <Card style={ { width: '18rem', height: '31rem' } }>
+            <Card.Img variant="top" src="/static/images/downloads/arqueiro.png" style={ { maxWidth: '97%' } } />
             <Card.Body>
               <Card.Title>O Arqueiro e o Mercador</Card.Title>
               <Card.Text>
                 <p>Era uma vez um exímio arqueiro que conseguia disparar uma flexa, atingir o alvo e disparar em seguida outra flexa...</p>
               </Card.Text>
-              <a href="/downloads/arquivos/Artigo%206-%20O%20Arqueiro%20e%20o%20Mercador%20-%20Entendimento.pdf" target="blank"><Button variant="success" style={{ marginTop: '70px' }}>Download</Button></a>
+              <a href="/downloads/arquivos/Artigo%206-%20O%20Arqueiro%20e%20o%20Mercador%20-%20Entendimento.pdf" target="blank"><Button variant="success" style={ { marginTop: '70px' } }>Download</Button></a>
             </Card.Body>
           </Card>
         </div>
         <div className="cardTresVoluntario">
-          <Card style={{ width: '18rem', height: '31rem' }}>
+          <Card style={ { width: '18rem', height: '31rem' } }>
             <Card.Img src="/static/images/downloads/irmaos.png" />
             <Card.Body>
-              <Card.Title style={{ marginTop: '15px' }}>Os Três Irmãos que Encontraram Ouro</Card.Title>
+              <Card.Title style={ { marginTop: '15px' } }>Os Três Irmãos que Encontraram Ouro</Card.Title>
               <Card.Text>
                 <p>Era uma vez três irmãos que tinham vivido uma infância abastada. Quando ficaram mais velhos, seus pais morreram e eles perderam todo o dinheiro...</p>
               </Card.Text>
@@ -132,22 +132,22 @@ function Downloads() {
                 href="downloads/arquivos/Artigo_7-_Os_Tr%C3%AAs_Irm%C3%A3os_que_Encontraram_Ouro_-_Dignidade.pdf "
                 target="blank"
               >
-                <Button variant="success" style={{ marginTop: '20px' }}>Download</Button>
+                <Button variant="success" style={ { marginTop: '20px' } }>Download</Button>
               </a>
             </Card.Body>
           </Card>
         </div>
         <div className="cardTresVoluntario">
-          <Card style={{ width: '18rem', height: '31rem' }}>
+          <Card style={ { width: '18rem', height: '31rem' } }>
             <Card.Img src="/static/images/downloads/arvore.png" />
             <Card.Body>
-              <Card.Title style={{ marginTop: '10px' }}>As Árvores do Jardim da Vida</Card.Title>
+              <Card.Title style={ { marginTop: '10px' } }>As Árvores do Jardim da Vida</Card.Title>
               <Card.Text>
                 <p>É uma metáfora, mas é verdade. Quando chegamos a este mundo, algumas sementes nos são dadas, e as perguntas são: O que faremos com essas sementes ? </p>
               </Card.Text>
               <a href="/downloads/arquivos/Artigo_8-_As_%C3%81rvores_do_Jardim_da_Vida_-_Escolha.pdf" target="blank">
                 {' '}
-                <Button variant="success" style={{ marginTop: '20px' }}>Download</Button>
+                <Button variant="success" style={ { marginTop: '20px' } }>Download</Button>
               </a>
             </Card.Body>
           </Card>
@@ -158,10 +158,10 @@ function Downloads() {
       <div className="containerDoacao">
 
         <div className="cardOneDoacao">
-          <Card style={{ width: '18rem', height: '31rem' }}>
+          <Card style={ { width: '18rem', height: '31rem' } }>
             <Card.Img variant="top" src="/static/images/downloads/porta.png" />
             <Card.Body>
-              <Card.Title style={{ marginTop: '18px' }}>A Porta até Você</Card.Title>
+              <Card.Title style={ { marginTop: '18px' } }>A Porta até Você</Card.Title>
               <Card.Text>
                 <p>Neste Caminho da Existência, não sabemos quais perguntas precisamos fazer para nos orientar. E, se não sabemos de que forma questionar, como iremos encontrar as respostas?</p>
               </Card.Text>
@@ -173,38 +173,38 @@ function Downloads() {
           </Card>
         </div>
         <div className="cardDoisInscrever">
-          <Card style={{ width: '18rem', height: '31rem' }}>
+          <Card style={ { width: '18rem', height: '31rem' } }>
             <Card.Img variant="top" src="/static/images/downloads/coelho.png" />
             <Card.Body>
-              <Card.Title style={{ marginTop: '10px' }}>O Coelho e o Leão - Contentamento</Card.Title>
+              <Card.Title style={ { marginTop: '10px' } }>O Coelho e o Leão - Contentamento</Card.Title>
               <Card.Text>
                 <p>Queremos ser felizes. Ninguém nos disse isso. Nossas mães não nos disseram. “Sabe de uma coisa? Você vai querer ser feliz.</p>
               </Card.Text>
-              <a href="/downloads/arquivos/Artigo_10-_O_Coelho_e_o_Le%C3%A3o_-_Contentamento.pdf" target="blank"><Button variant="success" style={{ marginTop: '17px' }}>Download</Button></a>
+              <a href="/downloads/arquivos/Artigo_10-_O_Coelho_e_o_Le%C3%A3o_-_Contentamento.pdf" target="blank"><Button variant="success" style={ { marginTop: '17px' } }>Download</Button></a>
             </Card.Body>
           </Card>
         </div>
         <div className="cardTresVoluntario">
-          <Card style={{ width: '18rem', height: '31rem' }}>
+          <Card style={ { width: '18rem', height: '31rem' } }>
             <Card.Img src="/static/images/downloads/caderno.png" />
             <Card.Body>
               <Card.Title>Caderno de anotações_Parte 1</Card.Title>
               <Card.Text>
                 <p>“De todas as coisas que fazemos na vida para nos sentirmos bem, a paz é o que nos faz sentir melhor.” </p>
               </Card.Text>
-              <a href="/downloads/arquivos/Caderno_de_anota%C3%A7%C3%B5es_Parte_1.pdf" target="blank"><Button variant="success" style={{ marginTop: '42px' }}>Download</Button></a>
+              <a href="/downloads/arquivos/Caderno_de_anota%C3%A7%C3%B5es_Parte_1.pdf" target="blank"><Button variant="success" style={ { marginTop: '42px' } }>Download</Button></a>
             </Card.Body>
           </Card>
         </div>
         <div className="cardTresVoluntario">
-          <Card style={{ width: '18rem', height: '31rem' }}>
+          <Card style={ { width: '18rem', height: '31rem' } }>
             <Card.Img src="/static/images/downloads/caderno.png" />
             <Card.Body>
               <Card.Title>Caderno de anotações_Parte 2</Card.Title>
               <Card.Text>
                 <p>“De todas as coisas que fazemos na vida para nos sentirmos bem, a paz é o que nos faz sentir melhor.” </p>
               </Card.Text>
-              <a href="/downloads/arquivos/Caderno%20de%20anota%C3%A7%C3%B5es_Parte2.pdf" target="blank"><Button variant="success" style={{ marginTop: '42px' }}>Download</Button></a>
+              <a href="/downloads/arquivos/Caderno%20de%20anota%C3%A7%C3%B5es_Parte2.pdf" target="blank"><Button variant="success" style={ { marginTop: '42px' } }>Download</Button></a>
             </Card.Body>
           </Card>
         </div>
@@ -214,8 +214,8 @@ function Downloads() {
       <div className="containerDoacao">
 
         <div className="cardOneDoacao">
-          <Card style={{ width: '18rem', height: '31rem' }}>
-            <Card.Img variant="top" src="/static/images/downloads/paz.png" style={{ maxWidth: '70%', marginLeft: '40px' }} />
+          <Card style={ { width: '18rem', height: '31rem' } }>
+            <Card.Img variant="top" src="/static/images/downloads/paz.png" style={ { maxWidth: '70%', marginLeft: '40px' } } />
             <Card.Body>
               <Card.Title>Artigo 1 - Paz é ... - Paz</Card.Title>
               <Card.Text>
@@ -229,8 +229,8 @@ function Downloads() {
           </Card>
         </div>
         <div className="cardDoisInscrever">
-          <Card style={{ width: '18rem', height: '31rem' }}>
-            <Card.Img variant="top" src="/static/images/downloads/paz.png" style={{ maxWidth: '70%', marginLeft: '40px' }} />
+          <Card style={ { width: '18rem', height: '31rem' } }>
+            <Card.Img variant="top" src="/static/images/downloads/paz.png" style={ { maxWidth: '70%', marginLeft: '40px' } } />
             <Card.Body>
               <Card.Title>Artigo 2 - Apreciar a Vida - Apreciação</Card.Title>
               <Card.Text>
@@ -241,8 +241,8 @@ function Downloads() {
           </Card>
         </div>
         <div className="cardTresVoluntario">
-          <Card style={{ width: '18rem', height: '31rem' }}>
-            <Card.Img variant="top" src="/static/images/downloads/paz.png" style={{ maxWidth: '70%', marginLeft: '40px' }} />
+          <Card style={ { width: '18rem', height: '31rem' } }>
+            <Card.Img variant="top" src="/static/images/downloads/paz.png" style={ { maxWidth: '70%', marginLeft: '40px' } } />
             <Card.Body>
               <Card.Title>Artigo 3 - A Verdadeira Força - Força Interior</Card.Title>
               <Card.Text>
@@ -253,8 +253,8 @@ function Downloads() {
           </Card>
         </div>
         <div className="cardTresVoluntario">
-          <Card style={{ width: '18rem', height: '31rem' }}>
-            <Card.Img variant="top" src="/static/images/downloads/paz.png" style={{ maxWidth: '70%', marginLeft: '40px' }} />
+          <Card style={ { width: '18rem', height: '31rem' } }>
+            <Card.Img variant="top" src="/static/images/downloads/paz.png" style={ { maxWidth: '70%', marginLeft: '40px' } } />
             <Card.Body>
               <Card.Title>Artigo 4 - Você Sabe Quem Você É - Auto Conhecimento</Card.Title>
               <Card.Text>
@@ -270,8 +270,8 @@ function Downloads() {
       <div className="containerDoacao">
 
         <div className="cardOneDoacao">
-          <Card style={{ width: '18rem', height: '31rem' }}>
-            <Card.Img variant="top" src="/static/images/downloads/paz.png" style={{ maxWidth: '70%', marginLeft: '40px' }} />
+          <Card style={ { width: '18rem', height: '31rem' } }>
+            <Card.Img variant="top" src="/static/images/downloads/paz.png" style={ { maxWidth: '70%', marginLeft: '40px' } } />
             <Card.Body>
               <Card.Title>Artigo 5 - Quando Você Tem Clareza - Clareza</Card.Title>
               <Card.Text>
@@ -282,8 +282,8 @@ function Downloads() {
           </Card>
         </div>
         <div className="cardDoisInscrever">
-          <Card style={{ width: '18rem', height: '31rem' }}>
-            <Card.Img variant="top" src="/static/images/downloads/paz.png" style={{ maxWidth: '70%', marginLeft: '40px' }} />
+          <Card style={ { width: '18rem', height: '31rem' } }>
+            <Card.Img variant="top" src="/static/images/downloads/paz.png" style={ { maxWidth: '70%', marginLeft: '40px' } } />
             <Card.Body>
               <Card.Title>Artigo 6 - Um Mundo de Entendimento - Entendimento</Card.Title>
               <Card.Text>
@@ -294,20 +294,20 @@ function Downloads() {
           </Card>
         </div>
         <div className="cardTresVoluntario">
-          <Card style={{ width: '18rem', height: '31rem' }}>
-            <Card.Img variant="top" src="/static/images/downloads/paz.png" style={{ maxWidth: '70%', marginLeft: '40px' }} />
+          <Card style={ { width: '18rem', height: '31rem' } }>
+            <Card.Img variant="top" src="/static/images/downloads/paz.png" style={ { maxWidth: '70%', marginLeft: '40px' } } />
             <Card.Body>
               <Card.Title>Artigo 7 - Um Pouco de Espaço - Dignidade</Card.Title>
               <Card.Text>
                 <p>Quando penso sobre o que quero, apenas como ser humano, a lista de quesitos não é assim tão grande. O que quero, e o que todos querem... </p>
               </Card.Text>
-              <a href="/downloads/arquivos/Artigo_7_-_Um_Pouco_de_Espa%C3%A7o_-_Dignidade.pdf" target="blank"><Button variant="success" style={{ marginTop: '20px' }}>Download</Button></a>
+              <a href="/downloads/arquivos/Artigo_7_-_Um_Pouco_de_Espa%C3%A7o_-_Dignidade.pdf" target="blank"><Button variant="success" style={ { marginTop: '20px' } }>Download</Button></a>
             </Card.Body>
           </Card>
         </div>
         <div className="cardTresVoluntario">
-          <Card style={{ width: '18rem', height: '31rem' }}>
-            <Card.Img variant="top" src="/static/images/downloads/paz.png" style={{ maxWidth: '70%', marginLeft: '40px' }} />
+          <Card style={ { width: '18rem', height: '31rem' } }>
+            <Card.Img variant="top" src="/static/images/downloads/paz.png" style={ { maxWidth: '70%', marginLeft: '40px' } } />
             <Card.Body>
               <Card.Title>Artigo 8 - Sua Escolha - Escolha</Card.Title>
               <Card.Text>
@@ -323,8 +323,8 @@ function Downloads() {
       <div className="containerDoacao">
 
         <div className="cardOneDoacao">
-          <Card style={{ width: '18rem', height: '31rem' }}>
-            <Card.Img variant="top" src="/static/images/downloads/paz.png" style={{ maxWidth: '70%', marginLeft: '40px' }} />
+          <Card style={ { width: '18rem', height: '31rem' } }>
+            <Card.Img variant="top" src="/static/images/downloads/paz.png" style={ { maxWidth: '70%', marginLeft: '40px' } } />
             <Card.Body>
               <Card.Title>Artigo 9 - O Oceano da Esperança - Esperança</Card.Title>
               <Card.Text>
@@ -335,8 +335,8 @@ function Downloads() {
           </Card>
         </div>
         <div className="cardDoisInscrever">
-          <Card style={{ width: '18rem', height: '31rem' }}>
-            <Card.Img variant="top" src="/static/images/downloads/paz.png" style={{ maxWidth: '70%', marginLeft: '40px' }} />
+          <Card style={ { width: '18rem', height: '31rem' } }>
+            <Card.Img variant="top" src="/static/images/downloads/paz.png" style={ { maxWidth: '70%', marginLeft: '40px' } } />
             <Card.Body>
               <Card.Title>Artigo 10 - O Som de Estar Contente - Contentamento</Card.Title>
               <Card.Text>
@@ -347,14 +347,14 @@ function Downloads() {
           </Card>
         </div>
         <div className="cardTresVoluntario">
-          <Card style={{ width: '18rem', height: '31rem' }}>
-            <Card.Img variant="top" src="/static/images/downloads/caderno.png" style={{ maxWidth: '70%', marginLeft: '40px' }} />
+          <Card style={ { width: '18rem', height: '31rem' } }>
+            <Card.Img variant="top" src="/static/images/downloads/caderno.png" style={ { maxWidth: '70%', marginLeft: '40px' } } />
             <Card.Body>
-              <Card.Title style={{ marginTop: '55px' }}>Caderno de Anotações</Card.Title>
+              <Card.Title style={ { marginTop: '55px' } }>Caderno de Anotações</Card.Title>
               <Card.Text>
                 <p>“De todas as coisas que fazemos na vida para nos sentirmos bem, a paz é o que nos faz sentir melhor.” </p>
               </Card.Text>
-              <a href="/downloads/arquivos/PEP%20-%20Caderno%20de%20Anota%C3%A7%C3%B5es.pdf" target="blank"><Button variant="success" style={{ marginTop: '75px' }}>Download</Button></a>
+              <a href="/downloads/arquivos/PEP%20-%20Caderno%20de%20Anota%C3%A7%C3%B5es.pdf" target="blank"><Button variant="success" style={ { marginTop: '75px' } }>Download</Button></a>
             </Card.Body>
           </Card>
         </div>
@@ -363,8 +363,8 @@ function Downloads() {
       <div className="containerDoacao">
 
         <div className="cardOneDoacao">
-          <Card style={{ width: '18rem', height: '31rem' }}>
-            <Card.Img variant="top" src="/static/images/downloads/paz.png" style={{ maxWidth: '70%', marginLeft: '40px' }} />
+          <Card style={ { width: '18rem', height: '31rem' } }>
+            <Card.Img variant="top" src="/static/images/downloads/paz.png" style={ { maxWidth: '70%', marginLeft: '40px' } } />
             <Card.Body>
               <Card.Title>PEP 03 - completo</Card.Title>
               <Card.Text>
@@ -375,14 +375,14 @@ function Downloads() {
           </Card>
         </div>
         <div className="cardDoisInscrever">
-          <Card style={{ width: '18rem', height: '31rem' }}>
-            <Card.Img variant="top" src="/static/images/downloads/paz.png" style={{ maxWidth: '70%', marginLeft: '40px' }} />
+          <Card style={ { width: '18rem', height: '31rem' } }>
+            <Card.Img variant="top" src="/static/images/downloads/paz.png" style={ { maxWidth: '70%', marginLeft: '40px' } } />
             <Card.Body>
               <Card.Title>PEP 04 - completo</Card.Title>
               <Card.Text>
                 <p>Eu estou aqui para falar sobre algo muito fundamental. Você tem um anseio, um desejo a ser preenchido. E esse desejo não desaparecerá enquanto você viver.</p>
               </Card.Text>
-              <a href="/downloads/arquivos/pep_collection_handouts_NewBrazil_V3.pdf" target="blank"><Button variant="success" style={{ marginTop: '20px' }}>Download</Button></a>
+              <a href="/downloads/arquivos/pep_collection_handouts_NewBrazil_V3.pdf" target="blank"><Button variant="success" style={ { marginTop: '20px' } }>Download</Button></a>
             </Card.Body>
           </Card>
         </div>

@@ -1,65 +1,72 @@
+.main-container {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: repeat(2, 1fr);
 
-
-
-.depoimentos-principal{
-  display: flex;
-  justify-content: space-evenly;
-  flex-wrap: wrap;
+  padding-block: 2rem;
+  width: min(95%, 80rem);
+  margin-inline: auto;
 }
-.depoimentos-container-main {
-  width: 40rem;
+
+.grid-col-span-2 {
+  grid-column: span 2;
 }
-.depoimentos-photos{
+
+.grid-col-span-2 > .depoimentos-text p {
+  font-size: 1.4rem;
+}
+
+.depoimentos-photos {
   text-align: center;
   margin-bottom: -58px;
-  padding-top: 40px;
 }
-.depoimentos-text{
-  border: 1px solid #18CA99;
-  border-radius: 10px;
-  text-align: center;
-  min-height: 500px;
+
+.depoimentos-text {
   display: flex;
   align-items: center;
-  padding-top: 16px;
+  min-height: 32rem;
+
+  border: 1px solid #18ca99;
+  border-radius: 0.625rem;
+
+  text-align: center;
 }
+
 .depoimentos-text p {
- font-size: 20px;
-  padding-top: 50px;
-  padding: 50px;
+  font-size: 1.25rem;
+  padding: 3.125rem;
 }
 
+@media screen and (max-width: 1202px) {
+  .main-container {
+    grid-template-columns: 1fr;
+  }
 
-.depoimentos-principal-solo{
-  display: flex;
-  justify-content: space-around;
-  flex-wrap: wrap;
+  .grid-col-span-2 {
+    grid-column: 1;
+  }
 
-}
-.depoimentos-container-main-solo {
-  width: 82rem;
-  margin-top: 20px;
+  .grid-col-span-2 > .depoimentos-text p {
+    font-size: 1.125rem;
+  }
 
-}
-
-.depoimentos-photos-solo{
-  text-align: center;
-  margin-bottom: -50px;
-  padding-top: 20px;
-
-}
-.depoimentos-text-solo{
-  border: 1px solid #18CA99;
-  border-radius: 10px;
-  font-size: 24px;
-  text-align: center;
-
-
-
+  .depoimentos-text p {
+    font-size: 1.125rem;
+    padding-inline: 2rem;
+    padding-block: 3rem;
+  }
 }
 
-.depoimentos-text-solo p {
+@media screen and (max-width: 768px) {
+  .grid-col-span-2 > .depoimentos-text p {
+    font-size: 1rem;
+    padding-inline: 1.5rem;
+    padding-block: 3.5rem;
+  }
 
-  padding-top: 50px;
-  padding: 50px;
+  .depoimentos-text p {
+    font-size: 1rem;
+    padding-inline: 1.5rem;
+  }
+
 }
