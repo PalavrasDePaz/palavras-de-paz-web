@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
 // import required modules
-import { Pagination, Navigation, Scrollbar, Ally } from 'swiper';
+import { Pagination, Navigation } from 'swiper';
 import Image from 'next/image';
 import Box from '../box';
 import SwiperImgs from './images';
@@ -58,6 +58,7 @@ export default function SwiperJs() {
           >
             parceiros
           </h1>
+
           <Swiper
             style={ {
               paddingLeft: '40px',

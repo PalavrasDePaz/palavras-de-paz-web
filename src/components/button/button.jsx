@@ -15,7 +15,7 @@ function Button({
   justify,
   fontWeight,
   hover,
-  font_size,
+  fontSize,
   ...props
 }) {
   return (
@@ -33,7 +33,7 @@ function Button({
       familyFont={ familyFont }
       href={ href }
       hover={ hover }
-      font_size={ font_size }
+      font_size={ fontSize }
     >
       {props.text}
     </S.Button>

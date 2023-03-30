@@ -129,7 +129,7 @@ function OPrograma() {
       </container>
       <div className="programa-texto">
         <p className="text-center">
-          Você é nosso convidado para participar de um encontro do ​Programa de
+          Você é nosso convidado para participar de um encontro do Programa de
           Educação para a Paz que ocorre todos os dias, das 19h30min às
           20h30min, pela plataforma Zoom.
           <br />
