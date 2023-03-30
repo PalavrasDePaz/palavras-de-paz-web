@@ -1,3 +1,4 @@
+import propTypes from 'prop-types';
 import * as S from './styled';
 
 function Typography({
@@ -38,5 +39,23 @@ function Typography({
     </S.Typography>
   );
 }
+
+Typography.propTypes = {
+  family: propTypes.string,
+  padding: propTypes.string,
+  margin: propTypes.string,
+  width: propTypes.string,
+  justify: propTypes.string,
+  align: propTypes.string,
+  height: propTypes.string,
+  direction: propTypes.string,
+  color: propTypes.string,
+  fontWeight: propTypes.string,
+  fontSize: propTypes.string,
+  lineHeight: propTypes.string,
+  spacing: propTypes.string,
+  textAlign: propTypes.string,
+  text: propTypes.string,
+}.isRequired;
 
 export default Typography;

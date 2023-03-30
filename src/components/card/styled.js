@@ -29,4 +29,4 @@ export const CardContainer = styled.div `
     @media (max-width: 1200px) {
         margin: 0 32px;
         flex-wrap: wrap;
-    `;
+    }`;

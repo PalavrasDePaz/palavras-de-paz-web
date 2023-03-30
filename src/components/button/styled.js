@@ -14,7 +14,7 @@ export const Button = styled.a `
     justify,
     fontWeight,
     hover,
-    font_size,
+    fontSize,
   }) => css `
     display: flex;
     flex-direction: row;
@@ -38,7 +38,7 @@ export const Button = styled.a `
     transition: all 0.3s ease-in-out;
     &:hover {
       color: ${ hover };
-     ${ font_size }: 20px;
+     ${ fontSize }: 20px;
       transition: 0.3s ease;
       filter: brightness(1.1);
     }
