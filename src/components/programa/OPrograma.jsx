@@ -1,7 +1,6 @@
-import React from "react";
-import Image from "next/image";
-import Link from "next/link";
-import Button from "../button/button";
+import React from 'react';
+import Image from 'next/image';
+import Button from '../button/button';
 
 function OPrograma() {
   return (
@@ -130,7 +129,7 @@ function OPrograma() {
       </container>
       <div className="programa-texto">
         <p className="text-center">
-          Você é nosso convidado para participar de um encontro do ​Programa de
+          Você é nosso convidado para participar de um encontro do Programa de
           Educação para a Paz que ocorre todos os dias, das 19h30min às
           20h30min, pela plataforma Zoom.
           <br />

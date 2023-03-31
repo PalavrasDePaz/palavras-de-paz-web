@@ -1,6 +1,6 @@
-import React from "react";
-import Image from "next/image";
-import Link from "next/link";
+import React from 'react';
+import Image from 'next/image';
+import Link from 'next/link';
 
 function Devs() {
   return (
@@ -8,10 +8,11 @@ function Devs() {
       <div className="titulo-devs">
         <p>EQUIPE RESPONSÁVEL PELA CRIAÇÃO DO SITE</p>
       </div>
+
       <container className="container">
         <div className="adjust-dev">
           <Image
-            style={{ border: "2px solid #18CA99", borderRadius: "50%" }}
+            style={ { border: '2px solid #18CA99', borderRadius: '50%' } }
             src="/static/images/devs/simon.svg"
             width="248px"
             height="248px"
@@ -20,7 +21,7 @@ function Devs() {
           <p>ADRYEL SIMON</p>
           <p>DEV. FRONTEND</p>
           <Link href="https://www.linkedin.com/in/adryelsimon" target="_blank">
-            <a target="_blank">Linkedin</a>
+            <p>Linkedin</p>
           </Link>
         </div>
 
@@ -34,7 +35,7 @@ function Devs() {
           <p>AMANDA CAROLINA</p>
           <p>UX/UI DESIGNER</p>
           <Link href="https://www.linkedin.com/in/amandacarolinad">
-            <a target="_blank">Linkedin</a>
+            <p>Linkedin</p>
           </Link>
         </div>
 
@@ -51,7 +52,7 @@ function Devs() {
             href="https://www.linkedin.com/in/ana-caroline-comuniam-917b09184"
             target="_blank"
           >
-            <a target="_blank">Linkedin</a>
+            <p>Linkedin</p>
           </Link>
         </div>
 
@@ -65,7 +66,7 @@ function Devs() {
           <p>ANA LAURA</p>
           <p>DEV. BACKEND</p>
           <Link href="https://www.linkedin.com/in/alaurai" target="_blank">
-            <a target="_blank">Linkedin</a>
+            <p>Linkedin</p>
           </Link>
         </div>
       </container>
@@ -81,7 +82,7 @@ function Devs() {
           <p>ENIO SANTINELLI FILHO</p>
           <p>DEV. FRONTEND</p>
           <Link href="https://www.linkedin.com/in/eniosfilho" target="_blank">
-            <a target="_blank">Linkedin</a>
+            <p>Linkedin</p>
           </Link>
         </div>
 
@@ -98,7 +99,7 @@ function Devs() {
             href="https://www.linkedin.com/in/joao-vitor-silva-ramos"
             target="_blank"
           >
-            <a target="_blank">Linkedin</a>
+            <p>Linkedin</p>
           </Link>
         </div>
 
@@ -115,7 +116,7 @@ function Devs() {
             href="https://www.linkedin.com/in/karen-nabarrete-garcia-295a8397"
             target="_blank"
           >
-            <a target="_blank">Linkedin</a>
+            <p>Linkedin</p>
           </Link>
         </div>
 
@@ -132,7 +133,7 @@ function Devs() {
             href="https://www.linkedin.com/in/tais-aguilar-55a055234"
             target="_blank"
           >
-            <a target="_blank">Linkedin</a>
+            <p>Linkedin</p>
           </Link>
         </div>
       </container>
@@ -141,7 +142,7 @@ function Devs() {
         <div className="adjust-dev">
           <Image
             src="/static/images/devs/ramon.svg"
-            style={{ border: "2px solid #18CA99", borderRadius: "50%" }}
+            style={ { border: '2px solid #18CA99', borderRadius: '50%' } }
             width="248px"
             height="248px"
             alt="ramon-image"
@@ -152,22 +153,22 @@ function Devs() {
             href="https://www.linkedin.com/in/ramon-silva-5b1077176/"
             target="_blank"
           >
-            <a target="_blank">Linkedin</a>
+            <p>Linkedin</p>
           </Link>
         </div>
 
         <div className="adjust-dev">
           <Image
-            style={{ border: "10px solid #18CA99", borderRadius: "50%" }}
+            style={ { border: '10px solid #18CA99', borderRadius: '50%' } }
             src="/static/images/devs/carol.jpg"
             width="248px"
             height="248px"
-            alt="pedro-image"
+            alt="carol-image"
           />
           <p>ANA CAROLINA</p>
           <p>PRODUCT OWNER</p>
           <Link href="https://www.linkedin.com/in/ana-carolina-brito-9890b068/">
-            <a target="_blank">Linkedin</a>
+            Linkedin
           </Link>
         </div>
       </container>

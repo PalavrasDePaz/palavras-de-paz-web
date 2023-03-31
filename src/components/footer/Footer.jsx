@@ -1,98 +1,88 @@
-import React from "react";
-import Image from "next/image";
-import Link from "next/link";
+import React from 'react';
+import Image from 'next/image';
+import Link from 'next/link';
 
 function Footer() {
   return (
     <footer className="footer">
       <div className="line-footer" />
       <div className="medias-footer">
-        <div>
-          <Link
-            href="https://www.youtube.com/channel/UCkmhiQTeUfdvKIY9NG9Navg"
-            target="_blank"
-          >
-            <div>
-              <Image
-                className="rounded"
-                id="you"
-                src="/static/images/youtube.png"
-                width="40px"
-                height="40px"
-                alt="youtube"
-                style={{ cursor: "pointer" }}
-              />
-            </div>
-          </Link>
-        </div>
-        <div>
-          <Link
-            href="https://www.instagram.com/palavrasdepaz.br/"
-            target="_blank"
-          >
-            <div>
-              <Image
-                id="insta"
-                src="/static/images/instagram.png"
-                width="40px"
-                height="40px"
-                alt="instagram"
-                style={{ cursor: "pointer" }}
-              />
-            </div>
-          </Link>
-        </div>
-        <div>
-          <Link
-            href="https://www.linkedin.com/company/palavrasdepaz/mycompany/"
-            target="_blank"
-          >
-            <div>
-              <Image
-                id="link"
-                src="/static/images/linkedin.png"
-                width="40px"
-                height="40px"
-                alt="linkedin"
-                style={{ cursor: "pointer" }}
-              />
-            </div>
-          </Link>
-        </div>
-        <div>
-          <Link
-            href="https://www.facebook.com/palavrasdepaz.br"
-            target="_blank"
-          >
-            <div>
-              <Image
-                id="face"
-                src="/static/images/facebook.png"
-                width="40px"
-                height="40px"
-                alt="facebook"
-                style={{ cursor: "pointer" }}
-              />
-            </div>
-          </Link>
-        </div>
-        <div>
-          <Link
+        <Link
+          href="https://www.youtube.com/channel/UCkmhiQTeUfdvKIY9NG9Navg"
+          target="_blank"
+        >
+          <div>
+            <Image
+              className="rounded"
+              id="you"
+              src="/static/images/youtube.png"
+              width="40px"
+              height="40px"
+              alt="youtube"
+              style={ { cursor: 'pointer' } }
+            />
+          </div>
+        </Link>
+        <Link
+          href="https://www.instagram.com/palavrasdepaz.br/"
+          target="_blank"
+        >
+          <div>
+            <Image
+              id="insta"
+              src="/static/images/instagram.png"
+              width="40px"
+              height="40px"
+              alt="instagram"
+              style={ { cursor: 'pointer' } }
+            />
+          </div>
+        </Link>
+        <Link
+          href="https://www.linkedin.com/company/palavrasdepaz/mycompany/"
+          target="_blank"
+        >
+          <div>
+            <Image
+              id="link"
+              src="/static/images/linkedin.png"
+              width="40px"
+              height="40px"
+              alt="linkedin"
+              style={ { cursor: 'pointer' } }
+            />
+          </div>
+        </Link>
+        <Link
+          href="https://www.facebook.com/palavrasdepaz.br"
+          target="_blank"
+        >
+          <div>
+            <Image
+              id="face"
+              src="/static/images/facebook.png"
+              width="40px"
+              height="40px"
+              alt="facebook"
+              style={ { cursor: 'pointer' } }
+            />
+          </div>
+        </Link>
+        <Link
           href="https://wa.me/5511999756554"
           target="_blank"
-          >
-            <div>
-              <Image
-                id="whats"
-                src="/static/images/whatsapp.png"
-                width="40px"
-                height="40px"
-                alt="whatsapp"
-                style={{ cursor: "pointer" }}
-              />
-            </div>
-          </Link>
-        </div>
+        >
+          <div>
+            <Image
+              id="whats"
+              src="/static/images/whatsapp.png"
+              width="40px"
+              height="40px"
+              alt="whatsapp"
+              style={ { cursor: 'pointer' } }
+            />
+          </div>
+        </Link>
       </div>
       <div className="line-footer" />
       <div className="acesso-footer">
@@ -135,8 +125,8 @@ function Footer() {
         <div className="colunas-footer">
           <h6 className="footer-title">Doações</h6>
           <Link href="/">Prestação de contas</Link>
-          <Link href="doacoes">PIX</Link>
-          <Link href="doacoes">PayPal</Link>
+          <Link href="/doacoes">PIX</Link>
+          <Link href="/doacoes">PayPal</Link>
         </div>
 
         <div className="colunas-footer">

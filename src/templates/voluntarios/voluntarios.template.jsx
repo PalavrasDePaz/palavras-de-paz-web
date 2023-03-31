@@ -1,5 +1,4 @@
 import React from 'react';
-import Center from '../../components/atoms/center/Center';
 import BannerVoluntarios from '../../components/bannervoluntarios/BannerVoluntarios';
 import FixedButton from '../../components/fixedbutton/FixedButton';
 import Footer from '../../components/footer/Footer';
@@ -14,9 +13,7 @@ function VoluntariosTemplate() {
       <VoluntariosMain />
       <FixedButton />
       <Footer />
-
     </>
-
   );
 }
 

@@ -1,9 +1,9 @@
+/* eslint-disable react/jsx-max-depth */
 import React from 'react';
 import Image from 'next/image';
-import { Button } from 'react-bootstrap';
 import Link from 'next/link';
 import LogoVoluntarios from '../../../public/static/images/voluntarios.png';
-import Center from '../atoms/center/Center';
+import Center from '../center';
 
 function VoluntariosMain() {
   return (
@@ -13,12 +13,26 @@ function VoluntariosMain() {
 
           <div className="voluntarios-texto">
             <p>
-              Voluntário é um cidadão que ao perceber diferenças sociais, disponibiliza o seu tempo para atuar em pró de outros seres humanos e assim contribui com um mundo novo. A remuneração de um voluntário é em formato de aprendizado, experiência, satisfação e realização.
+              Voluntário é um cidadão que ao perceber diferenças sociais,
+              disponibiliza o seu tempo para atuar em pró de outros seres
+              humanos e assim contribui com um mundo novo. A remuneração de
+              um voluntário é em formato de aprendizado, experiência, satisfação
+              e realização.
             </p>
-            <p>Em nosso programa há várias modalidades de voluntariado, você pode contribuir tanto presencial quanto remoto, mas atenção aos requisitos.</p>
+            <p>
+              Em nosso programa há várias modalidades de voluntariado,
+              você pode contribuir tanto presencial quanto remoto, mas
+              atenção aos requisitos.
+
+            </p>
           </div>
           <div>
-            <Image src={LogoVoluntarios} alt="imagens-voluntarios" width="576px" height="462px" />
+            <Image
+              src={ LogoVoluntarios }
+              alt="imagens-voluntarios"
+              width="576px"
+              height="462px"
+            />
           </div>
         </container>
 
@@ -68,18 +82,20 @@ function VoluntariosMain() {
         <div className="voluntarios-botton">
           <p>
             Se você quer fazer parte
-            da equipe, se cadastre, mesmo que não tenha feito qualquer workshop, nossa equipe entrará em contato. Outra opção é se inscrever pelo Atados.
+            da equipe, se cadastre, mesmo que
+            não tenha feito qualquer workshop, nossa
+            equipe entrará em contato. Outra opção é se inscrever pelo Atados.
           </p>
         </div>
 
         <container className="voluntarios-container-button">
 
           <div className="voluntarios-style-button">
-            <p><Link style={{ color: 'white' }} href="https://form.jotform.com/220305437068653" alt="formulario de inscrição">CADASTRO</Link></p>
+            <p><Link style={ { color: 'white' } } href="https://form.jotform.com/220305437068653" alt="formulario de inscrição">CADASTRO</Link></p>
           </div>
 
           <div className="voluntarios-style-button">
-            <p><Link style={{ color: 'white' }} href="https://www.atados.com.br/ong/programa-de-educacao-para-paz/vagas" alt="link atados">ATADOS</Link></p>
+            <p><Link style={ { color: 'white' } } href="https://www.atados.com.br/ong/programa-de-educacao-para-paz/vagas" alt="link atados">ATADOS</Link></p>
 
           </div>
 
@@ -91,11 +107,10 @@ function VoluntariosMain() {
         <p>abordagem, a paz chegará´´</p>
         <p>Prem Rawat</p>
       </div>
-      <Center>
-        <div className="voluntarios-button-doacao">
-          <Link href="/doacoes">Faça uma doação</Link>
-        </div>
-      </Center>
+
+      <div className="voluntarios-button-doacao">
+        <Link href="/doacoes">Faça uma doação</Link>
+      </div>
     </>
   );
 }

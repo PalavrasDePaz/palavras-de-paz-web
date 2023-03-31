@@ -1,10 +1,11 @@
 import React from 'react';
+import { StyledDiv, StyledP } from '../../styles/bannerdepoimentos';
 
 function BannerDepoimentos() {
   return (
-    <div className="banner-depoimentos">
-      <p>DEPOIMENTOS</p>
-    </div>
+    <StyledDiv>
+      <StyledP>DEPOIMENTOS</StyledP>
+    </StyledDiv>
   );
 }
 
