@@ -2,19 +2,19 @@
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  padding: 2rem;
+  padding: 2rem 1rem;
   width: 100%;
 }
 
 @media (min-width: 900px) {
   .loginFormSection {
-    max-width: 21rem;
+    max-width: 25rem;
   }
 }
 
 @media (min-width: 1224px) {
   .loginFormSection {
-    max-width: 30rem;
+    max-width: 25rem;
   }
 }
 
@@ -65,7 +65,7 @@
 
 .loginFormSectionInputEmail,
 .loginFormSectionInputPassword {
-  font-size: .9rem;
+  font-size: 0.9rem;
   padding: 0.2rem 1rem;
 }
 
