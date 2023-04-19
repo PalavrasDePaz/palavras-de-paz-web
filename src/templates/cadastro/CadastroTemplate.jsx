@@ -8,7 +8,7 @@ export default function cadastroTemplate() {
   return (
     <>
       <HeaderCadastro />
-      {controller === 0 && <CadastroPrimeiraTela /> }
+      {controller === 0 && <CadastroPrimeiraTela setController={ setController } /> }
 
     </>
   );

@@ -21,7 +21,7 @@ const schema = yup.object().shape({
     .equals([yup.ref('password')], 'As senhas não são iguais'),
 });
 
-export default function cadastroPrimeiraTela() {
+export default function cadastroPrimeiraTela(props) {
   const {
     register,
     handleSubmit,
@@ -32,6 +32,7 @@ export default function cadastroPrimeiraTela() {
     resolver: yupResolver(schema),
   });
   const dispatch = useDispatch();
+  const { setController } = props;
 
   watch('name');
   watch('email');
@@ -135,6 +136,7 @@ export default function cadastroPrimeiraTela() {
       <button
         type="submit"
         className={ styles.cadastroFormSectionButton }
+        onClick={ () => setController(1) }
       >
         Próximo
       </button>
