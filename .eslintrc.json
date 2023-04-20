@@ -170,9 +170,9 @@
         "default-param-last": "off",
         "jsx-a11y/label-has-associated-control": [
         "error",
-    {
+      {
         "assert": "either"
-    }
+      }
     ],
     "template-curly-spacing": ["error", "always"],
     "template-tag-spacing": ["error", "always"],
@@ -180,5 +180,5 @@
     "arrow-spacing": ["error", { "before": true, "after": true }],
     "no-confusing-arrow": ["error", { "allowParens": true }],
     "no-duplicate-imports": ["error", { "includeExports": true }]
-}
+  }
 }
