@@ -9,9 +9,9 @@ export default function cadastroTemplate() {
   return (
     <>
       <HeaderCadastro />
-      {controller === 0 && (<CadastroPrimeiraTela setController={ setController } />)}
+      {controller === 0 && <CadastroPrimeiraTela setController={ setController } />}
       {/* Vamos adaptando conforme as páginas chegam */}
-      {controller === 1 && (<CadastroTerceiraTela setController={ setController } />)}
+      {controller === 1 && <CadastroTerceiraTela setController={ setController } />}
     </>
   );
 }
