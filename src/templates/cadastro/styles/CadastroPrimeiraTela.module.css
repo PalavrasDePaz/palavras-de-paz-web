@@ -5,13 +5,6 @@
   margin: auto;
 }
 
-@media (min-width: 768px) {
-  .cadastroFormSection {
-    max-width: 50%;
-    align-items: end;
-  }
-}
-
 .cadastroFormSectionInputContainer {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -76,24 +69,6 @@
     font-size: 1rem;
     padding: 1rem;
   }
-}
-
-.cadastroFormSectionButton {
-  background-color: #18ac99;
-  border: none;
-  border-radius: 0.25rem;
-  color: white;
-  font-size: 1rem;
-  font-weight: 700;
-  line-height: 1.2rem;
-  padding: 1rem;
-  margin-block: 1rem;
-  text-align: center;
-  cursor: pointer;
-}
-
-.cadastroFormSectionButton:hover {
-  background-color: #0f7a6b;
 }
 
 .inputError {

@@ -32,7 +32,7 @@ export default function cadastroPrimeiraTela(props) {
     resolver: yupResolver(schema),
   });
   const dispatch = useDispatch();
-  const { setController } = props;
+  const { button } = props;
 
   watch('name');
   watch('email');
@@ -40,7 +40,6 @@ export default function cadastroPrimeiraTela(props) {
   watch('passConfirmation');
 
   function onSubmit(data) {
-    console.log(data);
     dispatch(increment());
     reset();
   }
@@ -132,14 +131,6 @@ export default function cadastroPrimeiraTela(props) {
           </div>
         </section>
       </section>
-
-      <button
-        type="submit"
-        className={ styles.cadastroFormSectionButton }
-        onClick={ () => setController(1) }
-      >
-        Próximo
-      </button>
 
     </form>
   );
