@@ -1,0 +1,41 @@
+.main_container_form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-width: calc(100vw - 2rem);
+  margin: 0 auto;
+}
+
+@media (min-width: 768px) {
+  .main_container_form {
+    max-width: 70rem;
+    align-items: end;
+  }
+}
+
+.cadastroFormSectionButton {
+  background-color: #18ac99;
+  border: none;
+  border-radius: 0.25rem;
+  color: white;
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.2rem;
+  padding: 1rem;
+  margin-block: 1rem;
+  text-align: center;
+  cursor: pointer;
+  transition: 0.2s;
+  width: 100%;
+}
+
+.cadastroFormSectionButton:hover {
+  background-color: #0f7a6b;
+}
+
+@media (min-width: 768px) {
+  .cadastroFormSectionButton {
+    margin-right: 1rem;
+    width: 10rem;
+  }
+}

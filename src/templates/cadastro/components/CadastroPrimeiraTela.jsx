@@ -2,9 +2,7 @@ import React from 'react';
 import * as yup from 'yup';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { useDispatch } from 'react-redux';
-import styles from '../styles/CadastroPrimeiraTela.module.css';
-import { increment } from '../../../store/store';
+import styles from '../styles/CadastroTelas.module.css';
 
 const MIN_PASSWORD_LENGTH = 6;
 
@@ -21,32 +19,22 @@ const schema = yup.object().shape({
     .equals([yup.ref('password')], 'As senhas não são iguais'),
 });
 
-export default function cadastroPrimeiraTela(props) {
+export default function cadastroPrimeiraTela() {
   const {
     register,
-    handleSubmit,
     watch,
-    reset,
     formState: { errors },
   } = useForm({
     resolver: yupResolver(schema),
   });
-  const dispatch = useDispatch();
-  const { setController } = props;
 
   watch('name');
   watch('email');
   watch('password');
   watch('passConfirmation');
 
-  function onSubmit(data) {
-    console.log(data);
-    dispatch(increment());
-    reset();
-  }
-
   return (
-    <form className={ styles.cadastroFormSection } onSubmit={ handleSubmit(onSubmit) }>
+    <form className={ styles.cadastroFormSection }>
       <section>
         <h1 className={ styles.formTitle }>CADASTRO DE VOLUNTÁRIOS</h1>
 
@@ -132,14 +120,6 @@ export default function cadastroPrimeiraTela(props) {
           </div>
         </section>
       </section>
-
-      <button
-        type="submit"
-        className={ styles.cadastroFormSectionButton }
-        onClick={ () => setController(1) }
-      >
-        Próximo
-      </button>
 
     </form>
   );
