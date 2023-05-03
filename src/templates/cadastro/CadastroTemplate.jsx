@@ -1,10 +1,11 @@
-import React from 'react';
-import CadastroPrimeiraTela from './components/CadastroPrimeiraTela';
+import React, { useState } from 'react';
 import HeaderCadastro from './components/HeaderCadastro';
 import styles from './styles/CadastroTemplate.module.css';
+import CadastroPrimeiraTela from './components/CadastroPrimeiraTela';
+import CadastroTerceiraTela from './components/CadastroTerceiraTela';
 
 export default function cadastroTemplate() {
-  const [controller, setController] = React.useState(0);
+  const [controller, setController] = useState(0);
 
   const buttonNext = () => (
     <button
@@ -25,6 +26,8 @@ export default function cadastroTemplate() {
         )}
         <div className={ styles.main_container_button }>{buttonNext()}</div>
       </div>
+      {controller === 0 && <CadastroPrimeiraTela setController={ setController } />}
+      {controller === 1 && <CadastroTerceiraTela setController={ setController } />}
     </>
   );
 }
