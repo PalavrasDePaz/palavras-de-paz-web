@@ -5,11 +5,11 @@ import { useDispatch } from 'react-redux';
 
 import { AWARENESS, OPEN_TEXT_FIELDS, REFERRAL } from './constants';
 
-import styles from '../styles/CadastroPrimeiraTela.module.css';
+import styles from '../styles/CadastroTelas.module.css';
 
 import { cadastroTela3Schema } from './schemas';
 
-export default function cadastroTerceiraTela(props) {
+export default function cadastroTerceiraTela() {
   const [about, experience, expectations] = OPEN_TEXT_FIELDS;
 
   const {
@@ -23,7 +23,6 @@ export default function cadastroTerceiraTela(props) {
   });
 
   const dispatch = useDispatch();
-  const { setController } = props;
 
   watch('referral');
   watch('awareness');
@@ -129,14 +128,6 @@ export default function cadastroTerceiraTela(props) {
           )}
         </div>
       </section>
-
-      <button
-        type="submit"
-        className={ styles.cadastroFormSectionButton }
-        onClick={ () => setController(0) } // Por agora, enquanto não temos as seguintes.
-      >
-        Próximo
-      </button>
     </form>
   );
 }
