@@ -17,7 +17,7 @@ export default function cadastroTemplate() {
   );
 
   return (
-    <div>
+    <>
       <HeaderCadastro />
       <div className={ styles.main_container_form }>
         {controller === 0 && (
@@ -25,6 +25,6 @@ export default function cadastroTemplate() {
         )}
         <div className={ styles.main_container_button }>{buttonNext()}</div>
       </div>
-    </div>
+    </>
   );
 }
