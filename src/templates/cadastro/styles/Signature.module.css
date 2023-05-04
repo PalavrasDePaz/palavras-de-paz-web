@@ -1,49 +1,21 @@
 .signatures_container {
-    text-align: center;
-    margin-block: 2rem;
+  text-align: center;
+  margin-block: 2rem;
 }
 
-.signature_0 {
-    border: 1px solid #000;
-    border-radius: 5px;
-    padding: 5px;
-    margin: 5px;
-    width: 300px;
-    
-    display: inline-block;
-    vertical-align: center;
+.signatures {
+  border: 1px solid #d8d8d8;
+  border-radius: 5px;
+  padding: 5px;
+  margin: 5px;
+  width: 27%;
+
+  display: inline-block;
+  vertical-align: center;
 }
 
-.signature_0:first-child {
-    background-color: #18AC99;
-}
-
-.signature_1 {
-    border: 1px solid #000;
-    border-radius: 5px;
-    padding: 5px;
-    margin: 5px;
-    width: 300px;
-    
-    display: inline-block;
-    vertical-align: center;
-}
-
-.signature_1:nth-child(2) {
-    background-color: #18AC99;
-}
-
-.signature_2 {
-    border: 1px solid #000;
-    border-radius: 5px;
-    padding: 5px;
-    margin: 5px;
-    width: 300px;
-    
-    display: inline-block;
-    vertical-align: center;
-}
-
+.signature_0:first-child,
+.signature_1:nth-child(2),
 .signature_2:nth-child(3) {
-    background-color: #18AC99;
+  background-color: #18ac99;
 }
