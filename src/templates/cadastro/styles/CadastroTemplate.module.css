@@ -9,7 +9,6 @@
 @media (min-width: 768px) {
   .main_container_form {
     max-width: 70rem;
-    align-items: end;
   }
 }
 
@@ -37,5 +36,11 @@
   .cadastroFormSectionButton {
     margin-right: 1rem;
     width: 10rem;
+    margin-left: auto;
   }
+}
+
+.main_container_button {
+  display: flex;
+  margin-right: 0.5rem;
 }
