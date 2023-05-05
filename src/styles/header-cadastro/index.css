@@ -1,0 +1,62 @@
+.headerCadastro4 {
+  max-width: 80rem;
+  font-family: Open Sans;
+  display: flex;
+  box-sizing: border-box;
+  justify-content: space-between;
+  align-content: center;
+  padding: 1.5rem 3.3rem;
+  margin: 0 auto;
+  border-bottom: 6px solid #f2f2f2;
+}
+
+.img {
+  display: flex;
+  place-items: center;
+  gap: .1rem;
+}
+
+.headerCadastro4 h1 {
+  color: hsla(164, 67%, 40%, 1);
+  font-size: 2.25;
+  font-weight: 600;
+  line-height: 3.3rem;
+  letter-spacing: 0.02em;
+  text-align: center;
+}
+
+.inativo {
+  display: none;
+}
+
+@media(max-width:1000px) {
+.headerCadastro4 {
+  padding: 1.5rem 2rem;
+} 
+.headerCadastro4 h1 {
+  font-size: 2rem;
+  line-height: 2.75rem;
+}
+}
+
+@media(max-width:850px) {
+.headerCadastro4 {
+  place-items: center;
+} 
+.headerCadastro4 h1 {
+  font-size: 1.75rem;
+  line-height: 2rem;
+}
+}
+
+@media (max-width:360px) {
+.headerCadastro4 {
+  justify-content: center;
+} 
+.headerCadastro4 h1 {
+  font-weight: 700;
+  font-size: 1.125rem;
+  line-height: 1.5rem;
+  text-align: center;
+}
+}

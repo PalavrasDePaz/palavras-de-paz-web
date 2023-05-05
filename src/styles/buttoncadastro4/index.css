@@ -1,0 +1,26 @@
+.button4 {
+  justify-self: end;
+  margin: 1rem 2rem 4rem 0;
+}
+
+.button4 button {
+  place-items: center;
+  background-color: #18CA99;
+  color: white;
+  height: 56px;
+  width: 200px;
+  border: none;
+  border-radius: 15px;
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 33px;
+}
+
+@media (max-width:850px) {
+  .button4 button {
+    height: 48px;
+    width: 160px;
+    font-size: 1.25rem;
+    line-height: 33px;
+  }
+}
