@@ -4,6 +4,7 @@ import styles from './styles/CadastroTemplate.module.css';
 import CadastroPrimeiraTela from './components/CadastroPrimeiraTela';
 import CadastroTerceiraTela from './components/CadastroTerceiraTela';
 import Signature from './components/Signature';
+import CadastroQuartaTela from './components/CadastroQuartaTela';
 
 export default function cadastroTemplate() {
   const [controller, setController] = useState(0);
@@ -27,6 +28,7 @@ export default function cadastroTemplate() {
           <CadastroPrimeiraTela setController={ setController } />
         )}
         {controller === 1 && <CadastroTerceiraTela setController={ setController } />}
+        {controller === 2 && <CadastroQuartaTela setController={ setController } />}
         <div className={ styles.main_container_button }>{buttonNext()}</div>
       </div>
 

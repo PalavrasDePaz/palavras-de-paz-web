@@ -1,8 +1,8 @@
 import React from 'react';
-import CadastroTemplate4 from '../templates/cadastro4/CadastroTemplate4';
+import CadastroQuartaTela from '../templates/cadastro/components/CadastroQuartaTela';
 
 export default function cadastro4() {
   return (
-    <CadastroTemplate4 />
+    <CadastroQuartaTela />
   );
 }
