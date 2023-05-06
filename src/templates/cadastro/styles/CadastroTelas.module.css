@@ -1,0 +1,84 @@
+.cadastroFormSection {
+  display: flex;
+  flex-direction: column;
+  max-width: calc(100% - 2rem);
+  margin: 0 0.5rem;
+}
+
+.cadastroFormSectionInputContainer {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  justify-content: center;
+}
+
+@media (max-width: 768px) {
+  .cadastroFormSectionInputContainer {
+    grid-template-columns: 1fr;
+  }
+}
+
+.cadastroFormDiv {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.formTitle {
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+@media (min-width: 768px) {
+  .formTitle {
+    font-size: 2rem;
+  }
+}
+
+.formParagraph {
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 1.2rem;
+  margin-top: 1rem;
+}
+
+@media (min-width: 768px) {
+  .formParagraph {
+    font-size: 1rem;
+  }
+}
+
+.cadastroFormSectionInputLabel {
+  font-size: 0.875rem;
+  font-weight: 700;
+  line-height: 1.2rem;
+}
+
+.cadastroFormSectionInputText {
+  border: 1px solid #d8d8d8;
+  border-radius: 0.25rem;
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 1.2rem;
+  padding: 0.5rem;
+}
+
+@media (min-width: 768px) {
+  .cadastroFormSectionInputText {
+    font-size: 1rem;
+    padding: 1rem;
+  }
+}
+
+.inputError {
+  color: red;
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 1.2rem;
+  margin: 0;
+}
+
+.inputError::before {
+  content: "* ";
+}

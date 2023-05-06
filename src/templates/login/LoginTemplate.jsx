@@ -6,7 +6,7 @@ import styles from './styles/LoginTemplate.style.module.css';
 
 function LoginTemplate() {
   return (
-    <section className={ styles.login_section }>
+    <section className={ styles.loginSection }>
 
       <Image
         style={ { cursor: 'pointer' } }
@@ -18,7 +18,7 @@ function LoginTemplate() {
         height="150px"
       />
 
-      <section className={ styles.login_section_form }>
+      <section className={ styles.loginSectionForm }>
         <LoginForm />
       </section>
 

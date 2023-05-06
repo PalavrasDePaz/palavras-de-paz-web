@@ -1,95 +1,106 @@
 import Link from 'next/link';
-import React from 'react';
+import React, { useState } from 'react';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
-import styles from '../styles/LoginInputs.style.module.css';
+import * as yup from 'yup';
+import { useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
+import styles from '../styles/LoginForm.module.css';
+
+const MIN_PASSWORD_LENGTH = 6;
+
+const schema = yup.object().shape({
+  email: yup.string().email().required(),
+  password: yup.string().required().min(MIN_PASSWORD_LENGTH),
+});
 
 function LoginForm() {
-  const [isPasswordVisible, setIsPasswordVisible] = React.useState(false);
+  const [isPasswordVisible, setIsPasswordVisible] = useState(false);
+
+  const {
+    register,
+    handleSubmit,
+    watch,
+    reset,
+    formState: { errors },
+  } = useForm({
+    resolver: yupResolver(schema),
+  });
+
+  watch('email');
+  watch('password');
+
+  function onSubmit(data) {
+    console.log(data);
+    reset();
+  }
 
   function handlePasswordVisibility() {
     setIsPasswordVisible(!isPasswordVisible);
   }
 
   return (
-    <div className={ styles.login_form_section }>
+    <form
+      onSubmit={ handleSubmit(onSubmit) }
+      className={ styles.loginFormSection }
+    >
+      <h1 className={ styles.loginFormSectionTitle }>Faça seu login</h1>
 
-      <h1 className={ styles.login_form_section_title }>
-        Faça seu login
-      </h1>
-
-      <div className={ styles.login_form_section_input_container }>
-
-        <label
-          className="login_form_section_input_label"
-          htmlFor="email"
-        >
+      <div className={ styles.loginFormSectionInputContainer }>
+        <label className={ styles.loginFormSectionInputLabel } htmlFor="email">
           <b>E-mail</b>
         </label>
 
         <input
           placeholder="nome@palavrasdepaz.com.br"
-          id="email"
           type="email"
-          className={ styles.login_form_section_input_email }
-          onChange={ (event) => setEmail(event.target.value) }
+          className={ styles.loginFormSectionInputEmail }
+          { ...register('email') }
         />
+        {errors.email && (
+          <p className={ styles.inputError }>{errors.email.message}</p>
+        )}
       </div>
 
-      <div className={ styles.login_form_section_input_container }>
-
-        <label
-          className="login_form_section_input_label"
-          htmlFor="password"
-        >
+      <div className={ styles.loginFormSectionInputContainer }>
+        <label className={ styles.loginFormSectionInputLabel } htmlFor="password">
           <b>Senha</b>
         </label>
 
-        <div className={ styles.password_container }>
-          <input
-            placeholder="Digite sua senha"
-            id="password"
-            className={ styles.login_form_section_input_password }
-            type={ isPasswordVisible ? 'text' : 'password' }
-            onChange={ (event) => setPassword(event.target.value) }
-          />
+        <input
+          placeholder="Digite sua senha"
+          className={ styles.loginFormSectionInputPassword }
+          type={ isPasswordVisible ? 'text' : 'password' }
+          { ...register('password') }
+        />
 
-          <button
-            className={ styles.login_form_section_input_password_visibility }
-            type="button"
-            onClick={ handlePasswordVisibility }
-          >
-            { isPasswordVisible ? <FaEye /> : <FaEyeSlash /> }
-          </button>
-        </div>
-
+        <button
+          className={ styles.loginFormSectionInputPasswordVisibility }
+          type="button"
+          onClick={ handlePasswordVisibility }
+        >
+          {isPasswordVisible ? <FaEye /> : <FaEyeSlash />}
+        </button>
+        {errors.password && (
+          <p className={ styles.inputError }>{errors.password.message}</p>
+        )}
       </div>
 
-      <section className={ styles.login_form_section_buttons_container }>
-        <button className={ styles.login_form_section_buttons }>
-          Ajuda?
-        </button>
+      <section className={ styles.loginFormSectionButtonsContainer }>
+        <button className={ styles.loginFormSectionButtons }>Ajuda?</button>
 
-        <button className={ styles.login_form_section_buttons }>
+        <button className={ styles.loginFormSectionButtons }>
           Esqueceu a senha?
         </button>
       </section>
 
-      <button className={ styles.login_form_button_enter }>
-        Entrar
-      </button>
+      <button className={ styles.loginFormButtonEnter }>Entrar</button>
 
-      <Link
-        href="/"
-        className={ styles.login_form_button_back }
-      >
-        <button
-          className={ styles.login_form_button_back }
-        >
+      <Link href="/" className={ styles.loginFormButtonBack }>
+        <button className={ styles.loginFormButtonBack }>
           Voltar para a página inicial
         </button>
       </Link>
-
-    </div>
+    </form>
   );
 }
 
