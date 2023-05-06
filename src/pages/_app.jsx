@@ -24,8 +24,6 @@ import '../styles/buttoncadastro4/index.css';
 import Head from 'next/head';
 import React from 'react';
 import propTypes from 'prop-types';
-import { Provider } from 'react-redux';
-import store from '../store/store';
 
 function MyApp({ Component, pageProps }) {
   return (
@@ -33,9 +31,7 @@ function MyApp({ Component, pageProps }) {
       <Head>
         <title>Palavras de Paz</title>
       </Head>
-      <Provider store={ store }>
-        <Component { ...pageProps } />
-      </Provider>
+      <Component { ...pageProps } />
     </>
   );
 }
