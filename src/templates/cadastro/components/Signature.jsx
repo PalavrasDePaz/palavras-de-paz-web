@@ -5,18 +5,21 @@ import styles from '../styles/Signature.module.css';
 export default function Signature({ controller }) {
   function createSignature(controllerNumber) {
     const signatureClass = `signature_${ controllerNumber }`;
+
+    const classNames = `${ styles.signatures } ${ styles[signatureClass] }`;
+
     return (
       <>
-        <div className={ styles[signatureClass] } />
-        <div className={ styles[signatureClass] } />
-        <div className={ styles[signatureClass] } />
+        <div className={ classNames } />
+        <div className={ classNames } />
+        <div className={ classNames } />
       </>
     );
   }
 
   return (
     <div className={ styles.signatures_container }>
-      { createSignature(controller)}
+      {createSignature(controller)}
     </div>
   );
 }

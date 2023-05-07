@@ -46,7 +46,7 @@ export default function cadastroTerceiraTela() {
       className={ styles.cadastroFormSection }
       onSubmit={ handleSubmit(onSubmit) }
     >
-      <section>
+      <section className={ styles.cadastroFormSectionInputContainer }>
         <div className={ styles.cadastroFormDiv }>
           <label className={ styles.formParagraph } htmlFor={ REFERRAL.fieldLabel }>
             {REFERRAL.fieldLabel}
@@ -88,6 +88,8 @@ export default function cadastroTerceiraTela() {
             ))}
           </select>
         </div>
+      </section>
+      <section>
         <div className={ styles.cadastroFormDiv }>
           <label className={ styles.formParagraph } htmlFor={ about.label }>
             {about.text}
