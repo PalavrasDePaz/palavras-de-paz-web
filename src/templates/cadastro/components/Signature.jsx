@@ -9,7 +9,6 @@ export default function Signature({ controller }) {
       <>
         <div className={ styles[signatureClass] } />
         <div className={ styles[signatureClass] } />
-
         <div className={ styles[signatureClass] } />
       </>
     );
