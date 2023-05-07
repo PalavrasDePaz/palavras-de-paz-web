@@ -1,15 +1,15 @@
 import React from 'react';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
-import { useDispatch } from 'react-redux';
 
 import { AWARENESS, OPEN_TEXT_FIELDS, REFERRAL } from './constants';
 
 import styles from '../styles/CadastroTelas.module.css';
+import styleButton from '../styles/CadastroTemplate.module.css';
 
 import { cadastroTela3Schema } from './schemas';
 
-export default function cadastroTerceiraTela() {
+export default function cadastroTerceiraTela(props) {
   const [about, experience, expectations] = OPEN_TEXT_FIELDS;
 
   const {
@@ -22,17 +22,12 @@ export default function cadastroTerceiraTela() {
     resolver: yupResolver(cadastroTela3Schema),
   });
 
-  const dispatch = useDispatch();
+  const { setController, controller } = props;
 
-  watch('referral');
-  watch('awareness');
-  watch('aboutYou');
-  watch('experience');
-  watch('expectations');
+  watch('referral', 'awareness', 'aboutYou', 'experience', 'expectations');
 
-  const onSubmit = (data) => {
-    console.log(data);
-    dispatch(increment());
+  const onSubmit = () => {
+    setController(controller + 1);
     reset();
   };
 
@@ -151,6 +146,13 @@ export default function cadastroTerceiraTela() {
         </div>
 
       </section>
+
+      <button
+        type="submit"
+        className={ styleButton.cadastroFormSectionButton }
+      >
+        Próximo
+      </button>
     </form>
   );
 }

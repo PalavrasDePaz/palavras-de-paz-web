@@ -39,10 +39,7 @@ function LoginForm() {
   }
 
   return (
-    <form
-      onSubmit={ handleSubmit(onSubmit) }
-      className={ styles.loginFormSection }
-    >
+    <form onSubmit={ handleSubmit(onSubmit) } className={ styles.loginFormSection }>
       <h1 className={ styles.loginFormSectionTitle }>Faça seu login</h1>
 
       <div className={ styles.loginFormSectionInputContainer }>

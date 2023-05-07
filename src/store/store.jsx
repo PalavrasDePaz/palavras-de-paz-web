@@ -5,24 +5,24 @@ const initialState = {
   value: 0,
 };
 
-const counterSlice = createSlice({
-  name: 'counter',
-  initialState,
+const controller = createSlice({
+  name: 'controller',
+  initialState: 0,
   reducers: {
-    increment: (state) => {
-      state.value += 1;
+    increment: () => {
+      initialState.value += 1;
     },
   },
 });
 
 const rootReducer = combineReducers({
-  counter: counterSlice.reducer,
+  controller: controller.reducer,
 });
 
 const store = configureStore({
   reducer: rootReducer,
 });
 
-export const { increment } = counterSlice.actions;
+export const { increment } = controller.actions;
 
 export default store;

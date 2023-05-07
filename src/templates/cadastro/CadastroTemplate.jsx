@@ -9,31 +9,30 @@ import Signature from './components/Signature';
 export default function cadastroTemplate() {
   const [controller, setController] = useState(0);
 
-  const buttonNext = () => (
-    <button
-      type="submit"
-      className={ styles.cadastroFormSectionButton }
-      onClick={ () => setController(controller + 1) }
-    >
-      Próximo
-    </button>
-  );
-
   return (
     <>
       <HeaderCadastro />
       <Signature controller={ controller } />
       <div className={ styles.main_container_form }>
         {controller === 0 && (
-          <CadastroPrimeiraTela setController={ setController } />
+          <CadastroPrimeiraTela
+            setController={ setController }
+            controller={ controller }
+          />
         )}
         {controller === 1 && (
-          <CadastroSegundaTela setController={ setController } />
+          <CadastroSegundaTela
+            setController={ setController }
+            controller={ controller }
+          />
         )}
         {controller === 2 && (
-          <CadastroTerceiraTela setController={ setController } />
+          <CadastroTerceiraTela
+            setController={ setController }
+            controller={ controller }
+          />
         )}
-        <div className={ styles.main_container_button }>{buttonNext()}</div>
+        {/* <div className={ styles.main_container_button }>{buttonNext()}</div> */}
       </div>
     </>
   );

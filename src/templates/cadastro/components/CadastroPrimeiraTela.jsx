@@ -3,6 +3,7 @@ import * as yup from 'yup';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import styles from '../styles/CadastroTelas.module.css';
+import styleButton from '../styles/CadastroTemplate.module.css';
 
 const MIN_PASSWORD_LENGTH = 6;
 
@@ -19,22 +20,31 @@ const schema = yup.object().shape({
     .equals([yup.ref('password')], 'As senhas não são iguais'),
 });
 
-export default function cadastroPrimeiraTela() {
+export default function cadastroPrimeiraTela(props) {
   const {
     register,
     watch,
+    handleSubmit,
+    reset,
     formState: { errors },
   } = useForm({
     resolver: yupResolver(schema),
   });
 
-  watch('name');
-  watch('email');
-  watch('password');
-  watch('passConfirmation');
+  const { setController, controller } = props;
+
+  const onSubmit = () => {
+    setController(controller + 1);
+    reset();
+  };
+
+  watch('name', 'email', 'password', 'passConfirmation');
 
   return (
-    <form className={ styles.cadastroFormSection }>
+    <form
+      className={ styles.cadastroFormSection }
+      onSubmit={ handleSubmit(onSubmit) }
+    >
       <section>
         <h1 className={ styles.formTitle }>CADASTRO DE VOLUNTÁRIOS</h1>
 
@@ -113,6 +123,7 @@ export default function cadastroPrimeiraTela() {
             <input
               type="password"
               className={ styles.cadastroFormSectionInputText }
+              placeholder="Confirme sua senha"
               { ...register('passConfirmation') }
             />
             {errors.passConfirmation
@@ -120,7 +131,12 @@ export default function cadastroPrimeiraTela() {
           </div>
         </section>
       </section>
-
+      <button
+        type="submit"
+        className={ styleButton.cadastroFormSectionButton }
+      >
+        Próximo
+      </button>
     </form>
   );
 }
