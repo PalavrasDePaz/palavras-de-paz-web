@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import HeaderCadastro from './components/HeaderCadastro';
 import styles from './styles/CadastroTemplate.module.css';
 import CadastroPrimeiraTela from './components/CadastroPrimeiraTela';
+import CadastroSegundaTela from './components/CadastroSegundaTela';
 import CadastroTerceiraTela from './components/CadastroTerceiraTela';
 import Signature from './components/Signature';
 
@@ -12,7 +13,7 @@ export default function cadastroTemplate() {
     <button
       type="submit"
       className={ styles.cadastroFormSectionButton }
-      onClick={ () => setController(1) }
+      onClick={ () => setController(controller + 1) }
     >
       Próximo
     </button>
@@ -26,10 +27,14 @@ export default function cadastroTemplate() {
         {controller === 0 && (
           <CadastroPrimeiraTela setController={ setController } />
         )}
-        {controller === 1 && <CadastroTerceiraTela setController={ setController } />}
+        {controller === 1 && (
+          <CadastroSegundaTela setController={ setController } />
+        )}
+        {controller === 2 && (
+          <CadastroTerceiraTela setController={ setController } />
+        )}
         <div className={ styles.main_container_button }>{buttonNext()}</div>
       </div>
-
     </>
   );
 }

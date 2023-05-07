@@ -46,9 +46,14 @@ export default function cadastroTerceiraTela() {
       className={ styles.cadastroFormSection }
       onSubmit={ handleSubmit(onSubmit) }
     >
+
       <section className={ styles.cadastroFormSectionInputContainer }>
+
         <div className={ styles.cadastroFormDiv }>
-          <label className={ styles.formParagraph } htmlFor={ REFERRAL.fieldLabel }>
+          <label
+            className={ styles.cadastroFormSectionInputLabel }
+            htmlFor={ REFERRAL.fieldLabel }
+          >
             {REFERRAL.fieldLabel}
           </label>
           <select
@@ -66,9 +71,10 @@ export default function cadastroTerceiraTela() {
             ))}
           </select>
         </div>
+
         <div className={ styles.cadastroFormDiv }>
           <label
-            className={ styles.formParagraph }
+            className={ styles.cadastroFormSectionInputLabel }
             htmlFor={ AWARENESS.fieldLabel }
           >
             {AWARENESS.fieldLabel}
@@ -88,10 +94,16 @@ export default function cadastroTerceiraTela() {
             ))}
           </select>
         </div>
+
       </section>
+
       <section>
+
         <div className={ styles.cadastroFormDiv }>
-          <label className={ styles.formParagraph } htmlFor={ about.label }>
+          <label
+            className={ styles.cadastroFormSectionInputLabel }
+            htmlFor={ about.label }
+          >
             {about.text}
           </label>
           <textarea
@@ -103,8 +115,12 @@ export default function cadastroTerceiraTela() {
             <p className={ styles.inputError }>{errors.aboutYou.message}</p>
           )}
         </div>
+
         <div className={ styles.cadastroFormDiv }>
-          <label className={ styles.formParagraph } htmlFor={ experience.label }>
+          <label
+            className={ styles.cadastroFormSectionInputLabel }
+            htmlFor={ experience.label }
+          >
             {experience.text}
           </label>
           <textarea
@@ -116,8 +132,12 @@ export default function cadastroTerceiraTela() {
             <p className={ styles.inputError }>{errors.experience.message}</p>
           )}
         </div>
+
         <div className={ styles.cadastroFormDiv }>
-          <label className={ styles.formParagraph } htmlFor={ expectations.label }>
+          <label
+            className={ styles.cadastroFormSectionInputLabel }
+            htmlFor={ expectations.label }
+          >
             {expectations.text}
           </label>
           <textarea
@@ -129,6 +149,7 @@ export default function cadastroTerceiraTela() {
             <p className={ styles.inputError }>{errors.expectations.message}</p>
           )}
         </div>
+
       </section>
     </form>
   );
