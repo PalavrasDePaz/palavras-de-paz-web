@@ -13,6 +13,7 @@ export default function Signature({ controller }) {
         <div className={ classNames } />
         <div className={ classNames } />
         <div className={ classNames } />
+        <div className={ classNames } />
       </>
     );
   }

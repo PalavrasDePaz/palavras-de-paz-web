@@ -8,7 +8,7 @@
   border-radius: 5px;
   padding: 5px;
   margin: 5px;
-  width: 27%;
+  width: 20%;
 
   display: inline-block;
   vertical-align: center;
@@ -16,6 +16,7 @@
 
 .signature_0:first-child,
 .signature_1:nth-child(2),
-.signature_2:nth-child(3) {
-  background-color: #18ac99;
+.signature_2:nth-child(3),
+.signature_3:nth-child(4) {
+    background-color: #18ac99;
 }

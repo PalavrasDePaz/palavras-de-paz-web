@@ -46,4 +46,29 @@ export const OPEN_TEXT_FIELDS = [
   },
 ];
 
+export const DATA_1 = [
+  'Facilitador presencial',
+  'Facilitador virtual',
+  'Avaliador remoto',
+  'Captação de voluntário',
+  'Leitura de caderno de presos Virtual',
+  'Tradutor remoto',
+  'Divulgação',
+  'Captação de grupos',
+  'Leitura de redação dos presos virtual',
+];
+
+export const DATA_2 = [
+  'Administração',
+  'Comunicação',
+  'Jornalismo',
+  'Mídias Sociais',
+  'Rádio e Televisão',
+  'Recursos Humanos',
+  'Tecnologia da Informação',
+  'Psicologia',
+  'Assistência Social',
+  'Outros',
+];
+
 export const MANDATORY_FIELD = 'Este campo é obrigatório';
