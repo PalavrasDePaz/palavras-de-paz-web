@@ -1,7 +1,7 @@
-import Cadastro4 from './cadastro4';
+import HomeTemplate from '../templates/home/home.template';
 
 export default function Home() {
   return (
-    <Cadastro4 />
+    <HomeTemplate />
   );
 }

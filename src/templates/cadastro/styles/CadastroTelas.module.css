@@ -82,3 +82,48 @@
 .inputError::before {
   content: "* ";
 }
+
+/* - Quarta tela de cadastro Styles */
+
+.cadastroFormDivContainer {
+  display: grid;
+  grid-template-columns: 2fr 2fr 2fr 2fr;
+  gap: 2rem;
+  padding:0 2rem 2rem 2rem;
+}
+
+@media (max-width: 768px) {
+  .cadastroFormDivContainer {
+    grid-template-columns: 1fr 1fr;
+  }
+  .empty {
+    display: none;
+  }
+}
+
+.cadastroFormDivContainer P {
+  grid-column: 1/ -1;
+  font-size: 1.5rem;
+  font-weight: 400;
+  line-height: 2rem;
+  text-align: left;
+}
+
+@media (max-width: 768px) {
+  .cadastroFormDivContainer p {
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+  }
+}
+
+.cadastroFormInputCheckbox {
+  height: 24px;
+  width: 24px;
+  border-radius: 4px; 
+}
+
+.cadastroFormDivCheckbox {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+}
