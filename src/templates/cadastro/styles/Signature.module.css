@@ -1,6 +1,7 @@
 .signatures_container {
   text-align: center;
   margin-block: 2rem;
+  /* max-width: 70rem; */
 }
 
 .signatures {

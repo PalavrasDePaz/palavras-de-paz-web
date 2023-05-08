@@ -10,15 +10,17 @@ export default function CadastroQuartaTela() {
           Atualmente, essas são as nossas oportunidades de voluntariado. De
           quais você gostaria de participar?
         </p>
-        { DATA_1.map((item, index) => (
+        {DATA_1.map((item, index) => (
           <div key={ index } className={ styles.cadastroFormDivCheckbox }>
-            <input className={ styles.cadastroFormInputCheckbox } type="checkbox" />
+            <input
+              className={ styles.cadastroFormInputCheckbox }
+              type="checkbox"
+            />
             <label
               className={ styles.cadastroFormSectionInputLabel }
               htmlFor="text"
             >
               {item}
-
             </label>
           </div>
         ))}
@@ -29,15 +31,17 @@ export default function CadastroQuartaTela() {
           A nossa organização é formada totalmente por voluntários. Caso surjam
           outras oporturnidades você gostaria de ajudar em alguma dessas áreas ?
         </p>
-        { DATA_2.map((item, index) => (
+        {DATA_2.map((item, index) => (
           <div key={ index } className={ styles.cadastroFormDivCheckbox }>
-            <input className={ styles.cadastroFormInputCheckbox } type="checkbox" />
+            <input
+              className={ styles.cadastroFormInputCheckbox }
+              type="checkbox"
+            />
             <label
               className={ styles.cadastroFormSectionInputLabel }
               htmlFor="text"
             >
               {item}
-
             </label>
           </div>
         ))}
@@ -48,9 +52,8 @@ export default function CadastroQuartaTela() {
           Você precisa de declaração de horas de atividades voluntárias para a
           faculdade ou trabalho?
         </p>
-        <select className={ styles.cadastroFormSectionInputText }>
+        <select defaultValue="" className={ styles.cadastroFormSectionInputText }>
           <option value="" hidden disabled>
-            {' '}
             Selecione
           </option>
           <option value="yes">Sim</option>

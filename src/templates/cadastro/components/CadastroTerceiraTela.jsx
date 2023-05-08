@@ -15,7 +15,6 @@ export default function cadastroTerceiraTela(props) {
   const {
     register,
     handleSubmit,
-    watch,
     reset,
     formState: { errors },
   } = useForm({
@@ -23,8 +22,6 @@ export default function cadastroTerceiraTela(props) {
   });
 
   const { setController, controller } = props;
-
-  watch('referral', 'awareness', 'aboutYou', 'experience', 'expectations');
 
   const onSubmit = () => {
     setController(controller + 1);
