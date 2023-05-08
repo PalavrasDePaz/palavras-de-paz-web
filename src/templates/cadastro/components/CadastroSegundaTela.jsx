@@ -57,7 +57,7 @@ export default function cadastroSegundaTela(props) {
             { ...register('pais') }
           >
             {countryArray?.length && countryArray.map(({ label, value }) => (
-              <option key={ value } value={ value }>{label}</option>
+              <option key={ value } value={ value }>{ label }</option>
             ))}
           </select>
           {errors.pais && (
