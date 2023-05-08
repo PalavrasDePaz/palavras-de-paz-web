@@ -76,7 +76,8 @@ export default function cadastroPrimeiraTela(props) {
               className={ styles.cadastroFormSectionInputText }
               { ...register('name') }
             />
-            {errors.name && <p className={ styles.inputError }>{errors.name.message}</p>}
+            {errors.name
+            && <p className={ styles.inputError }>{errors.name.message}</p>}
           </div>
 
           <div className={ styles.cadastroFormDiv }>
@@ -134,7 +135,10 @@ export default function cadastroPrimeiraTela(props) {
           </div>
         </section>
       </section>
-      <button type="submit" className={ styleButton.cadastroFormSectionButton }>
+      <button
+        type="submit"
+        className={ styleButton.cadastroFormSectionButton }
+      >
         Próximo
       </button>
     </form>

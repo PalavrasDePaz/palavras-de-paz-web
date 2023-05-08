@@ -10,7 +10,7 @@ export default function CadastroQuartaTela() {
           Atualmente, essas são as nossas oportunidades de voluntariado. De
           quais você gostaria de participar?
         </p>
-        {DATA_1.map((item, index) => (
+        { DATA_1.map((item, index) => (
           <div key={ index } className={ styles.cadastroFormDivCheckbox }>
             <input
               className={ styles.cadastroFormInputCheckbox }
@@ -31,7 +31,7 @@ export default function CadastroQuartaTela() {
           A nossa organização é formada totalmente por voluntários. Caso surjam
           outras oporturnidades você gostaria de ajudar em alguma dessas áreas ?
         </p>
-        {DATA_2.map((item, index) => (
+        { DATA_2.map((item, index) => (
           <div key={ index } className={ styles.cadastroFormDivCheckbox }>
             <input
               className={ styles.cadastroFormInputCheckbox }
