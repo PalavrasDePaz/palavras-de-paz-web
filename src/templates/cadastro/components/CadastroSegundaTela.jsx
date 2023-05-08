@@ -56,22 +56,18 @@ export default function cadastroSegundaTela(props) {
             className={ styles.cadastroFormSectionInputText }
             { ...register('pais') }
           >
-            {countryArray?.length
-              && countryArray.map(({ label, value }) => (
-                <option key={ value } value={ value }>
-                  {label}
-                </option>
-              ))}
+            {countryArray?.length && countryArray.map(({ label, value }) => (
+              <option key={ value } value={ value }>{label}</option>
+            ))}
           </select>
           {errors.pais && (
-            <p className={ styles.inputError }>{errors.pais.message}</p>
+            <p className={ styles.inputError }>
+              {errors.pais.message}
+            </p>
           )}
         </div>
         <div className={ styles.cadastroFormDiv }>
-          <label
-            htmlFor="estado"
-            className={ styles.cadastroFormSectionInputLabel }
-          >
+          <label htmlFor="estado" className={ styles.cadastroFormSectionInputLabel }>
             Estado
           </label>
           {country === 'BR' ? (
@@ -103,15 +99,14 @@ export default function cadastroSegundaTela(props) {
           )}
 
           {errors.estado && (
-            <p className={ styles.inputError }>{errors.estado.message}</p>
+            <p className={ styles.inputError }>
+              {errors.estado.message}
+            </p>
           )}
         </div>
 
         <div className={ styles.cadastroFormDiv }>
-          <label
-            htmlFor="cidade"
-            className={ styles.cadastroFormSectionInputLabel }
-          >
+          <label htmlFor="cidade" className={ styles.cadastroFormSectionInputLabel }>
             Cidade
           </label>
           <input
@@ -122,15 +117,14 @@ export default function cadastroSegundaTela(props) {
             { ...register('cidade') }
           />
           {errors.cidade && (
-            <p className={ styles.inputError }>{errors.cidade.message}</p>
+            <p className={ styles.inputError }>
+              {errors.cidade.message}
+            </p>
           )}
         </div>
 
         <div className={ styles.cadastroFormDiv }>
-          <label
-            htmlFor="telefone"
-            className={ styles.cadastroFormSectionInputLabel }
-          >
+          <label htmlFor="telefone" className={ styles.cadastroFormSectionInputLabel }>
             Telefone
           </label>
           <input
@@ -141,7 +135,9 @@ export default function cadastroSegundaTela(props) {
             { ...register('telefone') }
           />
           {errors.telefone && (
-            <p className={ styles.inputError }>{errors.telefone.message}</p>
+            <p className={ styles.inputError }>
+              {errors.telefone.message}
+            </p>
           )}
         </div>
 
@@ -168,15 +164,14 @@ export default function cadastroSegundaTela(props) {
             ))}
           </select>
           {errors.escolaridade && (
-            <p className={ styles.inputError }>{errors.escolaridade.message}</p>
+            <p className={ styles.inputError }>
+              {errors.escolaridade.message}
+            </p>
           )}
         </div>
 
         <div className={ styles.cadastroFormDiv }>
-          <label
-            htmlFor="curso"
-            className={ styles.cadastroFormSectionInputLabel }
-          >
+          <label htmlFor="curso" className={ styles.cadastroFormSectionInputLabel }>
             Qual o Curso
           </label>
           <input
@@ -192,10 +187,7 @@ export default function cadastroSegundaTela(props) {
         </div>
 
         <div className={ styles.cadastroFormDiv }>
-          <label
-            htmlFor="deficiencia"
-            className={ styles.cadastroFormSectionInputLabel }
-          >
+          <label htmlFor="deficiencia" className={ styles.cadastroFormSectionInputLabel }>
             É pessoa com deficiência?
           </label>
           <select
@@ -232,7 +224,10 @@ export default function cadastroSegundaTela(props) {
           </div>
         )}
       </section>
-      <button type="submit" className={ styleButton.cadastroFormSectionButton }>
+      <button
+        type="submit"
+        className={ styleButton.cadastroFormSectionButton }
+      >
         Próximo
       </button>
     </form>

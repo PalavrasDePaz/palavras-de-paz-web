@@ -12,10 +12,7 @@ export default function CadastroQuartaTela() {
         </p>
         { DATA_1.map((item, index) => (
           <div key={ index } className={ styles.cadastroFormDivCheckbox }>
-            <input
-              className={ styles.cadastroFormInputCheckbox }
-              type="checkbox"
-            />
+            <input className={ styles.cadastroFormInputCheckbox } type="checkbox" />
             <label
               className={ styles.cadastroFormSectionInputLabel }
               htmlFor="text"
@@ -33,10 +30,7 @@ export default function CadastroQuartaTela() {
         </p>
         { DATA_2.map((item, index) => (
           <div key={ index } className={ styles.cadastroFormDivCheckbox }>
-            <input
-              className={ styles.cadastroFormInputCheckbox }
-              type="checkbox"
-            />
+            <input className={ styles.cadastroFormInputCheckbox } type="checkbox" />
             <label
               className={ styles.cadastroFormSectionInputLabel }
               htmlFor="text"
