@@ -8,7 +8,7 @@ import Signature from './components/Signature';
 import CadastroQuartaTela from './components/CadastroQuartaTela';
 
 export default function cadastroTemplate() {
-  const [controller, setController] = useState(1);
+  const [controller, setController] = useState(0);
 
   const PAGE_1 = 0;
   const PAGE_2 = 1;
