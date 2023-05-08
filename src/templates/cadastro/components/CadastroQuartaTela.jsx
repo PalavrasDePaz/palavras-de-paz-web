@@ -18,7 +18,6 @@ export default function CadastroQuartaTela() {
               htmlFor="text"
             >
               {item}
-
             </label>
           </div>
         ))}
@@ -37,7 +36,6 @@ export default function CadastroQuartaTela() {
               htmlFor="text"
             >
               {item}
-
             </label>
           </div>
         ))}
@@ -48,9 +46,8 @@ export default function CadastroQuartaTela() {
           Você precisa de declaração de horas de atividades voluntárias para a
           faculdade ou trabalho?
         </p>
-        <select className={ styles.cadastroFormSectionInputText }>
+        <select defaultValue="" className={ styles.cadastroFormSectionInputText }>
           <option value="" hidden disabled>
-            {' '}
             Selecione
           </option>
           <option value="yes">Sim</option>

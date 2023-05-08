@@ -1,20 +1,12 @@
-import React, { useState } from 'react';
+import React from 'react';
 import countries from 'i18n-iso-countries';
 import ptLocale from 'i18n-iso-countries/langs/pt.json';
-import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
 import styles from '../styles/CadastroTelas.module.css';
 import styleButton from '../styles/CadastroTemplate.module.css';
-
-const cadastroTela2Schema = yup.object().shape({
-  pais: yup.string().required('Campo obrigatório'),
-  estado: yup.string().required('Campo obrigatório'),
-  cidade: yup.string().required('Campo obrigatório'),
-  telefone: yup.string().required('Campo obrigatório'),
-  escolaridade: yup.string().required('Campo obrigatório'),
-  curso: yup.string().required('Campo obrigatório'),
-});
+import { ESCOLARIDADE_OPTIONS, OPCOES_ESTADOS } from './constants';
+import { cadastroTela2Schema } from './schemas';
 
 export default function cadastroSegundaTela(props) {
   const {
@@ -29,7 +21,8 @@ export default function cadastroSegundaTela(props) {
 
   const { setController, controller } = props;
 
-  watch('pais', 'estado', 'cidade', 'telefone', 'escolaridade', 'curso');
+  const country = watch('pais', 'BR');
+  const disability = watch('deficiencia', 'não');
 
   const onSubmit = () => {
     setController(controller + 1);
@@ -39,13 +32,10 @@ export default function cadastroSegundaTela(props) {
   countries.registerLocale(ptLocale);
 
   const countryObj = countries.getNames('pt', { select: 'official' });
-  const countryArray = Object.entries(countryObj)
-    .map(([key, value]) => ({ label: value, value: key }));
-  const [selectedCountry, setSelectedCountry] = useState('');
-
-  const selectCountryHandler = (value) => {
-    setSelectedCountry(value);
-  };
+  const countryArray = Object.entries(countryObj).map(([key, value]) => ({
+    label: value,
+    value: key,
+  }));
 
   return (
     <form
@@ -53,7 +43,6 @@ export default function cadastroSegundaTela(props) {
       onSubmit={ handleSubmit(onSubmit) }
     >
       <section className={ styles.cadastroFormSectionInputContainer }>
-
         <div className={ styles.cadastroFormDiv }>
           <label
             htmlFor="pais"
@@ -63,34 +52,52 @@ export default function cadastroSegundaTela(props) {
           </label>
           <select
             name="pais"
-            value={ selectedCountry }
+            defaultValue="BR"
             className={ styles.cadastroFormSectionInputText }
-            onChange={ (e) => selectCountryHandler(e.target.value) }
             { ...register('pais') }
           >
             {countryArray?.length && countryArray.map(({ label, value }) => (
               <option key={ value } value={ value }>{ label }</option>
             ))}
           </select>
-
           {errors.pais && (
             <p className={ styles.inputError }>
               {errors.pais.message}
             </p>
           )}
         </div>
-
         <div className={ styles.cadastroFormDiv }>
           <label htmlFor="estado" className={ styles.cadastroFormSectionInputLabel }>
             Estado
           </label>
-          <input
-            name="estado"
-            placeholder="Digite seu estado"
-            type="text"
-            className={ styles.cadastroFormSectionInputText }
-            { ...register('estado') }
-          />
+          {country === 'BR' ? (
+            <select
+              name="estado"
+              defaultValue=""
+              className={ styles.cadastroFormSectionInputText }
+              onChange={ (e) => selectCountryHandler(e.target.value) }
+              { ...register('estado') }
+            >
+              <option value="" hidden disabled>
+                Selecione
+              </option>
+              {countryArray?.length
+                && OPCOES_ESTADOS.map(({ label, value }) => (
+                  <option key={ value } value={ value }>
+                    {label}
+                  </option>
+                ))}
+            </select>
+          ) : (
+            <input
+              name="estado"
+              placeholder="Digite seu estado"
+              type="text"
+              className={ styles.cadastroFormSectionInputText }
+              { ...register('estado') }
+            />
+          )}
+
           {errors.estado && (
             <p className={ styles.inputError }>
               {errors.estado.message}
@@ -104,7 +111,7 @@ export default function cadastroSegundaTela(props) {
           </label>
           <input
             name="cidade"
-            placeholder="Digite seu estado"
+            placeholder="Digite sua cidade"
             type="text"
             className={ styles.cadastroFormSectionInputText }
             { ...register('cidade') }
@@ -144,34 +151,19 @@ export default function cadastroSegundaTela(props) {
           <select
             className={ styles.cadastroFormSectionInputText }
             name="escolaridade"
+            defaultValue=""
             { ...register('escolaridade') }
           >
-            <option
-              name="escolaridade"
-              value="Ensino Médio"
-            >
-              Ensino Médio
+            <option value="" hidden disabled>
+              Selecione
             </option>
-            <option
-              name="escolaridade"
-              value="Ensino Superior"
-            >
-              Ensino Superior
-            </option>
-            <option
-              name="escolaridade"
-              value="Ensino Fundamental"
-            >
-              Ensino Fundamental
-            </option>
-            <option
-              name="escolaridade"
-              value="Outro"
-            >
-              Outro
-            </option>
+            {ESCOLARIDADE_OPTIONS.map((option) => (
+              <option key={ option } value={ option }>
+                {option}
+              </option>
+            ))}
           </select>
-          { errors.escolaridade && (
+          {errors.escolaridade && (
             <p className={ styles.inputError }>
               {errors.escolaridade.message}
             </p>
@@ -189,10 +181,8 @@ export default function cadastroSegundaTela(props) {
             className={ styles.cadastroFormSectionInputText }
             { ...register('curso') }
           />
-          { errors.curso && (
-            <p className={ styles.inputError }>
-              {errors.curso.message}
-            </p>
+          {errors.curso && (
+            <p className={ styles.inputError }>{errors.curso.message}</p>
           )}
         </div>
 
@@ -203,33 +193,36 @@ export default function cadastroSegundaTela(props) {
           <select
             name="deficiencia"
             className={ styles.cadastroFormSectionInputText }
+            defaultValue=""
             { ...register('deficiencia') }
           >
-            <option value="sim">sim</option>
-            <option value="não">não</option>
-            <option value="prefiro não dizer">prefiro não dizer</option>
+            <option value="" hidden disabled>
+              Selecione
+            </option>
+            <option value="sim">Sim</option>
+            <option value="não">Não</option>
+            <option value="prefiro não dizer">Prefiro não dizer</option>
           </select>
-          { errors.deficiencia && (
-            <p className={ styles.inputError }>
-              {errors.deficiencia.message}
-            </p>
+          {errors.deficiencia && (
+            <p className={ styles.inputError }>{errors.deficiencia.message}</p>
           )}
         </div>
-
-        <div className={ styles.cadastroFormDiv }>
-          <label
-            htmlFor="descricao-deficiencia"
-            className={ styles.cadastroFormSectionInputLabel }
-          >
-            Se sim, qual?
-          </label>
-          <input
-            name="descricao-deficiencia"
-            type="text"
-            className={ styles.cadastroFormSectionInputText }
-          />
-
-        </div>
+        {disability === 'sim' && (
+          <div className={ styles.cadastroFormDiv }>
+            <label
+              htmlFor="descricaoDeficiencia"
+              className={ styles.cadastroFormSectionInputLabel }
+            >
+              Qual?
+            </label>
+            <input
+              name="descricaoDeficiencia"
+              type="text"
+              className={ styles.cadastroFormSectionInputText }
+              { ...register('descricaoDeficiencia') }
+            />
+          </div>
+        )}
       </section>
       <button
         type="submit"

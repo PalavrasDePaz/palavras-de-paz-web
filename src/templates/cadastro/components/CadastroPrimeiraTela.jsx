@@ -4,26 +4,32 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import styles from '../styles/CadastroTelas.module.css';
 import styleButton from '../styles/CadastroTemplate.module.css';
+import {
+  INVALID_MAIL,
+  MANDATORY_FIELD,
+  PASS_MIN,
+  PASS_MISMATCH,
+} from './constants';
 
 const MIN_PASSWORD_LENGTH = 6;
 
 const schema = yup.object().shape({
-  name: yup.string().required('Este campo é obrigatório'),
-  email: yup.string()
-    .email('Seu email está com formato incorreto, utilize um email válido')
-    .required('Este campo é obrigatório'),
-  password: yup.string().required('Este campo é obrigatório')
-    .min(MIN_PASSWORD_LENGTH, 'A senha deve ter no mínimo 6 caracteres'),
-  passConfirmation: yup.string()
-    .required('Este campo é obrigatório')
-    .min(MIN_PASSWORD_LENGTH, 'A senha deve ter no mínimo 6 caracteres')
-    .equals([yup.ref('password')], 'As senhas não são iguais'),
+  name: yup.string().required(MANDATORY_FIELD),
+  email: yup.string().email(INVALID_MAIL).required(MANDATORY_FIELD),
+  password: yup
+    .string()
+    .required(MANDATORY_FIELD)
+    .min(MIN_PASSWORD_LENGTH, PASS_MIN),
+  passConfirmation: yup
+    .string()
+    .required(MANDATORY_FIELD)
+    .min(MIN_PASSWORD_LENGTH, PASS_MIN)
+    .equals([yup.ref('password')], PASS_MISMATCH),
 });
 
 export default function cadastroPrimeiraTela(props) {
   const {
     register,
-    watch,
     handleSubmit,
     reset,
     formState: { errors },
@@ -37,8 +43,6 @@ export default function cadastroPrimeiraTela(props) {
     setController(controller + 1);
     reset();
   };
-
-  watch('name', 'email', 'password', 'passConfirmation');
 
   return (
     <form
