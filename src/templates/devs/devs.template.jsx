@@ -1,5 +1,4 @@
 import React from 'react';
-import BannerDevs from '../../components/bannerdevs/BannerDevs';
 import Devs from '../../components/desenvolvedores/Devs';
 import FixedButton from '../../components/fixedbutton/FixedButton';
 import Footer from '../../components/footer/Footer';
@@ -9,7 +8,6 @@ function DevsTemplate() {
   return (
     <>
       <Header />
-      <BannerDevs />
       <Devs />
       <FixedButton />
       <Footer />

@@ -1,0 +1,102 @@
+.loginFormSection {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 2rem 1rem;
+  width: 100%;
+}
+
+@media (min-width: 900px) {
+  .loginFormSection {
+    max-width: 25rem;
+  }
+}
+
+@media (min-width: 1224px) {
+  .loginFormSection {
+    max-width: 25rem;
+  }
+}
+
+.loginFormSectionInputContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  position: relative;
+}
+
+.loginFormSectionButtonsContainer {
+  display: flex;
+  justify-content: space-between;
+}
+
+.loginFormSectionTitle {
+  font-size: 1.125rem;
+  font-weight: 700;
+}
+
+.loginFormSectionInputLabel {
+  font-size: 1rem;
+}
+
+.loginFormSectionButtons {
+  font-size: 0.75rem;
+  border: transparent;
+  background-color: transparent;
+  color: grey;
+  font-weight: 700;
+}
+
+.loginFormButtonEnter {
+  background-color: #18ca99;
+  color: white;
+  border: 1px solid #18ca99;
+  border-radius: 0.3rem;
+  padding: 0.5rem 1rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.loginFormButtonEnter:hover {
+  background-color: #119168;
+  border: 1px solid #119168;
+  transition: 0.3s ease-in-out;
+}
+
+.loginFormSectionInputEmail,
+.loginFormSectionInputPassword {
+  font-size: 0.9rem;
+  padding: 0.2rem 1rem;
+}
+
+.loginFormSectionInputPassword {
+  flex: 1;
+}
+
+.loginFormSectionInputPasswordVisibility {
+  font-size: 1rem;
+  background-color: transparent;
+  border: transparent;
+  position: absolute;
+  right: 10px;
+  top: 33px;
+  color: grey;
+}
+
+.loginFormButtonBack {
+  text-decoration: underline;
+  color: black;
+  background-color: transparent;
+  border: transparent;
+}
+
+.inputError {
+  color: red;
+  font-size: 0.75rem;
+  margin: 0;
+}
+
+.inputError::before {
+  display: inline;
+  content: "⚠ ";
+}
