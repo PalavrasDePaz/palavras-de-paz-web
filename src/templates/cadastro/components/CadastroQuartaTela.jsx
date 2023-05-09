@@ -1,23 +1,51 @@
 import React from 'react';
+import { yupResolver } from '@hookform/resolvers/yup';
+import { useForm } from 'react-hook-form';
 import styles from '../styles/CadastroTelas.module.css';
+import styleButton from '../styles/CadastroTemplate.module.css';
 import { DATA_1, DATA_2 } from './constants';
+import { cadastroTela4Schema } from './schemas';
 
-export default function CadastroQuartaTela() {
+export default function cadastroQuartaTela({ buttonCallback } = props) {
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm({
+    resolver: yupResolver(cadastroTela4Schema),
+  });
+
+  const onSubmit = (data) => {
+    buttonCallback(data);
+    console.log(data);
+    reset();
+  };
+
   return (
-    <form className={ styles.cadastroFormSection }>
+    <form
+      className={ styles.cadastroFormSection }
+      onSubmit={ handleSubmit(onSubmit) }
+    >
       <div className={ styles.cadastroFormDivContainer }>
         <p className={ styles.formParagraph }>
           Atualmente, essas são as nossas oportunidades de voluntariado. De
           quais você gostaria de participar?
         </p>
-        { DATA_1.map((item, index) => (
-          <div key={ index } className={ styles.cadastroFormDivCheckbox }>
-            <input className={ styles.cadastroFormInputCheckbox } type="checkbox" />
+
+        {DATA_1.map(({ label, value }) => (
+          <div key={ value } className={ styles.cadastroFormDivCheckbox }>
+            <input
+              className={ styles.cadastroFormInputCheckbox }
+              type="checkbox"
+              id={ value }
+              { ...register(`oportunidades.${ value }`) }
+            />
             <label
               className={ styles.cadastroFormSectionInputLabel }
-              htmlFor="text"
+              htmlFor={ value }
             >
-              {item}
+              {label}
             </label>
           </div>
         ))}
@@ -28,14 +56,19 @@ export default function CadastroQuartaTela() {
           A nossa organização é formada totalmente por voluntários. Caso surjam
           outras oporturnidades você gostaria de ajudar em alguma dessas áreas ?
         </p>
-        { DATA_2.map((item, index) => (
-          <div key={ index } className={ styles.cadastroFormDivCheckbox }>
-            <input className={ styles.cadastroFormInputCheckbox } type="checkbox" />
+        {DATA_2.map(({ label, value }) => (
+          <div key={ value } className={ styles.cadastroFormDivCheckbox }>
+            <input
+              className={ styles.cadastroFormInputCheckbox }
+              type="checkbox"
+              id={ value }
+              { ...register(`habilidades.${ value }`) }
+            />
             <label
               className={ styles.cadastroFormSectionInputLabel }
-              htmlFor="text"
+              htmlFor={ value }
             >
-              {item}
+              {label}
             </label>
           </div>
         ))}
@@ -46,14 +79,24 @@ export default function CadastroQuartaTela() {
           Você precisa de declaração de horas de atividades voluntárias para a
           faculdade ou trabalho?
         </p>
-        <select defaultValue="" className={ styles.cadastroFormSectionInputText }>
+        <select
+          defaultValue=""
+          className={ styles.cadastroFormSectionInputText }
+          { ...register('declaracao') }
+        >
           <option value="" hidden disabled>
             Selecione
           </option>
           <option value="yes">Sim</option>
           <option value="no">Não</option>
         </select>
+        {errors.declaracao && (
+          <p className={ styles.inputError }>{errors.declaracao.message}</p>
+        )}
       </div>
+      <button type="submit" className={ styleButton.cadastroFormSectionButton }>
+        Finalizar
+      </button>
     </form>
   );
 }

@@ -9,7 +9,7 @@ import styleButton from '../styles/CadastroTemplate.module.css';
 
 import { cadastroTela3Schema } from './schemas';
 
-export default function cadastroTerceiraTela(props) {
+export default function cadastroTerceiraTela({ buttonCallback } = props) {
   const [about, experience, expectations] = OPEN_TEXT_FIELDS;
 
   const {
@@ -21,10 +21,8 @@ export default function cadastroTerceiraTela(props) {
     resolver: yupResolver(cadastroTela3Schema),
   });
 
-  const { setController, controller } = props;
-
-  const onSubmit = () => {
-    setController(controller + 1);
+  const onSubmit = (data) => {
+    buttonCallback(data);
     reset();
   };
 

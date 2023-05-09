@@ -9,11 +9,22 @@ import CadastroQuartaTela from './components/CadastroQuartaTela';
 
 export default function cadastroTemplate() {
   const [controller, setController] = useState(0);
+  const [formData, setFormData] = useState({});
 
   const PAGE_1 = 0;
   const PAGE_2 = 1;
   const PAGE_3 = 2;
   const PAGE_4 = 3;
+
+  const buttonCallback = (data) => {
+    setFormData((_formData) => ({ ..._formData, data }));
+    if (controller !== PAGE_4) {
+      setController(controller + 1);
+    }
+    if (controller === PAGE_4) {
+      console.log(formData);
+    }
+  };
 
   return (
     <>
@@ -21,24 +32,19 @@ export default function cadastroTemplate() {
       <Signature controller={ controller } />
       <div className={ styles.main_container_form }>
         {controller === PAGE_1 && (
-          <CadastroPrimeiraTela
-            setController={ setController }
-            controller={ controller }
-          />
+          <CadastroPrimeiraTela buttonCallback={ buttonCallback } />
         )}
         {controller === PAGE_2 && (
-          <CadastroSegundaTela
-            setController={ setController }
-            controller={ controller }
-          />
+          <CadastroSegundaTela buttonCallback={ buttonCallback } />
         )}
         {controller === PAGE_3 && (
-          <CadastroTerceiraTela
-            setController={ setController }
-            controller={ controller }
-          />
+          <CadastroTerceiraTela buttonCallback={ buttonCallback } />
         )}
-        {controller === PAGE_4 && (<CadastroQuartaTela setController={ setController } />
+        {controller === PAGE_4 && (
+          <CadastroQuartaTela
+            buttonCallback={ buttonCallback }
+            currentData={ formData }
+          />
         )}
       </div>
     </>
