@@ -47,28 +47,28 @@ export const OPEN_TEXT_FIELDS = [
 ];
 
 export const DATA_1 = [
-  'Facilitador presencial',
-  'Facilitador virtual',
-  'Avaliador remoto',
-  'Captação de voluntário',
-  'Leitura de caderno de presos Virtual',
-  'Tradutor remoto',
-  'Divulgação',
-  'Captação de grupos',
-  'Leitura de redação dos presos virtual',
+  { label: 'Facilitador presencial', value: 'facilitadorPresencial' },
+  { label: 'Facilitador virtual', value: 'facilitadorVirtual' },
+  { label: 'Avaliador remoto', value: 'avaliadorRemoto' },
+  { label: 'Captação de voluntário', value: 'captaçãoDeVoluntario' },
+  { label: 'Leitura de caderno de presos Virtual', value: 'leituraDeCaderno' },
+  { label: 'Tradutor remoto', value: 'tradutorRemoto' },
+  { label: 'Divulgação', value: 'divulgacao' },
+  { label: 'Captação de grupos', value: 'captacaoDeGrupos' },
+  { label: 'Leitura de redação dos presos virtual', value: 'leituraDeRedacao' },
 ];
 
 export const DATA_2 = [
-  'Administração',
-  'Comunicação',
-  'Jornalismo',
-  'Mídias Sociais',
-  'Rádio e Televisão',
-  'Recursos Humanos',
-  'Tecnologia da Informação',
-  'Psicologia',
-  'Assistência Social',
-  'Outros',
+  { label: 'Administração', value: 'administracao' },
+  { label: 'Comunicação', value: 'comunicacao' },
+  { label: 'Jornalismo', value: 'jornalismo' },
+  { label: 'Mídias Sociais', value: 'midiasSociais' },
+  { label: 'Rádio e Televisão', value: 'radioTV' },
+  { label: 'Recursos Humanos', value: 'RH' },
+  { label: 'Tecnologia da Informação', value: 'TI' },
+  { label: 'Psicologia', value: 'psicologia' },
+  { label: 'Assistência Social', value: 'assistenciaSocial' },
+  { label: 'Outros', value: 'outros' },
 ];
 
 export const MANDATORY_FIELD = 'Este campo é obrigatório';

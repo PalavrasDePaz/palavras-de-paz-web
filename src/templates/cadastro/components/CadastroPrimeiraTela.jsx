@@ -27,27 +27,19 @@ const schema = yup.object().shape({
     .equals([yup.ref('password')], PASS_MISMATCH),
 });
 
-export default function cadastroPrimeiraTela(props) {
+export default function cadastroPrimeiraTela({ buttonCallback } = props) {
   const {
     register,
     handleSubmit,
-    reset,
     formState: { errors },
   } = useForm({
     resolver: yupResolver(schema),
   });
 
-  const { setController, controller } = props;
-
-  const onSubmit = () => {
-    setController(controller + 1);
-    reset();
-  };
-
   return (
     <form
       className={ styles.cadastroFormSection }
-      onSubmit={ handleSubmit(onSubmit) }
+      onSubmit={ handleSubmit(buttonCallback) }
     >
       <section>
         <h1 className={ styles.formTitle }>CADASTRO DE VOLUNTÁRIOS</h1>
