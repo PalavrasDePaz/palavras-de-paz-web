@@ -1,11 +1,12 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import HeaderCadastro from './components/HeaderCadastro';
 import styles from './styles/CadastroTemplate.module.css';
+import Signature from './components/Signature';
 import CadastroPrimeiraTela from './components/CadastroPrimeiraTela';
 import CadastroSegundaTela from './components/CadastroSegundaTela';
 import CadastroTerceiraTela from './components/CadastroTerceiraTela';
-import Signature from './components/Signature';
 import CadastroQuartaTela from './components/CadastroQuartaTela';
+import CadastroTelaFinal from './components/CadastroTelaFinal';
 
 export default function cadastroTemplate() {
   const [controller, setController] = useState(0);
@@ -15,16 +16,19 @@ export default function cadastroTemplate() {
   const PAGE_2 = 1;
   const PAGE_3 = 2;
   const PAGE_4 = 3;
+  const FINISHED = 4;
 
   const buttonCallback = (data) => {
-    setFormData((_formData) => ({ ..._formData, data }));
-    if (controller !== PAGE_4) {
-      setController(controller + 1);
-    }
-    if (controller === PAGE_4) {
+    setFormData((_formData) => ({ ..._formData, ...data }));
+    setController(controller + 1);
+  };
+
+  // Provisório enquanto não temos as rotas para mandar os dados.
+  useEffect(() => {
+    if (controller === FINISHED) {
       console.log(formData);
     }
-  };
+  }, [controller]);
 
   return (
     <>
@@ -41,11 +45,9 @@ export default function cadastroTemplate() {
           <CadastroTerceiraTela buttonCallback={ buttonCallback } />
         )}
         {controller === PAGE_4 && (
-          <CadastroQuartaTela
-            buttonCallback={ buttonCallback }
-            currentData={ formData }
-          />
+          <CadastroQuartaTela buttonCallback={ buttonCallback } />
         )}
+        {controller === FINISHED && <CadastroTelaFinal />}
       </div>
     </>
   );

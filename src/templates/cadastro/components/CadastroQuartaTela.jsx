@@ -10,22 +10,15 @@ export default function cadastroQuartaTela({ buttonCallback } = props) {
   const {
     register,
     handleSubmit,
-    reset,
     formState: { errors },
   } = useForm({
     resolver: yupResolver(cadastroTela4Schema),
   });
 
-  const onSubmit = (data) => {
-    buttonCallback(data);
-    console.log(data);
-    reset();
-  };
-
   return (
     <form
       className={ styles.cadastroFormSection }
-      onSubmit={ handleSubmit(onSubmit) }
+      onSubmit={ handleSubmit(buttonCallback) }
     >
       <div className={ styles.cadastroFormDivContainer }>
         <p className={ styles.formParagraph }>

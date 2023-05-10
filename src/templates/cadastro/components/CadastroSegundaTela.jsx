@@ -13,7 +13,6 @@ export default function cadastroSegundaTela({ buttonCallback } = props) {
     register,
     handleSubmit,
     watch,
-    reset,
     formState: { errors },
   } = useForm({
     resolver: yupResolver(cadastroTela2Schema),
@@ -21,11 +20,6 @@ export default function cadastroSegundaTela({ buttonCallback } = props) {
 
   const country = watch('pais', 'BR');
   const disability = watch('deficiencia', 'não');
-
-  const onSubmit = (data) => {
-    buttonCallback(data);
-    reset();
-  };
 
   countries.registerLocale(ptLocale);
 
@@ -38,7 +32,7 @@ export default function cadastroSegundaTela({ buttonCallback } = props) {
   return (
     <form
       className={ styles.cadastroFormSection }
-      onSubmit={ handleSubmit(onSubmit) }
+      onSubmit={ handleSubmit(buttonCallback) }
     >
       <section className={ styles.cadastroFormSectionInputContainer }>
         <div className={ styles.cadastroFormDiv }>

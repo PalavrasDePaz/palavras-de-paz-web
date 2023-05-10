@@ -31,21 +31,15 @@ export default function cadastroPrimeiraTela({ buttonCallback } = props) {
   const {
     register,
     handleSubmit,
-    reset,
     formState: { errors },
   } = useForm({
     resolver: yupResolver(schema),
   });
 
-  const onSubmit = (data) => {
-    buttonCallback(data);
-    reset();
-  };
-
   return (
     <form
       className={ styles.cadastroFormSection }
-      onSubmit={ handleSubmit(onSubmit) }
+      onSubmit={ handleSubmit(buttonCallback) }
     >
       <section>
         <h1 className={ styles.formTitle }>CADASTRO DE VOLUNTÁRIOS</h1>

@@ -15,16 +15,10 @@ export default function cadastroTerceiraTela({ buttonCallback } = props) {
   const {
     register,
     handleSubmit,
-    reset,
     formState: { errors },
   } = useForm({
     resolver: yupResolver(cadastroTela3Schema),
   });
-
-  const onSubmit = (data) => {
-    buttonCallback(data);
-    reset();
-  };
 
   const adjustTextAreaSize = (e) => {
     e.target.style.height = 'inherit';
@@ -34,7 +28,7 @@ export default function cadastroTerceiraTela({ buttonCallback } = props) {
   return (
     <form
       className={ styles.cadastroFormSection }
-      onSubmit={ handleSubmit(onSubmit) }
+      onSubmit={ handleSubmit(buttonCallback) }
     >
 
       <section className={ styles.cadastroFormSectionInputContainer }>
