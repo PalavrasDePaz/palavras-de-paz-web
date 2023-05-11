@@ -196,3 +196,9 @@ export const OPCOES_ESTADOS = [
     value: 'TO',
   },
 ];
+
+export const MIN_CHARS_INPUTS = 3;
+
+export const minCharsMessage = (chars) =>
+  // eslint-disable-next-line implicit-arrow-linebreak
+  `Por favor utilize pelo menos ${ chars } caracteres`;

@@ -111,7 +111,6 @@ export default function cadastroSegundaTela({ buttonCallback } = props) {
             placeholder="Digite sua cidade"
             type="text"
             maxLength={ 28 }
-            minLength={ 3 }
             className={ styles.cadastroFormSectionInputText }
             { ...register('cidade') }
           />
@@ -181,7 +180,6 @@ export default function cadastroSegundaTela({ buttonCallback } = props) {
             type="text"
             name="curso"
             maxLength={ 40 }
-            minLength={ 3 }
             className={ styles.cadastroFormSectionInputText }
             { ...register('curso') }
           />
@@ -226,7 +224,6 @@ export default function cadastroSegundaTela({ buttonCallback } = props) {
               name="descricaoDeficiencia"
               type="text"
               maxLength={ 30 }
-              minLength={ 3 }
               className={ styles.cadastroFormSectionInputText }
               { ...register('descricaoDeficiencia') }
             />

@@ -92,7 +92,6 @@ export default function cadastroTerceiraTela({ buttonCallback } = props) {
           </label>
           <textarea
             maxLength={ 300 }
-            minLength={ 3 }
             className={ styles.cadastroFormSectionInputText }
             onKeyDown={ adjustTextAreaSize }
             { ...register('aboutYou') }
@@ -111,7 +110,6 @@ export default function cadastroTerceiraTela({ buttonCallback } = props) {
           </label>
           <textarea
             maxLength={ 300 }
-            minLength={ 3 }
             className={ styles.cadastroFormSectionInputText }
             onKeyDown={ adjustTextAreaSize }
             { ...register('experience') }
@@ -130,7 +128,6 @@ export default function cadastroTerceiraTela({ buttonCallback } = props) {
           </label>
           <textarea
             maxLength={ 300 }
-            minLength={ 3 }
             className={ styles.cadastroFormSectionInputText }
             onKeyDown={ adjustTextAreaSize }
             { ...register('expectations') }
