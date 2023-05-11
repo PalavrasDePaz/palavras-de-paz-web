@@ -65,6 +65,8 @@ export default function cadastroPrimeiraTela({ buttonCallback } = props) {
             <input
               placeholder="Digite seu nome"
               type="text"
+              maxLength={ 24 }
+              minLength={ 3 }
               className={ styles.cadastroFormSectionInputText }
               { ...register('name') }
             />
@@ -83,6 +85,8 @@ export default function cadastroPrimeiraTela({ buttonCallback } = props) {
             <input
               placeholder="Digite seu email"
               type="text"
+              maxLength={ 24 }
+              minLength={ 3 }
               className={ styles.cadastroFormSectionInputText }
               { ...register('email') }
             />
@@ -101,6 +105,7 @@ export default function cadastroPrimeiraTela({ buttonCallback } = props) {
             <input
               placeholder="Digite sua senha"
               type="password"
+              maxLength={ 12 }
               className={ styles.cadastroFormSectionInputText }
               { ...register('password') }
             />
@@ -118,6 +123,7 @@ export default function cadastroPrimeiraTela({ buttonCallback } = props) {
 
             <input
               type="password"
+              maxLength={ 12 }
               className={ styles.cadastroFormSectionInputText }
               placeholder="Confirme sua senha"
               { ...register('passConfirmation') }
