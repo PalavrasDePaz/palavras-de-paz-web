@@ -87,7 +87,7 @@
   display: grid;
   grid-template-columns: 2fr 2fr 2fr 2fr;
   gap: 2rem;
-  padding:0 2rem 2rem 2rem;
+  padding: 0 2rem 2rem 2rem;
 }
 
 @media (max-width: 768px) {
@@ -117,11 +117,16 @@
 .cadastroFormInputCheckbox {
   height: 1rem;
   width: 1rem;
-  border-radius: 4px; 
+  border-radius: 4px;
 }
 
 .cadastroFormDivCheckbox {
   display: flex;
   align-items: center;
   gap: 0.65rem;
+}
+
+.buttonsRow {
+  display: flex;
+  margin-left: auto;
 }

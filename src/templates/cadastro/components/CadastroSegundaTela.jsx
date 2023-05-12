@@ -7,12 +7,19 @@ import styles from '../styles/CadastroTelas.module.css';
 import styleButton from '../styles/CadastroTemplate.module.css';
 import { ESCOLARIDADE_OPTIONS, OPCOES_ESTADOS } from './constants';
 import { cadastroTela2Schema } from './schemas';
+import ErrorMessage from '../../../components/forms/ErrorMessage';
+import EmptyOption from '../../../components/forms/EmptyOption';
 
-export default function cadastroSegundaTela({ buttonCallback } = props) {
+export default function cadastroSegundaTela({
+  buttonCallback,
+  returnButton,
+  data,
+} = props) {
   const {
     register,
     handleSubmit,
     watch,
+    getValues,
     formState: { errors },
   } = useForm({
     resolver: yupResolver(cadastroTela2Schema),
@@ -44,7 +51,7 @@ export default function cadastroSegundaTela({ buttonCallback } = props) {
           </label>
           <select
             name="pais"
-            defaultValue="BR"
+            defaultValue={ data.country || 'BR' }
             className={ styles.cadastroFormSectionInputText }
             { ...register('pais') }
           >
@@ -55,9 +62,7 @@ export default function cadastroSegundaTela({ buttonCallback } = props) {
                 </option>
               ))}
           </select>
-          {errors.pais && (
-            <p className={ styles.inputError }>{errors.pais.message}</p>
-          )}
+          <ErrorMessage showError={ errors.pais } style={ styles.inputError } />
         </div>
         <div className={ styles.cadastroFormDiv }>
           <label
@@ -69,34 +74,28 @@ export default function cadastroSegundaTela({ buttonCallback } = props) {
           {country === 'BR' ? (
             <select
               name="estado"
-              defaultValue=""
+              defaultValue={ data.estado || '' }
               className={ styles.cadastroFormSectionInputText }
-              onChange={ (e) => selectCountryHandler(e.target.value) }
               { ...register('estado') }
             >
-              <option value="" hidden disabled>
-                Selecione
-              </option>
-              {countryArray?.length
-                && OPCOES_ESTADOS.map(({ label, value }) => (
-                  <option key={ value } value={ value }>
-                    {label}
-                  </option>
-                ))}
+              <EmptyOption />
+              {OPCOES_ESTADOS.map(({ label, value }) => (
+                <option key={ value } value={ value }>
+                  {label}
+                </option>
+              ))}
             </select>
           ) : (
             <input
               name="estado"
               placeholder="Digite seu estado"
+              defaultValue={ data.estado || '' }
               type="text"
               className={ styles.cadastroFormSectionInputText }
               { ...register('estado') }
             />
           )}
-
-          {errors.estado && (
-            <p className={ styles.inputError }>{errors.estado.message}</p>
-          )}
+          <ErrorMessage showError={ errors.estado } style={ styles.inputError } />
         </div>
 
         <div className={ styles.cadastroFormDiv }>
@@ -109,14 +108,13 @@ export default function cadastroSegundaTela({ buttonCallback } = props) {
           <input
             name="cidade"
             placeholder="Digite sua cidade"
+            defaultValue={ data.cidade || '' }
             type="text"
             maxLength={ 28 }
             className={ styles.cadastroFormSectionInputText }
             { ...register('cidade') }
           />
-          {errors.cidade && (
-            <p className={ styles.inputError }>{errors.cidade.message}</p>
-          )}
+          <ErrorMessage showError={ errors.cidade } style={ styles.inputError } />
         </div>
 
         <div className={ styles.cadastroFormDiv }>
@@ -131,14 +129,13 @@ export default function cadastroSegundaTela({ buttonCallback } = props) {
             placeholder="Digite seu telefone"
             type="number"
             pattern="[\d*]"
+            defaultValue={ data.telefone }
             maxLength={ 15 }
             minLength={ 3 }
             className={ styles.cadastroFormSectionInputText }
             { ...register('telefone') }
           />
-          {errors.telefone && (
-            <p className={ styles.inputError }>{errors.telefone.message}</p>
-          )}
+          <ErrorMessage showError={ errors.telefone } style={ styles.inputError } />
         </div>
 
         <div className={ styles.cadastroFormDiv }>
@@ -151,21 +148,20 @@ export default function cadastroSegundaTela({ buttonCallback } = props) {
           <select
             className={ styles.cadastroFormSectionInputText }
             name="escolaridade"
-            defaultValue=""
+            defaultValue={ data.escolaridade || '' }
             { ...register('escolaridade') }
           >
-            <option value="" hidden disabled>
-              Selecione
-            </option>
+            <EmptyOption />
             {ESCOLARIDADE_OPTIONS.map((option) => (
               <option key={ option } value={ option }>
                 {option}
               </option>
             ))}
           </select>
-          {errors.escolaridade && (
-            <p className={ styles.inputError }>{errors.escolaridade.message}</p>
-          )}
+          <ErrorMessage
+            showError={ errors.escolaridade }
+            style={ styles.inputError }
+          />
         </div>
 
         <div className={ styles.cadastroFormDiv }>
@@ -179,13 +175,12 @@ export default function cadastroSegundaTela({ buttonCallback } = props) {
             placeholder="Digite seu curso"
             type="text"
             name="curso"
+            defaultValue={ data.curso }
             maxLength={ 40 }
             className={ styles.cadastroFormSectionInputText }
             { ...register('curso') }
           />
-          {errors.curso && (
-            <p className={ styles.inputError }>{errors.curso.message}</p>
-          )}
+          <ErrorMessage showError={ errors.curso } style={ styles.inputError } />
         </div>
 
         <div className={ styles.cadastroFormDiv }>
@@ -198,19 +193,18 @@ export default function cadastroSegundaTela({ buttonCallback } = props) {
           <select
             name="deficiencia"
             className={ styles.cadastroFormSectionInputText }
-            defaultValue=""
+            defaultValue={ data.deficiencia || '' }
             { ...register('deficiencia') }
           >
-            <option value="" hidden disabled>
-              Selecione
-            </option>
+            <EmptyOption />
             <option value="sim">Sim</option>
             <option value="não">Não</option>
             <option value="prefiro não dizer">Prefiro não dizer</option>
           </select>
-          {errors.deficiencia && (
-            <p className={ styles.inputError }>{errors.deficiencia.message}</p>
-          )}
+          <ErrorMessage
+            showError={ errors.deficiencia }
+            style={ styles.inputError }
+          />
         </div>
         {disability === 'sim' && (
           <div className={ styles.cadastroFormDiv }>
@@ -223,16 +217,30 @@ export default function cadastroSegundaTela({ buttonCallback } = props) {
             <input
               name="descricaoDeficiencia"
               type="text"
+              defaultValue={ data.descricaoDeficiencia }
               maxLength={ 30 }
               className={ styles.cadastroFormSectionInputText }
               { ...register('descricaoDeficiencia') }
             />
+            <ErrorMessage
+              showError={ errors.descricaoDeficiencia }
+              style={ styles.inputError }
+            />
           </div>
         )}
       </section>
-      <button type="submit" className={ styleButton.cadastroFormSectionButton }>
-        Próximo
-      </button>
+      <div className={ styles.buttonsRow }>
+        <button
+          type="button"
+          className={ styleButton.cadastroFormSectionButton }
+          onClick={ () => returnButton(getValues()) }
+        >
+          Anterior
+        </button>
+        <button type="submit" className={ styleButton.cadastroFormSectionButton }>
+          Próximo
+        </button>
+      </div>
     </form>
   );
 }
