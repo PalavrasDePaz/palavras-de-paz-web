@@ -8,6 +8,7 @@ import styleButton from '../styles/CadastroTemplate.module.css';
 import { ESCOLARIDADE_OPTIONS, OPCOES_ESTADOS } from './constants';
 import { cadastroTela2Schema } from './schemas';
 import ErrorMessage from '../../../components/forms/ErrorMessage';
+import EmptyOption from '../../../components/forms/EmptyOption';
 
 export default function cadastroSegundaTela({
   buttonCallback,
@@ -77,9 +78,7 @@ export default function cadastroSegundaTela({
               className={ styles.cadastroFormSectionInputText }
               { ...register('estado') }
             >
-              <option value="" hidden disabled>
-                Selecione
-              </option>
+              <EmptyOption />
               {OPCOES_ESTADOS.map(({ label, value }) => (
                 <option key={ value } value={ value }>
                   {label}
@@ -152,9 +151,7 @@ export default function cadastroSegundaTela({
             defaultValue={ data.escolaridade || '' }
             { ...register('escolaridade') }
           >
-            <option value="" hidden disabled>
-              Selecione
-            </option>
+            <EmptyOption />
             {ESCOLARIDADE_OPTIONS.map((option) => (
               <option key={ option } value={ option }>
                 {option}
@@ -199,9 +196,7 @@ export default function cadastroSegundaTela({
             defaultValue={ data.deficiencia || '' }
             { ...register('deficiencia') }
           >
-            <option value="" hidden disabled>
-              Selecione
-            </option>
+            <EmptyOption />
             <option value="sim">Sim</option>
             <option value="não">Não</option>
             <option value="prefiro não dizer">Prefiro não dizer</option>

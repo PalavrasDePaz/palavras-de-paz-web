@@ -9,6 +9,7 @@ import styleButton from '../styles/CadastroTemplate.module.css';
 
 import { cadastroTela3Schema } from './schemas';
 import ErrorMessage from '../../../components/forms/ErrorMessage';
+import EmptyOption from '../../../components/forms/EmptyOption';
 
 export default function cadastroTerceiraTela({
   buttonCallback,
@@ -49,9 +50,7 @@ export default function cadastroTerceiraTela({
             className={ styles.cadastroFormSectionInputText }
             { ...register('referral') }
           >
-            <option value="" hidden disabled>
-              Selecione
-            </option>
+            <EmptyOption />
             {REFERRAL.options.map((option) => (
               <option key={ option } value={ option }>
                 {option}
@@ -72,9 +71,7 @@ export default function cadastroTerceiraTela({
             className={ styles.cadastroFormSectionInputText }
             { ...register('awareness') }
           >
-            <option value="" hidden disabled>
-              Selecione
-            </option>
+            <EmptyOption />
             {AWARENESS.options.map(({ label, value }) => (
               <option key={ value } value={ value }>
                 {label}

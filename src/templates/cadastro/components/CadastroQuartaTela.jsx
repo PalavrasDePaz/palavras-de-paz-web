@@ -6,6 +6,7 @@ import styleButton from '../styles/CadastroTemplate.module.css';
 import { DATA_1, DATA_2 } from './constants';
 import { cadastroTela4Schema } from './schemas';
 import ErrorMessage from '../../../components/forms/ErrorMessage';
+import EmptyOption from '../../../components/forms/EmptyOption';
 
 export default function cadastroQuartaTela({
   buttonCallback,
@@ -85,9 +86,7 @@ export default function cadastroQuartaTela({
           className={ styles.cadastroFormSectionInputText }
           { ...register('declaracao') }
         >
-          <option value="" hidden disabled>
-            Selecione
-          </option>
+          <EmptyOption />
           <option value="yes">Sim</option>
           <option value="no">Não</option>
         </select>
