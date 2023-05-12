@@ -18,9 +18,18 @@ export default function cadastroTemplate() {
   const PAGE_4 = 3;
   const FINISHED = 4;
 
-  const buttonCallback = (data) => {
+  const updateForm = (data) =>
+    // eslint-disable-next-line implicit-arrow-linebreak
     setFormData((_formData) => ({ ..._formData, ...data }));
+
+  const buttonCallback = (data) => {
+    updateForm(data);
     setController(controller + 1);
+  };
+
+  const returnButton = (data) => {
+    updateForm(data);
+    setController((_controller) => _controller - 1);
   };
 
   // Provisório enquanto não temos as rotas para mandar os dados.
@@ -36,16 +45,31 @@ export default function cadastroTemplate() {
       <Signature controller={ controller } />
       <div className={ styles.main_container_form }>
         {controller === PAGE_1 && (
-          <CadastroPrimeiraTela buttonCallback={ buttonCallback } />
+          <CadastroPrimeiraTela
+            buttonCallback={ buttonCallback }
+            data={ formData }
+          />
         )}
         {controller === PAGE_2 && (
-          <CadastroSegundaTela buttonCallback={ buttonCallback } />
+          <CadastroSegundaTela
+            buttonCallback={ buttonCallback }
+            returnButton={ returnButton }
+            data={ formData }
+          />
         )}
         {controller === PAGE_3 && (
-          <CadastroTerceiraTela buttonCallback={ buttonCallback } />
+          <CadastroTerceiraTela
+            buttonCallback={ buttonCallback }
+            returnButton={ returnButton }
+            data={ formData }
+          />
         )}
         {controller === PAGE_4 && (
-          <CadastroQuartaTela buttonCallback={ buttonCallback } />
+          <CadastroQuartaTela
+            buttonCallback={ buttonCallback }
+            returnButton={ returnButton }
+            data={ formData }
+          />
         )}
         {controller === FINISHED && <CadastroTelaFinal />}
       </div>

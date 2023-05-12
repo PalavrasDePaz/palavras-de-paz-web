@@ -8,13 +8,20 @@ import styles from '../styles/CadastroTelas.module.css';
 import styleButton from '../styles/CadastroTemplate.module.css';
 
 import { cadastroTela3Schema } from './schemas';
+import ErrorMessage from '../../../components/forms/ErrorMessage';
+import EmptyOption from '../../../components/forms/EmptyOption';
 
-export default function cadastroTerceiraTela({ buttonCallback } = props) {
+export default function cadastroTerceiraTela({
+  buttonCallback,
+  returnButton,
+  data,
+} = props) {
   const [about, experience, expectations] = OPEN_TEXT_FIELDS;
 
   const {
     register,
     handleSubmit,
+    getValues,
     formState: { errors },
   } = useForm({
     resolver: yupResolver(cadastroTela3Schema),
@@ -30,9 +37,7 @@ export default function cadastroTerceiraTela({ buttonCallback } = props) {
       className={ styles.cadastroFormSection }
       onSubmit={ handleSubmit(buttonCallback) }
     >
-
       <section className={ styles.cadastroFormSectionInputContainer }>
-
         <div className={ styles.cadastroFormDiv }>
           <label
             className={ styles.cadastroFormSectionInputLabel }
@@ -41,13 +46,11 @@ export default function cadastroTerceiraTela({ buttonCallback } = props) {
             {REFERRAL.fieldLabel}
           </label>
           <select
-            defaultValue=""
+            defaultValue={ data.referral || '' }
             className={ styles.cadastroFormSectionInputText }
             { ...register('referral') }
           >
-            <option value="" hidden disabled>
-              Selecione
-            </option>
+            <EmptyOption />
             {REFERRAL.options.map((option) => (
               <option key={ option } value={ option }>
                 {option}
@@ -64,13 +67,11 @@ export default function cadastroTerceiraTela({ buttonCallback } = props) {
             {AWARENESS.fieldLabel}
           </label>
           <select
-            defaultValue=""
+            defaultValue={ data.awareness || '' }
             className={ styles.cadastroFormSectionInputText }
             { ...register('awareness') }
           >
-            <option value="" hidden disabled>
-              Selecione
-            </option>
+            <EmptyOption />
             {AWARENESS.options.map(({ label, value }) => (
               <option key={ value } value={ value }>
                 {label}
@@ -78,11 +79,9 @@ export default function cadastroTerceiraTela({ buttonCallback } = props) {
             ))}
           </select>
         </div>
-
       </section>
 
       <section>
-
         <div className={ styles.cadastroFormDiv }>
           <label
             className={ styles.cadastroFormSectionInputLabel }
@@ -92,13 +91,12 @@ export default function cadastroTerceiraTela({ buttonCallback } = props) {
           </label>
           <textarea
             maxLength={ 300 }
+            defaultValue={ data.aboutYou }
             className={ styles.cadastroFormSectionInputText }
             onKeyDown={ adjustTextAreaSize }
             { ...register('aboutYou') }
           />
-          {errors.aboutYou && (
-            <p className={ styles.inputError }>{errors.aboutYou.message}</p>
-          )}
+          <ErrorMessage showError={ errors.aboutYou } style={ styles.inputError } />
         </div>
 
         <div className={ styles.cadastroFormDiv }>
@@ -110,13 +108,15 @@ export default function cadastroTerceiraTela({ buttonCallback } = props) {
           </label>
           <textarea
             maxLength={ 300 }
+            defaultValue={ data.experience }
             className={ styles.cadastroFormSectionInputText }
             onKeyDown={ adjustTextAreaSize }
             { ...register('experience') }
           />
-          {errors.experience && (
-            <p className={ styles.inputError }>{errors.experience.message}</p>
-          )}
+          <ErrorMessage
+            showError={ errors.experience }
+            style={ styles.inputError }
+          />
         </div>
 
         <div className={ styles.cadastroFormDiv }>
@@ -128,23 +128,29 @@ export default function cadastroTerceiraTela({ buttonCallback } = props) {
           </label>
           <textarea
             maxLength={ 300 }
+            defaultValue={ data.expectations }
             className={ styles.cadastroFormSectionInputText }
             onKeyDown={ adjustTextAreaSize }
             { ...register('expectations') }
           />
-          {errors.expectations && (
-            <p className={ styles.inputError }>{errors.expectations.message}</p>
-          )}
+          <ErrorMessage
+            showError={ errors.expectations }
+            style={ styles.inputError }
+          />
         </div>
-
       </section>
-
-      <button
-        type="submit"
-        className={ styleButton.cadastroFormSectionButton }
-      >
-        Próximo
-      </button>
+      <div className={ styles.buttonsRow }>
+        <button
+          type="button"
+          className={ styleButton.cadastroFormSectionButton }
+          onClick={ () => returnButton(getValues()) }
+        >
+          Anterior
+        </button>
+        <button type="submit" className={ styleButton.cadastroFormSectionButton }>
+          Próximo
+        </button>
+      </div>
     </form>
   );
 }
