@@ -6,7 +6,11 @@ import styleButton from '../styles/CadastroTemplate.module.css';
 import { DATA_1, DATA_2 } from './constants';
 import { cadastroTela4Schema } from './schemas';
 
-export default function cadastroQuartaTela({ buttonCallback } = props) {
+export default function cadastroQuartaTela({
+  buttonCallback,
+  returnButton,
+  data,
+} = props) {
   const {
     register,
     handleSubmit,
@@ -32,6 +36,7 @@ export default function cadastroQuartaTela({ buttonCallback } = props) {
               className={ styles.cadastroFormInputCheckbox }
               type="checkbox"
               id={ value }
+              checked={ data.oportunidades?.[value] }
               { ...register(`oportunidades.${ value }`) }
             />
             <label
@@ -55,6 +60,7 @@ export default function cadastroQuartaTela({ buttonCallback } = props) {
               className={ styles.cadastroFormInputCheckbox }
               type="checkbox"
               id={ value }
+              defaultValue={ data.habilidades?.[value] }
               { ...register(`habilidades.${ value }`) }
             />
             <label
@@ -73,7 +79,7 @@ export default function cadastroQuartaTela({ buttonCallback } = props) {
           faculdade ou trabalho?
         </p>
         <select
-          defaultValue=""
+          defaultValue={ data.declaracao || '' }
           className={ styles.cadastroFormSectionInputText }
           { ...register('declaracao') }
         >
@@ -87,9 +93,17 @@ export default function cadastroQuartaTela({ buttonCallback } = props) {
           <p className={ styles.inputError }>{errors.declaracao.message}</p>
         )}
       </div>
-      <button type="submit" className={ styleButton.cadastroFormSectionButton }>
-        Finalizar
-      </button>
+      <div className={ styles.buttonsRow }>
+        <button
+          className={ styleButton.cadastroFormSectionButton }
+          onClick={ returnButton }
+        >
+          Anterior
+        </button>
+        <button type="submit" className={ styleButton.cadastroFormSectionButton }>
+          Finalizar
+        </button>
+      </div>
     </form>
   );
 }

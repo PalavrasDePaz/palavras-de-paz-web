@@ -39,7 +39,7 @@ const schema = yup.object().shape({
     .equals([yup.ref('password')], PASS_MISMATCH),
 });
 
-export default function cadastroPrimeiraTela({ buttonCallback } = props) {
+export default function cadastroPrimeiraTela({ buttonCallback, data } = props) {
   const {
     register,
     handleSubmit,
@@ -78,6 +78,7 @@ export default function cadastroPrimeiraTela({ buttonCallback } = props) {
               placeholder="Digite seu nome"
               type="text"
               maxLength={ 24 }
+              defaultValue={ data.name }
               className={ styles.cadastroFormSectionInputText }
               { ...register('name') }
             />
@@ -98,6 +99,7 @@ export default function cadastroPrimeiraTela({ buttonCallback } = props) {
               placeholder="Digite seu email"
               type="text"
               maxLength={ 24 }
+              defaultValue={ data.email }
               className={ styles.cadastroFormSectionInputText }
               { ...register('email') }
             />
