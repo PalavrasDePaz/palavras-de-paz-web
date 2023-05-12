@@ -5,6 +5,7 @@ import styles from '../styles/CadastroTelas.module.css';
 import styleButton from '../styles/CadastroTemplate.module.css';
 import { DATA_1, DATA_2 } from './constants';
 import { cadastroTela4Schema } from './schemas';
+import ErrorMessage from '../../../components/forms/ErrorMessage';
 
 export default function cadastroQuartaTela({
   buttonCallback,
@@ -89,9 +90,7 @@ export default function cadastroQuartaTela({
           <option value="yes">Sim</option>
           <option value="no">Não</option>
         </select>
-        {errors.declaracao && (
-          <p className={ styles.inputError }>{errors.declaracao.message}</p>
-        )}
+        <ErrorMessage showError={ errors.declaracao } style={ styles.inputError } />
       </div>
       <div className={ styles.buttonsRow }>
         <button

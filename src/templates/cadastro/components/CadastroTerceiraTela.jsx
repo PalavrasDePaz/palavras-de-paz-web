@@ -8,6 +8,7 @@ import styles from '../styles/CadastroTelas.module.css';
 import styleButton from '../styles/CadastroTemplate.module.css';
 
 import { cadastroTela3Schema } from './schemas';
+import ErrorMessage from '../../../components/forms/ErrorMessage';
 
 export default function cadastroTerceiraTela({
   buttonCallback,
@@ -97,9 +98,7 @@ export default function cadastroTerceiraTela({
             onKeyDown={ adjustTextAreaSize }
             { ...register('aboutYou') }
           />
-          {errors.aboutYou && (
-            <p className={ styles.inputError }>{errors.aboutYou.message}</p>
-          )}
+          <ErrorMessage showError={ errors.aboutYou } style={ styles.inputError } />
         </div>
 
         <div className={ styles.cadastroFormDiv }>
@@ -116,9 +115,10 @@ export default function cadastroTerceiraTela({
             onKeyDown={ adjustTextAreaSize }
             { ...register('experience') }
           />
-          {errors.experience && (
-            <p className={ styles.inputError }>{errors.experience.message}</p>
-          )}
+          <ErrorMessage
+            showError={ errors.experience }
+            style={ styles.inputError }
+          />
         </div>
 
         <div className={ styles.cadastroFormDiv }>
@@ -135,9 +135,10 @@ export default function cadastroTerceiraTela({
             onKeyDown={ adjustTextAreaSize }
             { ...register('expectations') }
           />
-          {errors.expectations && (
-            <p className={ styles.inputError }>{errors.expectations.message}</p>
-          )}
+          <ErrorMessage
+            showError={ errors.expectations }
+            style={ styles.inputError }
+          />
         </div>
       </section>
       <div className={ styles.buttonsRow }>

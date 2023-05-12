@@ -11,6 +11,7 @@ import {
   PASS_MISMATCH,
   minCharsMessage,
 } from './constants';
+import ErrorMessage from '../../../components/forms/ErrorMessage';
 
 const MIN_PASSWORD_LENGTH = 6;
 const MIN_CHARS = 3;
@@ -82,9 +83,7 @@ export default function cadastroPrimeiraTela({ buttonCallback, data } = props) {
               className={ styles.cadastroFormSectionInputText }
               { ...register('name') }
             />
-            {errors.name && (
-              <p className={ styles.inputError }>{errors.name.message}</p>
-            )}
+            <ErrorMessage showError={ errors.name } style={ styles.inputError } />
           </div>
 
           <div className={ styles.cadastroFormDiv }>
@@ -103,9 +102,7 @@ export default function cadastroPrimeiraTela({ buttonCallback, data } = props) {
               className={ styles.cadastroFormSectionInputText }
               { ...register('email') }
             />
-            {errors.email && (
-              <p className={ styles.inputError }>{errors.email.message}</p>
-            )}
+            <ErrorMessage showError={ errors.email } style={ styles.inputError } />
           </div>
 
           <div className={ styles.cadastroFormDiv }>
@@ -123,9 +120,10 @@ export default function cadastroPrimeiraTela({ buttonCallback, data } = props) {
               className={ styles.cadastroFormSectionInputText }
               { ...register('password') }
             />
-            {errors.password && (
-              <p className={ styles.inputError }>{errors.password.message}</p>
-            )}
+            <ErrorMessage
+              showError={ errors.password }
+              style={ styles.inputError }
+            />
           </div>
 
           <div className={ styles.cadastroFormDiv }>
@@ -143,11 +141,10 @@ export default function cadastroPrimeiraTela({ buttonCallback, data } = props) {
               placeholder="Confirme sua senha"
               { ...register('passConfirmation') }
             />
-            {errors.passConfirmation && (
-              <p className={ styles.inputError }>
-                {errors.passConfirmation.message}
-              </p>
-            )}
+            <ErrorMessage
+              showError={ errors.passConfirmation }
+              style={ styles.inputError }
+            />
           </div>
         </section>
       </section>
