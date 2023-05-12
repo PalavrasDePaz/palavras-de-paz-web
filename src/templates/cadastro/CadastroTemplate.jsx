@@ -18,12 +18,19 @@ export default function cadastroTemplate() {
   const PAGE_4 = 3;
   const FINISHED = 4;
 
-  const buttonCallback = (data) => {
+  const updateForm = (data) =>
+    // eslint-disable-next-line implicit-arrow-linebreak
     setFormData((_formData) => ({ ..._formData, ...data }));
+
+  const buttonCallback = (data) => {
+    updateForm(data);
     setController(controller + 1);
   };
 
-  const returnButton = () => setController((_controller) => _controller - 1);
+  const returnButton = (data) => {
+    updateForm(data);
+    setController((_controller) => _controller - 1);
+  };
 
   // Provisório enquanto não temos as rotas para mandar os dados.
   useEffect(() => {

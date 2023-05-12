@@ -15,6 +15,7 @@ export default function cadastroQuartaTela({
   const {
     register,
     handleSubmit,
+    getValues,
     formState: { errors },
   } = useForm({
     resolver: yupResolver(cadastroTela4Schema),
@@ -61,7 +62,7 @@ export default function cadastroQuartaTela({
               className={ styles.cadastroFormInputCheckbox }
               type="checkbox"
               id={ value }
-              defaultValue={ data.habilidades?.[value] }
+              checked={ data.habilidades?.[value] }
               { ...register(`habilidades.${ value }`) }
             />
             <label
@@ -94,8 +95,9 @@ export default function cadastroQuartaTela({
       </div>
       <div className={ styles.buttonsRow }>
         <button
+          type="button"
           className={ styleButton.cadastroFormSectionButton }
-          onClick={ returnButton }
+          onClick={ () => returnButton(getValues()) }
         >
           Anterior
         </button>

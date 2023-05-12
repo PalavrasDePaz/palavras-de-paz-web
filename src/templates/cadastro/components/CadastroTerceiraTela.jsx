@@ -20,6 +20,7 @@ export default function cadastroTerceiraTela({
   const {
     register,
     handleSubmit,
+    getValues,
     formState: { errors },
   } = useForm({
     resolver: yupResolver(cadastroTela3Schema),
@@ -143,8 +144,9 @@ export default function cadastroTerceiraTela({
       </section>
       <div className={ styles.buttonsRow }>
         <button
+          type="button"
           className={ styleButton.cadastroFormSectionButton }
-          onClick={ returnButton }
+          onClick={ () => returnButton(getValues()) }
         >
           Anterior
         </button>

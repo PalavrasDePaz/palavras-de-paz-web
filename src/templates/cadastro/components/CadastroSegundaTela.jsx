@@ -18,6 +18,7 @@ export default function cadastroSegundaTela({
     register,
     handleSubmit,
     watch,
+    getValues,
     formState: { errors },
   } = useForm({
     resolver: yupResolver(cadastroTela2Schema),
@@ -235,8 +236,9 @@ export default function cadastroSegundaTela({
       </section>
       <div className={ styles.buttonsRow }>
         <button
+          type="button"
           className={ styleButton.cadastroFormSectionButton }
-          onClick={ returnButton }
+          onClick={ () => returnButton(getValues()) }
         >
           Anterior
         </button>
