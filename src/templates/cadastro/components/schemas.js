@@ -1,5 +1,7 @@
 import * as yup from 'yup';
+import isMobilePhone from 'validator/lib/isMobilePhone';
 import {
+  INVALID_PHONE,
   MANDATORY_FIELD,
   MIN_CHARS_INPUTS,
   minCharsMessage,
@@ -12,9 +14,22 @@ export const cadastroTela2Schema = yup.object().shape({
     .string()
     .required(MANDATORY_FIELD)
     .min(MIN_CHARS_INPUTS, minCharsMessage(MIN_CHARS_INPUTS)),
-  telefone: yup.string().required(MANDATORY_FIELD),
+  telefone: yup
+    .string()
+    .required(MANDATORY_FIELD)
+    .test(
+      'is-valid',
+      INVALID_PHONE,
+      (value) => (value
+        ? isMobilePhone(value)
+        : new yup.ValidationError(INVALID_PHONE))
+    ),
   escolaridade: yup.string().required(MANDATORY_FIELD),
-  curso: yup.string().min(MIN_CHARS_INPUTS, minCharsMessage(MIN_CHARS_INPUTS)),
+  curso: yup
+    .string()
+    .nullable()
+    .transform((o, c) => (o === '' ? null : c))
+    .min(MIN_CHARS_INPUTS, minCharsMessage(MIN_CHARS_INPUTS)),
   deficiencia: yup.string().required(MANDATORY_FIELD),
   descricaoDeficiencia: yup
     .string()

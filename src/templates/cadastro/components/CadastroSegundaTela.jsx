@@ -127,8 +127,7 @@ export default function cadastroSegundaTela({
           <input
             name="telefone"
             placeholder="Digite seu telefone"
-            type="number"
-            pattern="[\d*]"
+            type="tel"
             defaultValue={ data.telefone }
             maxLength={ 15 }
             minLength={ 3 }

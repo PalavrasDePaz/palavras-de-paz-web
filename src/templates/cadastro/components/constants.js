@@ -75,6 +75,7 @@ export const MANDATORY_FIELD = 'Este campo é obrigatório';
 export const INVALID_MAIL = 'Seu email está com formato incorreto';
 export const PASS_MIN = 'A senha deve ter no mínimo 6 caracteres';
 export const PASS_MISMATCH = 'As senhas não são iguais';
+export const INVALID_PHONE = 'O telefone está com formato incorreto';
 
 export const ESCOLARIDADE_OPTIONS = [
   'Ensino fundamental incompleto/cursando',

@@ -26,7 +26,6 @@ const schema = yup.object().shape({
     .max(MAX_CHARS),
   email: yup
     .string()
-    .email(INVALID_MAIL)
     .required(MANDATORY_FIELD)
     .test(
       'is-valid',
