@@ -2,6 +2,7 @@ import React from 'react';
 import * as yup from 'yup';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
+import isEmail from 'validator/lib/isEmail';
 import styles from '../styles/CadastroTelas.module.css';
 import styleButton from '../styles/CadastroTemplate.module.css';
 import {
@@ -25,8 +26,14 @@ const schema = yup.object().shape({
     .max(MAX_CHARS),
   email: yup
     .string()
-    .email(INVALID_MAIL)
     .required(MANDATORY_FIELD)
+    .test(
+      'is-valid',
+      INVALID_MAIL,
+      (value) => (value
+        ? isEmail(value)
+        : new yup.ValidationError(INVALID_MAIL)),
+    )
     .min(MIN_CHARS, minCharsMessage(MIN_CHARS))
     .max(MAX_CHARS),
   password: yup
@@ -91,7 +98,7 @@ export default function cadastroPrimeiraTela({ buttonCallback, data } = props) {
               className={ styles.cadastroFormSectionInputLabel }
               htmlFor="email"
             >
-              Email
+              E-mail
             </label>
 
             <input
