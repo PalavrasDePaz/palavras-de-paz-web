@@ -23,6 +23,7 @@ export const cadastroTela2Schema = yup.object().shape({
       (value) => (value
         ? isMobilePhone(value)
         : new yup.ValidationError(INVALID_PHONE))
+        .transform((o, c) => (o === '' ? null : c)),
     ),
   escolaridade: yup.string().required(MANDATORY_FIELD),
   curso: yup
