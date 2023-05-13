@@ -98,7 +98,7 @@ export default function cadastroPrimeiraTela({ buttonCallback, data } = props) {
               className={ styles.cadastroFormSectionInputLabel }
               htmlFor="email"
             >
-              Email
+              E-mail
             </label>
 
             <input
