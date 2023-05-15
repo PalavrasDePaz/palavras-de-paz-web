@@ -19,9 +19,12 @@ export default function cadastroTelaFinal({ data } = props) {
   data.rolesPep = filterValues(rolesPep);
 
   // Também não mandamos o valor do campo de deficiencia, só qual ela é, se houver.
-  const { deficiencia, ...apiObject } = data;
+  const { deficiencia, ...restOfData } = data;
 
-  console.log(apiObject);
+  // Removemos qualquer atributo que esteja nulo
+  const apiObject = Object.fromEntries(
+    Object.entries(restOfData).filter(([, v]) => v != null),
+  );
 
   // Mandamos o dado
   const apiAddress = `${ API }/volunteers`;
