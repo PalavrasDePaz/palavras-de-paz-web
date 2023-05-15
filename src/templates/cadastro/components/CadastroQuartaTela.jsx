@@ -87,8 +87,8 @@ export default function cadastroQuartaTela({
           { ...register('needDeclaration') }
         >
           <EmptyOption />
-          <option value="yes">Sim</option>
-          <option value="no">Não</option>
+          <option value>Sim</option>
+          <option value={ false }>Não</option>
         </select>
         <ErrorMessage
           showError={ errors.needDeclaration }

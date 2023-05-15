@@ -79,5 +79,5 @@ export const cadastroTela4Schema = yup.object().shape({
     assistenciaSocial: yup.boolean(),
     outros: yup.boolean(),
   }),
-  needDeclaration: yup.string().required(MANDATORY_FIELD),
+  needDeclaration: yup.bool().required(MANDATORY_FIELD),
 });
