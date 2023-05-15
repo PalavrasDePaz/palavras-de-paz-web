@@ -1,4 +1,4 @@
-export const howFoundPep = {
+export const HOW_FOUND_PEP = {
   fieldLabel: 'Por onde você nos conheceu?',
   options: [
     'Atados',
@@ -13,7 +13,7 @@ export const howFoundPep = {
   ],
 };
 
-export const knowledgePep = {
+export const KNOWLEDGE_PEP = {
   fieldLabel: 'Você conhece o programa de educação para a paz?',
   options: [
     {

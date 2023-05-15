@@ -29,7 +29,7 @@ export default function cadastroQuartaTela({
     >
       <div className={ styles.cadastroFormDivContainer }>
         <p className={ styles.formParagraph }>
-          Atualmente, essas são as nossas interestFutureRoles de voluntariado.
+          Atualmente, essas são as nossas oportunidades de voluntariado.
           De quais você gostaria de participar?
         </p>
 

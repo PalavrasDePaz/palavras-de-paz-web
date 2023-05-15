@@ -2,7 +2,7 @@ import React from 'react';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
 
-import { knowledgePep, OPEN_TEXT_FIELDS, howFoundPep } from './constants';
+import { OPEN_TEXT_FIELDS, HOW_FOUND_PEP, KNOWLEDGE_PEP } from './constants';
 
 import styles from '../styles/CadastroTelas.module.css';
 import styleButton from '../styles/CadastroTemplate.module.css';
@@ -16,7 +16,7 @@ export default function cadastroTerceiraTela({
   returnButton,
   data,
 } = props) {
-  const [about, lifeExperience, desires] = OPEN_TEXT_FIELDS;
+  const [studiesKnowledge, lifeExperience, desires] = OPEN_TEXT_FIELDS;
 
   const {
     register,
@@ -51,7 +51,7 @@ export default function cadastroTerceiraTela({
             { ...register('howFoundPep') }
           >
             <EmptyOption />
-            {howFoundPep.options.map((option) => (
+            {HOW_FOUND_PEP.options.map((option) => (
               <option key={ option } value={ option }>
                 {option}
               </option>
@@ -72,7 +72,7 @@ export default function cadastroTerceiraTela({
             { ...register('knowledgePep') }
           >
             <EmptyOption />
-            {knowledgePep.options.map(({ label, value }) => (
+            {KNOWLEDGE_PEP.options.map(({ label, value }) => (
               <option key={ value } value={ value }>
                 {label}
               </option>
@@ -85,9 +85,9 @@ export default function cadastroTerceiraTela({
         <div className={ styles.cadastroFormDiv }>
           <label
             className={ styles.cadastroFormSectionInputLabel }
-            htmlFor={ about.label }
+            htmlFor={ studiesKnowledge.label }
           >
-            {about.text}
+            {studiesKnowledge.text}
           </label>
           <textarea
             maxLength={ 300 }
