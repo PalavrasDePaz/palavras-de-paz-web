@@ -41,9 +41,9 @@ export default function cadastroTerceiraTela({
         <div className={ styles.cadastroFormDiv }>
           <label
             className={ styles.cadastroFormSectionInputLabel }
-            htmlFor={ howFoundPep.fieldLabel }
+            htmlFor={ HOW_FOUND_PEP.fieldLabel }
           >
-            {howFoundPep.fieldLabel}
+            {HOW_FOUND_PEP.fieldLabel}
           </label>
           <select
             defaultValue={ data.howFoundPep || '' }
@@ -62,9 +62,9 @@ export default function cadastroTerceiraTela({
         <div className={ styles.cadastroFormDiv }>
           <label
             className={ styles.cadastroFormSectionInputLabel }
-            htmlFor={ knowledgePep.fieldLabel }
+            htmlFor={ KNOWLEDGE_PEP.fieldLabel }
           >
-            {knowledgePep.fieldLabel}
+            {KNOWLEDGE_PEP.fieldLabel}
           </label>
           <select
             defaultValue={ data.knowledgePep || '' }
