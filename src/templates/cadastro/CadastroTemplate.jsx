@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import HeaderCadastro from './components/HeaderCadastro';
 import styles from './styles/CadastroTemplate.module.css';
 import Signature from './components/Signature';
@@ -32,13 +32,6 @@ export default function cadastroTemplate() {
     setController((_controller) => _controller - 1);
   };
 
-  // Provisório enquanto não temos as rotas para mandar os dados.
-  useEffect(() => {
-    if (controller === FINISHED) {
-      console.log(formData);
-    }
-  }, [controller]);
-
   return (
     <>
       <HeaderCadastro />
@@ -71,7 +64,7 @@ export default function cadastroTemplate() {
             data={ formData }
           />
         )}
-        {controller === FINISHED && <CadastroTelaFinal />}
+        {controller === FINISHED && <CadastroTelaFinal data={ formData } />}
       </div>
     </>
   );
