@@ -3,6 +3,7 @@ import Link from 'next/link';
 import axios from 'axios';
 import styles from '../styles/CadastroTemplate.module.css';
 import { API } from '../../../constants';
+import LoadingSpinner from '../../../components/loadingSpinner/LoadingSpinner';
 
 const filterValues = (valuesObj) =>
   // eslint-disable-next-line implicit-arrow-linebreak
@@ -10,6 +11,7 @@ const filterValues = (valuesObj) =>
 
 export default function cadastroTelaFinal({ data } = props) {
   const [isSent, setIsSent] = useState(false);
+  const [isError, setIsError] = useState(false);
 
   // Workaround para transformar os valores dos checkbox em um array de strings
   const { interestFutureRoles, rolesPep } = data;
@@ -26,19 +28,43 @@ export default function cadastroTelaFinal({ data } = props) {
   axios
     .post(apiAddress, apiObject)
     .then(() => setIsSent(true))
-    .catch((error) => console.log(error));
+    .catch((error) => {
+      console.log(error);
+      setIsError(true);
+    });
 
-  return isSent ? (
+  const getContent = () => {
+    if (isSent) {
+      return (
+        <>
+          <h1 className={ styles.formTitle }>OBRIGADO</h1>
+          <p className={ styles.formParagraph }>
+            Entraremos em contato em breve.
+          </p>
+        </>
+      );
+    }
+    if (isError) {
+      return (
+        <p className={ styles.formParagraph } style={ { color: 'red' } }>
+          Ocorreu um erro inesperado. Tente novamente mais tarde
+        </p>
+      );
+    }
+
+    return <LoadingSpinner />;
+  };
+
+  return (
     <section>
-      <h1 className={ styles.formTitle }>OBRIGADO</h1>
-      <p className={ styles.formParagraph }>Entraremos em contato em breve.</p>
-      <Link href="/">
-        <button className={ styles.cadastroFormSectionButton }>
-          Voltar para a página inicial
-        </button>
-      </Link>
+      {getContent()}
+      {(isSent || isError) && (
+        <Link href="/">
+          <button className={ styles.cadastroFormSectionButton }>
+            Voltar para a página inicial
+          </button>
+        </Link>
+      )}
     </section>
-  ) : (
-    'AAAA'
   );
 }
