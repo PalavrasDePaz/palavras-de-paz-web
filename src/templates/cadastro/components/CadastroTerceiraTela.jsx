@@ -2,7 +2,7 @@ import React from 'react';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
 
-import { AWARENESS, OPEN_TEXT_FIELDS, REFERRAL } from './constants';
+import { knowledgePep, OPEN_TEXT_FIELDS, howFoundPep } from './constants';
 
 import styles from '../styles/CadastroTelas.module.css';
 import styleButton from '../styles/CadastroTemplate.module.css';
@@ -16,7 +16,7 @@ export default function cadastroTerceiraTela({
   returnButton,
   data,
 } = props) {
-  const [about, experience, expectations] = OPEN_TEXT_FIELDS;
+  const [about, lifeExperience, desires] = OPEN_TEXT_FIELDS;
 
   const {
     register,
@@ -41,17 +41,17 @@ export default function cadastroTerceiraTela({
         <div className={ styles.cadastroFormDiv }>
           <label
             className={ styles.cadastroFormSectionInputLabel }
-            htmlFor={ REFERRAL.fieldLabel }
+            htmlFor={ howFoundPep.fieldLabel }
           >
-            {REFERRAL.fieldLabel}
+            {howFoundPep.fieldLabel}
           </label>
           <select
-            defaultValue={ data.referral || '' }
+            defaultValue={ data.howFoundPep || '' }
             className={ styles.cadastroFormSectionInputText }
-            { ...register('referral') }
+            { ...register('howFoundPep') }
           >
             <EmptyOption />
-            {REFERRAL.options.map((option) => (
+            {howFoundPep.options.map((option) => (
               <option key={ option } value={ option }>
                 {option}
               </option>
@@ -62,17 +62,17 @@ export default function cadastroTerceiraTela({
         <div className={ styles.cadastroFormDiv }>
           <label
             className={ styles.cadastroFormSectionInputLabel }
-            htmlFor={ AWARENESS.fieldLabel }
+            htmlFor={ knowledgePep.fieldLabel }
           >
-            {AWARENESS.fieldLabel}
+            {knowledgePep.fieldLabel}
           </label>
           <select
-            defaultValue={ data.awareness || '' }
+            defaultValue={ data.knowledgePep || '' }
             className={ styles.cadastroFormSectionInputText }
-            { ...register('awareness') }
+            { ...register('knowledgePep') }
           >
             <EmptyOption />
-            {AWARENESS.options.map(({ label, value }) => (
+            {knowledgePep.options.map(({ label, value }) => (
               <option key={ value } value={ value }>
                 {label}
               </option>
@@ -91,30 +91,13 @@ export default function cadastroTerceiraTela({
           </label>
           <textarea
             maxLength={ 300 }
-            defaultValue={ data.aboutYou }
+            defaultValue={ data.studiesKnowledge }
             className={ styles.cadastroFormSectionInputText }
             onKeyDown={ adjustTextAreaSize }
-            { ...register('aboutYou') }
-          />
-          <ErrorMessage showError={ errors.aboutYou } style={ styles.inputError } />
-        </div>
-
-        <div className={ styles.cadastroFormDiv }>
-          <label
-            className={ styles.cadastroFormSectionInputLabel }
-            htmlFor={ experience.label }
-          >
-            {experience.text}
-          </label>
-          <textarea
-            maxLength={ 300 }
-            defaultValue={ data.experience }
-            className={ styles.cadastroFormSectionInputText }
-            onKeyDown={ adjustTextAreaSize }
-            { ...register('experience') }
+            { ...register('studiesKnowledge') }
           />
           <ErrorMessage
-            showError={ errors.experience }
+            showError={ errors.studiesKnowledge }
             style={ styles.inputError }
           />
         </div>
@@ -122,21 +105,38 @@ export default function cadastroTerceiraTela({
         <div className={ styles.cadastroFormDiv }>
           <label
             className={ styles.cadastroFormSectionInputLabel }
-            htmlFor={ expectations.label }
+            htmlFor={ lifeExperience.label }
           >
-            {expectations.text}
+            {lifeExperience.text}
           </label>
           <textarea
             maxLength={ 300 }
-            defaultValue={ data.expectations }
+            defaultValue={ data.lifeExperience }
             className={ styles.cadastroFormSectionInputText }
             onKeyDown={ adjustTextAreaSize }
-            { ...register('expectations') }
+            { ...register('lifeExperience') }
           />
           <ErrorMessage
-            showError={ errors.expectations }
+            showError={ errors.lifeExperience }
             style={ styles.inputError }
           />
+        </div>
+
+        <div className={ styles.cadastroFormDiv }>
+          <label
+            className={ styles.cadastroFormSectionInputLabel }
+            htmlFor={ desires.label }
+          >
+            {desires.text}
+          </label>
+          <textarea
+            maxLength={ 300 }
+            defaultValue={ data.desires }
+            className={ styles.cadastroFormSectionInputText }
+            onKeyDown={ adjustTextAreaSize }
+            { ...register('desires') }
+          />
+          <ErrorMessage showError={ errors.desires } style={ styles.inputError } />
         </div>
       </section>
       <div className={ styles.buttonsRow }>

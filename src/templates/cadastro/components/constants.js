@@ -1,4 +1,4 @@
-export const REFERRAL = {
+export const howFoundPep = {
   fieldLabel: 'Por onde você nos conheceu?',
   options: [
     'Atados',
@@ -13,7 +13,7 @@ export const REFERRAL = {
   ],
 };
 
-export const AWARENESS = {
+export const knowledgePep = {
   fieldLabel: 'Você conhece o programa de educação para a paz?',
   options: [
     {
@@ -30,17 +30,17 @@ export const AWARENESS = {
 
 export const OPEN_TEXT_FIELDS = [
   {
-    label: 'aboutYou',
+    label: 'studiesKnowledge',
     text: `Para entender melhor você como voluntário,
     você poderia contar um pouco sobre seus conhecimentos e estudos?`,
   },
   {
-    label: 'experience',
+    label: 'lifeExperience',
     text: `Você poderia compartilhar um pouco suas experiências? 
     (Qualquer experiência é relevante, queremos te conhecer)`,
   },
   {
-    label: 'expectations',
+    label: 'desires',
     text: `Quais são seus sonhos/desejos e como acha que se alinha 
     com o nosso trabalho voluntário?`,
   },
@@ -77,7 +77,7 @@ export const PASS_MIN = 'A senha deve ter no mínimo 6 caracteres';
 export const PASS_MISMATCH = 'As senhas não são iguais';
 export const INVALID_PHONE = 'O telefone está com formato incorreto';
 
-export const ESCOLARIDADE_OPTIONS = [
+export const SCHOOLING_OPTIONS = [
   'Ensino fundamental incompleto/cursando',
   'Ensino fundamental completo',
   'Ensino médio incompleto/cursando',
