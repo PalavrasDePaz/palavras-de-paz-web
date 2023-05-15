@@ -5,7 +5,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
 import styles from '../styles/CadastroTelas.module.css';
 import styleButton from '../styles/CadastroTemplate.module.css';
-import { ESCOLARIDADE_OPTIONS, OPCOES_ESTADOS } from './constants';
+import { SCHOOLING_OPTIONS, OPCOES_ESTADOS } from './constants';
 import { cadastroTela2Schema } from './schemas';
 import ErrorMessage from '../../../components/forms/ErrorMessage';
 import EmptyOption from '../../../components/forms/EmptyOption';
@@ -25,7 +25,9 @@ export default function cadastroSegundaTela({
     resolver: yupResolver(cadastroTela2Schema),
   });
 
-  const country = watch('pais', 'BR');
+  const country = watch('country', 'BR');
+  const schoolingLevel = watch('schooling', '');
+  const isInHigherEducation = schoolingLevel.includes('superior');
   const disability = watch('deficiencia', 'não');
 
   countries.registerLocale(ptLocale);
@@ -44,16 +46,16 @@ export default function cadastroSegundaTela({
       <section className={ styles.cadastroFormSectionInputContainer }>
         <div className={ styles.cadastroFormDiv }>
           <label
-            htmlFor="pais"
+            htmlFor="country"
             className={ styles.cadastroFormSectionInputLabel }
           >
             País
           </label>
           <select
-            name="pais"
+            name="country"
             defaultValue={ data.country || 'BR' }
             className={ styles.cadastroFormSectionInputText }
-            { ...register('pais') }
+            { ...register('country') }
           >
             {countryArray?.length
               && countryArray.map(({ label, value }) => (
@@ -62,21 +64,21 @@ export default function cadastroSegundaTela({
                 </option>
               ))}
           </select>
-          <ErrorMessage showError={ errors.pais } style={ styles.inputError } />
+          <ErrorMessage showError={ errors.country } style={ styles.inputError } />
         </div>
         <div className={ styles.cadastroFormDiv }>
           <label
-            htmlFor="estado"
+            htmlFor="state"
             className={ styles.cadastroFormSectionInputLabel }
           >
             Estado
           </label>
           {country === 'BR' ? (
             <select
-              name="estado"
-              defaultValue={ data.estado || '' }
+              name="state"
+              defaultValue={ data.state || '' }
               className={ styles.cadastroFormSectionInputText }
-              { ...register('estado') }
+              { ...register('state') }
             >
               <EmptyOption />
               {OPCOES_ESTADOS.map(({ label, value }) => (
@@ -87,101 +89,101 @@ export default function cadastroSegundaTela({
             </select>
           ) : (
             <input
-              name="estado"
+              name="state"
               placeholder="Digite seu estado"
-              defaultValue={ data.estado || '' }
+              defaultValue={ data.state || '' }
               type="text"
               className={ styles.cadastroFormSectionInputText }
-              { ...register('estado') }
+              { ...register('state') }
             />
           )}
-          <ErrorMessage showError={ errors.estado } style={ styles.inputError } />
+          <ErrorMessage showError={ errors.state } style={ styles.inputError } />
         </div>
-
         <div className={ styles.cadastroFormDiv }>
           <label
-            htmlFor="cidade"
+            htmlFor="city"
             className={ styles.cadastroFormSectionInputLabel }
           >
             Cidade
           </label>
           <input
-            name="cidade"
+            name="city"
             placeholder="Digite sua cidade"
-            defaultValue={ data.cidade || '' }
+            defaultValue={ data.city || '' }
             type="text"
             maxLength={ 28 }
             className={ styles.cadastroFormSectionInputText }
-            { ...register('cidade') }
+            { ...register('city') }
           />
-          <ErrorMessage showError={ errors.cidade } style={ styles.inputError } />
+          <ErrorMessage showError={ errors.city } style={ styles.inputError } />
         </div>
-
         <div className={ styles.cadastroFormDiv }>
           <label
-            htmlFor="telefone"
+            htmlFor="phoneNumber"
             className={ styles.cadastroFormSectionInputLabel }
           >
             Telefone
           </label>
           <input
-            name="telefone"
+            name="phoneNumber"
             placeholder="Digite seu telefone"
             type="tel"
-            defaultValue={ data.telefone }
+            defaultValue={ data.phoneNumber }
             maxLength={ 15 }
             minLength={ 3 }
             className={ styles.cadastroFormSectionInputText }
-            { ...register('telefone') }
+            { ...register('phoneNumber') }
           />
-          <ErrorMessage showError={ errors.telefone } style={ styles.inputError } />
+          <ErrorMessage
+            showError={ errors.phoneNumber }
+            style={ styles.inputError }
+          />
         </div>
-
         <div className={ styles.cadastroFormDiv }>
           <label
-            htmlFor="escolaridade"
+            htmlFor="schooling"
             className={ styles.cadastroFormSectionInputLabel }
           >
             Escolaridade
           </label>
           <select
             className={ styles.cadastroFormSectionInputText }
-            name="escolaridade"
-            defaultValue={ data.escolaridade || '' }
-            { ...register('escolaridade') }
+            name="schooling"
+            defaultValue={ data.schooling || '' }
+            { ...register('schooling') }
           >
             <EmptyOption />
-            {ESCOLARIDADE_OPTIONS.map((option) => (
+            {SCHOOLING_OPTIONS.map((option) => (
               <option key={ option } value={ option }>
                 {option}
               </option>
             ))}
           </select>
           <ErrorMessage
-            showError={ errors.escolaridade }
+            showError={ errors.schooling }
             style={ styles.inputError }
           />
         </div>
-
-        <div className={ styles.cadastroFormDiv }>
-          <label
-            htmlFor="curso"
-            className={ styles.cadastroFormSectionInputLabel }
-          >
-            Qual o Curso
-          </label>
-          <input
-            placeholder="Digite seu curso"
-            type="text"
-            name="curso"
-            defaultValue={ data.curso }
-            maxLength={ 40 }
-            className={ styles.cadastroFormSectionInputText }
-            { ...register('curso') }
-          />
-          <ErrorMessage showError={ errors.curso } style={ styles.inputError } />
-        </div>
-
+        {isInHigherEducation && (
+          <div className={ styles.cadastroFormDiv }>
+            <label
+              htmlFor="bachelor"
+              className={ styles.cadastroFormSectionInputLabel }
+            >
+              Qual o Curso
+            </label>
+            <input
+              placeholder="Digite seu curso"
+              type="text"
+              name="bachelor"
+              defaultValue={ data.bachelor }
+              maxLength={ 40 }
+              className={ styles.cadastroFormSectionInputText }
+              { ...register('bachelor') }
+            />
+            <ErrorMessage showError={ errors.bachelor } style={ styles.inputError } />
+          </div>
+        )}
         <div className={ styles.cadastroFormDiv }>
           <label
             htmlFor="deficiencia"
@@ -208,21 +210,21 @@ export default function cadastroSegundaTela({
         {disability === 'sim' && (
           <div className={ styles.cadastroFormDiv }>
             <label
-              htmlFor="descricaoDeficiencia"
+              htmlFor="disability"
               className={ styles.cadastroFormSectionInputLabel }
             >
               Qual?
             </label>
             <input
-              name="descricaoDeficiencia"
+              name="disability"
               type="text"
-              defaultValue={ data.descricaoDeficiencia }
+              defaultValue={ data.disability }
               maxLength={ 30 }
               className={ styles.cadastroFormSectionInputText }
-              { ...register('descricaoDeficiencia') }
+              { ...register('disability') }
             />
             <ErrorMessage
-              showError={ errors.descricaoDeficiencia }
+              showError={ errors.disability }
               style={ styles.inputError }
             />
           </div>

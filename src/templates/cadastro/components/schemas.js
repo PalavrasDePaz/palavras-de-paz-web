@@ -8,13 +8,13 @@ import {
 } from './constants';
 
 export const cadastroTela2Schema = yup.object().shape({
-  pais: yup.string().required(MANDATORY_FIELD),
-  estado: yup.string().required(MANDATORY_FIELD),
-  cidade: yup
+  country: yup.string().required(MANDATORY_FIELD),
+  state: yup.string().required(MANDATORY_FIELD),
+  city: yup
     .string()
     .required(MANDATORY_FIELD)
     .min(MIN_CHARS_INPUTS, minCharsMessage(MIN_CHARS_INPUTS)),
-  telefone: yup
+  phoneNumber: yup
     .string()
     .required(MANDATORY_FIELD)
     .test(
@@ -24,37 +24,39 @@ export const cadastroTela2Schema = yup.object().shape({
         ? isMobilePhone(value)
         : new yup.ValidationError(INVALID_PHONE)),
     ),
-  escolaridade: yup.string().required(MANDATORY_FIELD),
-  curso: yup
+  schooling: yup.string().required(MANDATORY_FIELD),
+  bachelor: yup
     .string()
     .nullable()
     .transform((o, c) => (o === '' ? null : c))
     .min(MIN_CHARS_INPUTS, minCharsMessage(MIN_CHARS_INPUTS)),
   deficiencia: yup.string().required(MANDATORY_FIELD),
-  descricaoDeficiencia: yup
+  disability: yup
     .string()
+    .nullable()
+    .transform((o, c) => (o === '' ? null : c))
     .min(MIN_CHARS_INPUTS, minCharsMessage(MIN_CHARS_INPUTS)),
 });
 
 export const cadastroTela3Schema = yup.object().shape({
-  referral: yup.string(),
-  awareness: yup.string(),
-  aboutYou: yup
+  howFoundPep: yup.string(),
+  knowledgePep: yup.string(),
+  studiesKnowledge: yup
     .string()
     .required(MANDATORY_FIELD)
     .min(MIN_CHARS_INPUTS, minCharsMessage(MIN_CHARS_INPUTS)),
-  experience: yup
+  lifeExperience: yup
     .string()
     .required(MANDATORY_FIELD)
     .min(MIN_CHARS_INPUTS, minCharsMessage(MIN_CHARS_INPUTS)),
-  expectations: yup
+  desires: yup
     .string()
     .required(MANDATORY_FIELD)
     .min(MIN_CHARS_INPUTS, minCharsMessage(MIN_CHARS_INPUTS)),
 });
 
 export const cadastroTela4Schema = yup.object().shape({
-  oportunidades: yup.object().shape({
+  interestFutureRoles: yup.object().shape({
     facilitadorPresencial: yup.boolean(),
     facilitadorVirtual: yup.boolean(),
     avaliadorRemoto: yup.boolean(),
@@ -65,7 +67,7 @@ export const cadastroTela4Schema = yup.object().shape({
     captacaoDeGrupos: yup.boolean(),
     leituraDeRedacao: yup.boolean(),
   }),
-  habilidades: yup.object().shape({
+  rolesPep: yup.object().shape({
     administracao: yup.boolean(),
     comunicacao: yup.boolean(),
     jornalismo: yup.boolean(),
@@ -77,5 +79,5 @@ export const cadastroTela4Schema = yup.object().shape({
     assistenciaSocial: yup.boolean(),
     outros: yup.boolean(),
   }),
-  declaracao: yup.string().required(MANDATORY_FIELD),
+  needDeclaration: yup.bool().required(MANDATORY_FIELD),
 });

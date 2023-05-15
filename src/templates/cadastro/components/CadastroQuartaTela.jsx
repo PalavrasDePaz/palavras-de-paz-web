@@ -29,8 +29,8 @@ export default function cadastroQuartaTela({
     >
       <div className={ styles.cadastroFormDivContainer }>
         <p className={ styles.formParagraph }>
-          Atualmente, essas são as nossas oportunidades de voluntariado. De
-          quais você gostaria de participar?
+          Atualmente, essas são as nossas oportunidades de voluntariado.
+          De quais você gostaria de participar?
         </p>
 
         {DATA_1.map(({ label, value }) => (
@@ -39,8 +39,8 @@ export default function cadastroQuartaTela({
               className={ styles.cadastroFormInputCheckbox }
               type="checkbox"
               id={ value }
-              checked={ data.oportunidades?.[value] }
-              { ...register(`oportunidades.${ value }`) }
+              checked={ data.interestFutureRoles?.[value] }
+              { ...register(`interestFutureRoles.${ value }`) }
             />
             <label
               className={ styles.cadastroFormSectionInputLabel }
@@ -63,8 +63,8 @@ export default function cadastroQuartaTela({
               className={ styles.cadastroFormInputCheckbox }
               type="checkbox"
               id={ value }
-              checked={ data.habilidades?.[value] }
-              { ...register(`habilidades.${ value }`) }
+              checked={ data.rolesPep?.[value] }
+              { ...register(`rolesPep.${ value }`) }
             />
             <label
               className={ styles.cadastroFormSectionInputLabel }
@@ -82,15 +82,18 @@ export default function cadastroQuartaTela({
           faculdade ou trabalho?
         </p>
         <select
-          defaultValue={ data.declaracao || '' }
+          defaultValue={ data.needDeclaration || '' }
           className={ styles.cadastroFormSectionInputText }
-          { ...register('declaracao') }
+          { ...register('needDeclaration') }
         >
           <EmptyOption />
-          <option value="yes">Sim</option>
-          <option value="no">Não</option>
+          <option value>Sim</option>
+          <option value={ false }>Não</option>
         </select>
-        <ErrorMessage showError={ errors.declaracao } style={ styles.inputError } />
+        <ErrorMessage
+          showError={ errors.needDeclaration }
+          style={ styles.inputError }
+        />
       </div>
       <div className={ styles.buttonsRow }>
         <button
