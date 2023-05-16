@@ -3,11 +3,16 @@ import Link from 'next/link';
 import axios from 'axios';
 import styles from '../styles/CadastroTemplate.module.css';
 import { API } from '../../../constants';
+import { FUTURE_ROLES, SKILLS } from './constants';
 import LoadingSpinner from '../../../components/loadingSpinner/LoadingSpinner';
 
-const filterValues = (valuesObj) =>
+const filterValues = (valuesObj, optionsObject) =>
   // eslint-disable-next-line implicit-arrow-linebreak
-  Object.keys(valuesObj).filter((key) => valuesObj[key] !== false);
+  Object.keys(valuesObj)
+    // Pegamos todos os valores de checkbox e transformamos em um array
+    .filter((key) => valuesObj[key] !== false)
+    // Trocamos os nomes de item pelos labels.
+    .map((item) => optionsObject.find((option) => option.value === item)?.label);
 
 export default function cadastroTelaFinal({ data } = props) {
   const [isSent, setIsSent] = useState(false);
@@ -15,8 +20,8 @@ export default function cadastroTelaFinal({ data } = props) {
 
   // Workaround para transformar os valores dos checkbox em um array de strings
   const { interestFutureRoles, rolesPep } = data;
-  data.interestFutureRoles = filterValues(interestFutureRoles);
-  data.rolesPep = filterValues(rolesPep);
+  data.interestFutureRoles = filterValues(interestFutureRoles, FUTURE_ROLES);
+  data.rolesPep = filterValues(rolesPep, SKILLS);
 
   // Também não mandamos o valor do campo de deficiencia, só qual ela é, se houver.
   const { deficiencia, ...restOfData } = data;

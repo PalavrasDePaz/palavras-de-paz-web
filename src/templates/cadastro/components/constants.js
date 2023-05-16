@@ -46,7 +46,7 @@ export const OPEN_TEXT_FIELDS = [
   },
 ];
 
-export const DATA_1 = [
+export const FUTURE_ROLES = [
   { label: 'Facilitador presencial', value: 'facilitadorPresencial' },
   { label: 'Facilitador virtual', value: 'facilitadorVirtual' },
   { label: 'Avaliador remoto', value: 'avaliadorRemoto' },
@@ -58,7 +58,7 @@ export const DATA_1 = [
   { label: 'Leitura de redação dos presos virtual', value: 'leituraDeRedacao' },
 ];
 
-export const DATA_2 = [
+export const SKILLS = [
   { label: 'Administração', value: 'administracao' },
   { label: 'Comunicação', value: 'comunicacao' },
   { label: 'Jornalismo', value: 'jornalismo' },

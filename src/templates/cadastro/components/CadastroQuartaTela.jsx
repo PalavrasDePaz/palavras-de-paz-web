@@ -3,7 +3,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
 import styles from '../styles/CadastroTelas.module.css';
 import styleButton from '../styles/CadastroTemplate.module.css';
-import { DATA_1, DATA_2 } from './constants';
+import { FUTURE_ROLES, SKILLS } from './constants';
 import { cadastroTela4Schema } from './schemas';
 import ErrorMessage from '../../../components/forms/ErrorMessage';
 import EmptyOption from '../../../components/forms/EmptyOption';
@@ -29,11 +29,11 @@ export default function cadastroQuartaTela({
     >
       <div className={ styles.cadastroFormDivContainer }>
         <p className={ styles.formParagraph }>
-          Atualmente, essas são as nossas oportunidades de voluntariado.
-          De quais você gostaria de participar?
+          Atualmente, essas são as nossas oportunidades de voluntariado. De
+          quais você gostaria de participar?
         </p>
 
-        {DATA_1.map(({ label, value }) => (
+        {FUTURE_ROLES.map(({ label, value }) => (
           <div key={ value } className={ styles.cadastroFormDivCheckbox }>
             <input
               className={ styles.cadastroFormInputCheckbox }
@@ -57,7 +57,7 @@ export default function cadastroQuartaTela({
           A nossa organização é formada totalmente por voluntários. Caso surjam
           outras oporturnidades você gostaria de ajudar em alguma dessas áreas ?
         </p>
-        {DATA_2.map(({ label, value }) => (
+        {SKILLS.map(({ label, value }) => (
           <div key={ value } className={ styles.cadastroFormDivCheckbox }>
             <input
               className={ styles.cadastroFormInputCheckbox }
