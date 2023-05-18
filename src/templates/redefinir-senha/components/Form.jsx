@@ -47,19 +47,16 @@ function Form() {
   return (
     <form onSubmit={ handleSubmit(onSubmit) } className={ styles.loginFormSection }>
       <h1 className={ styles.loginFormSectionTitle }>Crie sua nova senha</h1>
-
       <div className={ styles.loginFormSectionInputContainer }>
         <label className={ styles.loginFormSectionInputLabel } htmlFor="password">
           <b>Senha</b>
         </label>
-
         <input
           placeholder="Digite sua senha"
           className={ styles.loginFormSectionInputPassword }
           type={ isPasswordVisible ? 'text' : 'password' }
           { ...register('password') }
         />
-
         <button
           className={ styles.loginFormSectionInputPasswordVisibility }
           type="button"
@@ -73,14 +70,12 @@ function Form() {
         <label className={ styles.loginFormSectionInputLabel } htmlFor="password">
           <b>Confirmação</b>
         </label>
-
         <input
           placeholder="Confirme sua senha"
           className={ styles.loginFormSectionInputPassword }
           type={ isPassConfVisible ? 'text' : 'password' }
           { ...register('passConfirmation') }
         />
-
         <button
           className={ styles.loginFormSectionInputPasswordVisibility }
           type="button"
@@ -93,9 +88,7 @@ function Form() {
           style={ styles.inputError }
         />
       </div>
-
       <button className={ styles.loginFormButtonEnter }>Enviar</button>
-
       <Link href="/" className={ styles.loginFormButtonBack }>
         <button className={ styles.loginFormButtonBack }>
           Voltar para a página inicial
