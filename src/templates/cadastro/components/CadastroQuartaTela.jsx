@@ -3,7 +3,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
 import styles from '../styles/CadastroTelas.module.css';
 import styleButton from '../styles/CadastroTemplate.module.css';
-import { DATA_1, DATA_2 } from './constants';
+import { FUTURE_ROLES, SKILLS } from './constants';
 import { cadastroTela4Schema } from './schemas';
 import ErrorMessage from '../../../components/forms/ErrorMessage';
 import EmptyOption from '../../../components/forms/EmptyOption';
@@ -33,14 +33,14 @@ export default function cadastroQuartaTela({
           quais você gostaria de participar?
         </p>
 
-        {DATA_1.map(({ label, value }) => (
+        {FUTURE_ROLES.map(({ label, value }) => (
           <div key={ value } className={ styles.cadastroFormDivCheckbox }>
             <input
               className={ styles.cadastroFormInputCheckbox }
               type="checkbox"
               id={ value }
-              checked={ data.oportunidades?.[value] }
-              { ...register(`oportunidades.${ value }`) }
+              checked={ data.interestFutureRoles?.[value] }
+              { ...register(`interestFutureRoles.${ value }`) }
             />
             <label
               className={ styles.cadastroFormSectionInputLabel }
@@ -57,14 +57,14 @@ export default function cadastroQuartaTela({
           A nossa organização é formada totalmente por voluntários. Caso surjam
           outras oporturnidades você gostaria de ajudar em alguma dessas áreas ?
         </p>
-        {DATA_2.map(({ label, value }) => (
+        {SKILLS.map(({ label, value }) => (
           <div key={ value } className={ styles.cadastroFormDivCheckbox }>
             <input
               className={ styles.cadastroFormInputCheckbox }
               type="checkbox"
               id={ value }
-              checked={ data.habilidades?.[value] }
-              { ...register(`habilidades.${ value }`) }
+              checked={ data.rolesPep?.[value] }
+              { ...register(`rolesPep.${ value }`) }
             />
             <label
               className={ styles.cadastroFormSectionInputLabel }
@@ -82,15 +82,18 @@ export default function cadastroQuartaTela({
           faculdade ou trabalho?
         </p>
         <select
-          defaultValue={ data.declaracao || '' }
+          defaultValue={ data.needDeclaration || '' }
           className={ styles.cadastroFormSectionInputText }
-          { ...register('declaracao') }
+          { ...register('needDeclaration') }
         >
           <EmptyOption />
-          <option value="yes">Sim</option>
-          <option value="no">Não</option>
+          <option value>Sim</option>
+          <option value={ false }>Não</option>
         </select>
-        <ErrorMessage showError={ errors.declaracao } style={ styles.inputError } />
+        <ErrorMessage
+          showError={ errors.needDeclaration }
+          style={ styles.inputError }
+        />
       </div>
       <div className={ styles.buttonsRow }>
         <button
