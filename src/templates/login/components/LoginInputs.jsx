@@ -4,7 +4,10 @@ import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import * as yup from 'yup';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
+import axios from 'axios';
 import styles from '../styles/LoginForm.module.css';
+import { API } from '../../../constants';
+import LoadingSpinner from '../../../components/loadingSpinner/LoadingSpinner';
 
 const MIN_PASSWORD_LENGTH = 6;
 
@@ -15,27 +18,55 @@ const schema = yup.object().shape({
 
 function LoginForm() {
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
+  const [isSending, setIsSending] = useState(false);
+  const [apiError, setApiError] = useState();
 
   const {
     register,
     handleSubmit,
-    watch,
     reset,
     formState: { errors },
   } = useForm({
     resolver: yupResolver(schema),
   });
 
-  watch('email');
-  watch('password');
+  const apiAddress = `${ API }/volunteers/login`;
+
+  const sendLogin = (data) =>
+    // eslint-disable-next-line implicit-arrow-linebreak
+    axios
+      .post(apiAddress, data)
+      .then((response) => {
+        setIsSending(false); // TODO: trocar isso por um redirect para a área de trabalho.
+        console.log(response);
+      })
+      .catch((error) => {
+        setIsSending(false);
+        setApiError(true);
+        console.log(error);
+      });
 
   function onSubmit(data) {
+    setIsSending(true);
     console.log(data);
+    sendLogin(data);
     reset();
   }
 
   function handlePasswordVisibility() {
     setIsPasswordVisible(!isPasswordVisible);
+  }
+
+  if (isSending) {
+    return <LoadingSpinner />;
+  }
+
+  if (apiError) {
+    return (
+      <p className={ styles.formParagraph } style={ { color: 'red' } }>
+        Ocorreu um erro inesperado. Tente novamente mais tarde
+      </p>
+    );
   }
 
   return (
