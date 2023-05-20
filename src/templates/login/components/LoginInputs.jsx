@@ -41,7 +41,6 @@ function LoginForm() {
         console.log(response);
       })
       .catch((error) => {
-        setIsSending(false);
         setApiError(true);
         console.log(error);
       });
@@ -57,16 +56,16 @@ function LoginForm() {
     setIsPasswordVisible(!isPasswordVisible);
   }
 
-  if (isSending) {
-    return <LoadingSpinner />;
-  }
-
   if (apiError) {
     return (
       <p className={ styles.formParagraph } style={ { color: 'red' } }>
         Ocorreu um erro inesperado. Tente novamente mais tarde
       </p>
     );
+  }
+
+  if (isSending) {
+    return <LoadingSpinner />;
   }
 
   return (
