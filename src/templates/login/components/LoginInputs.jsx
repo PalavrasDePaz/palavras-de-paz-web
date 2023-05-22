@@ -10,7 +10,6 @@ import { API } from '../../../constants';
 import LoadingSpinner from '../../../components/loadingSpinner/LoadingSpinner';
 import { MANDATORY_FIELD } from '../../cadastro/components/constants';
 
-
 const MIN_PASSWORD_LENGTH = 6;
 
 const schema = yup.object().shape({
