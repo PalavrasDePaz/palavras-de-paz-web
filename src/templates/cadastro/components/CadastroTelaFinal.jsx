@@ -55,7 +55,7 @@ export default function cadastroTelaFinal({ data } = props) {
     if (isError) {
       return (
         <p className={ styles.formParagraph } style={ { color: 'red' } }>
-          Ocorreu um erro inesperado. Tente novamente mais tarde.
+          Ocorreu um erro inesperado. Por favor tente novamente mais tarde.
         </p>
       );
     }
