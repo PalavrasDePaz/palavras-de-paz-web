@@ -1,4 +1,3 @@
-import Link from 'next/link';
 import React, { useState } from 'react';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import * as yup from 'yup';
@@ -10,6 +9,7 @@ import styles from '../styles/LoginForm.module.css';
 import { API } from '../../../constants';
 import LoadingSpinner from '../../../components/loadingSpinner/LoadingSpinner';
 import { MANDATORY_FIELD } from '../../cadastro/components/constants';
+import BackButton from './BackButton';
 
 const MIN_PASSWORD_LENGTH = 6;
 
@@ -45,21 +45,29 @@ function LoginForm() {
 
   const postAddress = passwordForgotten ? resetPassAddress : loginAddress;
 
+  const updateComponentAfterMail = () => {
+    setIsSubmitted(true);
+    setIsSending(false);
+  };
+
   const postData = (data) =>
     // eslint-disable-next-line implicit-arrow-linebreak
     axios
       .post(postAddress, data)
       // TODO: a resposta de login será um token, que vamos levar para a área de trabalho.
-      .then(() => (passwordForgotten ? setIsSubmitted(true) : push('/')))
+      .then(() => (passwordForgotten ? updateComponentAfterMail() : push('/')))
       .catch((error) => {
         setApiError(true);
         console.log(error);
       });
 
+  // No caso de senha perdida, mandamos só o email
+  const cleanData = (data) => (passwordForgotten ? { email: data.email } : data);
+
   const onSubmit = (data) => {
     setIsSending(true);
     console.log(data);
-    postData(data);
+    postData(cleanData(data));
     reset();
   };
 
@@ -76,9 +84,12 @@ function LoginForm() {
 
   if (apiError) {
     return (
-      <p className={ styles.formParagraph } style={ { color: 'red' } }>
-        Ocorreu um erro inesperado. Tente novamente mais tarde
-      </p>
+      <>
+        <p className={ styles.formParagraph } style={ { color: 'red' } }>
+          Ocorreu um erro inesperado. Tente novamente mais tarde
+        </p>
+        <BackButton />
+      </>
     );
   }
 
@@ -89,9 +100,12 @@ function LoginForm() {
   if (isSubmitted) {
     // Apenas com a opção de email enviado porque em caso de login correto vai haver o redirect.
     return (
-      <p className={ styles.formParagraph } style={ { color: 'red' } }>
-        Ocorreu um erro inesperado. Tente novamente mais tarde
-      </p>
+      <>
+        <p className={ styles.formParagraph }>
+          O e-mail de recuperação de senha foi enviado!
+        </p>
+        <BackButton />
+      </>
     );
   }
 
@@ -158,12 +172,7 @@ function LoginForm() {
       <button type="submit" className={ styles.loginFormButtonEnter }>
         {buttonString}
       </button>
-
-      <Link href="/" className={ styles.loginFormButtonBack }>
-        <button className={ styles.loginFormButtonBack }>
-          Voltar para a página inicial
-        </button>
-      </Link>
+      <BackButton />
     </form>
   );
 }

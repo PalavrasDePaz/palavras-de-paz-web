@@ -26,7 +26,8 @@ export default function cadastroTelaFinal({ data } = props) {
   data.needDeclaration = needDeclaration === 'sim';
 
   // Também não mandamos o valor do campo de deficiencia, só qual ela é, se houver.
-  const { deficiencia, ...restOfData } = data;
+  // E nem a confirmação de password.
+  const { deficiencia, passConfirmation, ...restOfData } = data;
 
   // Removemos qualquer atributo que esteja nulo
   const apiObject = Object.fromEntries(

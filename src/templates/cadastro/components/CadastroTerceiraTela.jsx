@@ -57,6 +57,10 @@ export default function cadastroTerceiraTela({
               </option>
             ))}
           </select>
+          <ErrorMessage
+            showError={ errors.howFoundPep }
+            style={ styles.inputError }
+          />
         </div>
 
         <div className={ styles.cadastroFormDiv }>
@@ -78,6 +82,10 @@ export default function cadastroTerceiraTela({
               </option>
             ))}
           </select>
+          <ErrorMessage
+            showError={ errors.knowledgePep }
+            style={ styles.inputError }
+          />
         </div>
       </section>
 
