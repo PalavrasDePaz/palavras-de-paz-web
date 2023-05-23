@@ -25,6 +25,7 @@ export const cadastroTela2Schema = yup.object().shape({
         ? isMobilePhone(value)
         : new yup.ValidationError(INVALID_PHONE)),
     ),
+  birthDate: yup.date().required(MANDATORY_FIELD),
   schooling: yup.string().required(MANDATORY_FIELD),
   bachelor: yup.string().when('schooling', {
     is: (value) => value.includes('superior'),
