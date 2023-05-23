@@ -5,6 +5,7 @@ import * as yup from 'yup';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import axios from 'axios';
+import { useRouter } from 'next/router';
 import styles from '../styles/LoginForm.module.css';
 import { API } from '../../../constants';
 import LoadingSpinner from '../../../components/loadingSpinner/LoadingSpinner';
@@ -12,19 +13,23 @@ import { MANDATORY_FIELD } from '../../cadastro/components/constants';
 
 const MIN_PASSWORD_LENGTH = 6;
 
-const schema = yup.object().shape({
+const schemaLogin = yup.object().shape({
   email: yup.string().email().required(MANDATORY_FIELD),
-  password: yup.string().when('email', {
-    is: (email) => email,
-    then: () => yup.string().required(MANDATORY_FIELD).min(MIN_PASSWORD_LENGTH),
-  }),
+  password: yup.string().required(MANDATORY_FIELD).min(MIN_PASSWORD_LENGTH),
+});
+
+const schemaResetPass = yup.object().shape({
+  email: yup.string().email().required(MANDATORY_FIELD),
 });
 
 function LoginForm() {
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
   const [passwordForgotten, setPasswordForgotten] = useState(false);
   const [isSending, setIsSending] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
   const [apiError, setApiError] = useState();
+
+  const { push } = useRouter();
 
   const {
     register,
@@ -32,32 +37,31 @@ function LoginForm() {
     reset,
     formState: { errors },
   } = useForm({
-    resolver: yupResolver(schema),
+    resolver: yupResolver(passwordForgotten ? schemaResetPass : schemaLogin),
   });
 
-  const apiAddress = `${ API }/volunteers/login`;
+  const loginAddress = `${ API }/volunteers/login`;
+  const resetPassAddress = `${ API }/volunteers/password-email`;
 
-  const sendLogin = (data) =>
+  const postAddress = passwordForgotten ? resetPassAddress : loginAddress;
+
+  const postData = (data) =>
     // eslint-disable-next-line implicit-arrow-linebreak
     axios
-      .post(apiAddress, data)
-      .then((response) => {
-        setIsSending(false); // TODO: trocar isso por um redirect para a área de trabalho.
-        console.log(response);
-      })
+      .post(postAddress, data)
+      // TODO: a resposta de login será um token, que vamos levar para a área de trabalho.
+      .then(() => (passwordForgotten ? setIsSubmitted(true) : push('/')))
       .catch((error) => {
         setApiError(true);
         console.log(error);
       });
 
-  function onSubmit(data) {
-    if (!passwordForgotten) {
-      setIsSending(true);
-      console.log(data);
-      sendLogin(data);
-      reset();
-    }
-  }
+  const onSubmit = (data) => {
+    setIsSending(true);
+    console.log(data);
+    postData(data);
+    reset();
+  };
 
   function handlePasswordVisibility() {
     setIsPasswordVisible(!isPasswordVisible);
@@ -80,6 +84,15 @@ function LoginForm() {
 
   if (isSending) {
     return <LoadingSpinner />;
+  }
+
+  if (isSubmitted) {
+    // Apenas com a opção de email enviado porque em caso de login correto vai haver o redirect.
+    return (
+      <p className={ styles.formParagraph } style={ { color: 'red' } }>
+        Ocorreu um erro inesperado. Tente novamente mais tarde
+      </p>
+    );
   }
 
   return (
@@ -142,7 +155,9 @@ function LoginForm() {
         </section>
       )}
 
-      <button className={ styles.loginFormButtonEnter }>{buttonString}</button>
+      <button type="submit" className={ styles.loginFormButtonEnter }>
+        {buttonString}
+      </button>
 
       <Link href="/" className={ styles.loginFormButtonBack }>
         <button className={ styles.loginFormButtonBack }>

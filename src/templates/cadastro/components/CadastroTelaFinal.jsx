@@ -19,9 +19,11 @@ export default function cadastroTelaFinal({ data } = props) {
   const [isError, setIsError] = useState(false);
 
   // Workaround para transformar os valores dos checkbox em um array de strings
-  const { interestFutureRoles, rolesPep } = data;
+  const { interestFutureRoles, rolesPep, needDeclaration } = data;
   data.interestFutureRoles = filterValues(interestFutureRoles, FUTURE_ROLES);
   data.rolesPep = filterValues(rolesPep, SKILLS);
+  // e transformar string em boolean
+  data.needDeclaration = needDeclaration === 'sim';
 
   // Também não mandamos o valor do campo de deficiencia, só qual ela é, se houver.
   const { deficiencia, ...restOfData } = data;

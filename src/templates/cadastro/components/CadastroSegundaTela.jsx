@@ -1,3 +1,4 @@
+/* eslint-disable max-lines */
 import React from 'react';
 import countries from 'i18n-iso-countries';
 import ptLocale from 'i18n-iso-countries/langs/pt.json';
@@ -136,6 +137,25 @@ export default function cadastroSegundaTela({
           />
           <ErrorMessage
             showError={ errors.phoneNumber }
+            style={ styles.inputError }
+          />
+        </div>
+        <div className={ styles.cadastroFormDiv }>
+          <label
+            htmlFor="birthDate"
+            className={ styles.cadastroFormSectionInputLabel }
+          >
+            Data de nascimento
+          </label>
+          <input
+            name="birthDate"
+            type="date"
+            defaultValue={ data.birthDate }
+            className={ styles.cadastroFormSectionInputText }
+            { ...register('birthDate') }
+          />
+          <ErrorMessage
+            showError={ errors.birthDate }
             style={ styles.inputError }
           />
         </div>
