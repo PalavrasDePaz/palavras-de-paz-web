@@ -1,3 +1,4 @@
+/* eslint-disable max-lines */
 import React from 'react';
 import countries from 'i18n-iso-countries';
 import ptLocale from 'i18n-iso-countries/langs/pt.json';
