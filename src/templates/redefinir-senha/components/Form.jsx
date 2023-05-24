@@ -4,6 +4,8 @@ import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import * as yup from 'yup';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
+import axios from 'axios';
+import { useRouter } from 'next/router';
 import styles from '../styles/RedefinirSenha.module.css';
 import {
   MANDATORY_FIELD,
@@ -11,6 +13,9 @@ import {
   PASS_MISMATCH,
 } from '../../cadastro/components/constants';
 import ErrorMessage from '../../../components/forms/ErrorMessage';
+import { API } from '../../../constants';
+import BackButton from '../../login/components/BackButton';
+import LoadingSpinner from '../../../components/loadingSpinner/LoadingSpinner';
 
 const MIN_PASSWORD_LENGTH = 6;
 
@@ -29,20 +34,61 @@ const schema = yup.object().shape({
 function Form() {
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
   const [isPassConfVisible, setIsPassConfVisible] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [isSent, setIsSent] = useState(false);
+  const [apiError, setApiError] = useState();
+
+  const router = useRouter();
+  const mailHash = router.query.hash;
 
   const {
     register,
-    reset,
     handleSubmit,
     formState: { errors },
   } = useForm({
     resolver: yupResolver(schema),
   });
 
-  const onSubmit = (data) => {
-    reset();
-    console.log(data); // provisório enquanto a rota não chega.
+  const route = `${ API }/volunteers/password`;
+
+  const onSubmit = ({ password }) => {
+    setIsLoading(true);
+    axios
+      .patch(route, { password, hashEmail: mailHash })
+      .then(() => {
+        setIsLoading(false);
+        setIsSent(true);
+        // eslint-disable-next-line no-magic-numbers
+        setTimeout(() => router.push('/login'), 3000);
+      })
+      .catch((error) => {
+        setApiError(true);
+        console.log(error);
+      });
   };
+
+  if (apiError) {
+    return (
+      <>
+        <p className={ styles.formParagraph } style={ { color: 'red' } }>
+          Ocorreu um erro inesperado. Tente novamente mais tarde
+        </p>
+        <BackButton />
+      </>
+    );
+  }
+
+  if (isLoading) {
+    return <LoadingSpinner />;
+  }
+
+  if (isSent) {
+    return (
+      <p className={ styles.formParagraph }>
+        Nova senha criada! Redirecionando para login...
+      </p>
+    );
+  }
 
   return (
     <form onSubmit={ handleSubmit(onSubmit) } className={ styles.loginFormSection }>
