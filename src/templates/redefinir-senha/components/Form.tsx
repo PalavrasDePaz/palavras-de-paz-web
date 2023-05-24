@@ -62,7 +62,7 @@ function Form() {
         setTimeout(() => router.push('/login'), 3000);
       })
       .catch((error) => {
-        setApiError(true);
+        setApiError(error);
         console.log(error);
       });
   };

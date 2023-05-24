@@ -57,7 +57,7 @@ function LoginForm() {
       // TODO: a resposta de login será um token, que vamos levar para a área de trabalho.
       .then(() => (passwordForgotten ? updateComponentAfterMail() : push('/')))
       .catch((error) => {
-        setApiError(true);
+        setApiError(error);
         console.log(error);
       });
 
