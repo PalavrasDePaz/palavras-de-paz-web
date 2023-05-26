@@ -8,7 +8,7 @@ import axios from 'axios';
 import { useRouter } from 'next/router';
 import styles from '../styles/RedefinirSenha.module.css';
 import {
-  MANDATORY_FIELD,
+  REQUIRED_FIELD,
   PASS_MIN,
   PASS_MISMATCH,
 } from '../../cadastro/components/constants';
@@ -22,11 +22,11 @@ const MIN_PASSWORD_LENGTH = 6;
 const schema = yup.object().shape({
   password: yup
     .string()
-    .required(MANDATORY_FIELD)
+    .required(REQUIRED_FIELD)
     .min(MIN_PASSWORD_LENGTH, PASS_MIN),
   passConfirmation: yup
     .string()
-    .required(MANDATORY_FIELD)
+    .required(REQUIRED_FIELD)
     .min(MIN_PASSWORD_LENGTH, PASS_MIN)
     .equals([yup.ref('password')], PASS_MISMATCH),
 });

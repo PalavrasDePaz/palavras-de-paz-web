@@ -8,18 +8,18 @@ import { useRouter } from 'next/router';
 import styles from '../styles/LoginForm.module.css';
 import { API } from '../../../constants';
 import LoadingSpinner from '../../../components/loadingSpinner/LoadingSpinner';
-import { MANDATORY_FIELD } from '../../cadastro/components/constants';
+import { REQUIRED_FIELD } from '../../cadastro/components/constants';
 import BackButton from './BackButton';
 
 const MIN_PASSWORD_LENGTH = 6;
 
 const schemaLogin = yup.object().shape({
-  email: yup.string().email().required(MANDATORY_FIELD),
-  password: yup.string().required(MANDATORY_FIELD).min(MIN_PASSWORD_LENGTH),
+  email: yup.string().email().required(REQUIRED_FIELD),
+  password: yup.string().required(REQUIRED_FIELD).min(MIN_PASSWORD_LENGTH),
 });
 
 const schemaResetPass = yup.object().shape({
-  email: yup.string().email().required(MANDATORY_FIELD),
+  email: yup.string().email().required(REQUIRED_FIELD),
 });
 
 function LoginForm() {

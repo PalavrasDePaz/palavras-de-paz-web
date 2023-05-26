@@ -7,7 +7,7 @@ import styles from '../styles/CadastroTelas.module.css';
 import styleButton from '../styles/CadastroTemplate.module.css';
 import {
   INVALID_MAIL,
-  MANDATORY_FIELD,
+  REQUIRED_FIELD,
   PASS_MIN,
   PASS_MISMATCH,
   minCharsMessage,
@@ -16,17 +16,17 @@ import ErrorMessage from '../../../components/forms/ErrorMessage';
 
 const MIN_PASSWORD_LENGTH = 6;
 const MIN_CHARS = 3;
-const MAX_CHARS = 24;
+const MAX_CHARS = 50;
 
 const schema = yup.object().shape({
   name: yup
     .string()
-    .required(MANDATORY_FIELD)
+    .required(REQUIRED_FIELD)
     .min(MIN_CHARS, minCharsMessage(MIN_CHARS))
     .max(MAX_CHARS),
   email: yup
     .string()
-    .required(MANDATORY_FIELD)
+    .required(REQUIRED_FIELD)
     .test(
       'is-valid',
       INVALID_MAIL,
@@ -38,11 +38,11 @@ const schema = yup.object().shape({
     .max(MAX_CHARS),
   password: yup
     .string()
-    .required(MANDATORY_FIELD)
+    .required(REQUIRED_FIELD)
     .min(MIN_PASSWORD_LENGTH, PASS_MIN),
   passConfirmation: yup
     .string()
-    .required(MANDATORY_FIELD)
+    .required(REQUIRED_FIELD)
     .min(MIN_PASSWORD_LENGTH, PASS_MIN)
     .equals([yup.ref('password')], PASS_MISMATCH),
 });
@@ -85,7 +85,7 @@ export default function cadastroPrimeiraTela({ buttonCallback, data } = props) {
             <input
               placeholder="Digite seu nome"
               type="text"
-              maxLength={ 24 }
+              maxLength={ MAX_CHARS }
               defaultValue={ data.name }
               className={ styles.cadastroFormSectionInputText }
               { ...register('name') }
@@ -104,7 +104,7 @@ export default function cadastroPrimeiraTela({ buttonCallback, data } = props) {
             <input
               placeholder="Digite seu email"
               type="text"
-              maxLength={ 24 }
+              maxLength={ MAX_CHARS }
               defaultValue={ data.email }
               className={ styles.cadastroFormSectionInputText }
               { ...register('email') }
