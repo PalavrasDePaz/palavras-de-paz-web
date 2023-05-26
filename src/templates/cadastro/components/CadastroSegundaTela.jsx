@@ -1,12 +1,10 @@
 /* eslint-disable max-lines */
 import React from 'react';
-import countries from 'i18n-iso-countries';
-import ptLocale from 'i18n-iso-countries/langs/pt.json';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
 import styles from '../styles/CadastroTelas.module.css';
 import styleButton from '../styles/CadastroTemplate.module.css';
-import { SCHOOLING_OPTIONS, OPCOES_ESTADOS } from './constants';
+import { SCHOOLING_OPTIONS, OPCOES_ESTADOS, countryArray } from './constants';
 import { cadastroTela2Schema } from './schemas';
 import ErrorMessage from '../../../components/forms/ErrorMessage';
 import EmptyOption from '../../../components/forms/EmptyOption';
@@ -26,18 +24,10 @@ export default function cadastroSegundaTela({
     resolver: yupResolver(cadastroTela2Schema),
   });
 
-  const country = watch('country', 'BR');
+  const country = watch('country', 'Brasil');
   const schoolingLevel = watch('schooling', '');
   const isInHigherEducation = schoolingLevel.includes('superior');
   const disability = watch('deficiencia', 'não');
-
-  countries.registerLocale(ptLocale);
-
-  const countryObj = countries.getNames('pt', { select: 'official' });
-  const countryArray = Object.entries(countryObj).map(([key, value]) => ({
-    label: value,
-    value: key,
-  }));
 
   return (
     <form
@@ -54,16 +44,15 @@ export default function cadastroSegundaTela({
           </label>
           <select
             name="country"
-            defaultValue={ data.country || 'BR' }
+            defaultValue={ data.country || 'Brasil' }
             className={ styles.cadastroFormSectionInputText }
             { ...register('country') }
           >
-            {countryArray?.length
-              && countryArray.map(({ label, value }) => (
-                <option key={ value } value={ value }>
-                  {label}
-                </option>
-              ))}
+            {countryArray.map((_country) => (
+              <option key={ _country } value={ _country }>
+                {_country}
+              </option>
+            ))}
           </select>
           <ErrorMessage showError={ errors.country } style={ styles.inputError } />
         </div>
@@ -74,7 +63,7 @@ export default function cadastroSegundaTela({
           >
             Estado
           </label>
-          {country === 'BR' ? (
+          {country === 'Brasil' ? (
             <select
               name="state"
               defaultValue={ data.state || '' }
@@ -82,9 +71,9 @@ export default function cadastroSegundaTela({
               { ...register('state') }
             >
               <EmptyOption />
-              {OPCOES_ESTADOS.map(({ label, value }) => (
-                <option key={ value } value={ value }>
-                  {label}
+              {OPCOES_ESTADOS.map((state) => (
+                <option key={ state } value={ state }>
+                  {state}
                 </option>
               ))}
             </select>
@@ -201,7 +190,10 @@ export default function cadastroSegundaTela({
               className={ styles.cadastroFormSectionInputText }
               { ...register('bachelor') }
             />
-            <ErrorMessage showError={ errors.bachelor } style={ styles.inputError } />
+            <ErrorMessage
+              showError={ errors.bachelor }
+              style={ styles.inputError }
+            />
           </div>
         )}
         <div className={ styles.cadastroFormDiv }>

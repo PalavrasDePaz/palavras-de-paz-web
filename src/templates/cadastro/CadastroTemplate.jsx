@@ -9,7 +9,7 @@ import CadastroQuartaTela from './components/CadastroQuartaTela';
 import CadastroTelaFinal from './components/CadastroTelaFinal';
 
 export default function cadastroTemplate() {
-  const [controller, setController] = useState(0);
+  const [controller, setController] = useState(1);
   const [formData, setFormData] = useState({});
 
   const PAGE_1 = 0;
