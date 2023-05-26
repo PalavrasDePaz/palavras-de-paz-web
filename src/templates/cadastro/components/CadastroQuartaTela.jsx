@@ -15,18 +15,12 @@ export default function cadastroQuartaTela({
 } = props) {
   const {
     register,
-    watch,
     handleSubmit,
     getValues,
     formState: { errors },
   } = useForm({
     resolver: yupResolver(cadastroTela4Schema),
   });
-
-  const futureRoles = watch('interestFutureRoles');
-  console.log('data', data);
-  console.log(futureRoles);
-  console.log(errors.interestFutureRoles);
 
   return (
     <form
