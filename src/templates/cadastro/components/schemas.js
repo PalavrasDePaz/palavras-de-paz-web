@@ -81,9 +81,10 @@ export const cadastroTela4Schema = yup.object().shape({
       captacaoDeGrupos: yup.boolean(),
       leituraDeRedacao: yup.boolean(),
     })
-    .test('teste', null, (obj) => {
-      if (
-        obj.facilitadorPresencial
+    .test(
+      'interestFutureRoles',
+      AT_LEAST_ONE,
+      (obj) => obj.facilitadorPresencial
         || obj.facilitadorVirtual
         || obj.avaliadorRemoto
         || obj.captaçãoDeVoluntario
@@ -91,13 +92,8 @@ export const cadastroTela4Schema = yup.object().shape({
         || obj.tradutorRemoto
         || obj.divulgacao
         || obj.captacaoDeGrupos
-        || obj.leituraDeRedacao
-      ) {
-        return true;
-      }
-
-      return new yup.ValidationError(AT_LEAST_ONE, null, 'interestFutureRoles');
-    }),
+        || obj.leituraDeRedacao,
+    ),
   rolesPep: yup
     .object()
     .shape({
@@ -112,9 +108,10 @@ export const cadastroTela4Schema = yup.object().shape({
       assistenciaSocial: yup.boolean(),
       outros: yup.boolean(),
     })
-    .test('test', null, (obj) => {
-      if (
-        obj.administracao
+    .test(
+      'rolesPep',
+      AT_LEAST_ONE,
+      (obj) => obj.administracao
         || obj.comunicacao
         || obj.jornalismo
         || obj.midiasSociais
@@ -123,12 +120,7 @@ export const cadastroTela4Schema = yup.object().shape({
         || obj.TI
         || obj.psicologia
         || obj.assistenciaSocial
-        || obj.outros
-      ) {
-        return true;
-      }
-
-      return new yup.ValidationError(AT_LEAST_ONE, null, 'rolesPep');
-    }),
+        || obj.outros,
+    ),
   needDeclaration: yup.string().required(REQUIRED_FIELD),
 });
