@@ -15,6 +15,6 @@
     "isolatedModules": true,
     "jsx": "preserve"
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "src/templates/redefinir-senha/components/Form.jsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "src/templates/redefinir-senha/components/Form.tsx"],
   "exclude": ["node_modules"]
 }
