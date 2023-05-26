@@ -93,7 +93,6 @@ export const SCHOOLING_OPTIONS = [
   'Ensino médio completo',
   'Ensino superior incompleto/cursando',
   'Ensino superior completo',
-  'Outra',
 ];
 
 export const OPCOES_ESTADOS = [

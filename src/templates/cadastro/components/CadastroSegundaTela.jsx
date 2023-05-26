@@ -1,4 +1,3 @@
-/* eslint-disable max-lines */
 import React from 'react';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
@@ -8,6 +7,7 @@ import { SCHOOLING_OPTIONS, OPCOES_ESTADOS, countryArray } from './constants';
 import { cadastroTela2Schema } from './schemas';
 import ErrorMessage from '../../../components/forms/ErrorMessage';
 import EmptyOption from '../../../components/forms/EmptyOption';
+import { getIsHigherEducation } from './util';
 
 export default function cadastroSegundaTela({
   buttonCallback,
@@ -26,8 +26,11 @@ export default function cadastroSegundaTela({
 
   const country = watch('country', 'Brasil');
   const schoolingLevel = watch('schooling', '');
-  const isInHigherEducation = schoolingLevel.includes('superior');
+  const isInHigherEducation = getIsHigherEducation(schoolingLevel)
+    || getIsHigherEducation(data.schooling);
   const disability = watch('deficiencia', 'não');
+
+  const hasDisability = disability === 'sim' || data.disability === 'sim';
 
   return (
     <form
@@ -43,7 +46,6 @@ export default function cadastroSegundaTela({
             País
           </label>
           <select
-            name="country"
             defaultValue={ data.country || 'Brasil' }
             className={ styles.cadastroFormSectionInputText }
             { ...register('country') }
@@ -65,7 +67,6 @@ export default function cadastroSegundaTela({
           </label>
           {country === 'Brasil' ? (
             <select
-              name="state"
               defaultValue={ data.state || '' }
               className={ styles.cadastroFormSectionInputText }
               { ...register('state') }
@@ -79,7 +80,6 @@ export default function cadastroSegundaTela({
             </select>
           ) : (
             <input
-              name="state"
               placeholder="Digite seu estado"
               defaultValue={ data.state || '' }
               type="text"
@@ -97,7 +97,6 @@ export default function cadastroSegundaTela({
             Cidade
           </label>
           <input
-            name="city"
             placeholder="Digite sua cidade"
             defaultValue={ data.city || '' }
             type="text"
@@ -115,7 +114,6 @@ export default function cadastroSegundaTela({
             Telefone
           </label>
           <input
-            name="phoneNumber"
             placeholder="Digite seu telefone"
             type="tel"
             defaultValue={ data.phoneNumber }
@@ -137,9 +135,8 @@ export default function cadastroSegundaTela({
             Data de nascimento
           </label>
           <input
-            name="birthDate"
             type="date"
-            defaultValue={ data.birthDate }
+            defaultValue={ data.birthDate?.toISOString().split('T')[0] }
             className={ styles.cadastroFormSectionInputText }
             { ...register('birthDate') }
           />
@@ -157,7 +154,6 @@ export default function cadastroSegundaTela({
           </label>
           <select
             className={ styles.cadastroFormSectionInputText }
-            name="schooling"
             defaultValue={ data.schooling || '' }
             { ...register('schooling') }
           >
@@ -184,7 +180,6 @@ export default function cadastroSegundaTela({
             <input
               placeholder="Digite seu curso"
               type="text"
-              name="bachelor"
               defaultValue={ data.bachelor }
               maxLength={ 40 }
               className={ styles.cadastroFormSectionInputText }
@@ -204,7 +199,6 @@ export default function cadastroSegundaTela({
             É pessoa com deficiência?
           </label>
           <select
-            name="deficiencia"
             className={ styles.cadastroFormSectionInputText }
             defaultValue={ data.deficiencia || '' }
             { ...register('deficiencia') }
@@ -219,7 +213,7 @@ export default function cadastroSegundaTela({
             style={ styles.inputError }
           />
         </div>
-        {disability === 'sim' && (
+        {hasDisability && (
           <div className={ styles.cadastroFormDiv }>
             <label
               htmlFor="disability"
@@ -228,7 +222,6 @@ export default function cadastroSegundaTela({
               Qual?
             </label>
             <input
-              name="disability"
               type="text"
               defaultValue={ data.disability }
               maxLength={ 30 }
