@@ -15,12 +15,18 @@ export default function cadastroQuartaTela({
 } = props) {
   const {
     register,
+    watch,
     handleSubmit,
     getValues,
     formState: { errors },
   } = useForm({
     resolver: yupResolver(cadastroTela4Schema),
   });
+
+  const futureRoles = watch('interestFutureRoles');
+  console.log('data', data);
+  console.log(futureRoles);
+  console.log(errors.interestFutureRoles);
 
   return (
     <form
@@ -39,7 +45,7 @@ export default function cadastroQuartaTela({
               className={ styles.cadastroFormInputCheckbox }
               type="checkbox"
               id={ value }
-              checked={ data.interestFutureRoles?.[value] }
+              defaultChecked={ data.interestFutureRoles?.[value] }
               { ...register(`interestFutureRoles.${ value }`) }
             />
             <label
@@ -67,7 +73,7 @@ export default function cadastroQuartaTela({
               className={ styles.cadastroFormInputCheckbox }
               type="checkbox"
               id={ value }
-              checked={ data.rolesPep?.[value] }
+              defaultChecked={ data.rolesPep?.[value] }
               { ...register(`rolesPep.${ value }`) }
             />
             <label
@@ -78,10 +84,7 @@ export default function cadastroQuartaTela({
             </label>
           </div>
         ))}
-        <ErrorMessage
-          showError={ errors.rolesPep }
-          style={ styles.inputError }
-        />
+        <ErrorMessage showError={ errors.rolesPep } style={ styles.inputError } />
       </div>
 
       <div className={ styles.cadastroFormDivContainer }>
