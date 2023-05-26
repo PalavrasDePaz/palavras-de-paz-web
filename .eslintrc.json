@@ -5,7 +5,6 @@
   },
   "extends": ["plugin:react/recommended", "airbnb", "eslint:recommended"],
   "overrides": [],
-  "parser": "@babel/eslint-parser",
   "parserOptions": {
     "ecmaFeatures": {
       "jsx": true
