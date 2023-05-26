@@ -1,18 +1,18 @@
-import React from 'react';
-import * as yup from 'yup';
-import { useForm } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers/yup';
-import isEmail from 'validator/lib/isEmail';
-import styles from '../styles/CadastroTelas.module.css';
-import styleButton from '../styles/CadastroTemplate.module.css';
+import React from "react";
+import * as yup from "yup";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import isEmail from "validator/lib/isEmail";
+import styles from "../styles/CadastroTelas.module.css";
+import styleButton from "../styles/CadastroTemplate.module.css";
 import {
   INVALID_MAIL,
-  MANDATORY_FIELD,
+  REQUIRED_FIELD,
   PASS_MIN,
   PASS_MISMATCH,
   minCharsMessage,
-} from './constants';
-import ErrorMessage from '../../../components/forms/ErrorMessage';
+} from "./constants";
+import ErrorMessage from "../../../components/forms/ErrorMessage";
 
 const MIN_PASSWORD_LENGTH = 6;
 const MIN_CHARS = 3;
@@ -21,30 +21,26 @@ const MAX_CHARS = 24;
 const schema = yup.object().shape({
   name: yup
     .string()
-    .required(MANDATORY_FIELD)
+    .required(REQUIRED_FIELD)
     .min(MIN_CHARS, minCharsMessage(MIN_CHARS))
     .max(MAX_CHARS),
   email: yup
     .string()
-    .required(MANDATORY_FIELD)
-    .test(
-      'is-valid',
-      INVALID_MAIL,
-      (value) => (value
-        ? isEmail(value)
-        : new yup.ValidationError(INVALID_MAIL)),
+    .required(REQUIRED_FIELD)
+    .test("is-valid", INVALID_MAIL, (value) =>
+      value ? isEmail(value) : new yup.ValidationError(INVALID_MAIL)
     )
     .min(MIN_CHARS, minCharsMessage(MIN_CHARS))
     .max(MAX_CHARS),
   password: yup
     .string()
-    .required(MANDATORY_FIELD)
+    .required(REQUIRED_FIELD)
     .min(MIN_PASSWORD_LENGTH, PASS_MIN),
   passConfirmation: yup
     .string()
-    .required(MANDATORY_FIELD)
+    .required(REQUIRED_FIELD)
     .min(MIN_PASSWORD_LENGTH, PASS_MIN)
-    .equals([yup.ref('password')], PASS_MISMATCH),
+    .equals([yup.ref("password")], PASS_MISMATCH),
 });
 
 export default function cadastroPrimeiraTela({ buttonCallback, data } = props) {
@@ -58,13 +54,13 @@ export default function cadastroPrimeiraTela({ buttonCallback, data } = props) {
 
   return (
     <form
-      className={ styles.cadastroFormSection }
-      onSubmit={ handleSubmit(buttonCallback) }
+      className={styles.cadastroFormSection}
+      onSubmit={handleSubmit(buttonCallback)}
     >
       <section>
-        <h1 className={ styles.formTitle }>CADASTRO DE VOLUNTÁRIOS</h1>
+        <h1 className={styles.formTitle}>CADASTRO DE VOLUNTÁRIOS</h1>
 
-        <p className={ styles.formParagraph }>
+        <p className={styles.formParagraph}>
           Seja bem-vindo(a)! Preparamos este formulário para podermos te
           conhecer melhor, saber sobre seus conhecimentos e experiências, e
           também para entendermos a sua disponibilidade com o nosso
@@ -73,10 +69,10 @@ export default function cadastroPrimeiraTela({ buttonCallback, data } = props) {
           tomará no máximo dez minutos do seu tempo! Bora lá?
         </p>
 
-        <section className={ styles.cadastroFormSectionInputContainer }>
-          <div className={ styles.cadastroFormDiv }>
+        <section className={styles.cadastroFormSectionInputContainer}>
+          <div className={styles.cadastroFormDiv}>
             <label
-              className={ styles.cadastroFormSectionInputLabel }
+              className={styles.cadastroFormSectionInputLabel}
               htmlFor="name"
             >
               Nome
@@ -85,17 +81,17 @@ export default function cadastroPrimeiraTela({ buttonCallback, data } = props) {
             <input
               placeholder="Digite seu nome"
               type="text"
-              maxLength={ 24 }
-              defaultValue={ data.name }
-              className={ styles.cadastroFormSectionInputText }
-              { ...register('name') }
+              maxLength={24}
+              defaultValue={data.name}
+              className={styles.cadastroFormSectionInputText}
+              {...register("name")}
             />
-            <ErrorMessage showError={ errors.name } style={ styles.inputError } />
+            <ErrorMessage showError={errors.name} style={styles.inputError} />
           </div>
 
-          <div className={ styles.cadastroFormDiv }>
+          <div className={styles.cadastroFormDiv}>
             <label
-              className={ styles.cadastroFormSectionInputLabel }
+              className={styles.cadastroFormSectionInputLabel}
               htmlFor="email"
             >
               E-mail
@@ -104,17 +100,17 @@ export default function cadastroPrimeiraTela({ buttonCallback, data } = props) {
             <input
               placeholder="Digite seu email"
               type="text"
-              maxLength={ 24 }
-              defaultValue={ data.email }
-              className={ styles.cadastroFormSectionInputText }
-              { ...register('email') }
+              maxLength={24}
+              defaultValue={data.email}
+              className={styles.cadastroFormSectionInputText}
+              {...register("email")}
             />
-            <ErrorMessage showError={ errors.email } style={ styles.inputError } />
+            <ErrorMessage showError={errors.email} style={styles.inputError} />
           </div>
 
-          <div className={ styles.cadastroFormDiv }>
+          <div className={styles.cadastroFormDiv}>
             <label
-              className={ styles.cadastroFormSectionInputLabel }
+              className={styles.cadastroFormSectionInputLabel}
               htmlFor="password"
             >
               Senha
@@ -123,20 +119,20 @@ export default function cadastroPrimeiraTela({ buttonCallback, data } = props) {
             <input
               placeholder="Digite sua senha"
               type="password"
-              maxLength={ 12 }
-              defaultValue={ data.password }
-              className={ styles.cadastroFormSectionInputText }
-              { ...register('password') }
+              maxLength={12}
+              defaultValue={data.password}
+              className={styles.cadastroFormSectionInputText}
+              {...register("password")}
             />
             <ErrorMessage
-              showError={ errors.password }
-              style={ styles.inputError }
+              showError={errors.password}
+              style={styles.inputError}
             />
           </div>
 
-          <div className={ styles.cadastroFormDiv }>
+          <div className={styles.cadastroFormDiv}>
             <label
-              className={ styles.cadastroFormSectionInputLabel }
+              className={styles.cadastroFormSectionInputLabel}
               htmlFor="password"
             >
               Confirme sua senha
@@ -144,20 +140,20 @@ export default function cadastroPrimeiraTela({ buttonCallback, data } = props) {
 
             <input
               type="password"
-              maxLength={ 12 }
-              defaultValue={ data.passConfirmation }
-              className={ styles.cadastroFormSectionInputText }
+              maxLength={12}
+              defaultValue={data.passConfirmation}
+              className={styles.cadastroFormSectionInputText}
               placeholder="Confirme sua senha"
-              { ...register('passConfirmation') }
+              {...register("passConfirmation")}
             />
             <ErrorMessage
-              showError={ errors.passConfirmation }
-              style={ styles.inputError }
+              showError={errors.passConfirmation}
+              style={styles.inputError}
             />
           </div>
         </section>
       </section>
-      <button type="submit" className={ styleButton.cadastroFormSectionButton }>
+      <button type="submit" className={styleButton.cadastroFormSectionButton}>
         Próximo
       </button>
     </form>
