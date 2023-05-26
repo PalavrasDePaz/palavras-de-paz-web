@@ -1,9 +1,14 @@
+/* eslint-disable max-lines */
 import React from 'react';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
 import styles from '../styles/CadastroTelas.module.css';
 import styleButton from '../styles/CadastroTemplate.module.css';
-import { SCHOOLING_OPTIONS, OPCOES_ESTADOS, countryArray } from './constants';
+import {
+  SCHOOLING_OPTIONS,
+  countryArray,
+  statesArray,
+} from './constants';
 import { cadastroTela2Schema } from './schemas';
 import ErrorMessage from '../../../components/forms/ErrorMessage';
 import EmptyOption from '../../../components/forms/EmptyOption';
@@ -50,9 +55,9 @@ export default function cadastroSegundaTela({
             className={ styles.cadastroFormSectionInputText }
             { ...register('country') }
           >
-            {countryArray.map((_country) => (
-              <option key={ _country } value={ _country }>
-                {_country}
+            {countryArray.map(({ label, value }) => (
+              <option key={ value } value={ value }>
+                {label}
               </option>
             ))}
           </select>
@@ -72,9 +77,9 @@ export default function cadastroSegundaTela({
               { ...register('state') }
             >
               <EmptyOption />
-              {OPCOES_ESTADOS.map((state) => (
-                <option key={ state } value={ state }>
-                  {state}
+              {statesArray.map(({ label, value }) => (
+                <option key={ value } value={ value }>
+                  {label}
                 </option>
               ))}
             </select>

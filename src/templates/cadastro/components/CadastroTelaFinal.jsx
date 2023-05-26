@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import axios from 'axios';
+import { useRouter } from 'next/router';
 import styles from '../styles/CadastroTemplate.module.css';
 import { API } from '../../../constants';
 import { FUTURE_ROLES, SKILLS } from './constants';
@@ -15,8 +16,9 @@ const filterValues = (valuesObj, optionsObject) =>
     .map((item) => optionsObject.find((option) => option.value === item)?.label);
 
 export default function cadastroTelaFinal({ data } = props) {
-  const [isSent, setIsSent] = useState(false);
   const [isError, setIsError] = useState(false);
+
+  const router = useRouter();
 
   // Workaround para transformar os valores dos checkbox em um array de strings
   const { interestFutureRoles, rolesPep, needDeclaration } = data;
@@ -38,23 +40,13 @@ export default function cadastroTelaFinal({ data } = props) {
   const apiAddress = `${ API }/volunteers`;
   axios
     .post(apiAddress, apiObject)
-    .then(() => setIsSent(true))
+    .then(() => router.push('/login'))
     .catch((error) => {
       console.log(error);
       setIsError(true);
     });
 
   const getContent = () => {
-    if (isSent) {
-      return (
-        <>
-          <h1 className={ styles.formTitle }>OBRIGADO</h1>
-          <p className={ styles.formParagraph }>
-            Entraremos em contato em breve.
-          </p>
-        </>
-      );
-    }
     if (isError) {
       return (
         <p className={ styles.formParagraph } style={ { color: 'red' } }>
