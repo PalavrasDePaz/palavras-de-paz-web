@@ -16,7 +16,6 @@ export const Typography = styled.p `
     padding,
     spacing,
     textAlign,
-
   }) => css `
     width: ${ width };
     height: ${ height };

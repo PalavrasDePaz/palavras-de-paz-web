@@ -18,15 +18,14 @@ function Doacoes() {
 
             <p>
               {' '}
-              Também nos tornamos mais justos e igualitários, pois ao
-              contribuir para suprir as necessidades do próximo, contribuimos
-              para a melhora das instituições, das pessoas e da sociedade como
-              um todo.
+              Também nos tornamos mais justos e igualitários, pois ao contribuir
+              para suprir as necessidades do próximo, contribuimos para a
+              melhora das instituições, das pessoas e da sociedade como um todo.
             </p>
             <p>
-              Desde já gostaríamos de agradecer pela sua doação e dizer que
-              ela é fundamental, pois este ato de compaixão e amor ao próximo
-              nos permitirá continuar a:
+              Desde já gostaríamos de agradecer pela sua doação e dizer que ela
+              é fundamental, pois este ato de compaixão e amor ao próximo nos
+              permitirá continuar a:
             </p>
           </div>
         </div>
@@ -147,14 +146,10 @@ function Doacoes() {
 
         <div>
           {' '}
-          <Button
-            href="/voluntarios"
-            className="btn-voluntario"
-          >
+          <Button href="/voluntarios" className="btn-voluntario">
             Seja um voluntário
           </Button>
         </div>
-
       </container>
     </Center>
   );

@@ -81,12 +81,8 @@ export default function QuemSomosTemplate() {
               textAlign="center"
             >
               <Image src={ card1 } alt="" width="100%" height="100%" />
-              <p>
-                MISSÃO
-              </p>
-              <p>
-                Ajudar as pessoas a descobrir a própria força interior
-              </p>
+              <p>MISSÃO</p>
+              <p>Ajudar as pessoas a descobrir a própria força interior</p>
             </Box>
             <Box
               direction="column"
@@ -95,13 +91,8 @@ export default function QuemSomosTemplate() {
               textAlign="center"
             >
               <Image src={ card2 } alt="" width="100%" height="100%" />
-              <p>
-                VISÃO
-              </p>
-              <p>
-                Enxergamos um mundo onde a paz seja possível para todos
-
-              </p>
+              <p>VISÃO</p>
+              <p>Enxergamos um mundo onde a paz seja possível para todos</p>
             </Box>
             <Box
               direction="column"
@@ -110,12 +101,8 @@ export default function QuemSomosTemplate() {
               textAlign="center"
             >
               <Image src={ card3 } alt="" width="100%" height="100%" />
-              <p>
-                VALORES
-              </p>
-              <p>
-                Autoconhecimento, Paz, Dignidade, Esperança e Liberdade
-              </p>
+              <p>VALORES</p>
+              <p>Autoconhecimento, Paz, Dignidade, Esperança e Liberdade</p>
             </Box>
           </Box>
         </Box>

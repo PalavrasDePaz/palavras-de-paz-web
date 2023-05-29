@@ -1,2 +1,3 @@
 export const getIsHigherEducation = (schooling?: string): boolean =>
-  schooling && schooling.includes("superior");
+  // eslint-disable-next-line implicit-arrow-linebreak
+  schooling && schooling.includes('superior');

@@ -7,7 +7,6 @@ import styles from './styles/LoginTemplate.style.module.css';
 function LoginTemplate() {
   return (
     <section className={ styles.loginSection }>
-
       <Image
         style={ { cursor: 'pointer' } }
         src={ Logo }
@@ -21,7 +20,6 @@ function LoginTemplate() {
       <section className={ styles.loginSectionForm }>
         <LoginForm />
       </section>
-
     </section>
   );
 }

@@ -35,11 +35,9 @@ function GridPhotos() {
             />
           </div>
         </container>
-
       </container>
 
       <container className="container4">
-
         <div>
           <Image
             alt=""
@@ -108,7 +106,6 @@ function GridPhotos() {
             height="510px"
           />
         </div>
-
       </container>
       <container className="container8">
         <div>
@@ -119,7 +116,6 @@ function GridPhotos() {
             height="502px"
           />
         </div>
-
       </container>
 
       <Button

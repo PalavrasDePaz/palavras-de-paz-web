@@ -53,10 +53,7 @@ function Footer() {
             />
           </div>
         </Link>
-        <Link
-          href="https://www.facebook.com/palavrasdepaz.br"
-          target="_blank"
-        >
+        <Link href="https://www.facebook.com/palavrasdepaz.br" target="_blank">
           <div>
             <Image
               id="face"
@@ -68,10 +65,7 @@ function Footer() {
             />
           </div>
         </Link>
-        <Link
-          href="https://wa.me/5511999756554"
-          target="_blank"
-        >
+        <Link href="https://wa.me/5511999756554" target="_blank">
           <div>
             <Image
               id="whats"

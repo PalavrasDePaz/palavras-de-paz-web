@@ -7,7 +7,6 @@ import depo2 from '../../../public/static/images/depo_2.png';
 
 function Card() {
   return (
-
     <S.CardContainer>
       <S.CardContent>
         <S.IconContainer>
@@ -35,7 +34,6 @@ function Card() {
           padding="0 16px 16px 16px"
           text="Mariana Prado/Parceira/International Youth Day"
         />
-
       </S.CardContent>
 
       <S.CardContent>

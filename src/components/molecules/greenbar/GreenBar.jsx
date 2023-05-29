@@ -6,7 +6,6 @@ export default function GreenBar() {
   return (
     <div style={ { zIndex: 5 } }>
       <S.GreenContainer>
-
         <Box
           padding="10px"
           height="198px"
@@ -106,7 +105,6 @@ export default function GreenBar() {
             justify="center"
           />
         </Box>
-
       </S.GreenContainer>
     </div>
   );
