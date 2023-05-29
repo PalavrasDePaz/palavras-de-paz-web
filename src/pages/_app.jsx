@@ -1,3 +1,10 @@
+import React from 'react';
+import Head from 'next/head';
+import propTypes from 'prop-types';
+import { Provider } from 'react-redux';
+
+import store from '../store/store';
+
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../styles/header/index.css';
 import '../styles/footer/index.css';
@@ -18,11 +25,6 @@ import '../styles/globalstyles.css';
 import '../styles/swiper/index.css';
 import '../styles/fixedBtn/index.css';
 import 'animate.css';
-import Head from 'next/head';
-import React from 'react';
-import propTypes from 'prop-types';
-import { Provider } from 'react-redux';
-import store from '../store/store';
 
 function MyApp({ Component, pageProps }) {
   return (

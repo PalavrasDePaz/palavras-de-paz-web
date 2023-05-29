@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
-import axios from 'axios';
 import { useRouter } from 'next/router';
-import styles from '../styles/CadastroTemplate.module.css';
-import { API } from '../../../constants';
-import { FUTURE_ROLES, SKILLS } from './constants';
+import axios from 'axios';
+
 import LoadingSpinner from '../../../components/loadingSpinner/LoadingSpinner';
+import { API } from '../../../constants';
+
+import { FUTURE_ROLES, SKILLS } from './constants';
+
+import styles from '../styles/CadastroTemplate.module.css';
 
 const filterValues = (valuesObj, optionsObject) =>
   // eslint-disable-next-line implicit-arrow-linebreak

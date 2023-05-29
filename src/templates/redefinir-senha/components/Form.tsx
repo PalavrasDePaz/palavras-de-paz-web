@@ -1,21 +1,24 @@
-import Link from 'next/link';
 import React, { useState } from 'react';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
+import axios from 'axios';
+import { useForm } from 'react-hook-form';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import * as yup from 'yup';
-import { useForm } from 'react-hook-form';
+
 import { yupResolver } from '@hookform/resolvers/yup';
-import axios from 'axios';
-import { useRouter } from 'next/router';
-import styles from '../styles/RedefinirSenha.module.css';
+
+import ErrorMessage from '../../../components/forms/ErrorMessage';
+import LoadingSpinner from '../../../components/loadingSpinner/LoadingSpinner';
+import { API } from '../../../constants';
 import {
-  REQUIRED_FIELD,
   PASS_MIN,
   PASS_MISMATCH,
+  REQUIRED_FIELD,
 } from '../../cadastro/components/constants';
-import ErrorMessage from '../../../components/forms/ErrorMessage';
-import { API } from '../../../constants';
 import BackButton from '../../login/components/BackButton';
-import LoadingSpinner from '../../../components/loadingSpinner/LoadingSpinner';
+
+import styles from '../styles/RedefinirSenha.module.css';
 
 const MIN_PASSWORD_LENGTH = 6;
 

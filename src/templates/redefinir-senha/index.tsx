@@ -1,7 +1,10 @@
-import Image from 'next/image';
 import React from 'react';
+import Image from 'next/image';
+
 import Logo from '../../../public/static/images/logo.svg';
+
 import Form from './components/Form';
+
 import styles from './styles/RedefinirSenha.style.module.css';
 
 function RedefinirSenhaTemplate() {

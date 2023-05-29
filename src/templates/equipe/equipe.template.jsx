@@ -1,26 +1,26 @@
 /* eslint-disable max-lines */
 /* eslint-disable react/jsx-key */
 import Image from 'next/image';
-import Box from '../../components/box';
-import Typography from '../../components/typography';
-import Header from '../../components/header/Header';
+
+import card6 from '../../../public/static/images/equipe/Ellipse-A.svg';
+import card12 from '../../../public/static/images/equipe/Ellipse2.svg';
 import card1 from '../../../public/static/images/equipe/Ellipse2-1.svg';
 import card2 from '../../../public/static/images/equipe/Ellipse2-2.svg';
 import card3 from '../../../public/static/images/equipe/Ellipse2-3.svg';
 import card4 from '../../../public/static/images/equipe/Ellipse2-4.svg';
+import card13 from '../../../public/static/images/equipe/Ellipse2-5.svg';
 import card5 from '../../../public/static/images/equipe/Ellipse2-6.svg';
-import card6 from '../../../public/static/images/equipe/Ellipse-A.svg';
 import card7 from '../../../public/static/images/equipe/Ellipse2-8.svg';
 import card8 from '../../../public/static/images/equipe/Ellipse2-9.svg';
 import card9 from '../../../public/static/images/equipe/Ellipse2-10.svg';
 import card10 from '../../../public/static/images/equipe/Ellipse2-11.svg';
 import card11 from '../../../public/static/images/equipe/Ellipse2-12.svg';
-import card12 from '../../../public/static/images/equipe/Ellipse2.svg';
-import card13 from '../../../public/static/images/equipe/Ellipse2-5.svg';
-
-import Footer from '../../components/footer/Footer';
+import Box from '../../components/box';
 import Button from '../../components/button/button';
 import FixedButton from '../../components/fixedbutton/FixedButton';
+import Footer from '../../components/footer/Footer';
+import Header from '../../components/header/Header';
+import Typography from '../../components/typography';
 
 export default function ParceirosTemplate() {
   return (

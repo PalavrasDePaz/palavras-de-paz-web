@@ -1,14 +1,18 @@
 /* eslint-disable max-lines */
 import React from 'react';
-import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
+
+import { yupResolver } from '@hookform/resolvers/yup';
+
+import EmptyOption from '../../../components/forms/EmptyOption';
+import ErrorMessage from '../../../components/forms/ErrorMessage';
+
+import { countryArray, SCHOOLING_OPTIONS, statesArray } from './constants';
+import { cadastroTela2Schema } from './schemas';
+import { getIsHigherEducation } from './util';
+
 import styles from '../styles/CadastroTelas.module.css';
 import styleButton from '../styles/CadastroTemplate.module.css';
-import { SCHOOLING_OPTIONS, countryArray, statesArray } from './constants';
-import { cadastroTela2Schema } from './schemas';
-import ErrorMessage from '../../../components/forms/ErrorMessage';
-import EmptyOption from '../../../components/forms/EmptyOption';
-import { getIsHigherEducation } from './util';
 
 export default function cadastroSegundaTela({
   buttonCallback,

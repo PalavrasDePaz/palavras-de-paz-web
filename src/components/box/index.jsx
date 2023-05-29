@@ -1,4 +1,5 @@
 import propTypes from 'prop-types';
+
 import * as S from './styled';
 
 function Box({

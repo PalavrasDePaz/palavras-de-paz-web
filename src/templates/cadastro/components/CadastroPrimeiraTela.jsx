@@ -1,18 +1,22 @@
 import React from 'react';
-import * as yup from 'yup';
 import { useForm } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers/yup';
 import isEmail from 'validator/lib/isEmail';
-import styles from '../styles/CadastroTelas.module.css';
-import styleButton from '../styles/CadastroTemplate.module.css';
+import * as yup from 'yup';
+
+import { yupResolver } from '@hookform/resolvers/yup';
+
+import ErrorMessage from '../../../components/forms/ErrorMessage';
+
 import {
   INVALID_MAIL,
-  REQUIRED_FIELD,
+  minCharsMessage,
   PASS_MIN,
   PASS_MISMATCH,
-  minCharsMessage,
+  REQUIRED_FIELD,
 } from './constants';
-import ErrorMessage from '../../../components/forms/ErrorMessage';
+
+import styles from '../styles/CadastroTelas.module.css';
+import styleButton from '../styles/CadastroTemplate.module.css';
 
 const MIN_PASSWORD_LENGTH = 6;
 const MIN_CHARS = 3;

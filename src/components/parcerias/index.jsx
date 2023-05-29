@@ -1,15 +1,16 @@
 import Image from 'next/image';
-import Box from '../box';
-import Typography from '../typography';
+
 import card1 from '../../../public/static/images/parceiro/Building.svg';
 import card2 from '../../../public/static/images/parceiro/Enterprise.svg';
 import card3 from '../../../public/static/images/parceiro/GraduationScroll.svg';
+import banner from '../../../public/static/images/parceiro/image1.svg';
 import card4 from '../../../public/static/images/parceiro/NonProfit.svg';
 import card5 from '../../../public/static/images/parceiro/School.svg';
-import banner from '../../../public/static/images/parceiro/image1.svg';
+import Box from '../box';
 import Button from '../button/button';
-import FixedButton from '../fixedbutton/FixedButton';
 import Center from '../center';
+import FixedButton from '../fixedbutton/FixedButton';
+import Typography from '../typography';
 
 function Partners() {
   return (

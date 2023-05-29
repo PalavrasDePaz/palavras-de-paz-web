@@ -1,14 +1,14 @@
+import Box from '../../components/box';
+import Button from '../../components/button/button';
+import Card from '../../components/card/Card';
+import CarouselSlide from '../../components/carousel/Carousel';
+import Center from '../../components/center';
+import FixedButton from '../../components/fixedbutton/FixedButton';
 import Footer from '../../components/footer/Footer';
 import Header from '../../components/header/Header';
-import CarouselSlide from '../../components/carousel/Carousel';
 import GreenBar from '../../components/molecules/greenbar/GreenBar';
-import Typography from '../../components/typography';
-import Box from '../../components/box';
-import Card from '../../components/card/Card';
-import Button from '../../components/button/button';
 import SwiperJs from '../../components/swiper/Swiper';
-import FixedButton from '../../components/fixedbutton/FixedButton';
-import Center from '../../components/center';
+import Typography from '../../components/typography';
 
 export default function HomeTemplate() {
   return (

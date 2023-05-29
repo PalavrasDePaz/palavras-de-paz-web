@@ -2,6 +2,7 @@
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+
 import LogoVoluntarios from '../../../public/static/images/voluntarios.png';
 import Center from '../center';
 

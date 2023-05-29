@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
-import HeaderCadastro from './components/HeaderCadastro';
-import styles from './styles/CadastroTemplate.module.css';
-import Signature from './components/Signature';
+
 import CadastroPrimeiraTela from './components/CadastroPrimeiraTela';
-import CadastroSegundaTela from './components/CadastroSegundaTela';
-import CadastroTerceiraTela from './components/CadastroTerceiraTela';
 import CadastroQuartaTela from './components/CadastroQuartaTela';
+import CadastroSegundaTela from './components/CadastroSegundaTela';
 import CadastroTelaFinal from './components/CadastroTelaFinal';
+import CadastroTerceiraTela from './components/CadastroTerceiraTela';
+import HeaderCadastro from './components/HeaderCadastro';
+import Signature from './components/Signature';
+
+import styles from './styles/CadastroTemplate.module.css';
 
 export default function cadastroTemplate() {
   const [controller, setController] = useState(0);
