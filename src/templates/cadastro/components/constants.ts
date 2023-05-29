@@ -135,6 +135,6 @@ export const statesArray = ESTADOS.map((state) => ({
 
 export const MIN_CHARS_INPUTS = 3;
 
-export const minCharsMessage = (chars) =>
+export const minCharsMessage = (chars: number) =>
   // eslint-disable-next-line implicit-arrow-linebreak
   `Por favor utilize pelo menos ${ chars } caracteres`;
