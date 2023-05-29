@@ -15,6 +15,6 @@
     "isolatedModules": true,
     "jsx": "preserve"
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "src/components/box/index.jsx", "src/components/button/button.jsx", "src/components/card/Card.jsx", "src/components/desenvolvedores/Devs.jsx", "src/components/doacoes/Doacoes.jsx", "src/components/fixedbutton/FixedButton.jsx", "src/components/footer/Footer.jsx", "src/components/molecules/greenbar/GreenBar.jsx", "src/components/programa/OPrograma.jsx", "src/components/swiper/Swiper.jsx", "src/components/voluntariosmain/voluntariosmain.jsx", "src/templates/cadastro/components/CadastroPrimeiraTela.jsx", "src/templates/cadastro/CadastroTemplate.jsx", "src/templates/equipe/equipe.template.jsx", "src/templates/quemsomos/quemsomos.template.jsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
   "exclude": ["node_modules"]
 }

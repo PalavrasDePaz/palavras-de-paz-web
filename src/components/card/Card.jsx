@@ -5,7 +5,7 @@ import depo1 from '../../../public/static/images/depo_1.png';
 import depo2 from '../../../public/static/images/depo_2.png';
 import Typography from '../typography';
 
-import * as S from './styled.ts';
+import * as S from './styled';
 
 function Card() {
   return (
