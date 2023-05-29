@@ -1,7 +1,10 @@
-import Image from 'next/image';
 import React from 'react';
+import Image from 'next/image';
+
 import Logo from '../../../public/static/images/logo.svg';
+
 import LoginForm from './components/LoginInputs';
+
 import styles from './styles/LoginTemplate.style.module.css';
 
 function LoginTemplate() {

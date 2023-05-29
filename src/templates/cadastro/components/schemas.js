@@ -1,11 +1,12 @@
-import * as yup from 'yup';
 import isMobilePhone from 'validator/lib/isMobilePhone';
+import * as yup from 'yup';
+
 import {
   AT_LEAST_ONE,
   INVALID_PHONE,
-  REQUIRED_FIELD,
   MIN_CHARS_INPUTS,
   minCharsMessage,
+  REQUIRED_FIELD,
 } from './constants';
 
 const TODAY = new Date();

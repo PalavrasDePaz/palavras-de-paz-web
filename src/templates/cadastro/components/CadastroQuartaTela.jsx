@@ -1,12 +1,16 @@
 import React from 'react';
-import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
-import styles from '../styles/CadastroTelas.module.css';
-import styleButton from '../styles/CadastroTemplate.module.css';
+
+import { yupResolver } from '@hookform/resolvers/yup';
+
+import EmptyOption from '../../../components/forms/EmptyOption';
+import ErrorMessage from '../../../components/forms/ErrorMessage';
+
 import { FUTURE_ROLES, SKILLS } from './constants';
 import { cadastroTela4Schema } from './schemas';
-import ErrorMessage from '../../../components/forms/ErrorMessage';
-import EmptyOption from '../../../components/forms/EmptyOption';
+
+import styles from '../styles/CadastroTelas.module.css';
+import styleButton from '../styles/CadastroTemplate.module.css';
 
 export default function cadastroQuartaTela({
   buttonCallback,

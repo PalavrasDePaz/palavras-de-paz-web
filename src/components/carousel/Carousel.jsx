@@ -1,16 +1,18 @@
 /* eslint-disable import/no-unresolved */
 import React from 'react';
+import Image from 'next/image';
+import { Keyboard, Mousewheel, Navigation, Pagination } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
+
+import Box from '../box';
+
+import imagesMainCarousel from './imagesMainCarousel';
+import * as S from './styled';
+
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/autoplay';
-
-import { Navigation, Pagination, Mousewheel, Keyboard } from 'swiper';
-import Image from 'next/image';
-import imagesMainCarousel from './imagesMainCarousel';
-import Box from '../box';
-import * as S from './styled';
 
 function CarouselSlide() {
   return (

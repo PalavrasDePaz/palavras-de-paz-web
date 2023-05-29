@@ -1,15 +1,16 @@
 /* eslint-disable react/jsx-max-depth */
 import Image from 'next/image';
-import Box from '../../components/box';
-import Typography from '../../components/typography';
-import Header from '../../components/header/Header';
+
 import card1 from '../../../public/static/images/quemsomos/CameraIdentification.svg';
 import card2 from '../../../public/static/images/quemsomos/PuzzleMatching.svg';
 import card3 from '../../../public/static/images/quemsomos/ValorSecundario.svg';
-import Footer from '../../components/footer/Footer';
+import Box from '../../components/box';
 import Button from '../../components/button/button';
-import FixedButton from '../../components/fixedbutton/FixedButton';
 import Center from '../../components/center';
+import FixedButton from '../../components/fixedbutton/FixedButton';
+import Footer from '../../components/footer/Footer';
+import Header from '../../components/header/Header';
+import Typography from '../../components/typography';
 
 export default function QuemSomosTemplate() {
   return (

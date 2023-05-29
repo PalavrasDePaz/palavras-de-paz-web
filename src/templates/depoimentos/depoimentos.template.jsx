@@ -1,6 +1,7 @@
 import React from 'react';
-import Center from '../../components/center';
+
 import BannerDepoimentos from '../../components/bannerdepoimentos/BannerDepoimentos';
+import Center from '../../components/center';
 import DepoimentosMain from '../../components/depoimentosmain/DepoimentosMain';
 import Footer from '../../components/footer/Footer';
 import Header from '../../components/header/Header';

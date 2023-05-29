@@ -1,4 +1,5 @@
 import React from 'react';
+
 import { StyledDiv, StyledP } from '../../styles/bannerdepoimentos';
 
 function BannerDepoimentos() {

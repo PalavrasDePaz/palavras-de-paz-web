@@ -1,6 +1,8 @@
 import React from 'react';
 import Image from 'next/image';
+
 import Logo from '../../../../public/static/images/logo.svg';
+
 import styles from '../styles/HeaderCadastro.module.css';
 
 export default function HeaderCadastro() {

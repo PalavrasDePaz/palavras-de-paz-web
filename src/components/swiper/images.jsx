@@ -1,5 +1,5 @@
-import image6 from '../../../public/static/images/swiper/image 6.svg';
 import image4 from '../../../public/static/images/swiper/image 4.svg';
+import image6 from '../../../public/static/images/swiper/image 6.svg';
 import image11 from '../../../public/static/images/swiper/image 11.svg';
 import image12 from '../../../public/static/images/swiper/image 12.svg';
 import image14 from '../../../public/static/images/swiper/image 14.svg';

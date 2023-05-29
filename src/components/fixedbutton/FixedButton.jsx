@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import Modal from 'react-bootstrap/Modal';
-import * as S from './styled';
+
 import Box from '../box';
 import Button from '../button/button';
+
+import * as S from './styled';
 
 export default function FixedButton() {
   const [smShow, setSmShow] = useState(false);

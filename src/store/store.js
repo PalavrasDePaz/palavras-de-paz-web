@@ -1,5 +1,6 @@
-import { configureStore, createSlice } from '@reduxjs/toolkit';
 import { combineReducers } from 'redux';
+
+import { configureStore, createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
   value: 0,

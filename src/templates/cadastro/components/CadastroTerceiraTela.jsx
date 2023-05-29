@@ -1,15 +1,16 @@
 import React from 'react';
-import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
 
-import { OPEN_TEXT_FIELDS, HOW_FOUND_PEP, KNOWLEDGE_PEP } from './constants';
+import { yupResolver } from '@hookform/resolvers/yup';
+
+import EmptyOption from '../../../components/forms/EmptyOption';
+import ErrorMessage from '../../../components/forms/ErrorMessage';
+
+import { HOW_FOUND_PEP, KNOWLEDGE_PEP, OPEN_TEXT_FIELDS } from './constants';
+import { cadastroTela3Schema } from './schemas';
 
 import styles from '../styles/CadastroTelas.module.css';
 import styleButton from '../styles/CadastroTemplate.module.css';
-
-import { cadastroTela3Schema } from './schemas';
-import ErrorMessage from '../../../components/forms/ErrorMessage';
-import EmptyOption from '../../../components/forms/EmptyOption';
 
 export default function cadastroTerceiraTela({
   buttonCallback,

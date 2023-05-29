@@ -1,15 +1,19 @@
 import React, { useState } from 'react';
+import { useRouter } from 'next/router';
+import axios from 'axios';
+import { useForm } from 'react-hook-form';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import * as yup from 'yup';
-import { useForm } from 'react-hook-form';
+
 import { yupResolver } from '@hookform/resolvers/yup';
-import axios from 'axios';
-import { useRouter } from 'next/router';
-import styles from '../styles/LoginForm.module.css';
-import { API } from '../../../constants';
+
 import LoadingSpinner from '../../../components/loadingSpinner/LoadingSpinner';
+import { API } from '../../../constants';
 import { REQUIRED_FIELD } from '../../cadastro/components/constants';
+
 import BackButton from './BackButton';
+
+import styles from '../styles/LoginForm.module.css';
 
 const MIN_PASSWORD_LENGTH = 6;
 

@@ -1,4 +1,5 @@
 import Image from 'next/image';
+
 import textos from './depoTextos';
 
 const NUMBER_OF_CONTAINER = 5;

@@ -1,4 +1,5 @@
 import React from 'react';
+
 import DoacoesTemplate from '../templates/doacoes/doacoes.template';
 
 function doacoes() {

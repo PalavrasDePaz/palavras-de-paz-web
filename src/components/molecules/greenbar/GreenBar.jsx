@@ -1,5 +1,6 @@
 import Box from '../../box';
 import Typography from '../../typography';
+
 import * as S from './styled';
 
 export default function GreenBar() {

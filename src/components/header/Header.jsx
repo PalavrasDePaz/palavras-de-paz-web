@@ -1,7 +1,8 @@
 /* eslint-disable react/jsx-max-depth */
-import { Nav, Navbar, Offcanvas } from 'react-bootstrap';
 import Image from 'next/image';
 import Link from 'next/link';
+import { Nav, Navbar, Offcanvas } from 'react-bootstrap';
+
 import Logo from '../../../public/static/images/logo.svg';
 import Box from '../box';
 
