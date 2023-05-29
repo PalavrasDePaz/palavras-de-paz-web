@@ -3,7 +3,7 @@ import ptLocale from 'i18n-iso-countries/langs/pt.json';
 
 countries.registerLocale(ptLocale);
 
-const countryObj = countries.getNames('pt', { select: 'official' });
+export const countryObj = countries.getNames('pt', { select: 'official' });
 export const countryArray = Object.values(countryObj).map((country) => ({
   label: country,
   value: country,

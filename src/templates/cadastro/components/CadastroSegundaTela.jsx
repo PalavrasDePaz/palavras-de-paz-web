@@ -1,16 +1,23 @@
 /* eslint-disable max-lines */
 import React from 'react';
-import { useForm } from 'react-hook-form';
+import { Controller, useForm } from 'react-hook-form';
+import PhoneInput, { isValidPhoneNumber } from 'react-phone-number-input';
 
 import { yupResolver } from '@hookform/resolvers/yup';
 
 import EmptyOption from '../../../components/forms/EmptyOption';
 import ErrorMessage from '../../../components/forms/ErrorMessage';
 
-import { countryArray, SCHOOLING_OPTIONS, statesArray } from './constants';
+import {
+  countryArray,
+  countryObj,
+  SCHOOLING_OPTIONS,
+  statesArray,
+} from './constants';
 import { cadastroTela2Schema } from './schemas';
 import { getIsHigherEducation } from './util';
 
+import 'react-phone-number-input/style.css';
 import styles from '../styles/CadastroTelas.module.css';
 import styleButton from '../styles/CadastroTemplate.module.css';
 
@@ -24,9 +31,21 @@ export default function cadastroSegundaTela({
     handleSubmit,
     watch,
     getValues,
+    control,
     formState: { errors },
   } = useForm({
     resolver: yupResolver(cadastroTela2Schema),
+    defaultValues: {
+      country: data.country || 'Brasil',
+      state: data.state || '',
+      city: data.city,
+      phoneNumber: data.phoneNumber,
+      birthDate: data.birthDate?.toISOString().split('T')[0],
+      schooling: data.schooling || '',
+      bachelor: data.bachelor,
+      deficiencia: data.deficiencia || '',
+      disability: data.disability,
+    },
   });
 
   const country = watch('country', 'Brasil');
@@ -36,6 +55,10 @@ export default function cadastroSegundaTela({
   const disability = watch('deficiencia', 'não');
 
   const hasDisability = disability === 'sim' || data.disability === 'sim';
+
+  const phoneDefaultCountry = Object.keys(countryObj).find(
+    (key) => countryObj[key] === country,
+  );
 
   return (
     <form
@@ -51,7 +74,6 @@ export default function cadastroSegundaTela({
             País
           </label>
           <select
-            defaultValue={ data.country || 'Brasil' }
             className={ styles.cadastroFormSectionInputText }
             { ...register('country') }
           >
@@ -72,7 +94,6 @@ export default function cadastroSegundaTela({
           </label>
           {country === 'Brasil' ? (
             <select
-              defaultValue={ data.state || '' }
               className={ styles.cadastroFormSectionInputText }
               { ...register('state') }
             >
@@ -86,7 +107,6 @@ export default function cadastroSegundaTela({
           ) : (
             <input
               placeholder="Digite seu estado"
-              defaultValue={ data.state || '' }
               type="text"
               className={ styles.cadastroFormSectionInputText }
               { ...register('state') }
@@ -103,7 +123,6 @@ export default function cadastroSegundaTela({
           </label>
           <input
             placeholder="Digite sua cidade"
-            defaultValue={ data.city || '' }
             type="text"
             maxLength={ 28 }
             className={ styles.cadastroFormSectionInputText }
@@ -118,14 +137,19 @@ export default function cadastroSegundaTela({
           >
             Telefone
           </label>
-          <input
-            placeholder="Digite seu telefone"
-            type="tel"
-            defaultValue={ data.phoneNumber }
-            maxLength={ 15 }
-            minLength={ 3 }
-            className={ styles.cadastroFormSectionInputText }
-            { ...register('phoneNumber') }
+          <Controller
+            name="phoneNumber"
+            control={ control }
+            rules={ { validate: (value) => isValidPhoneNumber(value) } }
+            render={ ({ field: { onChange, value } }) => (
+              <PhoneInput
+                value={ value }
+                onChange={ onChange }
+                defaultCountry={ phoneDefaultCountry }
+                className={ styles.cadastroFormSectionInputText }
+                placeholder="Digite seu telefone"
+              />
+            ) }
           />
           <ErrorMessage
             showError={ errors.phoneNumber }
@@ -141,7 +165,6 @@ export default function cadastroSegundaTela({
           </label>
           <input
             type="date"
-            defaultValue={ data.birthDate?.toISOString().split('T')[0] }
             className={ styles.cadastroFormSectionInputText }
             { ...register('birthDate') }
           />
@@ -159,7 +182,6 @@ export default function cadastroSegundaTela({
           </label>
           <select
             className={ styles.cadastroFormSectionInputText }
-            defaultValue={ data.schooling || '' }
             { ...register('schooling') }
           >
             <EmptyOption />
@@ -185,7 +207,6 @@ export default function cadastroSegundaTela({
             <input
               placeholder="Digite seu curso"
               type="text"
-              defaultValue={ data.bachelor }
               maxLength={ 40 }
               className={ styles.cadastroFormSectionInputText }
               { ...register('bachelor') }
@@ -205,7 +226,6 @@ export default function cadastroSegundaTela({
           </label>
           <select
             className={ styles.cadastroFormSectionInputText }
-            defaultValue={ data.deficiencia || '' }
             { ...register('deficiencia') }
           >
             <EmptyOption />
@@ -228,7 +248,6 @@ export default function cadastroSegundaTela({
             </label>
             <input
               type="text"
-              defaultValue={ data.disability }
               maxLength={ 30 }
               className={ styles.cadastroFormSectionInputText }
               { ...register('disability') }
