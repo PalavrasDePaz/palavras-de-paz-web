@@ -71,6 +71,10 @@
   }
 }
 
+.cadastroFormSectionInputText > * {
+  border: none;
+}
+
 .inputError {
   color: red;
   font-size: 0.875rem;

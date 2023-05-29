@@ -147,6 +147,7 @@ export default function cadastroSegundaTela({
                 onChange={ onChange }
                 defaultCountry={ phoneDefaultCountry }
                 className={ styles.cadastroFormSectionInputText }
+                placeholder="Digite seu telefone"
               />
             ) }
           />
