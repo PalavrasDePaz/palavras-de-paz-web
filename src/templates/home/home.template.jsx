@@ -90,8 +90,8 @@ export default function HomeTemplate() {
           fontWeight="700"
           fontSize="36px"
           color="white"
-          text="``Não é o mundo que precisa de paz, são as pessoas,
-quando as pessoas tiverem paz interior, o mundo estará em paz.´´"
+          text='"Não é o mundo que precisa de paz, são as pessoas,
+quando as pessoas tiverem paz interior, o mundo estará em paz."'
         />
         <Typography
           fontWeight="700"
