@@ -104,7 +104,9 @@ export default function FixedButton() {
               name="_next"
               value="https://palavrasdepaz.org"
             />
-            <label htmlFor="name" className="form-label">Nome</label>
+            <label htmlFor="name" className="form-label">
+              Nome
+            </label>
             <input
               id="name"
               type="name"
@@ -113,7 +115,9 @@ export default function FixedButton() {
               name="Nome"
               required
             />
-            <label htmlFor="email" className="form-label">Email</label>
+            <label htmlFor="email" className="form-label">
+              Email
+            </label>
             <input
               id="email"
               type="email"
@@ -122,7 +126,9 @@ export default function FixedButton() {
               placeholder="Digite seu email"
               required
             />
-            <label htmlFor="assunto" className="form-label">Assunto</label>
+            <label htmlFor="assunto" className="form-label">
+              Assunto
+            </label>
             <input
               type="text"
               id="assunto"
@@ -130,7 +136,9 @@ export default function FixedButton() {
               className="form-control"
               placeholder="Assunto da sua mensagem"
             />
-            <label htmlFor="mensagem" className="form-label">Mensagem</label>
+            <label htmlFor="mensagem" className="form-label">
+              Mensagem
+            </label>
 
             <textarea
               id="mensagem"

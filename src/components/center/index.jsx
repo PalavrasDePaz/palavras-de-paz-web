@@ -8,11 +8,7 @@ const StyledCenteredDiv = styled.div `
 `;
 
 function Center({ children }) {
-  return (
-    <StyledCenteredDiv>
-      {children}
-    </StyledCenteredDiv>
-  );
+  return <StyledCenteredDiv>{children}</StyledCenteredDiv>;
 }
 
 Center.propTypes = {

@@ -4,11 +4,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
 import styles from '../styles/CadastroTelas.module.css';
 import styleButton from '../styles/CadastroTemplate.module.css';
-import {
-  SCHOOLING_OPTIONS,
-  countryArray,
-  statesArray,
-} from './constants';
+import { SCHOOLING_OPTIONS, countryArray, statesArray } from './constants';
 import { cadastroTela2Schema } from './schemas';
 import ErrorMessage from '../../../components/forms/ErrorMessage';
 import EmptyOption from '../../../components/forms/EmptyOption';

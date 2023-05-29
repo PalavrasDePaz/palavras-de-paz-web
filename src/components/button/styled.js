@@ -29,7 +29,7 @@ export const Button = styled.a `
     padding: ${ padding };
     box-shadow: ${ shadow };
     font-family: ${ familyFont };
-    font-weight: ${ fontWeight }; 
+    font-weight: ${ fontWeight };
     cursor: pointer;
     border: 1px solid rgba(24, 202, 153, 1);
     outline: 0;
@@ -38,8 +38,9 @@ export const Button = styled.a `
     transition: all 0.3s ease-in-out;
     &:hover {
       color: ${ hover };
-     ${ fontSize }: 20px;
+      ${ fontSize }: 20px;
       transition: 0.3s ease;
       filter: brightness(1.1);
     }
-` }`;
+  ` }
+`;

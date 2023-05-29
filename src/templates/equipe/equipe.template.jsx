@@ -54,12 +54,7 @@ export default function ParceirosTemplate() {
         justify="space-around"
       >
         <Box width="150px" direction="column" align="center" margin="20px 0">
-          <Image
-            src={ card11 }
-            alt=""
-            width="150%"
-            height="150%"
-          />
+          <Image src={ card11 } alt="" width="150%" height="150%" />
           <Typography
             text={ ['IVETE BELFORT', <br />, 'PRESIDENTE DA ONG'] }
             fontWeight="bold"
@@ -98,59 +93,35 @@ export default function ParceirosTemplate() {
         align="center"
         justify="center"
       >
-
         <Box width="150px" direction="column" align="center" margin="20px 0">
-          <Image
-            src={ card6 }
-            alt=""
-            width="150%"
-            height="150%"
-          />
+          <Image src={ card6 } alt="" width="150%" height="150%" />
           <Typography
-            text={ ['ANA PAULA BORO', <br />,
-              'SOCIAL MEDIA'] }
+            text={ ['ANA PAULA BORO', <br />, 'SOCIAL MEDIA'] }
             fontWeight="bold"
             fontSize="12px"
             textAlign="center"
           />
         </Box>
         <Box width="150px" direction="column" align="center" margin="20px 0">
-          <Image
-            src={ card1 }
-            alt=""
-            width="150%"
-            height="150%"
-          />
+          <Image src={ card1 } alt="" width="150%" height="150%" />
           <Typography
-            text={ ['ANAÍDE SURANO', <br />,
-              'ESTATÍSTICAS'] }
+            text={ ['ANAÍDE SURANO', <br />, 'ESTATÍSTICAS'] }
             fontWeight="bold"
             fontSize="12px"
             textAlign="center"
           />
         </Box>
         <Box width="150px" direction="column" align="center" margin="20px 0">
-          <Image
-            src={ card2 }
-            alt=""
-            width="150%"
-            height="150%"
-          />
+          <Image src={ card2 } alt="" width="150%" height="150%" />
           <Typography
-            text={ ['ANNA SQUADRONI', <br />,
-              'HELP DESK CADERNO DOS DETENTOS'] }
+            text={ ['ANNA SQUADRONI', <br />, 'HELP DESK CADERNO DOS DETENTOS'] }
             fontWeight="bold"
             fontSize="12px"
             textAlign="center"
           />
         </Box>
         <Box width="150px" direction="column" align="center" margin="20px 0">
-          <Image
-            src={ card3 }
-            alt=""
-            width="150%"
-            height="150%"
-          />
+          <Image src={ card3 } alt="" width="150%" height="150%" />
           <Typography
             text={ ['CLEIDE DINARDI', <br />, 'AVALIAÇÃO DOS CADERNOS'] }
             fontWeight="bold"
@@ -159,12 +130,7 @@ export default function ParceirosTemplate() {
           />
         </Box>
         <Box width="150px" direction="column" align="center" margin="20px 0">
-          <Image
-            src={ card4 }
-            alt=""
-            width="150%"
-            height="150%"
-          />
+          <Image src={ card4 } alt="" width="150%" height="150%" />
           <Typography
             text={ ['DIVA DA SILVA', <br />, 'FACILITADORA'] }
             fontWeight="bold"
@@ -173,12 +139,7 @@ export default function ParceirosTemplate() {
           />
         </Box>
         <Box width="150px" direction="column" align="center" margin="20px 0">
-          <Image
-            src={ card12 }
-            alt=""
-            width="150%"
-            height="150%"
-          />
+          <Image src={ card12 } alt="" width="150%" height="150%" />
           <Typography
             text={ ['FERNANDA SERRA', <br />, 'TRADUÇÃO'] }
             fontWeight="bold"
@@ -187,12 +148,7 @@ export default function ParceirosTemplate() {
           />
         </Box>
         <Box width="150px" direction="column" align="center" margin="20px 0">
-          <Image
-            src={ card5 }
-            alt=""
-            width="150%"
-            height="150%"
-          />
+          <Image src={ card5 } alt="" width="150%" height="150%" />
           <Typography
             text={ ['GIANFRANCO BOCCEDI', <br />, 'T.I'] }
             fontWeight="bold"
@@ -201,31 +157,20 @@ export default function ParceirosTemplate() {
           />
         </Box>
         <Box width="150px" direction="column" align="center" margin="20px 0">
-          <Image
-            src={ card13 }
-            alt=""
-            width="150%"
-            height="150%"
-          />
+          <Image src={ card13 } alt="" width="150%" height="150%" />
           <Typography
-            text={
-              [
-                'MÔNICA LOPES',
-                <br />,
-                'COORDENADORIADE INTEGRIDADE E EXPERIÊNCIA']
-            }
+            text={ [
+              'MÔNICA LOPES',
+              <br />,
+              'COORDENADORIADE INTEGRIDADE E EXPERIÊNCIA',
+            ] }
             fontWeight="bold"
             fontSize="12px"
             textAlign="center"
           />
         </Box>
         <Box width="150px" direction="column" align="center" margin="20px 0">
-          <Image
-            src={ card7 }
-            alt=""
-            width="150%"
-            height="150%"
-          />
+          <Image src={ card7 } alt="" width="150%" height="150%" />
           <Typography
             text={ ['PAOLA SQUADRONI', <br />, 'CLUBE DE LEITURA'] }
             fontWeight="bold"
@@ -234,12 +179,7 @@ export default function ParceirosTemplate() {
           />
         </Box>
         <Box width="150px" direction="column" align="center" margin="20px 0">
-          <Image
-            src={ card8 }
-            alt=""
-            width="150%"
-            height="150%"
-          />
+          <Image src={ card8 } alt="" width="150%" height="150%" />
           <Typography
             text={ ['PAULLA KOCHUTT', <br />, 'CURSOS PARA VOLUNTÁRIADOS'] }
             fontWeight="bold"
@@ -248,12 +188,7 @@ export default function ParceirosTemplate() {
           />
         </Box>
         <Box width="150px" direction="column" align="center" margin="20px 0">
-          <Image
-            src={ card9 }
-            alt=""
-            width="150%"
-            height="150%"
-          />
+          <Image src={ card9 } alt="" width="150%" height="150%" />
           <Typography
             text={ ['SUSANNE BUSSEM', <br />, 'CURSO PARA VOLUNTÁRIOS'] }
             fontWeight="bold"
@@ -262,12 +197,7 @@ export default function ParceirosTemplate() {
           />
         </Box>
         <Box width="150px" direction="column" align="center" margin="20px 0">
-          <Image
-            src={ card10 }
-            alt=""
-            width="150%"
-            height="150%"
-          />
+          <Image src={ card10 } alt="" width="150%" height="150%" />
           <Typography
             text={ ['TALITA GIANE', <br />, 'MORADORES EM SITUAÇÃO DE RUA'] }
             fontWeight="bold"
@@ -275,7 +205,6 @@ export default function ParceirosTemplate() {
             textAlign="center"
           />
         </Box>
-
       </Box>
 
       <Box justify="center" padding="0 0 32px 0 " gap="48px" margin="24px 0">

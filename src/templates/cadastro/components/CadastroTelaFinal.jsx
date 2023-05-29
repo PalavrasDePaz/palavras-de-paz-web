@@ -13,7 +13,9 @@ const filterValues = (valuesObj, optionsObject) =>
     // Pegamos todos os valores de checkbox e transformamos em um array
     .filter((key) => valuesObj[key] !== false)
     // Trocamos os nomes de item pelos labels.
-    .map((item) => optionsObject.find((option) => option.value === item)?.label);
+    .map(
+      (item) => optionsObject.find((option) => option.value === item)?.label,
+    );
 
 export default function cadastroTelaFinal({ data } = props) {
   const [isError, setIsError] = useState(false);

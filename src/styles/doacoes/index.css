@@ -1,4 +1,3 @@
-
 .doacao-main {
   display: flex;
   justify-content: space-around;
@@ -11,7 +10,6 @@
   display: flex;
   flex-direction: column;
   font-size: 32px;
-
 }
 
 .doacao-texto {
@@ -47,13 +45,13 @@
   justify-content: center;
   font-size: 56px;
   padding-top: 10px;
-  font-family: 'Baloo', cursive, Arial, Helvetica, sans-serif;
+  font-family: "Baloo", cursive, Arial, Helvetica, sans-serif;
 }
 
 .doacoes-pix {
   display: flex;
   align-items: center;
-  border: 1px solid #18CA99;
+  border: 1px solid #18ca99;
   width: 45%;
   justify-content: space-between;
   border-radius: 10px;
@@ -70,11 +68,10 @@
   display: flex;
   align-items: center;
   justify-content: space-around;
-  border: 1px solid #18CA99;
+  border: 1px solid #18ca99;
   width: 45%;
   border-radius: 10px;
   padding: 10px;
-
 }
 
 .doacoes-icones-empresas {
@@ -84,13 +81,13 @@
   align-items: center;
 }
 
-.banner-paz  {
+.banner-paz {
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: justify;
   margin-top: 50px;
-  background-color: #21AA85;
+  background-color: #21aa85;
   font-size: 36px;
   color: white;
   margin-bottom: 56px;
@@ -99,27 +96,25 @@
   margin: 88px auto 62px auto;
 }
 
-.doacoes-banner-texto{
+.doacoes-banner-texto {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-.doacoes-contas{
+.doacoes-contas {
   display: flex;
   flex-direction: column;
   justify-content: center;
   font-size: 36px;
   text-align: center;
-
 }
 .doacoes-contas a {
   text-decoration: none;
-  color:#2A2A2A;
+  color: #2a2a2a;
   font-family: Open Sans;
-
 }
 
-.doacoes-button{
+.doacoes-button {
   display: flex;
   justify-content: center;
   margin: 40px 0;
@@ -129,31 +124,29 @@
   background-color: white;
   style: none;
   color: white;
-  border: 2px solid #18CA99;
+  border: 2px solid #18ca99;
   border-radius: 10px;
   padding: 10px 20px;
   font-size: 24px;
-  font-family: 'Baloo', cursive, Arial, Helvetica, sans-serif;
+  font-family: "Baloo", cursive, Arial, Helvetica, sans-serif;
   cursor: pointer;
   transition: 0.5s;
 }
 
 .btn-voluntario:hover {
   background-color: transparent;
-  border: 2px solid #18CA99;
-  color: #18CA99;
+  border: 2px solid #18ca99;
+  color: #18ca99;
 }
 
-@media(max-width: 720px) {
+@media (max-width: 720px) {
   .doacoes-texto-icones {
     font-size: 20px;
   }
-
 }
 
-@media(max-width: 477px) {
+@media (max-width: 477px) {
   .doacoes-texto-icones {
     gap: 35px;
   }
-
 }

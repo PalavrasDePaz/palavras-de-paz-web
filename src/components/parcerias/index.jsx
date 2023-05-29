@@ -54,10 +54,7 @@ function Partners() {
             textAlign="center"
           >
             <Image src={ card1 } alt="" width="100%" height="100%" />
-            <p>
-              Entidades
-              públicas
-            </p>
+            <p>Entidades públicas</p>
           </Box>
 
           <Box
@@ -67,10 +64,7 @@ function Partners() {
             textAlign="center"
           >
             <Image src={ card2 } alt="" width="100%" height="100%" />
-            <p>
-              Empresas
-              privadas
-            </p>
+            <p>Empresas privadas</p>
           </Box>
 
           <Box
@@ -80,11 +74,7 @@ function Partners() {
             textAlign="center"
           >
             <Image src={ card4 } alt="" width="100%" height="100%" />
-            <p>
-              Órgãos
-              {' '}
-              governamentais
-            </p>
+            <p>Órgãos governamentais</p>
           </Box>
 
           <Box

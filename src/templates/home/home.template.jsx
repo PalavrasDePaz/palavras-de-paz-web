@@ -28,7 +28,6 @@ export default function HomeTemplate() {
             color="black"
             text="Depoimentos"
           />
-
         </Box>
 
         <Card />

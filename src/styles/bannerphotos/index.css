@@ -1,13 +1,16 @@
-
 .banner-photos {
-  font-family: 'Baloo', cursive, Arial, Helvetica, sans-serif;
+  font-family: "Baloo", cursive, Arial, Helvetica, sans-serif;
   width: 1416px;
   max-width: 100%;
   margin: 0 auto;
   height: 176px;
   background: rgba(33, 170, 133, 0.8);
-  background: -webkit-linear-gradient(to right, rgba(33, 170, 133, 0.8), #0FE0AA);
-  background: linear-gradient(to right, rgba(33, 170, 133, 0.8), #0FE0AA);
+  background: -webkit-linear-gradient(
+    to right,
+    rgba(33, 170, 133, 0.8),
+    #0fe0aa
+  );
+  background: linear-gradient(to right, rgba(33, 170, 133, 0.8), #0fe0aa);
 }
 
 .banner-photos p {
@@ -18,7 +21,7 @@
   padding-right: 50px;
 }
 
-@media(max-width: 492px) {
+@media (max-width: 492px) {
   .banner-photos p {
     font-size: 30px;
   }

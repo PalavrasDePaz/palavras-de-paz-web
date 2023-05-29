@@ -7,8 +7,8 @@
 <h2 align="center"><a href="https://tprf.org/">The Prem Rawat Foundation</a> | <a href="https://github.com/alchemist-developer/deploy-palavrasdepaz-ong"> ONG Palavras de Paz</a></h2><br/>
 
 ![image](https://user-images.githubusercontent.com/88943961/205814572-ec36b186-6733-4af5-b770-3f8524591ad0.png)
-<p align="end">Finalização/Lançamento: 15/12/2022</p>
 
+<p align="end">Finalização/Lançamento: 15/12/2022</p>
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 

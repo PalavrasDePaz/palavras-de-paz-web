@@ -1,7 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@600&family=Raleway:wght@500;700&family=Roboto&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@600&family=Raleway:wght@500;700&family=Roboto&display=swap");
 
 .styles-header * {
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
   background-color: white;
   margin: 0 auto;
   display: flex;
@@ -16,7 +16,7 @@
 
 a.nav-link {
   width: max-content;
-  color: #2A2A2A;
+  color: #2a2a2a;
   text-decoration: none;
   transition: 0.3s ease-in-out;
 }
@@ -30,7 +30,7 @@ a.nav-link:hover {
   background-color: white !important;
   height: 156px;
   max-width: 100%;
-  box-shadow:  0 2px 5px -2px rgba(0, 0, 0, 0.479);
+  box-shadow: 0 2px 5px -2px rgba(0, 0, 0, 0.479);
   margin: 0;
   z-index: 2;
 }
@@ -39,7 +39,6 @@ a.nav-link:hover {
   gap: 80px;
   font-size: 24px;
 }
-
 
 .navbar-toggler .collapsed {
   outline: 0 !important;
@@ -50,7 +49,6 @@ a.nav-link:hover {
   #buttons-header {
     gap: 24px;
   }
-
 }
 
 @media (max-width: 718px) {

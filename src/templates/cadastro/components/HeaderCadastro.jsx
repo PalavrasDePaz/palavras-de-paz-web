@@ -7,7 +7,6 @@ export default function HeaderCadastro() {
   return (
     <>
       <header className={ styles.headerContainer }>
-
         <Image
           src={ Logo }
           alt="Logo da organização e logo abaixo está escrito
@@ -20,8 +19,6 @@ export default function HeaderCadastro() {
       </header>
 
       <hr className={ styles.line } />
-
     </>
-
   );
 }

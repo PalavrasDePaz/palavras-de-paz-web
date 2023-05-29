@@ -1,4 +1,4 @@
-.voluntarios-container1{
+.voluntarios-container1 {
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
@@ -21,18 +21,17 @@
 
 .voluntarios-container-main {
   width: 40rem;
-
 }
 
 .voluntarios-titulo-card h3 {
   text-align: center;
-  font-family: 'Baloo', Arial, Helvetica, sans-serif !important;
+  font-family: "Baloo", Arial, Helvetica, sans-serif !important;
   font-weight: bold;
   margin: 80px 0;
 }
 
 .voluntarios-text {
-  border: 1px solid #18CA99;
+  border: 1px solid #18ca99;
   border-radius: 10px;
   text-align: center;
 }
@@ -49,7 +48,7 @@
   padding: 20px;
 }
 
-.voluntarios-container-button  {
+.voluntarios-container-button {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -63,7 +62,7 @@
 
   align-items: center;
   justify-content: center;
-  background-color: #18CA99;
+  background-color: #18ca99;
   width: 240px;
   height: 64px;
   border-radius: 10px;
@@ -94,10 +93,9 @@ a:hover {
   max-width: 100%;
   margin: 0 auto;
   height: 100%;
-  background-color: #21AA85;
+  background-color: #21aa85;
   color: white;
   font-size: 36px;
-
 }
 
 .voluntarios-button-doacao {
@@ -115,7 +113,7 @@ a:hover {
   width: 200px;
   height: 56px;
   text-align: center;
-  border: 1px solid #18CA99;
+  border: 1px solid #18ca99;
   border-radius: 10px;
   text-decoration: none;
   font-size: 18px;
@@ -131,12 +129,12 @@ a:hover {
 }
 
 .voluntarios-button-doacao > a:hover {
-  color: #18CA99;
+  color: #18ca99;
   filter: brightness(1.1);
   font-size: 20px;
   transition: 0.3s ease;
 }
 
-#link{
-  color: #18CA99;
+#link {
+  color: #18ca99;
 }
