@@ -11,7 +11,7 @@ import Signature from './components/Signature';
 import styles from './styles/CadastroTemplate.module.css';
 
 export default function cadastroTemplate() {
-  const [controller, setController] = useState(1);
+  const [controller, setController] = useState(0);
   const [formData, setFormData] = useState({});
 
   const PAGE_1 = 0;
