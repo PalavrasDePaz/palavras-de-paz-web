@@ -23,6 +23,7 @@
   flex-direction: column;
   gap: 1rem;
   margin-top: 1rem;
+  position: relative;
 }
 
 .formTitle {
@@ -133,4 +134,13 @@
 .buttonsRow {
   display: flex;
   margin-left: auto;
+}
+
+.cadastroPassButton {
+  background-color: transparent;
+  border: transparent;
+  color: grey;
+  position: absolute;
+  right: 10px;
+  top: 47px;
 }

@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
+import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import isEmail from 'validator/lib/isEmail';
 import * as yup from 'yup';
 
@@ -52,6 +53,10 @@ const schema = yup.object().shape({
 });
 
 export default function cadastroPrimeiraTela({ buttonCallback, data } = props) {
+  const [isPasswordVisible, setIsPasswordVisible] = useState(false);
+
+  const changePasswordVisibility = () => setIsPasswordVisible((_visible) => !_visible);
+
   const {
     register,
     handleSubmit,
@@ -59,6 +64,19 @@ export default function cadastroPrimeiraTela({ buttonCallback, data } = props) {
   } = useForm({
     resolver: yupResolver(schema),
   });
+
+  function ShowPassButton() {
+    return (
+      <button
+        type="button"
+        onClick={ changePasswordVisibility }
+        className={ styles.cadastroPassButton }
+        title={ isPasswordVisible ? 'Ocultar senha' : 'Mostrar senha' }
+      >
+        {isPasswordVisible ? <FaEye /> : <FaEyeSlash />}
+      </button>
+    );
+  }
 
   return (
     <form
@@ -126,12 +144,13 @@ export default function cadastroPrimeiraTela({ buttonCallback, data } = props) {
 
             <input
               placeholder="Digite sua senha"
-              type="password"
+              type={ isPasswordVisible ? 'text' : 'password' }
               maxLength={ 12 }
               defaultValue={ data.password }
               className={ styles.cadastroFormSectionInputText }
               { ...register('password') }
             />
+            <ShowPassButton />
             <ErrorMessage
               showError={ errors.password }
               style={ styles.inputError }
@@ -147,13 +166,14 @@ export default function cadastroPrimeiraTela({ buttonCallback, data } = props) {
             </label>
 
             <input
-              type="password"
+              type={ isPasswordVisible ? 'text' : 'password' }
               maxLength={ 12 }
               defaultValue={ data.passConfirmation }
               className={ styles.cadastroFormSectionInputText }
               placeholder="Confirme sua senha"
               { ...register('passConfirmation') }
             />
+            <ShowPassButton />
             <ErrorMessage
               showError={ errors.passConfirmation }
               style={ styles.inputError }
