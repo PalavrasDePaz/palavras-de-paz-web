@@ -1,56 +1,15 @@
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
-import isEmail from 'validator/lib/isEmail';
-import * as yup from 'yup';
 
 import { yupResolver } from '@hookform/resolvers/yup';
 
 import ErrorMessage from '../../../components/forms/ErrorMessage';
 
-import {
-  INVALID_MAIL,
-  minCharsMessage,
-  PASS_MIN,
-  PASS_MISMATCH,
-  REQUIRED_FIELD,
-} from './constants';
+import { cadastroTela1Schema, MAX_CHARS } from './schemas';
 
 import styles from '../styles/CadastroTelas.module.css';
 import styleButton from '../styles/CadastroTemplate.module.css';
-
-const MIN_PASSWORD_LENGTH = 6;
-const MIN_CHARS = 3;
-const MAX_CHARS = 50;
-
-const schema = yup.object().shape({
-  name: yup
-    .string()
-    .required(REQUIRED_FIELD)
-    .min(MIN_CHARS, minCharsMessage(MIN_CHARS))
-    .max(MAX_CHARS),
-  email: yup
-    .string()
-    .required(REQUIRED_FIELD)
-    .test(
-      'is-valid',
-      INVALID_MAIL,
-      (value) => (value
-        ? isEmail(value)
-        : new yup.ValidationError(INVALID_MAIL)),
-    )
-    .min(MIN_CHARS, minCharsMessage(MIN_CHARS))
-    .max(MAX_CHARS),
-  password: yup
-    .string()
-    .required(REQUIRED_FIELD)
-    .min(MIN_PASSWORD_LENGTH, PASS_MIN),
-  passConfirmation: yup
-    .string()
-    .required(REQUIRED_FIELD)
-    .min(MIN_PASSWORD_LENGTH, PASS_MIN)
-    .equals([yup.ref('password')], PASS_MISMATCH),
-});
 
 export default function cadastroPrimeiraTela({ buttonCallback, data } = props) {
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
@@ -62,7 +21,7 @@ export default function cadastroPrimeiraTela({ buttonCallback, data } = props) {
     handleSubmit,
     formState: { errors },
   } = useForm({
-    resolver: yupResolver(schema),
+    resolver: yupResolver(cadastroTela1Schema),
   });
 
   function ShowPassButton() {
