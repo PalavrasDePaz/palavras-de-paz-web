@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import HeaderWorkspace from '../../components/headerWorskspace/HeaderWorkspace';
+import HeaderWorkspace from '../../components/headerWorkspace/HeaderWorkspace';
 
 import CadastroPrimeiraTela from './components/CadastroPrimeiraTela';
 import CadastroQuartaTela from './components/CadastroQuartaTela';
