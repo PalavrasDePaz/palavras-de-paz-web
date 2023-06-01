@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import HeaderCadastro from '../../components/headerWorskspace/HeaderWorkspace';
+import HeaderWorkspace from '../../components/headerWorskspace/HeaderWorkspace';
 
 import CadastroPrimeiraTela from './components/CadastroPrimeiraTela';
 import CadastroQuartaTela from './components/CadastroQuartaTela';
@@ -37,7 +37,7 @@ export default function cadastroTemplate() {
 
   return (
     <>
-      <HeaderCadastro title="Cadastro de voluntário" />
+      <HeaderWorkspace title="Cadastro de voluntário" />
       <Signature controller={ controller } />
       <div className={ styles.main_container_form }>
         {controller === PAGE_1 && (
