@@ -2,3 +2,79 @@
   text-decoration: none;
   color: black;
 }
+
+.programa-texto {
+  width: 88%;
+  margin: auto;
+  font-size: 24px;
+  letter-spacing: 1px;
+  font-family: "opan sans", Arial, Helvetica, sans-serif;
+}
+.container-programa {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 160px;
+  margin: 40px 0;
+}
+
+.paz-icon {
+  display: flex;
+  align-items: center;
+  font-size: 36px;
+  gap: 24px;
+  padding: 10px;
+}
+.programa-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.programa-button p {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #b4efe0;
+  width: 456px;
+  height: 88px;
+  border-radius: 10px;
+  font-size: 24px;
+}
+
+.container-programa-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+  margin: 40px 0;
+}
+.programa-button2 {
+  display: flex;
+  align-items: center;
+
+  justify-content: center;
+  width: 200px;
+  height: 56px;
+  border: 1px solid #18ca99;
+  border-radius: 10px;
+}
+.programa-button2 p {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+  margin-top: 15px;
+}
+
+@media (max-width: 492px) {
+  .banner-photos p {
+    font-size: 30px;
+  }
+}
+
+@media (max-width: 368px) {
+  .banner-programa p {
+    font-size: 40px;
+  }
+}
