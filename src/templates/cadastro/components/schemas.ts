@@ -1,13 +1,49 @@
+import isEmail from 'validator/lib/isEmail';
 import isMobilePhone from 'validator/lib/isMobilePhone';
 import * as yup from 'yup';
 
 import {
   AT_LEAST_ONE,
+  INVALID_MAIL,
   INVALID_PHONE,
   MIN_CHARS_INPUTS,
   minCharsMessage,
+  PASS_MIN,
+  PASS_MISMATCH,
   REQUIRED_FIELD,
 } from './constants';
+
+const MIN_PASSWORD_LENGTH = 6;
+const MIN_CHARS = 3;
+export const MAX_CHARS = 50;
+
+export const cadastroTela1Schema = yup.object().shape({
+  name: yup
+    .string()
+    .required(REQUIRED_FIELD)
+    .test(
+      'is-valid',
+      minCharsMessage(MIN_CHARS),
+      (value) => value.replace(/\s/g, '').length >= MIN_CHARS,
+    )
+    .min(MIN_CHARS, minCharsMessage(MIN_CHARS))
+    .max(MAX_CHARS),
+  email: yup
+    .string()
+    .required(REQUIRED_FIELD)
+    .test('is-valid', INVALID_MAIL, (value) => isEmail(value))
+    .min(MIN_CHARS, minCharsMessage(MIN_CHARS))
+    .max(MAX_CHARS),
+  password: yup
+    .string()
+    .required(REQUIRED_FIELD)
+    .min(MIN_PASSWORD_LENGTH, PASS_MIN),
+  passConfirmation: yup
+    .string()
+    .required(REQUIRED_FIELD)
+    .min(MIN_PASSWORD_LENGTH, PASS_MIN)
+    .equals([yup.ref('password')], PASS_MISMATCH),
+});
 
 const TODAY = new Date();
 
@@ -21,26 +57,14 @@ export const cadastroTela2Schema = yup.object().shape({
   phoneNumber: yup
     .string()
     .required(REQUIRED_FIELD)
-    .test(
-      'is-valid',
-      INVALID_PHONE,
-      (value) => (value
-        ? isMobilePhone(value)
-        : new yup.ValidationError(INVALID_PHONE)),
-    ),
+    .test('is-valid', INVALID_PHONE, (value) => isMobilePhone(value)),
   birthDate: yup
     .date()
     .max(TODAY, 'Por favor coloque uma data no passado.')
     .typeError(REQUIRED_FIELD)
     .required(REQUIRED_FIELD),
   schooling: yup.string().required(REQUIRED_FIELD),
-  bachelor: yup.string().when('schooling', {
-    is: (value: string) => value.includes('superior'),
-    then: () => yup
-      .string()
-      .required(REQUIRED_FIELD)
-      .min(MIN_CHARS_INPUTS, minCharsMessage(MIN_CHARS_INPUTS)),
-  }),
+  bachelor: yup.string(),
   deficiencia: yup.string().required(REQUIRED_FIELD),
   disability: yup.string().when('deficiencia', {
     is: (value: string) => value === 'sim',

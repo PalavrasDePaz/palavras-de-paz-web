@@ -48,7 +48,7 @@ export default function cadastroSegundaTela({
     },
   });
 
-  const country = watch('country', 'Brasil');
+  const country = watch('country', data.country || 'Brasil');
   const schoolingLevel = watch('schooling', '');
   const isInHigherEducation = getIsHigherEducation(schoolingLevel)
     || getIsHigherEducation(data.schooling);
