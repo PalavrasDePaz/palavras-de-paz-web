@@ -8,19 +8,21 @@ import Box from '../box';
 
 function Header() {
   return (
-    <container style={ { pading: '0' } } className="styles-header">
+    <container className="styles-header">
       {['xl'].map((expand) => (
         <Navbar key={ expand } expand={ expand }>
           <Box>
             <div className="logo-header">
               <Link href="/">
-                <Image
-                  style={ { cursor: 'pointer' } }
-                  src={ Logo }
-                  alt="logo-header"
-                  width="333px"
-                  height="150px"
-                />
+                <div>
+                  <Image
+                    style={ { cursor: 'pointer' } }
+                    src={ Logo }
+                    alt="logo-header"
+                    width="333px"
+                    height="150px"
+                  />
+                </div>
               </Link>
             </div>
             <Navbar.Toggle
