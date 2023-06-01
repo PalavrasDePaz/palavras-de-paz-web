@@ -60,8 +60,6 @@ export default function cadastroSegundaTela({
     (key) => countryObj[key] === country,
   );
 
-  console.log(country);
-
   return (
     <form
       className={ styles.cadastroFormSection }
