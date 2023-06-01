@@ -1,11 +1,15 @@
 import React from 'react';
 import Image from 'next/image';
 
-import Logo from '../../../../public/static/images/logo.svg';
+import Logo from '../../../public/static/images/logo.svg';
 
-import styles from '../styles/HeaderCadastro.module.css';
+import styles from './HeaderWorkspace.module.css';
 
-export default function HeaderCadastro() {
+type HeaderWorkspaceProps = {
+  title: string;
+};
+
+export default function HeaderWorkspace({ title }: HeaderWorkspaceProps) {
   return (
     <>
       <header className={ styles.headerContainer }>
@@ -17,7 +21,7 @@ export default function HeaderCadastro() {
           height="100px"
         />
 
-        <h1 className={ styles.registerTitle }>Cadastro de voluntário</h1>
+        <h1 className={ styles.registerTitle }>{title}</h1>
       </header>
 
       <hr className={ styles.line } />

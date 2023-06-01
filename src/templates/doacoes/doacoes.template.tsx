@@ -1,6 +1,6 @@
 import React from 'react';
 
-import BannerDoacoes from '../../components/bannerdoacoes/BannerDoacoes';
+import Banner from '../../components/banner';
 import Doacoes from '../../components/doacoes/Doacoes';
 import FixedButton from '../../components/fixedbutton/FixedButton';
 import Footer from '../../components/footer/Footer';
@@ -10,7 +10,7 @@ function DoacoesTemplate() {
   return (
     <>
       <Header />
-      <BannerDoacoes />
+      <Banner title="FAÇA UMA DOAÇÃO" />
       <Doacoes />
       <FixedButton />
       <Footer />

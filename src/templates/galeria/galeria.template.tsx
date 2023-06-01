@@ -1,4 +1,4 @@
-import BannerPhotos from '../../components/bannerphotos/BannerPhotos';
+import Banner from '../../components/banner';
 import Center from '../../components/center';
 import FixedButton from '../../components/fixedbutton/FixedButton';
 import Footer from '../../components/footer/Footer';
@@ -9,7 +9,7 @@ export default function GaleriaTemplate() {
   return (
     <>
       <Header />
-      <BannerPhotos />
+      <Banner title="GALERIA DE FOTOS" />
       <Center>
         <GridPhotos />
       </Center>
