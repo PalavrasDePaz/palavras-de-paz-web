@@ -64,13 +64,7 @@ export const cadastroTela2Schema = yup.object().shape({
     .typeError(REQUIRED_FIELD)
     .required(REQUIRED_FIELD),
   schooling: yup.string().required(REQUIRED_FIELD),
-  bachelor: yup.string().when('schooling', {
-    is: (value: string) => value.includes('superior'),
-    then: () => yup
-      .string()
-      .required(REQUIRED_FIELD)
-      .min(MIN_CHARS_INPUTS, minCharsMessage(MIN_CHARS_INPUTS)),
-  }),
+  bachelor: yup.string(),
   deficiencia: yup.string().required(REQUIRED_FIELD),
   disability: yup.string().when('deficiencia', {
     is: (value: string) => value === 'sim',

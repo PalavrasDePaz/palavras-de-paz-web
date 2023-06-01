@@ -48,7 +48,7 @@ export default function cadastroSegundaTela({
     },
   });
 
-  const country = watch('country', 'Brasil');
+  const country = watch('country', data.country || 'Brasil');
   const schoolingLevel = watch('schooling', '');
   const isInHigherEducation = getIsHigherEducation(schoolingLevel)
     || getIsHigherEducation(data.schooling);
@@ -59,6 +59,8 @@ export default function cadastroSegundaTela({
   const phoneDefaultCountry = Object.keys(countryObj).find(
     (key) => countryObj[key] === country,
   );
+
+  console.log(country);
 
   return (
     <form
