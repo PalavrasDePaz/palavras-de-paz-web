@@ -13,8 +13,8 @@ import {
   REQUIRED_FIELD,
 } from './constants';
 
-export const MIN_PASSWORD_LENGTH = 6;
-export const MIN_CHARS = 3;
+const MIN_PASSWORD_LENGTH = 6;
+const MIN_CHARS = 3;
 export const MAX_CHARS = 50;
 
 export const cadastroTela1Schema = yup.object().shape({
