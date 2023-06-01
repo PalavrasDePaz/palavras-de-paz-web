@@ -1,6 +1,6 @@
 import React from 'react';
 
-import BannerDepoimentos from '../../components/bannerdepoimentos/BannerDepoimentos';
+import Banner from '../../components/banner';
 import Center from '../../components/center';
 import DepoimentosMain from '../../components/depoimentosmain/DepoimentosMain';
 import Footer from '../../components/footer/Footer';
@@ -10,7 +10,7 @@ function DepoimentosTemplate() {
   return (
     <>
       <Header />
-      <BannerDepoimentos />
+      <Banner title="DEPOIMENTOS" />
       <Center>
         <DepoimentosMain />
       </Center>

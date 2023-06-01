@@ -4,6 +4,7 @@ import Image from 'next/image';
 import card1 from '../../../public/static/images/quemsomos/CameraIdentification.svg';
 import card2 from '../../../public/static/images/quemsomos/PuzzleMatching.svg';
 import card3 from '../../../public/static/images/quemsomos/ValorSecundario.svg';
+import Banner from '../../components/banner';
 import Box from '../../components/box';
 import Button from '../../components/button/button';
 import Center from '../../components/center';
@@ -17,26 +18,7 @@ export default function QuemSomosTemplate() {
     <div>
       <Header />
       <Center>
-        <div
-          className="banner-gradient"
-          style={ {
-            zIndex: -2,
-            display: 'flex',
-            height: '176px',
-            padding: '10px',
-            alignItems: 'end',
-            justifyContent: 'end',
-          } }
-        >
-          <Typography
-            margin="100px 0 0 0"
-            fontWeight="700"
-            fontSize="52px"
-            color="white"
-            text="QUEM SOMOS"
-          />
-        </div>
-
+        <Banner title="QUEM SOMOS" />
         <Box width="88%" margin="auto" direction="column">
           <div>
             <Typography
@@ -107,26 +89,7 @@ export default function QuemSomosTemplate() {
             </Box>
           </Box>
         </Box>
-
-        <div
-          className="banner-gradient"
-          style={ {
-            zIndex: -2,
-            display: 'flex',
-            height: '176px',
-            padding: '10px',
-            alignItems: 'end',
-            justifyContent: 'end',
-          } }
-        >
-          <Typography
-            margin="100px 0 0 0"
-            fontWeight="700"
-            fontSize="52px"
-            color="white"
-            text="NOSSA HISTÓRIA"
-          />
-        </div>
+        <Banner title="NOSSA HISTÓRIA" />
 
         <Box width="80%" margin="auto" direction="column" align="center">
           <div>

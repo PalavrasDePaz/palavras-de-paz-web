@@ -1,6 +1,6 @@
 import React from 'react';
 
-import BannerVoluntarios from '../../components/bannervoluntarios/BannerVoluntarios';
+import Banner from '../../components/banner';
 import FixedButton from '../../components/fixedbutton/FixedButton';
 import Footer from '../../components/footer/Footer';
 import Header from '../../components/header/Header';
@@ -10,7 +10,7 @@ function VoluntariosTemplate() {
   return (
     <>
       <Header />
-      <BannerVoluntarios />
+      <Banner title="SEJA UM VOLUNTÁRIO" />
       <VoluntariosMain />
       <FixedButton />
       <Footer />

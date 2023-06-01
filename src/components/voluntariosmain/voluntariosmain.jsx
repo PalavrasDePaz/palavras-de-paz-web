@@ -105,8 +105,8 @@ function VoluntariosMain() {
         </container>
       </Center>
       <div className="voluntarios-banner-botton">
-        <p>``Precisamos nos ver como fonte de paz. Se adotarmos essa</p>
-        <p>abordagem, a paz chegará´´</p>
+        <p>&quot;Precisamos nos ver como fonte de paz. Se adotarmos essa</p>
+        <p>abordagem, a paz chegará&quot;</p>
         <p>Prem Rawat</p>
       </div>
 

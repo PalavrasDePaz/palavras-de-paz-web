@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 
+import HeaderCadastro from '../../components/headerWorskspace/HeaderWorkspace';
+
 import CadastroPrimeiraTela from './components/CadastroPrimeiraTela';
 import CadastroQuartaTela from './components/CadastroQuartaTela';
 import CadastroSegundaTela from './components/CadastroSegundaTela';
 import CadastroTelaFinal from './components/CadastroTelaFinal';
 import CadastroTerceiraTela from './components/CadastroTerceiraTela';
-import HeaderCadastro from './components/HeaderCadastro';
 import Signature from './components/Signature';
 
 import styles from './styles/CadastroTemplate.module.css';
@@ -36,7 +37,7 @@ export default function cadastroTemplate() {
 
   return (
     <>
-      <HeaderCadastro />
+      <HeaderCadastro title="Cadastro de voluntário" />
       <Signature controller={ controller } />
       <div className={ styles.main_container_form }>
         {controller === PAGE_1 && (

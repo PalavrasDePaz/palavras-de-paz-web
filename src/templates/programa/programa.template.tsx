@@ -1,6 +1,6 @@
 import React from 'react';
 
-import BannerPrograma from '../../components/bannerprograma/BannerPrograma';
+import Banner from '../../components/banner';
 import Center from '../../components/center';
 import FixedButton from '../../components/fixedbutton/FixedButton';
 import Footer from '../../components/footer/Footer';
@@ -11,7 +11,7 @@ function ProgramaTemplate() {
   return (
     <>
       <Header />
-      <BannerPrograma />
+      <Banner title="O PROGRAMA" />
       <Center>
         <OPrograma />
       </Center>

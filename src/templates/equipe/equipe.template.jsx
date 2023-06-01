@@ -15,6 +15,7 @@ import card8 from '../../../public/static/images/equipe/Ellipse2-9.svg';
 import card9 from '../../../public/static/images/equipe/Ellipse2-10.svg';
 import card10 from '../../../public/static/images/equipe/Ellipse2-11.svg';
 import card11 from '../../../public/static/images/equipe/Ellipse2-12.svg';
+import Banner from '../../components/banner';
 import Box from '../../components/box';
 import Button from '../../components/button/button';
 import FixedButton from '../../components/fixedbutton/FixedButton';
@@ -26,26 +27,7 @@ export default function ParceirosTemplate() {
   return (
     <div>
       <Header />
-      <div
-        className="banner-gradient"
-        style={ {
-          zIndex: -2,
-          display: 'flex',
-          height: '176px',
-          padding: '10px',
-          alignItems: 'end',
-          justifyContent: 'end',
-        } }
-      >
-        <Typography
-          margin="100px 0 0 0"
-          fontWeight="700"
-          fontSize="36px"
-          color="white"
-          text="SEJA NOSSO PARCEIRO"
-        />
-      </div>
-
+      <Banner title="NOSSA EQUIPE" />
       <Box
         margin="0 auto"
         flexWrap="wrap"
