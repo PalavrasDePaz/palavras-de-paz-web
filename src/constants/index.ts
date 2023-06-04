@@ -1,1 +1,1 @@
-export const API = 'https://api-palavrasdepaz.up.railway.app';
+export const API = 'https://api-palavrasdepaz.cyclic.app';

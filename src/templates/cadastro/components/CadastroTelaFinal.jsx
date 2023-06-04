@@ -66,7 +66,7 @@ export default function cadastroTelaFinal({ data } = props) {
   return (
     <section>
       {getContent()}
-      {(isSent || isError) && (
+      {isError && (
         <Link href="/">
           <button className={ styles.cadastroFormSectionButton }>
             Voltar para a página inicial
