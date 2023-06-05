@@ -2,8 +2,9 @@ import React from 'react';
 
 import HeaderWorkspace from '../../components/headerWorkspace/HeaderWorkspace';
 
-import { INTRO_TEXT, SELECT_QUESTIONS } from './constants';
+import { INTRO_TEXT, OPEN_TEXT_FIELDS, SELECT_QUESTIONS } from './constants';
 import Selectable from './Selectable';
+import TextField from './TextField';
 
 import styles from '../cadastro/styles/CadastroTelas.module.css';
 import stylesMain from '../cadastro/styles/CadastroTemplate.module.css';
@@ -27,6 +28,9 @@ function FormDePresenca() {
                 value: option,
               })) }
             />
+          ))}
+          {OPEN_TEXT_FIELDS.map(({ label, text }) => (
+            <TextField key={ label } fieldName={ label } question={ text } />
           ))}
         </form>
       </div>
