@@ -1,0 +1,112 @@
+.formPresenca {
+  display: flex;
+  flex-direction: column;
+  max-width: calc(100% - 2rem);
+  margin: 0 0.5rem;
+}
+
+.formParagraph {
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 1.2rem;
+  margin-top: 1rem;
+}
+
+@media (min-width: 768px) {
+  .formParagraph {
+    font-size: 1rem;
+  }
+}
+
+.buttonsRow {
+  display: flex;
+  margin: auto;
+  margin-bottom: 2rem;
+}
+
+.presencaContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-width: calc(100vw - 2rem);
+  margin: 0 auto;
+}
+
+@media (min-width: 768px) {
+  .presencaContainer {
+    max-width: 70rem;
+  }
+}
+
+.presencaFormButton {
+  border: none;
+  border-radius: 0.25rem;
+  color: white;
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.2rem;
+  padding: 1rem;
+  margin-block: 1rem;
+  text-align: center;
+  cursor: pointer;
+  transition: 0.2s;
+  width: 100%;
+  margin-top: 3rem;
+}
+
+.presencaFormButton:hover {
+  background-color: #0f7a6b;
+  color: white;
+}
+
+@media (min-width: 768px) {
+  .presencaFormButton {
+    margin-right: 1rem;
+    width: 10rem;
+  }
+}
+
+.buttonGreen {
+  background-color: #18ac99;
+  color: white;
+}
+
+.buttonWhite {
+  color: #18ac99;
+  background-color: white;
+  border: 1px solid #18ac99;
+}
+
+.divider {
+  width: 3rem;
+}
+
+.presencaDiv {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 1rem;
+  position: relative;
+}
+
+.presencaInputLabel {
+  font-size: 0.875rem;
+  font-weight: 700;
+  line-height: 1.2rem;
+}
+
+.presencaInputText {
+  border: 1px solid #d8d8d8;
+  border-radius: 0.25rem;
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 1.2rem;
+  padding: 0.5rem;
+}
+
+@media (min-width: 768px) {
+  .presencaInputText {
+    font-size: 1rem;
+    padding: 1rem;
+  }
+}
