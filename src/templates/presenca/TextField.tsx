@@ -1,13 +1,15 @@
 import React from 'react';
+import { FieldValues, UseFormRegister } from 'react-hook-form';
 
-import styles from '../cadastro/styles/CadastroTelas.module.css';
+import styles from './index.module.css';
 
 type TextFieldProps = {
   fieldName: string;
   question: string;
+  register: UseFormRegister<FieldValues>;
 };
 
-function TextField({ fieldName, question }: TextFieldProps) {
+function TextField({ fieldName, question, register }: TextFieldProps) {
   const adjustTextAreaSize = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     const { target } = e;
     target.style.height = 'inherit';
@@ -15,17 +17,18 @@ function TextField({ fieldName, question }: TextFieldProps) {
   };
 
   return (
-    <div className={ styles.cadastroFormDiv }>
+    <div className={ styles.presencaDiv }>
       <label
-        className={ styles.cadastroFormSectionInputLabel }
+        className={ styles.presencaInputLabel }
         htmlFor={ fieldName }
       >
         {question}
       </label>
       <textarea
         maxLength={ 300 }
-        className={ styles.cadastroFormSectionInputText }
+        className={ styles.presencaInputText }
         onChange={ adjustTextAreaSize }
+        { ...register(fieldName) }
       />
     </div>
   );
