@@ -40,7 +40,9 @@ export default function cadastroSegundaTela({
       state: data.state || '',
       city: data.city,
       phoneNumber: data.phoneNumber,
-      birthDate: data.birthDate?.toISOString().split('T')[0],
+      birthDate: data.birthDate
+        ? data.birthDate?.toISOString().split('T')[0]
+        : '',
       schooling: data.schooling || '',
       bachelor: data.bachelor,
       deficiencia: data.deficiencia || '',
