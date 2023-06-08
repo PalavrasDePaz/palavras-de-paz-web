@@ -6,7 +6,13 @@ import axios from 'axios';
 import LoadingSpinner from '../../../components/loadingSpinner/LoadingSpinner';
 import { API } from '../../../constants';
 
-import { FUTURE_ROLES, SKILLS } from './constants';
+import {
+  EXISTING_MESSAGE,
+  FUTURE_ROLES,
+  SKILLS,
+  UNEXPECTED_ERROR,
+  VOLUNTEER_ALREADY_EXISTS,
+} from './constants';
 
 import styles from '../styles/CadastroTemplate.module.css';
 
@@ -22,6 +28,7 @@ const filterValues = (valuesObj, optionsObject) =>
 
 export default function cadastroTelaFinal({ data } = props) {
   const [isError, setIsError] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
 
   const router = useRouter();
 
@@ -47,15 +54,19 @@ export default function cadastroTelaFinal({ data } = props) {
     .post(apiAddress, apiObject)
     .then(() => router.push('/login'))
     .catch((error) => {
-      console.log(error);
       setIsError(true);
+      if (error.response.data.name) {
+        setErrorMessage(error.response.data.name);
+      }
     });
 
   const getContent = () => {
     if (isError) {
+      const existingUser = errorMessage === VOLUNTEER_ALREADY_EXISTS;
+      const message = existingUser ? EXISTING_MESSAGE : UNEXPECTED_ERROR;
       return (
         <p className={ styles.formParagraph } style={ { color: 'red' } }>
-          Ocorreu um erro inesperado. Tente novamente mais tarde.
+          {message}
         </p>
       );
     }
