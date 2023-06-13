@@ -85,7 +85,7 @@ export default function cadastroPrimeiraTela({ buttonCallback, data } = props) {
             <input
               placeholder="Digite seu nome"
               type="text"
-              maxLength={ 24 }
+              maxLength={ 40 }
               defaultValue={ data.name }
               className={ styles.cadastroFormSectionInputText }
               { ...register('name') }

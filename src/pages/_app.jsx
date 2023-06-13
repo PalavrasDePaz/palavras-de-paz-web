@@ -17,6 +17,7 @@ import '../styles/programa/index.css';
 import '../styles/globalstyles.css';
 import '../styles/swiper/index.css';
 import '../styles/fixedBtn/index.css';
+import '../templates/area-de-trabalho/styles/AreaDeTrabalho.module.css';
 import 'animate.css';
 import Head from 'next/head';
 import React from 'react';

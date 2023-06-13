@@ -1,6 +1,7 @@
 import * as yup from 'yup';
 import isMobilePhone from 'validator/lib/isMobilePhone';
 import {
+  AT_LEAST_ONE,
   INVALID_PHONE,
   MANDATORY_FIELD,
   MIN_CHARS_INPUTS,
@@ -25,6 +26,7 @@ export const cadastroTela2Schema = yup.object().shape({
         : new yup.ValidationError(INVALID_PHONE)),
     ),
   schooling: yup.string().required(MANDATORY_FIELD),
+<<<<<<< HEAD
   bachelor: yup
     .string()
     .nullable()
@@ -41,6 +43,28 @@ export const cadastroTela2Schema = yup.object().shape({
 export const cadastroTela3Schema = yup.object().shape({
   howFoundPep: yup.string(),
   knowledgePep: yup.string(),
+=======
+  bachelor: yup.string().when('schooling', {
+    is: (value) => value.includes('superior'),
+    then: () => yup
+      .string()
+      .required(MANDATORY_FIELD)
+      .min(MIN_CHARS_INPUTS, minCharsMessage(MIN_CHARS_INPUTS)),
+  }),
+  deficiencia: yup.string().required(MANDATORY_FIELD),
+  disability: yup.string().when('deficiencia', {
+    is: (value) => value === 'sim',
+    then: () => yup
+      .string()
+      .required(MANDATORY_FIELD)
+      .min(MIN_CHARS_INPUTS, minCharsMessage(MIN_CHARS_INPUTS)),
+  }),
+});
+
+export const cadastroTela3Schema = yup.object().shape({
+  howFoundPep: yup.string().required(MANDATORY_FIELD),
+  knowledgePep: yup.string().required(MANDATORY_FIELD),
+>>>>>>> c12475c9c4c22bab3f4a1cb8332fa3a18cb42dfe
   studiesKnowledge: yup
     .string()
     .required(MANDATORY_FIELD)
@@ -56,6 +80,7 @@ export const cadastroTela3Schema = yup.object().shape({
 });
 
 export const cadastroTela4Schema = yup.object().shape({
+<<<<<<< HEAD
   interestFutureRoles: yup.object().shape({
     facilitadorPresencial: yup.boolean(),
     facilitadorVirtual: yup.boolean(),
@@ -80,4 +105,69 @@ export const cadastroTela4Schema = yup.object().shape({
     outros: yup.boolean(),
   }),
   needDeclaration: yup.bool().required(MANDATORY_FIELD),
+=======
+  interestFutureRoles: yup
+    .object()
+    .shape({
+      facilitadorPresencial: yup.boolean(),
+      facilitadorVirtual: yup.boolean(),
+      avaliadorRemoto: yup.boolean(),
+      captaçãoDeVoluntario: yup.boolean(),
+      leituraDeCaderno: yup.boolean(),
+      tradutorRemoto: yup.boolean(),
+      divulgacao: yup.boolean(),
+      captacaoDeGrupos: yup.boolean(),
+      leituraDeRedacao: yup.boolean(),
+    })
+    .test('teste', null, (obj) => {
+      if (
+        obj.facilitadorPresencial
+        || obj.facilitadorVirtual
+        || obj.avaliadorRemoto
+        || obj.captaçãoDeVoluntario
+        || obj.leituraDeCaderno
+        || obj.tradutorRemoto
+        || obj.divulgacao
+        || obj.captacaoDeGrupos
+        || obj.leituraDeRedacao
+      ) {
+        return true;
+      }
+
+      return new yup.ValidationError(AT_LEAST_ONE, null, 'interestFutureRoles');
+    }),
+  rolesPep: yup
+    .object()
+    .shape({
+      administracao: yup.boolean(),
+      comunicacao: yup.boolean(),
+      jornalismo: yup.boolean(),
+      midiasSociais: yup.boolean(),
+      radioTV: yup.boolean(),
+      RH: yup.boolean(),
+      TI: yup.boolean(),
+      psicologia: yup.boolean(),
+      assistenciaSocial: yup.boolean(),
+      outros: yup.boolean(),
+    })
+    .test('test', null, (obj) => {
+      if (
+        obj.administracao
+        || obj.comunicacao
+        || obj.jornalismo
+        || obj.midiasSociais
+        || obj.radioTV
+        || obj.RH
+        || obj.TI
+        || obj.psicologia
+        || obj.assistenciaSocial
+        || obj.outros
+      ) {
+        return true;
+      }
+
+      return new yup.ValidationError(AT_LEAST_ONE, null, 'rolesPep');
+    }),
+  needDeclaration: yup.string().required(MANDATORY_FIELD),
+>>>>>>> c12475c9c4c22bab3f4a1cb8332fa3a18cb42dfe
 });

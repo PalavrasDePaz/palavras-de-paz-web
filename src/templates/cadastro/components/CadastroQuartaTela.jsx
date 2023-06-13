@@ -50,6 +50,10 @@ export default function cadastroQuartaTela({
             </label>
           </div>
         ))}
+        <ErrorMessage
+          showError={ errors.interestFutureRoles }
+          style={ styles.inputError }
+        />
       </div>
 
       <div className={ styles.cadastroFormDivContainer }>
@@ -74,6 +78,10 @@ export default function cadastroQuartaTela({
             </label>
           </div>
         ))}
+        <ErrorMessage
+          showError={ errors.rolesPep }
+          style={ styles.inputError }
+        />
       </div>
 
       <div className={ styles.cadastroFormDivContainer }>
@@ -87,8 +95,13 @@ export default function cadastroQuartaTela({
           { ...register('needDeclaration') }
         >
           <EmptyOption />
+<<<<<<< HEAD
           <option value>Sim</option>
           <option value={ false }>Não</option>
+=======
+          <option value="sim">Sim</option>
+          <option value="nao">Não</option>
+>>>>>>> c12475c9c4c22bab3f4a1cb8332fa3a18cb42dfe
         </select>
         <ErrorMessage
           showError={ errors.needDeclaration }

@@ -76,6 +76,7 @@ export const INVALID_MAIL = 'Seu email está com formato incorreto';
 export const PASS_MIN = 'A senha deve ter no mínimo 6 caracteres';
 export const PASS_MISMATCH = 'As senhas não são iguais';
 export const INVALID_PHONE = 'O telefone está com formato incorreto';
+export const AT_LEAST_ONE = 'Selecione ao menos uma opção';
 
 export const SCHOOLING_OPTIONS = [
   'Ensino fundamental incompleto/cursando',
