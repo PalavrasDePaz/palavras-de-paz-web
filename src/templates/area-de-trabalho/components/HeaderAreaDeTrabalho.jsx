@@ -4,11 +4,11 @@ import Image from 'next/image';
 import Login from '../../../../public/static/images/icons/login.svg';
 import Logo from '../../../../public/static/images/logo.svg';
 
-import Styles from '../styles/AreaDeTrabalho.module.css';
+import styles from '../styles/AreaDeTrabalho.module.css';
 
 export default function HeaderAreaDeTrabalho() {
   return (
-    <header className={ Styles.headerContainer }>
+    <header className={ styles.headerContainer }>
       <Image
         src={ Logo }
         alt="Logo da organização e logo abaixo está escrito
@@ -16,7 +16,7 @@ export default function HeaderAreaDeTrabalho() {
         width="333px"
         height="100px"
       />
-      <div className={ Styles.headerBtnLogin }>
+      <div className={ styles.headerBtnLogin }>
         <div>Foto de Perfil</div>
         <Image
           src={ Login }
