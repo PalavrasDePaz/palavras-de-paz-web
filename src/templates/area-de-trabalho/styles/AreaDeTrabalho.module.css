@@ -24,6 +24,7 @@
     padding-inline: 2rem;
   }
 }
+
 @media (max-width: 850px) {
   .headerContainer {
     width: 700px;
