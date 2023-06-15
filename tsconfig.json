@@ -15,6 +15,6 @@
     "isolatedModules": true,
     "jsx": "preserve"
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "src/components/box/styled.js"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "src/components/box/styled.js", "src/components/button/styled.js", "src/components/typography/styled.js"],
   "exclude": ["node_modules"]
 }
