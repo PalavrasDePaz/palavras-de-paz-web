@@ -8,7 +8,12 @@ import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 
 import LoadingSpinner from '../../../components/loadingSpinner/LoadingSpinner';
-import { API } from '../../../constants';
+import {
+  API,
+  NOT_FOUND,
+  UNEXPECTED_ERROR,
+  VOLUNTEER_NOT_FOUND,
+} from '../../../constants';
 import { REQUIRED_FIELD } from '../../cadastro/components/constants';
 
 import BackButton from './BackButton';
@@ -32,6 +37,7 @@ function LoginForm() {
   const [isSending, setIsSending] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [apiError, setApiError] = useState();
+  const [errorMessage, setErrorMessage] = useState('');
 
   const { push } = useRouter();
 
@@ -62,7 +68,9 @@ function LoginForm() {
       .then(() => (passwordForgotten ? updateComponentAfterMail() : push('/')))
       .catch((error) => {
         setApiError(error);
-        console.log(error);
+        if (error.response.data.name) {
+          setErrorMessage(error.response.data.name);
+        }
       });
 
   // No caso de senha perdida, mandamos só o email
@@ -87,10 +95,12 @@ function LoginForm() {
   const buttonString = passwordForgotten ? 'Enviar e-mail' : 'Entrar';
 
   if (apiError) {
+    const userNotFound = errorMessage === VOLUNTEER_NOT_FOUND;
+    const message = userNotFound ? NOT_FOUND : UNEXPECTED_ERROR;
     return (
       <>
         <p className={ styles.formParagraph } style={ { color: 'red' } }>
-          Ocorreu um erro inesperado. Tente novamente mais tarde
+          {message}
         </p>
         <BackButton />
       </>
@@ -135,42 +145,42 @@ function LoginForm() {
         )}
       </div>
       {!passwordForgotten && (
-        <div className={ styles.loginFormSectionInputContainer }>
-          <label
-            className={ styles.loginFormSectionInputLabel }
-            htmlFor="password"
-          >
-            <b>Senha</b>
-          </label>
+        <>
+          <div className={ styles.loginFormSectionInputContainer }>
+            <label
+              className={ styles.loginFormSectionInputLabel }
+              htmlFor="password"
+            >
+              <b>Senha</b>
+            </label>
 
-          <input
-            placeholder="Digite sua senha"
-            className={ styles.loginFormSectionInputPassword }
-            type={ isPasswordVisible ? 'text' : 'password' }
-            { ...register('password') }
-          />
+            <input
+              placeholder="Digite sua senha"
+              className={ styles.loginFormSectionInputPassword }
+              type={ isPasswordVisible ? 'text' : 'password' }
+              { ...register('password') }
+            />
 
-          <button
-            className={ styles.loginFormSectionInputPasswordVisibility }
-            type="button"
-            onClick={ handlePasswordVisibility }
-          >
-            {isPasswordVisible ? <FaEye /> : <FaEyeSlash />}
-          </button>
-          {errors.password && (
-            <p className={ styles.inputError }>{errors.password.message}</p>
-          )}
-        </div>
-      )}
-      {!passwordForgotten && (
-        <section className={ styles.loginFormSectionButtonsContainer }>
-          <button
-            className={ styles.loginFormSectionButtons }
-            onClick={ () => setPasswordForgotten(true) }
-          >
-            Esqueceu a senha?
-          </button>
-        </section>
+            <button
+              className={ styles.loginFormSectionInputPasswordVisibility }
+              type="button"
+              onClick={ handlePasswordVisibility }
+            >
+              {isPasswordVisible ? <FaEye /> : <FaEyeSlash />}
+            </button>
+            {errors.password && (
+              <p className={ styles.inputError }>{errors.password.message}</p>
+            )}
+          </div>
+          <section className={ styles.loginFormSectionButtonsContainer }>
+            <button
+              className={ styles.loginFormSectionButtons }
+              onClick={ () => setPasswordForgotten(true) }
+            >
+              Esqueceu a senha?
+            </button>
+          </section>
+        </>
       )}
 
       <button type="submit" className={ styles.loginFormButtonEnter }>

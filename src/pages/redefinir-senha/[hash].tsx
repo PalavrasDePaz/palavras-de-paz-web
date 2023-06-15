@@ -1,5 +1,5 @@
 import RedefinirSenhaTemplate from '../../templates/redefinir-senha';
 
-export default function Login() {
+export default function RedefinirSenha() {
   return <RedefinirSenhaTemplate />;
 }

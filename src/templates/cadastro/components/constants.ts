@@ -138,8 +138,3 @@ export const MIN_CHARS_INPUTS = 3;
 export const minCharsMessage = (chars: number) =>
   // eslint-disable-next-line implicit-arrow-linebreak
   `Por favor utilize pelo menos ${ chars } caracteres`;
-
-export const VOLUNTEER_ALREADY_EXISTS = 'VOLUNTEER_ALREADY_EXISTS';
-
-export const EXISTING_MESSAGE = 'O email fornecido já está cadastrado.';
-export const UNEXPECTED_ERROR = 'Ocorreu um erro inesperado. Tente novamente mais tarde.';
