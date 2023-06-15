@@ -153,14 +153,12 @@ function LoginForm() {
             >
               <b>Senha</b>
             </label>
-
             <input
               placeholder="Digite sua senha"
               className={ styles.loginFormSectionInputPassword }
               type={ isPasswordVisible ? 'text' : 'password' }
               { ...register('password') }
             />
-
             <button
               className={ styles.loginFormSectionInputPasswordVisibility }
               type="button"
