@@ -58,9 +58,6 @@ export default function cadastroSegundaTela({
 
   const hasDisability = disability === 'sim' || data.deficiencia === 'sim';
 
-  console.log(data);
-  console.log(hasDisability);
-
   const phoneDefaultCountry = Object.keys(countryObj).find(
     (key) => countryObj[key] === country,
   );
