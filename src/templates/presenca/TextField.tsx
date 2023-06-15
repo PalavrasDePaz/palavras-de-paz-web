@@ -10,24 +10,14 @@ type TextFieldProps = {
 };
 
 function TextField({ fieldName, question, register }: TextFieldProps) {
-  const adjustTextAreaSize = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-    const { target } = e;
-    target.style.height = 'inherit';
-    target.style.height = `${ target.scrollHeight }px`;
-  };
-
   return (
     <div className={ styles.presencaDiv }>
-      <label
-        className={ styles.presencaInputLabel }
-        htmlFor={ fieldName }
-      >
+      <label className={ styles.presencaInputLabel } htmlFor={ fieldName }>
         {question}
       </label>
       <textarea
         maxLength={ 300 }
         className={ styles.presencaInputText }
-        onChange={ adjustTextAreaSize }
         { ...register(fieldName) }
       />
     </div>
