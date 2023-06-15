@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 type BannerProps = {
   title: string;
@@ -7,7 +7,7 @@ type BannerProps = {
 function Banner({ title }: BannerProps) {
   return (
     <div className="banner-styles">
-      <p style={{ fontWeight: "700" }}>{title}</p>
+      <p style={ { fontWeight: '700' } }>{title}</p>
     </div>
   );
 }
