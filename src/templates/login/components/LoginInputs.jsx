@@ -11,10 +11,10 @@ import LoadingSpinner from '../../../components/loadingSpinner/LoadingSpinner';
 import {
   API,
   NOT_FOUND,
+  REQUIRED_FIELD,
   UNEXPECTED_ERROR,
   VOLUNTEER_NOT_FOUND,
 } from '../../../constants';
-import { REQUIRED_FIELD } from '../../cadastro/components/constants';
 
 import BackButton from './BackButton';
 
