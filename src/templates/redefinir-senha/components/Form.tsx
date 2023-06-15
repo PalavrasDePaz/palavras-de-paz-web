@@ -10,7 +10,12 @@ import { yupResolver } from '@hookform/resolvers/yup';
 
 import ErrorMessage from '../../../components/forms/ErrorMessage';
 import LoadingSpinner from '../../../components/loadingSpinner/LoadingSpinner';
-import { API } from '../../../constants';
+import {
+  API,
+  NOT_FOUND,
+  UNEXPECTED_ERROR,
+  VOLUNTEER_NOT_FOUND,
+} from '../../../constants';
 import {
   PASS_MIN,
   PASS_MISMATCH,
@@ -40,6 +45,7 @@ function Form() {
   const [isLoading, setIsLoading] = useState(false);
   const [isSent, setIsSent] = useState(false);
   const [apiError, setApiError] = useState();
+  const [errorMessage, setErrorMessage] = useState('');
 
   const router = useRouter();
   const mailHash = router.query.hash;
@@ -66,15 +72,19 @@ function Form() {
       })
       .catch((error) => {
         setApiError(error);
-        console.log(error);
+        if (error.response.data.name) {
+          setErrorMessage(error.response.data.name);
+        }
       });
   };
 
   if (apiError) {
+    const userNotFound = errorMessage === VOLUNTEER_NOT_FOUND;
+    const message = userNotFound ? NOT_FOUND : UNEXPECTED_ERROR;
     return (
       <>
         <p className={ styles.formParagraph } style={ { color: 'red' } }>
-          Ocorreu um erro inesperado. Tente novamente mais tarde
+          {message}
         </p>
         <BackButton />
       </>

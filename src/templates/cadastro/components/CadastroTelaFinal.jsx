@@ -4,15 +4,14 @@ import { useRouter } from 'next/router';
 import axios from 'axios';
 
 import LoadingSpinner from '../../../components/loadingSpinner/LoadingSpinner';
-import { API } from '../../../constants';
-
 import {
+  API,
   EXISTING_MESSAGE,
-  FUTURE_ROLES,
-  SKILLS,
   UNEXPECTED_ERROR,
   VOLUNTEER_ALREADY_EXISTS,
-} from './constants';
+} from '../../../constants';
+
+import { FUTURE_ROLES, SKILLS } from './constants';
 
 import styles from '../styles/CadastroTemplate.module.css';
 
@@ -38,6 +37,10 @@ export default function cadastroTelaFinal({ data } = props) {
   data.rolesPep = filterValues(rolesPep, SKILLS);
   // e transformar string em boolean
   data.needDeclaration = needDeclaration === 'sim';
+
+  // se deficiência não for "sim", não mandamos o valor.
+  // (pensando no caso de alguém que preenche, depois muda de ideia e prefere não dizer.)
+  data.disability = data.deficiencia === 'sim' ? data.disability : null;
 
   // Também não mandamos o valor do campo de deficiencia, só qual ela é, se houver.
   // E nem a confirmação de password.

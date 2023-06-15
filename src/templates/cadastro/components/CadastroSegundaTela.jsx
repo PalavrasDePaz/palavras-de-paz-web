@@ -46,7 +46,7 @@ export default function cadastroSegundaTela({
       schooling: data.schooling || '',
       bachelor: data.bachelor,
       deficiencia: data.deficiencia || '',
-      disability: data.disability,
+      disability: data.disability || '',
     },
   });
 
@@ -56,7 +56,7 @@ export default function cadastroSegundaTela({
     || getIsHigherEducation(data.schooling);
   const disability = watch('deficiencia', 'não');
 
-  const hasDisability = disability === 'sim' || data.disability === 'sim';
+  const hasDisability = disability === 'sim' || data.deficiencia === 'sim';
 
   const phoneDefaultCountry = Object.keys(countryObj).find(
     (key) => countryObj[key] === country,
