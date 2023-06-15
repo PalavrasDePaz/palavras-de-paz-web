@@ -3,9 +3,15 @@
     "browser": true,
     "es2021": true
   },
-  "extends": ["plugin:react/recommended", "airbnb", "eslint:recommended"],
+  "extends": [
+    "plugin:react/recommended",
+    "airbnb",
+    "eslint:recommended",
+    "plugin:@typescript-eslint/eslint-recommended",
+    "plugin:@typescript-eslint/recommended"
+  ],
   "overrides": [],
-  "parser": "@babel/eslint-parser",
+  "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "ecmaFeatures": {
       "jsx": true
@@ -20,7 +26,7 @@
       }
     }
   },
-  "plugins": ["react", "simple-import-sort"],
+  "plugins": ["react", "simple-import-sort", "@typescript-eslint"],
   "rules": {
     "indent": ["error", 2],
     "linebreak-style": 0,

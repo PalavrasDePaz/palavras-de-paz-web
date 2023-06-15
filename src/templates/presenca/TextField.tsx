@@ -4,7 +4,7 @@ import { FieldValues, UseFormRegister } from 'react-hook-form';
 import styles from './index.module.css';
 
 type TextFieldProps = {
-  fieldName: string;
+  fieldName: keyof FieldValues;
   question: string;
   register: UseFormRegister<FieldValues>;
 };

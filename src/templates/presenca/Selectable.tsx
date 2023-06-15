@@ -6,7 +6,7 @@ import EmptyOption from '../../components/forms/EmptyOption';
 import styles from './index.module.css';
 
 type SelectableProps = {
-  fieldName: string;
+  fieldName: keyof FieldValues;
   question: string;
   options: Array<{ label: string; value: string }>;
   register: UseFormRegister<FieldValues>;
