@@ -15,6 +15,6 @@
     "isolatedModules": true,
     "jsx": "preserve"
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "src/components/box/styled.js", "src/components/button/styled.js", "src/components/typography/styled.js", "src/templates/cadastro/components/Signature.jsx", "src/templates/presenca/index.jsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "src/components/box/styled.js", "src/components/button/styled.js", "src/components/typography/styled.js", "src/templates/cadastro/components/Signature.jsx", "src/templates/presenca/index.jsx", "src/templates/redefinir-senha/components/Form.jsx"],
   "exclude": ["node_modules"]
 }
