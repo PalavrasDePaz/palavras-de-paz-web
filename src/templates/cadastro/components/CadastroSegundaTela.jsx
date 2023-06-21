@@ -26,8 +26,6 @@ export default function cadastroSegundaTela({
   returnButton,
   data,
 } = props) {
-  console.log(data);
-
   const {
     register,
     handleSubmit,
