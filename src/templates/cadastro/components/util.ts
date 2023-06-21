@@ -25,6 +25,6 @@ export const isNewEmail = async (email: string) => {
   const check = await axios.head(apiAddress).catch((error) => error);
 
   // A API dá bad request quando não acha o email,
-  // então termos que procurar no erro mesmo.
+  // então temos que procurar no erro mesmo.
   return axios.isAxiosError(check) && check.response?.status === NOT_FOUND;
 };
