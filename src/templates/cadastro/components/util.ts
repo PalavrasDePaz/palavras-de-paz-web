@@ -28,3 +28,18 @@ export const isNewEmail = async (email: string) => {
   // então temos que procurar no erro mesmo.
   return axios.isAxiosError(check) && check.response?.status === NOT_FOUND;
 };
+
+/**
+ * Formata uma data para YYYY-MM-DD, ou string vazia se não existir.
+ * @param date em formato de data ou de string
+ * @returns a mesma data sempre em formato string, ou string vazia.
+ */
+export const formatDate = (date: Date | string): string => {
+  if (!date) {
+    return '';
+  }
+  if (typeof date === 'string') {
+    return date;
+  }
+  return date.toISOString().split('T')[0];
+};

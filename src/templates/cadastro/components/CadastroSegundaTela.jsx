@@ -15,7 +15,7 @@ import {
   statesArray,
 } from './constants';
 import { cadastroTela2Schema } from './schemas';
-import { getIsHigherEducation } from './util';
+import { formatDate, getIsHigherEducation } from './util';
 
 import 'react-phone-number-input/style.css';
 import styles from '../styles/CadastroTelas.module.css';
@@ -26,6 +26,8 @@ export default function cadastroSegundaTela({
   returnButton,
   data,
 } = props) {
+  console.log(data);
+
   const {
     register,
     handleSubmit,
@@ -40,9 +42,7 @@ export default function cadastroSegundaTela({
       state: data.state || '',
       city: data.city,
       phoneNumber: data.phoneNumber,
-      birthDate: data.birthDate
-        ? data.birthDate?.toISOString().split('T')[0]
-        : '',
+      birthDate: formatDate(data.birthDate),
       schooling: data.schooling || '',
       bachelor: data.bachelor,
       deficiencia: data.deficiencia || '',
