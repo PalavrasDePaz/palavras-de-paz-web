@@ -88,6 +88,7 @@ export const PASS_MIN = 'A senha deve ter no mínimo 6 caracteres';
 export const PASS_MISMATCH = 'As senhas não são iguais';
 export const INVALID_PHONE = 'O telefone está com formato incorreto';
 export const AT_LEAST_ONE = 'Selecione ao menos uma opção';
+export const MAIL_IN_USE = 'Este endereço de e-mail já está cadastrado';
 
 export const SCHOOLING_OPTIONS = [
   'Ensino fundamental incompleto/cursando',
