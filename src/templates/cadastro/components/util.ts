@@ -12,7 +12,7 @@ const NOT_FOUND = 404;
 /**
  * Verifica se o email já está cadastrado no banco de dados.
  * @param email para verificar
- * @returns se a resposta for 404 Not found, o podemos prosseguir.
+ * @returns se a resposta for 404 Not found, podemos prosseguir.
  */
 export const isNewEmail = async (email: string) => {
   const isEmailValid = isEmail(email);
@@ -23,8 +23,6 @@ export const isNewEmail = async (email: string) => {
   }
   const apiAddress = `${ API }/volunteers/${ email }`;
   const check = await axios.head(apiAddress).catch((error) => error);
-
-  console.log(check);
 
   // A API dá bad request quando não acha o email,
   // então termos que procurar no erro mesmo.
