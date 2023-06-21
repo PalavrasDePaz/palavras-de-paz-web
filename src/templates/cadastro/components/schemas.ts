@@ -6,12 +6,14 @@ import {
   AT_LEAST_ONE,
   INVALID_MAIL,
   INVALID_PHONE,
+  MAIL_IN_USE,
   MIN_CHARS_INPUTS,
   minCharsMessage,
   PASS_MIN,
   PASS_MISMATCH,
   REQUIRED_FIELD,
 } from './constants';
+import { isNewEmail } from './util';
 
 const MIN_PASSWORD_LENGTH = 6;
 const MIN_CHARS = 3;
@@ -32,6 +34,11 @@ export const cadastroTela1Schema = yup.object().shape({
     .string()
     .required(REQUIRED_FIELD)
     .test('is-valid', INVALID_MAIL, (value) => isEmail(value))
+    .test(
+      'in-use',
+      MAIL_IN_USE,
+      (value) => isNewEmail(value),
+    )
     .min(MIN_CHARS, minCharsMessage(MIN_CHARS))
     .max(MAX_CHARS),
   password: yup
