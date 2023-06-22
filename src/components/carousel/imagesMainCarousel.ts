@@ -3,6 +3,8 @@ import img02 from '../../../public/static/images/img02_refugees.jpeg';
 import img03 from '../../../public/static/images/img03_refugees.jpeg';
 import img04 from '../../../public/static/images/img04_imigrantes.jpeg';
 import img05 from '../../../public/static/images/img05_imigrantes.jpeg';
+import img06 from '../../../public/static/images/img06_inmates.jpeg';
+import img07 from '../../../public/static/images/img07_inmates.jpeg';
 
 const imagesMainCarousel = [
   {
@@ -29,6 +31,14 @@ const imagesMainCarousel = [
     id: 5,
     image: img05,
     text: 'Projeto com Imigrantes',
+  },
+  { id: 6,
+    image: img06,
+    text: 'Projeto com População Carcerária',
+  },
+  { id: 7,
+    image: img07,
+    text: 'Projeto com População Carcerária',
   },
 ];
 
