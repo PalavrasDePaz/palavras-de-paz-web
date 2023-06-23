@@ -11,7 +11,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import LoadingSpinner from '../../../components/loadingSpinner/LoadingSpinner';
 import {
   API,
-  NOT_FOUND,
+  ERROR_MESSAGES,
   REQUIRED_FIELD,
   UNEXPECTED_ERROR,
   VOLUNTEER_NOT_FOUND,
@@ -101,8 +101,8 @@ function LoginForm() {
   const buttonString = passwordForgotten ? 'Enviar e-mail' : 'Entrar';
 
   if (apiError) {
+    const message = ERROR_MESSAGES[errorMessage] || UNEXPECTED_ERROR;
     const userNotFound = errorMessage === VOLUNTEER_NOT_FOUND;
-    const message = userNotFound ? NOT_FOUND : UNEXPECTED_ERROR;
     return (
       <>
         <p className={ styles.formParagraph } style={ { color: 'red' } }>
