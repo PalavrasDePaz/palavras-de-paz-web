@@ -7,7 +7,8 @@
     "plugin:react/recommended",
     "airbnb",
     "eslint:recommended",
-    "plugin:@typescript-eslint/recommended"
+    "plugin:@typescript-eslint/recommended",
+    "prettier"
   ],
   "overrides": [],
   "parser": "@typescript-eslint/parser",
@@ -26,10 +27,9 @@
     }
   },
   "plugins": ["react", "simple-import-sort", "@typescript-eslint"],
+  "ignorePatterns": ["**/*.css"],
   "rules": {
-    "indent": ["error", 2],
     "linebreak-style": 0,
-    "quotes": ["error", "single"],
     "semi": ["error", "always"],
     "class-methods-use-this": ["off"],
     "simple-import-sort/imports": [
@@ -69,7 +69,6 @@
       }
     ],
     "react/button-has-type": ["off"],
-    "no-console": ["off"],
     "no-param-reassign": ["off"],
     "consistent-return": ["off"],
     "no-undef": ["off"],
@@ -116,7 +115,7 @@
         "functions": "defaultArguments"
       }
     ],
-    "react/no-array-index-key": ["off"],
+    "react/no-array-index-key": ["error"],
     "react/destructuring-assignment": ["error", "always"],
     "react/forbid-component-props": ["error"],
     "react/forbid-prop-types": ["error"],
@@ -150,12 +149,6 @@
       }
     ],
     "react/jsx-no-useless-fragment": ["error"],
-    "react/jsx-curly-spacing": [
-      "error",
-      {
-        "when": "always"
-      }
-    ],
     "react/jsx-equals-spacing": ["error", "never"],
     "react/jsx-first-prop-new-line": ["error", "multiline"],
     "react/jsx-indent": [
@@ -197,18 +190,15 @@
       }
     ],
     "react/react-in-jsx-scope": "off",
-    "default-param-last": "off",
+    "default-param-last": "error",
     "jsx-a11y/label-has-associated-control": [
       "error",
       {
         "assert": "either"
       }
     ],
-    "template-curly-spacing": ["error", "always"],
-    "template-tag-spacing": ["error", "always"],
     "arrow-parens": ["error", "always"],
     "arrow-spacing": ["error", { "before": true, "after": true }],
-    "no-confusing-arrow": ["error", { "allowParens": true }],
     "no-duplicate-imports": ["error", { "includeExports": true }]
   }
 }

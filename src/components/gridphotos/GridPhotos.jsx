@@ -1,8 +1,8 @@
-import React from 'react';
-import Image from 'next/image';
+import React from "react";
+import Image from "next/image";
 
-import Box from '../box';
-import Button from '../button/button';
+import Box from "../box";
+import Button from "../button/button";
 
 function GridPhotos() {
   return (
@@ -10,7 +10,7 @@ function GridPhotos() {
       <container className="container1">
         <div>
           <Image
-            style={ { paddingTop: '56px' } }
+            style={{ paddingTop: "56px" }}
             alt=""
             src="/static/images/foto1.png"
             width="815px"

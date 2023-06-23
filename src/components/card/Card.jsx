@@ -1,11 +1,11 @@
 /* eslint-disable max-len */
-import Image from 'next/image';
+import Image from "next/image";
 
-import depo1 from '../../../public/static/images/depo_1.png';
-import depo2 from '../../../public/static/images/depo_2.png';
-import Typography from '../typography';
+import depo1 from "../../../public/static/images/depo_1.png";
+import depo2 from "../../../public/static/images/depo_2.png";
+import Typography from "../typography";
 
-import * as S from './styled';
+import * as S from "./styled";
 
 function Card() {
   return (
@@ -14,10 +14,10 @@ function Card() {
         <S.IconContainer>
           <Image
             objectFit="cover"
-            style={ { borderRadius: '50%' } }
+            style={{ borderRadius: "50%" }}
             width="120px"
             height="120px"
-            src={ depo2 }
+            src={depo2}
             alt=""
           />
         </S.IconContainer>
@@ -42,10 +42,10 @@ function Card() {
         <S.IconContainer>
           <Image
             objectFit="cover"
-            style={ { borderRadius: '50%' } }
+            style={{ borderRadius: "50%" }}
             width="120px"
             height="120px"
-            src={ depo1 }
+            src={depo1}
             alt=""
           />
         </S.IconContainer>

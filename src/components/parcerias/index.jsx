@@ -1,30 +1,30 @@
-import Image from 'next/image';
+import Image from "next/image";
 
-import card1 from '../../../public/static/images/parceiro/Building.svg';
-import card2 from '../../../public/static/images/parceiro/Enterprise.svg';
-import card3 from '../../../public/static/images/parceiro/GraduationScroll.svg';
-import banner from '../../../public/static/images/parceiro/image1.svg';
-import card4 from '../../../public/static/images/parceiro/NonProfit.svg';
-import card5 from '../../../public/static/images/parceiro/School.svg';
-import Box from '../box';
-import Button from '../button/button';
-import Center from '../center';
-import FixedButton from '../fixedbutton/FixedButton';
-import Typography from '../typography';
+import card1 from "../../../public/static/images/parceiro/Building.svg";
+import card2 from "../../../public/static/images/parceiro/Enterprise.svg";
+import card3 from "../../../public/static/images/parceiro/GraduationScroll.svg";
+import banner from "../../../public/static/images/parceiro/image1.svg";
+import card4 from "../../../public/static/images/parceiro/NonProfit.svg";
+import card5 from "../../../public/static/images/parceiro/School.svg";
+import Box from "../box";
+import Button from "../button/button";
+import Center from "../center";
+import FixedButton from "../fixedbutton/FixedButton";
+import Typography from "../typography";
 
 function Partners() {
   return (
     <Center>
       <div
         className="banner-gradient"
-        style={ {
+        style={{
           zIndex: -2,
-          display: 'flex',
-          height: '176px',
-          padding: '10px',
-          alignItems: 'end',
-          justifyContent: 'end',
-        } }
+          display: "flex",
+          height: "176px",
+          padding: "10px",
+          alignItems: "end",
+          justifyContent: "end",
+        }}
       >
         <Typography
           margin="100px 0 0 0"
@@ -54,7 +54,7 @@ function Partners() {
             width="160px"
             textAlign="center"
           >
-            <Image src={ card1 } alt="" width="100%" height="100%" />
+            <Image src={card1} alt="" width="100%" height="100%" />
             <p>Entidades públicas</p>
           </Box>
 
@@ -64,7 +64,7 @@ function Partners() {
             width="160px"
             textAlign="center"
           >
-            <Image src={ card2 } alt="" width="100%" height="100%" />
+            <Image src={card2} alt="" width="100%" height="100%" />
             <p>Empresas privadas</p>
           </Box>
 
@@ -74,7 +74,7 @@ function Partners() {
             width="160px"
             textAlign="center"
           >
-            <Image src={ card4 } alt="" width="100%" height="100%" />
+            <Image src={card4} alt="" width="100%" height="100%" />
             <p>Órgãos governamentais</p>
           </Box>
 
@@ -84,7 +84,7 @@ function Partners() {
             width="160px"
             textAlign="center"
           >
-            <Image src={ card3 } alt="" width="100%" height="100%" />
+            <Image src={card3} alt="" width="100%" height="100%" />
             <p>Universidades</p>
           </Box>
 
@@ -94,7 +94,7 @@ function Partners() {
             width="160px"
             textAlign="center"
           >
-            <Image src={ card5 } alt="" width="100%" height="100%" />
+            <Image src={card5} alt="" width="100%" height="100%" />
             <p>Escolas</p>
           </Box>
         </Box>
@@ -120,7 +120,7 @@ function Partners() {
           gap="8px"
           margin="24px auto"
         >
-          <Image src={ banner } alt="" />
+          <Image src={banner} alt="" />
         </Box>
       </Box>
 

@@ -1,13 +1,13 @@
-import React, { useEffect, useState } from 'react';
-import Image from 'next/image';
+import React, { useEffect, useState } from "react";
+import Image from "next/image";
 // import required modules
-import { Navigation, Pagination } from 'swiper';
+import { Navigation, Pagination } from "swiper";
 // Import Swiper React components
-import { Swiper, SwiperSlide } from 'swiper/react';
+import { Swiper, SwiperSlide } from "swiper/react";
 
-import Box from '../box';
+import Box from "../box";
 
-import SwiperImgs from './images';
+import SwiperImgs from "./images";
 
 export default function SwiperJs() {
   const [domLoaded, setDomLoaded] = useState(false);
@@ -49,42 +49,42 @@ export default function SwiperJs() {
       <Box direction="column">
         <>
           <h1
-            style={ {
-              textAlign: 'center',
-              fontWeight: '700',
-              margin: '0 0 40px 0',
-              fontFamily: 'Baloo, cursive',
-              textTransform: 'uppercase',
-            } }
+            style={{
+              textAlign: "center",
+              fontWeight: "700",
+              margin: "0 0 40px 0",
+              fontFamily: "Baloo, cursive",
+              textTransform: "uppercase",
+            }}
           >
             parceiros
           </h1>
 
           <Swiper
-            style={ {
-              paddingLeft: '40px',
-              paddingRight: '25px',
-              alignItems: 'center',
-              justifyContent: 'center',
-              width: '100%',
-              margin: '40px 0',
-            } }
-            spaceBetween={ 48 }
-            slidesPerView={ 5 }
+            style={{
+              paddingLeft: "40px",
+              paddingRight: "25px",
+              alignItems: "center",
+              justifyContent: "center",
+              width: "100%",
+              margin: "40px 0",
+            }}
+            spaceBetween={48}
+            slidesPerView={5}
             centeredSlides
             navigation
-            modules={ [Pagination, Navigation] }
+            modules={[Pagination, Navigation]}
             className="mySwiper"
             loop
-            breakpoints={ breakpoints }
+            breakpoints={breakpoints}
           >
             {SwiperImgs().map((item) => (
-              <SwiperSlide key={ item.id }>
+              <SwiperSlide key={item.id}>
                 <Image
-                  src={ item.src }
+                  src={item.src}
                   alt="Fotos de parceiros da instituição palavras de paz"
-                  width={ 150 }
-                  height={ 150 }
+                  width={150}
+                  height={150}
                   className="swiperImg"
                 />
               </SwiperSlide>

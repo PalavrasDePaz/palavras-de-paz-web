@@ -1,17 +1,17 @@
 /* eslint-disable react/jsx-max-depth */
-import Image from 'next/image';
+import Image from "next/image";
 
-import card1 from '../../../public/static/images/quemsomos/CameraIdentification.svg';
-import card2 from '../../../public/static/images/quemsomos/PuzzleMatching.svg';
-import card3 from '../../../public/static/images/quemsomos/ValorSecundario.svg';
-import Banner from '../../components/banner';
-import Box from '../../components/box';
-import Button from '../../components/button/button';
-import Center from '../../components/center';
-import FixedButton from '../../components/fixedbutton/FixedButton';
-import Footer from '../../components/footer/Footer';
-import Header from '../../components/header/Header';
-import Typography from '../../components/typography';
+import card1 from "../../../public/static/images/quemsomos/CameraIdentification.svg";
+import card2 from "../../../public/static/images/quemsomos/PuzzleMatching.svg";
+import card3 from "../../../public/static/images/quemsomos/ValorSecundario.svg";
+import Banner from "../../components/banner";
+import Box from "../../components/box";
+import Button from "../../components/button/button";
+import Center from "../../components/center";
+import FixedButton from "../../components/fixedbutton/FixedButton";
+import Footer from "../../components/footer/Footer";
+import Header from "../../components/header/Header";
+import Typography from "../../components/typography";
 
 export default function QuemSomosTemplate() {
   return (
@@ -63,7 +63,7 @@ export default function QuemSomosTemplate() {
               width="160px"
               textAlign="center"
             >
-              <Image src={ card1 } alt="" width="100%" height="100%" />
+              <Image src={card1} alt="" width="100%" height="100%" />
               <p>MISSÃO</p>
               <p>Ajudar as pessoas a descobrir a própria força interior</p>
             </Box>
@@ -73,7 +73,7 @@ export default function QuemSomosTemplate() {
               width="160px"
               textAlign="center"
             >
-              <Image src={ card2 } alt="" width="100%" height="100%" />
+              <Image src={card2} alt="" width="100%" height="100%" />
               <p>VISÃO</p>
               <p>Enxergamos um mundo onde a paz seja possível para todos</p>
             </Box>
@@ -83,7 +83,7 @@ export default function QuemSomosTemplate() {
               width="160px"
               textAlign="center"
             >
-              <Image src={ card3 } alt="" width="100%" height="100%" />
+              <Image src={card3} alt="" width="100%" height="100%" />
               <p>VALORES</p>
               <p>Autoconhecimento, Paz, Dignidade, Esperança e Liberdade</p>
             </Box>

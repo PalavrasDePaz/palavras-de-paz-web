@@ -1,6 +1,6 @@
-import propTypes from 'prop-types';
+import propTypes from "prop-types";
 
-import * as S from './styled';
+import * as S from "./styled";
 
 function Box({
   bg,
@@ -24,23 +24,23 @@ function Box({
 }) {
   return (
     <S.Box
-      padding={ padding }
-      margin={ margin }
-      color={ color }
-      bg={ bg }
-      width={ width }
-      height={ height }
-      justify={ justify }
-      align={ align }
-      direction={ direction }
-      shadow={ shadow }
-      position={ position }
-      gap={ gap }
-      radius={ radius }
-      textAlign={ textAlign }
-      flexWrap={ flexWrap }
-      maxWidth={ maxWidth }
-      border={ border }
+      padding={padding}
+      margin={margin}
+      color={color}
+      bg={bg}
+      width={width}
+      height={height}
+      justify={justify}
+      align={align}
+      direction={direction}
+      shadow={shadow}
+      position={position}
+      gap={gap}
+      radius={radius}
+      textAlign={textAlign}
+      flexWrap={flexWrap}
+      maxWidth={maxWidth}
+      border={border}
     >
       {children}
     </S.Box>

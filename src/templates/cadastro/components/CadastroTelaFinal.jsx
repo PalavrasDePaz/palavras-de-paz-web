@@ -1,19 +1,19 @@
-import React, { useState } from 'react';
-import Link from 'next/link';
-import { useRouter } from 'next/router';
-import axios from 'axios';
+import React, { useState } from "react";
+import Link from "next/link";
+import { useRouter } from "next/router";
+import axios from "axios";
 
-import LoadingSpinner from '../../../components/loadingSpinner/LoadingSpinner';
+import LoadingSpinner from "../../../components/loadingSpinner/LoadingSpinner";
 import {
   API,
   EXISTING_MESSAGE,
   UNEXPECTED_ERROR,
   VOLUNTEER_ALREADY_EXISTS,
-} from '../../../constants';
+} from "../../../constants";
 
-import { FUTURE_ROLES, SKILLS } from './constants';
+import { FUTURE_ROLES, SKILLS } from "./constants";
 
-import styles from '../styles/CadastroTemplate.module.css';
+import styles from "../styles/CadastroTemplate.module.css";
 
 const filterValues = (valuesObj, optionsObject) =>
   // eslint-disable-next-line implicit-arrow-linebreak
@@ -22,12 +22,12 @@ const filterValues = (valuesObj, optionsObject) =>
     .filter((key) => valuesObj[key] !== false)
     // Trocamos os nomes de item pelos labels.
     .map(
-      (item) => optionsObject.find((option) => option.value === item)?.label,
+      (item) => optionsObject.find((option) => option.value === item)?.label
     );
 
 export default function cadastroTelaFinal({ data } = props) {
   const [isError, setIsError] = useState(false);
-  const [errorMessage, setErrorMessage] = useState('');
+  const [errorMessage, setErrorMessage] = useState("");
 
   const router = useRouter();
 
@@ -36,11 +36,11 @@ export default function cadastroTelaFinal({ data } = props) {
   data.interestFutureRoles = filterValues(interestFutureRoles, FUTURE_ROLES);
   data.rolesPep = filterValues(rolesPep, SKILLS);
   // e transformar string em boolean
-  data.needDeclaration = needDeclaration === 'sim';
+  data.needDeclaration = needDeclaration === "sim";
 
   // se deficiência não for "sim", não mandamos o valor.
   // (pensando no caso de alguém que preenche, depois muda de ideia e prefere não dizer.)
-  data.disability = data.deficiencia === 'sim' ? data.disability : null;
+  data.disability = data.deficiencia === "sim" ? data.disability : null;
 
   // Também não mandamos o valor do campo de deficiencia, só qual ela é, se houver.
   // E nem a confirmação de password.
@@ -48,14 +48,14 @@ export default function cadastroTelaFinal({ data } = props) {
 
   // Removemos qualquer atributo que esteja nulo
   const apiObject = Object.fromEntries(
-    Object.entries(restOfData).filter(([, v]) => v != null),
+    Object.entries(restOfData).filter(([, v]) => v != null)
   );
 
   // Mandamos o dado
-  const apiAddress = `${ API }/volunteers`;
+  const apiAddress = `${API}/volunteers`;
   axios
     .post(apiAddress, apiObject)
-    .then(() => router.push('/login'))
+    .then(() => router.push("/login"))
     .catch((error) => {
       setIsError(true);
       if (error.response.data.name) {
@@ -68,7 +68,7 @@ export default function cadastroTelaFinal({ data } = props) {
       const existingUser = errorMessage === VOLUNTEER_ALREADY_EXISTS;
       const message = existingUser ? EXISTING_MESSAGE : UNEXPECTED_ERROR;
       return (
-        <p className={ styles.formParagraph } style={ { color: 'red' } }>
+        <p className={styles.formParagraph} style={{ color: "red" }}>
           {message}
         </p>
       );
@@ -82,7 +82,7 @@ export default function cadastroTelaFinal({ data } = props) {
       {getContent()}
       {isError && (
         <Link href="/">
-          <button className={ styles.cadastroFormSectionButton }>
+          <button className={styles.cadastroFormSectionButton}>
             Voltar para a página inicial
           </button>
         </Link>

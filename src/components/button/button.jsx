@@ -1,6 +1,6 @@
-import propTypes from 'prop-types';
+import propTypes from "prop-types";
 
-import * as S from './styled';
+import * as S from "./styled";
 
 function Button({
   align,
@@ -21,20 +21,20 @@ function Button({
 }) {
   return (
     <S.Button
-      fontWeight={ fontWeight }
-      justify={ justify }
-      align={ align }
-      bg={ bg }
-      margin={ margin }
-      padding={ padding }
-      width={ width }
-      height={ height }
-      shadow={ shadow }
-      color={ color }
-      familyFont={ familyFont }
-      href={ href }
-      hover={ hover }
-      font_size={ fontSize }
+      fontWeight={fontWeight}
+      justify={justify}
+      align={align}
+      bg={bg}
+      margin={margin}
+      padding={padding}
+      width={width}
+      height={height}
+      shadow={shadow}
+      color={color}
+      familyFont={familyFont}
+      href={href}
+      hover={hover}
+      font_size={fontSize}
     >
       {props.text}
     </S.Button>
