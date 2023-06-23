@@ -1,15 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
-import HeaderWorkspace from '../../components/headerWorkspace/HeaderWorkspace';
+import HeaderWorkspace from "../../components/headerWorkspace/HeaderWorkspace";
 
-import CadastroPrimeiraTela from './components/CadastroPrimeiraTela';
-import CadastroQuartaTela from './components/CadastroQuartaTela';
-import CadastroSegundaTela from './components/CadastroSegundaTela';
-import CadastroTelaFinal from './components/CadastroTelaFinal';
-import CadastroTerceiraTela from './components/CadastroTerceiraTela';
-import Signature from './components/Signature';
+import CadastroPrimeiraTela from "./components/CadastroPrimeiraTela";
+import CadastroQuartaTela from "./components/CadastroQuartaTela";
+import CadastroSegundaTela from "./components/CadastroSegundaTela";
+import CadastroTelaFinal from "./components/CadastroTelaFinal";
+import CadastroTerceiraTela from "./components/CadastroTerceiraTela";
+import Signature from "./components/Signature";
 
-import styles from './styles/CadastroTemplate.module.css';
+import styles from "./styles/CadastroTemplate.module.css";
 
 export default function cadastroTemplate() {
   const [controller, setController] = useState(0);
@@ -38,36 +38,36 @@ export default function cadastroTemplate() {
   return (
     <>
       <HeaderWorkspace title="Cadastro de voluntário" />
-      <Signature controller={ controller } />
-      <div className={ styles.main_container_form }>
+      <Signature controller={controller} />
+      <div className={styles.main_container_form}>
         {controller === PAGE_1 && (
           <CadastroPrimeiraTela
-            buttonCallback={ buttonCallback }
-            data={ formData }
+            buttonCallback={buttonCallback}
+            data={formData}
           />
         )}
         {controller === PAGE_2 && (
           <CadastroSegundaTela
-            buttonCallback={ buttonCallback }
-            returnButton={ returnButton }
-            data={ formData }
+            buttonCallback={buttonCallback}
+            returnButton={returnButton}
+            data={formData}
           />
         )}
         {controller === PAGE_3 && (
           <CadastroTerceiraTela
-            buttonCallback={ buttonCallback }
-            returnButton={ returnButton }
-            data={ formData }
+            buttonCallback={buttonCallback}
+            returnButton={returnButton}
+            data={formData}
           />
         )}
         {controller === PAGE_4 && (
           <CadastroQuartaTela
-            buttonCallback={ buttonCallback }
-            returnButton={ returnButton }
-            data={ formData }
+            buttonCallback={buttonCallback}
+            returnButton={returnButton}
+            data={formData}
           />
         )}
-        {controller === FINISHED && <CadastroTelaFinal data={ formData } />}
+        {controller === FINISHED && <CadastroTelaFinal data={formData} />}
       </div>
     </>
   );

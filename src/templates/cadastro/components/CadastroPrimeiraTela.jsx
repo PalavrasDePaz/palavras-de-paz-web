@@ -1,20 +1,21 @@
-import React, { useState } from 'react';
-import { useForm } from 'react-hook-form';
-import { FaEye, FaEyeSlash } from 'react-icons/fa';
+import React, { useState } from "react";
+import { useForm } from "react-hook-form";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 
-import { yupResolver } from '@hookform/resolvers/yup';
+import { yupResolver } from "@hookform/resolvers/yup";
 
-import ErrorMessage from '../../../components/forms/ErrorMessage';
+import ErrorMessage from "../../../components/forms/ErrorMessage";
 
-import { cadastroTela1Schema, MAX_CHARS } from './schemas';
+import { cadastroTela1Schema, MAX_CHARS } from "./schemas";
 
-import styles from '../styles/CadastroTelas.module.css';
-import styleButton from '../styles/CadastroTemplate.module.css';
+import styles from "../styles/CadastroTelas.module.css";
+import styleButton from "../styles/CadastroTemplate.module.css";
 
 export default function cadastroPrimeiraTela({ buttonCallback, data } = props) {
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
 
-  const changePasswordVisibility = () => setIsPasswordVisible((_visible) => !_visible);
+  const changePasswordVisibility = () =>
+    setIsPasswordVisible((_visible) => !_visible);
 
   const {
     register,
@@ -28,9 +29,9 @@ export default function cadastroPrimeiraTela({ buttonCallback, data } = props) {
     return (
       <button
         type="button"
-        onClick={ changePasswordVisibility }
-        className={ styles.cadastroPassButton }
-        title={ isPasswordVisible ? 'Ocultar senha' : 'Mostrar senha' }
+        onClick={changePasswordVisibility}
+        className={styles.cadastroPassButton}
+        title={isPasswordVisible ? "Ocultar senha" : "Mostrar senha"}
       >
         {isPasswordVisible ? <FaEye /> : <FaEyeSlash />}
       </button>
@@ -39,13 +40,13 @@ export default function cadastroPrimeiraTela({ buttonCallback, data } = props) {
 
   return (
     <form
-      className={ styles.cadastroFormSection }
-      onSubmit={ handleSubmit(buttonCallback) }
+      className={styles.cadastroFormSection}
+      onSubmit={handleSubmit(buttonCallback)}
     >
       <section>
-        <h1 className={ styles.formTitle }>CADASTRO DE VOLUNTÁRIOS</h1>
+        <h1 className={styles.formTitle}>CADASTRO DE VOLUNTÁRIOS</h1>
 
-        <p className={ styles.formParagraph }>
+        <p className={styles.formParagraph}>
           Seja bem-vindo(a)! Preparamos este formulário para podermos te
           conhecer melhor, saber sobre seus conhecimentos e experiências, e
           também para entendermos a sua disponibilidade com o nosso
@@ -54,10 +55,10 @@ export default function cadastroPrimeiraTela({ buttonCallback, data } = props) {
           tomará no máximo dez minutos do seu tempo! Bora lá?
         </p>
 
-        <section className={ styles.cadastroFormSectionInputContainer }>
-          <div className={ styles.cadastroFormDiv }>
+        <section className={styles.cadastroFormSectionInputContainer}>
+          <div className={styles.cadastroFormDiv}>
             <label
-              className={ styles.cadastroFormSectionInputLabel }
+              className={styles.cadastroFormSectionInputLabel}
               htmlFor="name"
             >
               Nome
@@ -66,17 +67,17 @@ export default function cadastroPrimeiraTela({ buttonCallback, data } = props) {
             <input
               placeholder="Digite seu nome"
               type="text"
-              maxLength={ MAX_CHARS }
-              defaultValue={ data.name }
-              className={ styles.cadastroFormSectionInputText }
-              { ...register('name') }
+              maxLength={MAX_CHARS}
+              defaultValue={data.name}
+              className={styles.cadastroFormSectionInputText}
+              {...register("name")}
             />
-            <ErrorMessage showError={ errors.name } style={ styles.inputError } />
+            <ErrorMessage showError={errors.name} style={styles.inputError} />
           </div>
 
-          <div className={ styles.cadastroFormDiv }>
+          <div className={styles.cadastroFormDiv}>
             <label
-              className={ styles.cadastroFormSectionInputLabel }
+              className={styles.cadastroFormSectionInputLabel}
               htmlFor="email"
             >
               E-mail
@@ -85,17 +86,17 @@ export default function cadastroPrimeiraTela({ buttonCallback, data } = props) {
             <input
               placeholder="Digite seu email"
               type="text"
-              maxLength={ MAX_CHARS }
-              defaultValue={ data.email }
-              className={ styles.cadastroFormSectionInputText }
-              { ...register('email') }
+              maxLength={MAX_CHARS}
+              defaultValue={data.email}
+              className={styles.cadastroFormSectionInputText}
+              {...register("email")}
             />
-            <ErrorMessage showError={ errors.email } style={ styles.inputError } />
+            <ErrorMessage showError={errors.email} style={styles.inputError} />
           </div>
 
-          <div className={ styles.cadastroFormDiv }>
+          <div className={styles.cadastroFormDiv}>
             <label
-              className={ styles.cadastroFormSectionInputLabel }
+              className={styles.cadastroFormSectionInputLabel}
               htmlFor="password"
             >
               Senha
@@ -103,44 +104,44 @@ export default function cadastroPrimeiraTela({ buttonCallback, data } = props) {
 
             <input
               placeholder="Digite sua senha"
-              type={ isPasswordVisible ? 'text' : 'password' }
-              maxLength={ 12 }
-              defaultValue={ data.password }
-              className={ styles.cadastroFormSectionInputText }
-              { ...register('password') }
+              type={isPasswordVisible ? "text" : "password"}
+              maxLength={12}
+              defaultValue={data.password}
+              className={styles.cadastroFormSectionInputText}
+              {...register("password")}
             />
             <ShowPassButton />
             <ErrorMessage
-              showError={ errors.password }
-              style={ styles.inputError }
+              showError={errors.password}
+              style={styles.inputError}
             />
           </div>
 
-          <div className={ styles.cadastroFormDiv }>
+          <div className={styles.cadastroFormDiv}>
             <label
-              className={ styles.cadastroFormSectionInputLabel }
+              className={styles.cadastroFormSectionInputLabel}
               htmlFor="password"
             >
               Confirme sua senha
             </label>
 
             <input
-              type={ isPasswordVisible ? 'text' : 'password' }
-              maxLength={ 12 }
-              defaultValue={ data.passConfirmation }
-              className={ styles.cadastroFormSectionInputText }
+              type={isPasswordVisible ? "text" : "password"}
+              maxLength={12}
+              defaultValue={data.passConfirmation}
+              className={styles.cadastroFormSectionInputText}
               placeholder="Confirme sua senha"
-              { ...register('passConfirmation') }
+              {...register("passConfirmation")}
             />
             <ShowPassButton />
             <ErrorMessage
-              showError={ errors.passConfirmation }
-              style={ styles.inputError }
+              showError={errors.passConfirmation}
+              style={styles.inputError}
             />
           </div>
         </section>
       </section>
-      <button type="submit" className={ styleButton.cadastroFormSectionButton }>
+      <button type="submit" className={styleButton.cadastroFormSectionButton}>
         Próximo
       </button>
     </form>

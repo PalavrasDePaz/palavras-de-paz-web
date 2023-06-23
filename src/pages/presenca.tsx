@@ -1,6 +1,6 @@
-import React from 'react';
+import React from "react";
 
-import FormDePresenca from '../templates/presenca';
+import FormDePresenca from "../templates/presenca";
 
 const presenca = () => <FormDePresenca />;
 

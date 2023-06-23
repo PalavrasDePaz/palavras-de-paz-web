@@ -1,6 +1,6 @@
-import React from 'react';
-import Image from 'next/image';
-import Link from 'next/link';
+import React from "react";
+import Image from "next/image";
+import Link from "next/link";
 
 function Footer() {
   return (
@@ -19,7 +19,7 @@ function Footer() {
               width="40px"
               height="40px"
               alt="youtube"
-              style={ { cursor: 'pointer' } }
+              style={{ cursor: "pointer" }}
             />
           </div>
         </Link>
@@ -34,7 +34,7 @@ function Footer() {
               width="40px"
               height="40px"
               alt="instagram"
-              style={ { cursor: 'pointer' } }
+              style={{ cursor: "pointer" }}
             />
           </div>
         </Link>
@@ -49,7 +49,7 @@ function Footer() {
               width="40px"
               height="40px"
               alt="linkedin"
-              style={ { cursor: 'pointer' } }
+              style={{ cursor: "pointer" }}
             />
           </div>
         </Link>
@@ -61,7 +61,7 @@ function Footer() {
               width="40px"
               height="40px"
               alt="facebook"
-              style={ { cursor: 'pointer' } }
+              style={{ cursor: "pointer" }}
             />
           </div>
         </Link>
@@ -73,7 +73,7 @@ function Footer() {
               width="40px"
               height="40px"
               alt="whatsapp"
-              style={ { cursor: 'pointer' } }
+              style={{ cursor: "pointer" }}
             />
           </div>
         </Link>

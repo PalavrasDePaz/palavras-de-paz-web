@@ -1,6 +1,6 @@
-import React from 'react';
+import React from "react";
 
-import DepoimentosTemplate from '../templates/depoimentos/depoimentos.template';
+import DepoimentosTemplate from "../templates/depoimentos/depoimentos.template";
 
 function depoimentos() {
   return <DepoimentosTemplate />;

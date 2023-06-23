@@ -1,10 +1,10 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
-export const SlideContainer = styled.div `
+export const SlideContainer = styled.div`
   display: flex;
 `;
 
-export const TextSlide = styled.h1 `
+export const TextSlide = styled.h1`
   position: absolute;
   font-family: "Baloo", cursive, arial;
   letter-spacing: 0.02em;

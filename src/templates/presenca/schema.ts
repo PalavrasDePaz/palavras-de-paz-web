@@ -1,4 +1,4 @@
-import * as yup from 'yup';
+import * as yup from "yup";
 
 export const schema = yup.object().shape({
   subject: yup.string().nullable(),

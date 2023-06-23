@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from 'react';
-import Modal from 'react-bootstrap/Modal';
+import React, { useEffect, useState } from "react";
+import Modal from "react-bootstrap/Modal";
 
-import Box from '../box';
-import Button from '../button/button';
+import Box from "../box";
+import Button from "../button/button";
 
-import * as S from './styled';
+import * as S from "./styled";
 
 export default function FixedButton() {
   const [smShow, setSmShow] = useState(false);
@@ -29,45 +29,47 @@ export default function FixedButton() {
     handleScroll();
     handleResize();
 
-    window.addEventListener('scroll', handleScroll);
-    window.addEventListener('resize', handleResize);
+    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("resize", handleResize);
 
     return () => {
-      window.removeEventListener('scroll', handleScroll);
-      window.removeEventListener('resize', handleResize);
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("resize", handleResize);
     };
   }, [handleScroll, handleResize]);
 
   return (
     <>
-      {width <= WIDTH_TO_SHOW_BUTTON_MOBILE && height <= HEIGHT_TO_SHOW_BUTTON_MOBILE && (
-        <S.FixedBtnMobile
-          onClick={ () => setSmShow(true) }
-          className="animate__animated animate__fadeInRight"
-        >
-          <img
-            src="/static/images/msg_icon.svg"
-            width="45px"
-            height="45px"
-            alt=""
-          />
-        </S.FixedBtnMobile>
-      )}
+      {width <= WIDTH_TO_SHOW_BUTTON_MOBILE &&
+        height <= HEIGHT_TO_SHOW_BUTTON_MOBILE && (
+          <S.FixedBtnMobile
+            onClick={() => setSmShow(true)}
+            className="animate__animated animate__fadeInRight"
+          >
+            <img
+              src="/static/images/msg_icon.svg"
+              width="45px"
+              height="45px"
+              alt=""
+            />
+          </S.FixedBtnMobile>
+        )}
 
-      {width >= WIDTH_TO_SHOW_BUTTON_MOBILE && height >= HEIGHT_TO_SHOW_BUTTON && (
-        <S.FixedBtn
-          onClick={ () => setSmShow(true) }
-          className="animate__animated animate__fadeInRight"
-        >
-          CONTATO
-        </S.FixedBtn>
-      )}
+      {width >= WIDTH_TO_SHOW_BUTTON_MOBILE &&
+        height >= HEIGHT_TO_SHOW_BUTTON && (
+          <S.FixedBtn
+            onClick={() => setSmShow(true)}
+            className="animate__animated animate__fadeInRight"
+          >
+            CONTATO
+          </S.FixedBtn>
+        )}
 
       <Modal
         width="100%"
         size="sm"
-        show={ smShow }
-        onHide={ () => setSmShow(false) }
+        show={smShow}
+        onHide={() => setSmShow(false)}
         aria-labelledby="example-modal-sizes-title-sm"
       >
         <Modal.Header closeButton>
@@ -164,7 +166,7 @@ export default function FixedButton() {
               text="ENVIAR"
               font_size="1.25rem"
               width="50%"
-              shadow={ false }
+              shadow={false}
             />
           </form>
         </Modal.Body>

@@ -1,11 +1,11 @@
-import axios from 'axios';
-import isEmail from 'validator/lib/isEmail';
+import axios from "axios";
+import isEmail from "validator/lib/isEmail";
 
-import { API } from '../../../constants';
+import { API } from "../../../constants";
 
 export const getIsHigherEducation = (schooling?: string): boolean =>
   // eslint-disable-next-line implicit-arrow-linebreak
-  !!(schooling && schooling.includes('superior'));
+  !!(schooling && schooling.includes("superior"));
 
 const NOT_FOUND = 404;
 
@@ -21,7 +21,7 @@ export const isNewEmail = async (email: string) => {
     // E não chegar ao erro de estar cadastrado.
     return true;
   }
-  const apiAddress = `${ API }/volunteers/${ email }`;
+  const apiAddress = `${API}/volunteers/${email}`;
   const check = await axios.head(apiAddress).catch((error) => error);
 
   // A API dá bad request quando não acha o email,
@@ -36,10 +36,10 @@ export const isNewEmail = async (email: string) => {
  */
 export const formatDate = (date: Date | string): string => {
   if (!date) {
-    return '';
+    return "";
   }
-  if (typeof date === 'string') {
+  if (typeof date === "string") {
     return date;
   }
-  return date.toISOString().split('T')[0];
+  return date.toISOString().split("T")[0];
 };

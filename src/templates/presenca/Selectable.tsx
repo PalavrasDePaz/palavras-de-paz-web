@@ -1,9 +1,9 @@
-import React from 'react';
-import { FieldValues, UseFormRegister } from 'react-hook-form';
+import React from "react";
+import { FieldValues, UseFormRegister } from "react-hook-form";
 
-import EmptyOption from '../../components/forms/EmptyOption';
+import EmptyOption from "../../components/forms/EmptyOption";
 
-import styles from './index.module.css';
+import styles from "./index.module.css";
 
 type SelectableProps = {
   fieldName: string;
@@ -19,21 +19,18 @@ function Selectable({
   register,
 }: SelectableProps) {
   return (
-    <div className={ styles.presencaDiv }>
-      <label
-        className={ styles.presencaInputLabel }
-        htmlFor={ fieldName }
-      >
+    <div className={styles.presencaDiv}>
+      <label className={styles.presencaInputLabel} htmlFor={fieldName}>
         {question}
       </label>
       <select
         defaultValue=""
-        className={ styles.presencaInputText }
-        { ...register(fieldName) }
+        className={styles.presencaInputText}
+        {...register(fieldName)}
       >
         <EmptyOption />
         {options.map(({ label, value }) => (
-          <option key={ value } value={ value }>
+          <option key={value} value={value}>
             {label}
           </option>
         ))}

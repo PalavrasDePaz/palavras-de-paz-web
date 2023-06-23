@@ -1,25 +1,25 @@
-import React, { useState } from 'react';
-import Link from 'next/link';
-import { useRouter } from 'next/router';
-import axios from 'axios';
-import { useForm } from 'react-hook-form';
-import { FaEye, FaEyeSlash } from 'react-icons/fa';
-import * as yup from 'yup';
+import React, { useState } from "react";
+import Link from "next/link";
+import { useRouter } from "next/router";
+import axios from "axios";
+import { useForm } from "react-hook-form";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
+import * as yup from "yup";
 
-import { yupResolver } from '@hookform/resolvers/yup';
+import { yupResolver } from "@hookform/resolvers/yup";
 
-import LoadingSpinner from '../../../components/loadingSpinner/LoadingSpinner';
+import LoadingSpinner from "../../../components/loadingSpinner/LoadingSpinner";
 import {
   API,
   ERROR_MESSAGES,
   REQUIRED_FIELD,
   UNEXPECTED_ERROR,
   VOLUNTEER_NOT_FOUND,
-} from '../../../constants';
+} from "../../../constants";
 
-import BackButton from './BackButton';
+import BackButton from "./BackButton";
 
-import styles from '../styles/LoginForm.module.css';
+import styles from "../styles/LoginForm.module.css";
 
 const MIN_PASSWORD_LENGTH = 6;
 
@@ -43,7 +43,7 @@ function LoginForm() {
   const [isSending, setIsSending] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [apiError, setApiError] = useState();
-  const [errorMessage, setErrorMessage] = useState('');
+  const [errorMessage, setErrorMessage] = useState("");
 
   const { push } = useRouter();
 
@@ -56,8 +56,8 @@ function LoginForm() {
     resolver: yupResolver(getSchema(passwordForgotten)),
   });
 
-  const loginAddress = `${ API }/volunteers/login`;
-  const resetPassAddress = `${ API }/volunteers/password-email`;
+  const loginAddress = `${API}/volunteers/login`;
+  const resetPassAddress = `${API}/volunteers/password-email`;
 
   const postAddress = passwordForgotten ? resetPassAddress : loginAddress;
 
@@ -71,7 +71,7 @@ function LoginForm() {
     axios
       .post(postAddress, data)
       // TODO: a resposta de login será um token, que vamos levar para a área de trabalho.
-      .then(() => (passwordForgotten ? updateComponentAfterMail() : push('/')))
+      .then(() => (passwordForgotten ? updateComponentAfterMail() : push("/")))
       .catch((error) => {
         setApiError(error);
         if (error.response.data.name) {
@@ -80,11 +80,11 @@ function LoginForm() {
       });
 
   // No caso de senha perdida, mandamos só o email
-  const cleanData = (data) => (passwordForgotten ? { email: data.email } : data);
+  const cleanData = (data) =>
+    passwordForgotten ? { email: data.email } : data;
 
   const onSubmit = (data) => {
     setIsSending(true);
-    console.log(data);
     postData(cleanData(data));
     reset();
   };
@@ -94,18 +94,18 @@ function LoginForm() {
   }
 
   const emailFieldString = passwordForgotten ? (
-    'Informe seu e-mail para enviarmos um link de redefinição de senha'
+    "Informe seu e-mail para enviarmos um link de redefinição de senha"
   ) : (
     <b>E-mail</b>
   );
-  const buttonString = passwordForgotten ? 'Enviar e-mail' : 'Entrar';
+  const buttonString = passwordForgotten ? "Enviar e-mail" : "Entrar";
 
   if (apiError) {
     const message = ERROR_MESSAGES[errorMessage] || UNEXPECTED_ERROR;
     const userNotFound = errorMessage === VOLUNTEER_NOT_FOUND;
     return (
       <>
-        <p className={ styles.formParagraph } style={ { color: 'red' } }>
+        <p className={styles.formParagraph} style={{ color: "red" }}>
           {message}
         </p>
         {userNotFound && (
@@ -126,7 +126,7 @@ function LoginForm() {
     // Apenas com a opção de email enviado porque em caso de login correto vai haver o redirect.
     return (
       <>
-        <p className={ styles.formParagraph }>
+        <p className={styles.formParagraph}>
           O e-mail de recuperação de senha foi enviado!
         </p>
         <BackButton />
@@ -135,56 +135,56 @@ function LoginForm() {
   }
 
   return (
-    <form onSubmit={ handleSubmit(onSubmit) } className={ styles.loginFormSection }>
+    <form onSubmit={handleSubmit(onSubmit)} className={styles.loginFormSection}>
       {!passwordForgotten && (
-        <h1 className={ styles.loginFormSectionTitle }>Faça seu login</h1>
+        <h1 className={styles.loginFormSectionTitle}>Faça seu login</h1>
       )}
 
-      <div className={ styles.loginFormSectionInputContainer }>
-        <label className={ styles.loginFormSectionInputLabel } htmlFor="email">
+      <div className={styles.loginFormSectionInputContainer}>
+        <label className={styles.loginFormSectionInputLabel} htmlFor="email">
           {emailFieldString}
         </label>
 
         <input
           placeholder="nome@palavrasdepaz.com.br"
           type="email"
-          className={ styles.loginFormSectionInputEmail }
-          { ...register('email') }
+          className={styles.loginFormSectionInputEmail}
+          {...register("email")}
         />
         {errors.email && (
-          <p className={ styles.inputError }>{errors.email.message}</p>
+          <p className={styles.inputError}>{errors.email.message}</p>
         )}
       </div>
       {!passwordForgotten && (
         <>
-          <div className={ styles.loginFormSectionInputContainer }>
+          <div className={styles.loginFormSectionInputContainer}>
             <label
-              className={ styles.loginFormSectionInputLabel }
+              className={styles.loginFormSectionInputLabel}
               htmlFor="password"
             >
               <b>Senha</b>
             </label>
             <input
               placeholder="Digite sua senha"
-              className={ styles.loginFormSectionInputPassword }
-              type={ isPasswordVisible ? 'text' : 'password' }
-              { ...register('password') }
+              className={styles.loginFormSectionInputPassword}
+              type={isPasswordVisible ? "text" : "password"}
+              {...register("password")}
             />
             <button
-              className={ styles.loginFormSectionInputPasswordVisibility }
+              className={styles.loginFormSectionInputPasswordVisibility}
               type="button"
-              onClick={ handlePasswordVisibility }
+              onClick={handlePasswordVisibility}
             >
               {isPasswordVisible ? <FaEye /> : <FaEyeSlash />}
             </button>
             {errors.password && (
-              <p className={ styles.inputError }>{errors.password.message}</p>
+              <p className={styles.inputError}>{errors.password.message}</p>
             )}
           </div>
-          <section className={ styles.loginFormSectionButtonsContainer }>
+          <section className={styles.loginFormSectionButtonsContainer}>
             <button
-              className={ styles.loginFormSectionButtons }
-              onClick={ () => setPasswordForgotten(true) }
+              className={styles.loginFormSectionButtons}
+              onClick={() => setPasswordForgotten(true)}
             >
               Esqueceu a senha?
             </button>
@@ -192,7 +192,7 @@ function LoginForm() {
         </>
       )}
 
-      <button type="submit" className={ styles.loginFormButtonEnter }>
+      <button type="submit" className={styles.loginFormButtonEnter}>
         {buttonString}
       </button>
       <BackButton />

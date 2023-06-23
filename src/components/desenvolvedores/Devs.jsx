@@ -1,6 +1,6 @@
-import React from 'react';
-import Image from 'next/image';
-import Link from 'next/link';
+import React from "react";
+import Image from "next/image";
+import Link from "next/link";
 
 function Devs() {
   return (
@@ -12,7 +12,7 @@ function Devs() {
       <container className="container">
         <div className="adjust-dev">
           <Image
-            style={ { border: '2px solid #18CA99', borderRadius: '50%' } }
+            style={{ border: "2px solid #18CA99", borderRadius: "50%" }}
             src="/static/images/devs/simon.svg"
             width="248px"
             height="248px"
@@ -142,7 +142,7 @@ function Devs() {
         <div className="adjust-dev">
           <Image
             src="/static/images/devs/ramon.svg"
-            style={ { border: '2px solid #18CA99', borderRadius: '50%' } }
+            style={{ border: "2px solid #18CA99", borderRadius: "50%" }}
             width="248px"
             height="248px"
             alt="ramon-image"
@@ -159,7 +159,7 @@ function Devs() {
 
         <div className="adjust-dev">
           <Image
-            style={ { border: '10px solid #18CA99', borderRadius: '50%' } }
+            style={{ border: "10px solid #18CA99", borderRadius: "50%" }}
             src="/static/images/devs/carol.jpg"
             width="248px"
             height="248px"

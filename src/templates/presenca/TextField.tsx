@@ -1,7 +1,7 @@
-import React from 'react';
-import { FieldValues, UseFormRegister } from 'react-hook-form';
+import React from "react";
+import { FieldValues, UseFormRegister } from "react-hook-form";
 
-import styles from './index.module.css';
+import styles from "./index.module.css";
 
 type TextFieldProps = {
   fieldName: string;
@@ -11,14 +11,14 @@ type TextFieldProps = {
 
 function TextField({ fieldName, question, register }: TextFieldProps) {
   return (
-    <div className={ styles.presencaDiv }>
-      <label className={ styles.presencaInputLabel } htmlFor={ fieldName }>
+    <div className={styles.presencaDiv}>
+      <label className={styles.presencaInputLabel} htmlFor={fieldName}>
         {question}
       </label>
       <textarea
-        maxLength={ 300 }
-        className={ styles.presencaInputText }
-        { ...register(fieldName) }
+        maxLength={300}
+        className={styles.presencaInputText}
+        {...register(fieldName)}
       />
     </div>
   );

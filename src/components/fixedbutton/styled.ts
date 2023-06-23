@@ -1,6 +1,6 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
-export const FixedBtn = styled.a `
+export const FixedBtn = styled.a`
   position: fixed;
   bottom: 20.62rem;
   right: 0;
@@ -19,7 +19,7 @@ export const FixedBtn = styled.a `
   }
 `;
 
-export const FixedBtnMobile = styled.a `
+export const FixedBtnMobile = styled.a`
   position: fixed;
   display: flex;
   justify-content: center;

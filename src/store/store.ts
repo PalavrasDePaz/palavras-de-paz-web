@@ -1,13 +1,13 @@
-import { combineReducers } from 'redux';
+import { combineReducers } from "redux";
 
-import { configureStore, createSlice } from '@reduxjs/toolkit';
+import { configureStore, createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   value: 0,
 };
 
 const controller = createSlice({
-  name: 'controller',
+  name: "controller",
   initialState: 0,
   reducers: {
     increment: () => {

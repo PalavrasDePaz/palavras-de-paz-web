@@ -1,11 +1,11 @@
-import Box from '../../box';
-import Typography from '../../typography';
+import Box from "../../box";
+import Typography from "../../typography";
 
-import * as S from './styled';
+import * as S from "./styled";
 
 export default function GreenBar() {
   return (
-    <div style={ { zIndex: 5 } }>
+    <div style={{ zIndex: 5 }}>
       <S.GreenContainer>
         <Box
           padding="0.5rem 0"

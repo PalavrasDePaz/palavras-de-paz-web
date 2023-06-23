@@ -1,24 +1,24 @@
-import React from 'react';
-import Head from 'next/head';
-import propTypes from 'prop-types';
-import { Provider } from 'react-redux';
+import React from "react";
+import Head from "next/head";
+import propTypes from "prop-types";
+import { Provider } from "react-redux";
 
-import store from '../store/store';
+import store from "../store/store";
 
-import 'bootstrap/dist/css/bootstrap.min.css';
-import '../styles/header/index.css';
-import '../styles/footer/index.css';
-import '../styles/gridphotos/index.css';
-import '../styles/depoimentosmain/index.css';
-import '../styles/doacoes/index.css';
-import '../styles/voluntarios/index.css';
-import '../styles/banner/index.css';
-import '../styles/desenvolvedores/index.css';
-import '../styles/programa/index.css';
-import '../styles/globalstyles.css';
-import '../styles/swiper/index.css';
-import '../styles/fixedBtn/index.css';
-import 'animate.css';
+import "bootstrap/dist/css/bootstrap.min.css";
+import "../styles/header/index.css";
+import "../styles/footer/index.css";
+import "../styles/gridphotos/index.css";
+import "../styles/depoimentosmain/index.css";
+import "../styles/doacoes/index.css";
+import "../styles/voluntarios/index.css";
+import "../styles/banner/index.css";
+import "../styles/desenvolvedores/index.css";
+import "../styles/programa/index.css";
+import "../styles/globalstyles.css";
+import "../styles/swiper/index.css";
+import "../styles/fixedBtn/index.css";
+import "animate.css";
 
 function MyApp({ Component, pageProps }) {
   return (
@@ -26,8 +26,8 @@ function MyApp({ Component, pageProps }) {
       <Head>
         <title>Palavras de Paz</title>
       </Head>
-      <Provider store={ store }>
-        <Component { ...pageProps } />
+      <Provider store={store}>
+        <Component {...pageProps} />
       </Provider>
     </>
   );

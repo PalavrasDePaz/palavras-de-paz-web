@@ -1,18 +1,18 @@
-import React from 'react';
-import Image from 'next/image';
+import React from "react";
+import Image from "next/image";
 
-import Logo from '../../../public/static/images/logo.svg';
+import Logo from "../../../public/static/images/logo.svg";
 
-import LoginForm from './components/LoginInputs';
+import LoginForm from "./components/LoginInputs";
 
-import styles from './styles/LoginTemplate.style.module.css';
+import styles from "./styles/LoginTemplate.style.module.css";
 
 function LoginTemplate() {
   return (
-    <section className={ styles.loginSection }>
+    <section className={styles.loginSection}>
       <Image
-        style={ { cursor: 'pointer' } }
-        src={ Logo }
+        style={{ cursor: "pointer" }}
+        src={Logo}
         alt="logo com a frase Palavras de Paz,
         programa de educação para a paz,
         escrito em verde"
@@ -20,7 +20,7 @@ function LoginTemplate() {
         height="150px"
       />
 
-      <section className={ styles.loginSectionForm }>
+      <section className={styles.loginSectionForm}>
         <LoginForm />
       </section>
     </section>
