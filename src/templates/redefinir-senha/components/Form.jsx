@@ -12,9 +12,8 @@ import ErrorMessage from '../../../components/forms/ErrorMessage';
 import LoadingSpinner from '../../../components/loadingSpinner/LoadingSpinner';
 import {
   API,
-  NOT_FOUND,
+  ERROR_MESSAGES,
   UNEXPECTED_ERROR,
-  VOLUNTEER_NOT_FOUND,
 } from '../../../constants';
 import {
   PASS_MIN,
@@ -79,8 +78,7 @@ function Form() {
   };
 
   if (apiError) {
-    const userNotFound = errorMessage === VOLUNTEER_NOT_FOUND;
-    const message = userNotFound ? NOT_FOUND : UNEXPECTED_ERROR;
+    const message = ERROR_MESSAGES[errorMessage] || UNEXPECTED_ERROR;
     return (
       <>
         <p className={ styles.formParagraph } style={ { color: 'red' } }>

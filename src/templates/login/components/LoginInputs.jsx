@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Link from 'next/link';
 import { useRouter } from 'next/router';
 import axios from 'axios';
 import { useForm } from 'react-hook-form';
@@ -10,7 +11,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import LoadingSpinner from '../../../components/loadingSpinner/LoadingSpinner';
 import {
   API,
-  NOT_FOUND,
+  ERROR_MESSAGES,
   REQUIRED_FIELD,
   UNEXPECTED_ERROR,
   VOLUNTEER_NOT_FOUND,
@@ -31,6 +32,11 @@ const schemaResetPass = yup.object().shape({
   email: yup.string().email().required(REQUIRED_FIELD),
 });
 
+// eslint-disable-next-line no-confusing-arrow
+const getSchema = (passwordForgotten) =>
+  // eslint-disable-next-line implicit-arrow-linebreak
+  passwordForgotten ? schemaResetPass : schemaLogin;
+
 function LoginForm() {
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
   const [passwordForgotten, setPasswordForgotten] = useState(false);
@@ -47,7 +53,7 @@ function LoginForm() {
     reset,
     formState: { errors },
   } = useForm({
-    resolver: yupResolver(passwordForgotten ? schemaResetPass : schemaLogin),
+    resolver: yupResolver(getSchema(passwordForgotten)),
   });
 
   const loginAddress = `${ API }/volunteers/login`;
@@ -95,13 +101,18 @@ function LoginForm() {
   const buttonString = passwordForgotten ? 'Enviar e-mail' : 'Entrar';
 
   if (apiError) {
+    const message = ERROR_MESSAGES[errorMessage] || UNEXPECTED_ERROR;
     const userNotFound = errorMessage === VOLUNTEER_NOT_FOUND;
-    const message = userNotFound ? NOT_FOUND : UNEXPECTED_ERROR;
     return (
       <>
         <p className={ styles.formParagraph } style={ { color: 'red' } }>
           {message}
         </p>
+        {userNotFound && (
+          <p>
+            <Link href="/cadastro">Quero me cadastrar</Link>
+          </p>
+        )}
         <BackButton />
       </>
     );
