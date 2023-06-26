@@ -1,23 +1,23 @@
 /* eslint-disable react/jsx-max-depth */
-import Image from 'next/image';
-import Link from 'next/link';
-import { Nav, Navbar, Offcanvas } from 'react-bootstrap';
+import Image from "next/image";
+import Link from "next/link";
+import { Nav, Navbar, Offcanvas } from "react-bootstrap";
 
-import Logo from '../../../public/static/images/logo.svg';
-import Box from '../box';
+import Logo from "../../../public/static/images/logo.svg";
+import Box from "../box";
 
 function Header() {
   return (
     <container className="styles-header">
-      {['xl'].map((expand) => (
-        <Navbar key={ expand } expand={ expand }>
+      {["xl"].map((expand) => (
+        <Navbar key={expand} expand={expand}>
           <Box>
             <div className="logo-header">
               <Link href="/">
                 <div>
                   <Image
-                    style={ { cursor: 'pointer' } }
-                    src={ Logo }
+                    style={{ cursor: "pointer" }}
+                    src={Logo}
                     alt="logo-header"
                     width="333px"
                     height="150px"
@@ -26,22 +26,22 @@ function Header() {
               </Link>
             </div>
             <Navbar.Toggle
-              style={ {
-                border: '1px solid var(--primary-color)',
-                color: 'white',
-              } }
-              aria-controls={ `offcanvasNavbar-expand-${ expand }` }
+              style={{
+                border: "1px solid var(--primary-color)",
+                color: "white",
+              }}
+              aria-controls={`offcanvasNavbar-expand-${expand}`}
             />
             <Navbar.Offcanvas
-              id={ `offcanvasNavbar-expand-${ expand }` }
-              aria-labelledby={ `offcanvasNavbarLabel-expand-${ expand }` }
+              id={`offcanvasNavbar-expand-${expand}`}
+              aria-labelledby={`offcanvasNavbarLabel-expand-${expand}`}
               placement="end"
             >
               <Offcanvas.Header
-                style={ { background: 'var(--primary-color)' } }
+                style={{ background: "var(--primary-color)" }}
                 closeButton
               >
-                <Offcanvas.Title id={ `offcanvasNavbarLabel-expand-${ expand }` }>
+                <Offcanvas.Title id={`offcanvasNavbarLabel-expand-${expand}`}>
                   MENU
                 </Offcanvas.Title>
               </Offcanvas.Header>

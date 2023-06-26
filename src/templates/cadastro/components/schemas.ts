@@ -1,17 +1,19 @@
-import isEmail from 'validator/lib/isEmail';
-import isMobilePhone from 'validator/lib/isMobilePhone';
-import * as yup from 'yup';
+import isEmail from "validator/lib/isEmail";
+import isMobilePhone from "validator/lib/isMobilePhone";
+import * as yup from "yup";
 
 import {
   AT_LEAST_ONE,
   INVALID_MAIL,
   INVALID_PHONE,
+  MAIL_IN_USE,
   MIN_CHARS_INPUTS,
   minCharsMessage,
   PASS_MIN,
   PASS_MISMATCH,
   REQUIRED_FIELD,
-} from './constants';
+} from "./constants";
+import { isNewEmail } from "./util";
 
 const MIN_PASSWORD_LENGTH = 6;
 const MIN_CHARS = 3;
@@ -22,16 +24,17 @@ export const cadastroTela1Schema = yup.object().shape({
     .string()
     .required(REQUIRED_FIELD)
     .test(
-      'is-valid',
+      "is-valid",
       minCharsMessage(MIN_CHARS),
-      (value) => value.replace(/\s/g, '').length >= MIN_CHARS,
+      (value) => value.replace(/\s/g, "").length >= MIN_CHARS
     )
     .min(MIN_CHARS, minCharsMessage(MIN_CHARS))
     .max(MAX_CHARS),
   email: yup
     .string()
     .required(REQUIRED_FIELD)
-    .test('is-valid', INVALID_MAIL, (value) => isEmail(value))
+    .test("is-valid", INVALID_MAIL, (value) => isEmail(value))
+    .test("in-use", MAIL_IN_USE, (value) => isNewEmail(value))
     .min(MIN_CHARS, minCharsMessage(MIN_CHARS))
     .max(MAX_CHARS),
   password: yup
@@ -42,7 +45,7 @@ export const cadastroTela1Schema = yup.object().shape({
     .string()
     .required(REQUIRED_FIELD)
     .min(MIN_PASSWORD_LENGTH, PASS_MIN)
-    .equals([yup.ref('password')], PASS_MISMATCH),
+    .equals([yup.ref("password")], PASS_MISMATCH),
 });
 
 const TODAY = new Date();
@@ -57,21 +60,22 @@ export const cadastroTela2Schema = yup.object().shape({
   phoneNumber: yup
     .string()
     .required(REQUIRED_FIELD)
-    .test('is-valid', INVALID_PHONE, (value) => isMobilePhone(value)),
+    .test("is-valid", INVALID_PHONE, (value) => isMobilePhone(value)),
   birthDate: yup
     .date()
-    .max(TODAY, 'Por favor coloque uma data no passado.')
+    .max(TODAY, "Por favor coloque uma data no passado.")
     .typeError(REQUIRED_FIELD)
     .required(REQUIRED_FIELD),
   schooling: yup.string().required(REQUIRED_FIELD),
   bachelor: yup.string(),
   deficiencia: yup.string().required(REQUIRED_FIELD),
-  disability: yup.string().when('deficiencia', {
-    is: (value: string) => value === 'sim',
-    then: () => yup
-      .string()
-      .required(REQUIRED_FIELD)
-      .min(MIN_CHARS_INPUTS, minCharsMessage(MIN_CHARS_INPUTS)),
+  disability: yup.string().when("deficiencia", {
+    is: (value: string) => value === "sim",
+    then: () =>
+      yup
+        .string()
+        .required(REQUIRED_FIELD)
+        .min(MIN_CHARS_INPUTS, minCharsMessage(MIN_CHARS_INPUTS)),
   }),
 });
 
@@ -107,17 +111,18 @@ export const cadastroTela4Schema = yup.object().shape({
       leituraDeRedacao: yup.boolean(),
     })
     .test(
-      'interestFutureRoles',
+      "interestFutureRoles",
       AT_LEAST_ONE,
-      (obj) => obj.facilitadorPresencial
-        || obj.facilitadorVirtual
-        || obj.avaliadorRemoto
-        || obj.captaçãoDeVoluntario
-        || obj.leituraDeCaderno
-        || obj.tradutorRemoto
-        || obj.divulgacao
-        || obj.captacaoDeGrupos
-        || obj.leituraDeRedacao,
+      (obj) =>
+        obj.facilitadorPresencial ||
+        obj.facilitadorVirtual ||
+        obj.avaliadorRemoto ||
+        obj.captaçãoDeVoluntario ||
+        obj.leituraDeCaderno ||
+        obj.tradutorRemoto ||
+        obj.divulgacao ||
+        obj.captacaoDeGrupos ||
+        obj.leituraDeRedacao
     ),
   rolesPep: yup
     .object()
@@ -134,18 +139,19 @@ export const cadastroTela4Schema = yup.object().shape({
       outros: yup.boolean(),
     })
     .test(
-      'rolesPep',
+      "rolesPep",
       AT_LEAST_ONE,
-      (obj) => obj.administracao
-        || obj.comunicacao
-        || obj.jornalismo
-        || obj.midiasSociais
-        || obj.radioTV
-        || obj.RH
-        || obj.TI
-        || obj.psicologia
-        || obj.assistenciaSocial
-        || obj.outros,
+      (obj) =>
+        obj.administracao ||
+        obj.comunicacao ||
+        obj.jornalismo ||
+        obj.midiasSociais ||
+        obj.radioTV ||
+        obj.RH ||
+        obj.TI ||
+        obj.psicologia ||
+        obj.assistenciaSocial ||
+        obj.outros
     ),
   needDeclaration: yup.string().required(REQUIRED_FIELD),
 });

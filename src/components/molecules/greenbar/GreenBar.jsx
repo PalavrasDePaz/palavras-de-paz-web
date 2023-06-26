@@ -1,15 +1,14 @@
-import Box from '../../box';
-import Typography from '../../typography';
+import Box from "../../box";
+import Typography from "../../typography";
 
-import * as S from './styled';
+import * as S from "./styled";
 
 export default function GreenBar() {
   return (
-    <div style={ { zIndex: 5 } }>
+    <div style={{ zIndex: 5 }}>
       <S.GreenContainer>
         <Box
-          padding="10px"
-          height="198px"
+          padding="0.5rem 0"
           bg="rgba(33, 170, 133, 1)"
           justify="center"
           align="center"
@@ -19,7 +18,7 @@ export default function GreenBar() {
             fontWeight="600"
             color="white"
             text="6000"
-            fontSize="48px"
+            fontSize="40px"
             justify="center"
           />
           <Typography
@@ -41,8 +40,6 @@ export default function GreenBar() {
         </Box>
 
         <Box
-          padding="20px"
-          height="198px"
           bg="rgba(24, 202, 153, 1)"
           justify="center"
           align="center"
@@ -52,15 +49,14 @@ export default function GreenBar() {
             fontWeight="600"
             color="white"
             text="5000"
-            fontSize="48px"
+            fontSize="40px"
             justify="center"
           />
           <Typography
             textAlign="center"
             fontWeight="bold"
             color="white"
-            text="avaliações do
-"
+            text="avaliações do"
             fontSize="25px"
             justify="center"
           />
@@ -75,8 +71,6 @@ export default function GreenBar() {
         </Box>
 
         <Box
-          padding="20px"
-          height="198px"
           bg="rgba(15, 224, 170, 1)"
           justify="center"
           align="center"
@@ -86,7 +80,7 @@ export default function GreenBar() {
             fontWeight="600"
             color="white"
             text="150"
-            fontSize="48px"
+            fontSize="40px"
             justify="center"
           />
           <Typography

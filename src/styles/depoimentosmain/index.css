@@ -2,7 +2,6 @@
   display: grid;
   gap: 2rem;
   grid-template-columns: repeat(2, 1fr);
-
   padding-block: 2rem;
   width: min(95%, 80rem);
   margin-inline: auto;

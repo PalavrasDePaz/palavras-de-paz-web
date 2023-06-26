@@ -1,10 +1,10 @@
 /* eslint-disable react/jsx-max-depth */
-import React from 'react';
-import Image from 'next/image';
-import Link from 'next/link';
+import React from "react";
+import Image from "next/image";
+import Link from "next/link";
 
-import LogoVoluntarios from '../../../public/static/images/voluntarios.png';
-import Center from '../center';
+import LogoVoluntarios from "../../../public/static/images/voluntarios.png";
+import Center from "../center";
 
 function VoluntariosMain() {
   return (
@@ -27,7 +27,7 @@ function VoluntariosMain() {
           </div>
           <div>
             <Image
-              src={ LogoVoluntarios }
+              src={LogoVoluntarios}
               alt="imagens-voluntarios"
               width="576px"
               height="462px"
@@ -82,7 +82,7 @@ function VoluntariosMain() {
           <div className="voluntarios-style-button">
             <p>
               <Link
-                style={ { color: 'white' } }
+                style={{ color: "white" }}
                 href="https://form.jotform.com/220305437068653"
                 alt="formulario de inscrição"
               >
@@ -94,7 +94,7 @@ function VoluntariosMain() {
           <div className="voluntarios-style-button">
             <p>
               <Link
-                style={ { color: 'white' } }
+                style={{ color: "white" }}
                 href="https://www.atados.com.br/ong/programa-de-educacao-para-paz/vagas"
                 alt="link atados"
               >

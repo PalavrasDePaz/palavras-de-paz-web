@@ -1,17 +1,17 @@
-import React from 'react';
-import Image from 'next/image';
+import React from "react";
+import Image from "next/image";
 
-import Logo from '../../../public/static/images/logo.svg';
+import Logo from "../../../public/static/images/logo.svg";
 
-import Form from './components/Form';
+import Form from "./components/Form";
 
-import styles from './styles/RedefinirSenha.style.module.css';
+import styles from "./styles/RedefinirSenha.style.module.css";
 
 function RedefinirSenhaTemplate() {
   return (
-    <section className={ styles.loginSection }>
+    <section className={styles.loginSection}>
       <Image
-        src={ Logo }
+        src={Logo}
         alt="logo com a frase Palavras de Paz,
         programa de educação para a paz,
         escrito em verde"
@@ -19,7 +19,7 @@ function RedefinirSenhaTemplate() {
         height="150px"
       />
 
-      <section className={ styles.loginSectionForm }>
+      <section className={styles.loginSectionForm}>
         <Form />
       </section>
     </section>
