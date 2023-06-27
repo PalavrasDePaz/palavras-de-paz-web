@@ -114,7 +114,8 @@ const LoginForm = () => {
         </p>
         {userNotFound && (
           <p>
-            <Link href="/cadastro">Quero me cadastrar</Link>
+            Quer se cadastrar como voluntário?{" "}
+            <Link href="/cadastro">Aqui.</Link>
           </p>
         )}
         <BackButton />
@@ -187,6 +188,12 @@ const LoginForm = () => {
           <section className={styles.loginFormSectionButtonsContainer}>
             <button
               type="button"
+              className={styles.loginFormSectionButtons}
+              onClick={() => console.log("aa")}
+            >
+              Ajuda?
+            </button>
+            <button
               className={styles.loginFormSectionButtons}
               onClick={() => setPasswordForgotten(true)}
             >
