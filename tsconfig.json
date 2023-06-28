@@ -19,7 +19,7 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    "src/templates/ajuda/AjudaTemplate.jsx"
+    "src/templates/ajuda/AjudaTemplate.tsx"
   ],
   "exclude": ["node_modules"]
 }
