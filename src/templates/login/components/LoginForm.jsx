@@ -189,12 +189,6 @@ const LoginForm = () => {
             <button
               type="button"
               className={styles.loginFormSectionButtons}
-              onClick={() => console.log("aa")}
-            >
-              Ajuda?
-            </button>
-            <button
-              className={styles.loginFormSectionButtons}
               onClick={() => setPasswordForgotten(true)}
             >
               Esqueceu a senha?

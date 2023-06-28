@@ -20,6 +20,6 @@
     "**/*.ts",
     "**/*.tsx",
     "src/templates/ajuda/AjudaTemplate.tsx"
-  ],
+, "src/components/fixedbutton/ButtonForm.tsx"  ],
   "exclude": ["node_modules"]
 }

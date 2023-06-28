@@ -17,22 +17,16 @@ import styles from "./AjudaTemplate.style.module.css";
 const FORM_URL = "https://formsubmit.co/info@palavrasdepaz.org";
 
 const schema = yup.object().shape({
-  _template: yup.string().required(),
-  _autoresponse: yup.string().required(),
-  _subject: yup.string().required(),
-  _next: yup.string().required(),
   name: yup.string().required(REQUIRED_FIELD),
   email: yup
     .string()
     .required(REQUIRED_FIELD)
     .test("is-valid", INVALID_MAIL, (value) => isEmail(value)),
-  assunto: yup.string().required(REQUIRED_FIELD),
-  mensagem: yup.string().required(REQUIRED_FIELD),
+  subject: yup.string().required(REQUIRED_FIELD),
+  message: yup.string().required(REQUIRED_FIELD),
 });
 
 const HelpForm = () => {
-  const [isSent, setIsSent] = useState(false);
-
   const {
     register,
     handleSubmit,
@@ -40,15 +34,10 @@ const HelpForm = () => {
   } = useForm({
     resolver: yupResolver(schema),
     defaultValues: {
-      _template: "box",
-      _autoresponse:
-        "Agradecemos o contato! Responderemos sua mensagem em breve!",
-      _subject: "Mensagem via site da ONG!",
-      _next: "https://palavrasdepaz.org",
       name: "",
       email: "",
-      assunto: "",
-      mensagem: "",
+      subject: "",
+      message: "",
     },
   });
 
@@ -119,10 +108,10 @@ const HelpForm = () => {
               id="assunto"
               placeholder="Digite o assunto"
               className={styles.helpFormSectionInputEmail}
-              {...register("assunto")}
+              {...register("subject")}
             />
             <ErrorMessage
-              showError={errors.assunto}
+              showError={errors.subject}
               style={styles.inputError}
             />
           </div>
@@ -133,10 +122,10 @@ const HelpForm = () => {
             <textarea
               id="mensagem"
               className={styles.helpFormSectionInputText}
-              {...register("mensagem")}
+              {...register("message")}
             />
             <ErrorMessage
-              showError={errors.mensagem}
+              showError={errors.message}
               style={styles.inputError}
             />
           </div>
