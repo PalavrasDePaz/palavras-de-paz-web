@@ -142,6 +142,7 @@
     "react/jsx-closing-tag-location": ["error"],
     "react/jsx-curly-newline": ["error"],
     "react/jsx-fragments": ["error"],
+    "react/function-component-definition": ["off"],
     "react/jsx-max-depth": [
       "error",
       {

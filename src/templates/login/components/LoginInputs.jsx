@@ -4,6 +4,7 @@ import { useRouter } from "next/router";
 import axios from "axios";
 import { useForm } from "react-hook-form";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
+import isEmail from "validator/lib/isEmail";
 import * as yup from "yup";
 
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -16,28 +17,45 @@ import {
   UNEXPECTED_ERROR,
   VOLUNTEER_NOT_FOUND,
 } from "../../../constants";
+import { INVALID_MAIL } from "../../cadastro/components/constants";
 
 import BackButton from "./BackButton";
 
 import styles from "../styles/LoginForm.module.css";
 
-const MIN_PASSWORD_LENGTH = 6;
+const emailField = yup
+  .string()
+  .required(REQUIRED_FIELD)
+  .test("is-valid", INVALID_MAIL, (value) => isEmail(value));
 
 const schemaLogin = yup.object().shape({
-  email: yup.string().email().required(REQUIRED_FIELD),
-  password: yup.string().required(REQUIRED_FIELD).min(MIN_PASSWORD_LENGTH),
+  email: emailField,
+  password: yup.string().required(REQUIRED_FIELD),
 });
 
 const schemaResetPass = yup.object().shape({
-  email: yup.string().email().required(REQUIRED_FIELD),
+  email: emailField,
 });
 
-// eslint-disable-next-line no-confusing-arrow
 const getSchema = (passwordForgotten) =>
-  // eslint-disable-next-line implicit-arrow-linebreak
   passwordForgotten ? schemaResetPass : schemaLogin;
 
-function LoginForm() {
+const getEmailFieldString = (isForgotten) =>
+  isForgotten ? (
+    "Informe seu e-mail para enviarmos um link de redefinição de senha"
+  ) : (
+    <b>E-mail</b>
+  );
+
+const getButtonString = (isPassForgotten) =>
+  isPassForgotten ? "Enviar e-mail" : "Entrar";
+
+const loginAddress = `${API}/volunteers/login`;
+const resetPassAddress = `${API}/volunteers/password-email`;
+const getPostAddress = (isPassForgotten) =>
+  isPassForgotten ? resetPassAddress : loginAddress;
+
+const LoginForm = () => {
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
   const [passwordForgotten, setPasswordForgotten] = useState(false);
   const [isSending, setIsSending] = useState(false);
@@ -56,20 +74,14 @@ function LoginForm() {
     resolver: yupResolver(getSchema(passwordForgotten)),
   });
 
-  const loginAddress = `${API}/volunteers/login`;
-  const resetPassAddress = `${API}/volunteers/password-email`;
-
-  const postAddress = passwordForgotten ? resetPassAddress : loginAddress;
-
   const updateComponentAfterMail = () => {
     setIsSubmitted(true);
     setIsSending(false);
   };
 
   const postData = (data) =>
-    // eslint-disable-next-line implicit-arrow-linebreak
     axios
-      .post(postAddress, data)
+      .post(getPostAddress(passwordForgotten), data)
       // TODO: a resposta de login será um token, que vamos levar para a área de trabalho.
       .then(() => (passwordForgotten ? updateComponentAfterMail() : push("/")))
       .catch((error) => {
@@ -89,16 +101,8 @@ function LoginForm() {
     reset();
   };
 
-  function handlePasswordVisibility() {
+  const handlePasswordVisibility = () =>
     setIsPasswordVisible(!isPasswordVisible);
-  }
-
-  const emailFieldString = passwordForgotten ? (
-    "Informe seu e-mail para enviarmos um link de redefinição de senha"
-  ) : (
-    <b>E-mail</b>
-  );
-  const buttonString = passwordForgotten ? "Enviar e-mail" : "Entrar";
 
   if (apiError) {
     const message = ERROR_MESSAGES[errorMessage] || UNEXPECTED_ERROR;
@@ -142,12 +146,11 @@ function LoginForm() {
 
       <div className={styles.loginFormSectionInputContainer}>
         <label className={styles.loginFormSectionInputLabel} htmlFor="email">
-          {emailFieldString}
+          {getEmailFieldString(passwordForgotten)}
         </label>
 
         <input
           placeholder="nome@palavrasdepaz.com.br"
-          type="email"
           className={styles.loginFormSectionInputEmail}
           {...register("email")}
         />
@@ -183,6 +186,7 @@ function LoginForm() {
           </div>
           <section className={styles.loginFormSectionButtonsContainer}>
             <button
+              type="button"
               className={styles.loginFormSectionButtons}
               onClick={() => setPasswordForgotten(true)}
             >
@@ -193,11 +197,11 @@ function LoginForm() {
       )}
 
       <button type="submit" className={styles.loginFormButtonEnter}>
-        {buttonString}
+        {getButtonString(passwordForgotten)}
       </button>
       <BackButton />
     </form>
   );
-}
+};
 
 export default LoginForm;
