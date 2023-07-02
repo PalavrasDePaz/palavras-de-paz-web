@@ -189,6 +189,13 @@ const LoginForm = () => {
             <button
               type="button"
               className={styles.loginFormSectionButtons}
+              onClick={() => push("/ajuda")}
+            >
+              Ajuda?
+            </button>
+            <button
+              type="button"
+              className={styles.loginFormSectionButtons}
               onClick={() => setPasswordForgotten(true)}
             >
               Esqueceu a senha?

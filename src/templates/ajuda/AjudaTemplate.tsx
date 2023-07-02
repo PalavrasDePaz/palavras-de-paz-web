@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Image from "next/image";
+import { useRouter } from "next/router";
 import axios from "axios";
 import { useForm } from "react-hook-form";
 import isEmail from "validator/lib/isEmail";
@@ -9,12 +10,13 @@ import { yupResolver } from "@hookform/resolvers/yup";
 
 import Logo from "../../../public/static/images/logo.svg";
 import ErrorMessage from "../../components/forms/ErrorMessage";
-import { REQUIRED_FIELD } from "../../constants";
+import LoadingSpinner from "../../components/loadingSpinner/LoadingSpinner";
+import { API, REQUIRED_FIELD } from "../../constants";
 import { INVALID_MAIL } from "../cadastro/components/constants";
 
 import styles from "./AjudaTemplate.style.module.css";
 
-const FORM_URL = "https://formsubmit.co/info@palavrasdepaz.org";
+const FORM_URL = `${API}/volunteers/help-email`;
 
 const schema = yup.object().shape({
   name: yup.string().required(REQUIRED_FIELD),
@@ -27,6 +29,10 @@ const schema = yup.object().shape({
 });
 
 const HelpForm = () => {
+  const [isSent, setIsSent] = useState(false);
+  const [isSending, setIsSending] = useState(false);
+  const router = useRouter();
+
   const {
     register,
     handleSubmit,
@@ -41,24 +47,25 @@ const HelpForm = () => {
     },
   });
 
-  const submitForm = (data: yup.InferType<typeof schema>) =>
-    axios.post(FORM_URL, data).then((response) => console.log(response));
+  const submitForm = (data: yup.InferType<typeof schema>) => {
+    setIsSending(true);
+    axios.post(FORM_URL, data).then(() => {
+      setIsSending(false);
+      setIsSent(true);
+    });
+  };
 
-  return (
-    <section className={styles.helpSection}>
-      <Image
-        style={{ cursor: "pointer" }}
-        src={Logo}
-        alt="logo com a frase Palavras de Paz,
-    programa de educação para a paz,
-    escrito em verde"
-        width="333px"
-        height="150px"
-      />
+  const getContent = () => {
+    if (isSent) {
+      return "Obrigado pela mensagem. Retornaremos em breve.";
+    }
+
+    if (isSending) {
+      return <LoadingSpinner />;
+    }
+    return (
       <section className={styles.helpSectionForm}>
         <form
-          action="https://formsubmit.co/info@palavrasdepaz.org"
-          method="POST"
           className={styles.helpFormSection}
           onSubmit={handleSubmit(submitForm)}
         >
@@ -66,18 +73,6 @@ const HelpForm = () => {
             Por favor, explique seu problema. Entraremos em contato o mais
             rápido possível.
           </p>
-          {/* <input type="hidden" name="_template" value="box" />
-          <input
-            type="hidden"
-            name="_autoresponse"
-            value="Agradecemos o contato! Responderemos sua mensagem em breve!"
-          />
-          <input
-            type="hidden"
-            name="_subject"
-            value="Mensagem via site da ONG!"
-          />
-          <input type="hidden" name="_next" value="https://palavrasdepaz.org" /> */}
 
           <div className={styles.helpFormSectionInputContainer}>
             <label htmlFor="name">Nome</label>
@@ -130,7 +125,11 @@ const HelpForm = () => {
             />
           </div>
           <div className={styles.helpFormButtonsRow}>
-            <button type="button" className={styles.helpFormButtonEnter}>
+            <button
+              type="button"
+              className={styles.helpFormButtonEnter}
+              onClick={() => router.back()}
+            >
               Voltar
             </button>
             <button type="submit" className={styles.helpFormButtonEnter}>
@@ -139,6 +138,21 @@ const HelpForm = () => {
           </div>
         </form>
       </section>
+    );
+  };
+
+  return (
+    <section className={styles.helpSection}>
+      <Image
+        style={{ cursor: "pointer" }}
+        src={Logo}
+        alt="logo com a frase Palavras de Paz,
+    programa de educação para a paz,
+    escrito em verde"
+        width="333px"
+        height="150px"
+      />
+      {getContent()}
     </section>
   );
 };
