@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import axios from "axios";
 import { useForm } from "react-hook-form";
 import isEmail from "validator/lib/isEmail";
@@ -6,9 +6,10 @@ import * as yup from "yup";
 
 import { yupResolver } from "@hookform/resolvers/yup";
 
-import { REQUIRED_FIELD } from "../../constants";
+import { API, REQUIRED_FIELD } from "../../constants";
 import { INVALID_MAIL } from "../../templates/cadastro/components/constants";
 import ErrorMessage from "../forms/ErrorMessage";
+import LoadingSpinner from "../loadingSpinner/LoadingSpinner";
 
 import styles from "../../templates/ajuda/AjudaTemplate.style.module.css";
 
@@ -22,7 +23,12 @@ const schema = yup.object().shape({
   message: yup.string().required(REQUIRED_FIELD),
 });
 
+const FORM_URL = `${API}/volunteers/contact-email`;
+
 const ButtonForm = () => {
+  const [isSent, setIsSent] = useState(false);
+  const [isSending, setIsSending] = useState(false);
+
   const {
     register,
     handleSubmit,
@@ -37,8 +43,21 @@ const ButtonForm = () => {
     },
   });
 
-  const submitForm = (data: yup.InferType<typeof schema>) => console.log(data);
-  //  axios.post(FORM_URL, data).then((response) => console.log(response));
+  const submitForm = (data: yup.InferType<typeof schema>) => {
+    setIsSending(true);
+    axios.post(FORM_URL, data).then(() => {
+      setIsSending(false);
+      setIsSent(true);
+    });
+  };
+
+  if (isSent) {
+    return "Obrigado pela mensagem. Retornaremos em breve.";
+  }
+
+  if (isSending) {
+    return <LoadingSpinner />;
+  }
 
   return (
     <form onSubmit={handleSubmit(submitForm)}>
