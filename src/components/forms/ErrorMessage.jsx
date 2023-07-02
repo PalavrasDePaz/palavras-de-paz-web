@@ -2,7 +2,7 @@ import React from "react";
 import propTypes from "prop-types";
 
 export default function ErrorMessage({ showError, style } = props) {
-  return showError ? <p className={style}>{showError.message}</p> : undefined;
+  return showError ? <p className={style}>{showError.message}</p> : null;
 }
 
 ErrorMessage.propTypes = {

@@ -2,8 +2,8 @@ import React, { useEffect, useState } from "react";
 import Modal from "react-bootstrap/Modal";
 
 import Box from "../box";
-import Button from "../button/button";
 
+import ButtonForm from "./ButtonForm";
 import * as S from "./styled";
 
 export default function FixedButton() {
@@ -85,90 +85,8 @@ export default function FixedButton() {
             </p>
           </Box>
         </Modal.Header>
-
         <Modal.Body>
-          <form
-            action="https://formsubmit.co/info@palavrasdepaz.org"
-            method="POST"
-            className="form-modal"
-          >
-            <input type="hidden" name="_template" value="box" />
-            <input
-              type="hidden"
-              name="_autoresponse"
-              value="Agradecemos o contato! Responderemos sua mensagem em breve!"
-            />
-            <input
-              type="hidden"
-              name="_subject"
-              value="Mensagem via site da ONG!"
-            />
-            <input
-              type="hidden"
-              name="_next"
-              value="https://palavrasdepaz.org"
-            />
-            <label htmlFor="name" className="form-label">
-              Nome
-            </label>
-            <input
-              id="name"
-              type="name"
-              className="form-control"
-              placeholder="Digite seu nome"
-              name="Nome"
-              required
-            />
-            <label htmlFor="email" className="form-label">
-              Email
-            </label>
-            <input
-              id="email"
-              type="email"
-              name="Email"
-              className="form-control"
-              placeholder="Digite seu email"
-              required
-            />
-            <label htmlFor="assunto" className="form-label">
-              Assunto
-            </label>
-            <input
-              type="text"
-              id="assunto"
-              name="Assunto"
-              className="form-control"
-              placeholder="Assunto da sua mensagem"
-            />
-            <label htmlFor="mensagem" className="form-label">
-              Mensagem
-            </label>
-
-            <textarea
-              id="mensagem"
-              type="text"
-              name="Mensagem"
-              className="form-control"
-              required
-            />
-
-            <Button
-              type="submit"
-              bg="rgba(33,170,133,1)"
-              border="none"
-              borderRadius="0.6rem"
-              justify="center"
-              padding="8px 24px"
-              color="white"
-              fontWeight="bold"
-              letterSpacing="0.1em"
-              margin="1.25rem 0"
-              text="ENVIAR"
-              font_size="1.25rem"
-              width="50%"
-              shadow={false}
-            />
-          </form>
+          <ButtonForm />
         </Modal.Body>
       </Modal>
     </>

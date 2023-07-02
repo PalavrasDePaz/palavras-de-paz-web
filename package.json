@@ -33,7 +33,7 @@
     "react": "18.2.0",
     "react-bootstrap": "^2.5.0",
     "react-dom": "18.2.0",
-    "react-hook-form": "^7.43.9",
+    "react-hook-form": "^7.45.1",
     "react-icons": "^4.8.0",
     "react-phone-number-input": "^3.2.23",
     "react-redux": "^8.0.5",
@@ -58,7 +58,7 @@
     "eslint-plugin-react": "^7.32.2",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-simple-import-sort": "^10.0.0",
-    "typescript": "^5.0.4",
-    "husky": "^8.0.0"
+    "husky": "^8.0.0",
+    "typescript": "^5.0.4"
   }
 }

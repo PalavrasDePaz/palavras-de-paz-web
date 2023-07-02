@@ -114,7 +114,8 @@ const LoginForm = () => {
         </p>
         {userNotFound && (
           <p>
-            <Link href="/cadastro">Quero me cadastrar</Link>
+            Quer se cadastrar como voluntário?{" "}
+            <Link href="/cadastro">Aqui.</Link>
           </p>
         )}
         <BackButton />
@@ -185,6 +186,13 @@ const LoginForm = () => {
             )}
           </div>
           <section className={styles.loginFormSectionButtonsContainer}>
+            <button
+              type="button"
+              className={styles.loginFormSectionButtons}
+              onClick={() => push("/ajuda")}
+            >
+              Ajuda?
+            </button>
             <button
               type="button"
               className={styles.loginFormSectionButtons}
