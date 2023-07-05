@@ -3,7 +3,7 @@ import Image from "next/image";
 
 import Logo from "../../../public/static/images/logo.svg";
 
-import LoginForm from "./components/LoginInputs";
+import LoginForm from "./components/LoginForm";
 
 import styles from "./styles/LoginTemplate.style.module.css";
 
