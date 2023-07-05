@@ -269,9 +269,10 @@
 
 .avaliarCadernos_baixar {
   display: flex;
-  gap: 8px;
-  align-items: center;
+  gap: 5px;
+  align-items: start;
 }
+
 .avaliarCadernos_opcoes input:nth-child(1) {
   margin-top: 50px;
 }
