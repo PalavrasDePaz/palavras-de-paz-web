@@ -21,8 +21,6 @@ const getUser = async (email?: string, token?: string) => {
 // Então só vemos se a query já está populada ou não, e se estiver já
 // vamos direto para a área de trabalho.
 const useGetUser = (email?: string, token?: string) =>
-  useQuery(["user"], () => getUser(email, token), {
-    staleTime: 600000,
-  });
+  useQuery(["user"], () => getUser(email, token));
 
 export default useGetUser;
