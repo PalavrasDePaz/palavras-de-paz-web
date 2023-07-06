@@ -1,7 +1,5 @@
 import React, { useState } from "react";
-import Link from "next/link";
 import { useRouter } from "next/router";
-import axios from "axios";
 import { useForm } from "react-hook-form";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import isEmail from "validator/lib/isEmail";
@@ -10,16 +8,13 @@ import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 
 import LoadingSpinner from "../../../components/loadingSpinner/LoadingSpinner";
-import {
-  API,
-  ERROR_MESSAGES,
-  REQUIRED_FIELD,
-  UNEXPECTED_ERROR,
-  VOLUNTEER_NOT_FOUND,
-} from "../../../constants";
+import { REQUIRED_FIELD } from "../../../constants";
+import useLogin from "../../../hooks/useLogin";
+import useRequestPasswordEmail from "../../../hooks/useRequestPasswordEmail";
 import { INVALID_MAIL } from "../../cadastro/components/constants";
 
 import BackButton from "./BackButton";
+import LoginErrorScreen from "./LoginErrorScreen";
 
 import styles from "../styles/LoginForm.module.css";
 
@@ -50,84 +45,54 @@ const getEmailFieldString = (isForgotten) =>
 const getButtonString = (isPassForgotten) =>
   isPassForgotten ? "Enviar e-mail" : "Entrar";
 
-const loginAddress = `${API}/volunteers/login`;
-const resetPassAddress = `${API}/volunteers/password-email`;
-const getPostAddress = (isPassForgotten) =>
-  isPassForgotten ? resetPassAddress : loginAddress;
-
 const LoginForm = () => {
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
   const [passwordForgotten, setPasswordForgotten] = useState(false);
-  const [isSending, setIsSending] = useState(false);
-  const [isSubmitted, setIsSubmitted] = useState(false);
-  const [apiError, setApiError] = useState();
-  const [errorMessage, setErrorMessage] = useState("");
 
   const { push } = useRouter();
 
   const {
     register,
     handleSubmit,
-    reset,
     formState: { errors },
   } = useForm({
     resolver: yupResolver(getSchema(passwordForgotten)),
   });
 
-  const updateComponentAfterMail = () => {
-    setIsSubmitted(true);
-    setIsSending(false);
-  };
+  const {
+    mutate: mutateLogin,
+    isLoading: isLoginLoading,
+    isError: isLoginError,
+    error: loginError,
+  } = useLogin();
+  const {
+    mutate: mutatePassEmail,
+    isLoading: isPassEmailLoading,
+    isError: isPassEmailError,
+    error: passEmailError,
+    isSuccess,
+  } = useRequestPasswordEmail();
 
-  const postData = (data) =>
-    axios
-      .post(getPostAddress(passwordForgotten), data)
-      // TODO: a resposta de login será um token, que vamos levar para a área de trabalho.
-      .then(() => (passwordForgotten ? updateComponentAfterMail() : push("/")))
-      .catch((error) => {
-        setApiError(error);
-        if (error.response.data.name) {
-          setErrorMessage(error.response.data.name);
-        }
-      });
+  const sendUserLogin = (data) => mutateLogin(data);
+  const requestNewPassword = (data) => mutatePassEmail(data.email);
 
-  // No caso de senha perdida, mandamos só o email
-  const cleanData = (data) =>
-    passwordForgotten ? { email: data.email } : data;
-
-  const onSubmit = (data) => {
-    setIsSending(true);
-    postData(cleanData(data));
-    reset();
-  };
+  const onSubmit = (data) =>
+    passwordForgotten ? requestNewPassword(data) : sendUserLogin(data);
 
   const handlePasswordVisibility = () =>
     setIsPasswordVisible(!isPasswordVisible);
 
-  if (apiError) {
-    const message = ERROR_MESSAGES[errorMessage] || UNEXPECTED_ERROR;
-    const userNotFound = errorMessage === VOLUNTEER_NOT_FOUND;
-    return (
-      <>
-        <p className={styles.formParagraph} style={{ color: "red" }}>
-          {message}
-        </p>
-        {userNotFound && (
-          <p>
-            Quer se cadastrar como voluntário?{" "}
-            <Link href="/cadastro">Aqui.</Link>
-          </p>
-        )}
-        <BackButton />
-      </>
-    );
+  if (isLoginError || isPassEmailError) {
+    const errorMessage =
+      loginError?.response.data.name || passEmailError?.response.data.name;
+    return <LoginErrorScreen errorMessage={errorMessage} />;
   }
 
-  if (isSending) {
+  if (isLoginLoading || isPassEmailLoading) {
     return <LoadingSpinner />;
   }
 
-  if (isSubmitted) {
+  if (isSuccess) {
     // Apenas com a opção de email enviado porque em caso de login correto vai haver o redirect.
     return (
       <>

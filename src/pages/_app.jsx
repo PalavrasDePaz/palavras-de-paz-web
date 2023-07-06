@@ -1,9 +1,13 @@
 import React from "react";
 import Head from "next/head";
 import propTypes from "prop-types";
-import { Provider } from "react-redux";
 
-import store from "../store/store";
+import {
+  Hydrate,
+  QueryClient,
+  QueryClientProvider,
+} from "@tanstack/react-query";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../styles/header/index.css";
@@ -21,15 +25,18 @@ import "../styles/fixedBtn/index.css";
 import "animate.css";
 
 function MyApp({ Component, pageProps }) {
+  const [queryClient] = React.useState(() => new QueryClient());
+
   return (
-    <>
-      <Head>
-        <title>Palavras de Paz</title>
-      </Head>
-      <Provider store={store}>
+    <QueryClientProvider client={queryClient}>
+      <Hydrate state={pageProps.dehydratedState}>
+        <Head>
+          <title>Palavras de Paz</title>
+        </Head>
         <Component {...pageProps} />
-      </Provider>
-    </>
+      </Hydrate>
+      <ReactQueryDevtools />
+    </QueryClientProvider>
   );
 }
 

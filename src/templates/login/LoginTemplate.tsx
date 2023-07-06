@@ -1,13 +1,33 @@
 import React from "react";
 import Image from "next/image";
+import { useRouter } from "next/router";
+
+import { useQueryClient } from "@tanstack/react-query";
 
 import Logo from "../../../public/static/images/logo.svg";
+import { User } from "../../hooks/types";
+import useGetUser from "../../hooks/useGetUser";
 
 import LoginForm from "./components/LoginForm";
 
 import styles from "./styles/LoginTemplate.style.module.css";
 
-function LoginTemplate() {
+const LoginTemplate = () => {
+  const router = useRouter();
+
+  const queryClient = useQueryClient();
+  const loggedUser: User | undefined = queryClient.getQueryData(["user"]);
+
+  const { data: userData } = useGetUser(
+    loggedUser?.volunteer.email,
+    loggedUser?.token
+  );
+
+  if (loggedUser || userData) {
+    // TODO: mudar para "/area-de-trabalho"
+    router.push("/presenca");
+  }
+
   return (
     <section className={styles.loginSection}>
       <Image
@@ -25,6 +45,6 @@ function LoginTemplate() {
       </section>
     </section>
   );
-}
+};
 
 export default LoginTemplate;
