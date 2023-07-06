@@ -19,7 +19,7 @@ const LoginTemplate = () => {
   const loggedUser: User | undefined = queryClient.getQueryData(["user"]);
 
   const { data: userData } = useGetUser(
-    loggedUser?.volunteer.email,
+    loggedUser?.volunteer?.email,
     loggedUser?.token
   );
 
