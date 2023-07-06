@@ -1,9 +1,6 @@
 import React from "react";
 import Head from "next/head";
 import propTypes from "prop-types";
-import { Provider } from "react-redux";
-
-import store from "../store/store";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../styles/header/index.css";
@@ -26,9 +23,7 @@ function MyApp({ Component, pageProps }) {
       <Head>
         <title>Palavras de Paz</title>
       </Head>
-      <Provider store={store}>
-        <Component {...pageProps} />
-      </Provider>
+      <Component {...pageProps} />
     </>
   );
 }
