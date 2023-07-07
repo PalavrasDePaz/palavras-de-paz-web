@@ -48,7 +48,7 @@ function FormDePresenca() {
   }
 
   if (isSuccess) {
-    router.push("/presenca");
+    router.push("/");
   }
 
   return (

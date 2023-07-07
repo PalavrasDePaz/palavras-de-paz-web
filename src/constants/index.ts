@@ -1,5 +1,3 @@
-export const API = "https://api-palavrasdepaz.cyclic.app";
-
 export const ERROR_MESSAGES: { [key: string]: string } = {
   VOLUNTEER_ALREADY_EXISTS: "O email fornecido já está cadastrado.",
   VOLUNTEER_NOT_FOUND: "Usuário não encontrado",
@@ -14,4 +12,4 @@ export const UNEXPECTED_ERROR =
   "Ocorreu um erro inesperado. Tente novamente mais tarde.";
 export const REQUIRED_FIELD = "Este campo é obrigatório";
 
-export const LOCAL_STORAGE_USER = "PALAVRAS_DE_PAZ_USER";
+export const PALAVRAS_DE_PAZ_TOKEN = "PALAVRAS_DE_PAZ_TOKEN";

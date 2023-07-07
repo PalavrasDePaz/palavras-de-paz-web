@@ -1,7 +1,7 @@
 import axios from "axios";
 import isEmail from "validator/lib/isEmail";
 
-import { API } from "../../../constants";
+import { BASE_URL } from "../../../api";
 
 export const getIsHigherEducation = (schooling?: string): boolean =>
   // eslint-disable-next-line implicit-arrow-linebreak
@@ -21,7 +21,7 @@ export const isNewEmail = async (email: string) => {
     // E não chegar ao erro de estar cadastrado.
     return true;
   }
-  const apiAddress = `${API}/volunteers/${email}`;
+  const apiAddress = `${BASE_URL}/volunteers/${email}`;
   const check = await axios.head(apiAddress).catch((error) => error);
 
   // A API dá bad request quando não acha o email,

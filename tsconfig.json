@@ -15,6 +15,6 @@
     "isolatedModules": true,
     "jsx": "preserve"
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "src/templates/presenca/index.jsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "src/templates/presenca/index.jsx", "src/templates/login/components/LoginForm.jsx"],
   "exclude": ["node_modules"]
 }
