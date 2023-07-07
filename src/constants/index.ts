@@ -13,3 +13,5 @@ export const EMAIL_OR_PASSWORD_WRONG_ERROR = "EMAIL_OR_PASSWORD_WRONG_ERROR";
 export const UNEXPECTED_ERROR =
   "Ocorreu um erro inesperado. Tente novamente mais tarde.";
 export const REQUIRED_FIELD = "Este campo é obrigatório";
+
+export const LOCAL_STORAGE_USER = "PALAVRAS_DE_PAZ_USER";

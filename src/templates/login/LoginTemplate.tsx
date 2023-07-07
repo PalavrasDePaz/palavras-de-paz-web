@@ -24,7 +24,6 @@ const LoginTemplate = () => {
   );
 
   if (loggedUser || userData) {
-    // TODO: mudar para "/area-de-trabalho"
     router.push("/presenca");
   }
 
