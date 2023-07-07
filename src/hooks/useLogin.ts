@@ -2,7 +2,7 @@ import axios from "axios";
 
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 
-import { API } from "../constants";
+import { API, LOCAL_STORAGE_USER } from "../constants";
 
 const LOGIN_URL = `${API}/volunteers/login`;
 
@@ -17,7 +17,10 @@ const useLogin = () => {
   const queryClient = useQueryClient();
   return useMutation({
     mutationFn: (user: UserLogin) => logIn(user),
-    onSuccess: (data) => queryClient.setQueryData(["user"], data.data),
+    onSuccess: (data) => {
+      queryClient.setQueryData(["user"], data.data);
+      localStorage.setItem(LOCAL_STORAGE_USER, JSON.stringify(data.data));
+    },
   });
 };
 
