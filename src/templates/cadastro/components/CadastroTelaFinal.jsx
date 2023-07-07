@@ -1,11 +1,10 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import axios from "axios";
 
+import { api } from "../../../api";
 import LoadingSpinner from "../../../components/loadingSpinner/LoadingSpinner";
 import {
-  API,
   EXISTING_MESSAGE,
   UNEXPECTED_ERROR,
   VOLUNTEER_ALREADY_EXISTS,
@@ -52,9 +51,8 @@ export default function cadastroTelaFinal({ data } = props) {
   );
 
   // Mandamos o dado
-  const apiAddress = `${API}/volunteers`;
-  axios
-    .post(apiAddress, apiObject)
+  api
+    .post("/volunteers", apiObject)
     .then(() => router.push("/login"))
     .catch((error) => {
       setIsError(true);

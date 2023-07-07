@@ -1,16 +1,16 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import axios from "axios";
 import { useForm } from "react-hook-form";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import * as yup from "yup";
 
 import { yupResolver } from "@hookform/resolvers/yup";
 
+import { api } from "../../../api";
 import ErrorMessage from "../../../components/forms/ErrorMessage";
 import LoadingSpinner from "../../../components/loadingSpinner/LoadingSpinner";
-import { API, ERROR_MESSAGES, UNEXPECTED_ERROR } from "../../../constants";
+import { ERROR_MESSAGES, UNEXPECTED_ERROR } from "../../../constants";
 import {
   PASS_MIN,
   PASS_MISMATCH,
@@ -53,12 +53,10 @@ function Form() {
     resolver: yupResolver(schema),
   });
 
-  const route = `${API}/volunteers/password`;
-
   const onSubmit = ({ password }) => {
     setIsLoading(true);
-    axios
-      .patch(route, { password, hashEmail: mailHash })
+    api
+      .patch("/volunteers/password", { password, hashEmail: mailHash })
       .then(() => {
         setIsLoading(false);
         setIsSent(true);

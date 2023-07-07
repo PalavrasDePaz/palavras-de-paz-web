@@ -1,31 +1,42 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import { useRouter } from "next/router";
-
-import { useQueryClient } from "@tanstack/react-query";
+import jwtDecode from "jwt-decode";
 
 import Logo from "../../../public/static/images/logo.svg";
-import { User } from "../../hooks/types";
+import LoadingSpinner from "../../components/loadingSpinner/LoadingSpinner";
+import { PALAVRAS_DE_PAZ_TOKEN } from "../../constants";
 import useGetUser from "../../hooks/useGetUser";
 
 import LoginForm from "./components/LoginForm";
 
 import styles from "./styles/LoginTemplate.style.module.css";
 
+type TokenInfo = {
+  email: string;
+};
+
 const LoginTemplate = () => {
+  const [userEmail, setUserEmail] = useState("");
+
+  useEffect(() => {
+    const token = localStorage.getItem(PALAVRAS_DE_PAZ_TOKEN);
+    if (token) {
+      const { email } = jwtDecode(token) as TokenInfo;
+      setUserEmail(email);
+    }
+  }, []);
+
+  const { data: user } = useGetUser(userEmail);
   const router = useRouter();
 
-  const queryClient = useQueryClient();
-  const loggedUser: User | undefined = queryClient.getQueryData(["user"]);
+  const logIn = (mail: string) => setUserEmail(mail);
 
-  const { data: userData } = useGetUser(
-    loggedUser?.volunteer?.email,
-    loggedUser?.token
-  );
-
-  if (loggedUser || userData) {
-    router.push("/presenca");
-  }
+  useEffect(() => {
+    if (user) {
+      router.push("/presenca");
+    }
+  }, [user]);
 
   return (
     <section className={styles.loginSection}>
@@ -40,7 +51,7 @@ const LoginTemplate = () => {
       />
 
       <section className={styles.loginSectionForm}>
-        <LoginForm />
+        {userEmail ? <LoadingSpinner /> : <LoginForm logIn={logIn} />}
       </section>
     </section>
   );

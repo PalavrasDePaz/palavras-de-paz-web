@@ -1,13 +1,9 @@
-import axios from "axios";
-
 import { useMutation } from "@tanstack/react-query";
 
-import { API } from "../constants";
-
-const URL = `${API}/volunteers/password-email`;
+import { api } from "../api";
 
 const requestPasswordEmail = async (email: string) =>
-  axios.post(URL, { email });
+  api.post("/volunteers/password-email", { email });
 
 const useRequestPasswordEmail = () =>
   useMutation({

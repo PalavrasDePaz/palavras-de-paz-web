@@ -1,27 +1,13 @@
-import axios from "axios";
+import { useMutation } from "@tanstack/react-query";
 
-import { useMutation, useQueryClient } from "@tanstack/react-query";
-
-import { API, LOCAL_STORAGE_USER } from "../constants";
-
-const LOGIN_URL = `${API}/volunteers/login`;
+import { api } from "../api";
 
 type UserLogin = {
   email: string;
   password: string;
 };
 
-const logIn = async (user: UserLogin) => axios.post(LOGIN_URL, user);
-
-const useLogin = () => {
-  const queryClient = useQueryClient();
-  return useMutation({
-    mutationFn: (user: UserLogin) => logIn(user),
-    onSuccess: (data) => {
-      queryClient.setQueryData(["user"], data.data);
-      localStorage.setItem(LOCAL_STORAGE_USER, JSON.stringify(data.data));
-    },
-  });
-};
+const logIn = async (user: UserLogin) => api.post("/volunteers/login", user);
+const useLogin = () => useMutation((user: UserLogin) => logIn(user));
 
 export default useLogin;

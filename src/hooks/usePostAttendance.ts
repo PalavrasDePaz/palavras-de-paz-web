@@ -1,9 +1,8 @@
-import axios from "axios";
 import * as yup from "yup";
 
 import { useMutation } from "@tanstack/react-query";
 
-import { API } from "../constants";
+import { api } from "../api";
 import { schema } from "../templates/presenca/schema";
 
 import { User } from "./types";
@@ -15,15 +14,9 @@ type PostAttendanceParams = {
   user: User;
 };
 
-const URL = `${API}/attendances`;
-
 const postAttendance = async (data: AttendanceFormFields, user: User) => {
-  const postForm = { ...data, idvol: user.volunteer.idvol };
-
-  const config = {
-    headers: { Authorization: `Bearer ${user.token}` },
-  };
-  return axios.post(URL, postForm, config);
+  const postForm = { ...data, idvol: user.idvol };
+  return api.post("/attendances", postForm);
 };
 
 const usePostAttendance = () =>

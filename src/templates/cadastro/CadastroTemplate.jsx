@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import HeaderWorkspace from "../../components/headerWorkspace/HeaderWorkspace";
+import { PALAVRAS_DE_PAZ_TOKEN } from "../../constants";
 
 import CadastroPrimeiraTela from "./components/CadastroPrimeiraTela";
 import CadastroQuartaTela from "./components/CadastroQuartaTela";
@@ -14,6 +15,9 @@ import styles from "./styles/CadastroTemplate.module.css";
 export default function cadastroTemplate() {
   const [controller, setController] = useState(0);
   const [formData, setFormData] = useState({});
+
+  // No caso de haver um usuário logado, primeiro deslogamos para depois fazer o cadastro.
+  useEffect(() => localStorage.removeItem(PALAVRAS_DE_PAZ_TOKEN), []);
 
   const PAGE_1 = 0;
   const PAGE_2 = 1;

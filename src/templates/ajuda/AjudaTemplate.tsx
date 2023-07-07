@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import { useRouter } from "next/router";
-import axios from "axios";
 import { useForm } from "react-hook-form";
 import isEmail from "validator/lib/isEmail";
 import * as yup from "yup";
@@ -9,14 +8,13 @@ import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 
 import Logo from "../../../public/static/images/logo.svg";
+import { api } from "../../api";
 import ErrorMessage from "../../components/forms/ErrorMessage";
 import LoadingSpinner from "../../components/loadingSpinner/LoadingSpinner";
-import { API, REQUIRED_FIELD } from "../../constants";
+import { REQUIRED_FIELD } from "../../constants";
 import { INVALID_MAIL } from "../cadastro/components/constants";
 
 import styles from "./AjudaTemplate.style.module.css";
-
-const FORM_URL = `${API}/volunteers/help-email`;
 
 const schema = yup.object().shape({
   name: yup.string().required(REQUIRED_FIELD),
@@ -49,7 +47,7 @@ const HelpForm = () => {
 
   const submitForm = (data: yup.InferType<typeof schema>) => {
     setIsSending(true);
-    axios.post(FORM_URL, data).then(() => {
+    api.post("/volunteers/help-email", data).then(() => {
       setIsSending(false);
       setIsSent(true);
     });

@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
+import propTypes from "prop-types";
 import { useForm } from "react-hook-form";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import isEmail from "validator/lib/isEmail";
@@ -8,7 +9,7 @@ import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 
 import LoadingSpinner from "../../../components/loadingSpinner/LoadingSpinner";
-import { REQUIRED_FIELD } from "../../../constants";
+import { PALAVRAS_DE_PAZ_TOKEN, REQUIRED_FIELD } from "../../../constants";
 import useLogin from "../../../hooks/useLogin";
 import useRequestPasswordEmail from "../../../hooks/useRequestPasswordEmail";
 import { INVALID_MAIL } from "../../cadastro/components/constants";
@@ -45,7 +46,7 @@ const getEmailFieldString = (isForgotten) =>
 const getButtonString = (isPassForgotten) =>
   isPassForgotten ? "Enviar e-mail" : "Entrar";
 
-const LoginForm = () => {
+const LoginForm = ({ logIn } = props) => {
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
   const [passwordForgotten, setPasswordForgotten] = useState(false);
 
@@ -64,13 +65,15 @@ const LoginForm = () => {
     isLoading: isLoginLoading,
     isError: isLoginError,
     error: loginError,
+    isSuccess: isLoginSuccess,
+    data: loginData,
   } = useLogin();
   const {
     mutate: mutatePassEmail,
     isLoading: isPassEmailLoading,
     isError: isPassEmailError,
     error: passEmailError,
-    isSuccess,
+    isSuccess: isPassEmailSuccess,
   } = useRequestPasswordEmail();
 
   const sendUserLogin = (data) => mutateLogin(data);
@@ -82,6 +85,13 @@ const LoginForm = () => {
   const handlePasswordVisibility = () =>
     setIsPasswordVisible(!isPasswordVisible);
 
+  useEffect(() => {
+    if (isLoginSuccess) {
+      localStorage.setItem(PALAVRAS_DE_PAZ_TOKEN, loginData.data.token);
+      logIn(loginData.data.volunteer.email);
+    }
+  }, [isLoginSuccess]);
+
   if (isLoginError || isPassEmailError) {
     const errorMessage =
       loginError?.response.data.name || passEmailError?.response.data.name;
@@ -92,8 +102,7 @@ const LoginForm = () => {
     return <LoadingSpinner />;
   }
 
-  if (isSuccess) {
-    // Apenas com a opção de email enviado porque em caso de login correto vai haver o redirect.
+  if (isPassEmailSuccess) {
     return (
       <>
         <p className={styles.formParagraph}>
@@ -175,6 +184,10 @@ const LoginForm = () => {
       <BackButton />
     </form>
   );
+};
+
+LoginForm.propTypes = {
+  logIn: propTypes.func,
 };
 
 export default LoginForm;
