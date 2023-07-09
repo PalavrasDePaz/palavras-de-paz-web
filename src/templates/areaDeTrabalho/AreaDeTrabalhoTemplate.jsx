@@ -1,6 +1,7 @@
 import React from "react";
 
 import AvaliarCadernos from "./components/AvaliarCadernos";
+import AvaliarRedacoes from "./components/AvaliarRedacoes";
 import HeaderAreaDeTrabalho from "./components/HeaderAreaDeTrabalho";
 import PrimeiroBox from "./components/PrimeiroBox";
 import WorkshopsAssistidos from "./components/WorkshopsAssistidos";
@@ -21,6 +22,7 @@ export default function AreaDeTrabalhoTemplate() {
           <WorkshopsAssistidos />
         </section>
         <AvaliarCadernos />
+        <AvaliarRedacoes />
       </div>
     </>
   );

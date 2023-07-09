@@ -1,11 +1,11 @@
 import React from "react";
 import Image from "next/image";
 
-import Download from "../../../../public/static/images/icons/download.svg";
+import DownloadImage from "../../../../public/static/images/icons/download.svg";
 
 import styles from "../styles/AreaDeTrabalho.module.css";
 
-export default function WorkshopsAssistidos() {
+export default function AvaliarCadernos() {
   const nome = "Ricardo";
   const reservado = "Reservado";
   const preencher = "Preencher Formulário";
@@ -34,7 +34,7 @@ export default function WorkshopsAssistidos() {
       <div className={styles.avaliarCadernos_itens}>
         <h2>Baixar Caderno</h2>
         <div className={styles.avaliarCadernos_baixar}>
-          <Image src={Download} alt="icone de download" />
+          <Image src={DownloadImage} alt="icone de download" />
           <div>{download}</div>
         </div>
       </div>
