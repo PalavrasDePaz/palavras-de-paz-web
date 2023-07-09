@@ -1,7 +1,5 @@
-// import HomeTemplate from "../templates/home/home.template";
-
-import AreaDeTrabalho from "./area-de-trabalho";
+import HomeTemplate from "../templates/home/home.template";
 
 export default function Home() {
-  return <AreaDeTrabalho />;
+  return <HomeTemplate />;
 }
