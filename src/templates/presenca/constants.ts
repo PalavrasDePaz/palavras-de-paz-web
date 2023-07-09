@@ -10,7 +10,7 @@ type SelectQuestion = {
 
 export const SELECT_QUESTIONS: SelectQuestion[] = [
   {
-    fieldName: "subject",
+    fieldName: "workshopSubject",
     question: "Qual foi o tema da aula de hoje?",
     options: [
       "1 - Paz",
@@ -46,23 +46,26 @@ export const SELECT_QUESTIONS: SelectQuestion[] = [
     options: ["Sim", "Não"],
   },
   {
-    fieldName: "aproveitamento",
+    fieldName: "studyRetention",
     question: "Como você diria que foi o seu aproveitamento hoje?",
     options: ["Excelente", "Bom", "Regular", "Ruim", "Péssimo"],
   },
 ];
 
 export const OPEN_TEXT_FIELDS = [
-  { label: "improvements", text: "No que podemos melhorar?" },
+  { label: "howCanWeImprove", text: "No que podemos melhorar?" },
   {
-    label: "applyInLife",
+    label: "applicableKnowledge",
     // eslint-disable-next-line max-len
     text: "Você acha que poderá aplicar esses conhecimentos adquiridos na sua vida pessoal e/ou profissional?",
   },
-  { label: "learnedToday", text: "O que aprendeu de diferente hoje?" },
-  { label: "challenge", text: "O que te desafiou nessa aula?" },
   {
-    label: "freeform",
+    label: "differentKnowledgeLearned",
+    text: "O que aprendeu de diferente hoje?",
+  },
+  { label: "whatChallengedYou", text: "O que te desafiou nessa aula?" },
+  {
+    label: "expressYourself",
     text: "Expressões - Manifeste aqui tudo o que deseja acrescentar.",
   },
 ];

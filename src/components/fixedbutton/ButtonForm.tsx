@@ -1,12 +1,12 @@
 import React, { useState } from "react";
-import axios from "axios";
 import { useForm } from "react-hook-form";
 import isEmail from "validator/lib/isEmail";
 import * as yup from "yup";
 
 import { yupResolver } from "@hookform/resolvers/yup";
 
-import { API, REQUIRED_FIELD } from "../../constants";
+import { api } from "../../api";
+import { REQUIRED_FIELD } from "../../constants";
 import { INVALID_MAIL } from "../../templates/cadastro/components/constants";
 import ErrorMessage from "../forms/ErrorMessage";
 import LoadingSpinner from "../loadingSpinner/LoadingSpinner";
@@ -22,8 +22,6 @@ const schema = yup.object().shape({
   subject: yup.string().required(REQUIRED_FIELD),
   message: yup.string().required(REQUIRED_FIELD),
 });
-
-const FORM_URL = `${API}/volunteers/contact-email`;
 
 const ButtonForm = () => {
   const [isSent, setIsSent] = useState(false);
@@ -45,7 +43,7 @@ const ButtonForm = () => {
 
   const submitForm = (data: yup.InferType<typeof schema>) => {
     setIsSending(true);
-    axios.post(FORM_URL, data).then(() => {
+    api.post("/volunteers/contact-email", data).then(() => {
       setIsSending(false);
       setIsSent(true);
     });

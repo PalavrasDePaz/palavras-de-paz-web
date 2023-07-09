@@ -1,9 +1,13 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useRouter } from "next/router";
 import { useForm } from "react-hook-form";
 
 import { yupResolver } from "@hookform/resolvers/yup";
 
 import HeaderWorkspace from "../../components/headerWorkspace/HeaderWorkspace";
+import LoadingSpinner from "../../components/loadingSpinner/LoadingSpinner";
+import useGetUser from "../../hooks/useGetUser";
+import usePostAttendance from "../../hooks/usePostAttendance";
 
 import { INTRO_TEXT, OPEN_TEXT_FIELDS, SELECT_QUESTIONS } from "./constants";
 import { schema } from "./schema";
@@ -17,7 +21,35 @@ function FormDePresenca() {
     resolver: yupResolver(schema),
   });
 
-  const onSubmit = handleSubmit((data) => console.log(data));
+  const { data: user } = useGetUser();
+
+  const router = useRouter();
+
+  // Se não tiver usuário logado, vamos para o login.
+  useEffect(() => {
+    if (!user) {
+      router.push("/login");
+    }
+  }, []);
+
+  const { mutate, isLoading, isSuccess } = usePostAttendance();
+
+  const onSubmit = handleSubmit((data) => user && mutate({ data, user }));
+
+  if (isLoading) {
+    return (
+      <>
+        <HeaderWorkspace title="Formulário de Presença" />
+        <div className={styles.presencaContainer}>
+          <LoadingSpinner />
+        </div>
+      </>
+    );
+  }
+
+  if (isSuccess) {
+    router.push("/");
+  }
 
   return (
     <>
