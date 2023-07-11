@@ -1,5 +1,4 @@
-import React, { useEffect } from "react";
-import { useRouter } from "next/router";
+import React from "react";
 
 import useGetUser from "../../hooks/useGetUser";
 
@@ -13,14 +12,7 @@ import styles from "./styles/AreaDeTrabalho.module.css";
 
 export default function AreaDeTrabalhoTemplate() {
   const { data: user } = useGetUser();
-
-  const router = useRouter();
-
-  useEffect(() => {
-    if (!user) {
-      router.push("/login");
-    }
-  }, [user]);
+  const idvol = user?.idvol;
 
   return (
     <>
@@ -28,11 +20,11 @@ export default function AreaDeTrabalhoTemplate() {
       <div className={styles.containerSections}>
         <section className={styles.main_container_section}>
           <div className={styles.sectionTitle}>
-            <h1>Bem vindo, José</h1>
+            <h1>Bem vindo, {user?.name}</h1>
             <p>Aqui estão as suas atividades</p>
           </div>
           <PrimeiroBox />
-          <WorkshopsAssistidos />
+          {idvol && <WorkshopsAssistidos idvol={idvol} />}
         </section>
         <AvaliarCadernos />
         <AvaliarRedacoes />

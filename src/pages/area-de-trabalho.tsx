@@ -3,9 +3,9 @@ import { useRouter } from "next/router";
 
 import LoadingSpinner from "../components/loadingSpinner/LoadingSpinner";
 import useGetUser from "../hooks/useGetUser";
-import FormDePresenca from "../templates/presenca";
+import AreaDeTrabalhoTemplate from "../templates/areaDeTrabalho/AreaDeTrabalhoTemplate";
 
-const presenca = () => {
+export default function areaDeTrabalho() {
   const { data: user } = useGetUser();
   const router = useRouter();
 
@@ -16,10 +16,8 @@ const presenca = () => {
   }, [user]);
 
   if (user) {
-    return <FormDePresenca />;
+    return <AreaDeTrabalhoTemplate />;
   }
 
   return <LoadingSpinner />;
-};
-
-export default presenca;
+}
