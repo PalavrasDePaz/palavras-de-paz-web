@@ -503,3 +503,11 @@
     font-size: 0.65rem;
   }
 }
+
+.workshopListItem {
+  display: contents;
+}
+
+.workshopSubject {
+  margin-left: 1rem;
+}
