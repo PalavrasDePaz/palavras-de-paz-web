@@ -48,7 +48,7 @@ function FormDePresenca() {
   }
 
   if (isSuccess) {
-    router.push("/");
+    router.push("/area-de-trabalho");
   }
 
   return (
