@@ -34,7 +34,7 @@ const LoginTemplate = () => {
 
   useEffect(() => {
     if (user) {
-      router.push("/presenca");
+      router.push("/area-de-trabalho");
     }
   }, [user]);
 
