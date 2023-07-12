@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 
 import { yupResolver } from "@hookform/resolvers/yup";
 
+import ErrorMessage from "../../components/forms/ErrorMessage";
 import HeaderWorkspace from "../../components/headerWorkspace/HeaderWorkspace";
 import LoadingSpinner from "../../components/loadingSpinner/LoadingSpinner";
 import useGetUser from "../../hooks/useGetUser";
@@ -17,7 +18,11 @@ import TextField from "./TextField";
 import styles from "./index.module.css";
 
 function FormDePresenca() {
-  const { register, handleSubmit } = useForm({
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
     resolver: yupResolver(schema),
   });
 
@@ -58,29 +63,39 @@ function FormDePresenca() {
         <form className={styles.formPresenca} onSubmit={onSubmit}>
           <p className={styles.formParagraph}>{INTRO_TEXT}</p>
           {SELECT_QUESTIONS.map(({ fieldName, question, options }) => (
-            <Selectable
-              key={fieldName}
-              fieldName={fieldName}
-              question={question}
-              options={options.map((option) => ({
-                label: option,
-                value: option,
-              }))}
-              register={register}
-            />
+            <>
+              <Selectable
+                key={fieldName}
+                fieldName={fieldName}
+                question={question}
+                options={options.map((option) => ({
+                  label: option,
+                  value: option,
+                }))}
+                register={register}
+              />
+              <ErrorMessage
+                showError={errors[fieldName]}
+                style={styles.errors}
+              />
+            </>
           ))}
           {OPEN_TEXT_FIELDS.map(({ label, text }) => (
-            <TextField
-              key={label}
-              fieldName={label}
-              question={text}
-              register={register}
-            />
+            <>
+              <TextField
+                key={label}
+                fieldName={label}
+                question={text}
+                register={register}
+              />
+              <ErrorMessage showError={errors[label]} style={styles.errors} />
+            </>
           ))}
           <div className={styles.buttonsRow}>
             <button
               type="button"
               className={`${styles.presencaFormButton} ${styles.buttonWhite} `}
+              onClick={() => router.push("/area-de-trabalho")}
             >
               Sair
             </button>

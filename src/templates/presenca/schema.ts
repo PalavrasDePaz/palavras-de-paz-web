@@ -1,12 +1,14 @@
 import * as yup from "yup";
 
+import { REQUIRED_FIELD } from "../../constants";
+
 export const schema = yup.object().shape({
-  workshopSubject: yup.string().nullable(),
-  enoughTime: yup.string().nullable(),
-  studyRetention: yup.string().nullable(),
-  howCanWeImprove: yup.string().nullable(),
-  applicableKnowledge: yup.string().nullable(),
-  differentKnowledgeLearned: yup.string().nullable(),
-  whatChallengedYou: yup.string().nullable(),
-  expressYourself: yup.string().nullable(),
+  workshopSubject: yup.string().required(REQUIRED_FIELD),
+  enoughTime: yup.string().required(REQUIRED_FIELD),
+  studyRetention: yup.string().required(REQUIRED_FIELD),
+  howCanWeImprove: yup.string().required(REQUIRED_FIELD),
+  applicableKnowledge: yup.string().required(REQUIRED_FIELD),
+  differentKnowledgeLearned: yup.string().required(REQUIRED_FIELD),
+  whatChallengedYou: yup.string().required(REQUIRED_FIELD),
+  expressYourself: yup.string().required(REQUIRED_FIELD),
 });

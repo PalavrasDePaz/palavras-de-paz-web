@@ -110,3 +110,8 @@
     padding: 1rem;
   }
 }
+
+.errors {
+  color: red;
+  font-size: smaller;
+}
