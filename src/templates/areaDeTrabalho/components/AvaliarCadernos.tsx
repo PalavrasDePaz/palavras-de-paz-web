@@ -2,10 +2,19 @@ import React from "react";
 import Image from "next/image";
 
 import DownloadImage from "../../../../public/static/images/icons/download.svg";
+import useGetNotebooks from "../../../hooks/useGetNotebooks";
 
 import styles from "../styles/AreaDeTrabalho.module.css";
 
-export default function AvaliarCadernos() {
+type AvaliarCadernosProps = {
+  idvol: number;
+};
+
+const AvaliarCadernos = ({ idvol }: AvaliarCadernosProps) => {
+  // TODO: esse hook não está funcionando, por problemas no token
+  // (não tem readPermission). Falar com galera do backend.
+  // const { data: notebooks } = useGetNotebooks(idvol);
+
   const nome = "Ricardo";
   const reservado = "Reservado";
   const preencher = "Preencher Formulário";
@@ -46,4 +55,6 @@ export default function AvaliarCadernos() {
       </div>
     </section>
   );
-}
+};
+
+export default AvaliarCadernos;
