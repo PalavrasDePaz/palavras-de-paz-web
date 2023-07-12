@@ -2,8 +2,8 @@ import React from "react";
 import Image from "next/image";
 
 import DownloadImage from "../../../../public/static/images/icons/download.svg";
-import useGetNotebooks from "../../../hooks/useGetNotebooks";
 
+// import useGetNotebooks from "../../../hooks/useGetNotebooks";
 import styles from "../styles/AreaDeTrabalho.module.css";
 
 type AvaliarCadernosProps = {
