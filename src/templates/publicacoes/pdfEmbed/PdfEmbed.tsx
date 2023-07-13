@@ -17,7 +17,7 @@ const PdfEmbed = ({ article }: PdfEmbedProps) => (
     <article>
       <meta property="og:title" content={article.title} />
       <meta property="og:description" content={article.description} />
-      <meta property="og:url" content={article.url} />
+      <meta property="og:type" content="website" />
       <meta property="og:image" content={article.image} />
       <div className={styles.pdfTitle}>{article.title}</div>
       <div className={styles.pdfBox}>

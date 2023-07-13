@@ -1,5 +1,6 @@
 import img01 from "../../../public/static/images/linkPreviews/link01.png";
 import img02 from "../../../public/static/images/linkPreviews/link02.png";
+import img03 from "../../../public/static/images/linkPreviews/link03.png";
 
 // Imagens dos previews geradas em https://link-previews.stephanbogner.de/
 
@@ -7,6 +8,7 @@ const LINKS = [
   {
     id: 1,
     href: "/publicacoes/arquivos/o-impacto-de-ouca-a-sua-voz-nas-prisoes-brasileiras",
+    img: img03,
   },
   {
     id: 2,
