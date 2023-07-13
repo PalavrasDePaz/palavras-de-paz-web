@@ -2,9 +2,17 @@ import React from "react";
 
 import PdfEmbed from "../../../templates/publicacoes/pdfEmbed/PdfEmbed";
 
-const src = "/static/assets/article1.pdf#zoom=120";
-const title = 'O Impacto de "Ouça a Sua Voz" nas Prisões Brasileiras';
+import { Article } from "./types";
 
-const Artigo = () => <PdfEmbed src={src} title={title} />;
+const impactoFile: Article = {
+  title: 'O Impacto de "Ouça a Sua Voz" nas Prisões Brasileiras',
+  description:
+    // eslint-disable-next-line max-len
+    "Em 14 de setembro de 2021, a HarperOne publicou o livro revolucionário de Prem Rawat, Ouça a Sua Voz: Como Encontrar a Paz em um Mundo Barulhento. Duas semanas depois, ele se tornou um best-seller do New York Times.",
+  url: "/static/assets/article1.pdf",
+  image: "../../../../public/static/images/livro.jpg",
+};
+
+const Artigo = () => <PdfEmbed article={impactoFile} />;
 
 export default Artigo;
