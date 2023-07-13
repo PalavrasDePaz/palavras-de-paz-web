@@ -9,7 +9,7 @@ const impactoFile: Article = {
     // eslint-disable-next-line max-len
     "Em 14 de setembro de 2021, a HarperOne publicou o livro revolucionário de Prem Rawat, Ouça a Sua Voz: Como Encontrar a Paz em um Mundo Barulhento. Duas semanas depois, ele se tornou um best-seller do New York Times.",
   url: "/static/assets/article1.pdf",
-  image: "../../../../public/static/images/livro.jpg",
+  image: "https://www.palavrasdepaz.org/static/images/livro.jpg",
 };
 
 const Artigo = () => <PdfEmbed article={impactoFile} />;
