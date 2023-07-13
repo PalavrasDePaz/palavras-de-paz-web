@@ -2,23 +2,27 @@ import React from "react";
 
 import Footer from "../../../components/footer/Footer";
 import Header from "../../../components/header/Header";
+import { Article } from "../../../pages/publicacoes/arquivos/types";
 
 import styles from "./pdfEmbed.module.css";
 
 type PdfEmbedProps = {
-  src: string;
-  title: string;
+  article: Article;
 };
 
-const PdfEmbed = ({ src, title }: PdfEmbedProps) => (
+const PdfEmbed = ({ article }: PdfEmbedProps) => (
   <>
     <Header />
     <article>
-      <div className={styles.pdfTitle}>{title}</div>
+      <meta property="og:title" content={article.title} />
+      <meta property="og:description" content={article.description} />
+      <meta property="og:url" content={article.url} />
+      <meta property="og:image" content={article.image} />
+      <div className={styles.pdfTitle}>{article.title}</div>
       <div className={styles.pdfBox}>
         <iframe
-          src={`${src}#zoom=120`}
-          title={title}
+          src={`${article.url}#zoom=120`}
+          title={article.title}
           className={styles.pdfFile}
         />
       </div>
