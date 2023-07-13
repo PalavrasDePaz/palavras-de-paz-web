@@ -4,11 +4,7 @@ import { useRouter } from "next/router";
 
 import { api } from "../../../api";
 import LoadingSpinner from "../../../components/loadingSpinner/LoadingSpinner";
-import {
-  EXISTING_MESSAGE,
-  UNEXPECTED_ERROR,
-  VOLUNTEER_ALREADY_EXISTS,
-} from "../../../constants";
+import { UNEXPECTED_ERROR, VOLUNTEER_ALREADY_EXISTS } from "../../../constants";
 
 import { FUTURE_ROLES, SKILLS } from "./constants";
 
@@ -64,7 +60,9 @@ export default function cadastroTelaFinal({ data } = props) {
   const getContent = () => {
     if (isError) {
       const existingUser = errorMessage === VOLUNTEER_ALREADY_EXISTS;
-      const message = existingUser ? EXISTING_MESSAGE : UNEXPECTED_ERROR;
+      const message = existingUser
+        ? VOLUNTEER_ALREADY_EXISTS
+        : UNEXPECTED_ERROR;
       return (
         <p className={styles.formParagraph} style={{ color: "red" }}>
           {message}
