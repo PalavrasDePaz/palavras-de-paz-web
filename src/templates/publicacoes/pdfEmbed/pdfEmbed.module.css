@@ -6,11 +6,17 @@
 @media (min-width: 600px) {
   .pdfBox {
     padding: 5rem;
-    text-align: center;
+    padding-top: 2rem;
   }
 }
 
 .pdfFile {
   width: 80%;
   height: 45rem;
+}
+
+.pdfTitle {
+  text-align: center;
+  font-size: x-large;
+  font-family: "Baloo", cursive, Arial, Helvetica, sans-serif;
 }
