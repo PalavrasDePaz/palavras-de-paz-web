@@ -1,8 +1,7 @@
 import React from "react";
 
 import PdfEmbed from "../../../templates/publicacoes/pdfEmbed/PdfEmbed";
-
-import { Article } from "./types";
+import { Article } from "../../../templates/publicacoes/pdfEmbed/types";
 
 const impactoFile: Article = {
   title: 'O Impacto de "Ouça a Sua Voz" nas Prisões Brasileiras',
