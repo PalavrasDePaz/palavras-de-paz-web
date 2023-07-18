@@ -195,8 +195,7 @@
 }
 
 .tableDate {
-  display: flex;
-  flex-direction: columns;
+  display: block;
   gap: 12px;
   font-size: 16px;
   font-weight: 400;
@@ -505,7 +504,7 @@
 }
 
 .workshopListItem {
-  display: contents;
+  display: flex;
 }
 
 .workshopSubject {

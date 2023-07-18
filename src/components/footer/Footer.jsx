@@ -126,6 +126,7 @@ function Footer() {
         <div className="colunas-footer">
           <h6 className="footer-title">Home</h6>
           <Link href="/galeria">Galeria de fotos</Link>
+          <Link href="/publicacoes">Publicações</Link>
           <Link href="/depoimentos">Depoimentos</Link>
         </div>
       </container>
