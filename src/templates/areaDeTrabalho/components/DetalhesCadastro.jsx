@@ -3,10 +3,14 @@ import Image from "next/image";
 
 import Grafico2 from "../../../../public/static/images/icons/grafico2.svg";
 
+import BtnDados from "./BtnDados";
+
+import Styles from "../styles/AreaDeTrabalho.module.css";
+
 export default function DetalhesCadastro() {
   return (
-    <section>
-      <div>
+    <section className={Styles.containerSectionDados}>
+      <div className={Styles.dadosFirstDiv}>
         <Image src={Grafico2} />
         <h2>
           Detalhes de Cadastro
@@ -14,10 +18,10 @@ export default function DetalhesCadastro() {
           dos voluntários
         </h2>
       </div>
-      <div>
+      <div className={Styles.dadosSecondDiv}>
         <a href="./">Visualizar na web</a>
         <span> ou </span>
-        <button>Baixar Planilha</button>
+        <BtnDados />
       </div>
     </section>
   );
