@@ -15,7 +15,12 @@ import styles from "./styles/AreaDeTrabalho.module.css";
 
 export default function AreaDeTrabalhoTemplate() {
   const { data: user } = useGetUser();
-  const idvol = user?.idvol;
+
+  if (!user) {
+    return null;
+  }
+
+  const { idvol } = user;
 
   return (
     <>
@@ -27,9 +32,9 @@ export default function AreaDeTrabalhoTemplate() {
             <p>Aqui estão as suas atividades</p>
           </div>
           <PrimeiroBox />
-          {idvol && <WorkshopsAssistidos idvol={idvol} />}
+          <WorkshopsAssistidos idvol={idvol} />
         </section>
-        <AvaliarCadernos />
+        <AvaliarCadernos idvol={idvol} />
         <AvaliarRedacoes />
         <DadosPresenca />
         <DetalhesPresenca />

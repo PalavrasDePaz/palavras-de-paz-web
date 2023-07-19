@@ -841,8 +841,6 @@
 }
 
 .tableDate {
-  display: flex;
-  flex-direction: columns;
   gap: 12px;
   font-size: 16px;
   font-weight: 400;
