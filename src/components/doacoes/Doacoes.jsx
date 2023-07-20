@@ -1,6 +1,7 @@
 /* eslint-disable react/no-unescaped-entities */
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { Button } from "react-bootstrap";
 
 import Center from "../center";
@@ -69,6 +70,12 @@ function Doacoes() {
           <p className="display-6">Promover a paz</p>
         </div>
       </div>
+
+      <Link href="/doacoes/relatorio-semestral-2023-01">
+        <div className="relatorio-link text-center">
+          RELATÓRIO DO 1º SEMESTRE DE 2023
+        </div>
+      </Link>
 
       <container>
         <div className="doacoes-atraves text-center">
@@ -141,7 +148,7 @@ function Doacoes() {
       </container>
 
       <container className="doacoes-contas">
-        <a href="/">
+        <a href="/doacoes/relatorio-semestral-2023-01">
           <p>Prestação de contas</p>
         </a>
 
