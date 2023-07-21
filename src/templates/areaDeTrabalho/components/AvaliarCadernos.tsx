@@ -2,8 +2,8 @@ import React from "react";
 import Image from "next/image";
 
 import DownloadImage from "../../../../public/static/images/icons/download.svg";
+import useGetNotebooks from "../../../hooks/useGetNotebooks";
 
-// import useGetNotebooks from "../../../hooks/useGetNotebooks";
 import styles from "../styles/AreaDeTrabalho.module.css";
 
 type AvaliarCadernosProps = {
@@ -11,14 +11,16 @@ type AvaliarCadernosProps = {
 };
 
 const AvaliarCadernos = ({ idvol }: AvaliarCadernosProps) => {
-  // TODO: esse hook não está funcionando, por problemas no token
-  // (não tem readPermission). Falar com galera do backend.
-  // const { data: notebooks } = useGetNotebooks(idvol);
+  const { data: notebooks } = useGetNotebooks(idvol);
+
+  console.log(notebooks);
 
   const nome = "Ricardo";
   const reservado = "Reservado";
   const preencher = "Preencher Formulário";
   const download = "Download";
+
+  // TODO: separar header das linhas, para poder dar um notebooks.map pra preencher a tabela.
 
   return (
     <section className={styles.avaliarCadernos_section}>
