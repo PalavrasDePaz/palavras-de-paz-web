@@ -37,8 +37,12 @@ export default function cadastroTelaFinal({ data } = props) {
   // (pensando no caso de alguém que preenche, depois muda de ideia e prefere não dizer.)
   data.disability = data.deficiencia === "sim" ? data.disability : null;
 
+  // cadastra novo usuário com read permission TRUE
+  data.readPermission = true;
+
   // Também não mandamos o valor do campo de deficiencia, só qual ela é, se houver.
   // E nem a confirmação de password.
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { deficiencia, passConfirmation, ...restOfData } = data;
 
   // Removemos qualquer atributo que esteja nulo
