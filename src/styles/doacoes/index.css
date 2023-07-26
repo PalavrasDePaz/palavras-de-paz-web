@@ -150,3 +150,14 @@
     gap: 35px;
   }
 }
+
+.relatorio-link {
+  font-size: 3rem;
+  cursor: pointer;
+  border: 1px solid #18ca99;
+  border-radius: 10px;
+  padding: 1rem 2rem;
+  width: max-content;
+  margin: auto;
+  margin-bottom: 2rem;
+}

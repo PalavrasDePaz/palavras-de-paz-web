@@ -118,7 +118,9 @@ function Footer() {
 
         <div className="colunas-footer">
           <h6 className="footer-title">Doações</h6>
-          <Link href="/">Prestação de contas</Link>
+          <Link href="/doacoes/relatorio-semestral-2023-01">
+            Prestação de contas
+          </Link>
           <Link href="/doacoes">PIX</Link>
           <Link href="/doacoes">PayPal</Link>
         </div>

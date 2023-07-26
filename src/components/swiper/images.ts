@@ -10,6 +10,7 @@ import image18 from "../../../public/static/images/swiper/image 18.svg";
 import image19 from "../../../public/static/images/swiper/image 19.svg";
 import image20 from "../../../public/static/images/swiper/image 20.png";
 import image21 from "../../../public/static/images/swiper/image 21.svg";
+import image22 from "../../../public/static/images/swiper/image_23.svg";
 
 const SwiperImgs = () => [
   {
@@ -60,6 +61,7 @@ const SwiperImgs = () => [
     id: 12,
     src: image21,
   },
+  { id: 13, src: image22 },
 ];
 
 export default SwiperImgs;
