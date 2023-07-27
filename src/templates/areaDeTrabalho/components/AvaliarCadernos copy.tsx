@@ -25,20 +25,34 @@ const AvaliarCadernos = ({ idvol }: AvaliarCadernosProps) => {
   return (
     <section className={styles.avaliarCadernos_section}>
       <h1>Avaliar Cadernos</h1>
-      <div className={styles.avaliarCadernos_titles}>
-        <h2>Aluno</h2>
-        <h2>Reservado em</h2>
-        <h2>Baixar Caderno</h2>
-        <h2>Formulário de avaliação</h2>
+      <div className={styles.avaliarCadernos_itens}>
+        <div className={styles.avaliarCadernos_opcoes}>
+          <input type="checkbox" />
+        </div>
       </div>
-      <div className={styles.avaliarCadernos_status}>
-        <input type="checkbox" />
-        <p>{nome}</p>
-        <p>{reservado}</p>
-        <p>{preencher}</p>
-        <div>
+      <div className={styles.avaliarCadernos_itens}>
+        <h2>Aluno</h2>
+        <div className={styles.avaliarCadernos_opcoes}>
+          <div>{nome}</div>
+        </div>
+      </div>
+      <div className={styles.avaliarCadernos_itens}>
+        <h2>Reservado em</h2>
+        <div className={styles.avaliarCadernos_opcoes}>
+          <div>{reservado}</div>
+        </div>
+      </div>
+      <div className={styles.avaliarCadernos_itens}>
+        <h2>Baixar Caderno</h2>
+        <div className={styles.avaliarCadernos_baixar}>
           <Image src={DownloadImage} alt="icone de download" />
-          <p>{download}</p>
+          <div>{download}</div>
+        </div>
+      </div>
+      <div className={styles.avaliarCadernos_itens}>
+        <h2>Formulário de avaliação</h2>
+        <div className={styles.avaliarCadernos_opcoes}>
+          <div>{preencher}</div>
         </div>
       </div>
     </section>
