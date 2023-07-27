@@ -34,7 +34,6 @@
 }
 
 .tableDate {
-  display: block;
   gap: 12px;
   font-size: 16px;
   font-weight: 400;
@@ -44,9 +43,6 @@
 }
 
 @media (max-width: 1000px) {
-  .main_container_section {
-    gap: 1.5rem;
-  }
   .tableTitle1 {
     padding-inline: 24px;
   }

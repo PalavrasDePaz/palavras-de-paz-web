@@ -2,7 +2,7 @@ import React from "react";
 
 import useGetAttendances from "../../../hooks/useGetAttendances";
 
-import styles from "../styles/AreaDeTrabalho.module.css";
+import styles from "../styles/WorkshopsAreaDeTrabalho.module.css";
 
 type WorkshopsAssistidosProps = {
   idvol: number;
