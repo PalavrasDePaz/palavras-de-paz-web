@@ -153,9 +153,12 @@
   }
 }
 
-@media (max-width: 650px) {
+@media (max-width: 620px) {
   .main_container_div {
     width: 520px;
+  }
+  .sectionTitle {
+    padding-bottom: 48px;
   }
 }
 
@@ -359,7 +362,7 @@
 .avaliarRedacoes_baixar {
   display: flex;
   gap: 8px;
-  align-items: start;
+  align-items: flex-start;
 }
 
 .avaliarRedacoes_opcoes input:nth-child(1) {
@@ -509,7 +512,7 @@
 .avaliarCadernos_baixar {
   display: flex;
   gap: 8px;
-  align-items: start;
+  align-items: flex-start;
 }
 
 .avaliarCadernos_opcoes input:nth-child(1) {
@@ -644,7 +647,7 @@
 .avaliarRedacoes_baixar {
   display: flex;
   gap: 8px;
-  align-items: start;
+  align-items: flex-start;
 }
 
 .avaliarRedacoes_opcoes input:nth-child(1) {

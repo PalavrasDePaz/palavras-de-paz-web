@@ -72,7 +72,7 @@
 
 .avaliar_status_div {
   display: flex;
-  align-items: start;
+  align-items: flex-start;
   gap: 4px;
 }
 
@@ -98,42 +98,89 @@
 
 @media (max-width: 1180px) {
   .avaliar_titles {
-    grid-template-columns: 60px 1fr 1fr 1fr 2fr;
-    gap: 8px;
-    padding-left: 8px;
-    padding-right: 8px;
+    grid-template-columns: 30px 1fr 1fr 1fr 2fr;
+    gap: 2px;
+    padding-left: 4px;
+    padding-right: 4px;
   }
   .avaliar_titles h2 {
     padding-inline: 4px;
-    font-size: 24px;
-  }
-  .avaliar_status p {
-    padding-inline: 8px;
-  }
-  .avaliar_itens {
-    padding: 0;
+    font-size: 22px;
   }
   .avaliar_status {
-    gap: 8px;
-    grid-template-columns: 60px 1fr 1fr 1fr 2fr;
+    gap: 4px;
+    grid-template-columns: 50px 1fr 1fr 1fr 2fr;
+    padding-left: 4px;
   }
 }
 
 @media (max-width: 900px) {
+  .avaliar_titles {
+    grid-template-columns: 50px 1fr 1fr 1fr 2fr;
+  }
   .avaliar_titles h2 {
     font-size: 18px;
-    padding-inline: 4.2px;
+    padding-inline: 5px;
   }
   .avaliar_status p {
-    font-size: 12px;
+    font-size: 14px;
   }
 }
 
-@media (max-width: 900px) {
-  .avaliar_titles:nth-child(5) {
-    text-overflow: "Formulário";
+@media (max-width: 800px) {
+  .avaliar_titles {
+    grid-template-columns: 10px 1fr 1fr 1fr 2fr;
+    gap: 0px;
+    padding-left: 2px;
+    padding-right: 2px;
+  }
+  .avaliar_titles h2 {
+    font-size: 16px;
+    padding-inline: 0px;
+  }
+  .avaliar_titles:nth-child(4) {
+    margin-left: 20px;
   }
   .avaliar_status p {
+    padding-inline: 4px;
     font-size: 12px;
+  }
+  .avaliar_status {
+    grid-template-columns: 30px 1fr 1fr 1fr 2fr;
+    gap: 0px;
+  }
+}
+
+@media (max-width: 620px) {
+  .avaliar_titles {
+    grid-template-columns: 30px 80px 120px 140px 150px;
+  }
+  .avaliar_status input {
+    width: 16px;
+    height: 16px;
+    align-self: flex-start;
+  }
+  .avaliar_status p {
+    padding-inline: 4px;
+    font-size: 12px;
+  }
+  .avaliar_status {
+    grid-template-columns: 30px 1fr 1fr 1fr 2fr;
+  }
+}
+
+@media (max-width: 550px) {
+  .avaliar_titles {
+    grid-template-columns: 20px 60px 120px 100px 150px;
+  }
+  .avaliar_titles h2 {
+    font-size: 14px;
+  }
+  .avaliar_status p {
+    padding-inline: 2px;
+    font-size: 10px;
+  }
+  .avaliar_status {
+    grid-template-columns: 20px 60px 120px 100px 150px;
   }
 }
