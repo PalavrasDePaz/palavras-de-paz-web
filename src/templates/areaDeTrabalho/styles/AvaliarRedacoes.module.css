@@ -8,6 +8,7 @@
 }
 
 .avaliar_section h1 {
+  grid-column: 1 / -1;
   background-color: #21aa85;
   text-align: center;
   border-top-left-radius: 15px;
@@ -44,9 +45,9 @@
   border: 1px solid #f4f4f4;
 }
 
-.avaliar_titles {
+.avaliarRedacoes_titles {
   display: grid;
-  grid-template-columns: 80px 1fr repeat(3, 2fr);
+  grid-template-columns: 80px 2fr repeat(4, 1fr);
   align-items: center;
   gap: 16px;
   place-items: center;
@@ -55,84 +56,83 @@
   padding-block: 24px;
 }
 
-.avaliar_titles span {
+.avaliarRedacoes_titles span {
   padding-left: 0;
 }
 
-.avaliar_titles h2 {
+.avaliarRedacoes_titles h2 {
   font-size: 24px;
   line-height: auto;
   font-weight: 600;
   padding-inline: 16px;
 }
 
-.avaliar_status {
+.avaliarRedacoes_status {
   display: grid;
-  grid-template-columns: 70px 1fr repeat(3, 2fr);
+  grid-template-columns: 70px 2fr repeat(4, 1fr);
   align-items: center;
   gap: 24px;
   place-items: center;
   padding-left: 8px;
 }
 
-.avaliar_status input {
+.avaliarRedacoes_status input {
   width: 20px;
   height: 20px;
 }
 
-.avaliar_status p {
+.avaliarRedacoes_status p {
   font-size: 16px;
   line-height: auto;
   font-weight: 600;
   padding-inline: 16px;
 }
 
-.avaliar_status_p5 {
+.avaliarRedacoes_status_p5 {
   color: #cdcdcd;
 }
 
-.avaliar_status_div {
+.avaliarRedacoes_status_div {
   display: flex;
   align-items: flex-start;
   gap: 4px;
 }
 
-.avaliar_status_div p {
+.avaliarRedacoes_status_div p {
   color: #cdcdcd;
 }
-
 @media (max-width: 1300px) {
-  .avaliar_titles {
+  .avaliarRedacoes_titles {
     gap: 8px;
     padding-left: 8px;
     padding-right: 12px;
   }
-  .avaliar_titles h2 {
+  .avaliarRedacoes_titles h2 {
     padding-inline: 4px;
   }
-  .avaliar_status p {
+  .avaliarRedacoes_status p {
     padding-inline: 8px;
   }
   .avaliar_itens {
     padding: 0;
   }
-  .avaliar_status {
+  .avaliarRedacoes_status {
     gap: 16px;
   }
 }
 
 @media (max-width: 1180px) {
-  .avaliar_titles {
+  .avaliarRedacoes_titles {
     grid-template-columns: 30px 1fr 1fr 1fr 2fr;
     gap: 2px;
     padding-left: 4px;
     padding-right: 4px;
   }
-  .avaliar_titles h2 {
+  .avaliarRedacoes_titles h2 {
     padding-inline: 4px;
     font-size: 22px;
   }
-  .avaliar_status {
+  .avaliarRedacoes_status {
     gap: 4px;
     grid-template-columns: 50px 1fr 1fr 1fr 2fr;
     padding-left: 4px;
@@ -140,65 +140,65 @@
 }
 
 @media (max-width: 900px) {
-  .avaliar_titles {
+  .avaliarRedacoes_titles {
     grid-template-columns: 50px 1fr 1fr 1fr 2fr;
   }
-  .avaliar_titles h2 {
+  .avaliarRedacoes_titles h2 {
     font-size: 18px;
     padding-inline: 5px;
   }
-  .avaliar_status p {
+  .avaliarRedacoes_status p {
     font-size: 14px;
   }
 }
 
 @media (max-width: 800px) {
-  .avaliar_titles {
+  .avaliarRedacoes_titles {
     grid-template-columns: 10px 1fr 1fr 1fr 2fr;
     gap: 0px;
     padding-left: 2px;
     padding-right: 2px;
   }
-  .avaliar_titles h2 {
+  .avaliarRedacoes_titles h2 {
     font-size: 16px;
     padding-inline: 0px;
   }
-  .avaliar_titles:nth-child(4) {
+  .avaliarRedacoes_titles:nth-child(4) {
     margin-left: 20px;
   }
-  .avaliar_status p {
+  .avaliarRedacoes_status p {
     padding-inline: 4px;
     font-size: 12px;
   }
-  .avaliar_status {
+  .avaliarRedacoes_status {
     grid-template-columns: 30px 1fr 1fr 1fr 2fr;
     gap: 0px;
   }
 }
 
 @media (max-width: 620px) {
-  .avaliar_titles {
+  .avaliarRedacoes_titles {
     grid-template-columns: 30px 80px 120px 140px 150px;
   }
-  .avaliar_status input {
+  .avaliarRedacoes_status input {
     width: 16px;
     height: 16px;
     align-self: flex-start;
   }
-  .avaliar_status p {
+  .avaliarRedacoes_status p {
     padding-inline: 4px;
     font-size: 12px;
   }
-  .avaliar_status {
+  .avaliarRedacoes_status {
     grid-template-columns: 30px 1fr 1fr 1fr 2fr;
   }
 }
 
 @media (max-width: 550px) {
-  .avaliar_titles {
+  .avaliarRedacoes_titles {
     grid-template-columns: 20px 60px 120px 100px 150px;
   }
-  .avaliar_titles h2 {
+  .avaliarRedacoes_titles h2 {
     font-size: 14px;
   }
   .avaliar_status p {

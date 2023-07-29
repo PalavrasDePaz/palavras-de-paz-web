@@ -4,7 +4,7 @@ import Image from "next/image";
 import DownloadImage from "../../../../public/static/images/icons/download.svg";
 import useGetNotebooks from "../../../hooks/useGetNotebooks";
 
-import styles from "../styles/AvaliarCadernos.module.css";
+import styles from "../styles/Avaliar.module.css";
 
 type AvaliarCadernosProps = {
   idvol: number;
@@ -12,10 +12,8 @@ type AvaliarCadernosProps = {
 
 const AvaliarCadernos = ({ idvol }: AvaliarCadernosProps) => {
   const { data: notebooks } = useGetNotebooks(idvol);
-  console.log(notebooks);
 
-  const nome = "Ricardo da Silva";
-  const reservado = "25/05/2023";
+  const naoReservado = "Não reservado";
   const preencher = "Preencher Formulário";
 
   // TODO: separar header das linhas, para poder dar um notebooks.map pra preencher a tabela.
@@ -35,9 +33,9 @@ const AvaliarCadernos = ({ idvol }: AvaliarCadernosProps) => {
           notebooks.map(({ studentName, reservationDate }) => (
             <div key={studentName} className={styles.avaliar_status}>
               <input type="checkbox" />
-              <p>{studentName}</p>
+              <p className={styles.avaliar_status_p1}>{studentName}</p>
               {reservationDate === null ? (
-                "Não reservado"
+                <p>{naoReservado}</p>
               ) : (
                 <p>{reservationDate}</p>
               )}
