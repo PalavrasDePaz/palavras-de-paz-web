@@ -25,6 +25,23 @@
   place-items: stretch;
   padding-inline: 8px;
   overflow-y: auto;
+  position: relative;
+}
+
+.avaliar_itens::-webkit-scrollbar {
+  width: 12px;
+  height: 57px;
+  position: absolute;
+}
+
+.avaliar_itens::-webkit-scrollbar-track {
+  background: #f4f4f4;
+}
+
+.avaliar_itens::-webkit-scrollbar-thumb {
+  background-color: #ccc;
+  border-radius: 20px;
+  border: 1px solid #f4f4f4;
 }
 
 .avaliar_titles {
@@ -70,10 +87,18 @@
   padding-inline: 16px;
 }
 
+.avaliar_status_p5 {
+  color: #cdcdcd;
+}
+
 .avaliar_status_div {
   display: flex;
   align-items: flex-start;
   gap: 4px;
+}
+
+.avaliar_status_div p {
+  color: #cdcdcd;
 }
 
 @media (max-width: 1300px) {

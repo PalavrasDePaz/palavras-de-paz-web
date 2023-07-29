@@ -1,8 +1,26 @@
 .tableContent {
+  max-height: 960px;
   background-color: #ffffff;
   display: flex;
   flex-direction: column;
   border-radius: 15px;
+  overflow-y: auto;
+}
+
+.tableContent::-webkit-scrollbar {
+  width: 12px;
+  height: 57px;
+  position: absolute;
+}
+
+.tableContent::-webkit-scrollbar-track {
+  background: #f4f4f4;
+}
+
+.tableContent::-webkit-scrollbar-thumb {
+  background-color: #ccc;
+  border-radius: 20px;
+  border: 1px solid #f4f4f4;
 }
 
 .tableTitles {

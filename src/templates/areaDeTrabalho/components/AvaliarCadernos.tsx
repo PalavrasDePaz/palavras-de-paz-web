@@ -12,12 +12,10 @@ type AvaliarCadernosProps = {
 
 const AvaliarCadernos = ({ idvol }: AvaliarCadernosProps) => {
   const { data: notebooks } = useGetNotebooks(idvol);
-
   console.log(notebooks);
 
   const nome = "Ricardo da Silva";
   const reservado = "25/05/2023";
-  const download = "Download";
   const preencher = "Preencher Formulário";
 
   // TODO: separar header das linhas, para poder dar um notebooks.map pra preencher a tabela.
@@ -33,26 +31,24 @@ const AvaliarCadernos = ({ idvol }: AvaliarCadernosProps) => {
           <h2>Baixar Caderno</h2>
           <h2>Formulário de avaliação</h2>
         </div>
-        <div className={styles.avaliar_status}>
-          <input type="checkbox" />
-          <p>{nome}</p>
-          <p>{reservado}</p>
-          <div className={styles.avaliar_status_div}>
-            <Image src={DownloadImage} alt="icone de download" />
-            <p>{download}</p>
-          </div>
-          <p>{preencher}</p>
-        </div>
-        <div className={styles.avaliar_status}>
-          <input type="checkbox" />
-          <p>{nome}</p>
-          <p>{reservado}</p>
-          <div className={styles.avaliar_status_div}>
-            <Image src={DownloadImage} alt="icone de download" />
-            <p>{download}</p>
-          </div>
-          <p>{preencher}</p>
-        </div>
+        {notebooks &&
+          notebooks.map(({ studentName, reservationDate }) => (
+            <div key={studentName} className={styles.avaliar_status}>
+              <input type="checkbox" />
+              <p>{studentName}</p>
+              {reservationDate === null ? (
+                "Não reservado"
+              ) : (
+                <p>{reservationDate}</p>
+              )}
+              <div className={styles.avaliar_status_div}>
+                <Image src={DownloadImage} alt="icone de download" />
+                <p>Download</p>
+              </div>
+              <p className={styles.avaliar_status_p5}>{preencher}</p>
+            </div>
+          ))}
+        ;
       </div>
     </section>
   );
