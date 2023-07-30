@@ -16,8 +16,6 @@ const AvaliarCadernos = ({ idvol }: AvaliarCadernosProps) => {
   const naoReservado = "Não reservado";
   const preencher = "Preencher Formulário";
 
-  // TODO: separar header das linhas, para poder dar um notebooks.map pra preencher a tabela.
-
   return (
     <section className={styles.avaliar_section}>
       <h1>Avaliar Cadernos</h1>
