@@ -71,6 +71,7 @@
 .avaliarRedacoes_titles {
   display: grid;
   grid-template-columns: 80px 2fr repeat(4, 1fr);
+  box-sizing: border-box;
   align-items: center;
   gap: 16px;
   place-items: center;
@@ -94,6 +95,9 @@
   .avaliar_itens {
     width: 1120px;
   }
+  .avaliarRedacoes_titles {
+    padding-right: 4px;
+  }
 }
 
 @media (max-width: 1130px) {
@@ -105,10 +109,9 @@
     padding-right: 12px;
   }
   .avaliarRedacoes_titles {
-    grid-template-columns: 60px 200px 130px 130px 120px 160px;
+    grid-template-columns: 20px 1.2fr repeat(3, 1fr) 1.2fr;
     gap: 10px;
-    padding-left: 8px;
-    padding-right: 16px;
+    padding-left: 4px;
   }
 }
 
@@ -116,12 +119,19 @@
   .avaliar_itens {
     width: 771.8px;
   }
+  .avaliar_titles {
+    grid-template-columns: 30px 2fr repeat(3, 1fr);
+    padding-right: 12px;
+  }
   .avaliar_titles h2,
   .avaliarRedacoes_titles h2 {
     font-size: 18px;
+    padding-inline: 12px;
   }
-  .avaliarRedacoes_title {
-    grid-template-columns: 40px 180px 100px 100px 100px 140px;
+  .avaliarRedacoes_titles {
+    grid-template-columns: 30px 1.5fr repeat(3, 1fr) 1.3fr;
+    gap: 10px;
+    padding-left: 6px;
   }
 }
 
@@ -129,13 +139,19 @@
   .avaliar_itens {
     width: 600px;
   }
-  .avaliar_titles h2 {
+  .avaliar_titles h2,
+  .avaliarRedacoes_titles h2 {
     font-size: 16px;
   }
   .avaliar_titles {
     grid-template-columns: 30px 180px 90px 90px 150px;
     padding-inline: 6px;
     gap: 4px;
+  }
+  .avaliarRedacoes_titles {
+    grid-template-columns: 20px 120px 100px 100px 100px 110px;
+    gap: 4px;
+    padding-inline: 4px;
   }
 }
 
@@ -148,6 +164,14 @@
     padding-inline: 2px;
     gap: 2px;
   }
+  .avaliarRedacoes_titles {
+    grid-template-columns: 20px 110px 80px 80px 80px 110px;
+    gap: 2px;
+    padding-inline: 2px;
+  }
+  .avaliarRedacoes_titles h2 {
+    font-size: 14px;
+  }
 }
 
 @media (max-width: 550px) {
@@ -159,6 +183,14 @@
   }
   .avaliar_titles h2 {
     font-size: 14px;
+  }
+  .avaliarRedacoes_titles {
+    grid-template-columns: 10px 100px 70px 70px 70px 100px;
+    gap: 0px;
+    padding-inline: 0px;
+  }
+  .avaliarRedacoes_titles h2 {
+    font-size: 12px;
   }
 }
 
@@ -202,8 +234,8 @@
 
 .avaliarRedacoes_status {
   display: grid;
-  grid-template-columns: 70px 2fr repeat(4, 1fr);
-  align-items: center;
+  grid-template-columns: 60px 2fr repeat(4, 1fr);
+  align-items: flex-start;
   gap: 24px;
   place-items: center;
   padding-left: 8px;
@@ -242,16 +274,33 @@
   .avaliar_status {
     gap: 0px;
   }
+  .avaliarRedacoes_status {
+    gap: 18px;
+  }
+  .avaliarRedacoes_status p {
+    padding-inline: 12px;
+  }
+}
+
+@media (max-width: 1130px) {
+  .avaliarRedacoes_status {
+    gap: 8px;
+    grid-template-columns: 30px 1.2fr repeat(3, 1fr) 1.2fr;
+  }
 }
 
 @media (max-width: 900px) {
-  .avaliar_status,
-  .avaliar_titles {
+  .avaliar_status {
     grid-template-columns: 30px 2fr repeat(3, 1fr);
     padding-right: 12px;
   }
-  .avaliar_status p {
+  .avaliar_status p,
+  .avaliarRedacoes_status p {
     font-size: 14px;
+  }
+  .avaliarRedacoes_status {
+    gap: 8px;
+    grid-template-columns: 30px 1.5fr repeat(3, 1fr) 1.3fr;
   }
 }
 
@@ -264,6 +313,10 @@
   .avaliar_status p {
     font-size: 12px;
   }
+  .avaliarRedacoes_status {
+    gap: 8px;
+    grid-template-columns: 30px 1.5fr repeat(3, 1fr) 1.3fr;
+  }
 }
 
 @media (max-width: 620px) {
@@ -272,9 +325,20 @@
     gap: 2px;
     padding-inline: 2px;
   }
-  .avaliar_status input {
+  .avaliar_status input,
+  .avaliarRedacoes_status input {
     width: 16px;
     height: 16px;
+  }
+  .avaliarRedacoes_status {
+    grid-template-columns: 20px 120px 70px 80px 90px 90px;
+    gap: 2px;
+    padding-inline: 6px;
+    align-items: flex-start;
+  }
+  .avaliarRedacoes_status p {
+    font-size: 12px;
+    padding-inline: 6px;
   }
 }
 
@@ -282,7 +346,15 @@
   .avaliar_status {
     grid-template-columns: 30px 100px 90px 80px 100px;
   }
-  .avaliar_status p {
+  .avaliar_status p,
+  .avaliarRedacoes_status p {
     font-size: 10px;
+  }
+  .avaliarRedacoes_status {
+    grid-template-columns: 10px 90px 70px 65px 80px 70px;
+    gap: 2px;
+  }
+  .avaliarRedacoes_status p {
+    padding-inline: 4px;
   }
 }

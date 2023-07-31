@@ -78,3 +78,9 @@
     font-size: 1.125rem;
   }
 }
+
+@media (max-width: 800px) {
+  .tableContent {
+    width: 440px;
+  }
+}

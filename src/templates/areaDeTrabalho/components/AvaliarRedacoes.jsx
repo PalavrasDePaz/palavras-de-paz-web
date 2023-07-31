@@ -34,6 +34,17 @@ export default function AvaliarRedacoes() {
           </div>
           <p className={styles.avaliarRedacoes_status_p5}>{avaliar}</p>
         </div>
+        <div className={styles.avaliarRedacoes_status}>
+          <input type="checkbox" />
+          <p>{turma}</p>
+          <p>{reservado}</p>
+          <p>{concluido}</p>
+          <div className={styles.avaliarRedacoes_status_div}>
+            <Image src={DownloadImage} alt="icone de download" />
+            <p>Download</p>
+          </div>
+          <p className={styles.avaliarRedacoes_status_p5}>{avaliar}</p>
+        </div>
       </div>
     </section>
   );

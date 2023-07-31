@@ -4,9 +4,6 @@ import useGetUser from "../../hooks/useGetUser";
 
 import AvaliarCadernos from "./components/AvaliarCadernos";
 import AvaliarRedacoes from "./components/AvaliarRedacoes";
-import DadosPresenca from "./components/DadosPresenca";
-import DetalhesCadastro from "./components/DetalhesCadastro";
-import DetalhesPresenca from "./components/DetalhesPresenca";
 import HeaderAreaDeTrabalho from "./components/HeaderAreaDeTrabalho";
 import PrimeiroBox from "./components/PrimeiroBox";
 import WorkshopsAssistidos from "./components/WorkshopsAssistidos";
@@ -36,9 +33,6 @@ export default function AreaDeTrabalhoTemplate() {
         </section>
         <AvaliarCadernos idvol={idvol} />
         <AvaliarRedacoes />
-        <DadosPresenca />
-        <DetalhesPresenca />
-        <DetalhesCadastro />
       </div>
     </>
   );
