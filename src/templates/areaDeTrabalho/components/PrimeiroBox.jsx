@@ -13,8 +13,10 @@ export default function PrimeiroBox() {
           <button className={styles.main_container_button}>Clique aqui</button>
         </Link>
       </div>
-      <h3>Relatórios de leitura avaliados:</h3>
-      <h3>Cadernos avaliados:</h3>
+      <h3 className={styles.main_container_h3}>
+        Relatórios de leitura avaliados:
+      </h3>
+      <h3 className={styles.main_container_h3}>Cadernos avaliados:</h3>
     </div>
   );
 }

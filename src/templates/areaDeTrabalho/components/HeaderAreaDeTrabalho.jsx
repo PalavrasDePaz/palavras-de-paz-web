@@ -31,7 +31,7 @@ const HeaderAreaDeTrabalho = () => {
         height="100px"
       />
       <div className={styles.headerBtnLogin}>
-        <div>Foto de Perfil</div>
+        <div>Perfil</div>
         <Image
           src={Login}
           alt="Botão de acesso ao login com imagem de uma seta dentro de uma porta"

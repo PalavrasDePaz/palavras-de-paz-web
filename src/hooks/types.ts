@@ -3,3 +3,8 @@ export type User = {
   name: string;
   idvol: number;
 };
+
+export type Notebook = {
+  studentName: string;
+  reservationDate: string;
+};

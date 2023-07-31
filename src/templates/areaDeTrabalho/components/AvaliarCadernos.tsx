@@ -4,7 +4,7 @@ import Image from "next/image";
 import DownloadImage from "../../../../public/static/images/icons/download.svg";
 import useGetNotebooks from "../../../hooks/useGetNotebooks";
 
-import styles from "../styles/AreaDeTrabalho.module.css";
+import styles from "../styles/Avaliar.module.css";
 
 type AvaliarCadernosProps = {
   idvol: number;
@@ -13,47 +13,38 @@ type AvaliarCadernosProps = {
 const AvaliarCadernos = ({ idvol }: AvaliarCadernosProps) => {
   const { data: notebooks } = useGetNotebooks(idvol);
 
-  console.log(notebooks);
-
-  const nome = "Ricardo";
-  const reservado = "Reservado";
+  const naoReservado = "Não reservado";
   const preencher = "Preencher Formulário";
-  const download = "Download";
-
-  // TODO: separar header das linhas, para poder dar um notebooks.map pra preencher a tabela.
 
   return (
-    <section className={styles.avaliarCadernos_section}>
+    <section className={styles.avaliar_section}>
       <h1>Avaliar Cadernos</h1>
-      <div className={styles.avaliarCadernos_itens}>
-        <div className={styles.avaliarCadernos_opcoes}>
-          <input type="checkbox" />
+      <div className={styles.avaliar_itens}>
+        <div className={styles.avaliar_titles}>
+          <span />
+          <h2>Aluno</h2>
+          <h2>Reservado em</h2>
+          <h2>Baixar Caderno</h2>
+          <h2>Formulário de avaliação</h2>
         </div>
-      </div>
-      <div className={styles.avaliarCadernos_itens}>
-        <h2>Aluno</h2>
-        <div className={styles.avaliarCadernos_opcoes}>
-          <div>{nome}</div>
-        </div>
-      </div>
-      <div className={styles.avaliarCadernos_itens}>
-        <h2>Reservado em</h2>
-        <div className={styles.avaliarCadernos_opcoes}>
-          <div>{reservado}</div>
-        </div>
-      </div>
-      <div className={styles.avaliarCadernos_itens}>
-        <h2>Baixar Caderno</h2>
-        <div className={styles.avaliarCadernos_baixar}>
-          <Image src={DownloadImage} alt="icone de download" />
-          <div>{download}</div>
-        </div>
-      </div>
-      <div className={styles.avaliarCadernos_itens}>
-        <h2>Formulário de avaliação</h2>
-        <div className={styles.avaliarCadernos_opcoes}>
-          <div>{preencher}</div>
-        </div>
+        {notebooks &&
+          notebooks.map(({ studentName, reservationDate }) => (
+            <div key={studentName} className={styles.avaliar_status}>
+              <input type="checkbox" />
+              <p className={styles.avaliar_status_p1}>{studentName}</p>
+              {reservationDate === null ? (
+                <p>{naoReservado}</p>
+              ) : (
+                <p>{reservationDate}</p>
+              )}
+              <div className={styles.avaliar_status_div}>
+                <Image src={DownloadImage} alt="icone de download" />
+                <p>Download</p>
+              </div>
+              <p className={styles.avaliar_status_p5}>{preencher}</p>
+            </div>
+          ))}
+        ;
       </div>
     </section>
   );
