@@ -310,11 +310,3 @@
 .calendarioDiv {
   grid-column: 1 / -1;
 }
-
-.workshopListItem {
-  display: flex;
-}
-
-.workshopSubject {
-  margin-left: 1rem;
-}
