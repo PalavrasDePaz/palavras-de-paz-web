@@ -59,8 +59,9 @@
   padding-top: 4rem;
   padding-bottom: 8rem;
   grid-column: 1 / -1;
-  place-self: center;
   color: #444444;
+  place-self: center;
+  text-align: center;
 }
 
 .mainContainer {

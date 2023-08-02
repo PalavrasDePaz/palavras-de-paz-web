@@ -25,7 +25,7 @@ export default function AreaDeTrabalhoTemplate() {
       <div className={styles.containerSections}>
         <section className={styles.main_container_section}>
           <div className={styles.sectionTitle}>
-            <h1>Bem vindo, {user?.name}</h1>
+            <h1>Bem vindo, {user?.name} !</h1>
             <p>Aqui estão as suas atividades</p>
           </div>
           <PrimeiroBox />

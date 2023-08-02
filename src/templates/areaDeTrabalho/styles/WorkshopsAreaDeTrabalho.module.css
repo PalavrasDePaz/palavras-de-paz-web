@@ -5,6 +5,7 @@
   flex-direction: column;
   border-radius: 15px;
   overflow-y: scroll;
+  position: relative;
 }
 
 .tableContent::-webkit-scrollbar {
@@ -25,6 +26,7 @@
 
 .tableTitles {
   display: flex;
+  gap: 16px;
   background-color: #21aa85;
   border-top-right-radius: 15px;
   border-top-left-radius: 15px;
@@ -34,7 +36,7 @@
   margin: 0;
   background-color: #ffffff;
   color: #21aa85;
-  padding: 8px 30px;
+  padding: 8px 48px;
   font-size: 24px;
   line-height: 32px;
   font-weight: semibold;
@@ -47,40 +49,43 @@
   font-size: 24px;
   line-height: 32px;
   font-weight: semibold;
-  padding: 8px 24px;
+  padding: 8px 30px;
   text-align: center;
 }
 
 .tableDate {
-  gap: 12px;
   font-size: 16px;
   font-weight: 400;
   text-align: center;
   padding-inline: 16px;
-  border: 1px solid #cdcdcd;
+}
+
+.workshopListItem {
+  display: flex;
+  gap: 36px;
+  align-content: center;
+  height: 32px;
+  border-bottom: 1px solid #cdcdcd;
+}
+
+.workshopSubject {
+  margin-left: 1rem;
 }
 
 @media (max-width: 1000px) {
   .tableTitle1 {
-    padding-inline: 24px;
+    padding-right: 24px;
   }
   .tableTitle2 {
+    padding-inline: 0px;
+  }
+  .workshopListItem {
+    gap: 10px;
+  }
+}
+
+@media (max-width: 800px) {
+  .tableTitle2 {
     padding-inline: 10px;
-  }
-  .tableDate {
-    gap: 6px;
-  }
-}
-
-@media (max-width: 800px) {
-  .tableDate {
-    gap: 1rem;
-    font-size: 1.125rem;
-  }
-}
-
-@media (max-width: 800px) {
-  .tableContent {
-    width: 440px;
   }
 }
