@@ -44,7 +44,6 @@ const AvaliarCadernos = ({ idvol }: AvaliarCadernosProps) => {
               <p className={styles.avaliar_status_p5}>{preencher}</p>
             </div>
           ))}
-        ;
       </div>
     </section>
   );
