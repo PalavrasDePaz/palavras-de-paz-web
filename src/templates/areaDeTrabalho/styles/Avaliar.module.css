@@ -214,10 +214,6 @@
   text-transform: uppercase;
 }
 
-.avaliar_status_p5 {
-  color: #cdcdcd;
-}
-
 .avaliar_status_div {
   display: flex;
   align-items: flex-start;
@@ -225,8 +221,14 @@
   gap: 4px;
 }
 
-.avaliar_status_div p {
+.avaliar_status_div_p,
+.avaliar_status_p5 {
   color: #cdcdcd;
+}
+
+.avaliar_status_div_p_active,
+.avaliar_status_p5_active {
+  color: #707070;
 }
 
 .avaliarRedacoes_status {

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import Image from "next/image";
 
 import DownloadImage from "../../../../public/static/images/icons/download.svg";
@@ -12,14 +12,6 @@ type AvaliarCadernosProps = {
 
 const AvaliarCadernos = ({ idvol }: AvaliarCadernosProps) => {
   const { data: notebooks } = useGetNotebooks(idvol);
-  const [reservations, setReservations] = useState({});
-
-  function handleReservationToggle(notebookId) {
-    setReservations((prevReservations) => ({
-      ...prevReservations,
-      [notebookId]: new Date().toLocaleDateString(),
-    }));
-  }
 
   const naoReservado = "Não reservado";
   const preencher = "Preencher Formulário";
@@ -36,42 +28,20 @@ const AvaliarCadernos = ({ idvol }: AvaliarCadernosProps) => {
           <h2>Formulário de avaliação</h2>
         </div>
         {notebooks &&
-          notebooks.map(({ studentName, reservationDate, notebookId }) => (
+          notebooks.map(({ studentName, reservationDate }) => (
             <div key={studentName} className={styles.avaliar_status}>
-              <input
-                type="checkbox"
-                onChange={() => handleReservationToggle(notebookId)}
-                checked={!!reservations[notebookId]}
-              />
+              <input type="checkbox" />
               <p className={styles.avaliar_status_p1}>{studentName}</p>
-              {reservations[notebookId] ? (
-                <p>{reservations[notebookId].toLocaleString()}</p>
-              ) : (
+              {reservationDate === null ? (
                 <p>{naoReservado}</p>
+              ) : (
+                <p>{reservationDate}</p>
               )}
               <div className={styles.avaliar_status_div}>
                 <Image src={DownloadImage} alt="icone de download" />
-                <p
-                  className={`${styles.avaliar_status_div_p} 
-                  ${
-                    reservations[notebookId]
-                      ? styles.avaliar_status_div_p_active
-                      : ""
-                  }`}
-                >
-                  Download
-                </p>
+                <p>Download</p>
               </div>
-              <p
-                className={`${styles.avaliar_status_p5}
-                ${
-                  reservations[notebookId]
-                    ? styles.avaliar_status_p5_active
-                    : ""
-                }`}
-              >
-                {preencher}
-              </p>
+              <p className={styles.avaliar_status_p5}>{preencher}</p>
             </div>
           ))}
       </div>

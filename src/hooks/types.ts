@@ -7,4 +7,5 @@ export type User = {
 export type Notebook = {
   studentName: string;
   reservationDate: string;
+  notebookId: number;
 };
