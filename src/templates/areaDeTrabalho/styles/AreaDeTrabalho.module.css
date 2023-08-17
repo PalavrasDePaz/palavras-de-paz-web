@@ -10,7 +10,18 @@
   color: #707070;
 }
 
+.headerFixed {
+  position: fixed;
+  padding-inline: 1rem;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 1);
+  z-index: 1000;
+}
+
 .headerContainer {
+  max-width: 100%;
   background-color: #ffffff;
   display: flex;
   place-items: center;
@@ -46,10 +57,77 @@
   gap: 32px;
 }
 
+.headerModal {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  background-color: #21aa85;
+  border-radius: 10px;
+  padding: 1rem;
+  width: 400px;
+  box-shadow: 0 0 0 10px #707070;
+  top: 30px;
+  right: 200px;
+  position: fixed;
+  z-index: 1000;
+  animation: modal 0.3s forwards;
+}
+
+@keyframes modal {
+  from {
+    opacity: 0;
+    transform: translate3D(0, -30px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.openModal {
+  border: 1px solid #707070;
+  background-color: #21aa85;
+  color: #fff;
+  border-radius: 5px;
+  padding: 0.5rem 1rem;
+}
+
+.closeModal {
+  display: grid;
+  place-self: end;
+  padding-inline: 0.65rem;
+  border-radius: 5px;
+  border: 1px solid #bde7dc;
+  color: #444444;
+  box-shadow: 0 4px 4px 0 #444444;
+}
+
+.sendMessage {
+  padding-block: 0.3rem;
+  border-radius: 5px;
+  border: 1px solid #bde7dc;
+  color: #444444;
+}
+
+.headerModal label {
+  font-size: 1.25rem;
+  color: #fff;
+}
+
+.headerModal textarea,
+.headerModal input {
+  border-radius: 5px;
+  border: 1px solid #bde7dc;
+  background-color: aliceblue;
+  color: #707070;
+  padding: 0.65rem;
+}
+
 .main_container_section {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  margin: 0 auto;
+  margin-inline: auto;
+  margin-block-start: 10rem;
   box-sizing: border-box;
   gap: 2rem;
   max-width: 1300px;
@@ -132,7 +210,6 @@
   font-size: 20px;
   line-height: 24px;
   font-weight: 400;
-  cursor: pointer;
 }
 
 @media (max-width: 1000px) {
