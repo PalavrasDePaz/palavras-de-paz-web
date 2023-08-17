@@ -5,7 +5,7 @@ import IconeLoading from "../../../../public/static/images/icons/iconeLoading.sv
 
 import BtnDados from "./BtnDados";
 
-import Styles from "../styles/AreaDeTrabalho.module.css";
+import Styles from "../styles/Dados.module.css";
 
 export default function DetalhesPresenca() {
   return (
@@ -18,11 +18,11 @@ export default function DetalhesPresenca() {
             <br />
             dos voluntários
           </h2>
-          <div className={Styles.calendarioDiv}>
-            <span>Selecione uma data</span>
-            <div>Calendário</div>
-          </div>
         </div>
+      </div>
+      <div className={Styles.calendarioDiv}>
+        <span>Selecione uma data</span>
+        <div>calendário</div>
       </div>
       <div className={Styles.dadosSecondDiv}>
         <a href="./">Visualizar na web</a>
