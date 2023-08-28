@@ -12,7 +12,6 @@ type AvaliarRedacoesProps = {
 
 export default function AvaliarRedacoes({ idvol }: AvaliarRedacoesProps) {
   const { data: essays } = useGetEssays(idvol);
-
   return (
     <section className={styles.avaliar_section}>
       <h1>Avaliar Redações</h1>
@@ -27,7 +26,12 @@ export default function AvaliarRedacoes({ idvol }: AvaliarRedacoesProps) {
         </div>
         {essays &&
           essays.map(({ idclass, place }) => (
-            <ItemTurmaAvaliacao idclass={idclass} place={place} key={idclass} />
+            <ItemTurmaAvaliacao
+              idvol={idvol}
+              idclass={idclass}
+              place={place}
+              key={idclass}
+            />
           ))}
       </div>
     </section>
