@@ -10,3 +10,11 @@ export type Notebook = {
   reservationDate: string;
   notebookId: string;
 };
+
+export type Essays = {
+  idclass: number;
+  place: string;
+  dateReserved: string;
+  dateConcluded: string;
+  folderLink: string;
+};

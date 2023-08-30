@@ -47,7 +47,8 @@ export default function AreaDeTrabalhoTemplate() {
           <WorkshopsAssistidos idvol={idvol} />
         </section>
         <AvaliarCadernos idvol={idvol} />
-        <AvaliarRedacoes />
+        <AvaliarRedacoes idvol={idvol} />
+
         <DadosPresenca />
         <DetalhesPresenca />
         <DetalhesCadastro />
