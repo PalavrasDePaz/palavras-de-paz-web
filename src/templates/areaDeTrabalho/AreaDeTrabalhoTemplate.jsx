@@ -7,6 +7,7 @@ import AvaliarRedacoes from "./components/AvaliarRedacoes";
 import DadosPresenca from "./components/DadosPresenca";
 import DetalhesCadastro from "./components/DetalhesCadastro";
 import DetalhesPresenca from "./components/DetalhesPresenca";
+import GestaoDeRelatorios from "./components/GestaoDeRelatorios";
 import HeaderAreaDeTrabalho from "./components/HeaderAreaDeTrabalho";
 import PrimeiroBox from "./components/PrimeiroBox";
 import WorkshopsAssistidos from "./components/WorkshopsAssistidos";
@@ -46,10 +47,12 @@ export default function AreaDeTrabalhoTemplate() {
           <WorkshopsAssistidos idvol={idvol} />
         </section>
         <AvaliarCadernos idvol={idvol} />
-        <AvaliarRedacoes />
+        <AvaliarRedacoes idvol={idvol} />
+
         <DadosPresenca />
         <DetalhesPresenca />
         <DetalhesCadastro />
+        <GestaoDeRelatorios />
       </div>
     </>
   );

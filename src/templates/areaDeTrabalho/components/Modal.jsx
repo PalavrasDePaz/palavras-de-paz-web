@@ -57,6 +57,7 @@ const Modal = ({ isOpen, onClose }) => {
       <button className={styles.closeModal} onClick={onClose}>
         X
       </button>
+
       <label htmlFor="nome" {...register("nome")}>
         Nome
       </label>
@@ -67,6 +68,7 @@ const Modal = ({ isOpen, onClose }) => {
         {...register("name")}
       />
       <ErrorMessage showError={errors.name} style={styles.inputError} />
+        
       <label htmlFor="mensagem">Mensagem</label>
       <textarea
         type="text"
