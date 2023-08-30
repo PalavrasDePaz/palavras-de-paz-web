@@ -11,7 +11,7 @@ export default function areaDeTrabalho() {
 
   useEffect(() => {
     if (!user) {
-      router.push("/login");
+      router.push("/");
     }
   }, [user]);
 

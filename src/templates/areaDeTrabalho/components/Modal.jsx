@@ -12,9 +12,7 @@ const Modal = ({ isOpen, onClose }) => {
         X
       </button>
       <label htmlFor="nome">Nome</label>
-      <input type="text" id="nome" />
-      <label htmlFor="email">Email</label>
-      <input type="email" id="email" placeholder="example@email.com" />
+      <input type="text" id="nome" placeholder="Digite seu nome" />
       <label htmlFor="mensagem">Mensagem</label>
       <textarea
         type="text"
