@@ -5,7 +5,7 @@ import Grafico from "../../../../public/static/images/icons/grafico.svg";
 
 import BtnDados from "./BtnDados";
 
-import Styles from "../styles/AreaDeTrabalho.module.css";
+import Styles from "../styles/Dados.module.css";
 
 export default function DadosPresenca() {
   return (

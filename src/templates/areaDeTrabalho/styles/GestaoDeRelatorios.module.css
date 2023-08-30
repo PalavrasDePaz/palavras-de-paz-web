@@ -1,0 +1,111 @@
+.gestao_section {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  padding: 4rem 6.5rem;
+  border-radius: 15px;
+  gap: 1.25rem;
+  text-align: center;
+  margin: 0 auto;
+  max-width: 1300px;
+  border-radius: 15px;
+  background: var(--verde-escuro, #21aa85);
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  box-sizing: border-box;
+}
+
+.gestao_section h2 {
+  grid-column: 1 / -1;
+  padding-bottom: 2rem;
+  font-family: Open Sans;
+  font-size: 48px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  letter-spacing: 0.96px;
+  color: #fff;
+}
+
+.gestao_section p {
+  font-family: Open Sans;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  letter-spacing: 0.24px;
+  color: hsla(0, 0%, 44%, 1);
+}
+
+.gestao_section h3 {
+  font-family: Open Sans;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  letter-spacing: 0.48px;
+  color: #21aa85;
+}
+
+.gestao_section input {
+  max-width: 14rem;
+  border-radius: 25px;
+  color: #cdcdcd;
+  text-align: center;
+  font-family: Open Sans;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  letter-spacing: 0.48px;
+}
+
+.gestao_div,
+.gestao_div2,
+.gestao_div_editar {
+  padding: 4rem 2rem;
+  background-color: #fff;
+  border-radius: 15px;
+}
+
+.gestao_div {
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+}
+
+.gestao_div2 {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.gestao_div_baixar {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.gestao_div2 .gestao_div_baixar {
+  gap: 2.8rem;
+}
+
+.gestao_div_editar {
+  grid-column: 1 / -1;
+  text-align: left;
+  display: grid;
+  gap: 1rem;
+}
+
+.gestao_div_editar p {
+  margin: 0;
+  padding: 0;
+}
+
+.gestao_div_editar h2 {
+  color: #21aa85;
+}
+
+.gestao_div_editar button {
+  max-width: 10rem;
+  border-radius: 25px;
+  background-color: #21aa85;
+}
