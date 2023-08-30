@@ -43,7 +43,7 @@ export default function AreaDeTrabalhoTemplate() {
             </h1>
             <p>Aqui estão as suas atividades</p>
           </div>
-          <PrimeiroBox />
+          <PrimeiroBox idVol={idvol} />
           <WorkshopsAssistidos idvol={idvol} />
         </section>
         <AvaliarCadernos idvol={idvol} />
