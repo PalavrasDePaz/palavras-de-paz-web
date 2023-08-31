@@ -253,8 +253,17 @@
   padding-inline: 16px;
 }
 
-.avaliarRedacoes_status_p5 {
+.avaliarRedacoes_status_button {
+  all: unset;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  cursor: pointer;
+  color: inherit;
+}
+.avaliarRedacoes_status_button:disabled {
   color: #cdcdcd;
+  cursor: not-allowed;
 }
 
 .avaliarRedacoes_status_div {
