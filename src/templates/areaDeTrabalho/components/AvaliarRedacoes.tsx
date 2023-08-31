@@ -25,12 +25,11 @@ export default function AvaliarRedacoes({ idvol }: AvaliarRedacoesProps) {
           <h2>Formulário de avaliação</h2>
         </div>
         {essays &&
-          essays.map(({ idclass, place }) => (
+          essays.map((essay) => (
             <ItemTurmaAvaliacao
+              essay={essay}
               idvol={idvol}
-              idclass={idclass}
-              place={place}
-              key={idclass}
+              key={essay.idclass}
             />
           ))}
       </div>
