@@ -14,6 +14,13 @@ type AvaliarRedacaoProps = {
 
 function ItemTurmaAvaliacao({ essay, idvol }: AvaliarRedacaoProps) {
   const { idclass, place, dateReserved } = essay;
+
+  // Faz a conversão de uma data no formato yyyy-mm-dd para dd/mm/yyyy
+  const convertDateFromENtoBR = (date: string) =>
+    date.split("-").reverse().join("/");
+
+  const formattedDate = convertDateFromENtoBR(dateReserved);
+
   const putReservationData = async (volunteerId: number, classId: number) => {
     const reserveData = { idvol: volunteerId, idclass: classId };
     const response = await api.put("/book-club-class/reservation", reserveData);
@@ -42,7 +49,7 @@ function ItemTurmaAvaliacao({ essay, idvol }: AvaliarRedacaoProps) {
         onChange={() => handleReservation(idvol, idclass)}
       />
       <p>{`${idclass}-${place}`}</p>
-      <p>{reserved ? dateReserved : "Não Reservado"}</p>
+      <p>{reserved ? formattedDate : "Não Reservado"}</p>
       <p>{naoReservado}</p>
       <div className={styles.avaliarRedacoes_status_div}>
         <Image src={DownloadImage} alt="icone de download" />
