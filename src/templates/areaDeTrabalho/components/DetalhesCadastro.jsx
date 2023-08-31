@@ -5,7 +5,7 @@ import Grafico2 from "../../../../public/static/images/icons/grafico2.svg";
 
 import BtnDados from "./BtnDados";
 
-import Styles from "../styles/AreaDeTrabalho.module.css";
+import Styles from "../styles/Dados.module.css";
 
 export default function DetalhesCadastro() {
   return (
@@ -17,6 +17,10 @@ export default function DetalhesCadastro() {
           <br />
           dos voluntários
         </h2>
+      </div>
+      <div className={Styles.calendarioDiv}>
+        <span>Selecione uma data</span>
+        <div> Calendário</div>
       </div>
       <div className={Styles.dadosSecondDiv}>
         <a href="./">Visualizar na web</a>
