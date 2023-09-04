@@ -63,9 +63,8 @@ function FormDePresenca() {
         <form className={styles.formPresenca} onSubmit={onSubmit}>
           <p className={styles.formParagraph}>{INTRO_TEXT}</p>
           {SELECT_QUESTIONS.map(({ fieldName, question, options }) => (
-            <>
+            <div key={fieldName}>
               <Selectable
-                key={fieldName}
                 fieldName={fieldName}
                 question={question}
                 options={options.map((option) => ({
@@ -78,18 +77,17 @@ function FormDePresenca() {
                 showError={errors[fieldName]}
                 style={styles.errors}
               />
-            </>
+            </div>
           ))}
           {OPEN_TEXT_FIELDS.map(({ label, text }) => (
-            <>
+            <div key={label}>
               <TextField
-                key={label}
                 fieldName={label}
                 question={text}
                 register={register}
               />
               <ErrorMessage showError={errors[label]} style={styles.errors} />
-            </>
+            </div>
           ))}
           <div className={styles.buttonsRow}>
             <button

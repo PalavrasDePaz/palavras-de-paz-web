@@ -28,8 +28,8 @@ const AvaliarCadernos = ({ idvol }: AvaliarCadernosProps) => {
           <h2>Formulário de avaliação</h2>
         </div>
         {notebooks &&
-          notebooks.map(({ studentName, reservationDate }) => (
-            <div key={studentName} className={styles.avaliar_status}>
+          notebooks.map(({ studentName, reservationDate, studentId }) => (
+            <div key={studentId} className={styles.avaliar_status}>
               <input type="checkbox" />
               <p className={styles.avaliar_status_p1}>{studentName}</p>
               {reservationDate === null ? (
@@ -39,12 +39,21 @@ const AvaliarCadernos = ({ idvol }: AvaliarCadernosProps) => {
               )}
               <div className={styles.avaliar_status_div}>
                 <Image src={DownloadImage} alt="icone de download" />
-                <p>Download</p>
+                <p
+                  className={`${styles.avaliar_status_div_p} 
+                  ${reservationDate ? styles.avaliar_status_div_p_active : ""}`}
+                >
+                  Download
+                </p>
               </div>
-              <p className={styles.avaliar_status_p5}>{preencher}</p>
+              <p
+                className={`${styles.avaliar_status_p5}
+                ${reservationDate ? styles.avaliar_status_p5_active : ""}`}
+              >
+                {preencher}
+              </p>
             </div>
           ))}
-        ;
       </div>
     </section>
   );
