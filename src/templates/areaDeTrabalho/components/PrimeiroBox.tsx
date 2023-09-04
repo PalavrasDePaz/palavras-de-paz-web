@@ -1,8 +1,7 @@
 import React from "react";
 import Link from "next/link";
 
-import useGetEssaysCount from "../../../hooks/useGetEssaysCount";
-import useGetNotebooksCount from "../../../hooks/useGetNotebookCount";
+import useGetNotebooksAndEssaysCount from "../../../hooks/useGetNotebooksAndEssaysCount";
 
 import styles from "../styles/AreaDeTrabalho.module.css";
 
@@ -11,9 +10,15 @@ interface IIdVol {
 }
 
 export default function PrimeiroBox({ idVol }: IIdVol) {
-  const { data: notebooksCount } = useGetNotebooksCount(idVol);
+  const { data: notebooksCount } = useGetNotebooksAndEssaysCount(
+    idVol,
+    "notebooks"
+  );
 
-  const { data: essaysCount } = useGetEssaysCount(idVol);
+  const { data: essaysCount } = useGetNotebooksAndEssaysCount(
+    idVol,
+    "book-club-class"
+  );
 
   return (
     <div className={styles.mainContainer}>
