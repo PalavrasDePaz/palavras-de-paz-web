@@ -1,6 +1,7 @@
 import React from "react";
 import Link from "next/link";
 
+import useGetEssaysCount from "../../../hooks/useGetEssaysCount";
 import useGetNotebooksCount from "../../../hooks/useGetNotebookCount";
 
 import styles from "../styles/AreaDeTrabalho.module.css";
@@ -11,6 +12,9 @@ interface IIdVol {
 
 export default function PrimeiroBox({ idVol }: IIdVol) {
   const { data: notebooksCount } = useGetNotebooksCount(idVol);
+
+  const { data: essaysCount } = useGetEssaysCount(idVol);
+
   return (
     <div className={styles.mainContainer}>
       <div className={styles.main_container_div}>
@@ -21,7 +25,7 @@ export default function PrimeiroBox({ idVol }: IIdVol) {
         </Link>
       </div>
       <h3 className={styles.main_container_h3}>
-        Relatórios de leitura avaliados:
+        Relatórios de leitura avaliados: {essaysCount && essaysCount.count}
       </h3>
       <h3 className={styles.main_container_h3}>
         Cadernos avaliados: {notebooksCount?.count}
