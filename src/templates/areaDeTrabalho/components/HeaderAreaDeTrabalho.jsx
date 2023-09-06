@@ -29,7 +29,7 @@ const HeaderAreaDeTrabalho = () => {
     localStorage.removeItem(PALAVRAS_DE_PAZ_TOKEN);
     queryClient.setQueryData(["user"], null);
     queryClient.invalidateQueries("user");
-    router.push("/login");
+    router.push("/");
   };
 
   return (
@@ -44,7 +44,7 @@ const HeaderAreaDeTrabalho = () => {
         />
         <div className={styles.headerBtnLogin}>
           <button onClick={openModal} className={styles.openModal}>
-            Dúvidas ?
+            Dúvidas?
           </button>
           <Modal isOpen={isModalOpen} onClose={closeModal} />
           <Image
