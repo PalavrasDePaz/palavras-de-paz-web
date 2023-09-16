@@ -38,6 +38,7 @@
     "react-hook-form": "^7.45.1",
     "react-icons": "^4.8.0",
     "react-phone-number-input": "^3.2.23",
+    "react-router-dom": "^6.16.0",
     "styled-components": "^5.3.6",
     "swiper": "^8.4.4",
     "validator": "^13.9.0",
