@@ -14,7 +14,12 @@ import styles from "./styles/LoginTemplate.style.module.css";
 
 type TokenInfo = {
   email: string;
+  exp: number;
 };
+
+const getIsTokenExpired = (expDate: number) =>
+  // eslint-disable-next-line no-magic-numbers
+  new Date() > new Date(expDate * 1000);
 
 const LoginTemplate = () => {
   const [userEmail, setUserEmail] = useState("");
@@ -22,8 +27,13 @@ const LoginTemplate = () => {
   useEffect(() => {
     const token = localStorage.getItem(PALAVRAS_DE_PAZ_TOKEN);
     if (token) {
-      const { email } = jwtDecode(token) as TokenInfo;
-      setUserEmail(email);
+      const { email, exp } = jwtDecode(token) as TokenInfo;
+      const isTokenExpired = getIsTokenExpired(exp);
+      if (isTokenExpired) {
+        localStorage.removeItem(PALAVRAS_DE_PAZ_TOKEN);
+      } else {
+        setUserEmail(email);
+      }
     }
   }, []);
 
