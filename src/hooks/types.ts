@@ -8,7 +8,7 @@ export type Notebook = {
   studentName: string;
   studentId: number;
   reservationDate: string;
-  notebookId: string;
+  notebookId: number;
 };
 
 export type Essays = {
