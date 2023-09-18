@@ -108,6 +108,16 @@
   color: #707070;
 }
 
+.button_download {
+  background-color: transparent;
+  border: none;
+  padding: 0;
+}
+
+.button_download img {
+  filter: invert(75%);
+}
+
 @media (max-width: 1300px) {
   .avaliar_itens {
     width: 1120px;

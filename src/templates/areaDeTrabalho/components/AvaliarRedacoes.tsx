@@ -4,7 +4,7 @@ import useGetEssays from "../../../hooks/useGetEssays";
 
 import ItemTurmaAvaliacao from "./ItemTurmaAvaliacao";
 
-import styles from "../styles/Avaliar.module.css";
+import styles from "../styles/AvaliarRedacoes.module.css";
 
 type AvaliarRedacoesProps = {
   idvol: number;
