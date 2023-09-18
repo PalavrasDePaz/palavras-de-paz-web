@@ -29,7 +29,7 @@ const HeaderAreaDeTrabalho = () => {
     localStorage.removeItem(PALAVRAS_DE_PAZ_TOKEN);
     queryClient.setQueryData(["user"], null);
     queryClient.invalidateQueries("user");
-    router.push("/");
+    router.push("/login");
   };
 
   return (

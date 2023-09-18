@@ -92,7 +92,8 @@
   grid-column: 1 / -1;
   text-align: left;
   display: grid;
-  gap: 1rem;
+  gap: 1.125rem;
+  padding-left: 6rem;
 }
 
 .gestao_div_editar p {
@@ -102,10 +103,61 @@
 
 .gestao_div_editar h2 {
   color: #21aa85;
+  font-size: 48px;
+  letter-spacing: 0.96px;
 }
 
 .gestao_div_editar button {
   max-width: 10rem;
   border-radius: 25px;
   background-color: #21aa85;
+}
+
+.btnGestao {
+  display: flex;
+  width: 146px;
+  height: 40px;
+  justify-content: center;
+  place-self: center;
+  padding: 0.5rem;
+  font-size: 18px;
+  border-radius: 20px;
+  background-color: hsla(164, 67%, 40%, 1);
+  border-color: hsla(164, 67%, 40%, 1);
+  color: hsla(0, 0%, 100%, 1);
+  cursor: pointer;
+  font-family: Open Sans;
+  font-size: 12px;
+  line-height: normal;
+}
+
+.btnGestaoAvancar {
+  display: flex;
+  width: 146px;
+  height: 40px;
+  justify-content: center;
+  padding: 0.5rem;
+  font-size: 18px;
+  border-radius: 20px;
+  background-color: hsla(164, 67%, 40%, 1);
+  border-color: hsla(164, 67%, 40%, 1);
+  color: hsla(0, 0%, 100%, 1);
+  cursor: pointer;
+  font-family: Open Sans;
+  font-size: 12px;
+  line-height: normal;
+}
+
+@media (max-width: 620px) {
+  .btnGestao {
+    padding: 16px 32px;
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 620px) {
+  .btnGestao {
+    padding: 16px;
+    font-size: 16px;
+  }
 }
