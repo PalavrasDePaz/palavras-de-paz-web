@@ -4,7 +4,7 @@ import Image from "next/image";
 import DownloadImage from "../../../../public/static/images/icons/download.svg";
 import { api } from "../../../api";
 
-import styles from "../styles/Avaliar.module.css";
+import styles from "../styles/AvaliarRedacoes.module.css";
 
 type ItemTurmaAvaliacaoProps = {
   idclass: number;
