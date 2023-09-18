@@ -5,7 +5,7 @@ import DownloadImage from "../../../../public/static/images/icons/download.svg";
 import getNotebooksDownload from "../../../helpers/getNotebookDownload";
 import useGetNotebooks from "../../../hooks/useGetNotebooks";
 
-import styles from "../styles/Avaliar.module.css";
+import styles from "../styles/AvaliarCadernos.module.css";
 
 type AvaliarCadernosProps = {
   idvol: number;
