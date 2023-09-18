@@ -39,7 +39,7 @@ export default function AreaDeTrabalhoTemplate() {
         <section className={styles.main_container_section}>
           <div className={styles.sectionTitle}>
             <h1>
-              Bem vindo, {firstName()} {user?.idvol}!
+              Bem vindo, {firstName()} {user?.idvol}
             </h1>
             <p>Aqui estão as suas atividades</p>
           </div>

@@ -18,7 +18,7 @@ const GestaoDeRelatorios = () => {
         <div className={styles.gestao_div_baixar}>
           <p>Visualizar na web</p>
           <span>ou</span>
-          <BtnGestao />
+          <BtnGestao text="Baixar" />
         </div>
       </div>
       <div className={styles.gestao_div2}>
@@ -30,7 +30,7 @@ const GestaoDeRelatorios = () => {
         <div className={styles.gestao_div_baixar}>
           <p />
           <span />
-          <button>Editar</button>
+          <BtnGestao text="Editar" />
         </div>
       </div>
       <div className={styles.gestao_div}>
@@ -42,14 +42,14 @@ const GestaoDeRelatorios = () => {
         <div className={styles.gestao_div_baixar}>
           <p>Visualizar na web</p>
           <span>ou</span>
-          <BtnGestao />
+          <BtnGestao text="Baixar" />
         </div>
       </div>
       <div className={styles.gestao_div_editar}>
-        <h2>Editar avaliação da turma</h2>
+        <h2>Editar avaliação de relatórios</h2>
         <p>Insira o número da turma que deseja editar</p>
         <input placeholder="0000" type="text" />
-        <button>Avançar</button>
+        <button className={styles.btnGestaoAvancar}>Avançar</button>
       </div>
     </section>
   );
