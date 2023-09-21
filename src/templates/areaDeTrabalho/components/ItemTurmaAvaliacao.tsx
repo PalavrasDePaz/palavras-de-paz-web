@@ -4,7 +4,7 @@ import Image from "next/image";
 import DownloadImage from "../../../../public/static/images/icons/download.svg";
 import { api } from "../../../api";
 
-import styles from "../styles/Avaliar.module.css";
+import styles from "../styles/AvaliarRedacoes.module.css";
 
 type ItemTurmaAvaliacaoProps = {
   idclass: number;
@@ -53,3 +53,28 @@ function ItemTurmaAvaliacao({
 }
 
 export default ItemTurmaAvaliacao;
+
+// {
+//   !reserved ? (
+//     <>
+//       <p>Não Reservado</p>
+//       <div className={styles.avaliarRedacoes_status_div}>
+//         <Image src={DownloadImage} alt="icone de download" />
+//         <p>Download</p>
+//       </div>
+//     </>
+//   ) : (
+//     <>
+//       <p>{classReservationDate()}</p>
+//       <div className={styles.avaliarRedacoes_status_div}>
+//         <button
+//           onClick={() => getNotebooksDownload(notebookId, studentName)}
+//           className={styles.button_download}
+//         >
+//           <Image src={DownloadImage} alt="icone de download" />
+//         </button>
+//         <p>Download</p>
+//       </div>
+//     </>
+//   );
+// }
