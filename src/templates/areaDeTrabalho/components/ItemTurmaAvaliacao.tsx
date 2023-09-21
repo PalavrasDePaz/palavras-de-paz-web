@@ -53,3 +53,28 @@ function ItemTurmaAvaliacao({
 }
 
 export default ItemTurmaAvaliacao;
+
+// {
+//   !reserved ? (
+//     <>
+//       <p>Não Reservado</p>
+//       <div className={styles.avaliarRedacoes_status_div}>
+//         <Image src={DownloadImage} alt="icone de download" />
+//         <p>Download</p>
+//       </div>
+//     </>
+//   ) : (
+//     <>
+//       <p>{classReservationDate()}</p>
+//       <div className={styles.avaliarRedacoes_status_div}>
+//         <button
+//           onClick={() => getNotebooksDownload(notebookId, studentName)}
+//           className={styles.button_download}
+//         >
+//           <Image src={DownloadImage} alt="icone de download" />
+//         </button>
+//         <p>Download</p>
+//       </div>
+//     </>
+//   );
+// }
