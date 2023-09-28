@@ -11,20 +11,20 @@ type ItemTurmaAvaliacaoProps = {
   idclass: number;
   place: string;
   idvol: number;
+  dateReserved: string;
 };
 
 function ItemTurmaAvaliacao({
   idclass,
-  place,
   idvol,
+  place,
+  dateReserved,
 }: ItemTurmaAvaliacaoProps) {
   const putReservationData = async (volunteerId: number, classId: number) => {
     const reserveData = { idvol: volunteerId, idclass: classId };
     const response = await api.put("/book-club-class/reservation", reserveData);
     return response.data;
   };
-
-  const classReservationDate = () => new Date().toLocaleDateString();
 
   const [reserved, setReserved] = useState(false);
 
@@ -38,13 +38,13 @@ function ItemTurmaAvaliacao({
 
   return (
     <div className={styles.avaliarRedacoes_status}>
-      <input
-        type="checkbox"
-        onChange={() => handleReservation(idvol, idclass)}
-      />
-      <p>{`${idclass}-${place}`}</p>
-      {!reserved ? (
+      {!dateReserved ? (
         <>
+          <input
+            type="checkbox"
+            onChange={() => handleReservation(idvol, idclass)}
+          />
+          <p>{`${idclass}-${place}`}</p>
           <p>Não Reservado</p>
           <p>{naoReservado}</p>
           <div className={styles.avaliarRedacoes_status_div}>
@@ -55,12 +55,17 @@ function ItemTurmaAvaliacao({
         </>
       ) : (
         <>
+          <input
+            type="checkbox"
+            checked // ADICIONAR ROTA PARA REMOVER A RESERVA
+            onChange={() => ""}
+          />
+          <p>{`${idclass}-${place}`}</p>
           <p>Reservado</p>
-          <p>{classReservationDate()}</p>
+          <p>{dateReserved}</p>
           <div className={styles.avaliarRedacoes_status_div}>
             <button
-              onClick={() =>
-                downloadPDF(`/book-club-class/available/${idvol}`, "sample.pdf")}
+              onClick={() => downloadPDF(idvol, `${place}`)}
               className={styles.button_download}
             >
               <Image src={DownloadImage} alt="icone de download" />
