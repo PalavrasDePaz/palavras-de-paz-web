@@ -109,6 +109,8 @@
 }
 
 .button_download {
+  display: flex;
+  gap: 4px;
   background-color: transparent;
   border: none;
   padding: 0;
