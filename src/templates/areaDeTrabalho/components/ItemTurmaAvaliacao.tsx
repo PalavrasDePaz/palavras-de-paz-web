@@ -3,6 +3,7 @@ import Image from "next/image";
 
 import DownloadImage from "../../../../public/static/images/icons/download.svg";
 import { api } from "../../../api";
+import downloadPDF from "../../../helpers/getEssaysDownload";
 
 import styles from "../styles/AvaliarRedacoes.module.css";
 
@@ -11,6 +12,7 @@ type ItemTurmaAvaliacaoProps = {
   place: string;
   idvol: number;
 };
+
 function ItemTurmaAvaliacao({
   idclass,
   place,
@@ -26,9 +28,9 @@ function ItemTurmaAvaliacao({
 
   const [reserved, setReserved] = useState(false);
 
-  const handleReservation = (volunteerId: number, classId: number) => {
+  const handleReservation = async (volunteerId: number, classId: number) => {
     setReserved(!reserved);
-    putReservationData(volunteerId, classId);
+    await putReservationData(volunteerId, classId);
   };
 
   const naoReservado = "Não reservado";
@@ -41,40 +43,37 @@ function ItemTurmaAvaliacao({
         onChange={() => handleReservation(idvol, idclass)}
       />
       <p>{`${idclass}-${place}`}</p>
-      <p>{reserved ? classReservationDate() : "Não Reservado"}</p>
-      <p>{naoReservado}</p>
-      <div className={styles.avaliarRedacoes_status_div}>
-        <Image src={DownloadImage} alt="icone de download" />
-        <p>Download</p>
-      </div>
-      <p className={styles.avaliarRedacoes_status_p5}>{preencher}</p>
+      {!reserved ? (
+        <>
+          <p>Não Reservado</p>
+          <p>{naoReservado}</p>
+          <div className={styles.avaliarRedacoes_status_div}>
+            <Image src={DownloadImage} alt="icone de download" />
+            <p>Download</p>
+          </div>
+          <p className={styles.avaliarRedacoes_status_p5}>{preencher}</p>
+        </>
+      ) : (
+        <>
+          <p>Reservado</p>
+          <p>{classReservationDate()}</p>
+          <div className={styles.avaliarRedacoes_status_div}>
+            <button
+              onClick={() =>
+                downloadPDF(`/book-club-class/available/${idvol}`, "sample.pdf")}
+              className={styles.button_download}
+            >
+              <Image src={DownloadImage} alt="icone de download" />
+              <p>Download</p>
+            </button>
+          </div>
+          <p className={styles.avaliarRedacoes_status_preencher_on}>
+            {preencher}
+          </p>
+        </>
+      )}
     </div>
   );
 }
 
 export default ItemTurmaAvaliacao;
-
-// {
-//   !reserved ? (
-//     <>
-//       <p>Não Reservado</p>
-//       <div className={styles.avaliarRedacoes_status_div}>
-//         <Image src={DownloadImage} alt="icone de download" />
-//         <p>Download</p>
-//       </div>
-//     </>
-//   ) : (
-//     <>
-//       <p>{classReservationDate()}</p>
-//       <div className={styles.avaliarRedacoes_status_div}>
-//         <button
-//           onClick={() => getNotebooksDownload(notebookId, studentName)}
-//           className={styles.button_download}
-//         >
-//           <Image src={DownloadImage} alt="icone de download" />
-//         </button>
-//         <p>Download</p>
-//       </div>
-//     </>
-//   );
-// }
