@@ -104,6 +104,27 @@
   color: #cdcdcd;
 }
 
+.button_download {
+  display: flex;
+  gap: 4px;
+  background-color: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+.button_download img {
+  filter: invert(75%);
+}
+
+.button_download p {
+  color: #707070;
+}
+
+.avaliarRedacoes_status_preencher_on {
+  color: #707070;
+}
+
 @media (max-width: 1300px) {
   .avaliar_itens {
     width: 1120px;
