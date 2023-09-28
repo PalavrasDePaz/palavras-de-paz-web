@@ -31,10 +31,10 @@ const AvaliarCadernos = ({ idvol }: AvaliarCadernosProps) => {
           notebooks.map(
             ({ notebookId, studentName, reservationDate, studentId }) => (
               <div key={studentId} className={styles.avaliar_status}>
-                <input type="checkbox" />
-                <p className={styles.avaliar_status_p1}>{studentName}</p>
                 {reservationDate === null ? (
                   <>
+                    <input type="checkbox" />
+                    <p className={styles.avaliar_status_p1}>{studentName}</p>
                     <p>{naoReservado}</p>
                     <div className={styles.avaliar_status_div}>
                       <Image src={DownloadImage} alt="icone de download" />
@@ -43,6 +43,8 @@ const AvaliarCadernos = ({ idvol }: AvaliarCadernosProps) => {
                   </>
                 ) : (
                   <>
+                    <input type="checkbox" checked />
+                    <p className={styles.avaliar_status_p1}>{studentName}</p>
                     <p>{reservationDate}</p>
                     <div className={styles.avaliar_status_div}>
                       <button
@@ -51,10 +53,10 @@ const AvaliarCadernos = ({ idvol }: AvaliarCadernosProps) => {
                         className={styles.button_download}
                       >
                         <Image src={DownloadImage} alt="icone de download" />
+                        <p className={styles.avaliar_status_div_p_active}>
+                          Download
+                        </p>
                       </button>
-                      <p className={styles.avaliar_status_div_p_active}>
-                        Download
-                      </p>
                     </div>
                   </>
                 )}
