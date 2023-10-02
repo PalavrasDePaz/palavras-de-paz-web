@@ -72,6 +72,10 @@
   animation: modal 0.3s forwards;
 }
 
+.logoutButton {
+  cursor: pointer;
+}
+
 @keyframes modal {
   from {
     opacity: 0;
