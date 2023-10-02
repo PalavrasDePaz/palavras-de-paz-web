@@ -74,6 +74,19 @@
 
 .logoutButton {
   cursor: pointer;
+  transition: filter 0.3s ease;
+}
+.logoutButton:hover {
+  filter: brightness(80%);
+}
+
+.profileButton {
+  cursor: pointer;
+  transition: filter 0.3s ease;
+}
+
+.profileButton:hover {
+  filter: brightness(80%);
 }
 
 @keyframes modal {
@@ -93,10 +106,10 @@
   color: #fff;
   border-radius: 5px;
   padding: 0.5rem 1.3rem;
-  transition: background-color 0.2s;
+  transition: background-color 0.3s;
 }
 .openModal:hover {
-  background-color: #239b7b;
+  background-color: #218f72;
 }
 
 .closeModal {
