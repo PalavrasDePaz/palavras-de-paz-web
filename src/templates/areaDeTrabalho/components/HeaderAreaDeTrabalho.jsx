@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { useRouter } from "next/router";
 
 import { useQueryClient } from "@tanstack/react-query";
 
 import Login from "../../../../public/static/images/icons/login.svg";
+import Profile from "../../../../public/static/images/icons/profile.svg";
 import Logo from "../../../../public/static/images/logo.svg";
 import { PALAVRAS_DE_PAZ_TOKEN } from "../../../constants";
 
@@ -43,6 +45,14 @@ const HeaderAreaDeTrabalho = () => {
           height="90px"
         />
         <div className={styles.headerBtnLogin}>
+          <Link href="/pagina-de-perfil">
+            <Image
+              src={Profile}
+              alt="Botão de acesso à página de perfil do usuário."
+              width={40}
+              height={40}
+            />
+          </Link>
           <button onClick={openModal} className={styles.openModal}>
             Dúvidas?
           </button>
