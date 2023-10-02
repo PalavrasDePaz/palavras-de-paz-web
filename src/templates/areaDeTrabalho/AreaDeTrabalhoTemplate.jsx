@@ -38,9 +38,8 @@ export default function AreaDeTrabalhoTemplate() {
       <div className={styles.containerSections}>
         <section className={styles.main_container_section}>
           <div className={styles.sectionTitle}>
-            <h1>
-              Bem vindo, {firstName()} {user?.idvol}
-            </h1>
+            <h1>Bem vindo, {firstName()}!</h1>
+            <h2>id: {user?.idvol}</h2>
             <p>Aqui estão as suas atividades</p>
           </div>
           <PrimeiroBox idVol={idvol} />

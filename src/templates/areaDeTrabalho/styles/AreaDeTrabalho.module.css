@@ -5,7 +5,7 @@
   flex-direction: column;
   gap: 4rem;
   max-width: 1512px;
-  font-family: Open Sans;
+  font-family: "Open Sans", sans-serif;
   background: linear-gradient(197.64deg, #ffffff 4.36%, #bde7dc 100%);
   color: #707070;
 }
