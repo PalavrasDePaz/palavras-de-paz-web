@@ -42,6 +42,10 @@ export default class MyDocument extends Document {
             href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500;800&display=swap"
             rel="stylesheet"
           />
+          <link
+            href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&display=swap"
+            rel="stylesheet"
+          />
           <link rel="shortcut icon" href="/favicon.ico" />
           <meta name="description" content="Palavras de Paz" />
           <meta name="title" content="ONG Palavras de Paz" />
