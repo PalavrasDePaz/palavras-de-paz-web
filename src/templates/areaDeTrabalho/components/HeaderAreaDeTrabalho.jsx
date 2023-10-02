@@ -51,6 +51,7 @@ const HeaderAreaDeTrabalho = () => {
               alt="Botão de acesso à página de perfil do usuário."
               width={40}
               height={40}
+              className={styles.profileButton}
             />
           </Link>
           <button onClick={openModal} className={styles.openModal}>
@@ -61,6 +62,7 @@ const HeaderAreaDeTrabalho = () => {
             src={Login}
             alt="Botão de acesso ao login com imagem de uma seta dentro de uma porta"
             onClick={logOut}
+            className={styles.logoutButton}
           />
         </div>
       </header>
