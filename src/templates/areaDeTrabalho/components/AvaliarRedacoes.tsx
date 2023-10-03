@@ -12,6 +12,10 @@ type AvaliarRedacoesProps = {
 
 export default function AvaliarRedacoes({ idvol }: AvaliarRedacoesProps) {
   const { data: essays } = useGetEssays(idvol);
+  if (!essays) {
+    return null;
+  }
+  essays.sort((a, b) => b.idclass - a.idclass);
   return (
     <section className={styles.avaliar_section}>
       <h1>Avaliar Redações</h1>
