@@ -1,15 +1,15 @@
 import React from "react";
 import Image from "next/image";
-import Link from "next/link";
 
 function Footer() {
   return (
     <footer className="footer">
       <div className="line-footer" />
       <div className="medias-footer">
-        <Link
+        <a
           href="https://www.youtube.com/channel/UCkmhiQTeUfdvKIY9NG9Navg"
           target="_blank"
+          rel="noopener noreferrer"
         >
           <div>
             <Image
@@ -22,10 +22,11 @@ function Footer() {
               style={{ cursor: "pointer" }}
             />
           </div>
-        </Link>
-        <Link
+        </a>
+        <a
           href="https://www.instagram.com/palavrasdepaz.br/"
           target="_blank"
+          rel="noopener noreferrer"
         >
           <div>
             <Image
@@ -37,10 +38,11 @@ function Footer() {
               style={{ cursor: "pointer" }}
             />
           </div>
-        </Link>
-        <Link
+        </a>
+        <a
           href="https://www.linkedin.com/company/palavrasdepaz/mycompany/"
           target="_blank"
+          rel="noopener noreferrer"
         >
           <div>
             <Image
@@ -52,8 +54,12 @@ function Footer() {
               style={{ cursor: "pointer" }}
             />
           </div>
-        </Link>
-        <Link href="https://www.facebook.com/palavrasdepaz.br" target="_blank">
+        </a>
+        <a
+          href="https://www.facebook.com/palavrasdepaz.br"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           <div>
             <Image
               id="face"
@@ -64,8 +70,12 @@ function Footer() {
               style={{ cursor: "pointer" }}
             />
           </div>
-        </Link>
-        <Link href="https://wa.me/5511999756554" target="_blank">
+        </a>
+        <a
+          href="https://wa.me/5511999756554"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           <div>
             <Image
               id="whats"
@@ -76,7 +86,7 @@ function Footer() {
               style={{ cursor: "pointer" }}
             />
           </div>
-        </Link>
+        </a>
       </div>
       <div className="line-footer" />
       <div className="acesso-footer">
@@ -86,54 +96,94 @@ function Footer() {
       <container className="opcoes-footer">
         <div className="colunas-footer">
           <h6 className="footer-title">Quem Somos</h6>
-          <Link href="/equipe">Nossa equipe</Link>
-          <Link href="/sobre-nos">Nossa História</Link>
+          <a href="/equipe" rel="noopener noreferrer">
+            Nossa equipe
+          </a>
+          <a href="/sobre-nos" rel="noopener noreferrer">
+            Nossa História
+          </a>
         </div>
 
         <div className="colunas-footer">
           <h6 className="footer-title">O Programa</h6>
-          <Link href="https://us02web.zoom.us/j/81046198333 ">Reunião</Link>
-          <Link
+          <a
+            href="https://us02web.zoom.us/j/81046198333"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Reunião
+          </a>
+          <a
             href="https://www.premrawat.com/pt-br/"
             target="_blank"
-            rel="noopener"
+            rel="noopener noreferrer"
           >
             Prew Rawat
-          </Link>
-          <Link href="https://tprf.org/pt-br/" target="_blank" rel="noopener">
+          </a>
+          <a
+            href="https://tprf.org/pt-br/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             TPRF
-          </Link>
-          <Link href="/">Downloads</Link>
+          </a>
+          <a href="/">Downloads</a>
         </div>
 
         <div className="colunas-footer">
           <h6 className="footer-title">Voluntários</h6>
-          <Link href="https://form.jotform.com/220305437068653">Cadastro</Link>
-          <Link href="https://www.atados.com.br/" target="_blank">
+          <a
+            href="https://form.jotform.com/220305437068653"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Cadastro
+          </a>
+          <a
+            href="https://www.atados.com.br/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             Atados
-          </Link>
+          </a>
         </div>
 
         <div className="colunas-footer">
           <h6 className="footer-title">Parcerias</h6>
-          <Link href="/parcerias">Objetivo</Link>
-          <Link href="/">Contato</Link>
+          <a href="/parcerias" target="_blank" rel="noopener noreferrer">
+            Objetivo
+          </a>
+          <a href="/">Contato</a>
         </div>
 
         <div className="colunas-footer">
           <h6 className="footer-title">Doações</h6>
-          <Link href="/doacoes/relatorio-semestral-2023-01">
+          <a
+            href="/doacoes/relatorio-semestral-2023-01"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             Prestação de contas
-          </Link>
-          <Link href="/doacoes">PIX</Link>
-          <Link href="/doacoes">PayPal</Link>
+          </a>
+          <a href="/doacoes" target="_blank" rel="noopener noreferrer">
+            PIX
+          </a>
+          <a href="/doacoes" target="_blank" rel="noopener noreferrer">
+            PayPal
+          </a>
         </div>
 
         <div className="colunas-footer">
           <h6 className="footer-title">Home</h6>
-          <Link href="/galeria">Galeria de fotos</Link>
-          <Link href="/publicacoes">Publicações</Link>
-          <Link href="/depoimentos">Depoimentos</Link>
+          <a href="/galeria" target="_blank" rel="noopener noreferrer">
+            Galeria de fotos
+          </a>
+          <a href="/publicacoes" target="_blank" rel="noopener noreferrer">
+            Publicações
+          </a>
+          <a href="/depoimentos" target="_blank" rel="noopener noreferrer">
+            Depoimentos
+          </a>
         </div>
       </container>
 
@@ -143,7 +193,13 @@ function Footer() {
         </div>
         <div className="copyright-footer">
           <p>
-            <Link href="/desenvolvedores">©2022 Desenvolvedores</Link>
+            <a
+              href="/desenvolvedores"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              ©2022 Desenvolvedores
+            </a>
           </p>
         </div>
         <div>
