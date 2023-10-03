@@ -93,10 +93,14 @@ function Footer() {
         <div className="colunas-footer">
           <h6 className="footer-title">O Programa</h6>
           <Link href="https://us02web.zoom.us/j/81046198333 ">Reunião</Link>
-          <Link href="https://www.premrawat.com/pt-br/" target="_blank">
+          <Link
+            href="https://www.premrawat.com/pt-br/"
+            target="_blank"
+            rel="noopener"
+          >
             Prew Rawat
           </Link>
-          <Link href="https://tprf.org/pt-br/" target="_blank">
+          <Link href="https://tprf.org/pt-br/" target="_blank" rel="noopener">
             TPRF
           </Link>
           <Link href="/">Downloads</Link>
