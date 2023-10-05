@@ -1,4 +1,5 @@
 import React from "react";
+import { ToastContainer } from "react-toastify";
 
 import useGetUser from "../../hooks/useGetUser";
 
@@ -12,6 +13,7 @@ import HeaderAreaDeTrabalho from "./components/HeaderAreaDeTrabalho";
 import PrimeiroBox from "./components/PrimeiroBox";
 import WorkshopsAssistidos from "./components/WorkshopsAssistidos";
 
+import "react-toastify/dist/ReactToastify.css";
 import styles from "./styles/AreaDeTrabalho.module.css";
 
 export default function AreaDeTrabalhoTemplate() {
@@ -52,6 +54,18 @@ export default function AreaDeTrabalhoTemplate() {
         <DetalhesPresenca />
         <DetalhesCadastro />
         <GestaoDeRelatorios />
+        <ToastContainer
+          position="top-right"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="colored"
+        />
       </div>
     </>
   );

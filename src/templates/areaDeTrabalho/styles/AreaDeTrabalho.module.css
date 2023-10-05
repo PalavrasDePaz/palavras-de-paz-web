@@ -139,6 +139,10 @@
   color: #2b2b2b;
 }
 
+.mensagem:focus {
+  outline: 3px solid #525252;
+}
+
 .sendMessage {
   padding-block: 0.3rem;
   border-radius: 5px;
@@ -152,6 +156,10 @@
   background-color: #fbfffe;
   border: 1px solid #fbfffe;
   color: #2b2b2b;
+}
+
+.inputError {
+  color: rgb(253, 253, 253);
 }
 
 .headerModal label {

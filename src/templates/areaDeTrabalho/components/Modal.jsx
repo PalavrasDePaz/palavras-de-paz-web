@@ -8,12 +8,15 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { api } from "../../../api";
 import ErrorMessage from "../../../components/forms/ErrorMessage";
 import LoadingSpinner from "../../../components/loadingSpinner/LoadingSpinner";
+import toastDuvidaEnviada from "../../../helpers/callTheToast";
 import useGetUser from "../../../hooks/useGetUser";
 
 import styles from "../styles/AreaDeTrabalho.module.css";
 
 const schema = yup.object().shape({
-  message: yup.string().required("* Campo obrigatório"),
+  message: yup
+    .string()
+    .required("Por favor, preencha este campo com sua dúvida."),
 });
 
 const Modal = ({ isOpen, onClose }) => {
@@ -49,6 +52,9 @@ const Modal = ({ isOpen, onClose }) => {
       setIsSending(false);
       setIsSent(true);
       reset();
+
+      toastDuvidaEnviada();
+      onClose();
     } catch (error) {
       setIsSending(false);
     }
@@ -64,6 +70,7 @@ const Modal = ({ isOpen, onClose }) => {
         <label htmlFor="mensagem">Mensagem</label>
         <textarea
           id="mensagem"
+          className={styles.mensagem}
           rows="5"
           placeholder="Digite sua mensagem para podermos te ajudar"
           {...register("message")}
