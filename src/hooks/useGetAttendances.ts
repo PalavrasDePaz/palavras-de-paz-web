@@ -9,7 +9,7 @@ type Workshops = {
 };
 
 const getAttendances = async (volunteerId: number) =>
-  (await api.get(`attendances/${volunteerId}`)).data;
+  (await api.get(`attendances/volunteer/${volunteerId}`)).data;
 
 const useGetAttendances = (volunteerId: number): UseQueryResult<Workshops[]> =>
   useQuery(["attendances", volunteerId], () => getAttendances(volunteerId), {

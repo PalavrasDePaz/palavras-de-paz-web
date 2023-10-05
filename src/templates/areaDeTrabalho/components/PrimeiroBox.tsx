@@ -1,5 +1,4 @@
 import React from "react";
-import Link from "next/link";
 
 import useGetNotebooksCount from "../../../hooks/useGetNotebookCount";
 
@@ -16,9 +15,9 @@ export default function PrimeiroBox({ idVol }: IIdVol) {
       <div className={styles.main_container_div}>
         <p className={styles.main_container_p1}>Para marcar presença em um</p>
         <p className={styles.main_container_p2}>Workshop</p>
-        <Link href="/presenca">
+        <a href="/presenca" target="_blank" rel="noopener noreferrer">
           <button className={styles.main_container_button}>Clique aqui</button>
-        </Link>
+        </a>
       </div>
       <h3 className={styles.main_container_h3}>
         Relatórios de leitura avaliados:
