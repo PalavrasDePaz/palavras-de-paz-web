@@ -13,7 +13,6 @@ import useGetUser from "../../../hooks/useGetUser";
 import styles from "../styles/AreaDeTrabalho.module.css";
 
 const schema = yup.object().shape({
-  name: yup.string().required("* Campo obrigatório"),
   message: yup.string().required("* Campo obrigatório"),
 });
 
@@ -29,33 +28,31 @@ const Modal = ({ isOpen, onClose }) => {
     register,
     handleSubmit,
     formState: { errors },
+    reset,
   } = useForm({
     resolver: yupResolver(schema),
   });
 
-  const submitForm = (data) => {
+  const submitForm = async (data) => {
     setIsSending(true);
 
-    const withEmail = {
-      ...data,
-      email: user.email,
-      name: `${user.name}, id:${user.idvol}`,
-      subject: "teste subject",
-    };
+    try {
+      const withEmail = {
+        ...data,
+        email: user.email,
+        name: `${user.name}, id:${user.idvol}`,
+        subject: "teste subject",
+      };
 
-    api.post("/volunteers/contact-email", withEmail).then(() => {
+      await api.post("/volunteers/contact-email", withEmail);
+
       setIsSending(false);
       setIsSent(true);
-    });
+      reset();
+    } catch (error) {
+      setIsSending(false);
+    }
   };
-
-  if (isSent) {
-    return "Obrigado pela mensagem. Retornaremos em breve.";
-  }
-
-  if (isSending) {
-    return <LoadingSpinner />;
-  }
 
   return (
     <form onSubmit={handleSubmit(submitForm)} className={styles.headerModal}>
@@ -66,18 +63,21 @@ const Modal = ({ isOpen, onClose }) => {
 
         <label htmlFor="mensagem">Mensagem</label>
         <textarea
-          type="text"
           id="mensagem"
           rows="5"
           placeholder="Digite sua mensagem para podermos te ajudar"
           {...register("message")}
-          width="150px"
         />
         <ErrorMessage showError={errors.message} style={styles.inputError} />
-        <button type="submit" className={styles.sendMessage}>
-          Enviar
+        <button
+          type="submit"
+          className={styles.sendMessage}
+          disabled={isSending}
+        >
+          {isSending ? <LoadingSpinner /> : "Enviar"}
         </button>
       </div>
+      {isSent && <div>Obrigado pela mensagem. Retornaremos em breve.</div>}
     </form>
   );
 };
