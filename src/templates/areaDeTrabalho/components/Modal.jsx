@@ -36,7 +36,12 @@ const Modal = ({ isOpen, onClose }) => {
   const submitForm = (data) => {
     setIsSending(true);
 
-    const withEmail = { ...data, email: user.email, subject: "teste subject" };
+    const withEmail = {
+      ...data,
+      email: user.email,
+      name: `${user.name}, id:${user.idvol}`,
+      subject: "teste subject",
+    };
 
     api.post("/volunteers/contact-email", withEmail).then(() => {
       setIsSending(false);
@@ -54,34 +59,25 @@ const Modal = ({ isOpen, onClose }) => {
 
   return (
     <form onSubmit={handleSubmit(submitForm)} className={styles.headerModal}>
-      <button className={styles.closeModal} onClick={onClose}>
-        X
-      </button>
+      <div className={styles.alignBoxContainer}>
+        <button className={styles.closeModal} onClick={onClose}>
+          X
+        </button>
 
-      <label htmlFor="nome" {...register("nome")}>
-        Nome
-      </label>
-      <input
-        type="text"
-        id="nome"
-        placeholder="Digite seu nome "
-        {...register("name")}
-      />
-      <ErrorMessage showError={errors.name} style={styles.inputError} />
-        
-      <label htmlFor="mensagem">Mensagem</label>
-      <textarea
-        type="text"
-        id="mensagem"
-        rows="5"
-        placeholder="Digite sua mensagem para podermos te ajudar"
-        {...register("message")}
-        width="150px"
-      />
-      <ErrorMessage showError={errors.message} style={styles.inputError} />
-      <button type="submit" className={styles.sendMessage}>
-        Enviar
-      </button>
+        <label htmlFor="mensagem">Mensagem</label>
+        <textarea
+          type="text"
+          id="mensagem"
+          rows="5"
+          placeholder="Digite sua mensagem para podermos te ajudar"
+          {...register("message")}
+          width="150px"
+        />
+        <ErrorMessage showError={errors.message} style={styles.inputError} />
+        <button type="submit" className={styles.sendMessage}>
+          Enviar
+        </button>
+      </div>
     </form>
   );
 };
