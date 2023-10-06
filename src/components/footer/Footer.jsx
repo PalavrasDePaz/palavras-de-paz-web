@@ -127,7 +127,9 @@ function Footer() {
           >
             TPRF
           </a>
-          <a href="/">Downloads</a>
+          <a href="/downloads" target="_blank" rel="noopener noreferrer">
+            Downloads
+          </a>
         </div>
 
         <div className="colunas-footer">
