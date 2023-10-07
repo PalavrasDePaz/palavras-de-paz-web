@@ -3,7 +3,7 @@ import Image from "next/image";
 
 import DownloadImage from "../../../../public/static/images/icons/download.svg";
 import { api } from "../../../api";
-import downloadPDF from "../../../helpers/getEssaysDownload";
+import downloadZIP from "../../../helpers/getEssaysDownload";
 
 import styles from "../styles/AvaliarRedacoes.module.css";
 
@@ -65,7 +65,7 @@ function ItemTurmaAvaliacao({
           <p>{dateReserved}</p>
           <div className={styles.avaliarRedacoes_status_div}>
             <button
-              onClick={() => downloadPDF(idvol, `${place}`)}
+              onClick={() => downloadZIP(idclass, `${place}`)}
               className={styles.button_download}
             >
               <Image src={DownloadImage} alt="icone de download" />
