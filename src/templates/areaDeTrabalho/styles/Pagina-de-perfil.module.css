@@ -1,0 +1,39 @@
+/* PerfilComponent.module.css */
+
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  border-bottom: solid #cdcdcd 2px;
+}
+
+.section-voltar {
+  display: flex;
+  text-decoration: none;
+  color: #333;
+  flex-direction: row;
+  align-items: center;
+}
+.section-voltar p {
+  margin: 0;
+}
+
+.logo {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.openModal {
+  background-color: #21aa85;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: #0056b3;
+}
