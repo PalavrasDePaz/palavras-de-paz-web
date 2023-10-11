@@ -1,6 +1,6 @@
 /* PerfilComponent.module.css */
 
-.header-content {
+.headerContent {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -8,14 +8,14 @@
   border-bottom: solid #cdcdcd 2px;
 }
 
-.section-voltar {
+.sectionVoltar {
   display: flex;
   text-decoration: none;
   color: #333;
   flex-direction: row;
   align-items: center;
 }
-.section-voltar p {
+.sectionVoltar p {
   margin: 0;
 }
 
@@ -32,8 +32,82 @@
   border: none;
   padding: 10px 20px;
   cursor: pointer;
+  border-radius: 20px;
 }
 
-.button:hover {
-  background-color: #0056b3;
+.dadosContainer {
+  display: flex;
+  flex-direction: column;
+  margin-left: 10rem;
+  margin-top: 2rem;
+}
+.profileInfo {
+  display: flex;
+  flex-direction: row;
+}
+.profileTitulo {
+  margin-bottom: 5rem;
+}
+.profileNome {
+  font-size: 32px;
+  color: #444;
+}
+.profileEmail {
+  font-size: 18px;
+}
+.profileImg {
+  margin-right: 100px;
+}
+.profileNomeEmail {
+  margin-left: 50px;
+}
+.profileContainer {
+  display: flex;
+  flex-direction: column;
+  margin-top: 40px;
+  margin-bottom: 5px;
+}
+.profileContainer p {
+  font-weight: bold;
+}
+.profileContainerRow {
+  display: flex;
+  flex-direction: row;
+  gap: 30px;
+}
+.tituloContainerColumn {
+  flex-direction: column;
+}
+.camposContainer {
+  display: flex;
+  gap: 30px;
+}
+
+.campo {
+  border: 2px solid #444;
+  border-radius: 20px;
+  padding: 5px;
+  width: 250px;
+}
+.tituloContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 10px;
+}
+.titulo {
+  margin-bottom: 0px;
+  margin-right: 5px;
+}
+
+.btnSalvar {
+  background-color: #21aa85;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 20px;
+  width: 200px;
+  margin-bottom: 40px;
+  margin-top: 40px;
 }
