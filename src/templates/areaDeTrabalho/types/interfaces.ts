@@ -7,3 +7,12 @@ export interface INotebooks {
   notebookPath: string;
   reserved?: boolean;
 }
+
+export interface IEssays {
+  idclass: number;
+  place: string;
+  dateReserved: string;
+  dateConcluded: string;
+  folderLink: string;
+  reserved: boolean;
+}

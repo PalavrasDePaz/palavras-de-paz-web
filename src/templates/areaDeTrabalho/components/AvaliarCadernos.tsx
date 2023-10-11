@@ -7,7 +7,7 @@ import { api } from "../../../api";
 import dateUTCFormat from "../../../helpers/dateUTCFormat";
 import dateUTCGenerate from "../../../helpers/dateUTCGenerate";
 import getNotebooksDownload from "../../../helpers/getNotebookDownload";
-import isNotebookReserved from "../../../helpers/isNotebookReserved";
+import isReserved from "../../../helpers/isReserved";
 import useGetNotebooks from "../../../hooks/useGetNotebooks";
 import { INotebooks } from "../types/interfaces";
 
@@ -49,7 +49,7 @@ const AvaliarCadernos = ({ idvol }: AvaliarCadernosProps) => {
     if (notebooks) {
       const updatedNotebooks = notebooks.map((notebook) => ({
         ...notebook,
-        reserved: isNotebookReserved(notebook.reservationDate),
+        reserved: isReserved(notebook.reservationDate),
       }));
       setNotebooksIn(updatedNotebooks);
     }
