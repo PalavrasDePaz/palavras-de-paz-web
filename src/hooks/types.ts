@@ -5,10 +5,12 @@ export type User = {
 };
 
 export type Notebook = {
-  studentName: string;
-  studentId: number;
-  reservationDate: string;
   notebookId: number;
+  studentId: number;
+  classId: number;
+  studentName: string;
+  reservationDate: string;
+  notebookPath: string;
 };
 
 export type Essays = {
