@@ -112,17 +112,15 @@ const AvaliarCadernos = ({ idvol }: AvaliarCadernosProps) => {
                     </div>
                   </>
                 )}
-                <Link href="area-de-trabalho">
-                  <p
-                    className={`${
-                      reserved
-                        ? styles.avaliar_status_p5_active
-                        : styles.avaliar_status_p5
-                    }`}
-                  >
-                    {preencher}
-                  </p>
-                </Link>
+                {reserved ? (
+                  <Link href="area-de-trabalho">
+                    <p className={styles.avaliar_status_p5_active}>
+                      {preencher}
+                    </p>
+                  </Link>
+                ) : (
+                  <p className={styles.avaliar_status_p5}>{preencher}</p>
+                )}
               </div>
             )
           )}

@@ -102,6 +102,7 @@
 .avaliar_status_p5 {
   color: #cdcdcd;
   text-decoration: none;
+  user-select: none;
 }
 
 .avaliar_status_div_p_active,
