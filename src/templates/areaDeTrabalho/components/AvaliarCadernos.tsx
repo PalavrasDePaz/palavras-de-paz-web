@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 
 import DownloadImage from "../../../../public/static/images/icons/download.svg";
 import { api } from "../../../api";
@@ -111,12 +112,17 @@ const AvaliarCadernos = ({ idvol }: AvaliarCadernosProps) => {
                     </div>
                   </>
                 )}
-                <p
-                  className={`${styles.avaliar_status_p5}
-                ${reserved ? styles.avaliar_status_p5_active : ""}`}
-                >
-                  {preencher}
-                </p>
+                <Link href="area-de-trabalho">
+                  <p
+                    className={`${
+                      reserved
+                        ? styles.avaliar_status_p5_active
+                        : styles.avaliar_status_p5
+                    }`}
+                  >
+                    {preencher}
+                  </p>
+                </Link>
               </div>
             )
           )}
