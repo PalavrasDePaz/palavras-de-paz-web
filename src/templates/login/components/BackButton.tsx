@@ -6,9 +6,7 @@ import styles from "../styles/LoginForm.module.css";
 export default function BackButton() {
   return (
     <Link href="/" className={styles.loginFormButtonBack}>
-      <button className={styles.loginFormButtonBack}>
-        Voltar para a página inicial
-      </button>
+      <button className={styles.loginFormButtonBack}>Voltar para a home</button>
     </Link>
   );
 }

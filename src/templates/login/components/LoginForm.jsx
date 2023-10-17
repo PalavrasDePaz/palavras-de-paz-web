@@ -22,6 +22,7 @@ import styles from "../styles/LoginForm.module.css";
 
 const INVALID_MAIL = "Endereço de e-mail incorreto";
 
+// Validação do e-mail
 const emailField = yup
   .string()
   .required(REQUIRED_FIELD)
@@ -39,6 +40,7 @@ const schemaResetPass = yup.object().shape({
 const getSchema = (passwordForgotten) =>
   passwordForgotten ? schemaResetPass : schemaLogin;
 
+// Redefinição de senha
 const getEmailFieldString = (isForgotten) =>
   isForgotten ? (
     "Informe seu e-mail para enviarmos um link de redefinição de senha"
@@ -63,6 +65,7 @@ const LoginForm = ({ logIn } = props) => {
     resolver: yupResolver(getSchema(passwordForgotten)),
   });
 
+  // desestruturação do useLogin
   const {
     mutate: mutateLogin,
     isLoading: isLoginLoading,
@@ -71,6 +74,8 @@ const LoginForm = ({ logIn } = props) => {
     isSuccess: isLoginSuccess,
     data: loginData,
   } = useLogin();
+
+  // desestruturação do useRequestPasswordEmail
   const {
     mutate: mutatePassEmail,
     isLoading: isPassEmailLoading,
