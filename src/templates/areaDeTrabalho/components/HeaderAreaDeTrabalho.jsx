@@ -49,8 +49,8 @@ const HeaderAreaDeTrabalho = () => {
             <Image
               src={Profile}
               alt="Botão de acesso à página de perfil do usuário."
-              width={40}
-              height={40}
+              width={35}
+              height={35}
               className={styles.profileButton}
             />
           </Link>
