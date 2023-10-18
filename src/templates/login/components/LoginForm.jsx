@@ -2,7 +2,9 @@ import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import propTypes from "prop-types";
 import { useForm } from "react-hook-form";
+import { AiOutlineLock, AiOutlineWarning } from "react-icons/ai";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
+import { FiAtSign } from "react-icons/fi";
 import isEmail from "validator/lib/isEmail";
 import * as yup from "yup";
 
@@ -12,13 +14,15 @@ import LoadingSpinner from "../../../components/loadingSpinner/LoadingSpinner";
 import { PALAVRAS_DE_PAZ_TOKEN, REQUIRED_FIELD } from "../../../constants";
 import useLogin from "../../../hooks/useLogin";
 import useRequestPasswordEmail from "../../../hooks/useRequestPasswordEmail";
-import { INVALID_MAIL } from "../../cadastro/components/constants";
 
 import BackButton from "./BackButton";
 import LoginErrorScreen from "./LoginErrorScreen";
 
 import styles from "../styles/LoginForm.module.css";
 
+const INVALID_MAIL = "Endereço de e-mail incorreto";
+
+// Validação do e-mail
 const emailField = yup
   .string()
   .required(REQUIRED_FIELD)
@@ -36,6 +40,7 @@ const schemaResetPass = yup.object().shape({
 const getSchema = (passwordForgotten) =>
   passwordForgotten ? schemaResetPass : schemaLogin;
 
+// Redefinição de senha
 const getEmailFieldString = (isForgotten) =>
   isForgotten ? (
     "Informe seu e-mail para enviarmos um link de redefinição de senha"
@@ -60,6 +65,7 @@ const LoginForm = ({ logIn } = props) => {
     resolver: yupResolver(getSchema(passwordForgotten)),
   });
 
+  // desestruturação do useLogin
   const {
     mutate: mutateLogin,
     isLoading: isLoginLoading,
@@ -68,6 +74,8 @@ const LoginForm = ({ logIn } = props) => {
     isSuccess: isLoginSuccess,
     data: loginData,
   } = useLogin();
+
+  // desestruturação do useRequestPasswordEmail
   const {
     mutate: mutatePassEmail,
     isLoading: isPassEmailLoading,
@@ -84,6 +92,14 @@ const LoginForm = ({ logIn } = props) => {
 
   const handlePasswordVisibility = () =>
     setIsPasswordVisible(!isPasswordVisible);
+
+  const emailInputClassName = errors.email
+    ? `${styles.loginFormSectionInputEmail} ${styles.inputBorderError}`
+    : styles.loginFormSectionInputEmail;
+
+  const passwordInputClassName = errors.password
+    ? `${styles.loginFormSectionInputPassword} ${styles.inputBorderError}`
+    : styles.loginFormSectionInputPassword;
 
   useEffect(() => {
     if (isLoginSuccess) {
@@ -124,13 +140,19 @@ const LoginForm = ({ logIn } = props) => {
           {getEmailFieldString(passwordForgotten)}
         </label>
 
-        <input
-          placeholder="nome@palavrasdepaz.com.br"
-          className={styles.loginFormSectionInputEmail}
-          {...register("email")}
-        />
+        <span className={styles.loginFormSectionInputContainer}>
+          <FiAtSign className={styles.loginFormSectionInputIcon} />
+          <input
+            placeholder="nome@palavrasdepaz.com.br"
+            className={emailInputClassName}
+            {...register("email")}
+          />
+        </span>
         {errors.email && (
-          <p className={styles.inputError}>{errors.email.message}</p>
+          <div className={styles.inputError}>
+            <AiOutlineWarning />
+            <span>{errors.email.message}</span>
+          </div>
         )}
       </div>
       {!passwordForgotten && (
@@ -142,21 +164,27 @@ const LoginForm = ({ logIn } = props) => {
             >
               <b>Senha</b>
             </label>
-            <input
-              placeholder="Digite sua senha"
-              className={styles.loginFormSectionInputPassword}
-              type={isPasswordVisible ? "text" : "password"}
-              {...register("password")}
-            />
-            <button
-              className={styles.loginFormSectionInputPasswordVisibility}
-              type="button"
-              onClick={handlePasswordVisibility}
-            >
-              {isPasswordVisible ? <FaEye /> : <FaEyeSlash />}
-            </button>
+            <span className={styles.loginFormSectionInputContainer}>
+              <AiOutlineLock className={styles.loginFormSectionInputIcon} />
+              <input
+                placeholder="Digite sua senha"
+                className={passwordInputClassName}
+                type={isPasswordVisible ? "text" : "password"}
+                {...register("password")}
+              />
+              <button
+                className={styles.loginFormSectionInputPasswordVisibility}
+                type="button"
+                onClick={handlePasswordVisibility}
+              >
+                {isPasswordVisible ? <FaEye /> : <FaEyeSlash />}
+              </button>
+            </span>
             {errors.password && (
-              <p className={styles.inputError}>{errors.password.message}</p>
+              <div className={styles.inputError}>
+                <AiOutlineWarning />
+                <span>{errors.password.message}</span>
+              </div>
             )}
           </div>
           <section className={styles.loginFormSectionButtonsContainer}>

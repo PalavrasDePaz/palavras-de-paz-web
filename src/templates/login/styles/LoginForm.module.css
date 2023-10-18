@@ -32,7 +32,6 @@
 
 .loginFormSectionTitle {
   font-size: 1.125rem;
-  font-weight: 700;
 }
 
 .loginFormSectionInputLabel {
@@ -66,11 +65,22 @@
 .loginFormSectionInputEmail,
 .loginFormSectionInputPassword {
   font-size: 0.9rem;
-  padding: 0.2rem 1rem;
+  padding: 0.75rem 1rem 0.75rem 2.5rem;
+  border-radius: 8px;
 }
 
+.loginFormSectionInputContainer {
+  display: flex;
+  justify-content: center;
+}
 .loginFormSectionInputPassword {
   flex: 1;
+}
+
+.loginFormSectionInputIcon {
+  position: absolute;
+  left: 0.75rem;
+  color: grey;
 }
 
 .loginFormSectionInputPasswordVisibility {
@@ -79,7 +89,6 @@
   border: transparent;
   position: absolute;
   right: 10px;
-  top: 33px;
   color: grey;
 }
 
@@ -91,12 +100,15 @@
 }
 
 .inputError {
-  color: red;
+  color: #cd5959;
   font-size: 0.75rem;
+  font-weight: 700;
   margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
 }
 
-.inputError::before {
-  display: inline;
-  content: "⚠ ";
+.inputBorderError {
+  border: 2px solid #cd5959;
 }
