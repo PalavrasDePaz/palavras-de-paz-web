@@ -8,7 +8,6 @@ import AvaliarRedacoes from "./components/AvaliarRedacoes";
 import DadosPresenca from "./components/DadosPresenca";
 import DetalhesCadastro from "./components/DetalhesCadastro";
 import DetalhesPresenca from "./components/DetalhesPresenca";
-import GestaoDeRelatorios from "./components/GestaoDeRelatorios";
 import HeaderAreaDeTrabalho from "./components/HeaderAreaDeTrabalho";
 import PrimeiroBox from "./components/PrimeiroBox";
 import WorkshopsAssistidos from "./components/WorkshopsAssistidos";
@@ -53,7 +52,6 @@ export default function AreaDeTrabalhoTemplate() {
         <DadosPresenca />
         <DetalhesPresenca />
         <DetalhesCadastro />
-        <GestaoDeRelatorios />
         <ToastContainer
           position="top-right"
           autoClose={5000}
