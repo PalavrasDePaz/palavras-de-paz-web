@@ -47,7 +47,7 @@ const Modal = ({ isOpen, onClose }) => {
         subject: "teste subject",
       };
 
-      await api.post("/volunteers/contact-email", withEmail);
+      await api.post("/volunteers/help-email", withEmail);
 
       setIsSending(false);
       setIsSent(true);

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
+import jwtDecode from "jwt-decode";
 import propTypes from "prop-types";
 import { useForm } from "react-hook-form";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
@@ -89,6 +90,8 @@ const LoginForm = ({ logIn } = props) => {
     if (isLoginSuccess) {
       localStorage.setItem(PALAVRAS_DE_PAZ_TOKEN, loginData.data.token);
       logIn(loginData.data.volunteer.email);
+
+      console.log(jwtDecode(loginData.data.token));
     }
   }, [isLoginSuccess]);
 

@@ -45,6 +45,10 @@
   color: hsla(0, 0%, 100%, 1);
 }
 
+.dadosSecondDiv a:hover {
+  text-decoration: underline;
+}
+
 .detalhesDiv {
   display: grid;
   grid-template-columns: 1fr auto;
