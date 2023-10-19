@@ -105,9 +105,28 @@ const LoginForm = ({ logIn } = props) => {
   useEffect(() => {
     if (isLoginSuccess) {
       localStorage.setItem(PALAVRAS_DE_PAZ_TOKEN, loginData.data.token);
+      const {
+        attendanceModulePermission,
+        bookPermission,
+        certificationPermission,
+        determineVolunteerModulePermission,
+        essayModulePermission,
+        manageVolunteerModulePermission,
+        notebookModulePermission,
+        readPermission,
+      } = jwtDecode(loginData.data.token);
       localStorage.setItem(
         "AUTH",
-        JSON.stringify(jwtDecode(loginData.data.token))
+        JSON.stringify({
+          attendanceModulePermission,
+          bookPermission,
+          certificationPermission,
+          determineVolunteerModulePermission,
+          essayModulePermission,
+          manageVolunteerModulePermission,
+          notebookModulePermission,
+          readPermission,
+        })
       );
       logIn(loginData.data.volunteer.email);
       // console.log(jwtDecode(loginData.data.token));
