@@ -105,9 +105,12 @@ const LoginForm = ({ logIn } = props) => {
   useEffect(() => {
     if (isLoginSuccess) {
       localStorage.setItem(PALAVRAS_DE_PAZ_TOKEN, loginData.data.token);
+      localStorage.setItem(
+        "AUTH",
+        JSON.stringify(jwtDecode(loginData.data.token))
+      );
       logIn(loginData.data.volunteer.email);
-
-      console.log(jwtDecode(loginData.data.token));
+      // console.log(jwtDecode(loginData.data.token));
     }
   }, [isLoginSuccess]);
 
