@@ -1,15 +1,17 @@
 import React from "react";
 
+import useGetEssaysCount from "../../../hooks/useGetEssaysCount";
 import useGetNotebooksCount from "../../../hooks/useGetNotebookCount";
 
 import styles from "../styles/AreaDeTrabalho.module.css";
 
-interface IIdVol {
+interface IdVol {
   idVol: number;
 }
 
-export default function PrimeiroBox({ idVol }: IIdVol) {
+export default function PrimeiroBox({ idVol }: IdVol) {
   const { data: notebooksCount } = useGetNotebooksCount(idVol);
+  const { data: essaysCount } = useGetEssaysCount(idVol);
   return (
     <div className={styles.mainContainer}>
       <div className={styles.main_container_div}>
@@ -20,7 +22,7 @@ export default function PrimeiroBox({ idVol }: IIdVol) {
         </a>
       </div>
       <h3 className={styles.main_container_h3}>
-        Relatórios de leitura avaliados:
+        Relatórios de leitura avaliados: {essaysCount?.count}
       </h3>
       <h3 className={styles.main_container_h3}>
         Cadernos avaliados: {notebooksCount?.count}
