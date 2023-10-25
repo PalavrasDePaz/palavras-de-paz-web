@@ -6,6 +6,7 @@ import editIcon from "../../../../public/static/images/icons/edit.svg";
 import bntSair from "../../../../public/static/images/icons/exit.svg";
 import profileImage from "../../../../public/static/images/icons/profile.svg";
 import LogoPaz from "../../../../public/static/images/logo.svg";
+import useGetUser from "../../../hooks/useGetUser";
 
 import Modal from "./Modal";
 
@@ -13,6 +14,8 @@ import styles from "../styles/Pagina-de-perfil.module.css";
 
 const PerfilComponent = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const { data: user } = useGetUser();
 
   const openModal = () => {
     setIsModalOpen(true);
@@ -56,7 +59,7 @@ const PerfilComponent = () => {
             className={styles.profileImg}
           />
           <div className={styles.profileNomeEmail}>
-            <p className={styles.profileNome}>Paulo Vitor Rosendo</p>
+            <p className={styles.profileNome}>{user?.name}</p>
             <p className={styles.profileEmail}>Exemplodeemail@gmail.com</p>
           </div>
         </div>
@@ -76,12 +79,12 @@ const PerfilComponent = () => {
             <input
               type="password"
               className={styles.campo}
-              placeholder="Digite sua senha"
+              placeholder="Digite sua nova senha"
             />
             <input
               type="password"
               className={styles.campo}
-              placeholder="Confirme sua senha"
+              placeholder="Confirme sua nova senha"
             />
           </div>
         </div>

@@ -79,6 +79,7 @@
 .tituloContainerColumn {
   flex-direction: column;
 }
+
 .camposContainer {
   display: flex;
   gap: 30px;
@@ -89,6 +90,7 @@
   border-radius: 20px;
   padding: 5px;
   width: 250px;
+  padding-left: 10px;
 }
 .tituloContainer {
   display: flex;

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { ToastContainer } from "react-toastify";
 
 import useGetUser from "../../hooks/useGetUser";
@@ -16,6 +16,7 @@ import "react-toastify/dist/ReactToastify.css";
 import styles from "./styles/AreaDeTrabalho.module.css";
 
 export default function AreaDeTrabalhoTemplate() {
+  const [auth, setAuth] = useState({});
   const { data: user } = useGetUser();
 
   if (!user) {
@@ -33,6 +34,11 @@ export default function AreaDeTrabalhoTemplate() {
     return user.name;
   };
 
+  useEffect(() => {
+    const authObj = JSON.parse(localStorage.getItem("AUTH"));
+    setAuth(authObj);
+  }, []);
+
   return (
     <>
       <HeaderAreaDeTrabalho />
@@ -46,12 +52,20 @@ export default function AreaDeTrabalhoTemplate() {
           <PrimeiroBox idVol={idvol} />
           <WorkshopsAssistidos idvol={idvol} />
         </section>
-        <AvaliarCadernos idvol={idvol} />
-        <AvaliarRedacoes idvol={idvol} />
-
-        <DadosPresenca />
-        <DetalhesPresenca />
-        <DetalhesCadastro />
+        {auth.readPermission && auth.readPermission === true && (
+          <AvaliarCadernos idvol={idvol} />
+        )}
+        {auth.bookPermission && auth.bookPermission === true && (
+          <AvaliarRedacoes idvol={idvol} />
+        )}
+        {auth.manageVolunteerModulePermission &&
+          auth.manageVolunteerModulePermission === true && <DadosPresenca />}
+        {auth.attendanceModulePermission &&
+          auth.attendanceModulePermission === true && <DetalhesPresenca />}
+        {auth.determineVolunteerModulePermission &&
+          auth.determineVolunteerModulePermission === true && (
+            <DetalhesCadastro />
+          )}
         <ToastContainer
           position="top-right"
           autoClose={5000}
