@@ -101,11 +101,20 @@
 .avaliar_status_div_p,
 .avaliar_status_p5 {
   color: #cdcdcd;
+  text-decoration: none;
+  user-select: none;
 }
 
 .avaliar_status_div_p_active,
 .avaliar_status_p5_active {
   color: #707070;
+  cursor: pointer;
+  user-select: none;
+  text-decoration: none;
+}
+.avaliar_status_p5_active:hover {
+  color: #555555;
+  text-decoration: underline;
 }
 
 .button_download {

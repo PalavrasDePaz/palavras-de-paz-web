@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
+import jwtDecode from "jwt-decode";
 import propTypes from "prop-types";
 import { useForm } from "react-hook-form";
 import { AiOutlineLock, AiOutlineWarning } from "react-icons/ai";
@@ -83,7 +84,31 @@ const LoginForm = ({ logIn } = props) => {
     if (isLoginSuccess) {
       setIsLoginFailed(false);
       localStorage.setItem(PALAVRAS_DE_PAZ_TOKEN, loginData.data.token);
+      const {
+        attendanceModulePermission,
+        bookPermission,
+        certificationPermission,
+        determineVolunteerModulePermission,
+        essayModulePermission,
+        manageVolunteerModulePermission,
+        notebookModulePermission,
+        readPermission,
+      } = jwtDecode(loginData.data.token);
+      localStorage.setItem(
+        "AUTH",
+        JSON.stringify({
+          attendanceModulePermission,
+          bookPermission,
+          certificationPermission,
+          determineVolunteerModulePermission,
+          essayModulePermission,
+          manageVolunteerModulePermission,
+          notebookModulePermission,
+          readPermission,
+        })
+      );
       logIn(loginData.data.volunteer.email);
+      // console.log(jwtDecode(loginData.data.token));
     }
   }, [isLoginSuccess]);
 

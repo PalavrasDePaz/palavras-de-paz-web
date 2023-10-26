@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
+import isReserved from "../../../helpers/isReserved";
 import useGetEssays from "../../../hooks/useGetEssays";
+import { IEssays } from "../types/interfaces";
 
 import ItemTurmaAvaliacao from "./ItemTurmaAvaliacao";
 
@@ -12,10 +14,18 @@ type AvaliarRedacoesProps = {
 
 export default function AvaliarRedacoes({ idvol }: AvaliarRedacoesProps) {
   const { data: essays } = useGetEssays(idvol);
-  if (!essays) {
-    return null;
-  }
-  essays.sort((a, b) => b.idclass - a.idclass);
+  const [essaysIn, setEssaysIn] = useState<IEssays[]>([]);
+
+  useEffect(() => {
+    if (essays) {
+      const updatedEssays = essays.map((essay) => ({
+        ...essay,
+        reserved: isReserved(essay.dateReserved),
+      }));
+      setEssaysIn(updatedEssays);
+    }
+  }, [essays]);
+
   return (
     <section className={styles.avaliar_section}>
       <h1>Avaliar Redações</h1>
@@ -28,16 +38,22 @@ export default function AvaliarRedacoes({ idvol }: AvaliarRedacoesProps) {
           <h2>Baixar Relatórios</h2>
           <h2>Formulário de avaliação</h2>
         </div>
-        {essays &&
-          essays.map(({ idclass, place, dateReserved }) => (
-            <ItemTurmaAvaliacao
-              idvol={idvol}
-              idclass={idclass}
-              place={place}
-              dateReserved={dateReserved}
-              key={idclass}
-            />
-          ))}
+        {essaysIn &&
+          essaysIn.map(
+            ({ idclass, place, dateReserved, dateConcluded, reserved }) => (
+              <ItemTurmaAvaliacao
+                essaysIn={essaysIn}
+                setEssaysIn={setEssaysIn}
+                idvol={idvol}
+                idclass={idclass}
+                place={place}
+                dateReserved={dateReserved}
+                dateConcluded={dateConcluded}
+                reserved={reserved}
+                key={idclass}
+              />
+            )
+          )}
       </div>
     </section>
   );

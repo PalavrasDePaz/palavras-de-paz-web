@@ -1,22 +1,18 @@
-export type User = {
-  email: string;
-  name: string;
-  idvol: number;
-};
-
-export type Notebook = {
+export interface INotebooks {
   notebookId: number;
   studentId: number;
   classId: number;
   studentName: string;
   reservationDate: string;
   notebookPath: string;
-};
+  reserved?: boolean;
+}
 
-export type Essays = {
+export interface IEssays {
   idclass: number;
   place: string;
   dateReserved: string;
   dateConcluded: string;
   folderLink: string;
-};
+  reserved: boolean;
+}

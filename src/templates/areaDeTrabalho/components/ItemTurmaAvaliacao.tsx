@@ -1,24 +1,36 @@
-import React, { useState } from "react";
+import React from "react";
 import Image from "next/image";
+import Link from "next/link";
 
 import DownloadImage from "../../../../public/static/images/icons/download.svg";
 import { api } from "../../../api";
+import dateUTCFormat from "../../../helpers/dateUTCFormat";
+import dateUTCGenerate from "../../../helpers/dateUTCGenerate";
 import downloadZIP from "../../../helpers/getEssaysDownload";
+import { IEssays } from "../types/interfaces";
 
 import styles from "../styles/AvaliarRedacoes.module.css";
 
 type ItemTurmaAvaliacaoProps = {
+  essaysIn: IEssays[];
+  setEssaysIn: React.Dispatch<React.SetStateAction<IEssays[]>>;
   idclass: number;
   place: string;
   idvol: number;
   dateReserved: string;
+  dateConcluded: string;
+  reserved: boolean;
 };
 
 function ItemTurmaAvaliacao({
+  essaysIn,
+  setEssaysIn,
   idclass,
   idvol,
   place,
   dateReserved,
+  dateConcluded,
+  reserved,
 }: ItemTurmaAvaliacaoProps) {
   const putReservationData = async (volunteerId: number, classId: number) => {
     const reserveData = { idvol: volunteerId, idclass: classId };
@@ -26,26 +38,34 @@ function ItemTurmaAvaliacao({
     return response.data;
   };
 
-  const [reserved, setReserved] = useState(false);
-
   const handleReservation = async (volunteerId: number, classId: number) => {
-    setReserved(!reserved);
+    const updatedEssays = essaysIn.map((essay: IEssays) => {
+      if (essay.idclass === classId) {
+        return {
+          ...essay,
+          reserved: true,
+        };
+      }
+      return essay;
+    });
+    setEssaysIn(updatedEssays);
+
     await putReservationData(volunteerId, classId);
   };
 
-  const naoReservado = "Não reservado";
+  const naoReservado = "--/--/--";
   const preencher = "Preencher Formulário";
 
   return (
     <div className={styles.avaliarRedacoes_status}>
-      {!dateReserved ? (
+      {!reserved ? (
         <>
           <input
             type="checkbox"
             onChange={() => handleReservation(idvol, idclass)}
           />
           <p>{`${idclass}-${place}`}</p>
-          <p>Não Reservado</p>
+          <p>{naoReservado}</p>
           <p>{naoReservado}</p>
           <div className={styles.avaliarRedacoes_status_div}>
             <Image src={DownloadImage} alt="icone de download" />
@@ -61,8 +81,10 @@ function ItemTurmaAvaliacao({
             onChange={() => ""}
           />
           <p>{`${idclass}-${place}`}</p>
-          <p>Reservado</p>
-          <p>{dateReserved}</p>
+          <p>
+            {dateReserved ? dateUTCFormat(dateReserved) : dateUTCGenerate()}
+          </p>
+          <p>{dateConcluded ? dateUTCFormat(dateReserved) : naoReservado}</p>
           <div className={styles.avaliarRedacoes_status_div}>
             <button
               onClick={() => downloadZIP(idclass, `${place}`)}
@@ -72,9 +94,15 @@ function ItemTurmaAvaliacao({
               <p>Download</p>
             </button>
           </div>
-          <p className={styles.avaliarRedacoes_status_preencher_on}>
-            {preencher}
-          </p>
+          {reserved ? (
+            <Link href="area-de-trabalho">
+              <p className={styles.avaliarRedacoes_status_preencher_on}>
+                {preencher}
+              </p>
+            </Link>
+          ) : (
+            <p className={styles.avaliarRedacoes_status_p5}>{preencher}</p>
+          )}
         </>
       )}
     </div>

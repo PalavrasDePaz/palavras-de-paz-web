@@ -92,6 +92,7 @@
 
 .avaliarRedacoes_status_p5 {
   color: #cdcdcd;
+  user-select: none;
 }
 
 .avaliarRedacoes_status_div {
@@ -123,6 +124,12 @@
 
 .avaliarRedacoes_status_preencher_on {
   color: #707070;
+  text-decoration: none;
+  cursor: pointer;
+}
+.avaliarRedacoes_status_preencher_on:hover {
+  color: #555555;
+  text-decoration: underline;
 }
 
 @media (max-width: 1300px) {

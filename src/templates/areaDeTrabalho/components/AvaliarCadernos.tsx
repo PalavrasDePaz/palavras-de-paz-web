@@ -1,9 +1,15 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 
 import DownloadImage from "../../../../public/static/images/icons/download.svg";
+import { api } from "../../../api";
+import dateUTCFormat from "../../../helpers/dateUTCFormat";
+import dateUTCGenerate from "../../../helpers/dateUTCGenerate";
 import getNotebooksDownload from "../../../helpers/getNotebookDownload";
+import isReserved from "../../../helpers/isReserved";
 import useGetNotebooks from "../../../hooks/useGetNotebooks";
+import { INotebooks } from "../types/interfaces";
 
 import styles from "../styles/AvaliarCadernos.module.css";
 
@@ -13,8 +19,41 @@ type AvaliarCadernosProps = {
 
 const AvaliarCadernos = ({ idvol }: AvaliarCadernosProps) => {
   const { data: notebooks } = useGetNotebooks(idvol);
+  const [notebooksIn, setNotebooksIn] = useState<INotebooks[]>([]);
   const naoReservado = "Não reservado";
   const preencher = "Preencher Formulário";
+
+  const putReservationData = async (notebookId: number) => {
+    const reserveData = { idvol, notebookId };
+    const response = await api.put("/notebooks/reservation", reserveData);
+    return response.data;
+  };
+
+  const handleReservation = async (notebookId: number) => {
+    const updatedNotebooks = notebooksIn.map((notebook) => {
+      if (notebook.notebookId === notebookId) {
+        return {
+          ...notebook,
+          reserved: true,
+        };
+      }
+      return notebook;
+    });
+
+    setNotebooksIn(updatedNotebooks);
+
+    await putReservationData(notebookId);
+  };
+
+  useEffect(() => {
+    if (notebooks) {
+      const updatedNotebooks = notebooks.map((notebook) => ({
+        ...notebook,
+        reserved: isReserved(notebook.reservationDate),
+      }));
+      setNotebooksIn(updatedNotebooks);
+    }
+  }, [notebooks]);
 
   return (
     <section className={styles.avaliar_section}>
@@ -27,13 +66,22 @@ const AvaliarCadernos = ({ idvol }: AvaliarCadernosProps) => {
           <h2>Baixar Caderno</h2>
           <h2>Formulário de avaliação</h2>
         </div>
-        {notebooks &&
-          notebooks.map(
-            ({ notebookId, studentName, reservationDate, studentId }) => (
+        {notebooksIn &&
+          notebooksIn.map(
+            ({
+              notebookId,
+              studentName,
+              reservationDate,
+              studentId,
+              reserved,
+            }) => (
               <div key={studentId} className={styles.avaliar_status}>
-                {reservationDate === null ? (
+                {!reserved ? (
                   <>
-                    <input type="checkbox" />
+                    <input
+                      type="checkbox"
+                      onChange={() => handleReservation(notebookId)}
+                    />
                     <p className={styles.avaliar_status_p1}>{studentName}</p>
                     <p>{naoReservado}</p>
                     <div className={styles.avaliar_status_div}>
@@ -45,7 +93,11 @@ const AvaliarCadernos = ({ idvol }: AvaliarCadernosProps) => {
                   <>
                     <input type="checkbox" checked />
                     <p className={styles.avaliar_status_p1}>{studentName}</p>
-                    <p>{reservationDate}</p>
+                    <p>
+                      {reservationDate
+                        ? dateUTCFormat(reservationDate)
+                        : dateUTCGenerate()}
+                    </p>
                     <div className={styles.avaliar_status_div}>
                       <button
                         onClick={() =>
@@ -60,12 +112,15 @@ const AvaliarCadernos = ({ idvol }: AvaliarCadernosProps) => {
                     </div>
                   </>
                 )}
-                <p
-                  className={`${styles.avaliar_status_p5}
-                ${reservationDate ? styles.avaliar_status_p5_active : ""}`}
-                >
-                  {preencher}
-                </p>
+                {reserved ? (
+                  <Link href="area-de-trabalho">
+                    <p className={styles.avaliar_status_p5_active}>
+                      {preencher}
+                    </p>
+                  </Link>
+                ) : (
+                  <p className={styles.avaliar_status_p5}>{preencher}</p>
+                )}
               </div>
             )
           )}

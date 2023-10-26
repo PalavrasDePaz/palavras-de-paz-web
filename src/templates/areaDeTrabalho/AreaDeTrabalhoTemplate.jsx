@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { ToastContainer } from "react-toastify";
 
 import useGetUser from "../../hooks/useGetUser";
@@ -8,7 +8,6 @@ import AvaliarRedacoes from "./components/AvaliarRedacoes";
 import DadosPresenca from "./components/DadosPresenca";
 import DetalhesCadastro from "./components/DetalhesCadastro";
 import DetalhesPresenca from "./components/DetalhesPresenca";
-import GestaoDeRelatorios from "./components/GestaoDeRelatorios";
 import HeaderAreaDeTrabalho from "./components/HeaderAreaDeTrabalho";
 import PrimeiroBox from "./components/PrimeiroBox";
 import WorkshopsAssistidos from "./components/WorkshopsAssistidos";
@@ -17,6 +16,7 @@ import "react-toastify/dist/ReactToastify.css";
 import styles from "./styles/AreaDeTrabalho.module.css";
 
 export default function AreaDeTrabalhoTemplate() {
+  const [auth, setAuth] = useState({});
   const { data: user } = useGetUser();
 
   if (!user) {
@@ -34,6 +34,11 @@ export default function AreaDeTrabalhoTemplate() {
     return user.name;
   };
 
+  useEffect(() => {
+    const authObj = JSON.parse(localStorage.getItem("AUTH"));
+    setAuth(authObj);
+  }, []);
+
   return (
     <>
       <HeaderAreaDeTrabalho />
@@ -47,13 +52,20 @@ export default function AreaDeTrabalhoTemplate() {
           <PrimeiroBox idVol={idvol} />
           <WorkshopsAssistidos idvol={idvol} />
         </section>
-        <AvaliarCadernos idvol={idvol} />
-        <AvaliarRedacoes idvol={idvol} />
-
-        <DadosPresenca />
-        <DetalhesPresenca />
-        <DetalhesCadastro />
-        <GestaoDeRelatorios />
+        {auth.readPermission && auth.readPermission === true && (
+          <AvaliarCadernos idvol={idvol} />
+        )}
+        {auth.bookPermission && auth.bookPermission === true && (
+          <AvaliarRedacoes idvol={idvol} />
+        )}
+        {auth.manageVolunteerModulePermission &&
+          auth.manageVolunteerModulePermission === true && <DadosPresenca />}
+        {auth.attendanceModulePermission &&
+          auth.attendanceModulePermission === true && <DetalhesPresenca />}
+        {auth.determineVolunteerModulePermission &&
+          auth.determineVolunteerModulePermission === true && (
+            <DetalhesCadastro />
+          )}
         <ToastContainer
           position="top-right"
           autoClose={5000}
