@@ -1,7 +1,7 @@
 export const ERROR_MESSAGES: { [key: string]: string } = {
   VOLUNTEER_ALREADY_EXISTS: "O email fornecido já está cadastrado.",
   VOLUNTEER_NOT_FOUND: "Usuário não encontrado",
-  EMAIL_OR_PASSWORD_WRONG_ERROR: "Usuário ou senha inválido",
+  EMAIL_OR_PASSWORD_WRONG_ERROR: "Usuário ou senha inválidos",
 };
 
 export const VOLUNTEER_ALREADY_EXISTS = "VOLUNTEER_ALREADY_EXISTS";

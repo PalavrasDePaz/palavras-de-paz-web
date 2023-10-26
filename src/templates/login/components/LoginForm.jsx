@@ -5,55 +5,28 @@ import { useForm } from "react-hook-form";
 import { AiOutlineLock, AiOutlineWarning } from "react-icons/ai";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { FiAtSign } from "react-icons/fi";
-import isEmail from "validator/lib/isEmail";
-import * as yup from "yup";
 
 import { yupResolver } from "@hookform/resolvers/yup";
 
 import LoadingSpinner from "../../../components/loadingSpinner/LoadingSpinner";
-import { PALAVRAS_DE_PAZ_TOKEN, REQUIRED_FIELD } from "../../../constants";
+import { ERROR_MESSAGES, PALAVRAS_DE_PAZ_TOKEN } from "../../../constants";
 import useLogin from "../../../hooks/useLogin";
 import useRequestPasswordEmail from "../../../hooks/useRequestPasswordEmail";
+import {
+  getButtonString,
+  getEmailFieldString,
+  getSchema,
+} from "../utils/loginUtils";
 
 import BackButton from "./BackButton";
-import LoginErrorScreen from "./LoginErrorScreen";
 
 import styles from "../styles/LoginForm.module.css";
-
-const INVALID_MAIL = "Endereço de e-mail incorreto";
-
-// Validação do e-mail
-const emailField = yup
-  .string()
-  .required(REQUIRED_FIELD)
-  .test("is-valid", INVALID_MAIL, (value) => isEmail(value));
-
-const schemaLogin = yup.object().shape({
-  email: emailField,
-  password: yup.string().required(REQUIRED_FIELD),
-});
-
-const schemaResetPass = yup.object().shape({
-  email: emailField,
-});
-
-const getSchema = (passwordForgotten) =>
-  passwordForgotten ? schemaResetPass : schemaLogin;
-
-// Redefinição de senha
-const getEmailFieldString = (isForgotten) =>
-  isForgotten ? (
-    "Informe seu e-mail para enviarmos um link de redefinição de senha"
-  ) : (
-    <b>E-mail</b>
-  );
-
-const getButtonString = (isPassForgotten) =>
-  isPassForgotten ? "Enviar e-mail" : "Entrar";
 
 const LoginForm = ({ logIn } = props) => {
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
   const [passwordForgotten, setPasswordForgotten] = useState(false);
+  const [isLoginFailed, setIsLoginFailed] = useState(false);
+  const [isLoginSubmited, setIsLoginSubmited] = useState(false);
 
   const { push } = useRouter();
 
@@ -84,7 +57,11 @@ const LoginForm = ({ logIn } = props) => {
     isSuccess: isPassEmailSuccess,
   } = useRequestPasswordEmail();
 
-  const sendUserLogin = (data) => mutateLogin(data);
+  const sendUserLogin = (data) => {
+    mutateLogin(data);
+    setIsLoginSubmited(true);
+  };
+
   const requestNewPassword = (data) => mutatePassEmail(data.email);
 
   const onSubmit = (data) =>
@@ -93,6 +70,7 @@ const LoginForm = ({ logIn } = props) => {
   const handlePasswordVisibility = () =>
     setIsPasswordVisible(!isPasswordVisible);
 
+  // Muda estilo de borda em caso de erro
   const emailInputClassName = errors.email
     ? `${styles.loginFormSectionInputEmail} ${styles.inputBorderError}`
     : styles.loginFormSectionInputEmail;
@@ -103,16 +81,17 @@ const LoginForm = ({ logIn } = props) => {
 
   useEffect(() => {
     if (isLoginSuccess) {
+      setIsLoginFailed(false);
       localStorage.setItem(PALAVRAS_DE_PAZ_TOKEN, loginData.data.token);
       logIn(loginData.data.volunteer.email);
     }
   }, [isLoginSuccess]);
 
-  if (isLoginError || isPassEmailError) {
-    const errorMessage =
-      loginError?.response.data.name || passEmailError?.response.data.name;
-    return <LoginErrorScreen errorMessage={errorMessage} />;
-  }
+  useEffect(() => {
+    if (isLoginSubmited && !isLoginSuccess) {
+      setIsLoginFailed(true);
+    }
+  }, [isLoginSubmited]);
 
   if (isLoginLoading || isPassEmailLoading) {
     return <LoadingSpinner />;
@@ -185,6 +164,18 @@ const LoginForm = ({ logIn } = props) => {
                 <AiOutlineWarning />
                 <span>{errors.password.message}</span>
               </div>
+            )}
+            {isLoginFailed && (
+              <>
+                <div className={styles.inputError}>
+                  <AiOutlineWarning />
+                  <span>{ERROR_MESSAGES.EMAIL_OR_PASSWORD_WRONG_ERROR}</span>
+                </div>
+                <p>
+                  Quer se cadastrar como voluntário?{" "}
+                  <a href="/cadastro">Aqui.</a>
+                </p>
+              </>
             )}
           </div>
           <section className={styles.loginFormSectionButtonsContainer}>
