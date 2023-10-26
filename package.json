@@ -43,7 +43,8 @@
     "styled-components": "^5.3.6",
     "swiper": "^8.4.4",
     "validator": "^13.9.0",
-    "yup": "^1.0.2"
+    "yup": "^1.0.2",
+    "zustand": "^4.4.4"
   },
   "devDependencies": {
     "@types/node": "^20.2.3",
