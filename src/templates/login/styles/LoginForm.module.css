@@ -69,6 +69,11 @@
   border-radius: 8px;
 }
 
+.loginFormSectionInputEmail:focus,
+.loginFormSectionInputPassword:focus {
+  border-color: transparent;
+}
+
 .loginFormSectionInputContainer {
   display: flex;
   justify-content: center;
@@ -86,7 +91,7 @@
 .loginFormSectionInputPasswordVisibility {
   font-size: 1rem;
   background-color: transparent;
-  border: transparent;
+  border: none;
   position: absolute;
   right: 10px;
   color: grey;
@@ -109,6 +114,7 @@
   gap: 0.25rem;
 }
 
-.inputBorderError {
-  border: 2px solid #cd5959;
+.inputBorderError,
+.inputBorderError:focus {
+  border: 2px solid #cd5959 !important;
 }
