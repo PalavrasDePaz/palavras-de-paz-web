@@ -59,7 +59,15 @@
   grid-column: 1;
   align-self: flex-end;
   padding-inline: 48px;
-  color: var(--cinza-claro, #f2f2f2);
+  display: flex;
+  flex-direction: column;
+}
+
+.calendarioDiv p {
+  font-size: 0.9rem;
+  color: hsla(0, 0%, 100%, 1);
+  font-weight: 600;
+  margin-bottom: 8px;
 }
 
 .btnDatePicker {

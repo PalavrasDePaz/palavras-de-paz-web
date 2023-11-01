@@ -44,6 +44,7 @@ export default function DetalhesCadastro() {
         </h2>
       </div>
       <div className={Styles.calendarioDiv}>
+        <p>Selecione uma data</p>
         <CustomDatePicker
           selectedDate={selectedDate}
           setSelectDate={setSelectDate}

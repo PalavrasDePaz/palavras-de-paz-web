@@ -52,6 +52,7 @@ export default function DetalhesPresenca() {
         </div>
       </div>
       <div className={Styles.calendarioDiv}>
+        <p>Selecione uma data</p>
         <CustomDatePicker
           selectedDate={selectedDate}
           setSelectDate={setSelectDate}

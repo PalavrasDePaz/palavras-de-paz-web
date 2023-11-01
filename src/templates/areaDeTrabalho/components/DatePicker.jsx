@@ -18,7 +18,7 @@ const CustomDatePicker = ({ selectedDate, setSelectDate }) => {
     selectedDate: PropTypes.instanceOf(Date).isRequired,
     setSelectDate: PropTypes.func.isRequired,
   };
-  const years = Array.from(new Array(10), (_, i) => i + 2020);
+  const years = Array.from(new Array(10), (_, i) => i + 2014);
 
   const months = [
     "Janeiro",
