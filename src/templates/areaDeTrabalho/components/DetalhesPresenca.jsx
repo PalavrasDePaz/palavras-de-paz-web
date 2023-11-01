@@ -1,23 +1,24 @@
+/* eslint-disable no-magic-numbers */
 /* eslint-disable react/jsx-no-bind */
 import React, { useState } from "react";
 import Image from "next/image";
 import { format } from "date-fns";
 import ptBR from "date-fns/locale/pt-BR";
-import DatePicker, { registerLocale } from "react-datepicker";
+import { registerLocale } from "react-datepicker";
 
-import calendarIcon from "../../../../public/static/images/icons/calendar.svg";
 import IconeLoading from "../../../../public/static/images/icons/iconeLoading.svg";
 import { api } from "../../../api";
 
 import BtnDados from "./BtnDados";
+import CustomDatePicker from "./DatePicker";
 
-import "react-datepicker/dist/react-datepicker.css";
 import Styles from "../styles/Dados.module.css";
 
 registerLocale("ptBR", ptBR);
 
 export default function DetalhesPresenca() {
   const [selectedDate, setSelectDate] = useState(new Date());
+
   const getAttendances = async () => {
     const selectedDateString = format(selectedDate, "yyyy-MM-dd");
     const response = await api.get(`/attendances/from/${selectedDateString}`, {
@@ -51,21 +52,9 @@ export default function DetalhesPresenca() {
         </div>
       </div>
       <div className={Styles.calendarioDiv}>
-        <DatePicker
-          dateFormat="dd/MM/yyyy"
-          locale={ptBR}
-          selected={selectedDate}
-          onChange={(data) => setSelectDate(data)}
-          customInput={
-            <button className={Styles.btnDatePicker}>
-              <Image src={calendarIcon} width={20} height={20} />
-              <span>
-                {format(selectedDate, "dd MMMM yyyy", {
-                  locale: ptBR,
-                })}
-              </span>
-            </button>
-          }
+        <CustomDatePicker
+          selectedDate={selectedDate}
+          setSelectDate={setSelectDate}
         />
       </div>
       <div className={Styles.dadosSecondDiv}>

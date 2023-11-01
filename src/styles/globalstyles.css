@@ -26,6 +26,17 @@
   font-style: italic;
 }
 
+button,
+select {
+  cursor: pointer;
+  background: none;
+  border: none;
+
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
 div.banner-gradient {
   font-family: "Baloo", cursive, arial !important;
   width: 1416px;

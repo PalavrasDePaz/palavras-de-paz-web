@@ -1,13 +1,38 @@
-import React from "react";
+import React, { useState } from "react";
 import Image from "next/image";
+import { format } from "date-fns";
 
 import Grafico2 from "../../../../public/static/images/icons/grafico2.svg";
+import { api } from "../../../api";
 
 import BtnDados from "./BtnDados";
+import CustomDatePicker from "./DatePicker";
 
 import Styles from "../styles/Dados.module.css";
 
 export default function DetalhesCadastro() {
+  const [selectedDate, setSelectDate] = useState(new Date());
+
+  const getVolunters = async () => {
+    const selectedDateString = format(selectedDate, "yyyy-MM-dd");
+    const response = await api.get(`/volunteers/from/${selectedDateString}`, {
+      responseType: "arraybuffer",
+    });
+
+    const blob = new Blob([response.data], {
+      type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+    });
+
+    const url = window.URL.createObjectURL(blob);
+
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = `voluntarios-${selectedDateString}.xlsx`; // Nome do arquivo
+    a.click();
+
+    window.URL.revokeObjectURL(url);
+  };
+
   return (
     <section className={Styles.containerSectionDados}>
       <div className={Styles.dadosFirstDiv}>
@@ -19,13 +44,15 @@ export default function DetalhesCadastro() {
         </h2>
       </div>
       <div className={Styles.calendarioDiv}>
-        <span>Selecione uma data</span>
-        <div> Calendário</div>
+        <CustomDatePicker
+          selectedDate={selectedDate}
+          setSelectDate={setSelectDate}
+        />
       </div>
       <div className={Styles.dadosSecondDiv}>
         <a href="./">Visualizar na web</a>
         <span> ou </span>
-        <BtnDados />
+        <BtnDados onClick={getVolunters} />
       </div>
     </section>
   );

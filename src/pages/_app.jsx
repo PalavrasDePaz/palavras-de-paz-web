@@ -23,6 +23,7 @@ import "../styles/globalstyles.css";
 import "../styles/swiper/index.css";
 import "../styles/fixedBtn/index.css";
 import "animate.css";
+import "react-datepicker/dist/react-datepicker.css";
 
 function MyApp({ Component, pageProps }) {
   const [queryClient] = React.useState(() => new QueryClient());
