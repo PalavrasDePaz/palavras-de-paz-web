@@ -297,6 +297,7 @@
   width: 60%;
   font-size: 18px;
   font-weight: 700;
+  color: #707070;
 }
 
 @media (max-width: 1300px) {
@@ -321,6 +322,7 @@
 .main_container_p1 {
   font-size: 20px;
   margin: 0;
+  color: #707070;
 }
 
 .main_container_p2 {
@@ -349,6 +351,7 @@
   text-align: center;
   font-size: 18px;
   font-weight: 700;
+  color: #707070;
 }
 
 @media (max-width: 1000px) {
