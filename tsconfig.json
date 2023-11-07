@@ -15,6 +15,6 @@
     "isolatedModules": true,
     "jsx": "preserve"
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "src/pages/pagina-de-perfil.jsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "src/pages/pagina-de-perfil.jsx", "src/templates/downloads/Downloads.tsx"],
   "exclude": ["node_modules"]
 }
