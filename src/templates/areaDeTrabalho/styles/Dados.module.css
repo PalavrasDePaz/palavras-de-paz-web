@@ -59,7 +59,88 @@
   grid-column: 1;
   align-self: flex-end;
   padding-inline: 48px;
-  color: var(--cinza-claro, #f2f2f2);
+  display: flex;
+  flex-direction: column;
+}
+
+.calendarioDiv p {
+  font-size: 0.9rem;
+  color: hsla(0, 0%, 100%, 1);
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.btnDatePicker {
+  color: #fff;
+  font-weight: bold;
+  width: 250px;
+  border: 1px solid #fff;
+  padding: 5px 20px;
+  border-radius: 10px;
+  background: none;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btnDatePicker span {
+  margin-left: 10px;
+  text-transform: capitalize;
+}
+
+.calendarioHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 10px;
+  gap: 10px;
+}
+.calendarioButton {
+  background-color: var(--cinza-claro, #f2f2f2);
+  width: 40px;
+  height: 40px;
+  border-radius: 5px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.calendarioButton:hover {
+  background-color: var(--cinza-claro, #e9e9e9);
+}
+.calendarioSelect {
+  flex: 1;
+  color: #707070 !important;
+  background-color: var(--cinza-claro, #f2f2f2);
+  border-radius: 5px;
+  font-weight: bold;
+
+  align-self: stretch;
+
+  text-transform: capitalize;
+
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.calendarioSelect select {
+  width: 100%;
+  padding: 10px;
+
+  color: #707070 !important;
+  font-weight: bold;
+}
+
+.arrowDown {
+  position: absolute;
+  right: 10px;
+  cursor: pointer;
 }
 
 @media (max-width: 1300px) {
