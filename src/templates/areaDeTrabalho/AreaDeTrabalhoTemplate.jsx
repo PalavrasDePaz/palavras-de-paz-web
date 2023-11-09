@@ -8,7 +8,6 @@ import AvaliarRedacoes from "./components/AvaliarRedacoes";
 import DadosPresenca from "./components/DadosPresenca";
 import DetalhesCadastro from "./components/DetalhesCadastro";
 import DetalhesPresenca from "./components/DetalhesPresenca";
-import FormsLevantamentoHoras from "./components/FormsLevantamentoHoras";
 import HeaderAreaDeTrabalho from "./components/HeaderAreaDeTrabalho";
 import PrimeiroBox from "./components/PrimeiroBox";
 import WorkshopsAssistidos from "./components/WorkshopsAssistidos";
@@ -80,7 +79,6 @@ export default function AreaDeTrabalhoTemplate() {
           theme="colored"
         />
       </div>
-      <FormsLevantamentoHoras />
     </>
   );
 }
