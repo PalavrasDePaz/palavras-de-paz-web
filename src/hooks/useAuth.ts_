@@ -1,0 +1,28 @@
+ {/* 
+import { useState, useEffect } from 'react';
+//import jwtDecode from "jwt-decode";
+
+//import { PALAVRAS_DE_PAZ_TOKEN } from "@/constants";
+
+type TokenInfo = {
+    email: string;
+    exp: number;
+  };
+
+  const getIsTokenExpired = (expDate: number) =>
+  // eslint-disable-next-line no-magic-numbers
+  new Date() > new Date(expDate * 1000);
+
+const useAuth = () => {
+    const [auth, setAuth] = useState();
+
+  //  useEffect(() => {
+       // const token = JSON.parse(localStorage.getItem(PALAVRAS_DE_PAZ_TOKEN));
+
+    //const { email, exp } = jwtDecode(token) as TokenInfo;
+       // setAuth(authObj);
+  //  }, []);
+    
+return {}
+}
+*/}
