@@ -161,3 +161,7 @@
   margin: auto;
   margin-bottom: 2rem;
 }
+
+.btn-copy {
+  all: unset;
+}

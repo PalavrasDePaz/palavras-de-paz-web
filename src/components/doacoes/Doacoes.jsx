@@ -85,9 +85,9 @@ function Doacoes() {
         <div className="doacoes-empresas my-3">
           <div className="doacoes-pix">
             <Image
-              src="/static/images/pix.png"
+              src="/static/images/pixQrCode.jpg"
               width="277%"
-              height="92%"
+              height="277%"
               alt=""
             />
             <Image
@@ -96,6 +96,19 @@ function Doacoes() {
               height="75%"
               alt=""
             />
+            <button
+              className="btn-copy"
+              onClick={() => {
+                navigator.clipboard.writeText("05920548000173");
+              }}
+            >
+              <Image
+                src="/static/images/icons/copyIcon.svg"
+                width="30px"
+                height="30px"
+                alt=""
+              />
+            </button>
           </div>
 
           <div className="doacoes-images-empresas">
