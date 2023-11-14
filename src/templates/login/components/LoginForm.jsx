@@ -154,7 +154,6 @@ const LoginForm = ({ logIn } = props) => {
         </span>
         {errors.email && (
           <div className={styles.inputError}>
-            <AiOutlineWarning />
             <span>{errors.email.message}</span>
           </div>
         )}
