@@ -52,12 +52,17 @@ export default function AreaDeTrabalhoTemplate() {
           <PrimeiroBox idVol={idvol} />
           <WorkshopsAssistidos idvol={idvol} />
         </section>
-        {auth.readPermission && auth.readPermission === true && (
-          <AvaliarCadernos idvol={idvol} />
-        )}
-        {auth.bookPermission && auth.bookPermission === true && (
-          <AvaliarRedacoes idvol={idvol} />
-        )}
+        {auth.readPermission &&
+          auth.readPermission === true &&
+          auth.essayModulePermission &&
+          auth.essayModulePermission === true && (
+            <AvaliarCadernos idvol={idvol} />
+          )}
+        {auth.bookPermission &&
+          auth.bookPermission === true &&
+          auth.notebookModulePermission === true && (
+            <AvaliarRedacoes idvol={idvol} />
+          )}
         {auth.manageVolunteerModulePermission &&
           auth.manageVolunteerModulePermission === true && <DadosPresenca />}
         {auth.attendanceModulePermission &&
