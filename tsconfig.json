@@ -13,8 +13,18 @@
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "jsx": "preserve"
+    "jsx": "preserve",
+    "baseUrl": "./",
+    "paths": {
+      "@/*": ["src/*"],
+    },
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "src/pages/pagina-de-perfil.jsx"],
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "src/pages/pagina-de-perfil.jsx",
+    "src/templates/areaDeTrabalho/components/DetalhesPresenca.jsx"
+  ],
   "exclude": ["node_modules"]
 }

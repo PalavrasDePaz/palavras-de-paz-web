@@ -1,0 +1,74 @@
+.containerSection {
+  padding-left: 64px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  max-width: 1512px;
+}
+
+.h2Item {
+  color: white;
+  font-family: Open Sans;
+  font-size: 48px;
+  font-weight: 700;
+  letter-spacing: 0.96px;
+}
+
+.h2Container {
+  background-image: linear-gradient(180deg, #24d47e 0%, #00b86d 100%);
+}
+
+.section_p1 {
+  font-family: Open Sans;
+  font-size: 24px;
+  font-weight: 600;
+  letter-spacing: 0.48px;
+  color: var(--Cinza-Escuro, #707070);
+}
+
+.section_p2 {
+  font-family: Open Sans;
+  font-size: 32px;
+  font-weight: 400;
+  letter-spacing: 0.64px;
+  color: var(--Preto, #444);
+}
+
+.div_form {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+.div_form label {
+  grid-column: 1 / -1;
+  font-family: Open Sans;
+  font-size: 24px;
+  font-weight: 400;
+  letter-spacing: 0.48px;
+  color: var(--Preto, #444);
+}
+
+.div_form input {
+  border-radius: 5px;
+  padding: 5px;
+}
+
+.div_button {
+  display: grid;
+  place-items: center;
+  margin-top: 128px;
+  background-color: #00b86d;
+  border-radius: 5px;
+  max-width: 240px;
+}
+
+.div_button button {
+  color: var(--Branco, #fff);
+  text-align: center;
+  font-family: Open Sans;
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 0.36px;
+}

@@ -33,7 +33,7 @@ const HeaderAreaDeTrabalho = () => {
 
     queryClient.setQueryData(["user"], null);
     queryClient.invalidateQueries("user");
-    router.push("/login");
+    router.push("/");
   };
 
   return (

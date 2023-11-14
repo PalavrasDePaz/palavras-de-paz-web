@@ -26,6 +26,17 @@
   font-style: italic;
 }
 
+button,
+select {
+  cursor: pointer;
+  background: none;
+  border: none;
+
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
 div.banner-gradient {
   font-family: "Baloo", cursive, arial !important;
   width: 1416px;
@@ -60,4 +71,97 @@ div.modal-header {
   border-radius: 0;
   filter: invert();
   width: 20px;
+}
+.react-datepicker__day {
+  background-color: #f2f2f2;
+  border-radius: 5px;
+  width: 40px !important;
+  height: 40px !important;
+
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.react-datepicker__day-names {
+  display: flex;
+  justify-content: space-around;
+}
+
+.react-datepicker__week {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.react-datepicker__day-name {
+  color: #707070;
+}
+.react-datepicker__day.react-datepicker__day--selected {
+  background-color: var(--primary-color);
+  color: var(--quaternary-color);
+}
+
+.react-datepicker__day:hover,
+.react-datepicker__day--keyboard-selected:hover,
+.react-datepicker__day--selected:hover,
+.react-datepicker__day--today:hover {
+  color: var(--primary-color);
+  background-color: #f2f2f2;
+}
+
+.react-datepicker__day--selected {
+  color: var(--primary-color);
+}
+
+.react-datepicker__navigation {
+  margin: 10px;
+  background-color: #f0f0f0 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  border-radius: 4px;
+}
+
+.react-datepicker__header {
+  background-color: #fff !important;
+  border-bottom: none !important;
+}
+
+.react-datepicker__day-names {
+  border: none;
+  margin-top: 10px;
+}
+
+.react-datepicker__day-name {
+  color: #707070 !important;
+  /* capitalize first letter */
+  text-transform: capitalize;
+  font-weight: bold;
+}
+
+.react-datepicker__current-month {
+  margin-top: 8px !important;
+  text-transform: capitalize;
+  color: #444444 !important;
+}
+
+.react-datepicker__month-container {
+  padding: 5px;
+}
+
+.react-datepicker__navigation-icon {
+  margin-top: 10px;
+}
+
+.react-datepicker__navigation-icon--next {
+  margin-left: 6px;
+}
+
+.react-datepicker__navigation-icon--previous {
+  margin-right: 6px;
+}
+
+.react-datepicker__day--keyboard-selected {
+  background-color: var(--secondary-color) !important;
 }
