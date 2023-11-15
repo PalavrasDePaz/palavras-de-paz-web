@@ -1,0 +1,156 @@
+.mainContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.main_container_div {
+  margin: 0;
+  max-width: 100%;
+  width: 663px;
+  height: 308px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: #fff;
+  box-sizing: border-box;
+  padding: 32px 48px;
+  border-radius: 15px;
+  box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.2);
+  -webkit-box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.15);
+  -moz-box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.2);
+}
+
+.main_container_div__p {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.main_container_p1 {
+  font-size: 20px;
+  margin: 0;
+  color: #707070;
+}
+
+.main_container_p2 {
+  margin: 0;
+  font-size: 48px;
+  font-weight: bold;
+  color: #21aa85;
+}
+
+.linkPrimeiroBox {
+  align-self: end;
+  border: none;
+  text-decoration: none;
+}
+
+.buttonLink {
+  align-self: end;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  background-color: #21aa85;
+  color: #ffffff;
+  height: 64px;
+  width: 284px;
+  border-radius: 15px;
+  font-size: 18px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: 0.3s ease all;
+}
+
+.buttonLink:hover {
+  background-color: #05c290;
+}
+
+.horas_declaradas_container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  background-color: #ffffff;
+  height: 89px;
+  border-radius: 15px;
+  box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.2);
+  -webkit-box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.15);
+  -moz-box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.2);
+  box-sizing: border-box;
+  padding: 15px 48px;
+}
+
+.h3__text_horas {
+  width: 60%;
+  font-size: 18px;
+  font-weight: 700;
+  color: #707070;
+}
+
+.declarar_horas_btn {
+  width: 152px;
+  height: 48px;
+  font-size: 18px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 700;
+  color: #fff;
+  background-color: #cdcdcd;
+  border: none;
+  border-radius: 15px;
+  transition: ease 0.3s all;
+}
+
+.declarar_horas_btn:hover {
+  background-color: #b3b3b3;
+}
+
+.enabledButton {
+  width: 152px;
+  height: 48px;
+  font-size: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 700;
+  color: #fff;
+  background-color: #21aa85;
+  border: none;
+  border-radius: 15px;
+  transition: ease 0.3s all;
+}
+
+.count_container {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.container_h3 {
+  background-color: #ffffff;
+  width: 310px;
+  height: 89px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 16px;
+  border-radius: 15px;
+  box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.2);
+  -webkit-box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.15);
+  -moz-box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.2);
+}
+
+.h3__text {
+  width: 80%;
+  text-align: center;
+  font-size: 18px;
+  font-weight: 700;
+  color: #707070;
+}
+
+.counts {
+  color: #05c290;
+}

@@ -4,7 +4,7 @@ import { useRouter } from "next/router";
 import useGetEssaysCount from "../../../hooks/useGetEssaysCount";
 import useGetNotebooksCount from "../../../hooks/useGetNotebookCount";
 
-import styles from "../styles/AreaDeTrabalho.module.css";
+import styles from "../styles/PrimeiroBox.module.css";
 
 interface IdVol {
   idVol: number;
@@ -17,15 +17,16 @@ export default function PrimeiroBox({ idVol }: IdVol) {
 
   function isWithinFirstFiveDays() {
     const fifthDay = 5;
-    const currentDate = new Date();    
+    const currentDate = new Date();
     return currentDate.getDate() <= fifthDay;
   }
 
-  const [buttonText] = useState(isWithinFirstFiveDays() ? 
-  'Declare suas horas' : 'Indisponível');
+  const [buttonText] = useState(
+    isWithinFirstFiveDays() ? "Declare suas horas" : "Indisponível"
+  );
 
   const handleButtonClick = () => {
-    if (buttonText === 'Declare suas horas') {
+    if (buttonText === "Declare suas horas") {
       push("/levantamento-horas");
     }
   };
