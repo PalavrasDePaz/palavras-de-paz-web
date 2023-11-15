@@ -1,4 +1,4 @@
-import { useState } from "react"; // Import useState
+import { MouseEvent, useState } from "react"; // Import useState
 import { useRouter } from "next/router";
 
 import useGetEssaysCount from "../../../hooks/useGetEssaysCount";
@@ -15,7 +15,7 @@ export default function PrimeiroBox({ idVol }: IdVol) {
   const { data: essaysCount } = useGetEssaysCount(idVol);
   const { push } = useRouter();
 
-  const handleClick = (e) => {
+  const handleClick = (e: MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     push("/presenca");
   };
