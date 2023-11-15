@@ -2,6 +2,11 @@ export type User = {
   email: string;
   name: string;
   idvol: number;
+  city: string;
+  state: string;
+  phoneNumber: string;
+  country: string;
+  password: string;
 };
 
 export type Notebook = {

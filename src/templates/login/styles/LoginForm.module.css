@@ -117,4 +117,5 @@
 .inputBorderError,
 .inputBorderError:focus {
   border: 2px solid #cd5959 !important;
+  outline: none;
 }

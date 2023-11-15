@@ -29,6 +29,8 @@ const HeaderAreaDeTrabalho = () => {
 
   const logOut = () => {
     localStorage.removeItem(PALAVRAS_DE_PAZ_TOKEN);
+    localStorage.removeItem("AUTH");
+
     queryClient.setQueryData(["user"], null);
     queryClient.invalidateQueries("user");
     router.push("/");
