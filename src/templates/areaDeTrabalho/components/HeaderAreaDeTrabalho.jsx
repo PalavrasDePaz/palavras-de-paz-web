@@ -27,12 +27,24 @@ const HeaderAreaDeTrabalho = () => {
     setIsModalOpen(false);
   };
 
-  const logOut = () => {
+  const delayToRender = () => {
+    const promise = new Promise((resolve) => {
+      setTimeout(resolve, 100);
+    });
+
+    return promise;
+  };
+
+  const logOut = async () => {
     localStorage.removeItem(PALAVRAS_DE_PAZ_TOKEN);
     localStorage.removeItem("AUTH");
 
     queryClient.setQueryData(["user"], null);
     queryClient.invalidateQueries("user");
+
+    // Aguardar um curto período antes de redirecionar para garantir que a transição anterior seja concluída
+    await delayToRender();
+
     router.push("/");
   };
 

@@ -236,7 +236,7 @@
   "resolved" "https://registry.npmjs.org/@next/env/-/env-12.3.4.tgz"
   "version" "12.3.4"
 
-"@next/swc-win32-x64-msvc@12.3.4":
+"@next/eslint-plugin-next@13.4.5":
   "integrity" "sha512-/xD/kyJhXmBZq+0xGKOdjL22c9/4i3mBAXaU9aOGEHTXqqFeOz8scJbScWF13aMqigeoFCsDqngIB2MIatcn4g=="
   "resolved" "https://registry.npmjs.org/@next/eslint-plugin-next/-/eslint-plugin-next-13.4.5.tgz"
   "version" "13.4.5"
