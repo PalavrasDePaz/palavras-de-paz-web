@@ -15,8 +15,14 @@ export default function PrimeiroBox({ idVol }: IdVol) {
   const { data: essaysCount } = useGetEssaysCount(idVol);
   const { push } = useRouter();
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const handleClick = (e: any) => {
+    e.preventDefault();
+    push("/presenca");
+  };
+
   function isWithinFirstFiveDays() {
-    const fifthDay = 5;
+    const fifthDay = 30;
     const currentDate = new Date();
     return currentDate.getDate() <= fifthDay;
   }
@@ -42,9 +48,11 @@ export default function PrimeiroBox({ idVol }: IdVol) {
           <p className={styles.main_container_p1}>Para marcar presença em um</p>
           <p className={styles.main_container_p2}>Workshop</p>
         </div>
-        <a href="/presenca" className={styles.linkPrimeiroBox}>
-          <button className={styles.buttonLink}>Clique aqui</button>
-        </a>
+        <div className={styles.linkPrimeiroBox}>
+          <button className={styles.buttonLink} onClick={handleClick}>
+            Clique aqui
+          </button>
+        </div>
       </div>
       <div className={styles.horas_declaradas_container}>
         <h3 className={styles.h3__text_horas}>
