@@ -5,7 +5,7 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   margin: 0 auto;
-  max-width: 1300px;
+  width: 100%;
 }
 
 .dadosFirstDiv {
@@ -143,15 +143,6 @@
   cursor: pointer;
 }
 
-@media (max-width: 1300px) {
-  .containerSectionDados {
-    width: 1120px;
-    padding: 96px 48px 48px 64px;
-  }
-  .dadosSecondDiv {
-    padding-inline: 64px 16px;
-  }
-}
 @media (max-width: 1130px) {
   .containerSectionDados {
     width: 889px;

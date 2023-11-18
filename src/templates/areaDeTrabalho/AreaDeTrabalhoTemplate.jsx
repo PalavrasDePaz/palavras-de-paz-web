@@ -1,3 +1,4 @@
+/* eslint-disable complexity */
 import React, { useEffect, useState } from "react";
 import { ToastContainer } from "react-toastify";
 
@@ -18,6 +19,7 @@ import styles from "./styles/AreaDeTrabalho.module.css";
 export default function AreaDeTrabalhoTemplate() {
   const [auth, setAuth] = useState({});
   const { data: user } = useGetUser();
+  const prontoPraProducao = false;
 
   if (!user) {
     return null;
@@ -42,47 +44,47 @@ export default function AreaDeTrabalhoTemplate() {
   return (
     <>
       <HeaderAreaDeTrabalho />
-      <div className={styles.containerSections}>
-        <section className={styles.main_container_section}>
-          <div className={styles.sectionTitle}>
+      <div className={styles.background}>
+        <main className={styles.containerSections}>
+          <section className={styles.sectionTitle}>
             <h1 className={styles.title}>Bem vindo, {firstName()}!</h1>
             <h2>id: {user?.idvol}</h2>
             <p>Aqui estão as suas atividades</p>
-          </div>
-          <PrimeiroBox idVol={idvol} />
-          <WorkshopsAssistidos idvol={idvol} />
-        </section>
-        {auth.readPermission &&
-          auth.readPermission === true &&
-          auth.essayModulePermission &&
-          auth.essayModulePermission === true && (
-            <AvaliarCadernos idvol={idvol} />
-          )}
-        {auth.bookPermission &&
-          auth.bookPermission === true &&
-          auth.notebookModulePermission === true && (
-            <AvaliarRedacoes idvol={idvol} />
-          )}
-        {auth.manageVolunteerModulePermission &&
-          auth.manageVolunteerModulePermission === true && <DadosPresenca />}
-        {auth.attendanceModulePermission &&
-          auth.attendanceModulePermission === true && <DetalhesPresenca />}
-        {auth.determineVolunteerModulePermission &&
-          auth.determineVolunteerModulePermission === true && (
-            <DetalhesCadastro />
-          )}
-        <ToastContainer
-          position="top-right"
-          autoClose={5000}
-          hideProgressBar={false}
-          newestOnTop={false}
-          closeOnClick
-          rtl={false}
-          pauseOnFocusLoss
-          draggable
-          pauseOnHover
-          theme="colored"
-        />
+          </section>
+          <aside className={styles.aside_container}>
+            <PrimeiroBox idVol={idvol} />
+            <WorkshopsAssistidos idvol={idvol} />
+          </aside>
+          {auth.readPermission &&
+            auth.readPermission === true &&
+            auth.essayModulePermission &&
+            auth.essayModulePermission === true &&
+            prontoPraProducao === true && <AvaliarCadernos idvol={idvol} />}
+          {auth.bookPermission &&
+            auth.bookPermission === true &&
+            auth.notebookModulePermission === true &&
+            prontoPraProducao === true && <AvaliarRedacoes idvol={idvol} />}
+          {auth.manageVolunteerModulePermission &&
+            auth.manageVolunteerModulePermission === true && <DadosPresenca />}
+          {auth.attendanceModulePermission &&
+            auth.attendanceModulePermission === true && <DetalhesPresenca />}
+          {auth.determineVolunteerModulePermission &&
+            auth.determineVolunteerModulePermission === true && (
+              <DetalhesCadastro />
+            )}
+          <ToastContainer
+            position="top-right"
+            autoClose={5000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+            theme="colored"
+          />
+        </main>
       </div>
     </>
   );
