@@ -27,11 +27,11 @@ export default function PrimeiroBox({ idVol }: IdVol) {
   }
 
   const [buttonText] = useState(
-    isWithinFirstFiveDays() ? "Declare suas horas" : "Indisponível"
+    isWithinFirstFiveDays() ? "Declarar" : "Indisponível"
   );
 
   const handleButtonClick = () => {
-    if (buttonText === "Declare suas horas") {
+    if (buttonText === "Declarar") {
       push("/levantamento-horas");
     }
   };
@@ -41,7 +41,7 @@ export default function PrimeiroBox({ idVol }: IdVol) {
     : styles.declarar_horas_btn;
 
   return (
-    <aside className={styles.mainContainer}>
+    <section className={styles.mainContainer}>
       <div className={styles.main_container_div}>
         <div className={styles.main_container_div__p}>
           <p className={styles.main_container_p1}>Para marcar presença em um</p>
@@ -79,6 +79,6 @@ export default function PrimeiroBox({ idVol }: IdVol) {
           </h3>
         </div>
       </div>
-    </aside>
+    </section>
   );
 }
