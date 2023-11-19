@@ -1,6 +1,15 @@
 /* eslint-disable react/jsx-indent */
 import React from "react";
 import Image from "next/image";
+import { toast, ToastContainer } from "react-toastify";
+
+// import "react-toastify/dist/"
+function copiarClipBoard() {
+  navigator.clipboard.writeText("05920548000173");
+  toast("CNPJ copiado", {
+    autoClose: 300,
+  });
+}
 
 function DoacaoPix() {
   return (
@@ -24,7 +33,7 @@ function DoacaoPix() {
           <button
             className="btn-copy mt-2"
             onClick={() => {
-              navigator.clipboard.writeText("05920548000173");
+              copiarClipBoard();
             }}
           >
             <Image
@@ -34,6 +43,9 @@ function DoacaoPix() {
               alt=""
             />
           </button>
+        </tr>
+        <tr className="d-flex justify-content-center">
+          <ToastContainer autoClose={300} />
         </tr>
       </table>
     </div>

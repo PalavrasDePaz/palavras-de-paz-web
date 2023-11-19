@@ -88,7 +88,7 @@ function Doacoes() {
           <DoacaoPix />
 
           <div className="doacoes-images-empresas">
-            <h1 className="">Itau ag: 0646</h1>
+            <h1>Itau ag: 0646</h1>
             <h1>conta: 66704-8</h1>
             <h1>CNPJ: 05920548/0001-73</h1>
           </div>
