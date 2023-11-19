@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 /* eslint-disable react/no-unescaped-entities */
 // eslint-disable-next-line simple-import-sort/imports
 import React from "react";
@@ -87,9 +88,9 @@ function Doacoes() {
         <div className="doacoes-empresas ">
           <DoacaoPix />
 
-          <div className="doacoes-images-empresas  ">
+          <div className="doacoes-images-empresas ">
             <h1 className="text-black">Transferência</h1>
-            <div className="doacoes-images-empresas d-flex justify-content-center m-5">
+            <div className="doacoes-images-empresas d-flex justify-content-center m-5 border-0">
               <h2>Itau ag: 0646</h2>
               <h2>conta: 66704-8</h2>
               <h2>CNPJ:</h2>

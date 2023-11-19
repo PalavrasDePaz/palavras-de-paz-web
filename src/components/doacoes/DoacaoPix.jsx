@@ -17,7 +17,7 @@ function DoacaoPix() {
     <div className="doacoes-images-empresas ">
       <h1 className="text-dark">Pix</h1>
 
-      <div className="doacoes-pix d-flex  justify-content-center ">
+      <div className="doacoes-pix d-flex  justify-content-center border-0">
         <Image
           src="/static/images/pixQrCode.jpg"
           width="277%"
