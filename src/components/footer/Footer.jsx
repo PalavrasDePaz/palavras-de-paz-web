@@ -202,7 +202,7 @@ function Footer() {
               target="_blank"
               rel="noopener noreferrer"
             >
-              ©2022 Desenvolvedores
+              ©2023 Desenvolvedores
             </a>
           </p>
         </div>
