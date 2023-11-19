@@ -84,13 +84,17 @@ function Doacoes() {
           <p>DOE ATRAVÉS</p>
         </div>
 
-        <div className="doacoes-empresas my-3">
+        <div className="doacoes-empresas ">
           <DoacaoPix />
 
-          <div className="doacoes-images-empresas">
-            <h1>Itau ag: 0646</h1>
-            <h1>conta: 66704-8</h1>
-            <h1>CNPJ: 05920548/0001-73</h1>
+          <div className="doacoes-images-empresas  ">
+            <h1 className="text-black">Transferência</h1>
+            <div className="doacoes-images-empresas d-flex justify-content-center m-5">
+              <h2>Itau ag: 0646</h2>
+              <h2>conta: 66704-8</h2>
+              <h2>CNPJ:</h2>
+              <h2> 05920548/0001-73</h2>
+            </div>
           </div>
         </div>
       </container>
