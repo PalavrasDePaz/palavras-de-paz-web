@@ -1,8 +1,7 @@
- {/* 
-import { useState, useEffect } from 'react';
-//import jwtDecode from "jwt-decode";
+import { useEffect,useState } from 'react';
+// import jwtDecode from "jwt-decode";
 
-//import { PALAVRAS_DE_PAZ_TOKEN } from "@/constants";
+// import { PALAVRAS_DE_PAZ_TOKEN } from "@/constants";
 
 type TokenInfo = {
     email: string;
@@ -19,10 +18,9 @@ const useAuth = () => {
   //  useEffect(() => {
        // const token = JSON.parse(localStorage.getItem(PALAVRAS_DE_PAZ_TOKEN));
 
-    //const { email, exp } = jwtDecode(token) as TokenInfo;
+    // const { email, exp } = jwtDecode(token) as TokenInfo;
        // setAuth(authObj);
   //  }, []);
     
-return {}
-}
-*/}
+return {};
+};
