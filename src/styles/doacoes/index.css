@@ -51,11 +51,14 @@
 .doacoes-pix {
   display: flex;
   align-items: center;
+  flex-direction: row;
   border: 1px solid #18ca99;
-  width: 45%;
-  justify-content: space-between;
+  width: 80%;
+  justify-content: space-around;
   border-radius: 10px;
   padding: 10px;
+  margin-top: 28px;
+  margin-bottom: 35px;
 }
 
 .doacoes-empresas {
@@ -66,12 +69,14 @@
 
 .doacoes-images-empresas {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: space-around;
   border: 1px solid #18ca99;
   width: 45%;
   border-radius: 10px;
   padding: 10px;
+  color: #21aa85;
 }
 
 .doacoes-icones-empresas {
@@ -160,4 +165,8 @@
   width: max-content;
   margin: auto;
   margin-bottom: 2rem;
+}
+
+.btn-copy {
+  all: unset;
 }

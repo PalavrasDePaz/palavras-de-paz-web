@@ -1,8 +1,11 @@
+/* eslint-disable max-len */
 /* eslint-disable react/no-unescaped-entities */
+// eslint-disable-next-line simple-import-sort/imports
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Button } from "react-bootstrap";
+import DoacaoPix from "./DoacaoPix";
 
 import Center from "../center";
 
@@ -82,60 +85,17 @@ function Doacoes() {
           <p>DOE ATRAVÉS</p>
         </div>
 
-        <div className="doacoes-empresas my-3">
-          <div className="doacoes-pix">
-            <Image
-              src="/static/images/pix.png"
-              width="277%"
-              height="92%"
-              alt=""
-            />
-            <Image
-              src="/static/images/cnpj.png"
-              width="320%"
-              height="75%"
-              alt=""
-            />
-          </div>
+        <div className="doacoes-empresas ">
+          <DoacaoPix />
 
-          <div className="doacoes-images-empresas">
-            <Image
-              src="/static/images/paypal.png"
-              width="227%"
-              height="95%"
-              alt=""
-            />
-
-            <Image
-              src="/static/images/american.png"
-              width="61%"
-              height="61%"
-              alt=""
-            />
-            <Image
-              src="/static/images/elo.png"
-              width="68%"
-              height="67%"
-              alt=""
-            />
-            <Image
-              src="/static/images/master.png"
-              width="74%"
-              height="61%"
-              alt=""
-            />
-            <Image
-              src="/static/images/visa.png"
-              width="108%"
-              height="40%"
-              alt=""
-            />
-            <Image
-              src="/static/images/hiper.png"
-              width="100%"
-              height="48%"
-              alt=""
-            />
+          <div className="doacoes-images-empresas ">
+            <h1 className="text-black">Transferência</h1>
+            <div className="doacoes-images-empresas d-flex justify-content-center m-5 border-0">
+              <h2>Itau ag: 0646</h2>
+              <h2>conta: 66704-8</h2>
+              <h2>CNPJ:</h2>
+              <h2> 05920548/0001-73</h2>
+            </div>
           </div>
         </div>
       </container>

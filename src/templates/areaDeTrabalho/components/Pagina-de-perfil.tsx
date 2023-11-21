@@ -64,7 +64,7 @@ const PerfilComponent = () => {
       <header className={styles.headerContent}>
         <div className={styles.sectionVoltar}>
           <Image src={bntSair} alt="Icone de sair" width={30} height={20} />
-          <Link href="/login">
+          <Link href="/area-de-trabalho">
             <p>Voltar</p>
           </Link>
         </div>

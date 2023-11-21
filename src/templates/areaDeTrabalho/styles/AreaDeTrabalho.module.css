@@ -1,18 +1,23 @@
 .containerSections {
+  max-width: 1400px;
   margin: 0 auto;
   padding-bottom: 4rem;
   display: flex;
   flex-direction: column;
-  gap: 4rem;
-  max-width: 1512px;
+  gap: 64px;
   font-family: "Open Sans", sans-serif;
-  background: linear-gradient(197.64deg, #ffffff 4.36%, #bde7dc 100%);
   color: #707070;
+  margin-top: 159.33px;
+}
+
+.background {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(197.64deg, #ffffff 4.36%, #bde7dc 100%);
 }
 
 .headerFixed {
   position: fixed;
-  padding-inline: 1rem;
   top: 0;
   left: 0;
   width: 100%;
@@ -21,7 +26,7 @@
 }
 
 .headerContainer {
-  max-width: 100%;
+  width: 100%;
   background-color: #ffffff;
   display: flex;
   place-items: center;
@@ -176,19 +181,16 @@
   padding: 0.65rem;
 }
 
-.main_container_section {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  margin-inline: auto;
-  margin-block-start: 10rem;
-  box-sizing: border-box;
-  gap: 2rem;
-  max-width: 1300px;
+.aside_container {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  margin-top: 60px;
 }
 
 .sectionTitle {
-  padding-top: 4rem;
-  padding-bottom: 8rem;
+  margin-top: 64px;
   grid-column: 1 / -1;
   color: #444444;
   place-self: center;
@@ -198,13 +200,14 @@
 .mainContainer {
   display: flex;
   flex-direction: column;
-  gap: 32px;
+  justify-content: space-between;
+  width: 668px;
+  height: 551px;
 }
 
 .main_container_div {
   margin: 0;
-  max-width: 100%;
-  width: 663px;
+  width: 100%;
   height: 308px;
   display: flex;
   flex-direction: column;
@@ -278,7 +281,7 @@
 .declarar_horas_btn {
   width: 152px;
   height: 48px;
-  font-size: 18px;
+  font-size: 16px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -289,39 +292,33 @@
   border-radius: 15px;
   transition: ease 0.3s all;
 }
+
 .declarar_horas_btn:hover {
   background-color: #b3b3b3;
+}
+
+.enabledButton {
+  width: 152px;
+  height: 48px;
+  font-size: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 700;
+  color: #fff;
+  background-color: #21aa85;
+  border: none;
+  border-radius: 15px;
+  transition: ease 0.3s all;
+}
+.enabledButton:hover {
+  background-color: #05c290;
 }
 
 .h3__text_horas {
   width: 60%;
   font-size: 18px;
   font-weight: 700;
-  color: #707070;
-}
-
-@media (max-width: 1300px) {
-  .main_container_div {
-    padding: 72px;
-  }
-}
-
-@media (max-width: 1130px) {
-  .main_container_div {
-    display: flex;
-    flex-direction: column;
-  }
-}
-
-@media (max-width: 900px) {
-  .main_container_div {
-    padding: 24px;
-  }
-}
-
-.main_container_p1 {
-  font-size: 20px;
-  margin: 0;
   color: #707070;
 }
 
@@ -354,26 +351,16 @@
   color: #707070;
 }
 
-@media (max-width: 1000px) {
-  .main_container_section {
-    gap: 1.5rem;
-  }
+.main_container_p1 {
+  font-size: 20px;
 }
 
 @media (max-width: 800px) {
-  .main_container_section {
-    display: grid;
-    grid-template-columns: 1fr;
-  }
   .main_container_div {
     grid-template-columns: 1fr;
     padding: 24px;
     width: 600px;
     place-items: center;
-  }
-  .main_container_p1 {
-    font-size: 24px;
-    line-height: 40px;
   }
   .main_container_p2 {
     font-size: 48px;
@@ -424,5 +411,69 @@
   .btnDados {
     padding: 16px;
     font-size: 16px;
+  }
+}
+
+@media (max-width: 1599px) {
+  .containerSections {
+    max-width: 90%;
+  }
+
+  .aside_container {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    margin-top: 60px;
+  }
+
+  .mainContainer {
+    width: 640px;
+  }
+
+  .h3__text_horas {
+    font-size: 16px;
+  }
+  .declarar_horas_btn,
+  .enabledButton,
+  .h3__text {
+    font-size: 16px;
+  }
+
+  .container_h3 {
+    width: 290px;
+  }
+}
+
+@media (max-width: 1452px) {
+  .mainContainer {
+    width: 600px;
+  }
+}
+
+@media (max-width: 1388px) {
+  .aside_container {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    margin-top: 60px;
+  }
+
+  .mainContainer {
+    width: 550px;
+  }
+
+  .h3__text_horas {
+    font-size: 16px;
+  }
+  .declarar_horas_btn,
+  .enabledButton,
+  .h3__text {
+    font-size: 16px;
+  }
+
+  .container_h3 {
+    width: 250px;
   }
 }
