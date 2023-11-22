@@ -10,7 +10,7 @@ import Styles from "../styles/Dados.module.css";
 
 export default function DadosPresenca() {
   const getDadosAttendances = async () => {
-    const response = await api.get(`/attendances/metrics`, {
+    const response = await api.get(`/attendances/metrics/download`, {
       responseType: "arraybuffer",
     });
 
