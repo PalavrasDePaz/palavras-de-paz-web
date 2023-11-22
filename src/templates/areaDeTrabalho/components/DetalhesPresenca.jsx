@@ -21,9 +21,12 @@ export default function DetalhesPresenca() {
 
   const getAttendances = async () => {
     const selectedDateString = format(selectedDate, "yyyy-MM-dd");
-    const response = await api.get(`/attendances/from/${selectedDateString}`, {
-      responseType: "arraybuffer",
-    });
+    const response = await api.get(
+      `/attendances/download/from/${selectedDateString}`,
+      {
+        responseType: "arraybuffer",
+      }
+    );
 
     const blob = new Blob([response.data], {
       type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
