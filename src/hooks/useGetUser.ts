@@ -4,13 +4,19 @@ import { api } from "../api";
 
 import { User } from "./types";
 
-const getUser = async (email?: string): Promise<User | null> =>
-  (await api.get(`/volunteers/${email}`)).data;
+const SECONDS_PER_MINUTE = 60;
+const MILLISECONDS_PER_SECOND = 1000;
+const CACHE_TIME_IN_MINUTES = 2;
+
+const getUser = async (email?: string): Promise<User | null> => {
+  const response = await api.get(`/volunteers/${email}`);
+  return response.data;
+};
 
 const useGetUser = (email?: string): UseQueryResult<User | null> =>
   useQuery(["user"], () => getUser(email), {
-    // eslint-disable-next-line no-magic-numbers
-    staleTime: 1000 * 60 * 60 * 2, // 2 horas (como no backend)
+    staleTime:
+      MILLISECONDS_PER_SECOND * SECONDS_PER_MINUTE * CACHE_TIME_IN_MINUTES,
     enabled: !!email,
   });
 

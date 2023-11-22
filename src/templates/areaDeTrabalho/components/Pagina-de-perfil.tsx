@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+/* eslint-disable max-lines */
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useForm } from "react-hook-form";
@@ -8,8 +9,10 @@ import bntSair from "../../../../public/static/images/icons/exit.svg";
 import profileImage from "../../../../public/static/images/icons/profile.svg";
 import LogoPaz from "../../../../public/static/images/logo.svg";
 import { useGetUser, useUpdateUser } from "../../../hooks";
+import { UpdatePayload } from "../../../hooks/useUpdateUser";
 
 import Modal from "./Modal";
+import ModalSucess from "./ModalSucess";
 
 import styles from "../styles/Pagina-de-perfil.module.css";
 
@@ -26,30 +29,10 @@ type FormType = {
 
 const PerfilComponent = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-
   const { data: user } = useGetUser();
-
+  const [updateSuccess, setUpdateSuccess] = useState(false);
   const { mutate: updateUser } = useUpdateUser();
-
-  const { register, handleSubmit } = useForm<FormType>({
-    values: {
-      phoneNumber: user?.phoneNumber,
-      city: user?.city,
-      state: user?.state,
-      country: user?.country,
-    },
-  });
-
-  const onSubmit = (data: FormType) => {
-    updateUser({
-      password: data.password,
-      email: data.email,
-      phoneNumber: data.phoneNumber,
-      city: data.city,
-      state: data.state,
-      country: data.country,
-    });
-  };
+  const { register, handleSubmit, setValue } = useForm<FormType>();
 
   const openModal = () => {
     setIsModalOpen(true);
@@ -58,6 +41,37 @@ const PerfilComponent = () => {
   const closeModal = () => {
     setIsModalOpen(false);
   };
+
+  useEffect(() => {
+    if (user) {
+      setValue("phoneNumber", user.phoneNumber || "");
+      setValue("city", user.city || "");
+      setValue("state", user.state || "");
+      setValue("country", user.country || "");
+    }
+  }, [user, setValue]);
+
+  const onSubmitBtn = async (data: FormType) => {
+    const email = user?.email;
+
+    const updateData: UpdatePayload = {
+      email: email || "",
+      data: {
+        phoneNumber: data.phoneNumber,
+        city: data.city,
+        state: data.state,
+        country: data.country,
+      },
+    };
+
+    try {
+      await updateUser(updateData);
+      setUpdateSuccess(true);
+    } catch (error) {
+      // console.error('Error updating:', error);
+    }
+  };
+
   return (
     <>
       <div className={styles.headerContent}>
@@ -95,7 +109,7 @@ const PerfilComponent = () => {
             <p className={styles.profileEmail}>{user?.email}</p>
           </div>
         </div>
-        <form onSubmit={handleSubmit(onSubmit)}>
+        <form onSubmit={handleSubmit(onSubmitBtn)}>
           {/* Campo de senha */}
           <div className={styles.profileContainer}>
             <label>
@@ -215,6 +229,18 @@ const PerfilComponent = () => {
             Salvar alterações
           </button>
         </form>
+        {updateSuccess && (
+          <ModalSucess
+            isOpen={updateSuccess}
+            onClose={() => setUpdateSuccess(false)}
+            timeout={2500}
+            content={
+              <div className={styles.successMessage}>
+                Dados atualizados com sucesso!
+              </div>
+            }
+          />
+        )}
       </div>
     </>
   );
