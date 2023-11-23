@@ -1,7 +1,12 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
+import Modal from "react-bootstrap/Modal";
+
+import Box from "../box";
+import ButtonForm from "../fixedbutton/ButtonForm";
 
 function Footer() {
+  const [smShow, setSmShow] = useState(false);
   return (
     <footer className="footer">
       <div className="line-footer" />
@@ -155,7 +160,7 @@ function Footer() {
           <a href="/parcerias" target="_blank" rel="noopener noreferrer">
             Objetivo
           </a>
-          <a href="/">Contato</a>
+          <button onClick={() => setSmShow(true)}>Contato</button>
         </div>
 
         <div className="colunas-footer">
@@ -169,9 +174,6 @@ function Footer() {
           </a>
           <a href="/doacoes" target="_blank" rel="noopener noreferrer">
             PIX
-          </a>
-          <a href="/doacoes" target="_blank" rel="noopener noreferrer">
-            PayPal
           </a>
         </div>
 
@@ -200,7 +202,7 @@ function Footer() {
               target="_blank"
               rel="noopener noreferrer"
             >
-              ©2022 Desenvolvedores
+              ©2023 Desenvolvedores
             </a>
           </p>
         </div>
@@ -208,6 +210,30 @@ function Footer() {
           <p>CNPJ: 05.920.548/0001-73</p>
         </div>
       </container>
+      <Modal
+        width="100%"
+        size="sm"
+        show={smShow}
+        onHide={() => setSmShow(false)}
+        aria-labelledby="example-modal-sizes-title-sm"
+      >
+        <Modal.Header closeButton>
+          <Box display="flex" direction="column">
+            <Modal.Title
+              id="example-modal-sizes-title-sm"
+              className="text-center mt-4"
+            >
+              CONTATO
+            </Modal.Title>
+            <p className="text-center">
+              Fique à vontade. Retornaremos em breve.
+            </p>
+          </Box>
+        </Modal.Header>
+        <Modal.Body>
+          <ButtonForm />
+        </Modal.Body>
+      </Modal>
     </footer>
   );
 }

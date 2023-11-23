@@ -1,4 +1,4 @@
-import { useState } from "react"; // Import useState
+import { MouseEvent, useState } from "react"; // Import useState
 import { useRouter } from "next/router";
 
 import useGetEssaysCount from "../../../hooks/useGetEssaysCount";
@@ -15,17 +15,23 @@ export default function PrimeiroBox({ idVol }: IdVol) {
   const { data: essaysCount } = useGetEssaysCount(idVol);
   const { push } = useRouter();
 
+  const handleClick = (e: MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    push("/presenca");
+  };
+
   function isWithinFirstFiveDays() {
-    const fifthDay = 5;
-    const currentDate = new Date();    
+    const fifthDay = 30;
+    const currentDate = new Date();
     return currentDate.getDate() <= fifthDay;
   }
 
-  const [buttonText] = useState(isWithinFirstFiveDays() ? 
-  'Declare suas horas' : 'Indisponível');
+  const [buttonText] = useState(
+    isWithinFirstFiveDays() ? "Declarar" : "Indisponível"
+  );
 
   const handleButtonClick = () => {
-    if (buttonText === 'Declare suas horas') {
+    if (buttonText === "Declarar") {
       push("/levantamento-horas");
     }
   };
@@ -35,15 +41,17 @@ export default function PrimeiroBox({ idVol }: IdVol) {
     : styles.declarar_horas_btn;
 
   return (
-    <aside className={styles.mainContainer}>
+    <section className={styles.mainContainer}>
       <div className={styles.main_container_div}>
         <div className={styles.main_container_div__p}>
           <p className={styles.main_container_p1}>Para marcar presença em um</p>
           <p className={styles.main_container_p2}>Workshop</p>
         </div>
-        <a href="/presenca" className={styles.linkPrimeiroBox}>
-          <button className={styles.buttonLink}>Clique aqui</button>
-        </a>
+        <div className={styles.linkPrimeiroBox}>
+          <button className={styles.buttonLink} onClick={handleClick}>
+            Clique aqui
+          </button>
+        </div>
       </div>
       <div className={styles.horas_declaradas_container}>
         <h3 className={styles.h3__text_horas}>
@@ -71,6 +79,6 @@ export default function PrimeiroBox({ idVol }: IdVol) {
           </h3>
         </div>
       </div>
-    </aside>
+    </section>
   );
 }

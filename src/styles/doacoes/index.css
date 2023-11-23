@@ -51,11 +51,14 @@
 .doacoes-pix {
   display: flex;
   align-items: center;
+  flex-direction: row;
   border: 1px solid #18ca99;
-  width: 45%;
-  justify-content: space-between;
+  width: 80%;
+  justify-content: space-around;
   border-radius: 10px;
   padding: 10px;
+  margin-top: 28px;
+  margin-bottom: 35px;
 }
 
 .doacoes-empresas {
