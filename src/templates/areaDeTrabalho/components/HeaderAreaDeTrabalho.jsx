@@ -69,7 +69,7 @@ const HeaderAreaDeTrabalho = () => {
             />
           </Link>
           <button onClick={openModal} className={styles.openModal}>
-            Dúvidas?
+            Ajuda?
           </button>
           <Modal isOpen={isModalOpen} onClose={closeModal} />
           <Image
