@@ -1,0 +1,36 @@
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 20%;
+  height: 20%;
+  background-color: #21aa85;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 1.5s ease-in-out;
+  border: none;
+  border-radius: 20px;
+}
+
+.modal.visible {
+  opacity: 1;
+}
+
+.modalContent {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  color: #333;
+  max-width: 400px;
+  text-align: center;
+  outline: none;
+  cursor: pointer;
+}
+
+.modalContent:focus {
+  outline: none;
+}

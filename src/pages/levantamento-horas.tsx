@@ -1,6 +1,5 @@
-import FormsLevantamentoHoras
-  from '../templates/areaDeTrabalho/components/FormsLevantamentoHoras';
+import FormLvntHoras from "../templates/areaDeTrabalho/components/FormsLevantamentoHoras";
 
 export default function LevantamentoHoras() {
-  return <FormsLevantamentoHoras />;
+  return <FormLvntHoras />;
 }

@@ -4,7 +4,7 @@ import HeaderForm from "../../../components/headerform/HeaderForm";
 
 import styles from "../styles/FormsLevantamentoHoras.module.css";
 
-function FormsLevantamentoHoras() {
+function FormLvntHoras() {
   const [managementHours, setManagementHours] = useState("0");
   const [communicationHours, setCommunicationHours] = useState("0");
   const [technologyHours, setTechnologyHours] = useState("0");
@@ -118,4 +118,4 @@ function FormsLevantamentoHoras() {
   );
 }
 
-export default FormsLevantamentoHoras;
+export default FormLvntHoras;
