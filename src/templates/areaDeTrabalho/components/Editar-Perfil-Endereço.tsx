@@ -14,47 +14,44 @@ const EditarPerfilEndereco: React.FC<EditarPerfilEnderecoProps> = ({
   register,
 }) => (
   <>
-    <label>
+    <div>
       <span className={styles.fieldName}>
         Cidade
         <Image src={editIcon} alt="icone de um lápis" width={12} height={12} />
       </span>
-
       <input
         type="text"
         className={styles.inputInline}
         placeholder="Insira sua nova cidade"
         {...register("city")}
       />
-    </label>
+    </div>
 
-    <label>
+    <div>
       <span className={styles.fieldName}>
         Estado
         <Image src={editIcon} alt="icone de um lápis" width={12} height={12} />
       </span>
-
       <input
         type="text"
         className={styles.inputInline}
         placeholder="Insira seu novo Estado"
         {...register("state")}
       />
-    </label>
+    </div>
 
-    <label>
+    <div>
       <span className={styles.fieldName}>
-        Pais
+        País
         <Image src={editIcon} alt="icone de um lápis" width={12} height={12} />
       </span>
-
       <input
         type="text"
         className={styles.inputInline}
         placeholder="Insira seu novo País"
         {...register("country")}
       />
-    </label>
+    </div>
   </>
 );
 

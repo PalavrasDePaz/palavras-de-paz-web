@@ -53,7 +53,6 @@ const PerfilComponent = () => {
 
   const onSubmitBtn = async (data: FormType) => {
     const email = user?.email;
-
     const updateData: UpdatePayload = {
       email: email || "",
       data: {
@@ -63,13 +62,8 @@ const PerfilComponent = () => {
         country: data.country,
       },
     };
-
-    try {
-      await updateUser(updateData);
-      setUpdateSuccess(true);
-    } catch (error) {
-      // console.error('Error updating:', error);
-    }
+    updateUser(updateData);
+    setUpdateSuccess(true);
   };
 
   return (
@@ -102,13 +96,11 @@ const PerfilComponent = () => {
             alt="Imagem de perfil"
             className={styles.profileImg}
           />
-
           <div className={styles.profileNameEmail}>
             <p className={styles.profileName}>{user?.name}</p>
             <p className={styles.profileEmail}>{user?.email}</p>
           </div>
         </section>
-          
         <form onSubmit={handleSubmit(onSubmitBtn)}>
           {/* Campo de senha */}
           <label className={styles.formField}>
@@ -121,7 +113,6 @@ const PerfilComponent = () => {
                 height={12}
               />
             </span>
-
             <span>
               <input
                 type="password"
@@ -135,7 +126,6 @@ const PerfilComponent = () => {
               />
             </span>
           </label>
-
           {/* Campo de email */}
           <label className={styles.formField}>
             <span className={styles.fieldName}>
@@ -181,69 +171,11 @@ const PerfilComponent = () => {
               />
             </span>
           </label>
-          {/* Campo de residência */}
-          {/*       <span className={styles.inlineFields}>
-            <span>
-            <label className={styles.fieldName}>
-              Cidade
-              <Image
-                src={editIcon}
-                alt="icone de um lápis"
-                width={12}
-                height={12}
-              />
-
-              <input
-                type="text"
-                className={styles.inputInline}
-                placeholder="Insira sua nova cidade"
-                {...register("city")}
-              />
-            </label>
-            </span>
-
-            <label className={styles.fieldName}>
-              Estado
-              <Image
-                src={editIcon}
-                alt="icone de um lápis"
-                width={12}
-                height={12}
-              />
-
-              <input
-                type="text"
-                className={styles.inputInline}
-                placeholder="Insira seu novo Estado"
-                {...register("state")}
-              />
-            </label>
-
-
-            <label className={styles.fieldName}>
-              Pais
-              <Image
-                src={editIcon}
-                alt="icone de um lápis"
-                width={12}
-                height={12}
-              />
-              <input
-                type="text"
-                className={styles.inputInline}
-                placeholder="Insira seu novo País"
-                {...register("country")}
-              />
-            </label>
-          </span> */}
-
           <EditarPerfilEndereco register={register} />
-
           <button type="submit" className={styles.btnSalvar}>
             Salvar alterações
           </button>
         </form>
-        
         {updateSuccess && (
           <ModalSucess
             isOpen={updateSuccess}
