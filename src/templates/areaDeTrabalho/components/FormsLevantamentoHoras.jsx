@@ -19,7 +19,7 @@ function FormLvntHoras() {
 
   function isFormRenderable() {
     const actualDate = new Date();
-    const maxDays = 0;
+    const maxDays = 31;
     const actualDay = actualDate.getDate();
     return actualDay <= maxDays && formsResponded !== "responded";
   }
@@ -43,6 +43,7 @@ function FormLvntHoras() {
         event: data.eventsHours,
         att: data.supportHours,
       });
+
       if (apiResponse.status === HTTP_STATUS_CREATED) {
         setFormsResponded("responded");
       } else if (apiResponse.status === HTTP_STATUS_BAD_REQUEST) {
