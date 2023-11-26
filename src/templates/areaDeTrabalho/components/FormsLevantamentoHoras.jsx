@@ -1,41 +1,78 @@
 import React, { useState } from "react";
+// import { useRouter } from "next/router";
+import { useForm } from "react-hook-form";
 
+import { api } from "../../../api/index";
 import HeaderForm from "../../../components/headerform/HeaderForm";
+import { useGetUser } from "../../../hooks";
 
 import styles from "../styles/FormsLevantamentoHoras.module.css";
 
 function FormLvntHoras() {
-  const [managementHours, setManagementHours] = useState("0");
-  const [communicationHours, setCommunicationHours] = useState("0");
-  const [technologyHours, setTechnologyHours] = useState("0");
-  const [eventsHours, setEventsHours] = useState("0");
-  const [supportHours, setSupportHours] = useState("0");
-  const [responseStatus, setResponseStatus] = useState("notResponded");
+  const { handleSubmit, register } = useForm();
+  const [managementHours, setManagementHours] = useState(0);
+  const [communicationHours, setCommunicationHours] = useState(0);
+  const [technologyHours, setTechnologyHours] = useState(0);
+  const [eventsHours, setEventsHours] = useState(0);
+  const [attHours, setAttHours] = useState(0);
+  const [formsResponded, setFormsResponded] = useState("notResponded");
 
   function isFormRenderable() {
     const actualDate = new Date();
-    const maxDays = 30;
+    const maxDays = 0;
     const actualDay = actualDate.getDate();
-    return actualDay <= maxDays && responseStatus !== "responded";
+    return actualDay <= maxDays && formsResponded !== "responded";
   }
+
+  const { data: user } = useGetUser();
+  // const { push } = useRouter();
+
+  const HTTP_STATUS_CREATED = 201;
+  const HTTP_STATUS_BAD_REQUEST = 400;
+  const HTTP_STATUS_CONFLICT = 409;
 
   const RendForm = isFormRenderable();
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    // Implementação para enviar o formulário para o backend
-    setResponseStatus("responded");
+  const onSubmitBtn = async (data) => {
+    try {
+      const apiResponse = await api.post("/volunteers/hours", {
+        idVol: user.idvol,
+        manag: data.managementHours,
+        comm: data.communicationHours,
+        tec: data.technologyHours,
+        event: data.eventsHours,
+        att: data.supportHours,
+      });
+      if (apiResponse.status === HTTP_STATUS_CREATED) {
+        setFormsResponded("responded");
+      } else if (apiResponse.status === HTTP_STATUS_BAD_REQUEST) {
+        setFormsResponded("responded");
+      } else if (apiResponse.status === HTTP_STATUS_CONFLICT) {
+        setFormsResponded("responded");
+      } else {
+        // console.error('An unexpected error occurred.');
+      }
+    } catch (error) {
+      // console.log(error);
+      // console.log('Response:', error.response);
+    }
   };
+
+  // const backToDesktop = () => {
+  //   push("/area-de-trabalho");
+  // };
 
   return (
     <section>
       {RendForm ? (
         <>
           <HeaderForm />
+          <h1>{user?.idvol}</h1>
           <div className={styles.h2Container}>
             <h2 className={styles.h2Item}>Levantamento mensal de horas</h2>
           </div>
           <div className={styles.containerSection}>
+            <p>Bem-vindo, {user?.name}</p>
             <p className={styles.section_p1}>
               A Palavras de Paz está se transformando para ficar melhor para
               você e para todos que fazem o curso ou participam das nossas
@@ -52,7 +89,7 @@ function FormLvntHoras() {
               Os formulários devem ser enviados até o 5º dia de cada mês.
             </p>
           </div>
-          <form onSubmit={handleSubmit}>
+          <form onSubmit={handleSubmit(onSubmitBtn)}>
             <div className={styles.div_form}>
               <label htmlFor="managementHours">
                 ÁREA DE DE GESTÃO (gestão de pessoas, captação de recursos
@@ -61,6 +98,7 @@ function FormLvntHoras() {
               </label>
               <input
                 type="number"
+                {...register("managementHours")}
                 value={managementHours}
                 onChange={(event) => setManagementHours(event.target.value)}
               />
@@ -71,6 +109,7 @@ function FormLvntHoras() {
               </label>
               <input
                 type="number"
+                {...register("communicationHours")}
                 value={communicationHours}
                 onChange={(event) => setCommunicationHours(event.target.value)}
               />
@@ -81,6 +120,7 @@ function FormLvntHoras() {
               </label>
               <input
                 type="number"
+                {...register("technologyHours")}
                 value={technologyHours}
                 onChange={(event) => setTechnologyHours(event.target.value)}
               />
@@ -91,6 +131,7 @@ function FormLvntHoras() {
               </label>
               <input
                 type="number"
+                {...register("eventsHours")}
                 value={eventsHours}
                 onChange={(event) => setEventsHours(event.target.value)}
               />
@@ -102,17 +143,24 @@ function FormLvntHoras() {
               </label>
               <input
                 type="number"
-                value={supportHours}
-                onChange={(event) => setSupportHours(event.target.value)}
+                {...register("supportHours")}
+                value={attHours}
+                onChange={(event) => setAttHours(event.target.value)}
               />
             </div>
+            <div className={styles.div_button}>
+              <button type="submit"> Enviar</button>
+            </div>
           </form>
-          <div className={styles.div_button}>
-            <button type="submit"> Enviar</button>
-          </div>
         </>
       ) : (
-        <p>O formulário só pode ser preenchido nos primeiros 5 dias do mês.</p>
+        <>
+          <HeaderForm />
+          <p>
+            O formulário só pode ser preenchido nos primeiros 5 dias do mês.
+          </p>
+          {/* <button onClick={ backToDesktop }>Voltar para Área de Trabalho</button> */}
+        </>
       )}
     </section>
   );
