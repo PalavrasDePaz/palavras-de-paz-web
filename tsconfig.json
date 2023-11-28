@@ -25,6 +25,6 @@
     "**/*.tsx",
     "src/pages/pagina-de-perfil.jsx",
     "src/templates/areaDeTrabalho/components/DetalhesPresenca.jsx"
-  ],
+, "src/hooks/useAuth.ts_"  ],
   "exclude": ["node_modules"]
 }
