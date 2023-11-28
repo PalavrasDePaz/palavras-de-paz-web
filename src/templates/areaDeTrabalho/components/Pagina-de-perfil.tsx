@@ -32,7 +32,13 @@ const PerfilComponent = () => {
   const { data: user } = useGetUser();
   const [updateSuccess, setUpdateSuccess] = useState(false);
   const { mutate: updateUser } = useUpdateUser();
-  const { register, handleSubmit, setValue } = useForm<FormType>();
+  const {
+    register,
+    handleSubmit,
+    setValue,
+    getValues,
+    formState: { errors },
+  } = useForm<FormType>();
 
   const openModal = () => {
     setIsModalOpen(true);
@@ -130,9 +136,23 @@ const PerfilComponent = () => {
               <input
                 type="password"
                 placeholder="Confirme sua nova senha"
-                {...register("new_password")}
+                {...register("new_password", {
+                  validate: (value) => {
+                    const passwordValue = getValues("password");
+                    let errorMessage = "";
+
+                    if (value && !passwordValue) {
+                      errorMessage = "Digite sua nova senha primeiro";
+                    } else if (value !== passwordValue) {
+                      errorMessage = "As senhas não coincidem";
+                    }
+
+                    return errorMessage || true;
+                  },
+                })}
               />
             </span>
+            {errors.new_password && <span>{errors.new_password.message}</span>}
           </label>
           {/* Campo de email */}
           <label className={styles.formField}>
@@ -155,9 +175,23 @@ const PerfilComponent = () => {
               <input
                 type="email"
                 placeholder="Confirme seu novo email"
-                {...register("new_email")}
+                {...register("new_email", {
+                  validate: (value) => {
+                    const emailValue = getValues("email");
+                    let errorMessage = "";
+
+                    if (value && !emailValue) {
+                      errorMessage = "Digite seu novo e-mail primeiro";
+                    } else if (value !== emailValue) {
+                      errorMessage = "Os e-mails não coincidem";
+                    }
+
+                    return errorMessage || true;
+                  },
+                })}
               />
             </span>
+            {errors.new_email && <span>{errors.new_email.message}</span>}
           </label>
           {/* Campo de telefone */}
           <label className={styles.formField}>
