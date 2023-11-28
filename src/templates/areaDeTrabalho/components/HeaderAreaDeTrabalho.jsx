@@ -8,6 +8,7 @@ import { useQueryClient } from "@tanstack/react-query";
 import Login from "../../../../public/static/images/icons/login.svg";
 import Profile from "../../../../public/static/images/icons/profile.svg";
 import Logo from "../../../../public/static/images/logo.svg";
+import LogoMobile from "../../../../public/static/images/paz.png";
 import { PALAVRAS_DE_PAZ_TOKEN } from "../../../constants";
 
 import Modal from "./Modal";
@@ -57,7 +58,9 @@ const HeaderAreaDeTrabalho = () => {
           palavras de paz, programa de educação para a paz, com a cor verde"
           width="333px"
           height="90px"
+          className={styles.logo}
         />
+
         <div className={styles.headerBtnLogin}>
           <Link href="/pagina-de-perfil">
             <Image
