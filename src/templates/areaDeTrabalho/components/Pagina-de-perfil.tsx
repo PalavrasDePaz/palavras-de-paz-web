@@ -62,6 +62,14 @@ const PerfilComponent = () => {
         country: data.country,
       },
     };
+
+    if (data.new_email && data.new_email !== "") {
+      updateData.data.email = data.new_email;
+    }
+    if (data.new_password && data.new_password !== "") {
+      updateData.data.password = data.new_password;
+    }
+
     updateUser(updateData);
     setUpdateSuccess(true);
   };
