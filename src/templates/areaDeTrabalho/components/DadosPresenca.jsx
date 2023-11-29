@@ -220,19 +220,19 @@ const ModalDadosPresenca = ({ show, onHide }) => {
                     <td>{presenca.telefone}</td>
                     <td>{presenca["e-mail"]}</td>
                     <td>{presenca.Facil}</td>
-                    <td>{presenca["Livro 0"] === 0 ? "Não" : "Sim"}</td>
-                    <td>{presenca["Livro 1"] === 0 ? "Não" : "Sim"}</td>
-                    <td>{presenca["Livro 2"] === 0 ? "Não" : "Sim"}</td>
-                    <td>{presenca["Livro 3"] === 0 ? "Não" : "Sim"}</td>
-                    <td>{presenca["Livro 4"] === 0 ? "Não" : "Sim"}</td>
-                    <td>{presenca["Livro 5"] === 0 ? "Não" : "Sim"}</td>
-                    <td>{presenca["Livro 6"] === 0 ? "Não" : "Sim"}</td>
-                    <td>{presenca["Livro 7"] === 0 ? "Não" : "Sim"}</td>
-                    <td>{presenca["Livro 8"] === 0 ? "Não" : "Sim"}</td>
-                    <td>{presenca["Livro 9"] === 0 ? "Não" : "Sim"}</td>
-                    <td>{presenca["Livro 10"] === 0 ? "Não" : "Sim"}</td>
-                    <td>{presenca["Livro 11"] === 0 ? "Não" : "Sim"}</td>
-                    <td>{presenca["Livro 12"] === 0 ? "Não" : "Sim"}</td>
+                    <td>{presenca["Livro 0"]}</td>
+                    <td>{presenca["Livro 1"]}</td>
+                    <td>{presenca["Livro 2"]}</td>
+                    <td>{presenca["Livro 3"]}</td>
+                    <td>{presenca["Livro 4"]}</td>
+                    <td>{presenca["Livro 5"]}</td>
+                    <td>{presenca["Livro 6"]}</td>
+                    <td>{presenca["Livro 7"]}</td>
+                    <td>{presenca["Livro 8"]}</td>
+                    <td>{presenca["Livro 9"]}</td>
+                    <td>{presenca["Livro 10"]}</td>
+                    <td>{presenca["Livro 11"]}</td>
+                    <td>{presenca["Livro 12"]}</td>
                     <td>{presenca.Npres}</td>
                     <td>{presenca["Submission date"]}</td>
                     <td>{presenca["`1`"]}</td>
@@ -246,8 +246,8 @@ const ModalDadosPresenca = ({ show, onHide }) => {
                     <td>{presenca["`9`"]}</td>
                     <td>{presenca["`10`"]}</td>
                     <td>{presenca["`11`"]}</td>
-                    <td>{presenca["aval cadernos"]}</td>
-                    <td>{presenca["aval livro"]}</td>
+                    <td>{presenca["aval cadernos"] === 0 ? "Não" : "Sim"}</td>
+                    <td>{presenca["aval livro"] === 0 ? "Não" : "Sim"}</td>
                     <td>{presenca.cert}</td>
                     <td>{presenca["habil-leitura"]}</td>
                     <td>{presenca["habil-livro"]}</td>
