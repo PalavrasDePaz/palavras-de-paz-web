@@ -41,6 +41,7 @@ const CustomDatePicker = ({ selectedDate, setSelectDate }) => {
       locale={ptBR}
       selected={selectedDate}
       onChange={(date) => setSelectDate(date)}
+      maxDate={new Date()}
       renderCustomHeader={({
         date,
         changeYear,
