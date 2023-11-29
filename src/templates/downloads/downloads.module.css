@@ -7,6 +7,18 @@
   margin-top: 32px;
 }
 
+@media (max-width: 800px) {
+  .container_section {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 500px) {
+  .container_section {
+    grid-template-columns: 1fr;
+  }
+}
+
 .img {
   max-width: 50%;
   object-fit: cover;
@@ -40,13 +52,6 @@
 .btnDownload:hover {
   background-color: hsla(165, 65%, 82%, 1);
   color: hsla(164, 67%, 40%, 1);
-}
-
-@media (max-width: 620px) {
-  .btnDownload {
-    padding: 16px 32px;
-    font-size: 16px;
-  }
 }
 
 @media (max-width: 620px) {
