@@ -1,0 +1,14 @@
+.pageSelect {
+  padding: 10px;
+  width: 40px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.active {
+  background-color: #21aa85;
+  color: #ffffff;
+}
