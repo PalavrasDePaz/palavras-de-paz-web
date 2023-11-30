@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import Modal from "react-bootstrap/Modal";
 
 import Box from "../box";
 import ButtonForm from "../fixedbutton/ButtonForm";
+import VoluntarioFooter from "../voluntariofooter/VoluntarioFooter";
 
 function Footer() {
   const [smShow, setSmShow] = useState(false);
@@ -137,23 +138,7 @@ function Footer() {
           </a>
         </div>
 
-        <div className="colunas-footer">
-          <h6 className="footer-title">Voluntários</h6>
-          <a
-            href="https://form.jotform.com/220305437068653"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Cadastro
-          </a>
-          <a
-            href="https://www.atados.com.br/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Atados
-          </a>
-        </div>
+        <VoluntarioFooter />
 
         <div className="colunas-footer">
           <h6 className="footer-title">Parcerias</h6>
@@ -190,7 +175,6 @@ function Footer() {
           </a>
         </div>
       </container>
-
       <container className="rodape-footer">
         <div>
           <p>Direitos reservados à Palavra de Paz</p>

@@ -94,7 +94,11 @@ function VoluntariosMain() {
             {new Date() >= new Date("2023-12-17") ? (
               <p>
                 <Link href="/cadastro" className={styles.linkCadastro}>
-                  <a target="_blank" rel="noopener noreferrer" href="/cadastro">
+                  <a
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    href="https://www.palavrasdepaz.org/cadastro"
+                  >
                     CADASTRO
                   </a>
                 </Link>
