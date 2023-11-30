@@ -137,9 +137,7 @@ function Footer() {
             Downloads
           </a>
         </div>
-
         <VoluntarioFooter />
-
         <div className="colunas-footer">
           <h6 className="footer-title">Parcerias</h6>
           <a href="/parcerias" target="_blank" rel="noopener noreferrer">
