@@ -293,9 +293,9 @@
   transition: ease 0.3s all;
 }
 
-.declarar_horas_btn:hover {
+/* .declarar_horas_btn:hover {
   background-color: #b3b3b3;
-}
+} */
 
 .enabledButton {
   width: 152px;

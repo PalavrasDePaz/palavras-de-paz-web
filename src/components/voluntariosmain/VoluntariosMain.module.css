@@ -1,0 +1,14 @@
+.atadosLink {
+  color: green;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.atadosLink:hover,
+.atadosLink:focus {
+  color: darkgreen;
+}
+
+.linkCadastro {
+  color: white;
+}

@@ -1,5 +1,7 @@
 import { MouseEvent, useState } from "react"; // Import useState
 import { useRouter } from "next/router";
+import { addMonths, format } from "date-fns";
+import ptBR from "date-fns/locale/pt-BR";
 
 import useGetEssaysCount from "../../../hooks/useGetEssaysCount";
 import useGetNotebooksCount from "../../../hooks/useGetNotebookCount";
@@ -9,6 +11,13 @@ import styles from "../styles/AreaDeTrabalho.module.css";
 interface IdVol {
   idVol: number;
 }
+
+function capitalizeFirstLetter(str: string): string {
+  // Função retorna uma string com a primeira letra em maiúscula.
+  return str.charAt(0).toUpperCase() + str.slice(1);
+}
+
+const INDEX_PREVIOUS_MONTH = -1;
 
 export default function PrimeiroBox({ idVol }: IdVol) {
   const { data: notebooksCount } = useGetNotebooksCount(idVol);
@@ -21,7 +30,7 @@ export default function PrimeiroBox({ idVol }: IdVol) {
   };
 
   function isWithinFirstFiveDays() {
-    const fifthDay = 30;
+    const fifthDay = 5;
     const currentDate = new Date();
     return currentDate.getDate() <= fifthDay;
   }
@@ -40,6 +49,19 @@ export default function PrimeiroBox({ idVol }: IdVol) {
     ? `${styles.declarar_horas_btn} ${styles.enabledButton}`
     : styles.declarar_horas_btn;
 
+  // const currentMonth = capitalizeFirstLetter(
+  // Caso precise pegar o mês atual
+  //   format(new Date(), "MMMM", { locale: ptBR })
+  // );
+
+  const previousMonth = capitalizeFirstLetter(
+    format(addMonths(new Date(), INDEX_PREVIOUS_MONTH), "MMMM", {
+      locale: ptBR,
+    })
+  );
+
+  const monthText = `Declarar as horas trabalhadas do mês de ${previousMonth}`;
+
   return (
     <section className={styles.mainContainer}>
       <div className={styles.main_container_div}>
@@ -54,9 +76,7 @@ export default function PrimeiroBox({ idVol }: IdVol) {
         </div>
       </div>
       <div className={styles.horas_declaradas_container}>
-        <h3 className={styles.h3__text_horas}>
-          Declarar as horas trabalhadas do mês de Outubro
-        </h3>
+        <h3 className={styles.h3__text_horas}>{monthText}</h3>
         <button
           className={buttonClassName}
           disabled={!isWithinFirstFiveDays()}

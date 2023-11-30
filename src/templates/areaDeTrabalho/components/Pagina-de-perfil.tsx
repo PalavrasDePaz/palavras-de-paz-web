@@ -140,7 +140,8 @@ const PerfilComponent = () => {
                   validate: (value) => {
                     const passwordValue = getValues("password");
                     let errorMessage = "";
-
+                    console.log("nova senha: ", value);
+                    console.log("confirmação: ", passwordValue);
                     if (value && !passwordValue) {
                       errorMessage = "Digite sua nova senha primeiro";
                     } else if (value !== passwordValue) {
@@ -185,6 +186,7 @@ const PerfilComponent = () => {
                     } else if (value !== emailValue) {
                       errorMessage = "Os e-mails não coincidem";
                     }
+                    console.log(errorMessage);
 
                     return errorMessage || true;
                   },
