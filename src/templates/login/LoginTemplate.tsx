@@ -17,12 +17,16 @@ type TokenInfo = {
   exp: number;
 };
 
+const MILLISECONDS_PER_SECOND = 1000;
+
 const getIsTokenExpired = (expDate: number) =>
-  // eslint-disable-next-line no-magic-numbers
-  new Date() > new Date(expDate * 1000);
+  new Date() > new Date(expDate * MILLISECONDS_PER_SECOND);
 
 const LoginTemplate = () => {
-  const [userEmail, setUserEmail] = useState("");
+  const [, setUserEmail] = useState("");
+  const [userEmailFromLocalStorage, setUserEmailFromLocalStorage] = useState<
+    string | undefined
+  >();
 
   useEffect(() => {
     const token = localStorage.getItem(PALAVRAS_DE_PAZ_TOKEN);
@@ -33,11 +37,18 @@ const LoginTemplate = () => {
         localStorage.removeItem(PALAVRAS_DE_PAZ_TOKEN);
       } else {
         setUserEmail(email);
+        localStorage.setItem("userEmail", email);
       }
     }
   }, []);
 
-  const { data: user } = useGetUser(userEmail);
+  useEffect(() => {
+    setUserEmailFromLocalStorage(
+      localStorage.getItem("userEmail") || undefined
+    );
+  }, []);
+
+  const { data: user } = useGetUser(userEmailFromLocalStorage);
   const router = useRouter();
 
   const logIn = (mail: string) => setUserEmail(mail);
@@ -61,7 +72,11 @@ const LoginTemplate = () => {
       />
 
       <section className={styles.loginSectionForm}>
-        {userEmail ? <LoadingSpinner /> : <LoginForm logIn={logIn} />}
+        {userEmailFromLocalStorage ? (
+          <LoadingSpinner />
+        ) : (
+          <LoginForm logIn={logIn} />
+        )}
       </section>
     </section>
   );

@@ -9,6 +9,7 @@ import profileImage from "../../../../public/static/images/icons/profile.svg";
 import LogoPaz from "../../../../public/static/images/logo.svg";
 import { useGetUser, useUpdateUser } from "../../../hooks";
 import { UpdatePayload } from "../../../hooks/useUpdateUser";
+import useUserEmail from "../../../hooks/useUserEmail";
 
 import EditarPerfilEndereco from "./Editar-Perfil-Endereço";
 import Modal from "./Modal";
@@ -28,8 +29,9 @@ type FormType = {
 };
 
 const PerfilComponent = () => {
+  const userEmail = useUserEmail();
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const { data: user } = useGetUser();
+  const { data: user } = useGetUser(userEmail);
   const [updateSuccess, setUpdateSuccess] = useState(false);
   const { mutate: updateUser } = useUpdateUser();
   const {
@@ -140,8 +142,7 @@ const PerfilComponent = () => {
                   validate: (value) => {
                     const passwordValue = getValues("password");
                     let errorMessage = "";
-                    console.log("nova senha: ", value);
-                    console.log("confirmação: ", passwordValue);
+
                     if (value && !passwordValue) {
                       errorMessage = "Digite sua nova senha primeiro";
                     } else if (value !== passwordValue) {
@@ -186,7 +187,7 @@ const PerfilComponent = () => {
                     } else if (value !== emailValue) {
                       errorMessage = "Os e-mails não coincidem";
                     }
-                    console.log(errorMessage);
+                    // console.log(errorMessage);
 
                     return errorMessage || true;
                   },
