@@ -9,6 +9,7 @@ const useUserEmail = () => {
       setUserEmail(email);
     }
   }, []);
+  console.log("hook", userEmail);
 
   return userEmail;
 };

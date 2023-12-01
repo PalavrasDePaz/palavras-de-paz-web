@@ -50,6 +50,8 @@ const PerfilComponent = () => {
     setIsModalOpen(false);
   };
 
+  console.log("userEmail", userEmail);
+
   useEffect(() => {
     if (user) {
       setValue("phoneNumber", user.phoneNumber || "");

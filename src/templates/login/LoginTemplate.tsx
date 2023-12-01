@@ -23,7 +23,7 @@ const getIsTokenExpired = (expDate: number) =>
   new Date() > new Date(expDate * MILLISECONDS_PER_SECOND);
 
 const LoginTemplate = () => {
-  const [, setUserEmail] = useState("");
+  const [userEmail, setUserEmail] = useState("");
   const [userEmailFromLocalStorage, setUserEmailFromLocalStorage] = useState<
     string | undefined
   >();
@@ -37,18 +37,17 @@ const LoginTemplate = () => {
         localStorage.removeItem(PALAVRAS_DE_PAZ_TOKEN);
       } else {
         setUserEmail(email);
-        localStorage.setItem("userEmail", email);
       }
     }
   }, []);
 
   useEffect(() => {
-    setUserEmailFromLocalStorage(
-      localStorage.getItem("userEmail") || undefined
-    );
-  }, []);
+    if (userEmail) {
+      localStorage.setItem("userEmail", userEmail);
+    }
+  }, [userEmail]);
 
-  const { data: user } = useGetUser(userEmailFromLocalStorage);
+  const { data: user } = useGetUser(userEmail);
   const router = useRouter();
 
   const logIn = (mail: string) => setUserEmail(mail);
