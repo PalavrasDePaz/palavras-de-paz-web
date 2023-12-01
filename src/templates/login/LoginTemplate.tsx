@@ -24,9 +24,6 @@ const getIsTokenExpired = (expDate: number) =>
 
 const LoginTemplate = () => {
   const [userEmail, setUserEmail] = useState("");
-  const [userEmailFromLocalStorage, setUserEmailFromLocalStorage] = useState<
-    string | undefined
-  >();
 
   useEffect(() => {
     const token = localStorage.getItem(PALAVRAS_DE_PAZ_TOKEN);
@@ -71,11 +68,7 @@ const LoginTemplate = () => {
       />
 
       <section className={styles.loginSectionForm}>
-        {userEmailFromLocalStorage ? (
-          <LoadingSpinner />
-        ) : (
-          <LoginForm logIn={logIn} />
-        )}
+        {userEmail ? <LoadingSpinner /> : <LoginForm logIn={logIn} />}
       </section>
     </section>
   );
