@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import { useRouter } from "next/router";
+import DOMPurify from "dompurify";
 import jwtDecode from "jwt-decode";
 
 import Logo from "../../../public/static/images/logo.svg";
@@ -47,7 +48,10 @@ const LoginTemplate = () => {
   const { data: user } = useGetUser(userEmail);
   const router = useRouter();
 
-  const logIn = (mail: string) => setUserEmail(mail);
+  const logIn = (mail: string) => {
+    const sanitizedEmail = DOMPurify.sanitize(mail);
+    setUserEmail(sanitizedEmail);
+  };
 
   useEffect(() => {
     if (user) {

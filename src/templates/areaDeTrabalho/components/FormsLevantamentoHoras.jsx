@@ -159,8 +159,8 @@ function FormLvntHoras() {
       ) : (
         <>
           <HeaderForm />
-          <p>
-            O formulário só pode ser preenchido nos primeiros 5 dias do mês.
+          <p className={styles.completionMessage}>
+            Obrigado. Seus dados foram gravados.
           </p>
           {/* <button onClick={ backToDesktop }>Voltar para Área de Trabalho</button> */}
         </>
