@@ -72,6 +72,13 @@ const PerfilComponent = () => {
     setUpdateSuccess(true);
   };
 
+  const handleModalClose = () => {
+    setUpdateSuccess(false);
+    setTimeout(() => {
+      window.location.reload();
+    }, 0);
+  };
+
   return (
     <>
       <ProfileHeader />
@@ -201,7 +208,7 @@ const PerfilComponent = () => {
         {updateSuccess && (
           <ModalSucess
             isOpen={updateSuccess}
-            onClose={() => setUpdateSuccess(false)}
+            onClose={handleModalClose}
             timeout={2500}
             content={
               <div className={styles.successMessage}>
