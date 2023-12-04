@@ -70,12 +70,11 @@ function FormLvntHoras() {
       {RendForm ? (
         <>
           <HeaderForm />
-          <h1>{user?.idvol}</h1>
           <div className={styles.h2Container}>
             <h2 className={styles.h2Item}>Levantamento mensal de horas</h2>
           </div>
           <div className={styles.containerSection}>
-            <p>Bem-vindo, {user?.name}</p>
+            <h3 className={styles.section_name}>Bem-vindo, {user?.name}</h3>
             <p className={styles.section_p1}>
               A Palavras de Paz está se transformando para ficar melhor para
               você e para todos que fazem o curso ou participam das nossas
