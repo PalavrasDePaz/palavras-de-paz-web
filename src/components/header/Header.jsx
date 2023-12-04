@@ -54,6 +54,9 @@ function Header() {
                 <Nav.Link href="/doacoes">Doações</Nav.Link>
                 <Nav.Link href="/parcerias">Parcerias</Nav.Link>
                 <Nav.Link href="/publicacoes ">Publicações</Nav.Link>
+                {new Date() >= new Date("2023-12-17") && (
+                  <Nav.Link href="/login">Login</Nav.Link>
+                )}
               </Nav>
             </Offcanvas.Body>
           </Navbar.Offcanvas>

@@ -125,9 +125,9 @@
   font-weight: 600;
 }
 
-.inputInline {
-  /* display: block; */
-}
+/* .inputInline {
+  display: block;
+} */
 
 .formField input::placeholder,
 .inputInline::placeholder {
@@ -155,4 +155,10 @@
   width: 200px;
   margin-bottom: 40px;
   margin-top: 40px;
+}
+
+.errorMessage {
+  color: #d32f2f;
+  font-size: 14px;
+  margin-top: 4px;
 }

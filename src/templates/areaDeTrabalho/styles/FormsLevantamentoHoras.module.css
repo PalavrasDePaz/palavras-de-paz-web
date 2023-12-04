@@ -82,3 +82,13 @@
   margin-bottom: 64px;
   margin-top: 128px;
 }
+
+.completionMessage {
+  padding-left: 64px;
+  font-family: "Open Sans", sans-serif;
+  font-size: 24px;
+  font-weight: 600;
+  letter-spacing: 0.64px;
+  color: var(--Verde-Oscuro, #00796b);
+  margin-top: 32px;
+}
