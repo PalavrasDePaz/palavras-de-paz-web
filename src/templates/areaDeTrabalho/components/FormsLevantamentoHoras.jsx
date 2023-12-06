@@ -74,7 +74,6 @@ function FormLvntHoras() {
             <h2 className={styles.h2Item}>Levantamento mensal de horas</h2>
           </div>
           <div className={styles.containerSection}>
-            <h3 className={styles.section_name}>Bem-vindo, {user?.name}</h3>
             <p className={styles.section_p1}>
               A Palavras de Paz está se transformando para ficar melhor para
               você e para todos que fazem o curso ou participam das nossas

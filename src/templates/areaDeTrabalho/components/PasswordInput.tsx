@@ -3,19 +3,9 @@ import Image from "next/image";
 import { FieldPath, FieldValues, UseFormRegister } from "react-hook-form";
 
 import editIcon from "../../../../public/static/images/icons/edit.svg";
+import { FormType } from "../types/FormType";
 
 import styles from "../styles/Pagina-de-perfil.module.css";
-
-type FormType = {
-  password?: string;
-  new_password?: string;
-  email?: string;
-  new_email?: string;
-  phoneNumber?: string;
-  city?: string;
-  state?: string;
-  country?: string;
-};
 
 interface PasswordInputProps {
   label: string;

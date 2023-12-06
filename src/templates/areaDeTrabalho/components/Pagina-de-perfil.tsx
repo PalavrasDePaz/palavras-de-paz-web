@@ -7,23 +7,13 @@ import profileImage from "../../../../public/static/images/icons/profile.svg";
 import { useGetUser, useUpdateUser } from "../../../hooks";
 import { UpdatePayload } from "../../../hooks/useUpdateUser";
 import useUserEmail from "../../../hooks/useUserEmail";
+import { FormType } from "../types/FormType";
 
 import EditarPerfilEndereco from "./Editar-Perfil-Endereço";
 import ModalSucess from "./ModalSucess";
 import ProfileHeader from "./ProfileHeader";
 
 import styles from "../styles/Pagina-de-perfil.module.css";
-
-type FormType = {
-  password?: string;
-  new_password?: string;
-  email?: string;
-  new_email?: string;
-  phoneNumber?: string;
-  city?: string;
-  state?: string;
-  country?: string;
-};
 
 const MIN_PASSWORD_LENGTH = 6;
 
@@ -70,6 +60,13 @@ const PerfilComponent = () => {
 
     updateUser(updateData);
     setUpdateSuccess(true);
+  };
+
+  const handleModalClose = () => {
+    setUpdateSuccess(false);
+    setTimeout(() => {
+      window.location.reload();
+    }, 0);
   };
 
   return (
@@ -201,7 +198,7 @@ const PerfilComponent = () => {
         {updateSuccess && (
           <ModalSucess
             isOpen={updateSuccess}
-            onClose={() => setUpdateSuccess(false)}
+            onClose={handleModalClose}
             timeout={2500}
             content={
               <div className={styles.successMessage}>
