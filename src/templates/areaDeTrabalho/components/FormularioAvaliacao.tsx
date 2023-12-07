@@ -1,10 +1,19 @@
-/* eslint-disable max-lines */
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 
+import { optionsQuestion2 } from "../../../helpers/avalQuestions";
 import { useGetUser } from "../../../hooks";
 import useUserEmail from "../../../hooks/useUserEmail";
 
+import Question2Aval from "./Question2Aval";
+import Question3Aval from "./Question3Aval";
+import Question4Aval from "./Question4Aval";
+import Question6Aval from "./Question6Aval";
+import Question7Aval from "./Question7Aval";
+import Question8Aval from "./Question8Aval";
+import Question9Aval from "./Question9Aval";
+import Question10Aval from "./Question10Aval";
+import Question11Aval from "./Question11Aval";
 import QuestionGroup from "./QuestionGroup";
 import StudentInfoInput from "./StudentInfoInput";
 import UnidadePrisional from "./UnidadePrisional";
@@ -74,71 +83,13 @@ const FormularioAvaliacao: React.FC<FormularioAvaliacaoProps> = ({
     }));
   };
 
-  const handleChangeQuestion3 = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-    const { value } = e.target;
-    setFormData((prevData) => ({
-      ...prevData,
-      question3: value,
-    }));
-  };
-
-  const handleChangeQuestion4 = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-    const { value } = e.target;
-    setFormData((prevData) => ({
-      ...prevData,
-      question4: value,
-    }));
-  };
-
-  const handleChangeQuestion6 = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-    const { value } = e.target;
-    setFormData((prevData) => ({
-      ...prevData,
-      question6: value,
-    }));
-  };
-
-  const handleChangeQuestion7 = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { value } = e.target;
-    setFormData((prevData) => ({
-      ...prevData,
-      question7: value,
-    }));
-  };
-
-  const handleChangeQuestion8 = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { value } = e.target;
-    setFormData((prevData) => ({
-      ...prevData,
-      question8: value,
-    }));
-  };
-
-  const handleChangeQuestion9 = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { value } = e.target;
-    setFormData((prevData) => ({
-      ...prevData,
-      question9: value,
-    }));
-  };
-
-  const handleChangeQuestion10 = (
-    e: React.ChangeEvent<HTMLTextAreaElement>
+  const handleChangeQuestions = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
-    const { value } = e.target;
+    const { name, value } = e.target;
     setFormData((prevData) => ({
       ...prevData,
-      question10: value,
-    }));
-  };
-
-  const handleChangeQuestion11 = (
-    e: React.ChangeEvent<HTMLTextAreaElement>
-  ) => {
-    const { value } = e.target;
-    setFormData((prevData) => ({
-      ...prevData,
-      perception: value,
+      [name]: value,
     }));
   };
 
@@ -169,16 +120,16 @@ const FormularioAvaliacao: React.FC<FormularioAvaliacaoProps> = ({
           type="text"
           name="volunteerId"
           value={user?.idvol}
-          readOnly
           instructions="NÚMERO DE INSCRIÇÃO PALAVRAS DE PAZ"
+          readOnly
         />
         <StudentInfoInput
           label="E-mail"
           type="email"
           name="email"
           value={user?.email}
-          readOnly
           instructions="SEU E-MAIL UTILIZADO COMO VOLUNTÁRIO DO PALAVRAS DE PAZ"
+          readOnly
         />
         <StudentInfoInput
           label="Nome do Aluno(a)"
@@ -224,282 +175,55 @@ const FormularioAvaliacao: React.FC<FormularioAvaliacaoProps> = ({
           </p>
           <QuestionGroup onChange={handleQuestionChange} />
         </label>
+
         {/* Question 2 */}
         <label className={styles.labelClass} htmlFor="question2">
           AVALIAÇÃO DA QUESTÃO 2
-          <div className={styles.checkboxGroup}>
-            <label>
-              <input
-                type="checkbox"
-                name="question2"
-                value="Muito Provavel"
-                onChange={handleChangeQuestion2}
-              />
-              Muito Provavel
-            </label>
-            <label>
-              <input
-                type="checkbox"
-                name="question2"
-                value="Provavel"
-                onChange={handleChangeQuestion2}
-              />
-              Provavel
-            </label>
-            <label>
-              <input
-                type="checkbox"
-                name="question2"
-                value="Neutro"
-                onChange={handleChangeQuestion2}
-              />
-              Neutro
-            </label>
-            <label>
-              <input
-                type="checkbox"
-                name="question2"
-                value="Improvável"
-                onChange={handleChangeQuestion2}
-              />
-              Improvável
-            </label>
-            <label>
-              <input
-                type="checkbox"
-                name="question2"
-                value="Muito Improvável"
-                onChange={handleChangeQuestion2}
-              />
-              Muito Improvável
-            </label>
-            <label>
-              <input
-                type="checkbox"
-                name="question2"
-                value="Não Sei"
-                onChange={handleChangeQuestion2}
-              />
-              Não Sei
-            </label>
-          </div>
+          <Question2Aval
+            options={optionsQuestion2}
+            name="question2"
+            onChange={handleChangeQuestion2}
+          />
         </label>
 
         {/* Question 3 */}
-        <label className={styles.labelClass}>
-          AVALIAÇÃO DA QUESTÃO 3
-          <p>{`A resposta do(a) aluno(a): "ESCREVA O QUE MAIS GOSTOU NO PROGRAMA":`}</p>
-          <textarea
-            className={styles.textareaClass}
-            name="question3"
-            value={formData.question3}
-            onChange={handleChangeQuestion3}
-          />
-        </label>
+        <Question3Aval
+          handleChangeQuestions={handleChangeQuestions}
+          formData={formData}
+        />
 
         {/* Question 4 */}
-        <label className={styles.labelClass}>
-          AVALIAÇÃO DA QUESTÃO 4
-          <p>
-            {`A resposta do aluno(a): "EXISTE ALGO NO PROGRAMA 
-          DE EDUCAÇÃO PARA A PAZ QUE PODERIA SER MELHORADO?"`}
-          </p>
-          <textarea
-            className={styles.textareaClass}
-            name="question4"
-            value={formData.question4}
-            onChange={handleChangeQuestion4}
-          />
-        </label>
+        <Question4Aval
+          handleChangeQuestions={handleChangeQuestions}
+          formData={formData}
+        />
 
         {/* Question 6 */}
-        <label className={styles.labelClass}>
-          AVALIAÇÃO DA QUESTÃO 6
-          <p>
-            {`Qual a resposta do(a) aluno(a): 
-          "JUSTIFIQUE A RESPOSTA DA QUESTÃO 5 (O Programa ajudou em sua vida?)`}
-          </p>
-          <textarea
-            className={styles.textareaClass}
-            name="question6"
-            value={formData.question6}
-            onChange={handleChangeQuestion6}
-          />
-        </label>
+        <Question6Aval
+          handleChangeQuestions={handleChangeQuestions}
+          formData={formData}
+        />
 
         {/* Question 7 */}
-        <label className={styles.labelClass} htmlFor="question7">
-          QUESTÃO 7: Quantos anos você tem?
-          <div className={styles.radioGroup}>
-            <label>
-              <input
-                type="radio"
-                name="question7"
-                value="Até 35 anos"
-                onChange={handleChangeQuestion7}
-              />
-              Até 35 anos
-            </label>
-            <label>
-              <input
-                type="radio"
-                name="question7"
-                value="36 a 55 anos"
-                onChange={handleChangeQuestion7}
-              />
-              36 a 55 anos
-            </label>
-            <label>
-              <input
-                type="radio"
-                name="question7"
-                value="Mais de 55"
-                onChange={handleChangeQuestion7}
-              />
-              Mais de 55
-            </label>
-          </div>
-        </label>
+        <Question7Aval handleChangeQuestions={handleChangeQuestions} />
 
         {/* Question 8 */}
-        <label className={styles.labelClass} htmlFor="question8">
-          QUESTÃO 8: Você é?
-          <div className={styles.radioGroup}>
-            <label>
-              <input
-                type="radio"
-                name="question8"
-                value="Masculino"
-                onChange={handleChangeQuestion8}
-              />
-              Masculino
-            </label>
-            <label>
-              <input
-                type="radio"
-                name="question8"
-                value="Feminino"
-                onChange={handleChangeQuestion8}
-              />
-              Feminino
-            </label>
-            <label>
-              <input
-                type="radio"
-                name="question8"
-                value="Outros"
-                onChange={handleChangeQuestion8}
-              />
-              Outros
-            </label>
-            <label>
-              <input
-                type="radio"
-                name="question8"
-                value="Não Sei"
-                onChange={handleChangeQuestion8}
-              />
-              Não Sei
-            </label>
-          </div>
-        </label>
+        <Question8Aval handleChangeQuestions={handleChangeQuestions} />
 
-        {/* Question 9 */}
-        <label className={styles.labelClass} htmlFor="question9">
-          QUESTÃO 9: Qual o seu grau de instrução?
-          <div className={styles.radioGroup}>
-            <label>
-              <input
-                type="radio"
-                name="question9"
-                value="Ensino Fundamental Incompleto"
-                onChange={handleChangeQuestion9}
-              />
-              Ensino Fundamental Incompleto
-            </label>
-            <label>
-              <input
-                type="radio"
-                name="question9"
-                value="Ensino Fundamental Completo"
-                onChange={handleChangeQuestion9}
-              />
-              Ensino Fundamental Completo
-            </label>
-            <label>
-              <input
-                type="radio"
-                name="question9"
-                value="Ensino Médio Incompleto"
-                onChange={handleChangeQuestion9}
-              />
-              Ensino Médio Incompleto
-            </label>
-            <label>
-              <input
-                type="radio"
-                name="question9"
-                value="Ensino Médio Completo"
-                onChange={handleChangeQuestion9}
-              />
-              Ensino Médio Completo
-            </label>
-            <label>
-              <input
-                type="radio"
-                name="question9"
-                value="Ensino Superior Incompleto"
-                onChange={handleChangeQuestion9}
-              />
-              Ensino Superior Incompleto
-            </label>
-            <label>
-              <input
-                type="radio"
-                name="question9"
-                value="Ensino Superior Completo"
-                onChange={handleChangeQuestion9}
-              />
-              Ensino Superior Completo
-            </label>
-            <label>
-              <input
-                type="radio"
-                name="question9"
-                value="Não Consta"
-                onChange={handleChangeQuestion9}
-              />
-              Não Consta
-            </label>
-          </div>
-        </label>
+        {/* Question 8 */}
+        <Question9Aval handleChangeQuestions={handleChangeQuestions} />
 
         {/* Question 10 */}
-        <label className={styles.labelClass}>
-          AVALIAÇÃO DA QUESTÃO 10
-          <p>
-            {`O que o(a) aluno(a) aprendeu 
-          no curso e quer levar para o resto da vida?`}
-          </p>
-          <textarea
-            className={styles.textareaClass}
-            name="question10"
-            value={formData.question10}
-            onChange={handleChangeQuestion10}
-          />
-        </label>
+        <Question10Aval
+          handleChangeQuestions={handleChangeQuestions}
+          formData={formData}
+        />
 
         {/* Perception */}
-        <label className={styles.labelClass}>
-          CONCLUSÃO DO AVALIADOR
-          <p>Descreva sua percepção sobre o desenvolvimento do aluno:</p>
-          <textarea
-            className={styles.textareaClass}
-            name="perception"
-            value={formData.perception}
-            onChange={handleChangeQuestion11}
-          />
-        </label>
+        <Question11Aval
+          handleChangeQuestions={handleChangeQuestions}
+          formData={formData}
+        />
 
         {/* Submit Button */}
         <button type="submit">Submit</button>

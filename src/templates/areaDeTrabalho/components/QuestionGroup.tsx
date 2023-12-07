@@ -1,6 +1,6 @@
 import React from "react";
 
-import avalQuestions from "../../../helpers/avalQuestions";
+import { avalQuestions } from "../../../helpers/avalQuestions";
 
 import QuestionInput from "./QuestionInput";
 

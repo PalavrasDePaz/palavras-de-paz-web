@@ -2,7 +2,7 @@ interface AvalQuestions {
   id: number;
   letter: string;
   question: string;
-  type: "radio" | "text"; // Adicionando a propriedade type
+  type: "radio" | "text";
 }
 
 const avalQuestions: AvalQuestions[] = [
@@ -95,4 +95,54 @@ const avalQuestions: AvalQuestions[] = [
   },
 ];
 
-export default avalQuestions;
+const optionsQuestion2 = [
+  "Muito Provavel",
+  "Provavel",
+  "Neutro",
+  "Improvável",
+  "Muito Improvável",
+  "Não Sei",
+];
+
+const optionsQuestion7 = ["Até 35 anos", "36 a 55 anos", "Mais de 55"];
+
+const optionsQuestion8 = ["Masculino", "Feminino", "Outros", "Não Sei"];
+
+const optionsQuestion9 = [
+  "Ensino Fundamental Incompleto",
+  "Ensino Fundamental Completo",
+  "Ensino Médio Incompleto",
+  "Ensino Médio Completo",
+  "Ensino Superior Incompleto",
+  "Ensino Superior Completo",
+  "Não Consta",
+];
+
+// const textAreaData = [
+//   {
+//     label: `A resposta do(a) aluno(a): "ESCREVA O QUE MAIS GOSTOU NO PROGRAMA":`,
+//     name: "question3",
+//     value: formAvalData.question3,
+//   },
+//   {
+//     label: `A resposta do(a) aluno(a):
+//     "EXISTE ALGO NO PROGRAMA DE EDUCAÇÃO PARA A PAZ QUE PODERIA SER MELHORADO?"`,
+//     name: "question4",
+//     value: formAvalData.question4,
+//   },
+//   {
+//     label: `Qual a resposta do(a) aluno(a):
+//     "JUSTIFIQUE A RESPOSTA DA QUESTÃO 5 (O Programa ajudou em sua vida?)"`,
+//     name: "question6",
+//     value: formAvalData.question6,
+//   },
+// ];
+
+export {
+  avalQuestions,
+  optionsQuestion2,
+  optionsQuestion7,
+  optionsQuestion8,
+  optionsQuestion9,
+  // textAreaData
+};
