@@ -19,7 +19,7 @@ import styles from "./styles/AreaDeTrabalho.module.css";
 export default function AreaDeTrabalhoTemplate() {
   const [auth, setAuth] = useState({});
   const { data: user } = useGetUser();
-  const prontoPraProducao = false;
+  const prontoPraProducao = true;
 
   if (!user) {
     return null;
