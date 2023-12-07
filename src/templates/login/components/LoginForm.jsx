@@ -48,7 +48,6 @@ const LoginForm = ({ logIn } = props) => {
     isSuccess: isLoginSuccess,
     data: loginData,
   } = useLogin();
-  console.log(loginError?.response.data.name);
 
   // desestruturação do useRequestPasswordEmail
   const {
