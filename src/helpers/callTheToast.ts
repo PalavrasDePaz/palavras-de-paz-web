@@ -1,7 +1,7 @@
 import { toast } from "react-toastify";
 
-export default function toastDuvidaEnviada() {
-  toast.success("Obrigado pela mensagem. Retornaremos em breve.", {
+export default function toastDuvidaEnviada(message: string) {
+  toast.success(message, {
     position: "top-center",
     autoClose: 8000,
     hideProgressBar: false,
