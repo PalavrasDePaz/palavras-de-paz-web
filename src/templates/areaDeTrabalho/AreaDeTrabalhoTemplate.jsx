@@ -19,7 +19,7 @@ import styles from "./styles/AreaDeTrabalho.module.css";
 export default function AreaDeTrabalhoTemplate() {
   const [auth, setAuth] = useState({});
   const { data: user } = useGetUser();
-  const prontoPraProducao = false;
+  const prontoPraProducao = true;
 
   if (!user) {
     return null;
@@ -60,14 +60,18 @@ export default function AreaDeTrabalhoTemplate() {
             auth.essayModulePermission &&
             auth.essayModulePermission === true &&
             prontoPraProducao === true && <AvaliarCadernos idvol={idvol} />}
+
           {auth.bookPermission &&
             auth.bookPermission === true &&
             auth.notebookModulePermission === true &&
             prontoPraProducao === true && <AvaliarRedacoes idvol={idvol} />}
+
           {auth.manageVolunteerModulePermission &&
             auth.manageVolunteerModulePermission === true && <DadosPresenca />}
+
           {auth.attendanceModulePermission &&
             auth.attendanceModulePermission === true && <DetalhesPresenca />}
+
           {auth.determineVolunteerModulePermission &&
             auth.determineVolunteerModulePermission === true && (
               <DetalhesCadastro />

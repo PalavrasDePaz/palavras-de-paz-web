@@ -1,3 +1,5 @@
+// Sends an email to the volunteer with a link for creating or update a forgotten password.
+
 import { useMutation } from "@tanstack/react-query";
 
 import { api } from "../api";

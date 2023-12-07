@@ -1,3 +1,5 @@
+// Generate an access token for the volunteer if his login data is correct
+
 import { useMutation } from "@tanstack/react-query";
 
 import { api } from "../api";

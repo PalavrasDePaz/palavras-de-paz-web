@@ -8,6 +8,7 @@ export const VOLUNTEER_ALREADY_EXISTS = "VOLUNTEER_ALREADY_EXISTS";
 export const VOLUNTEER_NOT_FOUND = "VOLUNTEER_NOT_FOUND";
 export const EMAIL_WRONG_ERROR = "EMAIL_WRONG_ERROR";
 export const PASSWORD_WRONG_ERROR = "PASSWORD_WRONG_ERROR";
+export const VOLUNTEER_UNREGISTERED = "VOLUNTEER_UNREGISTERED";
 
 export const UNEXPECTED_ERROR =
   "Ocorreu um erro inesperado. Tente novamente mais tarde.";

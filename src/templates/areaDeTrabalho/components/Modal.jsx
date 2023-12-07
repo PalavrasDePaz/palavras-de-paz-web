@@ -26,7 +26,7 @@ const Modal = ({ isOpen, onClose }) => {
   const [isSending, setIsSending] = useState(false);
 
   const { data: user } = useGetUser();
-
+  const message = "Obrigado pela mensagem. Retornaremos em breve.";
   const {
     register,
     handleSubmit,
@@ -53,7 +53,7 @@ const Modal = ({ isOpen, onClose }) => {
       setIsSent(true);
       reset();
 
-      toastDuvidaEnviada();
+      toastDuvidaEnviada(message);
       onClose();
     } catch (error) {
       setIsSending(false);

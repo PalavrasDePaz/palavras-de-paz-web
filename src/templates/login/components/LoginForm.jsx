@@ -43,7 +43,7 @@ const LoginForm = ({ logIn } = props) => {
   const {
     mutate: mutateLogin,
     isLoading: isLoginLoading,
-    isError: isLoginError,
+    //  isError: isLoginError,
     error: loginError,
     isSuccess: isLoginSuccess,
     data: loginData,
@@ -53,8 +53,8 @@ const LoginForm = ({ logIn } = props) => {
   const {
     mutate: mutatePassEmail,
     isLoading: isPassEmailLoading,
-    isError: isPassEmailError,
-    error: passEmailError,
+    // isError: isPassEmailError,
+    // error: passEmailError,
     isSuccess: isPassEmailSuccess,
   } = useRequestPasswordEmail();
 
@@ -125,9 +125,7 @@ const LoginForm = ({ logIn } = props) => {
   if (isPassEmailSuccess) {
     return (
       <>
-        <p className={styles.formParagraph}>
-          O e-mail de recuperação de senha foi enviado!
-        </p>
+        <p>O e-mail de recuperação de senha foi enviado!</p>
         <BackButton />
       </>
     );
@@ -195,10 +193,13 @@ const LoginForm = ({ logIn } = props) => {
                   <AiOutlineWarning />
                   <span>{ERROR_MESSAGES.EMAIL_OR_PASSWORD_WRONG_ERROR}</span>
                 </div>
-                <p>
-                  Quer se cadastrar como voluntário?{" "}
-                  <a href="/cadastro">Aqui.</a>
-                </p>
+                {loginError?.response.data.name ===
+                  "VOLUNTEER_UNREGISTERED" && (
+                    <p>
+                      Quer se cadastrar como voluntário?
+                      <a href="/cadastro">Aqui.</a>
+                    </p>
+                )}
               </>
             )}
           </div>
