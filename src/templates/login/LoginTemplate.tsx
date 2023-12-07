@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import { useRouter } from "next/router";
+import DOMPurify from "dompurify";
 import jwtDecode from "jwt-decode";
 
 import Logo from "../../../public/static/images/logo.svg";
@@ -17,9 +18,10 @@ type TokenInfo = {
   exp: number;
 };
 
+const MILLISECONDS_PER_SECOND = 1000;
+
 const getIsTokenExpired = (expDate: number) =>
-  // eslint-disable-next-line no-magic-numbers
-  new Date() > new Date(expDate * 1000);
+  new Date() > new Date(expDate * MILLISECONDS_PER_SECOND);
 
 const LoginTemplate = () => {
   const [userEmail, setUserEmail] = useState("");
@@ -37,10 +39,19 @@ const LoginTemplate = () => {
     }
   }, []);
 
+  useEffect(() => {
+    if (userEmail) {
+      localStorage.setItem("userEmail", userEmail);
+    }
+  }, [userEmail]);
+
   const { data: user } = useGetUser(userEmail);
   const router = useRouter();
 
-  const logIn = (mail: string) => setUserEmail(mail);
+  const logIn = (mail: string) => {
+    const sanitizedEmail = DOMPurify.sanitize(mail);
+    setUserEmail(sanitizedEmail);
+  };
 
   useEffect(() => {
     if (user) {

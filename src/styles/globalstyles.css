@@ -53,17 +53,31 @@ div.banner-gradient {
   font-weight: normal;
 }
 
-.modal-content {
-  bottom: -160px;
-  max-width: 100%;
-  width: 470px;
-}
-
 div.modal-header {
   background-color: var(--primary-color);
   color: var(--quaternary-color);
   align-items: flex-start;
-  padding-left: 40px;
+}
+
+table {
+  height: 100px !important;
+
+  overflow: auto !important;
+}
+
+td,
+th {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Style to show full content on hover */
+td:hover,
+th:hover {
+  white-space: normal;
+  overflow: visible;
+  text-overflow: inherit;
 }
 
 .btn-close {

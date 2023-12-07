@@ -38,6 +38,7 @@ const HeaderAreaDeTrabalho = () => {
   const logOut = async () => {
     localStorage.removeItem(PALAVRAS_DE_PAZ_TOKEN);
     localStorage.removeItem("AUTH");
+    localStorage.removeItem("userEmail");
 
     queryClient.setQueryData(["user"], null);
     queryClient.invalidateQueries("user");

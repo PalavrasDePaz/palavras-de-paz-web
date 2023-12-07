@@ -1,35 +1,25 @@
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
-import Link from "next/link";
 import { useForm } from "react-hook-form";
 
 import editIcon from "../../../../public/static/images/icons/edit.svg";
-import bntSair from "../../../../public/static/images/icons/exit.svg";
 import profileImage from "../../../../public/static/images/icons/profile.svg";
-import LogoPaz from "../../../../public/static/images/logo.svg";
 import { useGetUser, useUpdateUser } from "../../../hooks";
 import { UpdatePayload } from "../../../hooks/useUpdateUser";
+import useUserEmail from "../../../hooks/useUserEmail";
+import { FormType } from "../types/FormType";
 
 import EditarPerfilEndereco from "./Editar-Perfil-Endereço";
-import Modal from "./Modal";
 import ModalSucess from "./ModalSucess";
+import ProfileHeader from "./ProfileHeader";
 
 import styles from "../styles/Pagina-de-perfil.module.css";
 
-type FormType = {
-  password?: string;
-  new_password?: string;
-  email?: string;
-  new_email?: string;
-  phoneNumber?: string;
-  city?: string;
-  state?: string;
-  country?: string;
-};
+const MIN_PASSWORD_LENGTH = 6;
 
 const PerfilComponent = () => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const { data: user } = useGetUser();
+  const userEmail = useUserEmail();
+  const { data: user } = useGetUser(userEmail);
   const [updateSuccess, setUpdateSuccess] = useState(false);
   const { mutate: updateUser } = useUpdateUser();
   const {
@@ -39,14 +29,6 @@ const PerfilComponent = () => {
     getValues,
     formState: { errors },
   } = useForm<FormType>();
-
-  const openModal = () => {
-    setIsModalOpen(true);
-  };
-
-  const closeModal = () => {
-    setIsModalOpen(false);
-  };
 
   useEffect(() => {
     if (user) {
@@ -80,28 +62,16 @@ const PerfilComponent = () => {
     setUpdateSuccess(true);
   };
 
+  const handleModalClose = () => {
+    setUpdateSuccess(false);
+    setTimeout(() => {
+      window.location.reload();
+    }, 0);
+  };
+
   return (
     <>
-      <header className={styles.headerContent}>
-        <div className={styles.sectionVoltar}>
-          <Image src={bntSair} alt="Icone de sair" width={30} height={20} />
-          <Link href="/area-de-trabalho">
-            <p>Voltar</p>
-          </Link>
-        </div>
-        <div className={styles.logo}>
-          <Image
-            src={LogoPaz}
-            alt="Logo Palavras de Paz"
-            width={200}
-            height={100}
-          />
-        </div>
-        <button onClick={openModal} className={styles.openModal}>
-          Precisa de ajuda?
-        </button>
-        <Modal isOpen={isModalOpen} onClose={closeModal} />
-      </header>
+      <ProfileHeader />
       <main className={styles.mainContainer}>
         <h3 className={styles.profileTitle}>Editar Perfil</h3>
         <section className={styles.profileInfo}>
@@ -131,7 +101,7 @@ const PerfilComponent = () => {
               <input
                 type="password"
                 placeholder="Digite sua nova senha"
-                {...register("password")}
+                {...register("password", { minLength: 6 })}
               />
               <input
                 type="password"
@@ -145,6 +115,9 @@ const PerfilComponent = () => {
                       errorMessage = "Digite sua nova senha primeiro";
                     } else if (value !== passwordValue) {
                       errorMessage = "As senhas não coincidem";
+                    } else if (value && value.length < MIN_PASSWORD_LENGTH) {
+                      errorMessage =
+                        "A nova senha deve ter pelo menos 6 caracteres";
                     }
 
                     return errorMessage || true;
@@ -152,7 +125,12 @@ const PerfilComponent = () => {
                 })}
               />
             </span>
-            {errors.new_password && <span>{errors.new_password.message}</span>}
+            {errors.new_password && (
+              <span className={styles.errorMessage}>
+                {errors.new_password.message ||
+                  "A nova senha deve ter pelo menos 6 caracteres"}
+              </span>
+            )}
           </label>
           {/* Campo de email */}
           <label className={styles.formField}>
@@ -185,7 +163,6 @@ const PerfilComponent = () => {
                     } else if (value !== emailValue) {
                       errorMessage = "Os e-mails não coincidem";
                     }
-
                     return errorMessage || true;
                   },
                 })}
@@ -221,7 +198,7 @@ const PerfilComponent = () => {
         {updateSuccess && (
           <ModalSucess
             isOpen={updateSuccess}
-            onClose={() => setUpdateSuccess(false)}
+            onClose={handleModalClose}
             timeout={2500}
             content={
               <div className={styles.successMessage}>

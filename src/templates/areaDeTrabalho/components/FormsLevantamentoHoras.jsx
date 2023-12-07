@@ -5,8 +5,13 @@ import { useForm } from "react-hook-form";
 import { api } from "../../../api/index";
 import HeaderForm from "../../../components/headerform/HeaderForm";
 import { useGetUser } from "../../../hooks";
+import useUserEmail from "../../../hooks/useUserEmail";
 
 import styles from "../styles/FormsLevantamentoHoras.module.css";
+
+const HTTP_STATUS_CREATED = 201;
+const HTTP_STATUS_BAD_REQUEST = 400;
+const HTTP_STATUS_CONFLICT = 409;
 
 function FormLvntHoras() {
   const { handleSubmit, register } = useForm();
@@ -19,17 +24,14 @@ function FormLvntHoras() {
 
   function isFormRenderable() {
     const actualDate = new Date();
-    const maxDays = 31;
+    const maxDays = 5;
     const actualDay = actualDate.getDate();
     return actualDay <= maxDays && formsResponded !== "responded";
   }
 
-  const { data: user } = useGetUser();
+  const userEmail = useUserEmail();
+  const { data: user } = useGetUser(userEmail);
   // const { push } = useRouter();
-
-  const HTTP_STATUS_CREATED = 201;
-  const HTTP_STATUS_BAD_REQUEST = 400;
-  const HTTP_STATUS_CONFLICT = 409;
 
   const RendForm = isFormRenderable();
 
@@ -68,12 +70,10 @@ function FormLvntHoras() {
       {RendForm ? (
         <>
           <HeaderForm />
-          <h1>{user?.idvol}</h1>
           <div className={styles.h2Container}>
             <h2 className={styles.h2Item}>Levantamento mensal de horas</h2>
           </div>
           <div className={styles.containerSection}>
-            <p>Bem-vindo, {user?.name}</p>
             <p className={styles.section_p1}>
               A Palavras de Paz está se transformando para ficar melhor para
               você e para todos que fazem o curso ou participam das nossas
@@ -157,8 +157,8 @@ function FormLvntHoras() {
       ) : (
         <>
           <HeaderForm />
-          <p>
-            O formulário só pode ser preenchido nos primeiros 5 dias do mês.
+          <p className={styles.completionMessage}>
+            Obrigado. Seus dados foram gravados.
           </p>
           {/* <button onClick={ backToDesktop }>Voltar para Área de Trabalho</button> */}
         </>

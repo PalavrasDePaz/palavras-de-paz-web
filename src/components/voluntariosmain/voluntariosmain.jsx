@@ -4,7 +4,10 @@ import Image from "next/image";
 import Link from "next/link";
 
 import LogoVoluntarios from "../../../public/static/images/voluntarios.png";
+// import cadastroTemplate from "../../templates/cadastro/CadastroTemplate";
 import Center from "../center";
+
+import styles from "./VoluntariosMain.module.css";
 
 function VoluntariosMain() {
   return (
@@ -74,33 +77,48 @@ function VoluntariosMain() {
           <p>
             Se você quer fazer parte da equipe, se cadastre, mesmo que não tenha
             feito qualquer workshop, nossa equipe entrará em contato. Outra
-            opção é se inscrever pelo Atados.
+            opção é procurar pelo{" "}
+            <a
+              className={styles.atadosLink}
+              href="https://www.atados.com.br/ong/programa-de-educacao-para-paz/vagas"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Atados
+            </a>
           </p>
         </div>
 
         <container className="voluntarios-container-button">
           <div className="voluntarios-style-button">
-            <p>
-              <Link
-                style={{ color: "white" }}
-                href="https://form.jotform.com/220305437068653"
-                alt="formulario de inscrição"
-              >
-                CADASTRO
-              </Link>
-            </p>
-          </div>
-
-          <div className="voluntarios-style-button">
-            <p>
-              <Link
-                style={{ color: "white" }}
-                href="https://www.atados.com.br/ong/programa-de-educacao-para-paz/vagas"
-                alt="link atados"
-              >
-                ATADOS
-              </Link>
-            </p>
+            {new Date() >= new Date("2023-12-17") ? (
+              <p>
+                <Link href="/cadastro" className={styles.linkCadastro}>
+                  <a
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    href="https://www.palavrasdepaz.org/cadastro"
+                  >
+                    CADASTRO
+                  </a>
+                </Link>
+              </p>
+            ) : (
+              <p>
+                <Link
+                  href="https://form.jotform.com/220305437068653"
+                  className={styles.linkCadastro}
+                >
+                  <a
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    href="https://form.jotform.com/220305437068653"
+                  >
+                    CADASTRO
+                  </a>
+                </Link>
+              </p>
+            )}
           </div>
         </container>
       </Center>
