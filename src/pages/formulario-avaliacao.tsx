@@ -1,24 +1,24 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 
-import { optionsQuestion2 } from "../../../helpers/avalQuestions";
-import { useGetUser } from "../../../hooks";
-import useUserEmail from "../../../hooks/useUserEmail";
+import HeaderForm from "../components/headerform/HeaderForm";
+import { optionsQuestion2 } from "../helpers/avalQuestions";
+import { useGetUser } from "../hooks";
+import useUserEmail from "../hooks/useUserEmail";
+import Question2Aval from "../templates/areaDeTrabalho/components/Question2Aval";
+import Question3Aval from "../templates/areaDeTrabalho/components/Question3Aval";
+import Question4Aval from "../templates/areaDeTrabalho/components/Question4Aval";
+import Question6Aval from "../templates/areaDeTrabalho/components/Question6Aval";
+import Question7Aval from "../templates/areaDeTrabalho/components/Question7Aval";
+import Question8Aval from "../templates/areaDeTrabalho/components/Question8Aval";
+import Question9Aval from "../templates/areaDeTrabalho/components/Question9Aval";
+import Question10Aval from "../templates/areaDeTrabalho/components/Question10Aval";
+import Question11Aval from "../templates/areaDeTrabalho/components/Question11Aval";
+import QuestionGroup from "../templates/areaDeTrabalho/components/QuestionGroup";
+import StudentInfoInput from "../templates/areaDeTrabalho/components/StudentInfoInput";
+import UnidadePrisional from "../templates/areaDeTrabalho/components/UnidadePrisional";
 
-import Question2Aval from "./Question2Aval";
-import Question3Aval from "./Question3Aval";
-import Question4Aval from "./Question4Aval";
-import Question6Aval from "./Question6Aval";
-import Question7Aval from "./Question7Aval";
-import Question8Aval from "./Question8Aval";
-import Question9Aval from "./Question9Aval";
-import Question10Aval from "./Question10Aval";
-import Question11Aval from "./Question11Aval";
-import QuestionGroup from "./QuestionGroup";
-import StudentInfoInput from "./StudentInfoInput";
-import UnidadePrisional from "./UnidadePrisional";
-
-import styles from "../styles/FormularioAvaliacao.module.css";
+import styles from "../styles/formularioAvaliação/FormularioAvaliacao.module.css";
 
 interface FormularioAvaliacaoProps {
   onClose: () => void;
@@ -112,6 +112,7 @@ const FormularioAvaliacao: React.FC<FormularioAvaliacaoProps> = ({
 
   return (
     <>
+      <HeaderForm />
       <h1>Avaliação De Cadernos CEP/FUNAP/SATPR</h1>
       <h5>Leitura de Cadernos dos Alunos do Projeto CEP/FUNAP/SATPR</h5>
       <form className={styles.form} onSubmit={handleSubmit}>

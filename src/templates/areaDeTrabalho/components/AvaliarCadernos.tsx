@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
+import { useRouter } from "next/router";
 
 import DownloadImage from "../../../../public/static/images/icons/download.svg";
 import { api } from "../../../api";
@@ -10,8 +11,6 @@ import isReserved from "../../../helpers/isReserved";
 import useGetNotebooks from "../../../hooks/useGetNotebooks";
 import { INotebooks } from "../types/interfaces";
 
-import ModalAvalCadernos from "./ModalAvalCadernos";
-
 import styles from "../styles/AvaliarCadernos.module.css";
 
 type AvaliarCadernosProps = {
@@ -19,6 +18,7 @@ type AvaliarCadernosProps = {
 };
 
 const AvaliarCadernos = ({ idvol }: AvaliarCadernosProps) => {
+  const router = useRouter();
   const { data: notebooks } = useGetNotebooks(idvol);
   const [notebooksIn, setNotebooksIn] = useState<INotebooks[]>([]);
   const [showFormulario, setShowFormulario] = useState(false);
@@ -32,7 +32,7 @@ const AvaliarCadernos = ({ idvol }: AvaliarCadernosProps) => {
   };
 
   const handleOpenFormulario = () => {
-    setShowFormulario(true);
+    router.push("/formulario-avaliacao");
   };
 
   const handleCloseFormulario = () => {
@@ -127,14 +127,12 @@ const AvaliarCadernos = ({ idvol }: AvaliarCadernosProps) => {
                   </>
                 )}
                 {reserved ? (
-                  <a href="area-de-trabalho" onClick={handleAnchorClick}>
-                    <button
-                      className={styles.avaliar_status_p5_active}
-                      onClick={handleOpenFormulario}
-                    >
-                      {preencher}
-                    </button>
-                  </a>
+                  <button
+                    className={styles.avaliar_status_p5_active}
+                    onClick={handleOpenFormulario}
+                  >
+                    {preencher}
+                  </button>
                 ) : (
                   <button
                     className={styles.avaliar_status_p5}
@@ -147,7 +145,6 @@ const AvaliarCadernos = ({ idvol }: AvaliarCadernosProps) => {
             )
           )}
       </div>
-      {showFormulario && <ModalAvalCadernos onClose={handleCloseFormulario} />}
     </section>
   );
 };

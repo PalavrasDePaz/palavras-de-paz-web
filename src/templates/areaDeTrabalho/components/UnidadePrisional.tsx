@@ -2,7 +2,7 @@ import React from "react";
 
 import penitenciarias from "../../../helpers/penitenciarias";
 
-import styles from "../styles/FormularioAvaliacao.module.css";
+import styles from "../../../styles/formularioAvaliação/FormularioAvaliacao.module.css";
 
 interface UnidadePrisionalOptionsProps {
   handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void;

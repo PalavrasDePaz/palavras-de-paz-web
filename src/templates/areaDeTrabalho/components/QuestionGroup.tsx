@@ -4,7 +4,7 @@ import { avalQuestions } from "../../../helpers/avalQuestions";
 
 import QuestionInput from "./QuestionInput";
 
-import styles from "../styles/FormularioAvaliacao.module.css";
+import styles from "../../../styles/formularioAvaliação/FormularioAvaliacao.module.css";
 
 interface QuestionGroupProps {
   onChange: (questionNumber: number, index: number, value: string) => void;

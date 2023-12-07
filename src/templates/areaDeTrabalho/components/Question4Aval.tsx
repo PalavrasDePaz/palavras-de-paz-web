@@ -1,6 +1,6 @@
 import React from "react";
 
-import styles from "../styles/FormularioAvaliacao.module.css";
+import styles from "../../../styles/formularioAvaliação/FormularioAvaliacao.module.css";
 
 interface FormData {
   question4?: string;
