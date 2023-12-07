@@ -113,8 +113,10 @@ const FormularioAvaliacao: React.FC<FormularioAvaliacaoProps> = ({
   return (
     <>
       <HeaderForm />
-      <h1>Avaliação De Cadernos CEP/FUNAP/SATPR</h1>
-      <h5>Leitura de Cadernos dos Alunos do Projeto CEP/FUNAP/SATPR</h5>
+      <h1>Formulário de Avaliação de Leitura - Cadernos</h1>
+      <h5>
+        Realize a transcrição da avaliação do relatório de leitura conclúida.
+      </h5>
       <form className={styles.form} onSubmit={handleSubmit}>
         <StudentInfoInput
           label="ID do Voluntário"
