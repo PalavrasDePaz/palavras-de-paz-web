@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
-import Link from "next/link";
+import { useRouter } from "next/router";
 
 import DownloadImage from "../../../../public/static/images/icons/download.svg";
 import { api } from "../../../api";
@@ -18,8 +18,10 @@ type AvaliarCadernosProps = {
 };
 
 const AvaliarCadernos = ({ idvol }: AvaliarCadernosProps) => {
+  const router = useRouter();
   const { data: notebooks } = useGetNotebooks(idvol);
   const [notebooksIn, setNotebooksIn] = useState<INotebooks[]>([]);
+  const [showFormulario, setShowFormulario] = useState(false);
   const naoReservado = "Não reservado";
   const preencher = "Preencher Formulário";
 
@@ -27,6 +29,18 @@ const AvaliarCadernos = ({ idvol }: AvaliarCadernosProps) => {
     const reserveData = { idvol, notebookId };
     const response = await api.put("/notebooks/reservation", reserveData);
     return response.data;
+  };
+
+  const handleOpenFormulario = () => {
+    router.push("/formulario-avaliacao");
+  };
+
+  const handleCloseFormulario = () => {
+    setShowFormulario(false);
+  };
+
+  const handleAnchorClick = (e: React.MouseEvent) => {
+    e.preventDefault();
   };
 
   const handleReservation = async (notebookId: number) => {
@@ -113,13 +127,19 @@ const AvaliarCadernos = ({ idvol }: AvaliarCadernosProps) => {
                   </>
                 )}
                 {reserved ? (
-                  <Link href="area-de-trabalho">
-                    <p className={styles.avaliar_status_p5_active}>
-                      {preencher}
-                    </p>
-                  </Link>
+                  <button
+                    className={styles.avaliar_status_p5_active}
+                    onClick={handleOpenFormulario}
+                  >
+                    {preencher}
+                  </button>
                 ) : (
-                  <p className={styles.avaliar_status_p5}>{preencher}</p>
+                  <button
+                    className={styles.avaliar_status_p5}
+                    onClick={handleOpenFormulario}
+                  >
+                    {preencher}
+                  </button>
                 )}
               </div>
             )
