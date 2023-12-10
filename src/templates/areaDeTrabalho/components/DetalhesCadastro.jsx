@@ -151,7 +151,17 @@ const ModalDetalhesCadastro = ({ show, onHide, selectedDate }) => {
 
     return pages;
   };
+  const formatBirthDate = (birthDate) => {
+    if (!birthDate) return "";
+    const birthDateParts = birthDate.split("-");
+    return `${birthDateParts[2]}/${birthDateParts[1]}/${birthDateParts[0]}`;
+  };
 
+  const showReadAndBookSkill = (skill) => {
+    if (skill === null) return "";
+    if (skill) return "Sim";
+    return "Não";
+  };
   return (
     <Modal
       show={show}
@@ -196,34 +206,66 @@ const ModalDetalhesCadastro = ({ show, onHide, selectedDate }) => {
                 }}
               >
                 <tr>
+                  <th>Data de Submissão</th>
                   <th>ID Voluntário</th>
                   <th>Nome</th>
-                  <th>Data de Submissão</th>
-                  <th>Interesse em Posições Futuras</th>
-                  <th>Experiencia de vida</th>
-                  <th>Experiencia em workshops</th>
-                  <th>Desejos</th>
+                  <th>Data de Nascimento</th>
+                  <th>Email</th>
+                  <th>Telefone</th>
+                  <th>País</th>
+                  <th>Estado</th>
+                  <th>Cidade</th>
+                  <th>PCD</th>
+                  <th>PDC (Qual)</th>
                   <th>Como nos achou ? </th>
+                  <th>Experiencia em workshops</th>
+                  <th>Escolaridade</th>
+                  <th>Curso 1</th>
+                  <th>Curso 2</th>
                   <th>Conhecimentos</th>
+
+                  <th>Experiencia de vida</th>
+                  <th>Desejos</th>
+                  <th>Oportunidades</th>
+                  <th>Interesse em Posições Futuras</th>
+                  <td>Declaração</td>
+                  <td>Habilidade de leitura</td>
+                  <td>Habilidade com livro</td>
+                  <td>Certificado</td>
+                  <td>Autorização</td>
                 </tr>
               </thead>
               <tbody>
                 {volunters.nodes.map((attendance) => (
                   <tr key={attendance.id}>
+                    <td>
+                      {format(new Date(attendance.createdAt), "dd/MM/yyyy")}
+                    </td>
                     <td>{attendance.idvol}</td>
                     <td>{attendance.name}</td>
-                    <td>
-                      {
-                        // formata a data q vem como 2023-11-22T00:00:00.000Z
-                        format(new Date(attendance.createdAt), "dd/MM/yyyy")
-                      }
-                    </td>
-                    <td>{attendance.interestFutureRoles.join(", ")}</td>
-                    <td>{attendance.lifeExperience}</td>
-                    <td>{attendance.knowledgePep}</td>
-                    <td>{attendance.desires}</td>
-                    <td>{attendance.howFoundPep}</td>
+                    <td>{formatBirthDate(attendance?.birthDate)}</td>
+                    <td>{attendance?.email}</td>
+                    <td>{attendance?.phoneNumber}</td>
+                    <td>{attendance?.country}</td>
+                    <td>{attendance?.state}</td>
+                    <td>{attendance?.city}</td>
+                    <td>{attendance?.isDisability}</td>
+                    <td>{attendance?.disability}</td>
+                    <td>{attendance?.howFoundPep}</td>
+                    <td>{attendance?.knowledgePep}</td>
+                    <td>{attendance?.schooling}</td>
+                    <td>{attendance?.courseOne}</td>
+                    <td>{attendance?.courseTwo}</td>
                     <td>{attendance.studiesKnowledge}</td>
+                    <td>{attendance.desires}</td>
+                    <td>{attendance?.opportunities}</td>
+                    <td>{attendance.lifeExperience}</td>
+                    <td>{attendance.interestFutureRoles.join(", ")}</td>
+                    <td>{attendance?.needDeclaration}</td>
+                    <td>{showReadAndBookSkill(attendance?.readSkill)}</td>
+                    <td>{showReadAndBookSkill(attendance?.bookSkill)}</td>
+                    <td>{attendance?.certificate}</td>
+                    <td>{attendance?.authorization}</td>
                   </tr>
                 ))}
               </tbody>
