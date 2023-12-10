@@ -19,6 +19,7 @@ import Image from "next/image";
 import { format } from "date-fns";
 
 import { Modal } from "react-bootstrap";
+import { toast } from "react-toastify";
 import Grafico2 from "../../../../public/static/images/icons/grafico2.svg";
 import { api } from "../../../api";
 
@@ -35,26 +36,30 @@ export default function DetalhesCadastro() {
   const [selectedDate, setSelectDate] = useState(new Date());
 
   const getVolunters = async () => {
-    const selectedDateString = format(selectedDate, "yyyy-MM-dd");
-    const response = await api.get(
-      `/volunteers/download/from/${selectedDateString}`,
-      {
-        responseType: "arraybuffer",
-      }
-    );
+    try {
+      const selectedDateString = format(selectedDate, "yyyy-MM-dd");
+      const response = await api.get(
+        `/volunteers/download/from/${selectedDateString}`,
+        {
+          responseType: "arraybuffer",
+        }
+      );
 
-    const blob = new Blob([response.data], {
-      type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
-    });
+      const blob = new Blob([response.data], {
+        type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      });
 
-    const url = window.URL.createObjectURL(blob);
+      const url = window.URL.createObjectURL(blob);
 
-    const a = document.createElement("a");
-    a.href = url;
-    a.download = `voluntarios-${selectedDateString}.xlsx`; // Nome do arquivo
-    a.click();
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = `voluntarios-${selectedDateString}.xlsx`; // Nome do arquivo
+      a.click();
 
-    window.URL.revokeObjectURL(url);
+      window.URL.revokeObjectURL(url);
+    } catch (err) {
+      toast.error("Erro ao baixar os dados");
+    }
   };
 
   return (
@@ -170,7 +175,7 @@ const ModalDetalhesCadastro = ({ show, onHide, selectedDate }) => {
       aria-labelledby="contained-modal-title-vcenter"
     >
       <Modal.Header closeButton>
-        <Modal.Title>Detalhes das presenças</Modal.Title>
+        <Modal.Title>Detalhes de cadastro</Modal.Title>
       </Modal.Header>
       <Modal.Body>
         {loading && (

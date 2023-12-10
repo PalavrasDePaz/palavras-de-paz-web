@@ -32,22 +32,26 @@ import LoadingSpinner from "@/components/loadingSpinner/LoadingSpinner";
 export default function DadosPresenca() {
   const [show, setShow] = useState(false);
   const getDadosAttendances = async () => {
-    const response = await api.get(`/attendances/metrics/download`, {
-      responseType: "arraybuffer",
-    });
+    try {
+      const response = await api.get(`/attendances/metrics/download`, {
+        responseType: "arraybuffer",
+      });
 
-    const blob = new Blob([response.data], {
-      type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
-    });
+      const blob = new Blob([response.data], {
+        type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      });
 
-    const url = window.URL.createObjectURL(blob);
+      const url = window.URL.createObjectURL(blob);
 
-    const a = document.createElement("a");
-    a.href = url;
-    a.download = `dados-presencas.xlsx`; // Nome do arquivo
-    a.click();
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = `dados-presencas.xlsx`; // Nome do arquivo
+      a.click();
 
-    window.URL.revokeObjectURL(url);
+      window.URL.revokeObjectURL(url);
+    } catch (err) {
+      toast.error("Erro ao baixar os dados");
+    }
   };
   return (
     <section className={Styles.containerSectionDados}>

@@ -37,26 +37,30 @@ export default function DetalhesPresenca() {
   const [selectedDate, setSelectDate] = useState(new Date());
 
   const getAttendances = async () => {
-    const selectedDateString = format(selectedDate, "yyyy-MM-dd");
-    const response = await api.get(
-      `/attendances/download/from/${selectedDateString}`,
-      {
-        responseType: "arraybuffer",
-      }
-    );
+    try {
+      const selectedDateString = format(selectedDate, "yyyy-MM-dd");
+      const response = await api.get(
+        `/attendances/download/from/${selectedDateString}`,
+        {
+          responseType: "arraybuffer",
+        }
+      );
 
-    const blob = new Blob([response.data], {
-      type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
-    });
+      const blob = new Blob([response.data], {
+        type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      });
 
-    const url = window.URL.createObjectURL(blob);
+      const url = window.URL.createObjectURL(blob);
 
-    const a = document.createElement("a");
-    a.href = url;
-    a.download = `presenças-${selectedDateString}.xlsx`; // Nome do arquivo
-    a.click();
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = `presenças-${selectedDateString}.xlsx`; // Nome do arquivo
+      a.click();
 
-    window.URL.revokeObjectURL(url);
+      window.URL.revokeObjectURL(url);
+    } catch (err) {
+      toast.error("Erro ao baixar os dados");
+    }
   };
 
   return (
