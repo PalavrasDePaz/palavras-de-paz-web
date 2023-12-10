@@ -195,10 +195,9 @@ const ModalDetalhesPresenca = ({ show, onHide, selectedDate }) => {
                 }}
               >
                 <tr>
-                  <th>ID de Atendimento</th>
+                  <th>Data de Submissão</th>
                   <th>ID Voluntário</th>
                   <th>Nome</th>
-                  <th>Data de Submissão</th>
                   <th>Assunto do Workshop</th>
                   <th>Desafio Enfrentado</th>
                   <th>Aprendizado</th>
@@ -211,10 +210,14 @@ const ModalDetalhesPresenca = ({ show, onHide, selectedDate }) => {
               <tbody>
                 {attendances.nodes.map((attendance) => (
                   <tr key={attendance.id}>
-                    <td>{attendance.idAttend}</td>
+                    <td>
+                      {format(
+                        new Date(attendance.submissionDate),
+                        "dd/MM/yyyy"
+                      )}
+                    </td>
                     <td>{attendance.idvol}</td>
                     <td>{attendance.name}</td>
-                    <td>{attendance.submissionDate}</td>
                     <td>{attendance.workshopSubject}</td>
                     <td>{attendance.whatChallengedYou}</td>
                     <td>{attendance.differentKnowledgeLearned}</td>
