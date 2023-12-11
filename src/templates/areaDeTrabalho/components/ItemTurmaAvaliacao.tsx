@@ -63,7 +63,12 @@ function ItemTurmaAvaliacao({
           <input
             type="checkbox"
             onChange={() => handleReservation(idvol, idclass)}
+            id={idvol.toString()}
+            className={styles.toggle}
           />
+          <label htmlFor={idvol.toString()} className={styles.switch}>
+            <span className={styles.slider} />
+          </label>
           <p>{`${idclass}-${place}`}</p>
           <p>{naoReservado}</p>
           <p>{naoReservado}</p>
@@ -79,7 +84,12 @@ function ItemTurmaAvaliacao({
             type="checkbox"
             checked // ADICIONAR ROTA PARA REMOVER A RESERVA
             onChange={() => ""}
+            id={idvol.toString()}
+            className={styles.toggle}
           />
+          <label htmlFor={idvol.toString()} className={styles.switch}>
+            <span className={styles.slider} />
+          </label>
           <p>{`${idclass}-${place}`}</p>
           <p>
             {dateReserved ? dateUTCFormat(dateReserved) : dateUTCGenerate()}
