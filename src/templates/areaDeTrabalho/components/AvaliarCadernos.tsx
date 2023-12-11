@@ -93,9 +93,14 @@ const AvaliarCadernos = ({ idvol }: AvaliarCadernosProps) => {
                 {!reserved ? (
                   <>
                     <input
+                      className={styles.toggle}
                       type="checkbox"
                       onChange={() => handleReservation(notebookId)}
+                      id={studentName}
                     />
+                    <label htmlFor={studentName} className={styles.switch}>
+                      <span className={styles.slider} />
+                    </label>
                     <p className={styles.avaliar_status_p1}>{studentName}</p>
                     <p>{naoReservado}</p>
                     <div className={styles.avaliar_status_div}>
@@ -105,7 +110,16 @@ const AvaliarCadernos = ({ idvol }: AvaliarCadernosProps) => {
                   </>
                 ) : (
                   <>
-                    <input type="checkbox" checked />
+                    <input
+                      className={styles.toggle}
+                      id={studentName}
+                      type="checkbox"
+                      checked
+                    />
+                    <label htmlFor={studentName} className={styles.switch}>
+                      <span className={styles.slider} />
+                    </label>
+
                     <p className={styles.avaliar_status_p1}>{studentName}</p>
                     <p>
                       {reservationDate
