@@ -1,5 +1,7 @@
 import React from "react";
 
+import styles from "../styles/FormularioAvaliacaoCaderno.module.css";
+
 interface QuestionInputProps {
   question: {
     id: number;

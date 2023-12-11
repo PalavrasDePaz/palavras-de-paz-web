@@ -2,10 +2,10 @@ import React from "react";
 import Image from "next/image";
 import { useRouter } from "next/router";
 
-import Voltar from "../../../public/static/images/icons/basic.svg";
-import Logo from "../../../public/static/images/logo.svg";
+import Voltar from "../../../../public/static/images/icons/basic.svg";
+import Logo from "../../../../public/static/images/logo.svg";
 
-import styles from "./HeaderForm.module.css";
+import styles from "../styles/HeaderForm.module.css";
 
 export default function HeaderForm() {
   const { push } = useRouter();
@@ -15,14 +15,14 @@ export default function HeaderForm() {
   return (
     <header className={styles.headerContainer}>
       <div className={styles.backIcon}>
-        <Image
-          src={Voltar}
-          alt="imagem de uma seta apontada para a esquerda, 
-          como se fosse sair da porta, na cor preta"
-          width="32px"
-          height="32px"
-        />
         <button className={styles.registerTitle} onClick={handleClick}>
+          <Image
+            src={Voltar}
+            alt="imagem de uma seta apontada para a esquerda, 
+          como se fosse sair da porta, na cor preta"
+            width="32px"
+            height="32px"
+          />
           Voltar
         </button>
       </div>

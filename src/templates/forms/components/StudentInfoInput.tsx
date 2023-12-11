@@ -1,6 +1,6 @@
 import React from "react";
 
-import styles from "../../../styles/formularioAvaliação/FormularioAvaliacao.module.css";
+// import styles from "../styles/FormularioAvaliacaoCaderno.module.css";
 
 const noop = () => null;
 
@@ -24,10 +24,9 @@ const StudentInfoInput: React.FC<StudentInfoInputProps> = ({
   instructions = false,
 }) => (
   <>
-    <label className={styles.labelClass}>
+    <label>
       {label}:
       <input
-        className={styles.inputClass}
         type={type}
         value={value}
         onChange={onChange}
@@ -35,7 +34,7 @@ const StudentInfoInput: React.FC<StudentInfoInputProps> = ({
         readOnly={readOnly}
       />
     </label>
-    {instructions && <p className={styles.instructionsClass}>{instructions}</p>}
+    {instructions && <p>{instructions}</p>}
   </>
 );
 

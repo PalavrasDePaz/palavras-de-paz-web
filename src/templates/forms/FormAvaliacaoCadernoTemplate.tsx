@@ -1,30 +1,31 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 
-import HeaderForm from "../components/headerform/HeaderForm";
-import { optionsQuestion2 } from "../helpers/avalQuestions";
-import { useGetUser } from "../hooks";
-import useUserEmail from "../hooks/useUserEmail";
-import Question2Aval from "../templates/areaDeTrabalho/components/Question2Aval";
-import Question3Aval from "../templates/areaDeTrabalho/components/Question3Aval";
-import Question4Aval from "../templates/areaDeTrabalho/components/Question4Aval";
-import Question6Aval from "../templates/areaDeTrabalho/components/Question6Aval";
-import Question7Aval from "../templates/areaDeTrabalho/components/Question7Aval";
-import Question8Aval from "../templates/areaDeTrabalho/components/Question8Aval";
-import Question9Aval from "../templates/areaDeTrabalho/components/Question9Aval";
-import Question10Aval from "../templates/areaDeTrabalho/components/Question10Aval";
-import Question11Aval from "../templates/areaDeTrabalho/components/Question11Aval";
-import QuestionGroup from "../templates/areaDeTrabalho/components/QuestionGroup";
-import StudentInfoInput from "../templates/areaDeTrabalho/components/StudentInfoInput";
-import UnidadePrisional from "../templates/areaDeTrabalho/components/UnidadePrisional";
+import { optionsQuestion2 } from "../../helpers/avalQuestions";
+import useGetUser from "../../hooks/useGetUser";
+import useUserEmail from "../../hooks/useUserEmail";
 
-import styles from "../styles/formularioAvaliação/FormularioAvaliacao.module.css";
+import HeaderForm from "./components/HeaderForm";
+import Question2Aval from "./components/Question2Aval";
+import Question3Aval from "./components/Question3Aval";
+import Question4Aval from "./components/Question4Aval";
+import Question6Aval from "./components/Question6Aval";
+import Question7Aval from "./components/Question7Aval";
+import Question8Aval from "./components/Question8Aval";
+import Question9Aval from "./components/Question9Aval";
+import Question10Aval from "./components/Question10Aval";
+import Question11Aval from "./components/Question11Aval";
+import QuestionGroup from "./components/QuestionGroup";
+import StudentInfoInput from "./components/StudentInfoInput";
+import UnidadePrisional from "./components/UnidadePrisional";
 
-interface FormularioAvaliacaoProps {
+// import styles from "./styles/FormularioAvaliacaoCaderno.module.css";
+
+interface FormularioAvaliacaoCadernoProps {
   onClose: () => void;
 }
 
-const FormularioAvaliacao: React.FC<FormularioAvaliacaoProps> = ({
+const FormAvalCadTemplate: React.FC<FormularioAvaliacaoCadernoProps> = ({
   onClose,
 }) => {
   const userEmail = useUserEmail();
@@ -106,7 +107,7 @@ const FormularioAvaliacao: React.FC<FormularioAvaliacaoProps> = ({
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     // adicioar lógica para enviar ao backend
-    console.log("Form data submitted:", formData);
+    // console.log("Form data submitted:", formData);
     // onClose();
   };
 
@@ -117,7 +118,7 @@ const FormularioAvaliacao: React.FC<FormularioAvaliacaoProps> = ({
       <h5>
         Realize a transcrição da avaliação do relatório de leitura conclúida.
       </h5>
-      <form className={styles.form} onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit}>
         <StudentInfoInput
           label="ID do Voluntário"
           type="text"
@@ -152,7 +153,7 @@ const FormularioAvaliacao: React.FC<FormularioAvaliacaoProps> = ({
             INSERIR NR DO ALUNO QUE ESTÁ NA PLANILHA DE CADERNOS)`}
         />
 
-        <label className={styles.labelClass} htmlFor="prisonUnit">
+        <label htmlFor="prisonUnit">
           Unidade Prisional do(a) Aluno(a):
           <UnidadePrisional handleChange={handleChangeName} />
         </label>
@@ -161,7 +162,6 @@ const FormularioAvaliacao: React.FC<FormularioAvaliacaoProps> = ({
           {`CONTEÚDOS RELEVANTES (Selecione um trecho onde se percebe o entendimento 
             e a evolução do participante - em até 3 linhas)`}
           <textarea
-            className={styles.textareaClass}
             name="perception"
             value={formData.relevantContent}
             onChange={handleChangeQuestionRelevant}
@@ -180,7 +180,7 @@ const FormularioAvaliacao: React.FC<FormularioAvaliacaoProps> = ({
         </label>
 
         {/* Question 2 */}
-        <label className={styles.labelClass} htmlFor="question2">
+        <label htmlFor="question2">
           AVALIAÇÃO DA QUESTÃO 2
           <Question2Aval
             options={optionsQuestion2}
@@ -237,8 +237,8 @@ const FormularioAvaliacao: React.FC<FormularioAvaliacaoProps> = ({
   );
 };
 
-FormularioAvaliacao.propTypes = {
+FormAvalCadTemplate.propTypes = {
   onClose: PropTypes.func.isRequired,
 };
 
-export default FormularioAvaliacao;
+export default FormAvalCadTemplate;

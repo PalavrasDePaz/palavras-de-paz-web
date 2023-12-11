@@ -1,6 +1,6 @@
 import React from "react";
 
-import styles from "../../../styles/formularioAvaliação/FormularioAvaliacao.module.css";
+// import styles from "../styles/FormularioAvaliacaoCaderno.module.css";
 
 interface Question8AvalProps {
   handleChangeQuestions: (event: React.ChangeEvent<HTMLInputElement>) => void;
@@ -9,9 +9,9 @@ interface Question8AvalProps {
 const Question8Aval: React.FC<Question8AvalProps> = ({
   handleChangeQuestions,
 }) => (
-  <label className={styles.labelClass} htmlFor="question8">
+  <label htmlFor="question8">
     QUESTÃO 8: Você é?
-    <div className={styles.radioGroup}>
+    <div>
       {["Masculino", "Feminino", "Outros", "Não Sei"].map((gender) => (
         <label key={gender}>
           <input

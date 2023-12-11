@@ -1,6 +1,6 @@
 import React from "react";
 
-import styles from "../../../styles/formularioAvaliação/FormularioAvaliacao.module.css";
+// import styles from "../styles/FormularioAvaliacaoCaderno.module.css";s
 
 interface FormData {
   perception?: string;
@@ -17,11 +17,10 @@ const Question11Aval: React.FC<PerceptionAvalProps> = ({
   formData,
   handleChangeQuestions,
 }) => (
-  <label className={styles.labelClass}>
+  <label>
     CONCLUSÃO DO AVALIADOR
     <p>Descreva sua percepção sobre o desenvolvimento do aluno:</p>
     <textarea
-      className={styles.textareaClass}
       name="perception"
       value={formData?.perception}
       onChange={handleChangeQuestions}

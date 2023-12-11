@@ -4,7 +4,7 @@ import { avalQuestions } from "../../../helpers/avalQuestions";
 
 import QuestionInput from "./QuestionInput";
 
-import styles from "../../../styles/formularioAvaliação/FormularioAvaliacao.module.css";
+// import styles from "../styles/FormularioAvaliacaoCaderno.module.css";
 
 interface QuestionGroupProps {
   onChange: (questionNumber: number, index: number, value: string) => void;
@@ -23,10 +23,7 @@ const QuestionGroup: React.FC<QuestionGroupProps> = ({ onChange }) => {
     <>
       {avalQuestions.map((question) => (
         <div key={question.id}>
-          <label
-            className={styles.labelClass}
-            htmlFor={`question${question.id}`}
-          >
+          <label htmlFor={`question${question.id}`}>
             <p id={`question${question.id}`}>
               {`${question.letter}) ${question.question}`}
             </p>

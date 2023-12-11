@@ -1,6 +1,6 @@
 import React from "react";
 
-import styles from "../../../styles/formularioAvaliação/FormularioAvaliacao.module.css";
+// import styles from "../styles/FormularioAvaliacaoCaderno.module.css";
 
 interface Question9AvalProps {
   handleChangeQuestions: (event: React.ChangeEvent<HTMLInputElement>) => void;
@@ -9,9 +9,9 @@ interface Question9AvalProps {
 const Question9Aval: React.FC<Question9AvalProps> = ({
   handleChangeQuestions,
 }) => (
-  <label className={styles.labelClass} htmlFor="question9">
+  <label htmlFor="question9">
     QUESTÃO 9: Qual o seu grau de instrução?
-    <div className={styles.radioGroup}>
+    <div>
       {[
         "Ensino Fundamental Incompleto",
         "Ensino Fundamental Completo",

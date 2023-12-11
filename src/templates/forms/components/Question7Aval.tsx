@@ -1,6 +1,6 @@
 import React from "react";
 
-import styles from "../../../styles/formularioAvaliação/FormularioAvaliacao.module.css";
+// import styles from "../styles/FormularioAvaliacaoCaderno.module.css";
 
 interface Question7AvalProps {
   handleChangeQuestions: (event: React.ChangeEvent<HTMLInputElement>) => void;
@@ -9,9 +9,9 @@ interface Question7AvalProps {
 const Question7Aval: React.FC<Question7AvalProps> = ({
   handleChangeQuestions,
 }) => (
-  <label className={styles.labelClass} htmlFor="question7">
+  <label htmlFor="question7">
     QUESTÃO 7: Quantos anos você tem?
-    <div className={styles.radioGroup}>
+    <div>
       {["Até 35 anos", "36 a 55 anos", "Mais de 55"].map((ageRange) => (
         <label key={ageRange}>
           <input

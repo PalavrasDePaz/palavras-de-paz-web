@@ -1,6 +1,6 @@
 import React from "react";
 
-import styles from "../../../styles/formularioAvaliação/FormularioAvaliacao.module.css";
+// import styles from "../styles/FormularioAvaliacaoCaderno.module.css";
 
 interface CheckboxGroupProps {
   options: string[];
@@ -13,7 +13,7 @@ const Question2Aval: React.FC<CheckboxGroupProps> = ({
   name,
   onChange,
 }) => (
-  <div className={styles.checkboxGroup}>
+  <div>
     {options.map((option) => (
       <label key={option}>
         <input type="checkbox" name={name} value={option} onChange={onChange} />

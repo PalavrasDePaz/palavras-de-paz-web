@@ -1,6 +1,6 @@
 import React from "react";
 
-import styles from "../../../styles/formularioAvaliação/FormularioAvaliacao.module.css";
+// import styles from "../styles/FormularioAvaliacaoCaderno.module.css";
 
 interface FormData {
   question3?: string;
@@ -17,11 +17,10 @@ const Question3Aval: React.FC<Question3AvalProps> = ({
   formData,
   handleChangeQuestions,
 }) => (
-  <label className={styles.labelClass}>
+  <label>
     AVALIAÇÃO DA QUESTÃO 3
     <p>{`A resposta do(a) aluno(a): "ESCREVA O QUE MAIS GOSTOU NO PROGRAMA":`}</p>
     <textarea
-      className={styles.textareaClass}
       name="question3"
       value={formData?.question3}
       onChange={handleChangeQuestions}
