@@ -37,26 +37,30 @@ export default function DetalhesPresenca() {
   const [selectedDate, setSelectDate] = useState(new Date());
 
   const getAttendances = async () => {
-    const selectedDateString = format(selectedDate, "yyyy-MM-dd");
-    const response = await api.get(
-      `/attendances/download/from/${selectedDateString}`,
-      {
-        responseType: "arraybuffer",
-      }
-    );
+    try {
+      const selectedDateString = format(selectedDate, "yyyy-MM-dd");
+      const response = await api.get(
+        `/attendances/download/from/${selectedDateString}`,
+        {
+          responseType: "arraybuffer",
+        }
+      );
 
-    const blob = new Blob([response.data], {
-      type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
-    });
+      const blob = new Blob([response.data], {
+        type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      });
 
-    const url = window.URL.createObjectURL(blob);
+      const url = window.URL.createObjectURL(blob);
 
-    const a = document.createElement("a");
-    a.href = url;
-    a.download = `presenças-${selectedDateString}.xlsx`; // Nome do arquivo
-    a.click();
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = `presenças-${selectedDateString}.xlsx`; // Nome do arquivo
+      a.click();
 
-    window.URL.revokeObjectURL(url);
+      window.URL.revokeObjectURL(url);
+    } catch (err) {
+      toast.error("Erro ao baixar os dados");
+    }
   };
 
   return (
@@ -195,10 +199,9 @@ const ModalDetalhesPresenca = ({ show, onHide, selectedDate }) => {
                 }}
               >
                 <tr>
-                  <th>ID de Atendimento</th>
+                  <th>Data de Submissão</th>
                   <th>ID Voluntário</th>
                   <th>Nome</th>
-                  <th>Data de Submissão</th>
                   <th>Assunto do Workshop</th>
                   <th>Desafio Enfrentado</th>
                   <th>Aprendizado</th>
@@ -211,10 +214,14 @@ const ModalDetalhesPresenca = ({ show, onHide, selectedDate }) => {
               <tbody>
                 {attendances.nodes.map((attendance) => (
                   <tr key={attendance.id}>
-                    <td>{attendance.idAttend}</td>
+                    <td>
+                      {format(
+                        new Date(attendance.submissionDate),
+                        "dd/MM/yyyy"
+                      )}
+                    </td>
                     <td>{attendance.idvol}</td>
                     <td>{attendance.name}</td>
-                    <td>{attendance.submissionDate}</td>
                     <td>{attendance.workshopSubject}</td>
                     <td>{attendance.whatChallengedYou}</td>
                     <td>{attendance.differentKnowledgeLearned}</td>

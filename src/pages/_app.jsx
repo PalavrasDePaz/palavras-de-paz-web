@@ -1,6 +1,7 @@
 import React from "react";
 import Head from "next/head";
 import propTypes from "prop-types";
+import { ToastContainer } from "react-toastify";
 
 import {
   Hydrate,
@@ -24,12 +25,14 @@ import "../styles/swiper/index.css";
 import "../styles/fixedBtn/index.css";
 import "animate.css";
 import "react-datepicker/dist/react-datepicker.css";
+import "react-toastify/dist/ReactToastify.css";
 
 function MyApp({ Component, pageProps }) {
   const [queryClient] = React.useState(() => new QueryClient());
 
   return (
     <QueryClientProvider client={queryClient}>
+      <ToastContainer />
       <Hydrate state={pageProps.dehydratedState}>
         <Head>
           <title>Palavras de Paz</title>

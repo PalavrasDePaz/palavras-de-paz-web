@@ -18,6 +18,7 @@ import React, { useEffect, useState } from "react";
 import Image from "next/image";
 
 import { Modal } from "react-bootstrap";
+import { format } from "date-fns";
 import Grafico from "../../../../public/static/images/icons/grafico.svg";
 import { api } from "../../../api";
 
@@ -31,22 +32,26 @@ import LoadingSpinner from "@/components/loadingSpinner/LoadingSpinner";
 export default function DadosPresenca() {
   const [show, setShow] = useState(false);
   const getDadosAttendances = async () => {
-    const response = await api.get(`/attendances/metrics/download`, {
-      responseType: "arraybuffer",
-    });
+    try {
+      const response = await api.get(`/attendances/metrics/download`, {
+        responseType: "arraybuffer",
+      });
 
-    const blob = new Blob([response.data], {
-      type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
-    });
+      const blob = new Blob([response.data], {
+        type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      });
 
-    const url = window.URL.createObjectURL(blob);
+      const url = window.URL.createObjectURL(blob);
 
-    const a = document.createElement("a");
-    a.href = url;
-    a.download = `dados-presencas.xlsx`; // Nome do arquivo
-    a.click();
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = `dados-presencas.xlsx`; // Nome do arquivo
+      a.click();
 
-    window.URL.revokeObjectURL(url);
+      window.URL.revokeObjectURL(url);
+    } catch (err) {
+      toast.error("Erro ao baixar os dados");
+    }
   };
   return (
     <section className={Styles.containerSectionDados}>
@@ -174,11 +179,26 @@ const ModalDadosPresenca = ({ show, onHide }) => {
                 }}
               >
                 <tr>
-                  <th>ID Vol</th>
                   <th>Nome</th>
-                  <th>Telefone</th>
-                  <th>E-mail</th>
-                  <th>Facil</th>
+                  <th>ID Vol</th>
+                  <th>Aval cadernos</th>
+                  <th>Aval livro</th>
+                  <th>Cert</th>
+                  <th>habil-leitura</th>
+                  <th>habil-livro</th>
+                  <th>Npres</th>
+                  <th>`1`</th>
+                  <th>`2`</th>
+                  <th>`3`</th>
+                  <th>`4`</th>
+                  <th>`5`</th>
+                  <th>`6`</th>
+                  <th>`7`</th>
+                  <th>`8`</th>
+                  <th>`9`</th>
+                  <th>`10`</th>
+                  <th>`11`</th>
+
                   <th>Livro 0</th>
                   <th>Livro 1</th>
                   <th>Livro 2</th>
@@ -192,34 +212,34 @@ const ModalDadosPresenca = ({ show, onHide }) => {
                   <th>Livro 10</th>
                   <th>Livro 11</th>
                   <th>Livro 12</th>
-                  <th>Npres</th>
+                  <th>Facil</th>
+                  <th>Telefone</th>
+                  <th>E-mail</th>
                   <th>Submission date</th>
-                  <th>`1`</th>
-                  <th>`2`</th>
-                  <th>`3`</th>
-                  <th>`4`</th>
-                  <th>`5`</th>
-                  <th>`6`</th>
-                  <th>`7`</th>
-                  <th>`8`</th>
-                  <th>`9`</th>
-                  <th>`10`</th>
-                  <th>`11`</th>
-                  <th>Aval cadernos</th>
-                  <th>Aval livro</th>
-                  <th>Cert</th>
-                  <th>habil-leitura</th>
-                  <th>habil-livro</th>
                 </tr>
               </thead>
               <tbody>
                 {dadosPresenca.nodes.map((presenca) => (
                   <tr key={presenca.id}>
-                    <td>{presenca.idvol}</td>
                     <td>{presenca.nome}</td>
-                    <td>{presenca.telefone}</td>
-                    <td>{presenca["e-mail"]}</td>
-                    <td>{presenca.Facil}</td>
+                    <td>{presenca.idvol}</td>
+                    <td>{presenca["aval cadernos"]}</td>
+                    <td>{presenca["aval livro"]}</td>
+                    <td>{presenca.cert}</td>
+                    <td>{presenca["habil-leitura"]}</td>
+                    <td>{presenca["habil-livro"]}</td>
+                    <td>{presenca.Npres}</td>
+                    <td>{presenca["`1`"]}</td>
+                    <td>{presenca["`2`"]}</td>
+                    <td>{presenca["`3`"]}</td>
+                    <td>{presenca["`4`"]}</td>
+                    <td>{presenca["`5`"]}</td>
+                    <td>{presenca["`6`"]}</td>
+                    <td>{presenca["`7`"]}</td>
+                    <td>{presenca["`8`"]}</td>
+                    <td>{presenca["`9`"]}</td>
+                    <td>{presenca["`10`"]}</td>
+                    <td>{presenca["`11`"]}</td>
                     <td>{presenca["Livro 0"]}</td>
                     <td>{presenca["Livro 1"]}</td>
                     <td>{presenca["Livro 2"]}</td>
@@ -233,24 +253,15 @@ const ModalDadosPresenca = ({ show, onHide }) => {
                     <td>{presenca["Livro 10"]}</td>
                     <td>{presenca["Livro 11"]}</td>
                     <td>{presenca["Livro 12"]}</td>
-                    <td>{presenca.Npres}</td>
-                    <td>{presenca["Submission date"]}</td>
-                    <td>{presenca["`1`"]}</td>
-                    <td>{presenca["`2`"]}</td>
-                    <td>{presenca["`3`"]}</td>
-                    <td>{presenca["`4`"]}</td>
-                    <td>{presenca["`5`"]}</td>
-                    <td>{presenca["`6`"]}</td>
-                    <td>{presenca["`7`"]}</td>
-                    <td>{presenca["`8`"]}</td>
-                    <td>{presenca["`9`"]}</td>
-                    <td>{presenca["`10`"]}</td>
-                    <td>{presenca["`11`"]}</td>
-                    <td>{presenca["aval cadernos"] === 0 ? "Não" : "Sim"}</td>
-                    <td>{presenca["aval livro"] === 0 ? "Não" : "Sim"}</td>
-                    <td>{presenca.cert}</td>
-                    <td>{presenca["habil-leitura"]}</td>
-                    <td>{presenca["habil-livro"]}</td>
+                    <td>{presenca.Facil}</td>
+                    <td>{presenca.telefone}</td>
+                    <td>{presenca["e-mail"]}</td>
+                    <td>
+                      {format(
+                        new Date(presenca["Submission date"]),
+                        "dd/MM/yyyy"
+                      )}
+                    </td>
                   </tr>
                 ))}
               </tbody>
