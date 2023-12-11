@@ -48,7 +48,7 @@
 
 .avaliar_titles {
   display: grid;
-  grid-template-columns: 70px 2fr repeat(3, 1fr);
+  grid-template-columns: 70px 2fr repeat(4, 1fr);
   align-items: flex-start;
   gap: 16px;
   justify-items: center;
@@ -68,7 +68,7 @@
 
 .avaliar_status {
   display: grid;
-  grid-template-columns: 70px 2fr repeat(3, 1fr);
+  grid-template-columns: 70px 2fr repeat(4, 1fr);
   gap: 24px;
   align-items: start;
   padding-left: 8px;
