@@ -58,6 +58,7 @@ const AvaliarCadernos = ({ idvol }: AvaliarCadernosProps) => {
 
     await putReservationData(notebookId);
   };
+  console.log(notebooksIn);
 
   useEffect(() => {
     if (notebooks) {
@@ -76,6 +77,7 @@ const AvaliarCadernos = ({ idvol }: AvaliarCadernosProps) => {
         <div className={styles.avaliar_titles}>
           <span />
           <h2>Aluno</h2>
+          <h2>N° turma</h2>
           <h2>Reservado em</h2>
           <h2>Baixar Caderno</h2>
           <h2>Formulário de avaliação</h2>
@@ -87,16 +89,23 @@ const AvaliarCadernos = ({ idvol }: AvaliarCadernosProps) => {
               studentName,
               reservationDate,
               studentId,
+              classId,
               reserved,
             }) => (
               <div key={studentId} className={styles.avaliar_status}>
                 {!reserved ? (
                   <>
                     <input
+                      className={styles.toggle}
                       type="checkbox"
                       onChange={() => handleReservation(notebookId)}
+                      id={studentName}
                     />
+                    <label htmlFor={studentName} className={styles.switch}>
+                      <span className={styles.slider} />
+                    </label>
                     <p className={styles.avaliar_status_p1}>{studentName}</p>
+                    <p className={styles.avaliar_status_p1}>{classId}</p>
                     <p>{naoReservado}</p>
                     <div className={styles.avaliar_status_div}>
                       <Image src={DownloadImage} alt="icone de download" />
@@ -105,8 +114,19 @@ const AvaliarCadernos = ({ idvol }: AvaliarCadernosProps) => {
                   </>
                 ) : (
                   <>
-                    <input type="checkbox" checked />
+                    <input
+                      className={styles.toggle}
+                      id={studentName}
+                      type="checkbox"
+                      checked
+                    />
+                    <label htmlFor={studentName} className={styles.switch}>
+                      <span className={styles.slider} />
+                    </label>
+
                     <p className={styles.avaliar_status_p1}>{studentName}</p>
+                    <p className={styles.avaliar_status_p1}>{classId}</p>
+
                     <p>
                       {reservationDate
                         ? dateUTCFormat(reservationDate)

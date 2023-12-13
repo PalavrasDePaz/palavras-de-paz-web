@@ -48,7 +48,7 @@
 
 .avaliar_titles {
   display: grid;
-  grid-template-columns: 70px 2fr repeat(3, 1fr);
+  grid-template-columns: 70px 2fr repeat(4, 1fr);
   align-items: flex-start;
   gap: 16px;
   justify-items: center;
@@ -68,7 +68,7 @@
 
 .avaliar_status {
   display: grid;
-  grid-template-columns: 70px 2fr repeat(3, 1fr);
+  grid-template-columns: 70px 2fr repeat(4, 1fr);
   gap: 24px;
   align-items: start;
   padding-left: 8px;
@@ -247,4 +247,38 @@
   .avaliar_status p {
     font-size: 10px;
   }
+}
+
+.toggle {
+  display: none;
+}
+
+.switch {
+  position: relative;
+  background: var(--Cinza-Mediano, #cdcdcd);
+  width: 40px;
+  height: 23px;
+  border-radius: 40px;
+  display: flex;
+  align-items: center;
+  padding: 2px;
+  transition: all 0.5s ease-in-out;
+  cursor: pointer;
+}
+
+.slider {
+  position: absolute;
+  background-color: white;
+  border-radius: 50%;
+  width: 20px;
+  height: 21px;
+  transition: all 0.5s ease-in-out;
+}
+
+.toggle:checked ~ .switch {
+  background: var(--Verde-Escuro, #21aa85);
+}
+
+.toggle:checked ~ .switch .slider {
+  transform: translateX(16px);
 }
