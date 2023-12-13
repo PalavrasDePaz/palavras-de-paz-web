@@ -207,6 +207,7 @@ const ModalDetalhesPresenca = ({ show, onHide, selectedDate }) => {
                   <th>Nome</th>
                   <th>Assunto do Workshop</th>
                   <th>Desafio Enfrentado</th>
+                  <th>Conhecimentos adquiridos</th>
                   <th>Aprendizado</th>
                   <th>Força Interior</th>
                   <th>Tempo Suficiente</th>
@@ -227,6 +228,7 @@ const ModalDetalhesPresenca = ({ show, onHide, selectedDate }) => {
                     <td>{attendance.name}</td>
                     <td>{attendance.workshopSubject}</td>
                     <td>{attendance.whatChallengedYou}</td>
+                    <td>{attendance.applicableKnowledge}</td>
                     <td>{attendance.differentKnowledgeLearned}</td>
                     <td>{attendance.expressYourself}</td>
                     <td>{attendance.enoughTime}</td>
