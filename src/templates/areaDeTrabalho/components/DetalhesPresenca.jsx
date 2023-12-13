@@ -181,6 +181,9 @@ const ModalDetalhesPresenca = ({ show, onHide, selectedDate }) => {
             <LoadingSpinner />
           </div>
         )}
+        {!loading && !attendances?.nodes?.length && (
+          <p>Não há dados para serem exibidos</p>
+        )}
         {error && <p>Erro ao carregar os dados</p>}
         {!loading && !!attendances?.nodes?.length && (
           <div
