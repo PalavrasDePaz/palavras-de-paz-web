@@ -234,8 +234,8 @@ const ModalDetalhesCadastro = ({ show, onHide, selectedDate }) => {
                   <th>Oportunidades</th>
                   <th>Interesse em Posições Futuras</th>
                   <td>Declaração</td>
-                  <td>Habilidade de leitura</td>
-                  <td>Habilidade com livro</td>
+                  <td>Permissão de Avaliação de cadernos</td>
+                  <td>Permissão de Avaliação de Redações</td>
                   <td>Certificado</td>
                   <td>Autorização</td>
                 </tr>
