@@ -1,8 +1,9 @@
-import { MouseEvent, useState } from "react"; // Import useState
+import { MouseEvent, useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import { addMonths, format } from "date-fns";
 import ptBR from "date-fns/locale/pt-BR";
 
+import { useRequestStatus } from "../../../hooks/useCheckFormHoursHeader";
 import useGetEssaysCount from "../../../hooks/useGetEssaysCount";
 import useGetNotebooksCount from "../../../hooks/useGetNotebookCount";
 
@@ -29,15 +30,28 @@ export default function PrimeiroBox({ idVol }: IdVol) {
     push("/presenca");
   };
 
+  const isRequestSuccessful = useRequestStatus(idVol); // Use your custom hook
+
   function isWithinFirstFiveDays() {
     const fifthDay = 5;
     const currentDate = new Date();
     return currentDate.getDate() <= fifthDay;
   }
 
-  const [buttonText] = useState(
-    isWithinFirstFiveDays() ? "Declarar" : "Indisponível"
+  const isWithinFirstFiveDaysAndRequestUnsuccessful = () =>
+    isWithinFirstFiveDays() && !isRequestSuccessful;
+
+  const [buttonText, setButtonText] = useState(
+    isWithinFirstFiveDaysAndRequestUnsuccessful() ? "Declarar" : "Indisponível"
   );
+
+  useEffect(() => {
+    setButtonText(
+      isWithinFirstFiveDaysAndRequestUnsuccessful()
+        ? "Declarar"
+        : "Indisponível"
+    );
+  }, [isRequestSuccessful]);
 
   const handleButtonClick = () => {
     if (buttonText === "Declarar") {
@@ -45,14 +59,10 @@ export default function PrimeiroBox({ idVol }: IdVol) {
     }
   };
 
-  const buttonClassName = isWithinFirstFiveDays()
-    ? `${styles.declarar_horas_btn} ${styles.enabledButton}`
-    : styles.declarar_horas_btn;
-
-  // const currentMonth = capitalizeFirstLetter(
-  // Caso precise pegar o mês atual
-  //   format(new Date(), "MMMM", { locale: ptBR })
-  // );
+  const buttonClassName =
+    isWithinFirstFiveDays() && isWithinFirstFiveDaysAndRequestUnsuccessful()
+      ? `${styles.declarar_horas_btn} ${styles.enabledButton}`
+      : styles.declarar_horas_btn;
 
   const previousMonth = capitalizeFirstLetter(
     format(addMonths(new Date(), INDEX_PREVIOUS_MONTH), "MMMM", {

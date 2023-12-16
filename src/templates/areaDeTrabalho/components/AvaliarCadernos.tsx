@@ -21,7 +21,6 @@ const AvaliarCadernos = ({ idvol }: AvaliarCadernosProps) => {
   const router = useRouter();
   const { data: notebooks } = useGetNotebooks(idvol);
   const [notebooksIn, setNotebooksIn] = useState<INotebooks[]>([]);
-  const [showFormulario, setShowFormulario] = useState(false);
   const naoReservado = "Não reservado";
   const preencher = "Preencher Formulário";
 
@@ -33,14 +32,6 @@ const AvaliarCadernos = ({ idvol }: AvaliarCadernosProps) => {
 
   const handleOpenFormulario = () => {
     router.push("/formulario-avaliacao");
-  };
-
-  const handleCloseFormulario = () => {
-    setShowFormulario(false);
-  };
-
-  const handleAnchorClick = (e: React.MouseEvent) => {
-    e.preventDefault();
   };
 
   const handleReservation = async (notebookId: number) => {
@@ -58,7 +49,6 @@ const AvaliarCadernos = ({ idvol }: AvaliarCadernosProps) => {
 
     await putReservationData(notebookId);
   };
-  console.log(notebooksIn);
 
   useEffect(() => {
     if (notebooks) {
