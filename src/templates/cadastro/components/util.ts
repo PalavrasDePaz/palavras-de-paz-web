@@ -20,6 +20,7 @@ export const isNewEmail = async (email: string) => {
     // E não chegar ao erro de estar cadastrado.
     return true;
   }
+
   try {
     await api.head(`volunteers/${email}`);
     return false;
