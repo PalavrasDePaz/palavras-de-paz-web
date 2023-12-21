@@ -267,8 +267,12 @@ const ModalDetalhesCadastro = ({ show, onHide, selectedDate }) => {
                     <td>{attendance.lifeExperience}</td>
                     <td>{attendance.interestFutureRoles.join(", ")}</td>
                     <td>{attendance?.needDeclaration}</td>
-                    <td>{showReadAndBookSkill(attendance?.readSkill)}</td>
-                    <td>{showReadAndBookSkill(attendance?.bookSkill)}</td>
+                    <td>
+                      {showReadAndBookSkill(attendance?.notebookPermission)}
+                    </td>
+                    <td>
+                      {showReadAndBookSkill(attendance?.bookclubPermission)}
+                    </td>
                     <td>{attendance?.certificate}</td>
                     <td>{attendance?.authorization}</td>
                   </tr>
