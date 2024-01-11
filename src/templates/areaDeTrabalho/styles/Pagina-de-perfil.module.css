@@ -6,17 +6,14 @@
   border-bottom: solid #cdcdcd 2px;
 }
 
-.sectionVoltar {
-  display: flex;
+.sectionVoltar div {
   text-decoration: none;
   color: #333;
+  cursor: pointer;
+  margin: 0;
+  display: flex;
   flex-direction: row;
   align-items: center;
-  cursor: pointer;
-}
-
-.sectionVoltar p {
-  margin: 0;
 }
 
 .logo {

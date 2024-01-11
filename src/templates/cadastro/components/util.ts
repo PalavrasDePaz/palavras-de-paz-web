@@ -20,19 +20,13 @@ export const isNewEmail = async (email: string) => {
     // E não chegar ao erro de estar cadastrado.
     return true;
   }
+
   try {
     await api.head(`volunteers/${email}`);
     return false;
   } catch (error) {
     return axios.isAxiosError(error) && error.response?.status === NOT_FOUND;
   }
-  // Abaixo a solução anterior. Limpar depois que conferir:
-  // const apiAddress = `${BASE_URL}volunteers/${email}`;
-  // const check = await axios.head(apiAddress).catch((error) => error);
-
-  // // A API dá bad request quando não acha o email,
-  // // então temos que procurar no erro mesmo.
-  // return axios.isAxiosError(check) && check.response?.status === NOT_FOUND;
 };
 
 /**

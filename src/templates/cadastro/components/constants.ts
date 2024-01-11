@@ -15,7 +15,7 @@ export const HOW_FOUND_PEP = {
     "Atados",
     "Instagram",
     "Facebook",
-    "Linkedin",
+    "LinkedIn",
     "Pepsico",
     "Youtube",
     "Website",

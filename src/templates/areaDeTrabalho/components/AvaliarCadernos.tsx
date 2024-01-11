@@ -31,7 +31,7 @@ const AvaliarCadernos = ({ idvol }: AvaliarCadernosProps) => {
   };
 
   const handleOpenFormulario = () => {
-    router.push("/formulario-avaliacao");
+    router.push("/formulario-avaliacao-caderno");
   };
 
   const handleReservation = async (notebookId: number) => {
