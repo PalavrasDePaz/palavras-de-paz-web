@@ -11,8 +11,8 @@ const Question9Aval: React.FC<Question9AvalProps> = ({
 }) => (
   <>
     <h3 className={styles.sectionTitle}>Avaliação da Questão 9</h3>
-    <label htmlFor="question9">
-      <p>Resposta do(a) aluno(a) - Qual seu grau de instrução?</p>
+    <label htmlFor="question9" className={styles.label}>
+      Resposta do(a) aluno(a) - Qual seu grau de instrução?
       <div>
         {[
           "Ensino Fundamental Incompleto",

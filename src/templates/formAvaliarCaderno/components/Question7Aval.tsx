@@ -11,8 +11,8 @@ const Question7Aval: React.FC<Question7AvalProps> = ({
 }) => (
   <>
     <h3 className={styles.sectionTitle}>Avaliação da Questão 7</h3>
-    <label htmlFor="question7">
-      <p>Resposta do(a) aluno(a) - Quantos ano você tem? </p>
+    <label htmlFor="question7" className={styles.label}>
+      Resposta do(a) aluno(a) - Quantos ano você tem?
       <div>
         {["Até 35 anos", "36 a 55 anos", "Mais de 55"].map((ageRange) => (
           <label key={ageRange}>

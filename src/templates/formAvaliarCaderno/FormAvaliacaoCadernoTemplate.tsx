@@ -149,15 +149,15 @@ const FormAvalCadTemplate: React.FC<FormularioAvaliacaoCadernoProps> = ({
           </section>
           <section className={styles.sectionContainer}>
             <h3 className={styles.sectionTitle}>Conteúdos Relevantes</h3>
-            <label>
+            <label className={styles.label}>
               Selecione um trecho onde se percebe o entendimento e a evolução do
               participante - em até 3 linhas
               <textarea
+                className={styles.input}
                 name="perception"
                 value={formData.relevantContent}
                 onChange={handleChangeQuestionRelevant}
               />
-              <p>Sua Resposta</p>
             </label>
           </section>
           {/* Question 1 */}

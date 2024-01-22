@@ -15,7 +15,7 @@ const Question2Aval: React.FC<CheckboxGroupProps> = ({
 }) => (
   <>
     <h3 className={styles.sectionTitle}>Avaliação da Questão 2</h3>
-    <label htmlFor="question2">
+    <label htmlFor="question2" className={styles.label}>
       Qual a probabilidade de você recomendar o Programa de Educação para a Paz
       a outra pessoa?
       {options.map((option) => (

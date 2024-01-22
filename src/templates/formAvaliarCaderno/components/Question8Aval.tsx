@@ -11,8 +11,8 @@ const Question8Aval: React.FC<Question8AvalProps> = ({
 }) => (
   <>
     <h3 className={styles.sectionTitle}>Avaliação da Questão 8</h3>
-    <label htmlFor="question8">
-      <p>Resposta do(a) aluno(a) - Você é?</p>
+    <label htmlFor="question8" className={styles.label}>
+      Resposta do(a) aluno(a) - Você é?
       <div>
         {["Masculino", "Feminino", "Outros", "Não Sei"].map((gender) => (
           <label key={gender}>

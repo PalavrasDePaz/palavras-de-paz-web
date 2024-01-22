@@ -19,12 +19,11 @@ const Question6Aval: React.FC<Question6AvalProps> = ({
 }) => (
   <>
     <h3 className={styles.sectionTitle}>Avaliação da Questão 6</h3>
-    <label>
-      <p>
-        Resposta do(a) aluno(a): Justifique a resposta da questão 5 (O Programa
-        ajudou em sua vida?):
-      </p>
+    <label className={styles.label}>
+      Resposta do(a) aluno(a): Justifique a resposta da questão 5 (O Programa
+      ajudou em sua vida?):
       <textarea
+        className={styles.input}
         name="question6"
         value={formData?.question6}
         onChange={handleChangeQuestions}

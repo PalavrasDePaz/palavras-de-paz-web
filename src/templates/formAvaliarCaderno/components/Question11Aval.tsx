@@ -19,9 +19,10 @@ const Question11Aval: React.FC<PerceptionAvalProps> = ({
 }) => (
   <>
     <h3 className={styles.sectionTitle}>Conclusão do Avaliador</h3>
-    <label>
-      <p>Descreva sua percepção sobre o desenvolvimento do aluno:</p>
+    <label className={styles.label}>
+      Descreva sua percepção sobre o desenvolvimento do aluno:
       <textarea
+        className={styles.input}
         name="perception"
         value={formData?.perception}
         onChange={handleChangeQuestions}

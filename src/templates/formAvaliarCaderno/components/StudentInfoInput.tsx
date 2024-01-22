@@ -1,6 +1,6 @@
 import React from "react";
 
-import styles from "../styles/StudentInfoInput.module.css";
+import styles from "../styles/QuestionAval.module.css";
 
 const noop = () => null;
 

@@ -22,12 +22,12 @@ const QuestionGroup: React.FC<QuestionGroupProps> = ({ onChange }) => {
   return (
     <>
       <h3 className={styles.sectionTitle}>Avaliação da Questão 1</h3>
-      <label htmlFor="question1">
+      <label htmlFor="question1" className={styles.label}>
         Classifique as afirmações conforme a tabela abaixo de acordo indicado no
         caderno preenchido pelo aluno(a):
         {avalQuestions.map((question) => (
           <div key={question.id}>
-            <label htmlFor={`question${question.id}`}>
+            <label htmlFor={`question${question.id}`} className={styles.label}>
               <p id={`question${question.id}`}>
                 {`${question.letter}) ${question.question}`}
               </p>
