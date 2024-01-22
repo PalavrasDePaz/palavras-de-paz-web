@@ -93,6 +93,7 @@ const LoginForm = ({ logIn } = props) => {
         manageVolunteerModulePermission,
         notebookModulePermission,
         readPermission,
+        moduleNewsPermission,
       } = jwtDecode(loginData.data.token);
       localStorage.setItem(
         "AUTH",
@@ -105,6 +106,7 @@ const LoginForm = ({ logIn } = props) => {
           manageVolunteerModulePermission,
           notebookModulePermission,
           readPermission,
+          moduleNewsPermission,
         })
       );
       logIn(loginData.data.volunteer.email);
@@ -193,7 +195,7 @@ const LoginForm = ({ logIn } = props) => {
                   <AiOutlineWarning />
                   <span>{ERROR_MESSAGES.EMAIL_OR_PASSWORD_WRONG_ERROR}</span>
                 </div>
-                {loginError?.response.data.name ===
+                {loginError?.response?.data.name ===
                   "VOLUNTEER_UNREGISTERED" && (
                     <p>
                       Quer se cadastrar como voluntário?

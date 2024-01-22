@@ -63,10 +63,10 @@ function ItemTurmaAvaliacao({
           <input
             type="checkbox"
             onChange={() => handleReservation(idvol, idclass)}
-            id={idvol.toString()}
+            id={idclass.toString()}
             className={styles.toggle}
           />
-          <label htmlFor={idvol.toString()} className={styles.switch}>
+          <label htmlFor={idclass.toString()} className={styles.switch}>
             <span className={styles.slider} />
           </label>
           <p>{`${idclass}-${place}`}</p>
