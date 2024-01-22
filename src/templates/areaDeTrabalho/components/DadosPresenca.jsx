@@ -143,7 +143,7 @@ const ModalDadosPresenca = ({ show, onHide }) => {
       aria-labelledby="contained-modal-title-vcenter"
     >
       <Modal.Header closeButton>
-        <Modal.Title>Dados e presença</Modal.Title>
+        <Modal.Title>Dados e presença dos voluntários</Modal.Title>
       </Modal.Header>
       <Modal.Body>
         {loading && (
