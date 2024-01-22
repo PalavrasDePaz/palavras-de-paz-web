@@ -1,0 +1,67 @@
+.headerContainer {
+  background: hsla(163, 79%, 44%, 1);
+  height: 136px;
+  display: flex;
+  place-items: center;
+  justify-content: center;
+  margin-bottom: 64px;
+}
+
+.headerContainer h1 {
+  color: var(--Branco, #fff);
+  text-align: right;
+  /* Títulos */
+  font-family: Baloo;
+  font-size: 56px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  letter-spacing: 1.12px;
+}
+
+.mainContainer {
+  margin: 0 6rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.subtitle {
+  color: var(--Preto, #444);
+  /* GG Bold */
+  font-family: Open Sans;
+  font-size: 36px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  letter-spacing: 0.72px;
+  width: 100%;
+}
+.sectionContainer {
+  background-color: var(--Cinza-Claro, #f2f2f2);
+  padding: 2.5rem;
+  position: relative;
+  margin-top: 2.5rem;
+  border-radius: 5px;
+}
+
+.sectionContainer div {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 6rem;
+  margin-top: 1.5rem;
+}
+
+.sectionTitle {
+  color: #21aa85;
+  font-family: Open Sans;
+  font-size: 36px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  letter-spacing: 0.72px;
+  position: absolute;
+  top: -25px;
+  left: 0;
+}

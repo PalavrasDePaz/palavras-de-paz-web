@@ -1,6 +1,6 @@
 import React from "react";
 
-// import styles from "../styles/FormularioAvaliacaoCaderno.module.css";
+import styles from "../styles/StudentInfoInput.module.css";
 
 const noop = () => null;
 
@@ -23,19 +23,17 @@ const StudentInfoInput: React.FC<StudentInfoInputProps> = ({
   readOnly = false,
   instructions = false,
 }) => (
-  <>
-    <label>
-      {label}:
-      <input
-        type={type}
-        value={value}
-        onChange={onChange}
-        name={name}
-        readOnly={readOnly}
-      />
-    </label>
-    {instructions && <p>{instructions}</p>}
-  </>
+  <label className={styles.label}>
+    {label}:
+    <input
+      className={styles.input}
+      type={type}
+      value={value}
+      onChange={onChange}
+      name={name}
+      readOnly={readOnly}
+    />
+  </label>
 );
 
 export default StudentInfoInput;
