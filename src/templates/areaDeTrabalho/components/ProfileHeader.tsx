@@ -23,9 +23,11 @@ const ProfileHeader = () => {
   return (
     <header className={styles.headerContent}>
       <div className={styles.sectionVoltar}>
-        <Image src={bntSair} alt="Icone de sair" width={30} height={20} />
         <Link href="/area-de-trabalho">
-          <p>Voltar</p>
+          <div>
+            <Image src={bntSair} alt="Icone de sair" width={30} height={20} />
+            Voltar
+          </div>
         </Link>
       </div>
       <div className={styles.logo}>

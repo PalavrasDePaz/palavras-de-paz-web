@@ -63,7 +63,7 @@ export default function cadastroQuartaTela({
       <div className={styles.cadastroFormDivContainer}>
         <p className={styles.formParagraph}>
           A nossa organização é formada totalmente por voluntários. Caso surjam
-          outras oporturnidades você gostaria de ajudar em alguma dessas áreas ?
+          outras oportunidades, você gostaria de ajudar em alguma dessas áreas ?
         </p>
         {SKILLS.map(({ label, value }) => (
           <div key={value} className={styles.cadastroFormDivCheckbox}>

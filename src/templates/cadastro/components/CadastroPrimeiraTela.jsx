@@ -48,11 +48,11 @@ export default function cadastroPrimeiraTela({ buttonCallback, data } = props) {
 
         <p className={styles.formParagraph}>
           Seja bem-vindo(a)! Preparamos este formulário para podermos te
-          conhecer melhor, saber sobre seus conhecimentos e experiências, e
-          também para entendermos a sua disponibilidade com o nosso
-          voluntariado. Quanto mais você puder compartilhar com a gente, mais
-          conseguiremos te ajudar a alcançar seus objetivos! O preenchimento
-          tomará no máximo dez minutos do seu tempo! Bora lá?
+          conhecer melhor, saber sobre seus conhecimentos e experiências e para
+          entendermos a sua disponibilidade com o nosso voluntariado. Quanto
+          mais você puder compartilhar com a gente, mais conseguiremos te ajudar
+          a alcançar seus objetivos! O preenchimento tomará no máximo dez
+          minutos do seu tempo! Bora lá?
         </p>
 
         <section className={styles.cadastroFormSectionInputContainer}>
