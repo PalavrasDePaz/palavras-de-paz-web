@@ -11,7 +11,6 @@ interface StudentInfoInputProps {
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
   name: string;
   readOnly?: boolean;
-  instructions?: string;
 }
 
 const StudentInfoInput: React.FC<StudentInfoInputProps> = ({
@@ -21,7 +20,6 @@ const StudentInfoInput: React.FC<StudentInfoInputProps> = ({
   onChange = noop, // evita erros caso nenhum manipulador de eventos seja fornecido
   name,
   readOnly = false,
-  instructions = false,
 }) => (
   <label className={styles.label}>
     {label}:

@@ -14,18 +14,16 @@ export default function HeaderForm() {
   };
   return (
     <header className={styles.headerContainer}>
-      <div className={styles.backIcon}>
-        <button className={styles.registerTitle} onClick={handleClick}>
-          <Image
-            src={Voltar}
-            alt="imagem de uma seta apontada para a esquerda, 
+      <button className={styles.backIcon} onClick={handleClick}>
+        <Image
+          src={Voltar}
+          alt="imagem de uma seta apontada para a esquerda, 
           como se fosse sair da porta, na cor preta"
-            width="32px"
-            height="32px"
-          />
-          Voltar
-        </button>
-      </div>
+          width="32px"
+          height="32px"
+        />
+        Voltar
+      </button>
       <Image
         src={Logo}
         alt="Logo da organização e logo abaixo está escrito
