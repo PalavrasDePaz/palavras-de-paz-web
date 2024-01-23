@@ -18,17 +18,20 @@ const Question2Aval: React.FC<CheckboxGroupProps> = ({
     <label htmlFor="question2" className={styles.label}>
       Qual a probabilidade de você recomendar o Programa de Educação para a Paz
       a outra pessoa?
-      {options.map((option) => (
-        <label key={option}>
-          <input
-            type="checkbox"
-            name={name}
-            value={option}
-            onChange={onChange}
-          />
-          {option}
-        </label>
-      ))}
+      <div className={styles.optionContainer}>
+        {options.map((option) => (
+          <label key={option} className={styles.radioLabel}>
+            <input
+              className={styles.radioInput}
+              type="checkbox"
+              name={name}
+              value={option}
+              onChange={onChange}
+            />
+            {option}
+          </label>
+        ))}
+      </div>
     </label>
   </>
 );

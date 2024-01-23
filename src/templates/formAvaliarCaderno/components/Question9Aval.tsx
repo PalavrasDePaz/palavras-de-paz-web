@@ -13,7 +13,7 @@ const Question9Aval: React.FC<Question9AvalProps> = ({
     <h3 className={styles.sectionTitle}>Avaliação da Questão 9</h3>
     <label htmlFor="question9" className={styles.label}>
       Resposta do(a) aluno(a) - Qual seu grau de instrução?
-      <div>
+      <div className={styles.optionContainer}>
         {[
           "Ensino Fundamental Incompleto",
           "Ensino Fundamental Completo",
@@ -23,8 +23,9 @@ const Question9Aval: React.FC<Question9AvalProps> = ({
           "Ensino Superior Completo",
           "Não Consta",
         ].map((educationLevel) => (
-          <label key={educationLevel}>
+          <label key={educationLevel} className={styles.radioLabel}>
             <input
+              className={styles.radioInput}
               type="radio"
               name="question9"
               value={educationLevel}

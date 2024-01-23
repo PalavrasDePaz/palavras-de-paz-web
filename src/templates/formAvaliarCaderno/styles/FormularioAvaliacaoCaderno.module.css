@@ -47,10 +47,8 @@
 
 .sectionContainer div {
   display: flex;
-  flex-direction: row;
   justify-content: space-between;
-  gap: 6rem;
-  margin-top: 1.5rem;
+  /* margin-top: 1.5rem; */
 }
 
 .sectionTitle {

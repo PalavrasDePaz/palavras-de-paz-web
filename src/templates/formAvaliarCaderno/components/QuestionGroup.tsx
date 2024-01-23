@@ -26,11 +26,9 @@ const QuestionGroup: React.FC<QuestionGroupProps> = ({ onChange }) => {
         Classifique as afirmações conforme a tabela abaixo de acordo indicado no
         caderno preenchido pelo aluno(a):
         {avalQuestions.map((question) => (
-          <div key={question.id}>
-            <label htmlFor={`question${question.id}`} className={styles.label}>
-              <p id={`question${question.id}`}>
-                {`${question.letter}) ${question.question}`}
-              </p>
+          <div key={question.id} id={styles.q1Container}>
+            <label className={styles.label}>
+              {`${question.letter}) ${question.question}`}
             </label>
             <QuestionInput
               question={question}

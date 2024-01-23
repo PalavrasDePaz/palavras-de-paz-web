@@ -13,10 +13,11 @@ const Question8Aval: React.FC<Question8AvalProps> = ({
     <h3 className={styles.sectionTitle}>Avaliação da Questão 8</h3>
     <label htmlFor="question8" className={styles.label}>
       Resposta do(a) aluno(a) - Você é?
-      <div>
+      <div className={styles.optionContainer}>
         {["Masculino", "Feminino", "Outros", "Não Sei"].map((gender) => (
-          <label key={gender}>
+          <label key={gender} className={styles.radioLabel}>
             <input
+              className={styles.radioInput}
               type="radio"
               name="question8"
               value={gender}

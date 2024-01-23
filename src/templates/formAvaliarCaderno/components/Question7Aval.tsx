@@ -13,10 +13,11 @@ const Question7Aval: React.FC<Question7AvalProps> = ({
     <h3 className={styles.sectionTitle}>Avaliação da Questão 7</h3>
     <label htmlFor="question7" className={styles.label}>
       Resposta do(a) aluno(a) - Quantos ano você tem?
-      <div>
+      <div className={styles.optionContainer}>
         {["Até 35 anos", "36 a 55 anos", "Mais de 55"].map((ageRange) => (
-          <label key={ageRange}>
+          <label key={ageRange} className={styles.radioLabel}>
             <input
+              className={styles.radioInput}
               type="radio"
               name="question7"
               value={ageRange}

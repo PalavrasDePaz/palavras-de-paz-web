@@ -13,16 +13,17 @@ const Question5Aval: React.FC<Question5AvalProps> = ({
     <h3 className={styles.sectionTitle}>Avaliação da Questão 5</h3>
     <label htmlFor="question5" className={styles.label}>
       Resposta do(a) aluno(a) - O Programa ajudou sua vida?
-      <div>
-        {["Sim", "Não"].map((ageRange) => (
-          <label key={ageRange}>
+      <div className={styles.optionContainer}>
+        {["Sim", "Não"].map((option) => (
+          <label key={option} className={styles.radioLabel}>
             <input
+              className={styles.radioInput}
               type="radio"
               name="question5"
-              value={ageRange}
+              value={option}
               onChange={handleChangeQuestions}
             />
-            {ageRange}
+            {option}
           </label>
         ))}
       </div>

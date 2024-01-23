@@ -1,6 +1,11 @@
 import React from "react";
 
-import styles from "../styles/FormularioAvaliacaoCaderno.module.css";
+import styles from "../styles/QuestionAval.module.css";
+
+// Link para modificar radio button para checkbox:
+// https://pt.stackoverflow.com/questions/295624/como-fazer-esses-bot%C3%B5es-radio-ao-estilo-checkbox-e-alterar-o-valor-de-um-texto
+
+// https://wldomiciano.com/como-personalizar-checkbox-radio-button-com-css/
 
 interface QuestionInputProps {
   question: {
@@ -13,11 +18,11 @@ interface QuestionInputProps {
 }
 
 const options = [
-  "Discordo Totalmente",
-  "Discordo",
-  "Não sei",
-  "Concordo",
-  "Concordo Totalmente",
+  "1. Discordo Totalmente",
+  "2. Discordo",
+  "3. Não sei",
+  "4. Concordo",
+  "5. Concordo Totalmente",
 ];
 
 const QuestionInput: React.FC<QuestionInputProps> = ({
@@ -29,10 +34,11 @@ const QuestionInput: React.FC<QuestionInputProps> = ({
   };
 
   return (
-    <div>
+    <div className={styles.optionContainer}>
       {options.map((option) => (
-        <label key={option}>
+        <label key={option} className={styles.radioLabel}>
           <input
+            className={styles.radioInput}
             type="radio"
             name={question.letter}
             value={option}
