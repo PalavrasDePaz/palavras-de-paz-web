@@ -40,7 +40,6 @@ const initialData: FormData[] = [
     finalizacaoDaTurma: "01/01/1900",
     devolucaoParaFUNAP: "01/01/1900",
   },
-  // Adicione mais dados conforme necessário
 ];
 
 export default function FormularioEditarTurmaRedacaoTemplate() {
@@ -59,6 +58,11 @@ export default function FormularioEditarTurmaRedacaoTemplate() {
     // Implemente a lógica para salvar as alterações (pode enviar para um servidor, atualizar o estado global, etc.)
     // Exemplo: console.log('Salvando alterações:', formData[index]);
     setEditedIndex(null);
+  };
+
+  const handleSubmit = () => {
+    // Implemente a lógica para salvar todas as alterações (pode enviar para um servidor, atualizar o estado global, etc.)
+    // Exemplo: console.log('Salvando alterações:', formData);
   };
 
   const handleChange = (
@@ -215,6 +219,9 @@ export default function FormularioEditarTurmaRedacaoTemplate() {
             )}
           </div>
         ))}
+        <button type="button" onClick={handleSubmit}>
+          Salvar alterações
+        </button>
       </main>
     </>
   );
