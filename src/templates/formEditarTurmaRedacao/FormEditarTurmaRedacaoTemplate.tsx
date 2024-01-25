@@ -1,9 +1,13 @@
 import { ChangeEvent, useState } from "react";
+import Image from "next/image";
 
+import folderIcon from "../../../public/static/images/icons/folder.svg";
 import HeaderForm from "../../components/headerform/HeaderForm";
 
 import CampoEditavel from "./components/CampoEditavel";
 import ItemTurma from "./components/ItemTurma";
+
+import style from "./styles/FormEditarRedacao.module.css";
 
 interface FormData {
   localizacaoTitulo: string;
@@ -84,7 +88,7 @@ export default function FormularioEditarTurmaRedacaoTemplate() {
   return (
     <>
       <HeaderForm />
-      <main>
+      <main className={style.container}>
         {formData.map((data, index) => (
           <div key={data.idVoluntario}>
             {editedIndex === index ? (
@@ -147,8 +151,16 @@ export default function FormularioEditarTurmaRedacaoTemplate() {
               </form>
             ) : (
               <div>
-                <h1>{data.localizacaoTitulo}</h1>
-                <p>Aqui você consegue alterar as informações desta turma</p>
+                <div className={style.title}>
+                  <h1>{data.localizacaoTitulo}</h1>
+                  <p>Aqui você consegue alterar as informações desta turma</p>
+                </div>
+                <div className="download-section">
+                  <a href="/caminho/do/arquivo-de-relatorios" download>
+                    <Image src={folderIcon} alt="Download" />
+                    Baixar relatórios
+                  </a>
+                </div>
                 <h5>Voluntário que avaliou:</h5>
                 <ItemTurma
                   label="Nome"
