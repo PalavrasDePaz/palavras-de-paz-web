@@ -1,85 +1,140 @@
-import React, { ChangeEvent, useState } from "react";
-import Image from "next/image";
+import { ChangeEvent, useState } from "react";
 
-import editBtn from "../../../public/static/images/icons/edit.svg";
 import HeaderForm from "../../components/headerform/HeaderForm";
 
-const data = {
-  localizacaoTitulo: "Penitenciária da papuda",
-  nomeVoluntario: "José Gomes Filho",
-  idVoluntario: 1,
-  idTurma: 1,
-  numeroDeUnidadePrisional: 1,
-  reciboDosRelatorios: "01/01/1900",
-  emprestimo: "01/01/1900",
-  devolucaoDosLivros: "01/01/1900",
-  elaboracaoDosRelatorios: "01/01/1900",
-  relatoriosListaPresenca: 1,
-  relatoriosEnviados: 1,
-  reservaDosVoluntarios: "01/01/1900",
-  finalizacaoDaTurma: "01/01/1900",
-  devolucaoParaFUNAP: "01/01/1900",
-};
+import CampoEditavel from "./components/CampoEditavel";
+import ItemTurma from "./components/ItemTurma";
+
+interface FormData {
+  localizacaoTitulo: string;
+  nomeVoluntario: string;
+  idVoluntario: number;
+  idTurma: number;
+  numeroDeUnidadePrisional: number;
+  reciboDosRelatorios: string;
+  emprestimo: string;
+  devolucaoDosLivros: string;
+  elaboracaoDosRelatorios: string;
+  relatoriosListaPresenca: number;
+  relatoriosEnviados: number;
+  reservaDosVoluntarios: string;
+  finalizacaoDaTurma: string;
+  devolucaoParaFUNAP: string;
+}
+
+// Dados iniciais para testar o formulário de forma provisória
+const initialData: FormData[] = [
+  {
+    localizacaoTitulo: "Penitenciária da papuda",
+    nomeVoluntario: "José Gomes Filho",
+    idVoluntario: 1,
+    idTurma: 1,
+    numeroDeUnidadePrisional: 1,
+    reciboDosRelatorios: "01/01/1900",
+    emprestimo: "01/01/1900",
+    devolucaoDosLivros: "01/01/1900",
+    elaboracaoDosRelatorios: "01/01/1900",
+    relatoriosListaPresenca: 1,
+    relatoriosEnviados: 1,
+    reservaDosVoluntarios: "01/01/1900",
+    finalizacaoDaTurma: "01/01/1900",
+    devolucaoParaFUNAP: "01/01/1900",
+  },
+  // Adicione mais dados conforme necessário
+];
 
 export default function FormularioEditarTurmaRedacaoTemplate() {
-  const [isEditing, setIsEditing] = useState(false);
-  const [formData, setFormData] = useState<FormData>({
-    locationTitle: data.localizacaoTitulo,
-    volunteerName: data.nomeVoluntario,
-    volunteerId: data.idVoluntario,
-    classId: data.idTurma,
-    prisonUnitNumber: data.numeroDeUnidadePrisional,
-    reportsReceipt: data.reciboDosRelatorios,
-    loan: data.emprestimo,
-    booksReturn: data.devolucaoDosLivros,
-    reportsElaboration: data.elaboracaoDosRelatorios,
-    reportsAttendanceList: data.relatoriosListaPresenca,
-    reportsSent: data.relatoriosEnviados,
-    volunteersReservation: data.reservaDosVoluntarios,
-    classFinalization: data.finalizacaoDaTurma,
-    devolutionToFUNAP: data.devolucaoParaFUNAP,
-  });
+  const [editedIndex, setEditedIndex] = useState<number | null>(null);
+  const [formData, setFormData] = useState<FormData[]>(initialData);
 
-  const handleEditClick = () => {
-    setIsEditing(true);
+  const handleEditClick = (index: number) => {
+    setEditedIndex(index);
   };
 
   const handleCancelEdit = () => {
-    setIsEditing(false);
+    setEditedIndex(null);
   };
 
-  const handleSaveEdit = () => {
-    // Implementar a lógica para salvar as alterações no backend
-    setIsEditing(false);
+  const handleSaveEdit = (index: number) => {
+    // Implemente a lógica para salvar as alterações (pode enviar para um servidor, atualizar o estado global, etc.)
+    // Exemplo: console.log('Salvando alterações:', formData[index]);
+    setEditedIndex(null);
   };
 
-  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = event.target;
-    setFormData((prevFormData) => ({
-      ...prevFormData,
-      [name]: value,
-    }));
+  const handleChange = (
+    event: ChangeEvent<HTMLInputElement>,
+    index: number,
+    fieldName: keyof FormData
+  ) => {
+    const { value } = event.target;
+    setFormData((prevFormData) => {
+      const newData = [...prevFormData];
+      newData[index] = {
+        ...newData[index],
+        [fieldName]: value,
+      };
+      return newData;
+    });
   };
 
   return (
     <>
       <HeaderForm />
       <main>
-        {data && (
-          <div>
-            {isEditing ? (
+        {formData.map((data, index) => (
+          <div key={data.idVoluntario}>
+            {editedIndex === index ? (
               <form>
-                <label>
-                  Recibo dos relatórios:
-                  <input
-                    type="text"
-                    name="reportsReceipt"
-                    value={formData.reportsReceipt}
-                    onChange={handleChange}
-                  />
-                </label>
-                {/* Adicionar os demais campos de edição aqui */}
-                <button type="button" onClick={handleSaveEdit}>
+                <CampoEditavel
+                  label="Recibo dos relatórios"
+                  value={data.reciboDosRelatorios}
+                  onChange={(e) =>
+                    handleChange(e, index, "reciboDosRelatorios")}
+                />
+                <CampoEditavel
+                  label="Empréstimo"
+                  value={data.emprestimo}
+                  onChange={(e) => handleChange(e, index, "emprestimo")}
+                />
+                <CampoEditavel
+                  label="Devolução dos livros"
+                  value={data.devolucaoDosLivros}
+                  onChange={(e) => handleChange(e, index, "devolucaoDosLivros")}
+                />
+                <CampoEditavel
+                  label="Elaboração dos relatórios"
+                  value={data.elaboracaoDosRelatorios}
+                  onChange={(e) =>
+                    handleChange(e, index, "elaboracaoDosRelatorios")}
+                />
+                <CampoEditavel
+                  label="Relatórios lista de presença"
+                  value={data.relatoriosListaPresenca.toString()}
+                  onChange={(e) =>
+                    handleChange(e, index, "relatoriosListaPresenca")}
+                />
+                <CampoEditavel
+                  label="Relatórios enviados"
+                  value={data.relatoriosEnviados.toString()}
+                  onChange={(e) => handleChange(e, index, "relatoriosEnviados")}
+                />
+                <CampoEditavel
+                  label="Reserva dos voluntários"
+                  value={data.reservaDosVoluntarios}
+                  onChange={(e) =>
+                    handleChange(e, index, "reservaDosVoluntarios")}
+                />
+                <CampoEditavel
+                  label="Finalização da turma"
+                  value={data.finalizacaoDaTurma}
+                  onChange={(e) => handleChange(e, index, "finalizacaoDaTurma")}
+                />
+                <CampoEditavel
+                  label="Devolução para FUNAP"
+                  value={data.devolucaoParaFUNAP}
+                  onChange={(e) => handleChange(e, index, "devolucaoParaFUNAP")}
+                />
+                <button type="button" onClick={() => handleSaveEdit(index)}>
                   Salvar
                 </button>
                 <button type="button" onClick={handleCancelEdit}>
@@ -91,59 +146,75 @@ export default function FormularioEditarTurmaRedacaoTemplate() {
                 <h1>{data.localizacaoTitulo}</h1>
                 <p>Aqui você consegue alterar as informações desta turma</p>
                 <h5>Voluntário que avaliou:</h5>
-                <p>Nome: {data.nomeVoluntario}</p>
-                <p>
-                  ID: <span>{data.idVoluntario}</span>
-                </p>
-                <p>
-                  ID da turma: <span>{data.idTurma}</span>
-                </p>
-                <p>
-                  Número da unidade prisional:
-                  <span>{data.numeroDeUnidadePrisional}</span>
-                </p>
-                <p>
-                  Recibo dos relatórios: <span>{data.reciboDosRelatorios}</span>
-                  <button type="button" onClick={handleEditClick}>
-                    <Image
-                      src={editBtn}
-                      alt="imagem de um lápis, como se fosse para editar"
-                      width="10px"
-                      height="10px"
-                    />
-                  </button>
-                </p>
-                <p>
-                  Empréstimo: <span>{data.emprestimo}</span>
-                </p>
-                <p>
-                  Devolução dos livros: <span>{data.devolucaoDosLivros}</span>
-                </p>
-                <p>
-                  Elaboração dos relatórios:
-                  <span>{data.elaboracaoDosRelatorios}</span>
-                </p>
-                <p>
-                  Relatórios lista de presença:
-                  <span>{data.relatoriosListaPresenca}</span>
-                </p>
-                <p>
-                  Relatórios enviados: <span>{data.relatoriosEnviados}</span>
-                </p>
-                <p>
-                  Reserva dos voluntários:{" "}
-                  <span>{data.reservaDosVoluntarios}</span>
-                </p>
-                <p>
-                  Finalização da turma: <span>{data.finalizacaoDaTurma}</span>
-                </p>
-                <p>
-                  Devolução para FUNAP: <span>{data.devolucaoParaFUNAP}</span>
-                </p>
+                <ItemTurma
+                  label="Nome"
+                  value={data.nomeVoluntario}
+                  onEditClick={() => handleEditClick(index)}
+                />
+                <ItemTurma
+                  label="ID"
+                  value={data.idVoluntario.toString()}
+                  onEditClick={() => handleEditClick(index)}
+                />
+                <ItemTurma
+                  label="ID da turma"
+                  value={data.idTurma.toString()}
+                  onEditClick={() => handleEditClick(index)}
+                />
+                <ItemTurma
+                  label="Número da unidade prisional"
+                  value={data.numeroDeUnidadePrisional.toString()}
+                  onEditClick={() => handleEditClick(index)}
+                />
+                <ItemTurma
+                  label="Recibo dos relatórios"
+                  value={data.reciboDosRelatorios}
+                  onEditClick={() => handleEditClick(index)}
+                />
+                <ItemTurma
+                  label="Empréstimo"
+                  value={data.emprestimo}
+                  onEditClick={() => handleEditClick(index)}
+                />
+                <ItemTurma
+                  label="Devolução dos livros"
+                  value={data.devolucaoDosLivros}
+                  onEditClick={() => handleEditClick(index)}
+                />
+                <ItemTurma
+                  label="Elaboração dos relatórios"
+                  value={data.elaboracaoDosRelatorios}
+                  onEditClick={() => handleEditClick(index)}
+                />
+                <ItemTurma
+                  label="Relatórios lista de presença"
+                  value={data.relatoriosListaPresenca.toString()}
+                  onEditClick={() => handleEditClick(index)}
+                />
+                <ItemTurma
+                  label="Relatórios enviados"
+                  value={data.relatoriosEnviados.toString()}
+                  onEditClick={() => handleEditClick(index)}
+                />
+                <ItemTurma
+                  label="Reserva dos voluntários"
+                  value={data.reservaDosVoluntarios}
+                  onEditClick={() => handleEditClick(index)}
+                />
+                <ItemTurma
+                  label="Finalização da turma"
+                  value={data.finalizacaoDaTurma}
+                  onEditClick={() => handleEditClick(index)}
+                />
+                <ItemTurma
+                  label="Devolução para FUNAP"
+                  value={data.devolucaoParaFUNAP}
+                  onEditClick={() => handleEditClick(index)}
+                />
               </div>
             )}
           </div>
-        )}
+        ))}
       </main>
     </>
   );
