@@ -151,17 +151,23 @@ export default function FormularioEditarTurmaRedacaoTemplate() {
               </form>
             ) : (
               <div>
-                <div className={style.title}>
-                  <h1>{data.localizacaoTitulo}</h1>
-                  <p>Aqui você consegue alterar as informações desta turma</p>
+                <div>
+                  <h1 className={style.localizacaoTitulo}>
+                    {data.localizacaoTitulo}
+                  </h1>
+                  <p className={style.subtitulo}>
+                    Aqui você consegue alterar as informações desta turma
+                  </p>
                 </div>
-                <div className="download-section">
-                  <a href="/caminho/do/arquivo-de-relatorios" download>
-                    <Image src={folderIcon} alt="Download" />
-                    Baixar relatórios
-                  </a>
-                </div>
-                <h5>Voluntário que avaliou:</h5>
+                <a
+                  href="/caminho/do/arquivo-de-relatorios"
+                  download
+                  className={style.downloadRelatorios}
+                >
+                  <Image src={folderIcon} alt="ícone de pasta" />
+                  Baixar relatórios
+                </a>
+                <h5 className={style.h5}>Voluntário que avaliou:</h5>
                 <ItemTurma
                   label="Nome"
                   value={data.nomeVoluntario}
@@ -227,13 +233,17 @@ export default function FormularioEditarTurmaRedacaoTemplate() {
                   value={data.devolucaoParaFUNAP}
                   onEditClick={() => handleEditClick(index)}
                 />
+                <button
+                  type="button"
+                  onClick={handleSubmit}
+                  className={style.btnSubmit}
+                >
+                  Salvar alterações
+                </button>
               </div>
             )}
           </div>
         ))}
-        <button type="button" onClick={handleSubmit}>
-          Salvar alterações
-        </button>
       </main>
     </>
   );

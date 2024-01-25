@@ -1,0 +1,28 @@
+.chave {
+  color: var(--Preto, #444);
+  /* P Bold */
+  font-family: "Open Sans";
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  letter-spacing: 0.36px;
+  padding: 1px;
+}
+
+.valor {
+  color: var(--Verde-Escuro, #21aa85);
+  /* P Bold */
+  font-family: "Open Sans";
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  letter-spacing: 0.36px;
+}
+
+.editBtn {
+  margin-left: 5px;
+  width: 24px;
+  height: 24px;
+}

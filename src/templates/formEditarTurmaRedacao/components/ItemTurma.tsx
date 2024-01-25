@@ -3,6 +3,8 @@ import Image from "next/image";
 
 import editBtn from "../../../../public/static/images/icons/edit.svg";
 
+import style from "../styles/ItemTruma.module.css";
+
 interface ItemTurmaProps {
   label: string;
   value: string;
@@ -10,14 +12,12 @@ interface ItemTurmaProps {
 }
 
 const ItemTurma: React.FC<ItemTurmaProps> = ({ label, value, onEditClick }) => (
-  <p>
-    {label}: <span>{value}</span>
-    <button type="button" onClick={onEditClick}>
+  <p className={style.chave}>
+    {label}: <span className={style.valor}>{value}</span>
+    <button type="button" onClick={onEditClick} className={style.editBtn}>
       <Image
         src={editBtn}
         alt="imagem de um lápis, como se fosse para editar"
-        width="10px"
-        height="10px"
       />
     </button>
   </p>
