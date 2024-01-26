@@ -8,6 +8,7 @@ import style from "../styles/ItemTruma.module.css";
 interface ItemTurmaProps {
   label: string;
   value: string;
+  placeholder: string;
   isEditing?: boolean;
   onEditClick: () => void;
   handleSaveEdit: () => void;
@@ -18,6 +19,7 @@ interface ItemTurmaProps {
 const ItemTurma: React.FC<ItemTurmaProps> = ({
   label,
   value,
+  placeholder,
   onEditClick,
   handleSaveEdit,
   handleCancelEdit,
@@ -40,7 +42,7 @@ const ItemTurma: React.FC<ItemTurmaProps> = ({
         <input
           className={style.isEditing}
           type="text"
-          placeholder={`Digite o novo valor para ${label}`}
+          placeholder={placeholder}
           value={value}
           onChange={onChange}
         />
