@@ -5,7 +5,7 @@ import HeaderForm from "../../components/headerform/HeaderForm";
 import ButtonDownloadRelatorios from "./components/ButtonDownloadRelatorios";
 import ItemTurma from "./components/ItemTurma";
 
-import style from "./styles/FormEditarRedacao.module.css";
+import style from "./styles/FormEditarTurmaRedacaoTemplate.module.css";
 
 interface FormData {
   localizacaoTitulo: string;
@@ -46,22 +46,9 @@ const initialData: FormData[] = [
 
 export default function FormularioEditarTurmaRedacaoTemplate() {
   const [formData, setFormData] = useState<FormData[]>(initialData);
-  const [editedIndex, setEditedIndex] = useState<number | null>(null);
 
-  const handleEditClick = (index: number) => {
-    setEditedIndex(index);
-  };
-
-  const handleCancelEdit = () => {
-    setEditedIndex(null);
-  };
-
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const handleSaveEdit = (index: number) => {
-    // Implemente a lógica para salvar as alterações (pode enviar para um servidor, atualizar o estado global, etc.)
-    // Exemplo: console.log('Salvando alterações:', formData[index]);
-    setEditedIndex(null);
-  };
+  const novaData = "Insira nova data aqui";
+  const novoNumero = "Insira novo nº aqui";
 
   const handleSubmit = () => {
     // Implemente a lógica para salvar todas as alterações (pode enviar para um servidor, atualizar o estado global, etc.)
@@ -89,135 +76,96 @@ export default function FormularioEditarTurmaRedacaoTemplate() {
       <HeaderForm />
       <main className={style.container}>
         {formData.map((data, index) => (
-          <div key={data.idVoluntario}>
+          <section key={data.idVoluntario}>
             <div>
-              <div>
-                <h1 className={style.localizacaoTitulo}>
-                  {data.localizacaoTitulo}
-                </h1>
-                <p className={style.subtitulo}>
-                  Aqui você consegue alterar as informações desta turma
-                </p>
-                <ButtonDownloadRelatorios />
-              </div>
-              <h5 className={style.h5}>Voluntário que avaliou:</h5>
-              <div className={style.noEdit}>
-                <p>
-                  Nome: <span>{data.nomeVoluntario}</span>
-                </p>
-                <p>
-                  Id: <span>{data.idVoluntario}</span>
-                </p>
-                <p>
-                  ID da Turma: <span>{data.idTurma}</span>
-                </p>
-                <p>
-                  Número da Unidade prisional:{" "}
-                  <span>{data.numeroDeUnidadePrisional}</span>
-                </p>
-              </div>
-              <ItemTurma
-                label="Recibo dos relatórios"
-                value={data.reciboDosRelatorios}
-                placeholder="Insira nova data aqui"
-                onEditClick={() => handleEditClick(index)}
-                handleSaveEdit={() => handleSaveEdit(index)}
-                handleCancelEdit={handleCancelEdit}
-                onChange={(e) => handleChange(e, index, "reciboDosRelatorios")}
-                isEditing={editedIndex === index}
-              />
-              <ItemTurma
-                label="Empréstimo"
-                value={data.emprestimo}
-                placeholder="Insira nova data aqui"
-                onEditClick={() => handleEditClick(index)}
-                handleSaveEdit={() => handleSaveEdit(index)}
-                handleCancelEdit={handleCancelEdit}
-                onChange={(e) => handleChange(e, index, "emprestimo")}
-                isEditing={editedIndex === index}
-              />
-              <ItemTurma
-                label="Devolução dos livros"
-                value={data.devolucaoDosLivros}
-                placeholder="Insira nova data aqui"
-                onEditClick={() => handleEditClick(index)}
-                handleSaveEdit={() => handleSaveEdit(index)}
-                handleCancelEdit={handleCancelEdit}
-                onChange={(e) => handleChange(e, index, "devolucaoDosLivros")}
-                isEditing={editedIndex === index}
-              />
-              <ItemTurma
-                label="Elaboração dos relatórios"
-                value={data.elaboracaoDosRelatorios}
-                placeholder="Insira nova data aqui"
-                onEditClick={() => handleEditClick(index)}
-                handleSaveEdit={() => handleSaveEdit(index)}
-                handleCancelEdit={handleCancelEdit}
-                onChange={(e) =>
-                  handleChange(e, index, "elaboracaoDosRelatorios")}
-                isEditing={editedIndex === index}
-              />
-              <ItemTurma
-                label="Relatórios lista de presença"
-                value={data.relatoriosListaPresenca.toString()}
-                placeholder="Insira novo nº aqui"
-                onEditClick={() => handleEditClick(index)}
-                handleSaveEdit={() => handleSaveEdit(index)}
-                handleCancelEdit={handleCancelEdit}
-                onChange={(e) =>
-                  handleChange(e, index, "relatoriosListaPresenca")}
-                isEditing={editedIndex === index}
-              />
-              <ItemTurma
-                label="Relatórios enviados"
-                value={data.relatoriosEnviados.toString()}
-                placeholder="Insira novo nº aqui"
-                onEditClick={() => handleEditClick(index)}
-                handleSaveEdit={() => handleSaveEdit(index)}
-                handleCancelEdit={handleCancelEdit}
-                onChange={(e) => handleChange(e, index, "relatoriosEnviados")}
-                isEditing={editedIndex === index}
-              />
-              <ItemTurma
-                label="Reserva dos voluntários"
-                value={data.reservaDosVoluntarios}
-                placeholder="Insira nova data aqui"
-                onEditClick={() => handleEditClick(index)}
-                handleSaveEdit={() => handleSaveEdit(index)}
-                handleCancelEdit={handleCancelEdit}
-                onChange={(e) =>
-                  handleChange(e, index, "reservaDosVoluntarios")}
-                isEditing={editedIndex === index}
-              />
-              <ItemTurma
-                label="Finalização da turma"
-                value={data.finalizacaoDaTurma}
-                placeholder="Insira nova data aqui"
-                onEditClick={() => handleEditClick(index)}
-                handleSaveEdit={() => handleSaveEdit(index)}
-                handleCancelEdit={handleCancelEdit}
-                onChange={(e) => handleChange(e, index, "finalizacaoDaTurma")}
-                isEditing={editedIndex === index}
-              />
-              <ItemTurma
-                label="Devolução para FUNAP"
-                value={data.devolucaoParaFUNAP}
-                placeholder="Insira nova data aqui"
-                onEditClick={() => handleEditClick(index)}
-                handleSaveEdit={() => handleSaveEdit(index)}
-                handleCancelEdit={handleCancelEdit}
-                onChange={(e) => handleChange(e, index, "devolucaoParaFUNAP")}
-                isEditing={editedIndex === index}
-              />
-              <button
-                type="button"
-                onClick={handleSubmit}
-                className={style.btnSubmit}
-              >
-                Salvar alterações
-              </button>
+              <h1 className={style.localizacaoTitulo}>
+                {data.localizacaoTitulo}
+              </h1>
+              <p className={style.subtitulo}>
+                Aqui você consegue alterar as informações desta turma
+              </p>
+              <ButtonDownloadRelatorios />
             </div>
-          </div>
+            <h5 className={style.h5}>Voluntário que avaliou:</h5>
+            <div className={style.noEdit}>
+              <p>
+                Nome: <span>{data.nomeVoluntario}</span>
+              </p>
+              <p>
+                Id: <span>{data.idVoluntario}</span>
+              </p>
+              <p>
+                ID da Turma: <span>{data.idTurma}</span>
+              </p>
+              <p>
+                Número da Unidade prisional:{" "}
+                <span>{data.numeroDeUnidadePrisional}</span>
+              </p>
+            </div>
+            <ItemTurma
+              label="Recibo dos relatórios"
+              value={data.reciboDosRelatorios}
+              placeholder={novaData}
+              onChange={(e) => handleChange(e, index, "reciboDosRelatorios")}
+            />
+            <ItemTurma
+              label="Empréstimo"
+              value={data.emprestimo}
+              placeholder={novaData}
+              onChange={(e) => handleChange(e, index, "emprestimo")}
+            />
+            <ItemTurma
+              label="Devolução dos livros"
+              value={data.devolucaoDosLivros}
+              placeholder={novaData}
+              onChange={(e) => handleChange(e, index, "devolucaoDosLivros")}
+            />
+            <ItemTurma
+              label="Elaboração dos relatórios"
+              value={data.elaboracaoDosRelatorios}
+              placeholder={novaData}
+              onChange={(e) =>
+                handleChange(e, index, "elaboracaoDosRelatorios")}
+            />
+            <ItemTurma
+              label="Relatórios lista de presença"
+              value={data.relatoriosListaPresenca.toString()}
+              placeholder={novoNumero}
+              onChange={(e) =>
+                handleChange(e, index, "relatoriosListaPresenca")}
+            />
+            <ItemTurma
+              label="Relatórios enviados"
+              value={data.relatoriosEnviados.toString()}
+              placeholder={novoNumero}
+              onChange={(e) => handleChange(e, index, "relatoriosEnviados")}
+            />
+            <ItemTurma
+              label="Reserva dos voluntários"
+              value={data.reservaDosVoluntarios}
+              placeholder={novaData}
+              onChange={(e) => handleChange(e, index, "reservaDosVoluntarios")}
+            />
+            <ItemTurma
+              label="Finalização da turma"
+              value={data.finalizacaoDaTurma}
+              placeholder={novaData}
+              onChange={(e) => handleChange(e, index, "finalizacaoDaTurma")}
+            />
+            <ItemTurma
+              label="Devolução para FUNAP"
+              value={data.devolucaoParaFUNAP}
+              placeholder={novaData}
+              onChange={(e) => handleChange(e, index, "devolucaoParaFUNAP")}
+            />
+            <button
+              type="button"
+              onClick={handleSubmit}
+              className={style.btnSubmit}
+            >
+              Salvar alterações
+            </button>
+          </section>
         ))}
       </main>
     </>
