@@ -1,10 +1,8 @@
 import { ChangeEvent, useState } from "react";
-import Image from "next/image";
 
-import folderIcon from "../../../public/static/images/icons/folder.svg";
 import HeaderForm from "../../components/headerform/HeaderForm";
 
-import CampoEditavel from "./components/CampoEditavel";
+import ButtonDownloadRelatorios from "./components/ButtonDownloadRelatorios";
 import ItemTurma from "./components/ItemTurma";
 
 import style from "./styles/FormEditarRedacao.module.css";
@@ -47,8 +45,8 @@ const initialData: FormData[] = [
 ];
 
 export default function FormularioEditarTurmaRedacaoTemplate() {
-  const [editedIndex, setEditedIndex] = useState<number | null>(null);
   const [formData, setFormData] = useState<FormData[]>(initialData);
+  const [editedIndex, setEditedIndex] = useState<number | null>(null);
 
   const handleEditClick = (index: number) => {
     setEditedIndex(index);
@@ -58,6 +56,7 @@ export default function FormularioEditarTurmaRedacaoTemplate() {
     setEditedIndex(null);
   };
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const handleSaveEdit = (index: number) => {
     // Implemente a lógica para salvar as alterações (pode enviar para um servidor, atualizar o estado global, etc.)
     // Exemplo: console.log('Salvando alterações:', formData[index]);
@@ -91,157 +90,133 @@ export default function FormularioEditarTurmaRedacaoTemplate() {
       <main className={style.container}>
         {formData.map((data, index) => (
           <div key={data.idVoluntario}>
-            {editedIndex === index ? (
-              <form>
-                <CampoEditavel
-                  label="Recibo dos relatórios"
-                  value={data.reciboDosRelatorios}
-                  onChange={(e) =>
-                    handleChange(e, index, "reciboDosRelatorios")}
-                />
-                <CampoEditavel
-                  label="Empréstimo"
-                  value={data.emprestimo}
-                  onChange={(e) => handleChange(e, index, "emprestimo")}
-                />
-                <CampoEditavel
-                  label="Devolução dos livros"
-                  value={data.devolucaoDosLivros}
-                  onChange={(e) => handleChange(e, index, "devolucaoDosLivros")}
-                />
-                <CampoEditavel
-                  label="Elaboração dos relatórios"
-                  value={data.elaboracaoDosRelatorios}
-                  onChange={(e) =>
-                    handleChange(e, index, "elaboracaoDosRelatorios")}
-                />
-                <CampoEditavel
-                  label="Relatórios lista de presença"
-                  value={data.relatoriosListaPresenca.toString()}
-                  onChange={(e) =>
-                    handleChange(e, index, "relatoriosListaPresenca")}
-                />
-                <CampoEditavel
-                  label="Relatórios enviados"
-                  value={data.relatoriosEnviados.toString()}
-                  onChange={(e) => handleChange(e, index, "relatoriosEnviados")}
-                />
-                <CampoEditavel
-                  label="Reserva dos voluntários"
-                  value={data.reservaDosVoluntarios}
-                  onChange={(e) =>
-                    handleChange(e, index, "reservaDosVoluntarios")}
-                />
-                <CampoEditavel
-                  label="Finalização da turma"
-                  value={data.finalizacaoDaTurma}
-                  onChange={(e) => handleChange(e, index, "finalizacaoDaTurma")}
-                />
-                <CampoEditavel
-                  label="Devolução para FUNAP"
-                  value={data.devolucaoParaFUNAP}
-                  onChange={(e) => handleChange(e, index, "devolucaoParaFUNAP")}
-                />
-                <button type="button" onClick={() => handleSaveEdit(index)}>
-                  Salvar
-                </button>
-                <button type="button" onClick={handleCancelEdit}>
-                  Cancelar
-                </button>
-              </form>
-            ) : (
+            <div>
               <div>
-                <div>
-                  <h1 className={style.localizacaoTitulo}>
-                    {data.localizacaoTitulo}
-                  </h1>
-                  <p className={style.subtitulo}>
-                    Aqui você consegue alterar as informações desta turma
-                  </p>
-                </div>
-                <a
-                  href="/caminho/do/arquivo-de-relatorios"
-                  download
-                  className={style.downloadRelatorios}
-                >
-                  <Image src={folderIcon} alt="ícone de pasta" />
-                  Baixar relatórios
-                </a>
-                <h5 className={style.h5}>Voluntário que avaliou:</h5>
-                <ItemTurma
-                  label="Nome"
-                  value={data.nomeVoluntario}
-                  onEditClick={() => handleEditClick(index)}
-                />
-                <ItemTurma
-                  label="ID"
-                  value={data.idVoluntario.toString()}
-                  onEditClick={() => handleEditClick(index)}
-                />
-                <ItemTurma
-                  label="ID da turma"
-                  value={data.idTurma.toString()}
-                  onEditClick={() => handleEditClick(index)}
-                />
-                <ItemTurma
-                  label="Número da unidade prisional"
-                  value={data.numeroDeUnidadePrisional.toString()}
-                  onEditClick={() => handleEditClick(index)}
-                />
-                <ItemTurma
-                  label="Recibo dos relatórios"
-                  value={data.reciboDosRelatorios}
-                  onEditClick={() => handleEditClick(index)}
-                />
-                <ItemTurma
-                  label="Empréstimo"
-                  value={data.emprestimo}
-                  onEditClick={() => handleEditClick(index)}
-                />
-                <ItemTurma
-                  label="Devolução dos livros"
-                  value={data.devolucaoDosLivros}
-                  onEditClick={() => handleEditClick(index)}
-                />
-                <ItemTurma
-                  label="Elaboração dos relatórios"
-                  value={data.elaboracaoDosRelatorios}
-                  onEditClick={() => handleEditClick(index)}
-                />
-                <ItemTurma
-                  label="Relatórios lista de presença"
-                  value={data.relatoriosListaPresenca.toString()}
-                  onEditClick={() => handleEditClick(index)}
-                />
-                <ItemTurma
-                  label="Relatórios enviados"
-                  value={data.relatoriosEnviados.toString()}
-                  onEditClick={() => handleEditClick(index)}
-                />
-                <ItemTurma
-                  label="Reserva dos voluntários"
-                  value={data.reservaDosVoluntarios}
-                  onEditClick={() => handleEditClick(index)}
-                />
-                <ItemTurma
-                  label="Finalização da turma"
-                  value={data.finalizacaoDaTurma}
-                  onEditClick={() => handleEditClick(index)}
-                />
-                <ItemTurma
-                  label="Devolução para FUNAP"
-                  value={data.devolucaoParaFUNAP}
-                  onEditClick={() => handleEditClick(index)}
-                />
-                <button
-                  type="button"
-                  onClick={handleSubmit}
-                  className={style.btnSubmit}
-                >
-                  Salvar alterações
-                </button>
+                <h1 className={style.localizacaoTitulo}>
+                  {data.localizacaoTitulo}
+                </h1>
+                <p className={style.subtitulo}>
+                  Aqui você consegue alterar as informações desta turma
+                </p>
+                <ButtonDownloadRelatorios />
               </div>
-            )}
+              <h5 className={style.h5}>Voluntário que avaliou:</h5>
+              <div className={style.noEdit}>
+                <p>
+                  Nome: <span>{data.nomeVoluntario}</span>
+                </p>
+                <p>
+                  Id: <span>{data.idVoluntario}</span>
+                </p>
+                <p>
+                  ID da Turma: <span>{data.idTurma}</span>
+                </p>
+                <p>
+                  Número da Unidade prisional:{" "}
+                  <span>{data.numeroDeUnidadePrisional}</span>
+                </p>
+              </div>
+              <ItemTurma
+                label="Recibo dos relatórios"
+                value={data.reciboDosRelatorios}
+                placeholder="Insira nova data aqui"
+                onEditClick={() => handleEditClick(index)}
+                handleSaveEdit={() => handleSaveEdit(index)}
+                handleCancelEdit={handleCancelEdit}
+                onChange={(e) => handleChange(e, index, "reciboDosRelatorios")}
+                isEditing={editedIndex === index}
+              />
+              <ItemTurma
+                label="Empréstimo"
+                value={data.emprestimo}
+                placeholder="Insira nova data aqui"
+                onEditClick={() => handleEditClick(index)}
+                handleSaveEdit={() => handleSaveEdit(index)}
+                handleCancelEdit={handleCancelEdit}
+                onChange={(e) => handleChange(e, index, "emprestimo")}
+                isEditing={editedIndex === index}
+              />
+              <ItemTurma
+                label="Devolução dos livros"
+                value={data.devolucaoDosLivros}
+                placeholder="Insira nova data aqui"
+                onEditClick={() => handleEditClick(index)}
+                handleSaveEdit={() => handleSaveEdit(index)}
+                handleCancelEdit={handleCancelEdit}
+                onChange={(e) => handleChange(e, index, "devolucaoDosLivros")}
+                isEditing={editedIndex === index}
+              />
+              <ItemTurma
+                label="Elaboração dos relatórios"
+                value={data.elaboracaoDosRelatorios}
+                placeholder="Insira nova data aqui"
+                onEditClick={() => handleEditClick(index)}
+                handleSaveEdit={() => handleSaveEdit(index)}
+                handleCancelEdit={handleCancelEdit}
+                onChange={(e) =>
+                  handleChange(e, index, "elaboracaoDosRelatorios")}
+                isEditing={editedIndex === index}
+              />
+              <ItemTurma
+                label="Relatórios lista de presença"
+                value={data.relatoriosListaPresenca.toString()}
+                placeholder="Insira novo nº aqui"
+                onEditClick={() => handleEditClick(index)}
+                handleSaveEdit={() => handleSaveEdit(index)}
+                handleCancelEdit={handleCancelEdit}
+                onChange={(e) =>
+                  handleChange(e, index, "relatoriosListaPresenca")}
+                isEditing={editedIndex === index}
+              />
+              <ItemTurma
+                label="Relatórios enviados"
+                value={data.relatoriosEnviados.toString()}
+                placeholder="Insira novo nº aqui"
+                onEditClick={() => handleEditClick(index)}
+                handleSaveEdit={() => handleSaveEdit(index)}
+                handleCancelEdit={handleCancelEdit}
+                onChange={(e) => handleChange(e, index, "relatoriosEnviados")}
+                isEditing={editedIndex === index}
+              />
+              <ItemTurma
+                label="Reserva dos voluntários"
+                value={data.reservaDosVoluntarios}
+                placeholder="Insira nova data aqui"
+                onEditClick={() => handleEditClick(index)}
+                handleSaveEdit={() => handleSaveEdit(index)}
+                handleCancelEdit={handleCancelEdit}
+                onChange={(e) =>
+                  handleChange(e, index, "reservaDosVoluntarios")}
+                isEditing={editedIndex === index}
+              />
+              <ItemTurma
+                label="Finalização da turma"
+                value={data.finalizacaoDaTurma}
+                placeholder="Insira nova data aqui"
+                onEditClick={() => handleEditClick(index)}
+                handleSaveEdit={() => handleSaveEdit(index)}
+                handleCancelEdit={handleCancelEdit}
+                onChange={(e) => handleChange(e, index, "finalizacaoDaTurma")}
+                isEditing={editedIndex === index}
+              />
+              <ItemTurma
+                label="Devolução para FUNAP"
+                value={data.devolucaoParaFUNAP}
+                placeholder="Insira nova data aqui"
+                onEditClick={() => handleEditClick(index)}
+                handleSaveEdit={() => handleSaveEdit(index)}
+                handleCancelEdit={handleCancelEdit}
+                onChange={(e) => handleChange(e, index, "devolucaoParaFUNAP")}
+                isEditing={editedIndex === index}
+              />
+              <button
+                type="button"
+                onClick={handleSubmit}
+                className={style.btnSubmit}
+              >
+                Salvar alterações
+              </button>
+            </div>
           </div>
         ))}
       </main>

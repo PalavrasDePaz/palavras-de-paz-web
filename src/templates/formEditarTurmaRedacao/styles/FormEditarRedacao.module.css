@@ -29,25 +29,32 @@
   letter-spacing: 0.24px;
 }
 
-.downloadRelatorios {
-  align-items: right;
-  color: var(--Links, #32b7e1);
-  display: flex;
-  font-family: "Open Sans";
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 600;
-  gap: 8px;
-  justify-content: right;
-  line-height: normal;
-  letter-spacing: 0.32px;
-  margin-top: 20px;
-  margin-right: 64px;
-}
-
 .h5 {
   color: var(--Preto, #444);
 
+  /* P Bold */
+  font-family: "Open Sans";
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  letter-spacing: 0.36px;
+}
+
+.noEdit p {
+  color: var(--Preto, #444);
+  /* P Bold */
+  font-family: "Open Sans";
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  letter-spacing: 0.36px;
+  padding: 1px;
+}
+
+.noEdit span {
+  color: var(--Verde-Escuro, #21aa85);
   /* P Bold */
   font-family: "Open Sans";
   font-size: 18px;
