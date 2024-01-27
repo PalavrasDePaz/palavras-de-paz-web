@@ -23,7 +23,7 @@ const Question2Aval: React.FC<CheckboxGroupProps> = ({
           <label key={option} className={styles.radioLabel}>
             <input
               className={styles.radioInput}
-              type="checkbox"
+              type="radio"
               name={name}
               value={option}
               onChange={onChange}

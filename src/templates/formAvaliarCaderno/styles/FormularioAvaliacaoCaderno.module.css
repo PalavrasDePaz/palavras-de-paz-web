@@ -48,7 +48,16 @@
 .sectionContainer div {
   display: flex;
   justify-content: space-between;
-  /* margin-top: 1.5rem; */
+  margin: 0.75rem 0;
+}
+.sectionContainer textarea,
+.sectionContainer input {
+  margin-top: 0.5rem;
+}
+
+.sectionContainer:first-child div {
+  gap: 4rem;
+  margin-top: 1.5rem;
 }
 
 .sectionTitle {

@@ -23,6 +23,7 @@ const Question10Aval: React.FC<Question10AvalProps> = ({
       Resposta do(a) aluno(a): O que aprendeu no curso e quer levar para o resto
       da vida?
       <textarea
+        rows={5}
         className={styles.input}
         name="question10"
         value={formData?.question10}

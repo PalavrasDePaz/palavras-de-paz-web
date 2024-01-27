@@ -23,6 +23,7 @@ const Question6Aval: React.FC<Question6AvalProps> = ({
       Resposta do(a) aluno(a): Justifique a resposta da questão 5 (O Programa
       ajudou em sua vida?):
       <textarea
+        rows={5}
         className={styles.input}
         name="question6"
         value={formData?.question6}

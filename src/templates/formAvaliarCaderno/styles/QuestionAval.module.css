@@ -24,6 +24,11 @@
   width: 100%;
 }
 
+.radioLabel {
+  display: flex;
+  align-items: center;
+}
+
 .input {
   display: block;
   color: var(--Cinza-Escuro, #707070);
@@ -41,7 +46,25 @@
   flex-direction: column;
   gap: 1rem;
 }
+
 .radioInput {
+  all: unset;
+  margin-right: 1rem;
+}
+.radioInput::before {
+  content: "";
+  display: inline-block;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 3px;
+  margin-right: 5px;
+  border: 2px solid var(--Verde-Escuro, #21aa85);
+  background: #fff;
+}
+
+.radioInput:checked:before {
+  background: var(--Verde-Escuro, #21aa85);
+  border: 2px solid #fff;
 }
 
 .radioLabel {

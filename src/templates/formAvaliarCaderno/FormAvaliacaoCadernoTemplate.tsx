@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 
+import HeaderForm from "../../components/headerForm/HeaderForm";
 import { optionsQuestion2 } from "../../helpers/avalQuestions";
 import useGetUser from "../../hooks/useGetUser";
 import useUserEmail from "../../hooks/useUserEmail";
 
-import HeaderForm from "./components/HeaderForm";
 import Question2Aval from "./components/Question2Aval";
 import Question3Aval from "./components/Question3Aval";
 import Question4Aval from "./components/Question4Aval";

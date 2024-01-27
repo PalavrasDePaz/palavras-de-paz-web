@@ -22,6 +22,7 @@ const Question4Aval: React.FC<Question4AvalProps> = ({
     <label className={styles.label}>
       Resposta do aluno(a) - Existe algo no Programa que poderia ser melhorado?
       <textarea
+        rows={5}
         className={styles.input}
         name="question4"
         value={formData?.question4}

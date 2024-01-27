@@ -22,6 +22,7 @@ const Question11Aval: React.FC<PerceptionAvalProps> = ({
     <label className={styles.label}>
       Descreva sua percepção sobre o desenvolvimento do aluno:
       <textarea
+        rows={5}
         className={styles.input}
         name="perception"
         value={formData?.perception}

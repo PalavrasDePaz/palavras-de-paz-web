@@ -22,6 +22,7 @@ const Question3Aval: React.FC<Question3AvalProps> = ({
     <label htmlFor="question3" className={styles.label}>
       Resposta do(a) aluno(a) - Escreva o que mais gostou no programa:
       <textarea
+        rows={5}
         className={styles.input}
         name="question3"
         value={formData?.question3}

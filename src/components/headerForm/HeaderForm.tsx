@@ -2,10 +2,10 @@ import React from "react";
 import Image from "next/image";
 import { useRouter } from "next/router";
 
-import Voltar from "../../../../public/static/images/icons/basic.svg";
-import Logo from "../../../../public/static/images/logo.svg";
+import Voltar from "../../../public/static/images/icons/basic.svg";
+import Logo from "../../../public/static/images/logo.svg";
 
-import styles from "../styles/HeaderForm.module.css";
+import styles from "./HeaderForm.module.css";
 
 export default function HeaderForm() {
   const { push } = useRouter();
