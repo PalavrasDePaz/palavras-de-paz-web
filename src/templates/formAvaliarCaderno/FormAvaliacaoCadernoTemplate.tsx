@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useRouter } from "next/router";
 import PropTypes from "prop-types";
 
 import HeaderForm from "../../components/headerForm/HeaderForm";
-import { optionsQuestion2 } from "../../helpers/avalQuestions";
 import useGetUser from "../../hooks/useGetUser";
 import useUserEmail from "../../hooks/useUserEmail";
 
@@ -28,14 +28,19 @@ interface FormularioAvaliacaoCadernoProps {
 const FormAvalCadTemplate: React.FC<FormularioAvaliacaoCadernoProps> = ({
   onClose,
 }) => {
+  const router = useRouter();
+
   const userEmail = useUserEmail();
   const { data: user } = useGetUser(userEmail);
+
+  const { studentName, studentId, classId } = router.query;
 
   const [formData, setFormData] = useState({
     volunteerId: user?.idvol,
     email: user?.email,
-    studentName: "",
-    studentId: "",
+    studentName,
+    studentId,
+    classId,
     prisonUnit: "",
     relevantContent: "",
     question1: { index: -1, value: "" },
@@ -50,14 +55,15 @@ const FormAvalCadTemplate: React.FC<FormularioAvaliacaoCadernoProps> = ({
     perception: "",
   });
 
-  const handleChangeName = (
-    e: React.ChangeEvent<
-      HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
-    >
-  ) => {
-    const { name, value } = e.target;
-    setFormData((prevData) => ({ ...prevData, [name]: value }));
-  };
+  useEffect(() => {
+    const data = localStorage.getItem("form")
+      ? JSON.parse(localStorage.getItem("form") || "null")
+      : null;
+    if (data) {
+      setFormData(data);
+    }
+    localStorage.setItem("form", JSON.stringify(formData));
+  }, []);
 
   const handleQuestionChange = (
     questionNumber: number,
@@ -69,17 +75,6 @@ const FormAvalCadTemplate: React.FC<FormularioAvaliacaoCadernoProps> = ({
       question1: {
         ...prevData.question1,
         [`question${questionNumber}`]: { index, value },
-      },
-    }));
-  };
-
-  const handleChangeQuestion2 = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { value, checked } = e.target;
-    setFormData((prevData) => ({
-      ...prevData,
-      question2: {
-        ...prevData.question2,
-        [value]: checked,
       },
     }));
   };
@@ -107,6 +102,8 @@ const FormAvalCadTemplate: React.FC<FormularioAvaliacaoCadernoProps> = ({
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     // adicioar lógica para enviar ao backend
+    console.log(formData);
+
     // onClose();
   };
 
@@ -127,22 +124,19 @@ const FormAvalCadTemplate: React.FC<FormularioAvaliacaoCadernoProps> = ({
               label="Nome do(a) aluno(a)*"
               type="text"
               value={formData.studentName}
-              onChange={handleChangeName}
               name="studentName"
             />
             <div>
               <StudentInfoInput
                 label="Matrícula do(a) aluno(a)*"
-                type="number"
+                type="text"
                 value={formData.studentId}
-                onChange={handleChangeName}
                 name="studentId"
               />
               <StudentInfoInput
                 label="Número da turma"
-                type="number"
-                value={formData.studentId}
-                onChange={handleChangeName}
+                type="text"
+                value={formData.classId}
                 name="classId"
               />
             </div>
@@ -153,6 +147,7 @@ const FormAvalCadTemplate: React.FC<FormularioAvaliacaoCadernoProps> = ({
               Selecione um trecho onde se percebe o entendimento e a evolução do
               participante - em até 3 linhas
               <textarea
+                rows={5}
                 className={styles.input}
                 name="perception"
                 value={formData.relevantContent}
@@ -166,11 +161,7 @@ const FormAvalCadTemplate: React.FC<FormularioAvaliacaoCadernoProps> = ({
           </section>
           {/* Question 2 */}
           <section className={styles.sectionContainer}>
-            <Question2Aval
-              options={optionsQuestion2}
-              name="question2"
-              onChange={handleChangeQuestion2}
-            />
+            <Question2Aval name="question2" onChange={handleChangeQuestions} />
           </section>
           {/* Question 3 */}
           <section className={styles.sectionContainer}>
@@ -224,7 +215,7 @@ const FormAvalCadTemplate: React.FC<FormularioAvaliacaoCadernoProps> = ({
             />
           </section>
           {/* Submit Button */}
-          <button>Enviar</button>
+          <button onClick={() => handleSubmit}>Enviar</button>
         </form>
       </main>
     </>

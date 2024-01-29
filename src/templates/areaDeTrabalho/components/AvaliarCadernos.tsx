@@ -17,6 +17,12 @@ type AvaliarCadernosProps = {
   idvol: number;
 };
 
+type OpenFormularioProps = {
+  studentName: string;
+  studentId: number;
+  classId: number;
+};
+
 const AvaliarCadernos = ({ idvol }: AvaliarCadernosProps) => {
   const router = useRouter();
   const { data: notebooks } = useGetNotebooks(idvol);
@@ -30,8 +36,16 @@ const AvaliarCadernos = ({ idvol }: AvaliarCadernosProps) => {
     return response.data;
   };
 
-  const handleOpenFormulario = () => {
-    router.push("/formulario-avaliacao-caderno");
+  const handleOpenFormulario = ({
+    studentName,
+    studentId,
+    classId,
+  }: OpenFormularioProps) => {
+    localStorage.removeItem("form");
+    router.push({
+      pathname: "/formulario-avaliacao-caderno",
+      query: { studentName, studentId, classId },
+    });
   };
 
   const handleReservation = async (notebookId: number) => {
@@ -139,15 +153,17 @@ const AvaliarCadernos = ({ idvol }: AvaliarCadernosProps) => {
                 {reserved ? (
                   <button
                     className={styles.avaliar_status_p5_active}
-                    onClick={handleOpenFormulario}
+                    onClick={() =>
+                      handleOpenFormulario({
+                        studentName,
+                        studentId,
+                        classId,
+                      })}
                   >
                     {preencher}
                   </button>
                 ) : (
-                  <button
-                    className={styles.avaliar_status_p5}
-                    onClick={handleOpenFormulario}
-                  >
+                  <button className={styles.avaliar_status_p5}>
                     {preencher}
                   </button>
                 )}

@@ -1,11 +1,11 @@
-interface AvalQuestions {
+interface IOptionsQuestion1 {
   id: number;
   letter: string;
   question: string;
   type: "radio" | "text";
 }
 
-const avalQuestions: AvalQuestions[] = [
+const optionsQuestion1: IOptionsQuestion1[] = [
   {
     id: 1,
     letter: "a",
@@ -118,31 +118,10 @@ const optionsQuestion9 = [
   "Não Consta",
 ];
 
-// const textAreaData = [
-//   {
-//     label: `A resposta do(a) aluno(a): "ESCREVA O QUE MAIS GOSTOU NO PROGRAMA":`,
-//     name: "question3",
-//     value: formAvalData.question3,
-//   },
-//   {
-//     label: `A resposta do(a) aluno(a):
-//     "EXISTE ALGO NO PROGRAMA DE EDUCAÇÃO PARA A PAZ QUE PODERIA SER MELHORADO?"`,
-//     name: "question4",
-//     value: formAvalData.question4,
-//   },
-//   {
-//     label: `Qual a resposta do(a) aluno(a):
-//     "JUSTIFIQUE A RESPOSTA DA QUESTÃO 5 (O Programa ajudou em sua vida?)"`,
-//     name: "question6",
-//     value: formAvalData.question6,
-//   },
-// ];
-
 export {
-  avalQuestions,
+  optionsQuestion1,
   optionsQuestion2,
   optionsQuestion7,
   optionsQuestion8,
   optionsQuestion9,
-  // textAreaData
 };

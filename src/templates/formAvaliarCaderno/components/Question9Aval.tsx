@@ -1,5 +1,7 @@
 import React from "react";
 
+import { optionsQuestion9 } from "../helpers/avalQuestions";
+
 import styles from "../styles/QuestionAval.module.css";
 
 interface Question9AvalProps {
@@ -14,15 +16,7 @@ const Question9Aval: React.FC<Question9AvalProps> = ({
     <label htmlFor="question9" className={styles.label}>
       Resposta do(a) aluno(a) - Qual seu grau de instrução?
       <div className={styles.optionContainer}>
-        {[
-          "Ensino Fundamental Incompleto",
-          "Ensino Fundamental Completo",
-          "Ensino Médio Incompleto",
-          "Ensino Médio Completo",
-          "Ensino Superior Incompleto",
-          "Ensino Superior Completo",
-          "Não Consta",
-        ].map((educationLevel) => (
+        {optionsQuestion9.map((educationLevel) => (
           <label key={educationLevel} className={styles.radioLabel}>
             <input
               className={styles.radioInput}
