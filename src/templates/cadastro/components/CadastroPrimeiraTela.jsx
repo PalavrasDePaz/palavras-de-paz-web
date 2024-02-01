@@ -61,11 +61,11 @@ export default function cadastroPrimeiraTela({ buttonCallback, data } = props) {
               className={styles.cadastroFormSectionInputLabel}
               htmlFor="name"
             >
-              Nome
+              Nome Completo
             </label>
 
             <input
-              placeholder="Digite seu nome"
+              placeholder="Digite seu nome completo"
               type="text"
               maxLength={MAX_CHARS}
               defaultValue={data.name}
