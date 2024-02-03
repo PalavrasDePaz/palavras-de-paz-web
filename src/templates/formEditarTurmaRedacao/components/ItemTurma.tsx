@@ -22,11 +22,11 @@ const ItemTurma: React.FC<ItemTurmaProps> = ({
   const handleEditClick = () => {
     setIsEditing(true);
   };
-
+/*
   const handleCancelEdit = () => {
     setIsEditing(false);
   };
-
+*/
   const handleSaveEdit = () => {
     // Implemente a lógica para salvar as alterações (pode enviar para um servidor, atualizar o estado global, etc.)
     // Exemplo: console.log('Salvando alterações:', formData[index]);
@@ -59,7 +59,7 @@ const ItemTurma: React.FC<ItemTurmaProps> = ({
             onChange={onChange}
           />
           <button onClick={handleSaveEdit}>✓</button>
-          <button onClick={handleCancelEdit}>x</button>
+          {/* <button onClick={handleCancelEdit}>x</button>*/}
         </form>
       )}
     </div>
