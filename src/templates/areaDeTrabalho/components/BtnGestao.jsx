@@ -5,6 +5,7 @@ import Styles from "../styles/GestaoDeRelatorios.module.css";
 
 const BtnGestao = ({ text }) => {
   function handleClick() {
+    // eslint-disable-next-line no-console
     return console.log("enviado");
   }
   return (
