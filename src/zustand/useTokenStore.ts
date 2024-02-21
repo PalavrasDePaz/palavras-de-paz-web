@@ -9,7 +9,7 @@ const getInitialToken = () => localStorage.getItem(LOCAL_STORAGE_KEY) || "";
 
 export const useTokenStore = create(
   persist(
-    (set, get) => ({
+    (set) => ({
       token: getInitialToken(),
 
       setToken: (newToken: string) => {

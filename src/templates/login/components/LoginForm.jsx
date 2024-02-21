@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import Link from "next/link";
 import { useRouter } from "next/router";
 import jwtDecode from "jwt-decode";
 import propTypes from "prop-types";
@@ -199,7 +200,7 @@ const LoginForm = ({ logIn } = props) => {
                   "VOLUNTEER_UNREGISTERED" && (
                     <p>
                       Quer se cadastrar como voluntário?
-                      <a href="/cadastro">Aqui.</a>
+                      <Link href="/cadastro">Aqui.</Link>
                     </p>
                 )}
               </>

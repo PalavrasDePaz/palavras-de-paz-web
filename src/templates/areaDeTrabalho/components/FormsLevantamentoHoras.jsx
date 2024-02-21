@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 
 import { api } from "../../../api/index";
-import HeaderForm from "../../../components/headerform/HeaderForm";
+import HeaderForm from "../../../components/headerForm/HeaderForm";
 import { useGetUser } from "../../../hooks";
 import useUserEmail from "../../../hooks/useUserEmail";
 

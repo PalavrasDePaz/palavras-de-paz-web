@@ -2,7 +2,7 @@ import Image from "next/image";
 
 import folderIcon from "../../../../public/static/images/icons/folder.svg";
 
-import style from "../styles/ButtonDowloadRelatorios.module.css";
+import style from "../styles/ButtonDownloadRelatorios.module.css";
 
 const ButtonDownloadRelatorios = () => {
   const handleDownloadClick = () => {

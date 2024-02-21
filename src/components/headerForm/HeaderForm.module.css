@@ -10,6 +10,7 @@
   display: flex;
   gap: 3px;
   cursor: pointer;
+  align-items: center;
 }
 
 .line {
@@ -17,7 +18,7 @@
 }
 
 @media (max-width: 768px) {
-  .registerTitle {
+  .backIcon {
     font-size: 1rem;
     padding-inline: 0;
   }

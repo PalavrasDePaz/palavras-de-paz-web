@@ -1,6 +1,6 @@
 import React from "react";
 
-import styles from "../../../styles/formularioAvaliação/FormularioAvaliacao.module.css";
+import styles from "../styles/QuestionAval.module.css";
 
 const noop = () => null;
 
@@ -11,7 +11,6 @@ interface StudentInfoInputProps {
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
   name: string;
   readOnly?: boolean;
-  instructions?: string;
 }
 
 const StudentInfoInput: React.FC<StudentInfoInputProps> = ({
@@ -21,22 +20,18 @@ const StudentInfoInput: React.FC<StudentInfoInputProps> = ({
   onChange = noop, // evita erros caso nenhum manipulador de eventos seja fornecido
   name,
   readOnly = false,
-  instructions = false,
 }) => (
-  <>
-    <label className={styles.labelClass}>
-      {label}:
-      <input
-        className={styles.inputClass}
-        type={type}
-        value={value}
-        onChange={onChange}
-        name={name}
-        readOnly={readOnly}
-      />
-    </label>
-    {instructions && <p className={styles.instructionsClass}>{instructions}</p>}
-  </>
+  <label className={styles.label}>
+    {label}:
+    <input
+      className={styles.input}
+      type={type}
+      value={value}
+      onChange={onChange}
+      name={name}
+      readOnly={readOnly}
+    />
+  </label>
 );
 
 export default StudentInfoInput;

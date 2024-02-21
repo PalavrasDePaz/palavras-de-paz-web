@@ -1,6 +1,6 @@
 import { ChangeEvent, useState } from "react";
 
-import HeaderForm from "../../components/headerform/HeaderForm";
+import HeaderForm from "../../components/headerForm/HeaderForm";
 
 import ButtonDownloadRelatorios from "./components/ButtonDownloadRelatorios";
 import ItemTurma from "./components/ItemTurma";

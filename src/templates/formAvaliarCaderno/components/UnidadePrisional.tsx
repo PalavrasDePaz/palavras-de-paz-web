@@ -2,7 +2,7 @@ import React from "react";
 
 import penitenciarias from "../../../helpers/penitenciarias";
 
-import styles from "../../../styles/formularioAvaliação/FormularioAvaliacao.module.css";
+// import styles from "../styles/FormularioAvaliacaoCaderno.module.css";
 
 interface UnidadePrisionalOptionsProps {
   handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
@@ -13,9 +13,8 @@ const UnidadePrisional: React.FC<UnidadePrisionalOptionsProps> = ({
 }) => (
   <div>
     {penitenciarias.map((penitenciaria) => (
-      <label key={penitenciaria.id} className={styles.labelClass}>
+      <label key={penitenciaria.id}>
         <input
-          className={styles.inputClass}
           type="radio"
           name="prisonUnit"
           value={penitenciaria.value}

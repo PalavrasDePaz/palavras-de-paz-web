@@ -22,7 +22,7 @@ const ItemTurma: React.FC<ItemTurmaProps> = ({
   const handleEditClick = () => {
     setIsEditing(true);
   };
-/*
+  /*
   const handleCancelEdit = () => {
     setIsEditing(false);
   };
@@ -59,7 +59,6 @@ const ItemTurma: React.FC<ItemTurmaProps> = ({
             onChange={onChange}
           />
           <button onClick={handleSaveEdit}>✓</button>
-          {/* <button onClick={handleCancelEdit}>x</button>*/}
         </form>
       )}
     </div>
