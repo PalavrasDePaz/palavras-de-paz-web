@@ -38,6 +38,18 @@ function ItemTurmaAvaliacao({
     return response.data;
   };
 
+  const putRevertReservationData = async (
+    volunteerId: number,
+    classId: number
+  ) => {
+    const reserveData = { idvol: volunteerId, idclass: classId };
+    const response = await api.put(
+      `/book-club-class/revert-reservation/${classId}`,
+      reserveData
+    );
+    return response.data;
+  };
+
   const handleReservation = async (volunteerId: number, classId: number) => {
     const updatedEssays = essaysIn.map((essay: IEssays) => {
       if (essay.idclass === classId) {
@@ -51,6 +63,24 @@ function ItemTurmaAvaliacao({
     setEssaysIn(updatedEssays);
 
     await putReservationData(volunteerId, classId);
+  };
+
+  const handleRevertReservation = async (
+    volunteerId: number,
+    classId: number
+  ) => {
+    const updatedEssays = essaysIn.map((essay: IEssays) => {
+      if (essay.idclass === classId) {
+        return {
+          ...essay,
+          reserved: false,
+        };
+      }
+      return essay;
+    });
+    setEssaysIn(updatedEssays);
+
+    await putRevertReservationData(volunteerId, classId);
   };
 
   const naoReservado = "--/--/--";
@@ -83,7 +113,7 @@ function ItemTurmaAvaliacao({
           <input
             type="checkbox"
             checked // ADICIONAR ROTA PARA REMOVER A RESERVA
-            onChange={() => ""}
+            onChange={() => handleRevertReservation(idvol, idclass)}
             id={idvol.toString()}
             className={styles.toggle}
           />

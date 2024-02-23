@@ -30,6 +30,15 @@ const AvaliarCadernos = ({ idvol }: AvaliarCadernosProps) => {
     return response.data;
   };
 
+  const putRevertReservationData = async (notebookId: number) => {
+    const reserveData = { idvol, notebookId };
+    const response = await api.put(
+      `/notebooks/revert-reservation/${notebookId}`,
+      reserveData
+    );
+    return response.data;
+  };
+
   const handleOpenFormulario = () => {
     router.push("/formulario-avaliacao-caderno");
   };
@@ -48,6 +57,22 @@ const AvaliarCadernos = ({ idvol }: AvaliarCadernosProps) => {
     setNotebooksIn(updatedNotebooks);
 
     await putReservationData(notebookId);
+  };
+
+  const handleRevertReservation = async (notebookId: number) => {
+    const updatedNotebooks = notebooksIn.map((notebook) => {
+      if (notebook.notebookId === notebookId) {
+        return {
+          ...notebook,
+          reserved: false,
+        };
+      }
+      return notebook;
+    });
+
+    setNotebooksIn(updatedNotebooks);
+
+    await putRevertReservationData(notebookId);
   };
 
   useEffect(() => {
@@ -108,6 +133,7 @@ const AvaliarCadernos = ({ idvol }: AvaliarCadernosProps) => {
                       className={styles.toggle}
                       id={studentName}
                       type="checkbox"
+                      onChange={() => handleRevertReservation(notebookId)}
                       checked
                     />
                     <label htmlFor={studentName} className={styles.switch}>
