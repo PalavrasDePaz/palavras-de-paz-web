@@ -7,9 +7,12 @@ import style from "../styles/ItemTurma.module.css";
 
 interface ItemTurmaProps {
   label: string;
-  value: string;
+  value: string | number;
   placeholder: string;
-  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  onChange: (
+    event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => void;
+  inputType: "input" | "textarea"; // Nova propriedade para determinar o tipo de entrada
 }
 
 const ItemTurma: React.FC<ItemTurmaProps> = ({
@@ -17,19 +20,14 @@ const ItemTurma: React.FC<ItemTurmaProps> = ({
   value,
   placeholder,
   onChange,
+  inputType,
 }) => {
   const [isEditing, setIsEditing] = useState<boolean>(false);
   const handleEditClick = () => {
     setIsEditing(true);
   };
-/*
-  const handleCancelEdit = () => {
-    setIsEditing(false);
-  };
-*/
+
   const handleSaveEdit = () => {
-    // Implemente a lógica para salvar as alterações (pode enviar para um servidor, atualizar o estado global, etc.)
-    // Exemplo: console.log('Salvando alterações:', formData[index]);
     setIsEditing(false);
   };
 
@@ -51,15 +49,24 @@ const ItemTurma: React.FC<ItemTurmaProps> = ({
 
       {isEditing && (
         <form>
-          <input
-            className={style.isEditing}
-            type="text"
-            placeholder={placeholder}
-            value={value}
-            onChange={onChange}
-          />
+          {inputType === "input" ? (
+            <input
+              className={style.isEditing}
+              type="text"
+              placeholder={placeholder}
+              value={value}
+              onChange={onChange}
+            />
+          ) : (
+            <textarea
+              className={style.isEditing}
+              placeholder={placeholder}
+              value={value}
+              onChange={onChange}
+            />
+          )}
           <button onClick={handleSaveEdit}>✓</button>
-          {/* <button onClick={handleCancelEdit}>x</button>*/}
+          {/* <button onClick={handleCancelEdit}>x</button> */}
         </form>
       )}
     </div>
