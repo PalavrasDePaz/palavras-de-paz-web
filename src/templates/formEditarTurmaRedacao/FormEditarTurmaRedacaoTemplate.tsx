@@ -3,6 +3,7 @@ import { ChangeEvent, useState } from "react";
 import HeaderForm from "../../components/headerForm/HeaderForm";
 
 import ButtonDownloadRelatorios from "./components/ButtonDownloadRelatorios";
+import BtnSubmit from "./components/ButtonSalavarAlteracoes";
 import ItemTurma from "./components/ItemTurma";
 
 import style from "./styles/FormEditarTurmaRedacaoTemplate.module.css";
@@ -167,13 +168,7 @@ export default function FormularioEditarTurmaRedacaoTemplate() {
               placeholder={novaData}
               onChange={(e) => handleChange(e, index, "devolucaoParaFUNAP")}
             />
-            <button
-              type="button"
-              onClick={handleSubmit}
-              className={style.btnSubmit}
-            >
-              Salvar alterações
-            </button>
+            <BtnSubmit onClick={handleSubmit} />
           </section>
         ))}
       </main>
