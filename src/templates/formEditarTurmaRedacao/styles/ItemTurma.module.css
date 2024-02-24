@@ -1,6 +1,7 @@
 .ItemTurmaContainer {
   display: flex;
   flex-direction: column;
+  max-width: 500px;
 }
 
 .chave {
@@ -26,6 +27,18 @@
   letter-spacing: 0.36px;
 }
 
+.valorTextArea {
+  color: #707070;
+  font-family: "Open Sans";
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: 0.3px;
+  line-height: 20px;
+  padding: 5px;
+  max-width: 600px;
+  word-wrap: break-word;
+}
+
 .editBtn {
   margin-left: 5px;
   width: 24px;
@@ -46,4 +59,39 @@
   word-wrap: break-word;
   margin-bottom: 10px;
   text-align: center;
+}
+
+.isEditingTextArea {
+  border-radius: 10px;
+  width: 300px;
+  height: 100px;
+  border: solid 2px #707070;
+  padding: 10px;
+  color: #707070;
+  font-size: 12px;
+  font-family: Open Sans;
+  font-weight: 600;
+  letter-spacing: 0.24px;
+  word-wrap: break-word;
+  margin-bottom: 10px;
+  text-align: center;
+  resize: none;
+  overflow: auto;
+}
+
+.isEditingTextArea::-webkit-scrollbar {
+  width: 4px;
+}
+
+.isEditingTextArea::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+.isEditingTextArea::-webkit-scrollbar-thumb {
+  background: #707070;
+  border-radius: 10px;
+}
+
+.isEditingTextArea::-webkit-scrollbar-thumb:hover {
+  background: #555; /* Cor de fundo do controle deslizante ao passar o mouse */
 }

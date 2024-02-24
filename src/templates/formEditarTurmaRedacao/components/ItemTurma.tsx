@@ -33,19 +33,37 @@ const ItemTurma: React.FC<ItemTurmaProps> = ({
 
   return (
     <div className={style.ItemTurmaContainer}>
-      <p className={style.chave}>
-        {label}: <span className={style.valor}>{value}</span>
-        <button
-          type="button"
-          onClick={handleEditClick}
-          className={style.editBtn}
-        >
-          <Image
-            src={editBtn}
-            alt="imagem de um lápis, como se fosse para editar"
-          />
-        </button>
-      </p>
+      {inputType === "input" ? (
+        <p className={style.chave}>
+          {label}: <span className={style.valor}>{value}</span>
+          <button
+            type="button"
+            onClick={handleEditClick}
+            className={style.editBtn}
+          >
+            <Image
+              src={editBtn}
+              alt="imagem de um lápis, como se fosse para editar"
+            />
+          </button>
+        </p>
+      ) : (
+        <p className={style.chave}>
+          {label}
+          <button
+            type="button"
+            onClick={handleEditClick}
+            className={style.editBtn}
+          >
+            <Image
+              src={editBtn}
+              alt="imagem de um lápis, como se fosse para editar"
+            />
+          </button>
+          <br />
+          <div className={style.valorTextArea}>{value}</div>
+        </p>
+      )}
 
       {isEditing && (
         <form>
@@ -59,7 +77,7 @@ const ItemTurma: React.FC<ItemTurmaProps> = ({
             />
           ) : (
             <textarea
-              className={style.isEditing}
+              className={style.isEditingTextArea}
               placeholder={placeholder}
               value={value}
               onChange={onChange}
