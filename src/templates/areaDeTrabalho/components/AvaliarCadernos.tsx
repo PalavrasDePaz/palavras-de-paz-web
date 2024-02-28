@@ -75,13 +75,26 @@ const AvaliarCadernos = ({ idvol }: AvaliarCadernosProps) => {
     await putRevertReservationData(notebookId);
   };
 
+  const orderNotebooks = (notebooksList: INotebooks[]) => {
+    const orderedNotebooks = notebooksList.sort((a, b) => {
+      if (a.reservationDate && b.reservationDate) {
+        return (
+          new Date(a.reservationDate).getTime() -
+          new Date(b.reservationDate).getTime()
+        );
+      }
+      return 0;
+    });
+    return orderedNotebooks;
+  };
+
   useEffect(() => {
     if (notebooks) {
       const updatedNotebooks = notebooks.map((notebook) => ({
         ...notebook,
         reserved: isReserved(notebook.reservationDate),
       }));
-      setNotebooksIn(updatedNotebooks);
+      setNotebooksIn(orderNotebooks(updatedNotebooks));
     }
   }, [notebooks]);
 
