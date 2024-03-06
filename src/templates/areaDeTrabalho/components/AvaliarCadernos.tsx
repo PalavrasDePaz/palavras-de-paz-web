@@ -43,6 +43,19 @@ const AvaliarCadernos = ({ idvol }: AvaliarCadernosProps) => {
     router.push("/formulario-avaliacao-caderno");
   };
 
+  const orderNotebooks = (notebooksList: INotebooks[]) => {
+    const orderedNotebooks = notebooksList.sort((a, b) => {
+      if (a.reservationDate && b.reservationDate) {
+        return (
+          new Date(a.reservationDate).getTime() -
+          new Date(b.reservationDate).getTime()
+        );
+      }
+      return 0;
+    });
+    return orderedNotebooks;
+  };
+
   const handleReservation = async (notebookId: number) => {
     const updatedNotebooks = notebooksIn.map((notebook) => {
       if (notebook.notebookId === notebookId) {
@@ -53,8 +66,7 @@ const AvaliarCadernos = ({ idvol }: AvaliarCadernosProps) => {
       }
       return notebook;
     });
-
-    setNotebooksIn(updatedNotebooks);
+    setNotebooksIn(orderNotebooks(updatedNotebooks));
 
     await putReservationData(notebookId);
   };
@@ -69,23 +81,9 @@ const AvaliarCadernos = ({ idvol }: AvaliarCadernosProps) => {
       }
       return notebook;
     });
-
-    setNotebooksIn(updatedNotebooks);
+    setNotebooksIn(orderNotebooks(updatedNotebooks));
 
     await putRevertReservationData(notebookId);
-  };
-
-  const orderNotebooks = (notebooksList: INotebooks[]) => {
-    const orderedNotebooks = notebooksList.sort((a, b) => {
-      if (a.reservationDate && b.reservationDate) {
-        return (
-          new Date(a.reservationDate).getTime() -
-          new Date(b.reservationDate).getTime()
-        );
-      }
-      return 0;
-    });
-    return orderedNotebooks;
   };
 
   useEffect(() => {
