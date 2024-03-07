@@ -16,7 +16,8 @@ export const useRequestStatus = (idVol: number) => {
         }
       })
       .catch((error) => {
-        // console.error(error);
+        // eslint-disable-next-line no-console
+        console.error(error);
       });
   }, [idVol]);
 

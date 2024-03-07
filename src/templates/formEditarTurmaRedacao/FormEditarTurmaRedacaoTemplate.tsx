@@ -1,8 +1,9 @@
 import { ChangeEvent, useState } from "react";
 
-import HeaderForm from "../../components/headerform/HeaderForm";
+import HeaderForm from "../../components/headerForm/HeaderForm";
 
 import ButtonDownloadRelatorios from "./components/ButtonDownloadRelatorios";
+import BtnSubmit from "./components/ButtonSalavarAlteracoes";
 import ItemTurma from "./components/ItemTurma";
 
 import style from "./styles/FormEditarTurmaRedacaoTemplate.module.css";
@@ -56,7 +57,7 @@ export default function FormularioEditarTurmaRedacaoTemplate() {
   };
 
   const handleChange = (
-    event: ChangeEvent<HTMLInputElement>,
+    event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
     index: number,
     fieldName: keyof FormData
   ) => {
@@ -103,24 +104,28 @@ export default function FormularioEditarTurmaRedacaoTemplate() {
               </p>
             </div>
             <ItemTurma
+              inputType="input"
               label="Recibo dos relatórios"
               value={data.reciboDosRelatorios}
               placeholder={novaData}
               onChange={(e) => handleChange(e, index, "reciboDosRelatorios")}
             />
             <ItemTurma
+              inputType="input"
               label="Empréstimo"
               value={data.emprestimo}
               placeholder={novaData}
               onChange={(e) => handleChange(e, index, "emprestimo")}
             />
             <ItemTurma
+              inputType="input"
               label="Devolução dos livros"
               value={data.devolucaoDosLivros}
               placeholder={novaData}
               onChange={(e) => handleChange(e, index, "devolucaoDosLivros")}
             />
             <ItemTurma
+              inputType="input"
               label="Elaboração dos relatórios"
               value={data.elaboracaoDosRelatorios}
               placeholder={novaData}
@@ -128,6 +133,7 @@ export default function FormularioEditarTurmaRedacaoTemplate() {
                 handleChange(e, index, "elaboracaoDosRelatorios")}
             />
             <ItemTurma
+              inputType="input"
               label="Relatórios lista de presença"
               value={data.relatoriosListaPresenca.toString()}
               placeholder={novoNumero}
@@ -135,36 +141,34 @@ export default function FormularioEditarTurmaRedacaoTemplate() {
                 handleChange(e, index, "relatoriosListaPresenca")}
             />
             <ItemTurma
+              inputType="input"
               label="Relatórios enviados"
               value={data.relatoriosEnviados.toString()}
               placeholder={novoNumero}
               onChange={(e) => handleChange(e, index, "relatoriosEnviados")}
             />
             <ItemTurma
+              inputType="input"
               label="Reserva dos voluntários"
               value={data.reservaDosVoluntarios}
               placeholder={novaData}
               onChange={(e) => handleChange(e, index, "reservaDosVoluntarios")}
             />
             <ItemTurma
+              inputType="input"
               label="Finalização da turma"
               value={data.finalizacaoDaTurma}
               placeholder={novaData}
               onChange={(e) => handleChange(e, index, "finalizacaoDaTurma")}
             />
             <ItemTurma
+              inputType="input"
               label="Devolução para FUNAP"
               value={data.devolucaoParaFUNAP}
               placeholder={novaData}
               onChange={(e) => handleChange(e, index, "devolucaoParaFUNAP")}
             />
-            <button
-              type="button"
-              onClick={handleSubmit}
-              className={style.btnSubmit}
-            >
-              Salvar alterações
-            </button>
+            <BtnSubmit onClick={handleSubmit} />
           </section>
         ))}
       </main>
