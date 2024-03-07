@@ -185,7 +185,7 @@
   width: 100%;
   display: flex;
   justify-content: space-between;
-  align-items: start;
+  align-items: flex-start;
   margin-top: 60px;
 }
 
@@ -423,7 +423,7 @@
     width: 100%;
     display: flex;
     justify-content: space-between;
-    align-items: start;
+    align-items: flex-start;
     margin-top: 60px;
   }
 
@@ -456,7 +456,7 @@
     width: 100%;
     display: flex;
     justify-content: space-between;
-    align-items: start;
+    align-items: flex-start;
     margin-top: 60px;
   }
 

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import PropTypes from "prop-types";
 
+import ButtonSendForm from "../../components/buttonSendForm/ButtonSendForm";
 import HeaderForm from "../../components/headerForm/HeaderForm";
 import useGetUser from "../../hooks/useGetUser";
 import useUserEmail from "../../hooks/useUserEmail";
@@ -215,7 +216,7 @@ const FormAvalCadTemplate: React.FC<FormularioAvaliacaoCadernoProps> = ({
             />
           </section>
           {/* Submit Button */}
-          <button onClick={() => handleSubmit}>Enviar</button>
+          <ButtonSendForm onClick={() => handleSubmit} text="Enviar" />
         </form>
       </main>
     </>
