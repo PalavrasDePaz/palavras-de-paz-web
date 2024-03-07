@@ -112,11 +112,11 @@ const FormAvalCadTemplate: React.FC<FormularioAvaliacaoCadernoProps> = ({
     <>
       <HeaderForm />
       <header className={styles.headerContainer}>
-        <h1>Formulário de Avaliação de Leitura - cadernos</h1>
+        <h1>AVALIAÇÃO DE CADERNOS CEP/FUNAP/SATPR</h1>
       </header>
       <main className={styles.mainContainer}>
         <h2 className={styles.subtitle}>
-          Realize a transcrição da avaliação do relatório de leitura concluida.
+          Leitura de Cadernos dos Alunos do Projeto CEP/FUNAP/SATPR
         </h2>
         <form onSubmit={handleSubmit}>
           <section className={styles.sectionContainer}>
