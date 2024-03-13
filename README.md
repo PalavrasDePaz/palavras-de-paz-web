@@ -12,31 +12,54 @@
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-## Getting Started
+## Informações Gerais
+  * **Nome:** Palavras de Paz - Web
+  * **Versão:** 0.1.0
+  * **Privado:** Sim
+    
+## Instalação e Configuração
 
-First, run the development server:
+Clone o repositório do projeto:
+```bash
+git clone https://github.com/palavrasdepaz/web.git
+```
 
+Acesse a pasta do projeto:
+```bash
+cd palavrasdepaz-web
+```
+
+Instale as dependências do projeto:
+```bash
+npm install
+# or
+yarn install
+```
+
+Inicie o servidor de desenvolvimento:
 ```bash
 npm run dev
 # or
 yarn dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Abra [http://localhost:3000](http://localhost:3000) em seu navegador para ver o resultado.
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+## Scripts
+O projeto utiliza diversos scripts para automatizar tarefas de desenvolvimento e construção.
 
-## Learn More
+* ```dev``` Inicia o servidor de desenvolvimento do Next.js.
+* ```build``` Gera a compilação otimizada da aplicação para produção.
+* ```start``` Inicia a aplicação em produção.
+* ```lint``` Executa o ESLint para verificar problemas de código e aplicar correções automáticas (fix).
+* ```prepare``` Instala os hooks do Husky para automatizar tarefas no git.
 
-To learn more about Next.js, take a look at the following resources:
+## Husky
+Husky é uma ferramenta que permite executar scripts automatizados em eventos do git, como *pre-commit*.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+* ```pre-commit```: Executa o lint-staged antes de realizar um commit.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+### lint-staged
+* ```src//*.{js,jsx,ts,tsx,json,css}**:``` Define os arquivos nos quais serão aplicados os formatadores e ESLint.
+* ```prettier --write```: Formata o código automaticamente.
+* ```eslint --fix```: Executa o ESLint para verificar problemas de código e aplicar correções automáticas.
