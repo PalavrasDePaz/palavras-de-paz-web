@@ -114,10 +114,10 @@ function ItemTurmaAvaliacao({
             type="checkbox"
             checked // ADICIONAR ROTA PARA REMOVER A RESERVA
             onChange={() => handleRevertReservation(idvol, idclass)}
-            id={idvol.toString()}
+            id={idclass.toString()}
             className={styles.toggle}
           />
-          <label htmlFor={idvol.toString()} className={styles.switch}>
+          <label htmlFor={idclass.toString()} className={styles.switch}>
             <span className={styles.slider} />
           </label>
           <p>{`${idclass}-${place}`}</p>
