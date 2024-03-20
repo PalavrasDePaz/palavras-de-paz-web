@@ -1,6 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { fi } from "date-fns/locale";
 
 import DownloadImage from "../../../../public/static/images/icons/download.svg";
 import { api } from "../../../api";
@@ -32,6 +33,17 @@ function ItemTurmaAvaliacao({
   dateConcluded,
   reserved,
 }: ItemTurmaAvaliacaoProps) {
+  const sortedEssay = (essays: IEssays[]) =>
+    essays.sort((a, b) => {
+      if (a.dateReserved && b.dateReserved) {
+        return (
+          new Date(a.dateReserved).getTime() -
+          new Date(b.dateReserved).getTime()
+        );
+      }
+      return 0;
+    });
+
   const putReservationData = async (volunteerId: number, classId: number) => {
     const reserveData = { idvol: volunteerId, idclass: classId };
     const response = await api.put("/book-club-class/reservation", reserveData);
@@ -60,7 +72,11 @@ function ItemTurmaAvaliacao({
       }
       return essay;
     });
-    setEssaysIn(updatedEssays);
+    const filterReserved = sortedEssay(
+      updatedEssays.filter((essay) => essay.reserved)
+    );
+    const filterNotReserved = updatedEssays.filter((essay) => !essay.reserved);
+    setEssaysIn([filterReserved, filterNotReserved].flat());
 
     await putReservationData(volunteerId, classId);
   };
@@ -78,7 +94,11 @@ function ItemTurmaAvaliacao({
       }
       return essay;
     });
-    setEssaysIn(updatedEssays);
+    const filterReserved = sortedEssay(
+      updatedEssays.filter((essay) => essay.reserved)
+    );
+    const filterNotReserved = updatedEssays.filter((essay) => !essay.reserved);
+    setEssaysIn([filterReserved, filterNotReserved].flat());
 
     await putRevertReservationData(volunteerId, classId);
   };

@@ -16,26 +16,13 @@ export default function AvaliarRedacoes({ idvol }: AvaliarRedacoesProps) {
   const { data: essays } = useGetEssays(idvol);
   const [essaysIn, setEssaysIn] = useState<IEssays[]>([]);
 
-  const orderEssays = (essaysList: IEssays[]) => {
-    const orderedNotebooks = essaysList.sort((a, b) => {
-      if (a.dateReserved && b.dateReserved) {
-        return (
-          new Date(a.dateReserved).getTime() -
-          new Date(b.dateReserved).getTime()
-        );
-      }
-      return 0;
-    });
-    return orderedNotebooks;
-  };
-
   useEffect(() => {
     if (essays) {
       const updatedEssays = essays.map((essay) => ({
         ...essay,
         reserved: isReserved(essay.dateReserved),
       }));
-      setEssaysIn(orderEssays(updatedEssays));
+      setEssaysIn(updatedEssays);
     }
   }, [essays]);
 
