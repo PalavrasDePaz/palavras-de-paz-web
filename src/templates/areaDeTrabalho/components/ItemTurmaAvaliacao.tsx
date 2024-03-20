@@ -33,7 +33,7 @@ function ItemTurmaAvaliacao({
   dateConcluded,
   reserved,
 }: ItemTurmaAvaliacaoProps) {
-  const sortedEssay = (essays: IEssays[]) =>
+  const sortedEssayReserved = (essays: IEssays[]) =>
     essays.sort((a, b) => {
       if (a.dateReserved && b.dateReserved) {
         return (
@@ -43,6 +43,9 @@ function ItemTurmaAvaliacao({
       }
       return 0;
     });
+
+  const sortedEssayNotReserved = (essay: IEssays[]) =>
+    essay.sort((a, b) => a.idclass - b.idclass);
 
   const putReservationData = async (volunteerId: number, classId: number) => {
     const reserveData = { idvol: volunteerId, idclass: classId };
@@ -72,10 +75,12 @@ function ItemTurmaAvaliacao({
       }
       return essay;
     });
-    const filterReserved = sortedEssay(
+    const filterReserved = sortedEssayReserved(
       updatedEssays.filter((essay) => essay.reserved)
     );
-    const filterNotReserved = updatedEssays.filter((essay) => !essay.reserved);
+    const filterNotReserved = sortedEssayNotReserved(
+      updatedEssays.filter((essay) => !essay.reserved)
+    );
     setEssaysIn([filterReserved, filterNotReserved].flat());
 
     await putReservationData(volunteerId, classId);
@@ -94,10 +99,12 @@ function ItemTurmaAvaliacao({
       }
       return essay;
     });
-    const filterReserved = sortedEssay(
+    const filterReserved = sortedEssayReserved(
       updatedEssays.filter((essay) => essay.reserved)
     );
-    const filterNotReserved = updatedEssays.filter((essay) => !essay.reserved);
+    const filterNotReserved = sortedEssayNotReserved(
+      updatedEssays.filter((essay) => !essay.reserved)
+    );
     setEssaysIn([filterReserved, filterNotReserved].flat());
 
     await putRevertReservationData(volunteerId, classId);
