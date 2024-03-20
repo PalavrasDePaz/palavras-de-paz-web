@@ -1,6 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { fi } from "date-fns/locale";
 
 import DownloadImage from "../../../../public/static/images/icons/download.svg";
 import { api } from "../../../api";
@@ -32,9 +33,35 @@ function ItemTurmaAvaliacao({
   dateConcluded,
   reserved,
 }: ItemTurmaAvaliacaoProps) {
+  const sortedEssayReserved = (essays: IEssays[]) =>
+    essays.sort((a, b) => {
+      if (a.dateReserved && b.dateReserved) {
+        return (
+          new Date(a.dateReserved).getTime() -
+          new Date(b.dateReserved).getTime()
+        );
+      }
+      return 0;
+    });
+
+  const sortedEssayNotReserved = (essay: IEssays[]) =>
+    essay.sort((a, b) => a.idclass - b.idclass);
+
   const putReservationData = async (volunteerId: number, classId: number) => {
     const reserveData = { idvol: volunteerId, idclass: classId };
     const response = await api.put("/book-club-class/reservation", reserveData);
+    return response.data;
+  };
+
+  const putRevertReservationData = async (
+    volunteerId: number,
+    classId: number
+  ) => {
+    const reserveData = { idvol: volunteerId, idclass: classId };
+    const response = await api.put(
+      `/book-club-class/revert-reservation/${classId}`,
+      reserveData
+    );
     return response.data;
   };
 
@@ -48,9 +75,39 @@ function ItemTurmaAvaliacao({
       }
       return essay;
     });
-    setEssaysIn(updatedEssays);
+    const filterReserved = sortedEssayReserved(
+      updatedEssays.filter((essay) => essay.reserved)
+    );
+    const filterNotReserved = sortedEssayNotReserved(
+      updatedEssays.filter((essay) => !essay.reserved)
+    );
+    setEssaysIn([filterReserved, filterNotReserved].flat());
 
     await putReservationData(volunteerId, classId);
+  };
+
+  const handleRevertReservation = async (
+    volunteerId: number,
+    classId: number
+  ) => {
+    const updatedEssays = essaysIn.map((essay: IEssays) => {
+      if (essay.idclass === classId) {
+        return {
+          ...essay,
+          reserved: false,
+        };
+      }
+      return essay;
+    });
+    const filterReserved = sortedEssayReserved(
+      updatedEssays.filter((essay) => essay.reserved)
+    );
+    const filterNotReserved = sortedEssayNotReserved(
+      updatedEssays.filter((essay) => !essay.reserved)
+    );
+    setEssaysIn([filterReserved, filterNotReserved].flat());
+
+    await putRevertReservationData(volunteerId, classId);
   };
 
   const naoReservado = "--/--/--";
@@ -83,11 +140,11 @@ function ItemTurmaAvaliacao({
           <input
             type="checkbox"
             checked // ADICIONAR ROTA PARA REMOVER A RESERVA
-            onChange={() => ""}
-            id={idvol.toString()}
+            onChange={() => handleRevertReservation(idvol, idclass)}
+            id={idclass.toString()}
             className={styles.toggle}
           />
-          <label htmlFor={idvol.toString()} className={styles.switch}>
+          <label htmlFor={idclass.toString()} className={styles.switch}>
             <span className={styles.slider} />
           </label>
           <p>{`${idclass}-${place}`}</p>
