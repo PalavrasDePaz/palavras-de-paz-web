@@ -37,9 +37,9 @@ function Doacoes() {
         <div className="doacoes-image">
           <Image
             src="/static/images/doacoes.png"
-            width="421px"
-            height="494px"
-            alt=""
+            width={456}
+            height={680}
+            alt="mão entregando um papel a outra mão"
           />
         </div>
       </container>
@@ -90,7 +90,7 @@ function Doacoes() {
 
           <div className="doacoes-images-empresas ">
             <h1 className="text-black">Transferência</h1>
-            <div className="doacoes-images-empresas d-flex justify-content-center m-5 border-0">
+            <div className="doacoes-images-empresas d-flex justify-content-center border-0">
               <h2>Itau ag: 0646</h2>
               <h2>conta: 66704-8</h2>
               <h2>CNPJ:</h2>
