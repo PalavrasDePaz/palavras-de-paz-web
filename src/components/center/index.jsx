@@ -5,6 +5,7 @@ import styled from "styled-components";
 const StyledCenteredDiv = styled.div`
   max-width: 1416px;
   margin: 0 auto;
+  padding: 0 8px;
 `;
 
 function Center({ children }) {
