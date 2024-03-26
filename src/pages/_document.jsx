@@ -1,6 +1,8 @@
 import Document, { Head, Html, Main, NextScript } from "next/document";
 import { ServerStyleSheet } from "styled-components";
 
+import { Analytics } from "../components/analytics/Analytics";
+
 export default class MyDocument extends Document {
   static async getInitialProps(ctx) {
     const sheet = new ServerStyleSheet();
@@ -78,6 +80,7 @@ export default class MyDocument extends Document {
           <Main />
           <NextScript />
         </body>
+        <Analytics />
       </Html>
     );
   }
