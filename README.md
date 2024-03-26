@@ -113,4 +113,41 @@ O projeto utiliza diversos scripts para automatizar tarefas de desenvolvimento e
 
 </details>
 
+<details open>
+  <summary><h2>Git Flow</h2></summary>
+
+ * ```Branch Master/Main```
+Principal *branch*, aqui é onde temos todo o código de produção. Todas as novas funcionalidades que estão sendo desenvolvidas, em algum momento, serão mescladas ou associadas a ***Master***. As formas de interagir com essa branch são através de uma ***Hotfix*** ou um ***Pull Request***.
+
+* ```Branch Develop```
+É a *branch* onde fica o código do próximo *deploy*. Ela serve como uma linha do tempo com os últimos desenvolvimentos, isso significa que ela possui funcionalidades que ainda não foram publicadas e que posteriormente vão ser associadas com a ***branch Master***.
+
+* ```Branch Feature```
+São *branches* utilizadas para o desenvolvimento de funcionalidades específicas. É recomendável que essas branches sigam uma convenção de nome, a convenção mais utilizada é iniciar o nome das *branches* com *feature*, por exemplo, “***feature/login***”.
+
+* ```Branch Hotfix```
+É uma *branch* criada a partir da ***master*** para realizar correções imediatas encontradas no sistema em produção. Quando concluída, ela é excluída após realizar o *merge* com as ***branches Master*** e ***Develop***.
+
+* É importante saber que essas ***features branches*** são criadas sempre a partir da ***branch Develop***. Portanto, quando finalizada, elas são removidas após realizar o *merge* com a ***Branch Develop***. Se tivermos dez funcionalidades a serem desenvolvidas, criaremos dez *branches* independentes.
+
+* É importante salientar que as *branches* de *features* não podem ter interação com a ***branch master***, apenas com a ***branch develop***.
+
+* A grande diferença entre ***Feature Branches*** e ***Branches de Hotfix*** é que os Hotfix são criados a partir da ***Branch Master*** e quando os finalizamos, eles são mesclados tanto na ***Branch Master*** quanto na *branch* de desenvolvimento. Isso ocorre porque o bug está em ambos os ambientes.
+</details>
+
+<details open>
+  <summary><h2>Padrões de commits</h2></summary>
+Utilização de commits semânticos, com mensagens em descritivas da tarefa, em português
+  
+#### Estrutura:
+  
+  ```"tipo-de-comit: Mensagem em português descrevendo as mudanças"```
+  
+#### <tipo-de-commit> - Usar um dos seguintes tipos:
+
+  * ```feat``` Tratam adições de novas funcionalidades ou de quaisquer outras novas implantações ao código. Por exemplo, requisitos.
+  * ```fix``` Essencialmente definem o tratamento de correções de bugs;
+  * ```style``` Alterações referentes a formatações na apresentação do código que não afetam o significado do código, como por exemplo: espaço em branco, formatação, ponto e vírgula ausente etc.).
+  
+</details>
 
