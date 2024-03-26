@@ -4,20 +4,39 @@
 <img src="https://user-images.githubusercontent.com/88943961/205815975-0d06d1b3-56aa-4702-95ba-3668faf10376.png"/>
 </p>
 
-<h2 align="center"><a href="https://tprf.org/">The Prem Rawat Foundation</a> | <a href="https://github.com/alchemist-developer/deploy-palavrasdepaz-ong"> ONG Palavras de Paz</a></h2><br/>
+<h2 align="center"><a href="https://tprf.org/">The Prem Rawat Foundation</a> | <a href="https://github.com/PalavrasDePaz"> ONG Palavras de Paz</a></h2><br/>
 
 ![image](https://user-images.githubusercontent.com/88943961/205814572-ec36b186-6733-4af5-b770-3f8524591ad0.png)
 
-<p align="end">Finalização/Lançamento: 15/12/2022</p>
+<p align="end">Lançamento da Primeira Versão : 15/12/2022</p>
+<p align="end">Lançamento da Segunda Versão 2.0: 17/12/2023</p>
 
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+<h2>Sobre o projeto</h2>
 
-## Informações Gerais
+### A ONG:
+A ONG Palavras de Paz é uma organização sem fins lucrativos e gerida por pessoas voluntárias, tendo como objetivo ajudar as pessoas a encontrar a própria paz. Esse objetivo é perseguido através de uma licença obtida para pelo TPRF (Programa de Educação para a Paz da Fundação Prem Rawat).
+
+### O SITE:
+Site construído e mantido por pessoas voluntárias, com times responsáveis pelo Back-End, Front-End, U.X. e Q.A.. Esse repositório destina-se ao front-end da aplicação, construído com Next.js, React e TypeScript.
+
+<summary><h3> Funcionalidades da Plataforma: </h3></summary>
+
+* Redirecionamento para sites de parceiros
+* Autenticação de usuários
+* Cadastro de usuários
+* Edição do perfil do usuário
+* Exibição de dados sobre as pessoas auxiliadas pela ONG, bem como de dados referentes às atuvidades das pessoas voluntárias;
+* Formulários dinâmicos para preenchimento pelas pessoas voluntárias
+  
+
+<h2> Informações Gerais</h2>
+
   * **Nome:** Palavras de Paz - Web
-  * **Versão:** 0.1.0
+  * **Versão:** 2.0
   * **Privado:** Sim
-    
-## Instalação e Configuração
+
+<details open>  
+<summary><h2>Instalação e Configuração</h2></summary>
 
 Clone o repositório do projeto:
 ```bash
@@ -44,8 +63,10 @@ yarn dev
 ```
 
 Abra [http://localhost:3000](http://localhost:3000) em seu navegador para ver o resultado.
+</details>    
 
-## Scripts
+<details open>  
+<summary><h2>Scripts</summary>
 O projeto utiliza diversos scripts para automatizar tarefas de desenvolvimento e construção.
 
 * ```dev``` Inicia o servidor de desenvolvimento do Next.js.
@@ -53,13 +74,43 @@ O projeto utiliza diversos scripts para automatizar tarefas de desenvolvimento e
 * ```start``` Inicia a aplicação em produção.
 * ```lint``` Executa o ESLint para verificar problemas de código e aplicar correções automáticas (fix).
 * ```prepare``` Instala os hooks do Husky para automatizar tarefas no git.
+</details>
 
-## Husky
-Husky é uma ferramenta que permite executar scripts automatizados em eventos do git, como *pre-commit*.
+<details open>  
+<summary><h2>Principais ferramentas usadas:</summary>
 
-* ```pre-commit```: Executa o lint-staged antes de realizar um commit.
+* ```React``` Biblioteca JavaScript para construir interfaces web.
+* ```Next.js``` Framework React para aplicações web server-side rendering e static generation.
+* ```ESLint``` Ferramenta para análise estática de código JavaScript.
+* ```Husky``` Gerenciador de hooks para automatizar tarefas do git.
+* ```Prettier``` Formatador de código automático.
+* ```Axios``` Cliente HTTP para fazer requests de API.
+* ```React Query``` Gerenciamento de dados de consulta assíncrona.
+</details>
 
-### lint-staged
-* ```src//*.{js,jsx,ts,tsx,json,css}**:``` Define os arquivos nos quais serão aplicados os formatadores e ESLint.
-* ```prettier --write```: Formata o código automaticamente.
-* ```eslint --fix```: Executa o ESLint para verificar problemas de código e aplicar correções automáticas.
+<details open>  
+<summary><h2>Estrutura do repositório:</h2></summary>
+
+  O projeto **Palavras de Paz - Web** é organizado da seguinte maneira:
+* ```public``` Contém arquivos estáticos, como imagens e favicon.
+* ```src``` Contém o código-fonte da aplicação.
+  * ```api``` Contém a requisição para a API da aplicação.
+  * ```components``` Contém os componentes globais da aplicação.
+  * ```constants``` Armazena constantes de escopo global, para evitar repetições.
+  * ```fonts/baloo``` Contém a fonte tipográfica usada na aplicação.
+  * ```helpers``` Contém as funções auxiliares.
+  * ```hooks``` Contém os custom-hooks da aplicação.
+  * ```pages``` Contém as páginas da aplicação, com direcionamento para seu respectivo template.
+  * ```styles``` Contém os estilos globais da aplicação.
+  * ```templates``` Contém o template de cada página.
+    *  ```componentName``` Reúne todos os arquivos e diretórios de cada componente de mesmo nome do diretório.
+      * ```components``` Contém os subcomponentes do componente pai. Opcional.
+        * ```subcomponentName``` Reúne todos os arquivos e diretórios relacionados ao subcomponente.
+      * ```styles``` Contém arquivos de estilo específicos para o componente.
+      * ```types``` Guarda tipagens typescript para serem reutilizadas no componente.
+      * ```componentNameTemplate.tsx``` Arquivo raíz do template do componente, que é referenciado em "pages".
+  * ```zustand``` Ferramenta de armazenamento global de estado.
+
+</details>
+
+
