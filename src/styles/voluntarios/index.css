@@ -7,7 +7,7 @@
 
 .voluntarios-texto p {
   padding: 10px;
-  width: 40rem;
+  max-width: 40rem;
   font-size: 24px;
   line-height: 40px;
 }
@@ -39,12 +39,12 @@
 .voluntarios-text p {
   font-size: 24px;
   padding-top: 50px;
-  padding: 50px;
+  padding: min(20%, 50px);
 }
 
 .voluntarios-botton {
   text-align: center;
-  font-size: 32px;
+  font-size: min(calc(16px + 2.4vw), 32px);
   padding: 20px;
 }
 
@@ -95,7 +95,8 @@ a:hover {
   height: 100%;
   background-color: #21aa85;
   color: white;
-  font-size: 36px;
+  font-size: min(calc(16px + 2.4vw), 36px);
+  padding: 12px 8px 0 8px;
 }
 
 .voluntarios-button-doacao {
