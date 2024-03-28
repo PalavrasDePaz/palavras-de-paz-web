@@ -12,24 +12,22 @@ function Header() {
   return (
     <container className="styles-header">
       <Navbar key={expand} expand={expand}>
-        <Box>
-          <div className="logo-header">
-            <Link href="/">
-              <div>
-                <Image
-                  style={{ cursor: "pointer" }}
-                  src={Logo}
-                  alt="logo-header"
-                  width="333px"
-                  height="150px"
-                />
-              </div>
-            </Link>
-          </div>
+        <Box width="100%" justify="center">
+          <Link href="/">
+            <div className="logo-header">
+              <Image
+                style={{ cursor: "pointer" }}
+                src={Logo}
+                alt="logo-header"
+                layout="fill"
+              />
+            </div>
+          </Link>
           <Navbar.Toggle
             style={{
               border: "1px solid var(--primary-color)",
               color: "white",
+              margin: 0,
             }}
             aria-controls={`offcanvasNavbar-expand-${expand}`}
           />
@@ -46,7 +44,7 @@ function Header() {
                 MENU
               </Offcanvas.Title>
             </Offcanvas.Header>
-            <Offcanvas.Body>
+            <Offcanvas.Body className="w-100">
               <Nav id="buttons-header" className="flex-grow-1 pe-3">
                 <Nav.Link href="/sobre-nos">Quem Somos</Nav.Link>
                 <Nav.Link href="/programa">O Programa</Nav.Link>
