@@ -24,7 +24,7 @@ const LINKS = [
     title:
       "FUNAP Amplia o Programa de Educação para a paz nas Prisões Brasileiras - TPRF.org",
     intro:
-      "A Fundação de Amaparo ao Trabalhador Preso (FUNAP) estabeleceu parceria com a Fundação Prem Rawat para oferecer o Programa de Educação para a Paz em São Paulo, Brasil.",
+      "A Fundação de Amparo ao Trabalhador Preso (FUNAP) estabeleceu parceria com a Fundação Prem Rawat para oferecer o Programa de Educação para a Paz em São Paulo, Brasil.",
   },
   {
     id: 3,
@@ -33,7 +33,7 @@ const LINKS = [
     host: "Palavrasdepaz.org",
     title: 'O impacto de "Ouça a Sua Voz" nas Prisões Brasileiras',
     intro:
-      "Em 14 de setembro de 2021, a HarperOne publicou o livro revolucionário de Prem Rawat, Ouça a Sua Voz: Como Encontrar a Paz em um Mundo Barulhento. Duas semenas depois, ele se tornou um best-seller do New York Times.",
+      "Em 14 de setembro de 2021, a HarperOne publicou o livro revolucionário de Prem Rawat, Ouça a Sua Voz: Como Encontrar a Paz em um Mundo Barulhento. Duas semanas depois, ele se tornou um best-seller do New York Times.",
   },
 ];
 
