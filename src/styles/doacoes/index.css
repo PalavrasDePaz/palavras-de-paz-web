@@ -20,6 +20,19 @@
   margin: 96px 0;
 }
 
+@media screen and (max-width: 576px) {
+  .doacao-main-texto {
+    width: 84%;
+    display: flex;
+    flex-direction: column;
+    font-size: 32px;
+  }
+
+  .doacao-texto p {
+    margin: 32px 0;
+  }
+}
+
 .doacoes-icones {
   display: flex;
   justify-content: center;
@@ -27,10 +40,7 @@
 }
 
 .doacoes-image {
-  width: 456px;
-  height: 680px;
-  display: flex;
-  justify-content: center;
+  aspect-ratio: 456/680;
 }
 
 .doacoes-texto-icones {
@@ -43,7 +53,7 @@
 .doacoes-atraves {
   display: flex;
   justify-content: center;
-  font-size: 56px;
+  font-size: min(calc(12px + 3vw), 56px);
   padding-top: 10px;
   font-family: "Baloo", cursive, Arial, Helvetica, sans-serif;
 }
@@ -65,15 +75,18 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
+  gap: 8px;
+  padding: 0 8px;
 }
 
 .doacoes-images-empresas {
+  flex: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
   border: 1px solid #18ca99;
-  width: 45%;
+  min-width: 240px;
   border-radius: 10px;
   padding: 10px;
   color: #21aa85;
@@ -93,7 +106,7 @@
   text-align: justify;
   margin-top: 50px;
   background-color: #21aa85;
-  font-size: 36px;
+  font-size: min(calc(12px + 2vw), 32px);
   color: white;
   margin-bottom: 56px;
   width: 1416px;
@@ -105,12 +118,13 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 0 8px;
 }
 .doacoes-contas {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  font-size: 36px;
+  font-size: min(calc(12px + 2.4vw), 40px);
   text-align: center;
 }
 .doacoes-contas a {
@@ -127,12 +141,11 @@
 
 .btn-voluntario {
   background-color: white;
-  style: none;
   color: white;
   border: 2px solid #18ca99;
   border-radius: 10px;
   padding: 10px 20px;
-  font-size: 24px;
+  font-size: min(calc(12px + 2vw), 32px);
   font-family: "Baloo", cursive, Arial, Helvetica, sans-serif;
   cursor: pointer;
   transition: 0.5s;
@@ -157,14 +170,13 @@
 }
 
 .relatorio-link {
-  font-size: 3rem;
+  font-size: min(calc(12px + 2.4vw), 40px);
   cursor: pointer;
   border: 1px solid #18ca99;
   border-radius: 10px;
   padding: 1rem 2rem;
-  width: max-content;
-  margin: auto;
-  margin-bottom: 2rem;
+  width: auto;
+  margin: auto 0.5rem 2rem 0.5rem;
 }
 
 .btn-copy {
