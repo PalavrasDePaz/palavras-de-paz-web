@@ -8,7 +8,7 @@
 
 ![image](https://user-images.githubusercontent.com/88943961/205814572-ec36b186-6733-4af5-b770-3f8524591ad0.png)
 
-<p align="end">Lançamento da Primeira Versão : 15/12/2022</p>
+<p align="end">Lançamento da Primeira Versão: 15/12/2022</p>
 <p align="end">Lançamento da Segunda Versão 2.0: 17/12/2023</p>
 
 <h2>Sobre o projeto</h2>
@@ -19,7 +19,7 @@ A ONG Palavras de Paz é uma organização sem fins lucrativos e gerida por pess
 ### O SITE:
 Site construído e mantido por pessoas voluntárias, com times responsáveis pelo Back-End, Front-End, U.X. e Q.A.. Esse repositório destina-se ao front-end da aplicação, construído com Next.js, React e TypeScript.
 
-<summary><h3> Funcionalidades da Plataforma: </h3></summary>
+<summary><h3>Funcionalidades da Plataforma:</h3></summary>
 
 * Redirecionamento para sites de parceiros
 * Autenticação de usuários
@@ -29,7 +29,7 @@ Site construído e mantido por pessoas voluntárias, com times responsáveis pel
 * Formulários dinâmicos para preenchimento pelas pessoas voluntárias
   
 
-<h2> Informações Gerais</h2>
+<h2>Informações Gerais</h2>
 
   * **Nome:** Palavras de Paz - Web
   * **Versão:** 2.0
@@ -77,7 +77,7 @@ O projeto utiliza diversos scripts para automatizar tarefas de desenvolvimento e
 </details>
 
 <details open>  
-<summary><h2>Principais ferramentas usadas:</summary>
+<summary><h2>Principais ferramentas utilizadas:</h2></summary>
 
 * ```React``` Biblioteca JavaScript para construir interfaces web.
 * ```Next.js``` Framework React para aplicações web server-side rendering e static generation.
