@@ -12,6 +12,7 @@
 
 .background {
   width: 100%;
+  min-width: 340px;
   height: 100%;
   background: linear-gradient(197.64deg, #ffffff 4.36%, #bde7dc 100%);
 }
@@ -39,21 +40,8 @@
   font-weight: 700;
 }
 
-@media (max-width: 850px) {
-  .headerContainer {
-    width: 700px;
-  }
-}
-
-@media (max-width: 700px) {
-  .headerContainer {
-    width: 550px;
-  }
-}
-
 @media (max-width: 580px) {
   .headerContainer {
-    width: 440px;
     padding: 2rem 1rem;
     justify-content: space-evenly;
   }
@@ -98,6 +86,8 @@
 .profileButton {
   cursor: pointer;
   transition: filter 0.3s ease;
+  min-width: 35px !important;
+  min-height: 35px !important;
 }
 
 .profileButton:hover {
@@ -186,7 +176,8 @@
   display: flex;
   justify-content: space-between;
   align-items: start;
-  margin-top: 60px;
+  gap: 8px;
+  flex-wrap: wrap;
 }
 
 .sectionTitle {
@@ -201,7 +192,9 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  width: 668px;
+  flex: 1;
+  min-width: 300px;
+  max-width: 720px;
   height: 551px;
 }
 
@@ -224,6 +217,7 @@
   display: flex;
   justify-content: space-between;
   width: 100%;
+  gap: 8px;
 }
 
 .counts {
@@ -331,7 +325,7 @@
 
 .container_h3 {
   background-color: #ffffff;
-  width: 310px;
+  flex: 1;
   height: 89px;
   display: flex;
   justify-content: center;
@@ -355,31 +349,25 @@
   font-size: 20px;
 }
 
-@media (max-width: 800px) {
+@media (max-width: 956px) {
   .main_container_div {
-    grid-template-columns: 1fr;
     padding: 24px;
-    width: 600px;
-    place-items: center;
+  }
+  .linkPrimeiroBox {
+    align-self: center;
   }
   .main_container_p2 {
-    font-size: 48px;
+    font-size: 40px;
     line-height: 48px;
+  }
+  .horas_declaradas_container {
+    padding: 16px 20px;
   }
 }
 
 @media (max-width: 620px) {
-  .main_container_div {
-    width: 520px;
-  }
   .sectionTitle {
     padding-bottom: 48px;
-  }
-}
-
-@media (max-width: 550px) {
-  .main_container_div {
-    width: 440px;
   }
 }
 
@@ -419,18 +407,6 @@
     max-width: 90%;
   }
 
-  .aside_container {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: start;
-    margin-top: 60px;
-  }
-
-  .mainContainer {
-    width: 640px;
-  }
-
   .h3__text_horas {
     font-size: 16px;
   }
@@ -438,32 +414,10 @@
   .enabledButton,
   .h3__text {
     font-size: 16px;
-  }
-
-  .container_h3 {
-    width: 290px;
-  }
-}
-
-@media (max-width: 1452px) {
-  .mainContainer {
-    width: 600px;
   }
 }
 
 @media (max-width: 1388px) {
-  .aside_container {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: start;
-    margin-top: 60px;
-  }
-
-  .mainContainer {
-    width: 550px;
-  }
-
   .h3__text_horas {
     font-size: 16px;
   }
@@ -471,9 +425,5 @@
   .enabledButton,
   .h3__text {
     font-size: 16px;
-  }
-
-  .container_h3 {
-    width: 250px;
   }
 }

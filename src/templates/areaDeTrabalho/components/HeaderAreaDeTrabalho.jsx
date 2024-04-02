@@ -78,6 +78,8 @@ const HeaderAreaDeTrabalho = () => {
             alt="Botão de acesso ao login com imagem de uma seta dentro de uma porta"
             onClick={logOut}
             className={styles.logoutButton}
+            width={36}
+            height={36}
           />
         </div>
       </header>
