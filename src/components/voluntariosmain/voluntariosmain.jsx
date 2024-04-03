@@ -71,9 +71,11 @@ function VoluntariosMain() {
                 trabalhar em equipe.
               </p>
               <a
-                href="src/templates/voluntarios/Codigo_de_Etica_palavras_de_paz.pdf"
-                download="Codigo_de_Etica_palavras_de_paz.pdf"
+                href="arquivosDownload/CodigoDeEtica.pdf"
+                download
                 target="_blank"
+                rel="noreferrer"
+                className="link-codigo-etica"
               >
                 Código de Ética do Palavras de Paz
               </a>
