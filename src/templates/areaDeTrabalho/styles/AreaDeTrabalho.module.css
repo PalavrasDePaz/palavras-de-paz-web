@@ -40,17 +40,25 @@
   font-weight: 700;
 }
 
-@media (max-width: 580px) {
+@media (max-width: 640px) {
   .headerContainer {
-    padding: 2rem 1rem;
-    justify-content: space-evenly;
+    padding: 2rem 3rem;
+  }
+}
+
+@media (max-width: 460px) {
+  .headerContainer {
+    padding: 1rem 1rem;
   }
 }
 
 .headerBtnLogin {
   display: flex;
   align-items: center;
-  gap: 32px;
+  justify-content: space-between;
+  flex: 1;
+  min-width: 180px;
+  max-width: 226px;
 }
 
 .headerModal {
@@ -76,6 +84,9 @@
 }
 
 .logoutButton {
+  position: relative;
+  width: 36px;
+  height: 36px;
   cursor: pointer;
   transition: filter 0.3s ease;
 }
@@ -84,10 +95,11 @@
 }
 
 .profileButton {
+  position: relative;
+  width: 35px;
+  height: 35px;
   cursor: pointer;
   transition: filter 0.3s ease;
-  min-width: 35px !important;
-  min-height: 35px !important;
 }
 
 .profileButton:hover {
@@ -176,7 +188,7 @@
   display: flex;
   justify-content: space-between;
   align-items: start;
-  gap: 8px;
+  gap: 16px;
   flex-wrap: wrap;
 }
 
