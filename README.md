@@ -25,7 +25,7 @@ Site construído e mantido por pessoas voluntárias, com times responsáveis pel
 * Autenticação de usuários
 * Cadastro de usuários
 * Edição do perfil do usuário
-* Exibição de dados sobre as pessoas auxiliadas pela ONG, bem como de dados referentes às atuvidades das pessoas voluntárias;
+* Exibição de dados sobre as pessoas auxiliadas pela ONG, bem como de dados referentes às atividades das pessoas voluntárias;
 * Formulários dinâmicos para preenchimento pelas pessoas voluntárias
   
 
