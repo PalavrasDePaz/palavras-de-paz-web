@@ -32,24 +32,22 @@ export default function PrimeiroBox({ idVol }: IdVol) {
 
   const isRequestSuccessful = useRequestStatus(idVol); // Use your custom hook
 
-  function isWithinFirstFiveDays() {
-    const fifthDay = 5;
+  function isWithinFirstTenDays() {
+    const tenthDay = 10;
     const currentDate = new Date();
-    return currentDate.getDate() <= fifthDay;
+    return currentDate.getDate() <= tenthDay;
   }
 
-  const isWithinFirstFiveDaysAndRequestUnsuccessful = () =>
-    isWithinFirstFiveDays() && !isRequestSuccessful;
+  const isWithinFirstTenDaysAndRequestUnsuccessful = () =>
+    isWithinFirstTenDays() && !isRequestSuccessful;
 
   const [buttonText, setButtonText] = useState(
-    isWithinFirstFiveDaysAndRequestUnsuccessful() ? "Declarar" : "Indisponível"
+    isWithinFirstTenDaysAndRequestUnsuccessful() ? "Declarar" : "Indisponível"
   );
 
   useEffect(() => {
     setButtonText(
-      isWithinFirstFiveDaysAndRequestUnsuccessful()
-        ? "Declarar"
-        : "Indisponível"
+      isWithinFirstTenDaysAndRequestUnsuccessful() ? "Declarar" : "Indisponível"
     );
   }, [isRequestSuccessful]);
 
@@ -60,7 +58,7 @@ export default function PrimeiroBox({ idVol }: IdVol) {
   };
 
   const buttonClassName =
-    isWithinFirstFiveDays() && isWithinFirstFiveDaysAndRequestUnsuccessful()
+    isWithinFirstTenDays() && isWithinFirstTenDaysAndRequestUnsuccessful()
       ? `${styles.declarar_horas_btn} ${styles.enabledButton}`
       : styles.declarar_horas_btn;
 
@@ -89,7 +87,7 @@ export default function PrimeiroBox({ idVol }: IdVol) {
         <h3 className={styles.h3__text_horas}>{monthText}</h3>
         <button
           className={buttonClassName}
-          disabled={!isWithinFirstFiveDays()}
+          disabled={!isWithinFirstTenDays()}
           onClick={handleButtonClick}
         >
           {buttonText}
