@@ -22,7 +22,6 @@ function Doacoes() {
             </p>
 
             <p>
-              {" "}
               Também nos tornamos mais justos e igualitários, pois ao contribuir
               para suprir as necessidades do próximo, contribuimos para a
               melhora das instituições, das pessoas e da sociedade como um todo.

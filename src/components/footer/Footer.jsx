@@ -4,7 +4,8 @@ import Modal from "react-bootstrap/Modal";
 
 import Box from "../box";
 import ButtonForm from "../fixedbutton/ButtonForm";
-import VoluntarioFooter from "../voluntariofooter/VoluntarioFooter";
+
+import VoluntarioFooter from "./VoluntarioFooter";
 
 function Footer() {
   const [smShow, setSmShow] = useState(false);

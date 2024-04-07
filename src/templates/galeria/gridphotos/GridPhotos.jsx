@@ -1,8 +1,8 @@
 import React from "react";
 import Image from "next/image";
 
-import Box from "../box";
-import Button from "../button/button";
+import Box from "../../../components/box";
+import Button from "../../../components/button/button";
 
 function GridPhotos() {
   return (
