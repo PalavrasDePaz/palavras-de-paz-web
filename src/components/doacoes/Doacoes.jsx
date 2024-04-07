@@ -12,7 +12,7 @@ import Center from "../center";
 function Doacoes() {
   return (
     <Center>
-      <container className="doacao-main">
+      <div className="doacao-main">
         <div className="doacao-main-texto">
           <div className="doacao-texto">
             <p>
@@ -37,12 +37,12 @@ function Doacoes() {
         <div className="doacoes-image">
           <Image
             src="/static/images/doacoes.png"
-            width="421px"
-            height="494px"
-            alt=""
+            width={456}
+            height={680}
+            alt="mão entregando um papel a outra mão"
           />
         </div>
-      </container>
+      </div>
       <div />
       <div className="doacoes-texto-icones doacoes-icones">
         <div className="text-center">
@@ -80,7 +80,7 @@ function Doacoes() {
         </div>
       </Link>
 
-      <container>
+      <div>
         <div className="doacoes-atraves text-center">
           <p>DOE ATRAVÉS</p>
         </div>
@@ -90,7 +90,7 @@ function Doacoes() {
 
           <div className="doacoes-images-empresas ">
             <h1 className="text-black">Transferência</h1>
-            <div className="doacoes-images-empresas d-flex justify-content-center m-5 border-0">
+            <div className="doacoes-images-empresas d-flex justify-content-center border-0">
               <h2>Itau ag: 0646</h2>
               <h2>conta: 66704-8</h2>
               <h2>CNPJ:</h2>
@@ -98,16 +98,16 @@ function Doacoes() {
             </div>
           </div>
         </div>
-      </container>
+      </div>
 
-      <container className="banner-paz">
+      <div className="banner-paz">
         <div className="doacoes-banner-texto">
           <p>"Eu quero ver a paz dançando no coração de todo ser humano."</p>
           <p>Prem Rawat</p>
         </div>
-      </container>
+      </div>
 
-      <container className="doacoes-contas">
+      <div className="doacoes-contas">
         <a href="/doacoes/relatorio-semestral-2023-01">
           <p>Prestação de contas</p>
         </a>
@@ -118,7 +118,7 @@ function Doacoes() {
             Seja um voluntário
           </Button>
         </div>
-      </container>
+      </div>
     </Center>
   );
 }
