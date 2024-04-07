@@ -5,7 +5,8 @@ import Center from "../../components/center";
 import FixedButton from "../../components/fixedbutton/FixedButton";
 import Footer from "../../components/footer/Footer";
 import Header from "../../components/header/Header";
-import OPrograma from "../../components/programa/OPrograma";
+
+import OPrograma from "./programa/OPrograma";
 
 function ProgramaTemplate() {
   return (
