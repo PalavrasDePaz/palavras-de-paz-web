@@ -3,9 +3,9 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 
-import LogoVoluntarios from "../../../public/static/images/voluntarios.png";
-// import cadastroTemplate from "../../templates/cadastro/CadastroTemplate";
-import Center from "../center";
+// eslint-disable-next-line import/no-unresolved
+import LogoVoluntarios from "../../../../public/static/images/voluntarios.png";
+import Center from "../../../components/center";
 
 import styles from "./VoluntariosMain.module.css";
 

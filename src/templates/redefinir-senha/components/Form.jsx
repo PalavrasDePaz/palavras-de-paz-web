@@ -75,9 +75,7 @@ function Form() {
     const message = ERROR_MESSAGES[errorMessage] || UNEXPECTED_ERROR;
     return (
       <>
-        <p className={styles.formParagraph} style={{ color: "red" }}>
-          {message}
-        </p>
+        <p style={{ color: "red" }}>{message}</p>
         <BackButton />
       </>
     );
@@ -88,11 +86,7 @@ function Form() {
   }
 
   if (isSent) {
-    return (
-      <p className={styles.formParagraph}>
-        Nova senha criada! Redirecionando para login...
-      </p>
-    );
+    return <p>Nova senha criada! Redirecionando para login...</p>;
   }
 
   return (

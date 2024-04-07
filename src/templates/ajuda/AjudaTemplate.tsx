@@ -112,11 +112,7 @@ const HelpForm = () => {
             <label htmlFor="mensagem" className="form-label">
               Mensagem
             </label>
-            <textarea
-              id="mensagem"
-              className={styles.helpFormSectionInputText}
-              {...register("message")}
-            />
+            <textarea id="mensagem" {...register("message")} />
             <ErrorMessage
               showError={errors.message}
               style={styles.inputError}

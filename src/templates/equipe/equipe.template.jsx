@@ -132,7 +132,7 @@ export default function ParceirosTemplate() {
         <Box width="150px" direction="column" align="center" margin="20px 0">
           <Image src={card5} alt="" width="150%" height="150%" />
           <Typography
-            text={["GIANFRANCO BOCCEDI", <br />, "T.I"]}
+            text={["GIANFRANCO BOCCEDI", <br />, "T.I."]}
             fontWeight="bold"
             fontSize="12px"
             textAlign="center"

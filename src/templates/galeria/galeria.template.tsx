@@ -2,8 +2,9 @@ import Banner from "../../components/banner";
 import Center from "../../components/center";
 import FixedButton from "../../components/fixedbutton/FixedButton";
 import Footer from "../../components/footer/Footer";
-import GridPhotos from "../../components/gridphotos/GridPhotos";
 import Header from "../../components/header/Header";
+
+import GridPhotos from "./gridphotos/GridPhotos";
 
 export default function GaleriaTemplate() {
   return (
