@@ -114,6 +114,50 @@ function Partners() {
         </div>
 
         <Box
+          width="80%"
+          margin="24px auto"
+          direction="column"
+          align="center"
+          justify="center"
+          textAlign="center"
+          padding="50px"
+          border="1px solid #B4EFE0"
+        >
+          <Box margin="30px">
+            <h5>
+              Temos acordo de cooperação desde 2011 com a FUNAP em SP e agora
+              com o Governo do Estado de Minas Gerais
+            </h5>
+          </Box>
+          <Box direction="column" textAlign="justify" margin="20px">
+            <Box direction="column" textAlign="left" margin="0 0 50px 0">
+              <p>Data: 01-08-23</p>
+              <p>Vigência: 01-08-26</p>
+            </Box>
+            <p>
+              <strong>Instrumento: </strong>
+              ACORDO DE COOPERAÇÃO N° 03/2023 QUE ENTRE SI CELEBRAM A SECRETARIA
+              DE ESTADO DE JUSTIÇA E SEGURANÇA PÚBLICA SOB FORMA DO DEPARTAMENTO
+              PENITENCIÁRIO DE MINAS GERAIS E A SOCIEDADE DE APOIO AO
+              CONHECIMENTO E PAZ INTERIOR, PARA OS FINS NELE ESPECIFICADOS.
+            </p>
+            <p>
+              <strong>Objeto da parceria: </strong>Constitui objeto do presente
+              ACORDO DE COOPERAÇÃO a mútua cooperação para a realização do
+              Programa de Educação para Paz tem como objeto proporcionar cursos
+              e oficinas de leitura com temas relacionados à Cultura de Paz no
+              intuito de contribuir para a saúde física e mental, melhoria do
+              comportamento e transformação social dos indivíduos privados de
+              liberdade do Sistema Penitenciário de Minas Gerais, conforme Plano
+              de Trabalho.
+            </p>
+            <p>
+              <strong>Valor da parceria: </strong>R$ 0,00
+            </p>
+          </Box>
+        </Box>
+
+        <Box
           direction="column"
           justify="center"
           align="center"
