@@ -39,19 +39,15 @@ const AvaliarCadernos = ({ idvol }: AvaliarCadernosProps) => {
     return response.data;
   };
 
-  const sortedNotebooksReserved = (notebook: INotebooks[]) =>
-    notebook.sort((a, b) => {
-      if (a.reservationDate && b.reservationDate) {
-        return (
-          new Date(a.reservationDate).getTime() -
-          new Date(b.reservationDate).getTime()
-        );
-      }
-      return 0;
-    });
+  const sortedNotebooksReserved = (notebooksParam: INotebooks[]) =>
+    notebooksParam.sort(
+      (a, b) =>
+        new Date(a.reservationDate).getTime() -
+        new Date(b.reservationDate).getTime()
+    );
 
-  const sortedNotebooksNotReserved = (notebook: INotebooks[]) =>
-    notebook.sort((a, b) => {
+  const sortedNotebooksNotReserved = (notebooksParam: INotebooks[]) =>
+    notebooksParam.sort((a, b) => {
       if (a.studentName > b.studentName) {
         return 1;
       }
@@ -62,48 +58,43 @@ const AvaliarCadernos = ({ idvol }: AvaliarCadernosProps) => {
       return 0;
     });
 
+  const updateNotebooksIn = (updatedNotebooks: INotebooks[]) => {
+    const filterReserved = sortedNotebooksReserved(
+      updatedNotebooks.filter((notebook) => notebook.reserved)
+    );
+    const filterNotReserved = sortedNotebooksNotReserved(
+      updatedNotebooks.filter((notebook) => !notebook.reserved)
+    );
+    setNotebooksIn([filterReserved, filterNotReserved].flat());
+  };
+
+  const updateNotebookReservation = (
+    notebookId: number,
+    reserveFlag: boolean
+  ) =>
+    notebooksIn.map((notebook) => {
+      if (notebook.notebookId === notebookId) {
+        return {
+          ...notebook,
+          reserved: reserveFlag,
+        };
+      }
+      return notebook;
+    });
+
   const handleOpenFormulario = () => {
     router.push("/formulario-avaliacao-caderno");
   };
 
   const handleReservation = async (notebookId: number) => {
-    const updatedNotebooks = notebooksIn.map((notebook) => {
-      if (notebook.notebookId === notebookId) {
-        return {
-          ...notebook,
-          reserved: true,
-        };
-      }
-      return notebook;
-    });
-    const filterReserved = sortedNotebooksReserved(
-      updatedNotebooks.filter((notebook) => notebook.reserved)
-    );
-    const filterNotReserved = sortedNotebooksNotReserved(
-      updatedNotebooks.filter((notebook) => !notebook.reserved)
-    );
-    setNotebooksIn([filterReserved, filterNotReserved].flat());
-
+    const updatedNotebooks = updateNotebookReservation(notebookId, true);
+    updateNotebooksIn(updatedNotebooks);
     await putReservationData(notebookId);
   };
 
   const handleRevertReservation = async (notebookId: number) => {
-    const updatedNotebooks = notebooksIn.map((notebook) => {
-      if (notebook.notebookId === notebookId) {
-        return {
-          ...notebook,
-          reserved: false,
-        };
-      }
-      return notebook;
-    });
-    const filterReserved = sortedNotebooksReserved(
-      updatedNotebooks.filter((notebook) => notebook.reserved)
-    );
-    const filterNotReserved = sortedNotebooksNotReserved(
-      updatedNotebooks.filter((notebook) => !notebook.reserved)
-    );
-    setNotebooksIn([filterReserved, filterNotReserved].flat());
+    const updatedNotebooks = updateNotebookReservation(notebookId, false);
+    updateNotebooksIn(updatedNotebooks);
 
     await putRevertReservationData(notebookId);
   };
@@ -114,13 +105,7 @@ const AvaliarCadernos = ({ idvol }: AvaliarCadernosProps) => {
         ...notebook,
         reserved: isReserved(notebook.reservationDate),
       }));
-      const filterReserved = sortedNotebooksReserved(
-        updatedNotebooks.filter((notebook) => notebook.reserved)
-      );
-      const filterNotReserved = sortedNotebooksNotReserved(
-        updatedNotebooks.filter((notebook) => !notebook.reserved)
-      );
-      setNotebooksIn([filterReserved, filterNotReserved].flat());
+      updateNotebooksIn(updatedNotebooks);
     }
   }, [notebooks]);
 
