@@ -14,23 +14,25 @@ export default function HeaderForm() {
   };
   return (
     <header className={styles.headerContainer}>
-      <button className={styles.backIcon} onClick={handleClick}>
-        <Image
-          src={Voltar}
-          alt="imagem de uma seta apontada para a esquerda, 
-          como se fosse sair da porta, na cor preta"
-          width="32px"
-          height="32px"
-        />
+      <button className={styles.back} onClick={handleClick}>
+        <div className={styles.backIcon}>
+          <Image
+            src={Voltar}
+            alt="imagem de uma seta apontada para a esquerda, 
+            como se fosse sair da porta, na cor preta"
+            layout="fill"
+          />
+        </div>
         Voltar
       </button>
-      <Image
-        src={Logo}
-        alt="Logo da organização e logo abaixo está escrito
-      palavras de paz, programa de educação para a paz, com a cor verde"
-        width="333px"
-        height="100px"
-      />
+      <div className={styles.logoIcon}>
+        <Image
+          src={Logo}
+          alt="Logo da organização e logo abaixo está escrito
+          palavras de paz, programa de educação para a paz, com a cor verde"
+          layout="fill"
+        />
+      </div>
     </header>
   );
 }
