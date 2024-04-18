@@ -106,6 +106,7 @@ const FormAvalCadTemplate: React.FC<FormularioAvaliacaoCadernoProps> = ({
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    // test
     // adicioar lógica para enviar ao backend
     // onClose();
   };
