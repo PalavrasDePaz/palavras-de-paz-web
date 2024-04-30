@@ -22,6 +22,7 @@ type OpenFormularioProps = {
   studentId: number;
   classId: number;
   notebookId: number;
+  reservationDate: string;
 };
 
 const AvaliarCadernos = ({ idvol }: AvaliarCadernosProps) => {
@@ -42,11 +43,12 @@ const AvaliarCadernos = ({ idvol }: AvaliarCadernosProps) => {
     studentId,
     classId,
     notebookId,
+    reservationDate,
   }: OpenFormularioProps) => {
     localStorage.removeItem("form");
     router.push({
       pathname: "/formulario-avaliacao-caderno",
-      query: { studentName, studentId, classId, notebookId },
+      query: { studentName, studentId, classId, notebookId, reservationDate },
     });
   };
 
@@ -74,6 +76,7 @@ const AvaliarCadernos = ({ idvol }: AvaliarCadernosProps) => {
       }));
       setNotebooksIn(updatedNotebooks);
     }
+    console.log(notebooksIn);
   }, [notebooks]);
 
   return (
@@ -161,6 +164,7 @@ const AvaliarCadernos = ({ idvol }: AvaliarCadernosProps) => {
                         studentId,
                         classId,
                         notebookId,
+                        reservationDate,
                       })}
                   >
                     {preencher}

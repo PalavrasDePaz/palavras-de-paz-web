@@ -36,7 +36,14 @@ const FormAvalCadTemplate: React.FC<FormularioAvaliacaoCadernoProps> = ({
   const userEmail = useUserEmail();
   const { data: user } = useGetUser(userEmail);
 
-  const { studentName, studentId, classId, notebookId } = router.query;
+  const { studentName, studentId, classId, notebookId, reservationDate } =
+    router.query;
+
+  const onCloseForm = () => {
+    setTimeout(() => {
+      window.location.href = "/area-de-trabalho";
+    }, 1);
+  };
 
   const [formData, setFormData] = useState({
     ...INITIALSTATE,
@@ -97,8 +104,8 @@ const FormAvalCadTemplate: React.FC<FormularioAvaliacaoCadernoProps> = ({
     e.preventDefault();
     mutateEvalForm({
       data: {
-        reservationDate: "2024-04-29T13:40:10.790Z",
-        evaluatedDate: "2024-04-29T13:40:10.790Z",
+        reservationDate: reservationDate as string,
+        evaluatedDate: new Date().toISOString(),
         subject1: formData.question1.question1.value,
         subject2: formData.question1.question2.value,
         subject3: formData.question1.question3.value,
@@ -129,6 +136,7 @@ const FormAvalCadTemplate: React.FC<FormularioAvaliacaoCadernoProps> = ({
       },
       notebookId: notebookId as string,
     });
+    onCloseForm();
   };
 
   return (
