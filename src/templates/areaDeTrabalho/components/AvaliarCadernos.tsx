@@ -76,7 +76,6 @@ const AvaliarCadernos = ({ idvol }: AvaliarCadernosProps) => {
       }));
       setNotebooksIn(updatedNotebooks);
     }
-    console.log(notebooksIn);
   }, [notebooks]);
 
   return (
