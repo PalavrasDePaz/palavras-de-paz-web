@@ -28,9 +28,7 @@ interface FormularioAvaliacaoCadernoProps {
   onClose: () => void;
 }
 
-const FormAvalCadTemplate: React.FC<FormularioAvaliacaoCadernoProps> = ({
-  onClose,
-}) => {
+const FormAvalCadTemplate: React.FC<FormularioAvaliacaoCadernoProps> = () => {
   const router = useRouter();
 
   const userEmail = useUserEmail();
@@ -242,5 +240,4 @@ const FormAvalCadTemplate: React.FC<FormularioAvaliacaoCadernoProps> = ({
   );
 };
 
-FormAvalCadTemplate.propTypes = { onClose: PropTypes.func.isRequired };
 export default FormAvalCadTemplate;
