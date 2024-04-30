@@ -38,6 +38,33 @@ const AvaliarCadernos = ({ idvol }: AvaliarCadernosProps) => {
     return response.data;
   };
 
+  const putRevertReservationData = async (notebookId: number) => {
+    const reserveData = { idvol, notebookId };
+    const response = await api.put(
+      `/notebooks/revert-reservation/${notebookId}`,
+      reserveData
+    );
+    return response.data;
+  };
+
+  const sortedNotebooksReserved = (notebooksParam: INotebooks[]) =>
+    notebooksParam.sort(
+      (a, b) =>
+        new Date(a.reservationDate).getTime() -
+        new Date(b.reservationDate).getTime()
+    );
+
+  const sortedNotebooksNotReserved = (notebooksParam: INotebooks[]) =>
+    notebooksParam.sort((a, b) => {
+      if (a.studentName > b.studentName) {
+        return 1;
+      }
+      if (a.studentName < b.studentName) {
+        // eslint-disable-next-line no-magic-numbers
+        return -1;
+      }
+      return 0;
+    });
   const handleOpenFormulario = ({
     studentName,
     studentId,
@@ -52,20 +79,41 @@ const AvaliarCadernos = ({ idvol }: AvaliarCadernosProps) => {
     });
   };
 
-  const handleReservation = async (notebookId: number) => {
-    const updatedNotebooks = notebooksIn.map((notebook) => {
+  const updateNotebooksIn = (updatedNotebooks: INotebooks[]) => {
+    const filterReserved = sortedNotebooksReserved(
+      updatedNotebooks.filter((notebook) => notebook.reserved)
+    );
+    const filterNotReserved = sortedNotebooksNotReserved(
+      updatedNotebooks.filter((notebook) => !notebook.reserved)
+    );
+    setNotebooksIn([filterReserved, filterNotReserved].flat());
+  };
+
+  const updateNotebookReservation = (
+    notebookId: number,
+    reserveFlag: boolean
+  ) =>
+    notebooksIn.map((notebook) => {
       if (notebook.notebookId === notebookId) {
         return {
           ...notebook,
-          reserved: true,
+          reserved: reserveFlag,
         };
       }
       return notebook;
     });
 
-    setNotebooksIn(updatedNotebooks);
-
+  const handleReservation = async (notebookId: number) => {
+    const updatedNotebooks = updateNotebookReservation(notebookId, true);
+    updateNotebooksIn(updatedNotebooks);
     await putReservationData(notebookId);
+  };
+
+  const handleRevertReservation = async (notebookId: number) => {
+    const updatedNotebooks = updateNotebookReservation(notebookId, false);
+    updateNotebooksIn(updatedNotebooks);
+
+    await putRevertReservationData(notebookId);
   };
 
   useEffect(() => {
@@ -74,7 +122,7 @@ const AvaliarCadernos = ({ idvol }: AvaliarCadernosProps) => {
         ...notebook,
         reserved: isReserved(notebook.reservationDate),
       }));
-      setNotebooksIn(updatedNotebooks);
+      updateNotebooksIn(updatedNotebooks);
     }
   }, [notebooks]);
 
@@ -126,6 +174,7 @@ const AvaliarCadernos = ({ idvol }: AvaliarCadernosProps) => {
                       className={styles.toggle}
                       id={studentName}
                       type="checkbox"
+                      onChange={() => handleRevertReservation(notebookId)}
                       checked
                     />
                     <label htmlFor={studentName} className={styles.switch}>

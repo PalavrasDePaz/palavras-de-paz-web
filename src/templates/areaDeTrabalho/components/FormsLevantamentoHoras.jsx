@@ -24,7 +24,7 @@ function FormLvntHoras() {
 
   function isFormRenderable() {
     const actualDate = new Date();
-    const maxDays = 5;
+    const maxDays = 10;
     const actualDay = actualDate.getDate();
     return actualDay <= maxDays && formsResponded !== "responded";
   }

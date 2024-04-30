@@ -1,14 +1,88 @@
-.externalLink {
-  width: 70%;
-  margin: 2rem auto;
-  border: 1px solid #18ca99;
-  border-radius: 0.625rem;
-  padding: 3rem;
+.pubs {
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: flex-start;
+  align-items: center;
 }
 
-@media (max-width: 600px) {
-  .externalLink {
-    width: 90%;
-    padding: 1rem;
+.externalLink {
+  width: 100%;
+  text-decoration: none;
+}
+
+.externalLink:last-child .pubContainer {
+  margin-top: 32px;
+}
+
+.pubContainer {
+  width: 80%;
+  margin: 16px auto;
+  border: 1px solid #18ca99;
+  border-radius: 0.625rem;
+  padding: 28px;
+  display: flex;
+  flex-wrap: wrap-reverse;
+}
+
+@media (max-width: 720px) {
+  .pubContainer {
+    width: 100%;
+    padding: 8px;
+    border: none;
+    border-radius: 0;
+    margin: 16px auto;
   }
+}
+
+#pubImageWrapper {
+  width: 200px;
+  height: 150px;
+  position: relative;
+}
+
+.pubInformations {
+  display: inline-block;
+
+  max-width: calc(
+    97% - 200px
+  ); /* 100% - 3% (do margin-left) - 200px (da imagem) */
+  margin-left: 3%;
+  height: 150px;
+}
+
+@media (max-width: 576px) {
+  .pubInformations {
+    min-width: 100%;
+    margin-left: 0;
+  }
+}
+
+.pubInformations span {
+  color: #999;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.pubInformations h1 {
+  color: #000;
+  font-size: 18px;
+  font-weight: 500;
+  margin: 6px 0;
+
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.pubInformations p {
+  color: #000;
+  font-size: 14px;
+  font-weight: 400;
+  margin: 0;
+
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }

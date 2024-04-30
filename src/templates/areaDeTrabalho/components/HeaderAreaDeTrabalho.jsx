@@ -56,29 +56,33 @@ const HeaderAreaDeTrabalho = () => {
           src={Logo}
           alt="Logo da organização e logo abaixo está escrito
           palavras de paz, programa de educação para a paz, com a cor verde"
-          width="333px"
+          width="180px"
           height="90px"
         />
         <div className={styles.headerBtnLogin}>
           <Link href="/pagina-de-perfil">
-            <Image
-              src={Profile}
-              alt="Botão de acesso à página de perfil do usuário."
-              width={35}
-              height={35}
-              className={styles.profileButton}
-            />
+            <div className={styles.profileButton}>
+              <Image
+                src={Profile}
+                alt="Botão de acesso à página de perfil do usuário."
+                width={35}
+                height={35}
+                layout="fill"
+              />
+            </div>
           </Link>
           <button onClick={openModal} className={styles.openModal}>
             Ajuda?
           </button>
           <Modal isOpen={isModalOpen} onClose={closeModal} />
-          <Image
-            src={Login}
-            alt="Botão de acesso ao login com imagem de uma seta dentro de uma porta"
-            onClick={logOut}
-            className={styles.logoutButton}
-          />
+          <div className={styles.logoutButton}>
+            <Image
+              src={Login}
+              alt="Botão de acesso ao login com imagem de uma seta dentro de uma porta"
+              onClick={logOut}
+              layout="fill"
+            />
+          </div>
         </div>
       </header>
     </div>

@@ -24,34 +24,31 @@ function DoacaoPix() {
           height="277%"
           alt=""
         />
-        <table>
-          <tr>
+        <div
+          className="d-flex justify-content-center flex-column 
+            align-items-center mx-2"
+        >
+          <Image
+            src="/static/images/cnpj.png"
+            width="320%"
+            height="75%"
+            alt=""
+          />
+          <button
+            className="btn-copy mt-2"
+            onClick={() => {
+              copiarClipBoard();
+            }}
+          >
             <Image
-              src="/static/images/cnpj.png"
-              width="320%"
-              height="75%"
+              src="/static/images/icons/copyIcon.svg"
+              width="30px"
+              height="30px"
               alt=""
             />
-          </tr>
-          <tr className="d-flex justify-content-center">
-            <button
-              className="btn-copy mt-2"
-              onClick={() => {
-                copiarClipBoard();
-              }}
-            >
-              <Image
-                src="/static/images/icons/copyIcon.svg"
-                width="30px"
-                height="30px"
-                alt=""
-              />
-            </button>
-          </tr>
-          <tr className="d-flex justify-content-center">
-            <ToastContainer />
-          </tr>
-        </table>
+          </button>
+          <ToastContainer />
+        </div>
       </div>
     </div>
   );
