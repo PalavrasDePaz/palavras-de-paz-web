@@ -6,19 +6,33 @@
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
 }
 
-.backIcon {
+.back {
   display: flex;
   gap: 3px;
   cursor: pointer;
   align-items: center;
 }
 
+.backIcon {
+  width: 22px;
+  height: 22px;
+  position: relative;
+}
+
 .line {
   margin-bottom: 4rem;
 }
 
+.logoIcon {
+  height: auto;
+  min-width: 200px;
+  max-width: 320px;
+  position: relative;
+  aspect-ratio: 337/116;
+}
+
 @media (max-width: 768px) {
-  .backIcon {
+  .back {
     font-size: 1rem;
     padding-inline: 0;
   }
