@@ -5,6 +5,7 @@
   text-align: center;
   margin: 0 auto;
   max-width: 1300px;
+  width: 100%;
 }
 
 .avaliar_section h1 {
@@ -133,10 +134,6 @@
 }
 
 @media (max-width: 1300px) {
-  .avaliar_itens {
-    width: 1120px;
-  }
-
   .avaliarRedacoes_titles {
     padding-right: 4px;
   }
@@ -151,10 +148,6 @@
 }
 
 @media (max-width: 1130px) {
-  .avaliar_itens {
-    width: 889.8px;
-  }
-
   .avaliarRedacoes_titles {
     grid-template-columns: 20px 1.2fr repeat(3, 1fr) 1.2fr;
     gap: 10px;
@@ -168,10 +161,6 @@
 }
 
 @media (max-width: 900px) {
-  .avaliar_itens {
-    width: 771.8px;
-  }
-
   .avaliarRedacoes_titles h2 {
     font-size: 18px;
     padding-inline: 12px;
@@ -194,10 +183,6 @@
 }
 
 @media (max-width: 800px) {
-  .avaliar_itens {
-    width: 600px;
-  }
-
   .avaliarRedacoes_titles h2 {
     font-size: 16px;
   }
@@ -215,10 +200,6 @@
 }
 
 @media (max-width: 620px) {
-  .avaliar_itens {
-    width: 520px;
-  }
-
   .avaliarRedacoes_titles {
     grid-template-columns: 20px 110px 80px 80px 80px 110px;
     gap: 2px;
@@ -248,10 +229,6 @@
 }
 
 @media (max-width: 550px) {
-  .avaliar_itens {
-    width: 440px;
-  }
-
   .avaliarRedacoes_titles {
     grid-template-columns: 10px 100px 70px 70px 70px 100px;
     gap: 0px;
@@ -277,10 +254,6 @@
 }
 
 @media (max-width: 550px) {
-  .avaliarRedacoes_status p {
-    font-size: 10px;
-  }
-
   .avaliarRedacoes_status {
     grid-template-columns: 10px 90px 70px 65px 80px 70px;
     gap: 2px;
@@ -288,6 +261,10 @@
 
   .avaliarRedacoes_status p {
     padding-inline: 4px;
+  }
+
+  .avaliar_section h1 {
+    font-size: 28px;
   }
 }
 

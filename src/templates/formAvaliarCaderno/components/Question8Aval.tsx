@@ -1,5 +1,7 @@
 import React from "react";
 
+import { optionsQuestion8 } from "../helpers/avalQuestions";
+
 import styles from "../styles/QuestionAval.module.css";
 
 interface Question8AvalProps {
@@ -14,7 +16,7 @@ const Question8Aval: React.FC<Question8AvalProps> = ({
     <label htmlFor="question8" className={styles.label}>
       Resposta do(a) aluno(a) - Você é?
       <div className={styles.optionContainer}>
-        {["Masculino", "Feminino", "Outros", "Não Sei"].map((gender) => (
+        {optionsQuestion8.map((gender) => (
           <label key={gender} className={styles.radioLabel}>
             <input
               className={styles.radioInput}

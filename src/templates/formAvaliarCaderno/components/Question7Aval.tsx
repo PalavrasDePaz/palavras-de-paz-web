@@ -1,5 +1,7 @@
 import React from "react";
 
+import { optionsQuestion7 } from "../helpers/avalQuestions";
+
 import styles from "../styles/QuestionAval.module.css";
 
 interface Question7AvalProps {
@@ -14,7 +16,7 @@ const Question7Aval: React.FC<Question7AvalProps> = ({
     <label htmlFor="question7" className={styles.label}>
       Resposta do(a) aluno(a) - Quantos ano você tem?
       <div className={styles.optionContainer}>
-        {["Até 35 anos", "36 a 55 anos", "Mais de 55"].map((ageRange) => (
+        {optionsQuestion7.map((ageRange) => (
           <label key={ageRange} className={styles.radioLabel}>
             <input
               className={styles.radioInput}
