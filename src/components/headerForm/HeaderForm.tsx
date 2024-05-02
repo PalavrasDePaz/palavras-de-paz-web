@@ -12,6 +12,7 @@ export default function HeaderForm() {
   const handleClick = () => {
     push("/area-de-trabalho");
   };
+
   return (
     <header className={styles.headerContainer}>
       <button className={styles.back} onClick={handleClick}>
