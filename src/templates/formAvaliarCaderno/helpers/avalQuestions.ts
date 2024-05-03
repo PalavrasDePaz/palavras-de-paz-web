@@ -101,12 +101,12 @@ const optionsQuestion2 = [
   "Neutro",
   "Improvável",
   "Muito Improvável",
-  "Não Sei",
+  "Não sei",
 ];
 
 const optionsQuestion7 = ["Até 35 anos", "36 a 55 anos", "Mais de 55"];
 
-const optionsQuestion8 = ["Masculino", "Feminino", "Outros", "Não Sei"];
+const optionsQuestion8 = ["Masculino", "Feminino", "Outros", "Não consta"];
 
 const optionsQuestion9 = [
   "Ensino Fundamental Incompleto",
@@ -115,7 +115,7 @@ const optionsQuestion9 = [
   "Ensino Médio Completo",
   "Ensino Superior Incompleto",
   "Ensino Superior Completo",
-  "Não Consta",
+  "Não consta",
 ];
 
 export {

@@ -12,7 +12,7 @@ const Question9Aval: React.FC<Question9AvalProps> = ({
   handleChangeQuestions,
 }) => (
   <>
-    <h3 className={styles.sectionTitle}>Avaliação da Questão 9</h3>
+    <h3 className={styles.sectionTitle}>Questão 9</h3>
     <label htmlFor="question9" className={styles.label}>
       Resposta do(a) aluno(a) - Qual seu grau de instrução?
       <div className={styles.optionContainer}>

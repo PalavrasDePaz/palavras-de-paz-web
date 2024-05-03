@@ -23,8 +23,8 @@ const QuestionGroup: React.FC<QuestionGroupProps> = ({ onChange }) => {
     <>
       <h3 className={styles.sectionTitle}>Avaliação da Questão 1</h3>
       <label htmlFor="question1" className={styles.label}>
-        Classifique as afirmações conforme a tabela abaixo de acordo indicado no
-        caderno preenchido pelo aluno(a):
+        Classifique as afirmações conforme indicado no caderno preenchido pelo
+        aluno(a):
         {optionsQuestion1.map((question, index) => (
           <div key={question.id} id={styles.q1Container}>
             <label className={styles.label}>
