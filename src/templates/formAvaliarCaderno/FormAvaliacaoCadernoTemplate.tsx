@@ -59,6 +59,7 @@ const FormAvalCadTemplate: React.FC<FormularioAvaliacaoCadernoProps> = () => {
       setFormData(data);
     }
     localStorage.setItem("form", JSON.stringify(formData));
+    console.log(notebookId);
   }, []);
 
   const handleQuestionChange = (
