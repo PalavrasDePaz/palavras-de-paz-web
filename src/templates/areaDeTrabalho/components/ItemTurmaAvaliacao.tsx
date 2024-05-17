@@ -1,6 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import { fi } from "date-fns/locale";
 
 import DownloadImage from "../../../../public/static/images/icons/download.svg";
@@ -23,6 +24,15 @@ type ItemTurmaAvaliacaoProps = {
   reserved: boolean;
 };
 
+type OpenFormularioProps = {
+  idClass: number;
+  idVol: number;
+  Place: string;
+  DateReserved: string;
+  DateConcluded: string;
+  Reserved: boolean;
+};
+
 function ItemTurmaAvaliacao({
   essaysIn,
   setEssaysIn,
@@ -33,6 +43,23 @@ function ItemTurmaAvaliacao({
   dateConcluded,
   reserved,
 }: ItemTurmaAvaliacaoProps) {
+  const router = useRouter();
+
+  const handleOpenFormulario = ({
+    idClass,
+    idVol,
+    Place,
+    DateReserved,
+    DateConcluded,
+    Reserved,
+  }: OpenFormularioProps) => {
+    localStorage.removeItem("form");
+    router.push({
+      pathname: "/formulario-avaliacao-redacao",
+      query: { idClass, idVol, Place, DateReserved, DateConcluded, Reserved },
+    });
+  };
+
   const sortedEssayReserved = (essays: IEssays[]) =>
     essays.sort(
       (a, b) =>
@@ -148,11 +175,20 @@ function ItemTurmaAvaliacao({
             </button>
           </div>
           {reserved ? (
-            <Link href="area-de-trabalho">
-              <p className={styles.avaliarRedacoes_status_preencher_on}>
-                {preencher}
-              </p>
-            </Link>
+            <button
+              className={styles.avaliarRedacoes_status_preencher_on}
+              onClick={() =>
+                handleOpenFormulario({
+                  idClass: idclass,
+                  idVol: idvol,
+                  Place: place,
+                  DateReserved: dateReserved,
+                  DateConcluded: dateConcluded,
+                  Reserved: reserved,
+                })}
+            >
+              {preencher}
+            </button>
           ) : (
             <p className={styles.avaliarRedacoes_status_p5}>{preencher}</p>
           )}

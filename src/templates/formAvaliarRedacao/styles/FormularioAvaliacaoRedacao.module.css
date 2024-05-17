@@ -1,0 +1,98 @@
+.headerContainer {
+  background: hsla(163, 79%, 44%, 1);
+  height: 136px;
+  display: flex;
+  place-items: center;
+  justify-content: center;
+  margin-bottom: 64px;
+}
+
+.headerContainer h1 {
+  color: var(--Branco, #fff);
+  text-align: right;
+  /* Títulos */
+  font-family: Baloo;
+  font-size: 56px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  letter-spacing: 1.12px;
+}
+
+.mainContainer {
+  margin: 0 6rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.subtitle {
+  color: var(--Preto, #444);
+  /* GG Bold */
+  font-family: Open Sans;
+  font-size: 36px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  letter-spacing: 0.72px;
+  width: 100%;
+}
+.sectionContainer {
+  background-color: var(--Cinza-Claro, #f2f2f2);
+  padding: 2.5rem;
+  position: relative;
+  margin-top: 2.5rem;
+  border-radius: 5px;
+}
+
+.sectionContainer div {
+  display: flex;
+  justify-content: space-between;
+  margin: 0.75rem 0;
+}
+.sectionContainer textarea,
+.sectionContainer input {
+  margin-top: 0.5rem;
+}
+
+.sectionContainer:first-child div {
+  gap: 4rem;
+  margin-top: 1.5rem;
+}
+
+.sectionTitle {
+  color: #21aa85;
+  font-family: Open Sans;
+  font-size: 36px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  letter-spacing: 0.72px;
+  position: absolute;
+  top: -25px;
+  left: 0;
+}
+
+.label {
+  color: var(--Preto, #444);
+  font-family: Open Sans;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  letter-spacing: 0.48px;
+  margin-bottom: 8px;
+  width: 100%;
+}
+
+.input {
+  display: block;
+  color: var(--Cinza-Escuro, #707070);
+  border-radius: 8px;
+  border: 2px solid #21aa85;
+  background: #fff;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  width: 100%;
+  padding: 1rem;
+  font-size: 18px;
+}

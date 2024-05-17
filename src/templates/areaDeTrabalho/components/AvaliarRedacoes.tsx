@@ -25,6 +25,7 @@ export default function AvaliarRedacoes({ idvol }: AvaliarRedacoesProps) {
       setEssaysIn(updatedEssays);
     }
   }, [essays]);
+  console.log(essaysIn);
 
   return (
     <section className={styles.avaliar_section}>
