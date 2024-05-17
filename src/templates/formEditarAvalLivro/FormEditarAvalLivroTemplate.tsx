@@ -1,4 +1,5 @@
 import { ChangeEvent, useEffect, useState } from "react";
+import { toast } from "react-toastify";
 
 import HeaderForm from "../../components/headerForm/HeaderForm";
 import useGetBookEvalForm from "../../hooks/useGetBookEval";
@@ -31,6 +32,7 @@ const initialData: BookEvalForm = {
   syntheticAvaliation: "",
   grammarAvaliation: "",
   observedHistories: "",
+  readHistories: [],
 };
 
 export default function FormEditarAvalLivroTemplate() {
@@ -39,7 +41,11 @@ export default function FormEditarAvalLivroTemplate() {
   const [evaluationId, setEvaluationId] = useState<string | null>(null);
 
   const { data: responseData, isSuccess } = useGetBookEvalForm(evaluationId);
-  const { mutate: mutatePutBookEval } = usePutBookEvalForm();
+  const {
+    mutate: mutatePutBookEval,
+    isSuccess: isMutateSuccess,
+    data: mutateResponseData,
+  } = usePutBookEvalForm();
 
   useEffect(() => {
     const queryParameters = new URLSearchParams(window.location.search);
@@ -51,6 +57,14 @@ export default function FormEditarAvalLivroTemplate() {
       setFormData(responseData.data);
     }
   }, [responseData, isSuccess]);
+
+  useEffect(() => {
+    if (mutateResponseData && isMutateSuccess) {
+      toast.success("Atualizado com sucesso!", {
+        autoClose: 600,
+      });
+    }
+  }, [mutateResponseData, isMutateSuccess]);
 
   const handleSubmit = async () => {
     const formDataToSend = { ...formData } as any;
@@ -69,7 +83,7 @@ export default function FormEditarAvalLivroTemplate() {
     setFormData((prevFormData) => {
       const newData = {
         ...prevFormData,
-        [fieldName]: value,
+        [fieldName]: fieldName === "readHistories" ? value.split("\n") : value,
       };
       return newData;
     });
@@ -200,14 +214,13 @@ export default function FormEditarAvalLivroTemplate() {
             placeholder="Insira a história observação"
             onChange={(event) => handleChange(event, "observedHistories")}
           />
-          {/* <ItemTurma
-              inputType="textarea"
-              label="História relatório"
-              value={formData.historiaRelatorio}
-              placeholder="Insira a história relatório"
-              onChange={(event) =>
-                handleChange(event, "historiaRelatorio")}
-              /> */}
+          <ItemTurma
+            inputType="textarea"
+            label="História relatório"
+            value={formData.readHistories.join("\n")}
+            placeholder="Insira a história relatório"
+            onChange={(event) => handleChange(event, "readHistories")}
+          />
 
           <BtnSubmit onClick={handleSubmit} />
         </section>

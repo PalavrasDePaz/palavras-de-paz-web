@@ -23,6 +23,7 @@ export const bookEditFormSchema = yup.object().shape({
   syntheticAvaliation: yup.string().required(REQUIRED_FIELD),
   grammarAvaliation: yup.string().required(REQUIRED_FIELD),
   observedHistories: yup.string().required(REQUIRED_FIELD),
+  readHistories: yup.array().required(REQUIRED_FIELD),
 });
 
 export type BookEvalForm = yup.InferType<typeof bookEditFormSchema>;
