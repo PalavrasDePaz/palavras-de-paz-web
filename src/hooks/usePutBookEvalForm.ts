@@ -1,21 +1,21 @@
 import { useMutation } from "@tanstack/react-query";
 
 import { api } from "../api";
-import { BookEvalForm } from "../templates/formEditarAvalLivro/schema";
+import { BookEval } from "../templates/formEditarAvalLivro/schema";
 
-type PutBookEvalForm = {
-  data: BookEvalForm;
+type PutBookEval = {
+  data: BookEval;
   evaluationId: string | null;
 };
 
 const putNotebookEvalForm = async (
-  data: BookEvalForm,
+  data: BookEval,
   evaluationId: string | null
 ) => api.put(`/book-evaluations/${evaluationId}`, { ...data });
 
 const usePutBookEvalForm = () =>
   useMutation({
-    mutationFn: ({ data, evaluationId }: PutBookEvalForm) =>
+    mutationFn: ({ data, evaluationId }: PutBookEval) =>
       putNotebookEvalForm(data, evaluationId),
   });
 

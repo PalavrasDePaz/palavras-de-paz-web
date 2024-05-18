@@ -7,11 +7,11 @@ import usePutBookEvalForm from "../../hooks/usePutBookEvalForm";
 import BtnSubmit from "../formEditarTurmaRedacao/components/ButtonSalavarAlteracoes";
 import ItemTurma from "../formEditarTurmaRedacao/components/ItemTurma";
 
-import { BookEvalForm } from "./schema";
+import { BookEval } from "./schema";
 
 import style from "./styles/FormEditarAvalLivro.module.css";
 
-const initialData: BookEvalForm = {
+const initialData: BookEval = {
   readerName: "",
   readerRegistration: 0,
   evaluatorId: 0,
@@ -36,7 +36,7 @@ const initialData: BookEvalForm = {
 };
 
 export default function FormEditarAvalLivroTemplate() {
-  const [formData, setFormData] = useState<BookEvalForm>(initialData);
+  const [formData, setFormData] = useState<BookEval>(initialData);
 
   const [evaluationId, setEvaluationId] = useState<string | null>(null);
 
@@ -77,7 +77,7 @@ export default function FormEditarAvalLivroTemplate() {
 
   const handleChange = (
     event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
-    fieldName: keyof BookEvalForm
+    fieldName: keyof BookEval
   ) => {
     const { value } = event.target;
     setFormData((prevFormData) => {
