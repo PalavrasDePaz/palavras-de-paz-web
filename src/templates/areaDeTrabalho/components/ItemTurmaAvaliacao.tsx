@@ -1,6 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { fi } from "date-fns/locale";
 
 import DownloadImage from "../../../../public/static/images/icons/download.svg";
 import { api } from "../../../api";
@@ -32,25 +33,67 @@ function ItemTurmaAvaliacao({
   dateConcluded,
   reserved,
 }: ItemTurmaAvaliacaoProps) {
+  const sortedEssayReserved = (essays: IEssays[]) =>
+    essays.sort(
+      (a, b) =>
+        new Date(a.dateReserved).getTime() - new Date(b.dateReserved).getTime()
+    );
+
+  const sortedEssayNotReserved = (essays: IEssays[]) =>
+    essays.sort((a, b) => a.idclass - b.idclass);
+
   const putReservationData = async (volunteerId: number, classId: number) => {
     const reserveData = { idvol: volunteerId, idclass: classId };
     const response = await api.put("/book-club-class/reservation", reserveData);
     return response.data;
   };
 
-  const handleReservation = async (volunteerId: number, classId: number) => {
-    const updatedEssays = essaysIn.map((essay: IEssays) => {
+  const putRevertReservationData = async (
+    volunteerId: number,
+    classId: number
+  ) => {
+    const reserveData = { idvol: volunteerId, idclass: classId };
+    const response = await api.put(
+      `/book-club-class/revert-reservation/${classId}`,
+      reserveData
+    );
+    return response.data;
+  };
+
+  const updatedEssaysFunction = (classId: number, reserveFlag: boolean) =>
+    essaysIn.map((essay: IEssays) => {
       if (essay.idclass === classId) {
         return {
           ...essay,
-          reserved: true,
+          reserved: reserveFlag,
         };
       }
       return essay;
     });
-    setEssaysIn(updatedEssays);
 
+  const updatedEssaysIn = (updatedEssays: IEssays[]) => {
+    const filterReserved = sortedEssayReserved(
+      updatedEssays.filter((essay) => essay.reserved)
+    );
+    const filterNotReserved = sortedEssayNotReserved(
+      updatedEssays.filter((essay) => !essay.reserved)
+    );
+    setEssaysIn([filterReserved, filterNotReserved].flat());
+  };
+
+  const handleReservation = async (volunteerId: number, classId: number) => {
+    const updatedEssays = updatedEssaysFunction(classId, true);
+    updatedEssaysIn(updatedEssays);
     await putReservationData(volunteerId, classId);
+  };
+
+  const handleRevertReservation = async (
+    volunteerId: number,
+    classId: number
+  ) => {
+    const updatedEssays = updatedEssaysFunction(classId, false);
+    updatedEssaysIn(updatedEssays);
+    await putRevertReservationData(volunteerId, classId);
   };
 
   const naoReservado = "--/--/--";
@@ -83,11 +126,11 @@ function ItemTurmaAvaliacao({
           <input
             type="checkbox"
             checked // ADICIONAR ROTA PARA REMOVER A RESERVA
-            onChange={() => ""}
-            id={idvol.toString()}
+            onChange={() => handleRevertReservation(idvol, idclass)}
+            id={idclass.toString()}
             className={styles.toggle}
           />
-          <label htmlFor={idvol.toString()} className={styles.switch}>
+          <label htmlFor={idclass.toString()} className={styles.switch}>
             <span className={styles.slider} />
           </label>
           <p>{`${idclass}-${place}`}</p>

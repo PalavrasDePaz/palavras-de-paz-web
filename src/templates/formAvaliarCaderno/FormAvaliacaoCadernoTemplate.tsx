@@ -1,9 +1,10 @@
-import React, { useState } from "react";
-import PropTypes from "prop-types";
+import React, { useEffect, useState } from "react";
+import { useRouter } from "next/router";
 
+import ButtonSendForm from "../../components/buttonSendForm/ButtonSendForm";
 import HeaderForm from "../../components/headerForm/HeaderForm";
-import { optionsQuestion2 } from "../../helpers/avalQuestions";
 import useGetUser from "../../hooks/useGetUser";
+import usePutNotebookEvalForm from "../../hooks/usePutNotebookEvalForm";
 import useUserEmail from "../../hooks/useUserEmail";
 
 import Question2Aval from "./components/Question2Aval";
@@ -18,6 +19,7 @@ import Question10Aval from "./components/Question10Aval";
 import Question11Aval from "./components/Question11Aval";
 import QuestionGroup from "./components/QuestionGroup";
 import StudentInfoInput from "./components/StudentInfoInput";
+import { INITIALSTATE } from "./types";
 
 import styles from "./styles/FormularioAvaliacaoCaderno.module.css";
 
@@ -25,39 +27,39 @@ interface FormularioAvaliacaoCadernoProps {
   onClose: () => void;
 }
 
-const FormAvalCadTemplate: React.FC<FormularioAvaliacaoCadernoProps> = ({
-  onClose,
-}) => {
+const FormAvalCadTemplate: React.FC<FormularioAvaliacaoCadernoProps> = () => {
+  const router = useRouter();
+
   const userEmail = useUserEmail();
   const { data: user } = useGetUser(userEmail);
 
+  const { studentName, studentId, classId, notebookId, reservationDate } =
+    router.query;
+
+  const onCloseForm = () => {
+    setTimeout(() => {
+      window.location.href = "/area-de-trabalho";
+    }, 1);
+  };
+
   const [formData, setFormData] = useState({
+    ...INITIALSTATE,
     volunteerId: user?.idvol,
     email: user?.email,
-    studentName: "",
-    studentId: "",
-    prisonUnit: "",
-    relevantContent: "",
-    question1: { index: -1, value: "" },
-    question2: {},
-    question3: "",
-    question4: "",
-    question6: "",
-    question7: "",
-    question8: "",
-    question9: "",
-    question10: "",
-    perception: "",
+    studentName,
+    studentId,
+    classId,
   });
 
-  const handleChangeName = (
-    e: React.ChangeEvent<
-      HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
-    >
-  ) => {
-    const { name, value } = e.target;
-    setFormData((prevData) => ({ ...prevData, [name]: value }));
-  };
+  useEffect(() => {
+    const data = localStorage.getItem("form")
+      ? JSON.parse(localStorage.getItem("form") || "null")
+      : null;
+    if (data) {
+      setFormData(data);
+    }
+    localStorage.setItem("form", JSON.stringify(formData));
+  }, []);
 
   const handleQuestionChange = (
     questionNumber: number,
@@ -69,17 +71,6 @@ const FormAvalCadTemplate: React.FC<FormularioAvaliacaoCadernoProps> = ({
       question1: {
         ...prevData.question1,
         [`question${questionNumber}`]: { index, value },
-      },
-    }));
-  };
-
-  const handleChangeQuestion2 = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { value, checked } = e.target;
-    setFormData((prevData) => ({
-      ...prevData,
-      question2: {
-        ...prevData.question2,
-        [value]: checked,
       },
     }));
   };
@@ -104,21 +95,56 @@ const FormAvalCadTemplate: React.FC<FormularioAvaliacaoCadernoProps> = ({
     }));
   };
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const { mutate: mutateEvalForm } = usePutNotebookEvalForm();
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // adicioar lógica para enviar ao backend
-    // onClose();
+    mutateEvalForm({
+      data: {
+        reservationDate: reservationDate as string,
+        evaluatedDate: new Date().toISOString(),
+        subject1: formData.question1.question1.value,
+        subject2: formData.question1.question2.value,
+        subject3: formData.question1.question3.value,
+        subject4: formData.question1.question4.value,
+        subject5: formData.question1.question5.value,
+        subject6: formData.question1.question6.value,
+        subject7: formData.question1.question7.value,
+        subject8: formData.question1.question8.value,
+        subject9: formData.question1.question9.value,
+        subject10: formData.question1.question10.value,
+        relevantContent: formData.relevantContent,
+        a1: formData.question2,
+        a2: formData.question3,
+        a3: formData.question4,
+        a4: formData.question6,
+        a5: formData.question7,
+        a6: formData.question8,
+        a7: formData.question10,
+        a8: formData.question9,
+        a9: "",
+        a10: "",
+        a11: "",
+        a12: "",
+        a13: "",
+        conclusion: formData.perception,
+        approved: true,
+        archivesExclusion: true,
+      },
+      notebookId: notebookId as string,
+    });
+    onCloseForm();
   };
 
   return (
     <>
       <HeaderForm />
       <header className={styles.headerContainer}>
-        <h1>Formulário de Avaliação de Leitura - cadernos</h1>
+        <h1>AVALIAÇÃO DE CADERNOS CEP/FUNAP/SATPR</h1>
       </header>
       <main className={styles.mainContainer}>
         <h2 className={styles.subtitle}>
-          Realize a transcrição da avaliação do relatório de leitura concluida.
+          Leitura de Cadernos dos Alunos do Projeto CEP/FUNAP/SATPR
         </h2>
         <form onSubmit={handleSubmit}>
           <section className={styles.sectionContainer}>
@@ -127,22 +153,19 @@ const FormAvalCadTemplate: React.FC<FormularioAvaliacaoCadernoProps> = ({
               label="Nome do(a) aluno(a)*"
               type="text"
               value={formData.studentName}
-              onChange={handleChangeName}
               name="studentName"
             />
             <div>
               <StudentInfoInput
                 label="Matrícula do(a) aluno(a)*"
-                type="number"
+                type="text"
                 value={formData.studentId}
-                onChange={handleChangeName}
                 name="studentId"
               />
               <StudentInfoInput
                 label="Número da turma"
-                type="number"
-                value={formData.studentId}
-                onChange={handleChangeName}
+                type="text"
+                value={formData.classId}
                 name="classId"
               />
             </div>
@@ -153,6 +176,7 @@ const FormAvalCadTemplate: React.FC<FormularioAvaliacaoCadernoProps> = ({
               Selecione um trecho onde se percebe o entendimento e a evolução do
               participante - em até 3 linhas
               <textarea
+                rows={5}
                 className={styles.input}
                 name="perception"
                 value={formData.relevantContent}
@@ -160,76 +184,59 @@ const FormAvalCadTemplate: React.FC<FormularioAvaliacaoCadernoProps> = ({
               />
             </label>
           </section>
-          {/* Question 1 */}
           <section className={styles.sectionContainer}>
             <QuestionGroup onChange={handleQuestionChange} />
           </section>
-          {/* Question 2 */}
           <section className={styles.sectionContainer}>
-            <Question2Aval
-              options={optionsQuestion2}
-              name="question2"
-              onChange={handleChangeQuestion2}
-            />
+            <Question2Aval name="question2" onChange={handleChangeQuestions} />
           </section>
-          {/* Question 3 */}
           <section className={styles.sectionContainer}>
             <Question3Aval
               handleChangeQuestions={handleChangeQuestions}
               formData={formData}
             />
           </section>
-          {/* Question 4 */}
           <section className={styles.sectionContainer}>
             <Question4Aval
               handleChangeQuestions={handleChangeQuestions}
               formData={formData}
             />
           </section>
-          {/* Question 5 */}
           <section className={styles.sectionContainer}>
             <Question5Aval handleChangeQuestions={handleChangeQuestions} />
           </section>
-          {/* Question 6 */}
           <section className={styles.sectionContainer}>
             <Question6Aval
               handleChangeQuestions={handleChangeQuestions}
               formData={formData}
             />
           </section>
-          {/* Question 7 */}
           <section className={styles.sectionContainer}>
             <Question7Aval handleChangeQuestions={handleChangeQuestions} />
           </section>
           <section className={styles.sectionContainer}>
-            {/* Question 8 */}
             <Question8Aval handleChangeQuestions={handleChangeQuestions} />
           </section>
           <section className={styles.sectionContainer}>
-            {/* Question 8 */}
             <Question9Aval handleChangeQuestions={handleChangeQuestions} />
           </section>
           <section className={styles.sectionContainer}>
-            {/* Question 10 */}
             <Question10Aval
               handleChangeQuestions={handleChangeQuestions}
               formData={formData}
             />
           </section>
           <section className={styles.sectionContainer}>
-            {/* Perception */}
             <Question11Aval
               handleChangeQuestions={handleChangeQuestions}
               formData={formData}
             />
           </section>
-          {/* Submit Button */}
-          <button>Enviar</button>
+          <ButtonSendForm onClick={() => handleSubmit} text="Enviar" />
         </form>
       </main>
     </>
   );
 };
 
-FormAvalCadTemplate.propTypes = { onClose: PropTypes.func.isRequired };
 export default FormAvalCadTemplate;

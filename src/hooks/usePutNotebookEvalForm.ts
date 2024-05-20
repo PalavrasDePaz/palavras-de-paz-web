@@ -3,7 +3,7 @@ import * as yup from "yup";
 import { useMutation } from "@tanstack/react-query";
 
 import { api } from "../api";
-import { schema } from "../templates/presenca/schema";
+import { schema } from "../templates/formAvaliarCaderno/schema";
 
 type NotebookEvalForm = yup.InferType<typeof schema>;
 

@@ -1,5 +1,7 @@
 .workshops_container {
-  width: 668px;
+  flex: 1;
+  min-width: 300px;
+  max-width: 640px;
   height: 551px;
   display: flex;
   flex-direction: column;
@@ -77,22 +79,4 @@
   margin-bottom: 0px;
   color: #707070;
   font-weight: 600;
-}
-
-@media (max-width: 1599px) {
-  .workshops_container {
-    width: 640px;
-  }
-}
-
-@media (max-width: 1512px) {
-  .workshops_container {
-    width: 600px;
-  }
-}
-
-@media (max-width: 1388px) {
-  .workshops_container {
-    width: 560px;
-  }
 }

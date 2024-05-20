@@ -70,6 +70,15 @@ function VoluntariosMain() {
                 informações; Ter suspensão de julgamento; Capacidade de
                 trabalhar em equipe.
               </p>
+              <a
+                href="arquivosDownload/CodigoDeEtica.pdf"
+                download
+                target="_blank"
+                rel="noreferrer"
+                className="link-codigo-etica"
+              >
+                Código de Ética do Palavras de Paz
+              </a>
             </div>
           </container>
         </container>
