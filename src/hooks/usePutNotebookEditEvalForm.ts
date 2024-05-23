@@ -9,18 +9,18 @@ type NotebookEvalForm = yup.InferType<typeof schema>;
 
 type PutNotebookEvalForm = {
   data: NotebookEvalForm;
-  notebookId: string;
+  notebookId: string | null;
 };
 
-const putNotebookEvalForm = async (
+const putNotebookEditEvalForm = async (
   data: NotebookEvalForm,
-  notebookId: string
-) => api.put(`/notebooks/${notebookId}`, { ...data });
+  notebookId: string | null
+) => api.put(`/notebooks/evaluation/${notebookId}`, { ...data });
 
-const usePutNotebookEvalForm = () =>
+const usePutNotebookEditEvalForm = () =>
   useMutation({
     mutationFn: ({ data, notebookId }: PutNotebookEvalForm) =>
-      putNotebookEvalForm(data, notebookId),
+      putNotebookEditEvalForm(data, notebookId),
   });
 
-export default usePutNotebookEvalForm;
+export default usePutNotebookEditEvalForm;

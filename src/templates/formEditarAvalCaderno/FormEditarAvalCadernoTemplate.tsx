@@ -3,7 +3,7 @@ import { toast } from "react-toastify";
 
 import HeaderForm from "../../components/headerForm/HeaderForm";
 import useGetNotebookById from "../../hooks/useGetNotebookById";
-import usePutNotebookEvalForm from "../../hooks/usePutNotebookEvalForm";
+import usePutNotebookEditEvalForm from "../../hooks/usePutNotebookEditEvalForm";
 import BtnDownload from "../formEditarTurmaRedacao/components/ButtonDownloadRelatorios";
 import BtnSubmit from "../formEditarTurmaRedacao/components/ButtonSalavarAlteracoes";
 import ItemTurma from "../formEditarTurmaRedacao/components/ItemTurma";
@@ -65,7 +65,7 @@ export default function FormEditarAvalCadernoTemplate() {
     mutate: mutatePutBookEval,
     isSuccess: isMutateSuccess,
     data: mutateResponseData,
-  } = usePutNotebookEvalForm();
+  } = usePutNotebookEditEvalForm();
 
   useEffect(() => {
     const queryParameters = new URLSearchParams(window.location.search);
