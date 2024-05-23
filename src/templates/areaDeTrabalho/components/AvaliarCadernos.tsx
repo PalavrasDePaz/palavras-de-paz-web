@@ -129,15 +129,15 @@ const AvaliarCadernos = ({ idvol }: AvaliarCadernosProps) => {
   return (
     <section className={styles.avaliar_section}>
       <h1>Avaliar Cadernos</h1>
+      <div className={styles.avaliar_titles}>
+        <span />
+        <h2>Aluno</h2>
+        <h2>N° turma</h2>
+        <h2>Reservado em</h2>
+        <h2>Baixar Caderno</h2>
+        <h2>Formulário de avaliação</h2>
+      </div>
       <div className={styles.avaliar_itens}>
-        <div className={styles.avaliar_titles}>
-          <span />
-          <h2>Aluno</h2>
-          <h2>N° turma</h2>
-          <h2>Reservado em</h2>
-          <h2>Baixar Caderno</h2>
-          <h2>Formulário de avaliação</h2>
-        </div>
         {notebooksIn &&
           notebooksIn.map(
             ({

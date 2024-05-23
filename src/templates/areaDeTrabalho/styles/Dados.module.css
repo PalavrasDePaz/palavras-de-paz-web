@@ -145,7 +145,6 @@
 
 @media (max-width: 1130px) {
   .containerSectionDados {
-    width: 889px;
     padding: 64px;
   }
   .dadosSecondDiv {
@@ -156,13 +155,11 @@
 }
 @media (max-width: 900px) {
   .containerSectionDados {
-    width: 771px;
     padding: 48px;
   }
 }
 @media (max-width: 800px) {
   .containerSectionDados {
-    width: 600px;
     padding: 40px;
   }
   .dadosFirstDiv h2 {
@@ -175,7 +172,6 @@
 }
 @media (max-width: 620px) {
   .containerSectionDados {
-    width: 520px;
     padding: 24px;
   }
   .dadosFirstDiv h2 {
@@ -185,13 +181,23 @@
 
 @media (max-width: 550px) {
   .containerSectionDados {
-    width: 440px;
     padding: 16px;
   }
   .dadosSecondDiv {
     padding-inline: 16px;
+    max-width: 70%;
+    flex-wrap: wrap;
   }
   .dadosSecondDiv a {
     font-size: 16px;
+  }
+  .dadosFirstDiv {
+    padding: 16px;
+  }
+  .dadosFirstDiv h2 {
+    max-width: 180px;
+  }
+  .calendarioDiv {
+    padding-inline: 24px;
   }
 }
