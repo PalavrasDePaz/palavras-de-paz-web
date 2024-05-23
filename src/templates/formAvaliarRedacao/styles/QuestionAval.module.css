@@ -77,3 +77,9 @@
   flex-direction: column;
   margin: 1.5rem 0;
 }
+
+.containerDiv {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3rem;
+}

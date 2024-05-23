@@ -8,6 +8,7 @@ import useGetUser from "../../hooks/useGetUser";
 import useUserEmail from "../../hooks/useUserEmail";
 
 import Question1 from "./components/Question1";
+import Question2Container from "./components/Question2Container";
 import StudentInfoInput from "./components/StudentInfoInput";
 
 import styles from "./styles/FormularioAvaliacaoRedacao.module.css";
@@ -66,10 +67,22 @@ const FormAvalRedacaoTemplate: React.FC<
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     const { name, value } = e.target;
-    setFormData((prevData) => ({
-      ...prevData,
-      [name]: value,
-    }));
+    if (value === "Sim") {
+      setFormData((prevData) => ({
+        ...prevData,
+        [name]: true,
+      }));
+    } else if (value === "Não") {
+      setFormData((prevData) => ({
+        ...prevData,
+        [name]: false,
+      }));
+    } else {
+      setFormData((prevData) => ({
+        ...prevData,
+        [name]: value,
+      }));
+    }
   };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -119,6 +132,9 @@ const FormAvalRedacaoTemplate: React.FC<
           </section>
           <section className={styles.sectionContainer}>
             <Question1 handleChangeQuestions={handleChangeQuestions} />
+          </section>
+          <section className={styles.sectionContainer}>
+            <Question2Container handleChangeQuestions={handleChangeQuestions} />
           </section>
           <ButtonSendForm onClick={() => handleSubmit} text="Enviar" />
         </form>

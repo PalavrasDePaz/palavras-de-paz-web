@@ -2,11 +2,11 @@ import React from "react";
 
 import styles from "../styles/QuestionAval.module.css";
 
-interface Question3AvalProps {
+interface Question1AvalProps {
   handleChangeQuestions: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-const Question1: React.FC<Question3AvalProps> = ({ handleChangeQuestions }) => (
+const Question1: React.FC<Question1AvalProps> = ({ handleChangeQuestions }) => (
   <>
     <h3 className={styles.sectionTitle}>Critérios de não validação</h3>
     <p className={styles.label}>Assinale o campo conforme avaliação.</p>
