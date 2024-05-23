@@ -33,7 +33,9 @@ const FormAvalRedacaoTemplate: React.FC<
   };
 
   const [formData, setFormData] = useState({
-    readerName: user?.name,
+    readerName: "",
+    readerRegistration: "",
+    classId: idClass,
     isParcialPlagiarism: true,
     isAppropriation: true,
     textAestheticsAvaliation: "",
@@ -88,13 +90,24 @@ const FormAvalRedacaoTemplate: React.FC<
         <form onSubmit={handleSubmit}>
           <section className={styles.sectionContainer}>
             <h3 className={styles.sectionTitle}>Identificação</h3>
-            <input type="text" name="studentName" />
+            <StudentInfoInput
+              label=""
+              type="text"
+              onChange={(e) => {
+                handleChangeQuestions(e);
+              }}
+              value={formData.readerName}
+              name="readerName"
+            />
             <div>
               <StudentInfoInput
                 label="Matrícula do leitor*"
                 type="text"
-                value={user?.idvol}
-                name="studentId"
+                onChange={(e) => {
+                  handleChangeQuestions(e);
+                }}
+                value={formData.readerRegistration}
+                name="readerRegistration"
               />
               <StudentInfoInput
                 label="Número da turma"

@@ -22,7 +22,7 @@ const StudentInfoInput: React.FC<StudentInfoInputProps> = ({
   readOnly = false,
 }) => (
   <label className={styles.label}>
-    {label}:
+    {label}
     <input
       className={styles.input}
       type={type}
