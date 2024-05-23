@@ -9,6 +9,8 @@ import useUserEmail from "../../hooks/useUserEmail";
 
 import Question1 from "./components/Question1";
 import Question2Container from "./components/Question2Container";
+import Question3 from "./components/Question3";
+import Question4 from "./components/Question4";
 import StudentInfoInput from "./components/StudentInfoInput";
 
 import styles from "./styles/FormularioAvaliacaoRedacao.module.css";
@@ -64,7 +66,9 @@ const FormAvalRedacaoTemplate: React.FC<
   }, []);
 
   const handleChangeQuestions = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+    >
   ) => {
     const { name, value } = e.target;
     if (value === "Sim") {
@@ -135,6 +139,12 @@ const FormAvalRedacaoTemplate: React.FC<
           </section>
           <section className={styles.sectionContainer}>
             <Question2Container handleChangeQuestions={handleChangeQuestions} />
+          </section>
+          <section className={styles.sectionContainer}>
+            <Question3 handleChangeQuestions={handleChangeQuestions} />
+          </section>
+          <section className={styles.sectionContainer}>
+            <Question4 handleChangeQuestions={handleChangeQuestions} />
           </section>
           <ButtonSendForm onClick={() => handleSubmit} text="Enviar" />
         </form>
