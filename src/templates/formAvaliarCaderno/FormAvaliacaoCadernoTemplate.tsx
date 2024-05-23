@@ -27,7 +27,9 @@ interface FormularioAvaliacaoCadernoProps {
   onClose: () => void;
 }
 
-const FormAvalCadTemplate: React.FC<FormularioAvaliacaoCadernoProps> = () => {
+const FormAvalCadTemplate: React.FC<FormularioAvaliacaoCadernoProps> = ({
+  onClose,
+}) => {
   const router = useRouter();
 
   const userEmail = useUserEmail();
@@ -38,7 +40,7 @@ const FormAvalCadTemplate: React.FC<FormularioAvaliacaoCadernoProps> = () => {
 
   const onCloseForm = () => {
     setTimeout(() => {
-      window.location.href = "/area-de-trabalho";
+      router.push("/area-de-trabalho");
     }, 1);
   };
 
@@ -101,8 +103,10 @@ const FormAvalCadTemplate: React.FC<FormularioAvaliacaoCadernoProps> = () => {
     e.preventDefault();
     mutateEvalForm({
       data: {
-        reservationDate: reservationDate as string,
-        evaluatedDate: new Date().toISOString(),
+        reservationDate: new Date(
+          (reservationDate && reservationDate.toString()) || "2000-01-01"
+        ),
+        evaluatedDate: new Date(),
         subject1: formData.question1.question1.value,
         subject2: formData.question1.question2.value,
         subject3: formData.question1.question3.value,

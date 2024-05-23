@@ -29,15 +29,15 @@ export default function AvaliarRedacoes({ idvol }: AvaliarRedacoesProps) {
   return (
     <section className={styles.avaliar_section}>
       <h1>Avaliar Redações</h1>
-      <div className={styles.avaliarRedacoes_titles}>
-        <span />
-        <h2>Turma / Penitenciária</h2>
-        <h2>Reservado em</h2>
-        <h2>Concluido em</h2>
-        <h2>Baixar Relatórios</h2>
-        <h2>Formulário de avaliação</h2>
-      </div>
       <div className={styles.avaliar_itens}>
+        <div className={styles.avaliarRedacoes_titles}>
+          <span />
+          <h2>Turma / Penitenciária</h2>
+          <h2>Reservado em</h2>
+          <h2>Concluido em</h2>
+          <h2>Baixar Relatórios</h2>
+          <h2>Formulário de avaliação</h2>
+        </div>
         {essaysIn &&
           essaysIn.map(
             ({ idclass, place, dateReserved, dateConcluded, reserved }) => (

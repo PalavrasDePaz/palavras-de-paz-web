@@ -3,8 +3,8 @@ import * as yup from "yup";
 import { REQUIRED_FIELD } from "../../constants";
 
 export const schema = yup.object().shape({
-  reservationDate: yup.string().required(REQUIRED_FIELD),
-  evaluatedDate: yup.string().required(REQUIRED_FIELD),
+  reservationDate: yup.date().required(REQUIRED_FIELD),
+  evaluatedDate: yup.date().required(REQUIRED_FIELD),
   subject1: yup.string().required(REQUIRED_FIELD),
   subject2: yup.string().required(REQUIRED_FIELD),
   subject3: yup.string().required(REQUIRED_FIELD),
