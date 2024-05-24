@@ -9,39 +9,31 @@ import { MdEditNote } from "react-icons/md";
 
 import SearchBar from "../../../../../components/forms/searchBar";
 import LoadingSpinner from "../../../../../components/loadingSpinner/LoadingSpinner";
-import downloadZIP from "../../../../../helpers/getEssaysDownload";
+import GenericModal from "../../../../../components/modal";
 import { Class } from "../../../../../hooks/types";
 import useGetClasses from "../../../../../hooks/useGetClasses";
-import useGetClassSelected from "../../../../../hooks/useGetClassSelected";
+/* import useGetClassSelected from "../../../../../hooks/useGetClassSelected"; */
+import Form from "../../../../formEditarAvalLivro/FormEditarAvalLivroTemplate";
 
 import styles from "./styles.module.css";
 
-type TabelaTurmasProps = {
+/* type TabelaTurmasProps = {
   handleChangeActiveTab: () => void;
 };
+ */
 
 type CheckboxState = {
   [key: number]: boolean;
 };
 
-export default function TabelaTurmas({
-  handleChangeActiveTab,
-}: TabelaTurmasProps) {
+export default function TabelaTurmas() {
   const [currentPage, setCurrentPage] = useState(1);
   const [checkboxes, setCheckboxes] = useState<CheckboxState>({});
   const [selectedClasses, setSelectedClasses] = useState<Class[]>([]);
-  const [selectedClassId, setSelectedClassId] = useState<undefined | number>(
-    undefined
-  );
+
+  const [isModalShown, setIsModalShown] = useState(false);
 
   const { data: classes, isLoading, isError } = useGetClasses(currentPage);
-  const { data: classDataNew } = useGetClassSelected(selectedClassId);
-
-  console.log(classes);
-
-  if (classDataNew) {
-    console.log("classData", classDataNew);
-  }
 
   const handleCheckboxChange = (event: ChangeEvent<HTMLInputElement>) => {
     const { name, checked } = event.target;
@@ -65,27 +57,9 @@ export default function TabelaTurmas({
 
   const isCheckboxChecked = selectedClasses.length;
 
-  async function downloadData() {
-    try {
-      if (selectedClasses) {
-        console.log("selectedClasses", selectedClasses);
-        /* const downloadPromises = selectedClasses.map((selectedClass: Class) =>
-          downloadZIP(selectedClass.id, `${selectedClass.groupName}`)
-        );
-        await Promise.all(downloadPromises); */
-      }
-    } catch (error) {
-      console.error("Ocorreu um erro ao baixar os dados:", error);
-    }
-  }
-
-  async function showData() {
-    if (selectedClasses) {
-      setSelectedClassId(selectedClasses[0].idclass);
-    }
-
-    /* handleChangeActiveTab(); */
-  }
+  const toggleModal = () => {
+    setIsModalShown(!isModalShown);
+  };
 
   const handlePageChange = (newPage: number) => {
     setCurrentPage(newPage);
@@ -117,13 +91,13 @@ export default function TabelaTurmas({
           <SearchBar />
         </div>
         <div className={styles.turmas_buttons_actions}>
-          <button disabled={!isCheckboxChecked} onClick={showData}>
+          <button disabled={!isCheckboxChecked} onClick={() => {}}>
             <span className={styles.turmas_button_text}>Visualizar</span>
             <span className={styles.turmas_button_icon}>
               <MdEditNote size={24} />
             </span>
           </button>
-          <button disabled={!isCheckboxChecked} onClick={downloadData}>
+          <button disabled={!isCheckboxChecked} onClick={() => {}}>
             <span className={styles.turmas_button_text}>Baixar</span>
             <span className={styles.turmas_button_icon}>
               <HiDownload size={24} />
@@ -166,7 +140,7 @@ export default function TabelaTurmas({
                   <td>{classData.idclass}</td>
                   <td>
                     <button
-                      onClick={() => {}}
+                      onClick={toggleModal}
                       className={styles.visualize_button}
                     >
                       Visualizar
@@ -178,7 +152,6 @@ export default function TabelaTurmas({
           </table>
         </div>
       )}
-
       {!!classes?.nodes?.length && (
         <div className={styles.turmas_pagination}>
           <button
@@ -211,6 +184,13 @@ export default function TabelaTurmas({
           </button>
         </div>
       )}
+      <GenericModal
+        title="Edição turma de redação"
+        isShown={isModalShown}
+        onToggle={toggleModal}
+      >
+        <Form />
+      </GenericModal>
     </div>
   );
 }

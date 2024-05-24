@@ -47,7 +47,7 @@ export default function AreaDeTrabalhoTemplate() {
       <HeaderAreaDeTrabalho />
       <div className={styles.background}>
         <main className={styles.containerSections}>
-          {/* <section className={styles.sectionTitle}>
+          <section className={styles.sectionTitle}>
             <h1 className={styles.title}>Bem vindo(a), {firstName()}!</h1>
             <h2>id: {user?.idvol}</h2>
             <p>Aqui estão as suas atividades</p>
@@ -65,7 +65,7 @@ export default function AreaDeTrabalhoTemplate() {
           {auth.bookPermission &&
             auth.bookPermission === true &&
             auth.notebookModulePermission === true &&
-            prontoPraProducao === true && <AvaliarRedacoes idvol={idvol} />} */}
+            prontoPraProducao === true && <AvaliarRedacoes idvol={idvol} />}
 
           {auth.essayModulePermission &&
             auth.essayModulePermission === true &&

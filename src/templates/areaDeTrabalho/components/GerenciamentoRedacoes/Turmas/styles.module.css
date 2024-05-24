@@ -132,11 +132,6 @@
   text-align: start;
 }
 
-.turmas_tbody .turmas_tr td > input[type="checkbox"]:checked {
-  accent-color: #21aa85;
-  color: #fff !important;
-}
-
 .visualize_button {
   font-weight: bold;
   color: #707070;

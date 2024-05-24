@@ -7,13 +7,7 @@ import TabelaTurmas from "./Turmas";
 
 import styles from "./styles.module.css";
 
-type GerenciamentoRedacoeProps = {
-  idvol: number;
-};
-
-export default function GerenciamentoRedacoes({
-  idvol,
-}: GerenciamentoRedacoeProps) {
+export default function GerenciamentoRedacoes() {
   const [activeTab, setActiveTab] = useState<number>(0);
 
   const handleChangeActiveTab = useCallback(() => {
@@ -23,12 +17,7 @@ export default function GerenciamentoRedacoes({
   const tabsContent = [
     {
       title: "Turmas",
-      content: (
-        <TabelaTurmas
-          handleChangeActiveTab={handleChangeActiveTab}
-          idvol={idvol}
-        />
-      ),
+      content: <TabelaTurmas handleChangeActiveTab={handleChangeActiveTab} />,
     },
     {
       title: "Avaliações",
