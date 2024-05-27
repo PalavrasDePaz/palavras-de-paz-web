@@ -11,6 +11,9 @@ import Question1 from "./components/Question1";
 import Question2Container from "./components/Question2Container";
 import Question3 from "./components/Question3";
 import Question4 from "./components/Question4";
+import Question5 from "./components/Question5";
+import Question6 from "./components/Question6";
+import Question7 from "./components/Question7";
 import StudentInfoInput from "./components/StudentInfoInput";
 
 import styles from "./styles/FormularioAvaliacaoRedacao.module.css";
@@ -55,6 +58,8 @@ const FormAvalRedacaoTemplate: React.FC<
     observedHistories: "",
   });
 
+  const [readHistoriesState, setReadHistoriesState] = useState<string[]>([]);
+
   useEffect(() => {
     const data = localStorage.getItem("form")
       ? JSON.parse(localStorage.getItem("form") || "null")
@@ -87,6 +92,21 @@ const FormAvalRedacaoTemplate: React.FC<
         [name]: value,
       }));
     }
+  };
+
+  const handleChangeCheckboxes = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { id } = e.target;
+    if (readHistoriesState.includes(id)) {
+      setReadHistoriesState(
+        readHistoriesState.filter((history) => history !== id)
+      );
+    } else {
+      setReadHistoriesState([...readHistoriesState, id]);
+    }
+    setFormData((prevData) => ({
+      ...prevData,
+      readHistories: readHistoriesState,
+    }));
   };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -145,6 +165,15 @@ const FormAvalRedacaoTemplate: React.FC<
           </section>
           <section className={styles.sectionContainer}>
             <Question4 handleChangeQuestions={handleChangeQuestions} />
+          </section>
+          <section className={styles.sectionContainer}>
+            <Question5 handleChangeQuestions={handleChangeQuestions} />
+          </section>
+          <section className={styles.sectionContainer}>
+            <Question6 handleChangeQuestions={handleChangeCheckboxes} />
+          </section>
+          <section className={styles.sectionContainer}>
+            <Question7 handleChangeQuestions={handleChangeQuestions} />
           </section>
           <ButtonSendForm onClick={() => handleSubmit} text="Enviar" />
         </form>

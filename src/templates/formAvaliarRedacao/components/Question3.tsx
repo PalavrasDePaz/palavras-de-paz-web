@@ -16,7 +16,7 @@ const Question3: React.FC<Question3AvalProps> = ({ handleChangeQuestions }) => (
       percepção de plágio.
     </p>
     <textarea
-      className={styles.input}
+      className={styles.textArea}
       name="observations"
       onChange={(e) => handleChangeQuestions(e)}
       placeholder="Deixar em branco em caso de
