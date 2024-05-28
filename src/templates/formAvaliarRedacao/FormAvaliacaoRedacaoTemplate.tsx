@@ -130,7 +130,6 @@ const FormAvalRedacaoTemplate: React.FC<
         evaluatorId: Number(user?.idvol),
       },
     });
-    console.log(formData);
     onCloseForm();
   };
 
