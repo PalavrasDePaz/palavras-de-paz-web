@@ -15,7 +15,7 @@ const Question6: React.FC<Question6AvalProps> = ({
     <label htmlFor={label} className={styles.radioLabel}>
       <input
         type="checkbox"
-        name="storiesReported"
+        name="readHistories"
         id={label}
         onChange={(e) => handleChangeQuestions(e)}
         className={styles.radioInput}

@@ -4,6 +4,7 @@ import { useRouter } from "next/router";
 import ButtonSendForm from "../../components/buttonSendForm/ButtonSendForm";
 import HeaderForm from "../../components/headerForm/HeaderForm";
 import useGetUser from "../../hooks/useGetUser";
+import usePostBookEvalForm from "../../hooks/usePostBookEvaluations";
 /* import usePutNotebookEvalForm from "../../hooks/usePutNotebookEvalForm"; */
 import useUserEmail from "../../hooks/useUserEmail";
 
@@ -27,6 +28,8 @@ const FormAvalRedacaoTemplate: React.FC<
 > = () => {
   const router = useRouter();
 
+  const { mutate: mutateEvalForm } = usePostBookEvalForm();
+
   const userEmail = useUserEmail();
   const { data: user } = useGetUser(userEmail);
 
@@ -34,7 +37,7 @@ const FormAvalRedacaoTemplate: React.FC<
 
   const onCloseForm = () => {
     setTimeout(() => {
-      window.location.href = "/area-de-trabalho";
+      router.push("/area-de-trabalho");
     }, 1);
   };
 
@@ -42,6 +45,7 @@ const FormAvalRedacaoTemplate: React.FC<
     readerName: "",
     readerRegistration: "",
     classId: idClass,
+    evaluatorId: user?.idvol,
     isParcialPlagiarism: true,
     isAppropriation: true,
     textAestheticsAvaliation: "",
@@ -70,6 +74,13 @@ const FormAvalRedacaoTemplate: React.FC<
     localStorage.setItem("form", JSON.stringify(formData));
   }, []);
 
+  useEffect(() => {
+    setFormData((prevData) => ({
+      ...prevData,
+      readHistories: readHistoriesState,
+    }));
+  }, [readHistoriesState]);
+
   const handleChangeQuestions = (
     e: React.ChangeEvent<
       HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
@@ -96,7 +107,7 @@ const FormAvalRedacaoTemplate: React.FC<
 
   const handleChangeCheckboxes = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { id } = e.target;
-    if (readHistoriesState.includes(id)) {
+    if (readHistoriesState.some((history) => history === id)) {
       setReadHistoriesState(
         readHistoriesState.filter((history) => history !== id)
       );
@@ -111,6 +122,15 @@ const FormAvalRedacaoTemplate: React.FC<
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    mutateEvalForm({
+      data: {
+        ...formData,
+        readerRegistration: Number(formData.readerRegistration),
+        classId: Number(idClass),
+        evaluatorId: Number(user?.idvol),
+      },
+    });
+    console.log(formData);
     onCloseForm();
   };
 
