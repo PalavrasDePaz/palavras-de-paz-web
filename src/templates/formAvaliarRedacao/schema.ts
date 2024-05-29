@@ -16,7 +16,7 @@ export const schema = yup.object().shape({
   societyCriticalAnalysisAvaliation: yup.string().required(REQUIRED_FIELD),
   grammarAvaliation: yup.string().required(REQUIRED_FIELD),
   syntheticAvaliation: yup.string().required(REQUIRED_FIELD),
-  observations: yup.string(),
+  observations: yup.string().required(REQUIRED_FIELD),
   concept: yup.string().required(REQUIRED_FIELD),
   relevantPhrases: yup.string(),
   readHistories: yup.array().required(REQUIRED_FIELD),

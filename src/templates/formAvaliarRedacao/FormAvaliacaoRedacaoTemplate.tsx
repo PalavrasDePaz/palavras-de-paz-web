@@ -107,7 +107,13 @@ const FormAvalRedacaoTemplate: React.FC<
 
   const handleChangeCheckboxes = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { id } = e.target;
-    if (readHistoriesState.some((history) => history === id)) {
+    if (
+      readHistoriesState.some(
+        (history) => history === "Não tem história descrita"
+      )
+    ) {
+      setReadHistoriesState(["Não tem história descrita"]);
+    } else if (readHistoriesState.some((history) => history === id)) {
       setReadHistoriesState(
         readHistoriesState.filter((history) => history !== id)
       );
