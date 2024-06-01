@@ -1,4 +1,4 @@
-import style from "./ButtonSendForm.module.css";
+import style from "./buttonSendForm.module.css";
 
 type ButtonSendFormProps = {
   text: string;

@@ -11,6 +11,5 @@
   letter-spacing: 0.32px;
   margin-top: 20px;
   text-decoration: underline;
-  position: relative;
-  left: 85%;
+  align-self: flex-end;
 }

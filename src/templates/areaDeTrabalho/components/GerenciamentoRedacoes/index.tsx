@@ -17,13 +17,11 @@ export default function GerenciamentoRedacoes() {
   const tabsContent = [
     {
       title: "Turmas",
-      content: <TabelaTurmas handleChangeActiveTab={handleChangeActiveTab} />,
+      content: <TabelaTurmas />,
     },
     {
       title: "Avaliações",
-      content: (
-        <TabelaAvaliacoes handleChangeActiveTab={handleChangeActiveTab} />
-      ),
+      content: <TabelaAvaliacoes />,
     },
   ];
 

@@ -50,16 +50,16 @@ const AvaliarCadernos = ({ idvol }: AvaliarCadernosProps) => {
   const sortedNotebooksReserved = (notebooksParam: INotebooks[]) =>
     notebooksParam.sort(
       (a, b) =>
-        new Date(a.reservationDate).getTime() -
-        new Date(b.reservationDate).getTime()
+        new Date(b.reservationDate).getTime() -
+        new Date(a.reservationDate).getTime()
     );
 
   const sortedNotebooksNotReserved = (notebooksParam: INotebooks[]) =>
     notebooksParam.sort((a, b) => {
-      if (a.studentName > b.studentName) {
+      if (a.notebookId > b.notebookId) {
         return 1;
       }
-      if (a.studentName < b.studentName) {
+      if (a.notebookId < b.notebookId) {
         // eslint-disable-next-line no-magic-numbers
         return -1;
       }
@@ -112,7 +112,6 @@ const AvaliarCadernos = ({ idvol }: AvaliarCadernosProps) => {
   const handleRevertReservation = async (notebookId: number) => {
     const updatedNotebooks = updateNotebookReservation(notebookId, false);
     updateNotebooksIn(updatedNotebooks);
-
     await putRevertReservationData(notebookId);
   };
 
@@ -125,6 +124,7 @@ const AvaliarCadernos = ({ idvol }: AvaliarCadernosProps) => {
       updateNotebooksIn(updatedNotebooks);
     }
   }, [notebooks]);
+  console.log(notebooksIn);
 
   return (
     <section className={styles.avaliar_section}>

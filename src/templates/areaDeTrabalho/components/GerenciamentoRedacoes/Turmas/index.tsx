@@ -13,7 +13,10 @@ import GenericModal from "../../../../../components/modal";
 import { Class } from "../../../../../hooks/types";
 import useGetClasses from "../../../../../hooks/useGetClasses";
 /* import useGetClassSelected from "../../../../../hooks/useGetClassSelected"; */
-import Form from "../../../../formEditarAvalLivro/FormEditarAvalLivroTemplate";
+// import Form from "../../../../formEditarAvalLivro/FormEditarAvalLivroTemplate";
+/* eslint-disable-next-line max-len */
+import FormularioEditarTurmaRedacaoTemplate from "../../../../formEditarTurmaRedacao/FormEditarTurmaRedacaoTemplate";
+import { BookClass } from "../../../../formEditarTurmaRedacao/schema";
 
 import styles from "./styles.module.css";
 
@@ -31,7 +34,7 @@ export default function TabelaTurmas() {
   const [checkboxes, setCheckboxes] = useState<CheckboxState>({});
   const [selectedClasses, setSelectedClasses] = useState<Class[]>([]);
 
-  const [isModalShown, setIsModalShown] = useState(false);
+  const [classToEdit, setClassToEdit] = useState<Class | null>(null);
 
   const { data: classes, isLoading, isError } = useGetClasses(currentPage);
 
@@ -57,8 +60,8 @@ export default function TabelaTurmas() {
 
   const isCheckboxChecked = selectedClasses.length;
 
-  const toggleModal = () => {
-    setIsModalShown(!isModalShown);
+  const toggleModal = (postClassToEdit: Class | null) => {
+    setClassToEdit(postClassToEdit);
   };
 
   const handlePageChange = (newPage: number) => {
@@ -140,7 +143,7 @@ export default function TabelaTurmas() {
                   <td>{classData.idclass}</td>
                   <td>
                     <button
-                      onClick={toggleModal}
+                      onClick={() => toggleModal(classData)}
                       className={styles.visualize_button}
                     >
                       Visualizar
@@ -184,12 +187,17 @@ export default function TabelaTurmas() {
           </button>
         </div>
       )}
+
       <GenericModal
         title="Edição turma de redação"
-        isShown={isModalShown}
-        onToggle={toggleModal}
+        isShown={classToEdit != null}
+        onToggle={() => toggleModal(null)}
       >
-        <Form />
+        {classToEdit != null && (
+          <FormularioEditarTurmaRedacaoTemplate
+            initialData={classToEdit as unknown as BookClass}
+          />
+        )}
       </GenericModal>
     </div>
   );

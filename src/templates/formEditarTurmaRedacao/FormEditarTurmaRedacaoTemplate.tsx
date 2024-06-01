@@ -1,71 +1,92 @@
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
+import { toast } from "react-toastify";
 
 import HeaderForm from "../../components/headerForm/HeaderForm";
+import LoadingSpinner from "../../components/loadingSpinner/LoadingSpinner";
+import useGetBookClassFromId from "../../hooks/useGetBookClassFromId";
+import usePutBookClass from "../../hooks/usePutBookClass";
 
 import ButtonDownloadRelatorios from "./components/ButtonDownloadRelatorios";
 import BtnSubmit from "./components/ButtonSalavarAlteracoes";
 import ItemTurma from "./components/ItemTurma";
+import { BookClass } from "./schema";
 
 import style from "./styles/FormEditarTurmaRedacaoTemplate.module.css";
 
-interface FormData {
-  localizacaoTitulo: string;
-  nomeVoluntario: string;
-  idVoluntario: number;
-  idTurma: number;
-  numeroDeUnidadePrisional: number;
-  reciboDosRelatorios: string;
-  emprestimo: string;
-  devolucaoDosLivros: string;
-  elaboracaoDosRelatorios: string;
-  relatoriosListaPresenca: number;
-  relatoriosEnviados: number;
-  reservaDosVoluntarios: string;
-  finalizacaoDaTurma: string;
-  devolucaoParaFUNAP: string;
+/* eslint-disable max-lines */
+
+interface props {
+  initialData: BookClass;
 }
 
-// Dados iniciais para testar o formulário de forma provisória
-const initialData: FormData[] = [
-  {
-    localizacaoTitulo: "Penitenciária da papuda",
-    nomeVoluntario: "José Gomes Filho",
-    idVoluntario: 1,
-    idTurma: 1,
-    numeroDeUnidadePrisional: 1,
-    reciboDosRelatorios: "01/01/1900",
-    emprestimo: "01/01/1900",
-    devolucaoDosLivros: "01/01/1900",
-    elaboracaoDosRelatorios: "01/01/1900",
-    relatoriosListaPresenca: 1,
-    relatoriosEnviados: 1,
-    reservaDosVoluntarios: "01/01/1900",
-    finalizacaoDaTurma: "01/01/1900",
-    devolucaoParaFUNAP: "01/01/1900",
-  },
-];
-
-export default function FormularioEditarTurmaRedacaoTemplate() {
-  const [formData, setFormData] = useState<FormData[]>(initialData);
+export default function FormularioEditarTurmaRedacaoTemplate({
+  initialData,
+}: props) {
+  const [formData, setFormData] = useState<BookClass>(initialData);
 
   const novaData = "Insira nova data aqui";
   const novoNumero = "Insira novo nº aqui";
 
+  const {
+    data: responseData,
+    isSuccess,
+    isError,
+    isLoading,
+  } = useGetBookClassFromId(initialData.idclass.toString());
+  const {
+    mutate: mutatePutBookEval,
+    isSuccess: isMutateSuccess,
+    data: mutateResponseData,
+  } = usePutBookClass();
+
+  useEffect(() => {
+    if (responseData && isSuccess) {
+      setFormData(responseData);
+    }
+  }, [responseData, isSuccess]);
+
+  useEffect(() => {
+    if (mutateResponseData && isMutateSuccess) {
+      toast.success("Atualizado com sucesso!", {
+        autoClose: 600,
+      });
+    }
+  }, [mutateResponseData, isMutateSuccess]);
+
   const handleSubmit = () => {
-    // Implemente a lógica para salvar todas as alterações (pode enviar para um servidor, atualizar o estado global, etc.)
-    // Exemplo: console.log('Salvando alterações:', formData);
+    const formDataToSend = { ...formData } as { [key: string]: any };
+
+    // eslint-disable-next-line no-restricted-syntax
+    for (const key in formDataToSend) {
+      if (formDataToSend[key] === null) {
+        formDataToSend[key] = "";
+      }
+    }
+
+    delete formDataToSend.idclass;
+    delete formDataToSend.idvol;
+    delete formDataToSend.place;
+    delete formDataToSend.bookEvaluations;
+
+    formDataToSend.parec =
+      formDataToSend.parec == null ? "" : formDataToSend.parec;
+    formDataToSend.folderLink =
+      formDataToSend.folderLink == null ? "" : formDataToSend.folderLink;
+
+    mutatePutBookEval({
+      data: formDataToSend as any,
+      bookClassId: formData.idclass.toString(),
+    });
   };
 
   const handleChange = (
     event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
-    index: number,
-    fieldName: keyof FormData
+    fieldName: keyof BookClass
   ) => {
     const { value } = event.target;
     setFormData((prevFormData) => {
-      const newData = [...prevFormData];
-      newData[index] = {
-        ...newData[index],
+      const newData = {
+        ...prevFormData,
         [fieldName]: value,
       };
       return newData;
@@ -74,104 +95,109 @@ export default function FormularioEditarTurmaRedacaoTemplate() {
 
   return (
     <>
-      <HeaderForm />
-      <main className={style.container}>
-        {formData.map((data, index) => (
-          <section key={data.idVoluntario}>
-            <div>
-              <h1 className={style.localizacaoTitulo}>
-                {data.localizacaoTitulo}
-              </h1>
-              <p className={style.subtitulo}>
-                Aqui você consegue alterar as informações desta turma
-              </p>
-              <ButtonDownloadRelatorios />
+      {isError && <p>Erro ao carregar os dados</p>}
+      {isLoading && (
+        <div className={style.loadingSpinnerContainer}>
+          <LoadingSpinner />
+        </div>
+      )}
+      {!isLoading && !isError && (
+        <main className={style.container}>
+          <section key={formData.idvol}>
+            <div className={style.containerHeader}>
+              <div className={style.containerHeaderLocalization}>
+                <h1 className={style.localizacaoTitulo}>
+                  {formData.place.fullName}
+                </h1>
+                <p className={style.subtitulo}>
+                  Aqui você consegue alterar as informações desta turma
+                </p>
+                <ButtonDownloadRelatorios />
+              </div>
             </div>
+
             <h5 className={style.h5}>Voluntário que avaliou:</h5>
             <div className={style.noEdit}>
               <p>
-                Nome: <span>{data.nomeVoluntario}</span>
+                Nome: <span>{formData.parec}</span>
               </p>
               <p>
-                Id: <span>{data.idVoluntario}</span>
+                Id: <span>{formData.idvol}</span>
               </p>
               <p>
-                ID da Turma: <span>{data.idTurma}</span>
+                ID da Turma: <span>{formData.idclass}</span>
               </p>
               <p>
-                Número da Unidade prisional:{" "}
-                <span>{data.numeroDeUnidadePrisional}</span>
+                Número da Unidade prisional: <span>{formData.place.id}</span>
               </p>
             </div>
             <ItemTurma
               inputType="input"
               label="Recibo dos relatórios"
-              value={data.reciboDosRelatorios}
+              value={formData.reportReceiveDate}
               placeholder={novaData}
-              onChange={(e) => handleChange(e, index, "reciboDosRelatorios")}
+              onChange={(e) => handleChange(e, "reportReceiveDate")}
             />
             <ItemTurma
               inputType="input"
               label="Empréstimo"
-              value={data.emprestimo}
+              value={formData.loanDate}
               placeholder={novaData}
-              onChange={(e) => handleChange(e, index, "emprestimo")}
+              onChange={(e) => handleChange(e, "loanDate")}
             />
             <ItemTurma
               inputType="input"
               label="Devolução dos livros"
-              value={data.devolucaoDosLivros}
+              value={formData.returnDate}
               placeholder={novaData}
-              onChange={(e) => handleChange(e, index, "devolucaoDosLivros")}
+              onChange={(e) => handleChange(e, "returnDate")}
             />
             <ItemTurma
               inputType="input"
               label="Elaboração dos relatórios"
-              value={data.elaboracaoDosRelatorios}
+              value={formData.reportElaborationDate}
               placeholder={novaData}
-              onChange={(e) =>
-                handleChange(e, index, "elaboracaoDosRelatorios")}
+              onChange={(e) => handleChange(e, "reportElaborationDate")}
             />
             <ItemTurma
               inputType="input"
               label="Relatórios lista de presença"
-              value={data.relatoriosListaPresenca.toString()}
+              value={formData.presenceList}
               placeholder={novoNumero}
-              onChange={(e) =>
-                handleChange(e, index, "relatoriosListaPresenca")}
+              onChange={(e) => handleChange(e, "presenceList")}
             />
             <ItemTurma
               inputType="input"
               label="Relatórios enviados"
-              value={data.relatoriosEnviados.toString()}
+              value={formData.qrl}
               placeholder={novoNumero}
-              onChange={(e) => handleChange(e, index, "relatoriosEnviados")}
+              onChange={(e) => handleChange(e, "qrl")}
             />
             <ItemTurma
               inputType="input"
               label="Reserva dos voluntários"
-              value={data.reservaDosVoluntarios}
+              value={formData.sendDateParec}
               placeholder={novaData}
-              onChange={(e) => handleChange(e, index, "reservaDosVoluntarios")}
+              onChange={(e) => handleChange(e, "sendDateParec")}
             />
             <ItemTurma
               inputType="input"
               label="Finalização da turma"
-              value={data.finalizacaoDaTurma}
+              value={formData.endEvaluationDate}
               placeholder={novaData}
-              onChange={(e) => handleChange(e, index, "finalizacaoDaTurma")}
+              onChange={(e) => handleChange(e, "endEvaluationDate")}
             />
             <ItemTurma
               inputType="input"
               label="Devolução para FUNAP"
-              value={data.devolucaoParaFUNAP}
+              value={formData.sendDateFunap}
               placeholder={novaData}
-              onChange={(e) => handleChange(e, index, "devolucaoParaFUNAP")}
+              onChange={(e) => handleChange(e, "sendDateFunap")}
             />
             <BtnSubmit onClick={handleSubmit} />
           </section>
-        ))}
-      </main>
+        </main>
+      )}
     </>
   );
 }

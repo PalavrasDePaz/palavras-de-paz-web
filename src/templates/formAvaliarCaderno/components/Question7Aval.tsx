@@ -12,9 +12,9 @@ const Question7Aval: React.FC<Question7AvalProps> = ({
   handleChangeQuestions,
 }) => (
   <>
-    <h3 className={styles.sectionTitle}>Avaliação da Questão 7</h3>
+    <h3 className={styles.sectionTitle}>Questão 7</h3>
     <label htmlFor="question7" className={styles.label}>
-      Resposta do(a) aluno(a) - Quantos ano você tem?
+      Resposta do(a) aluno(a) - Quantos anos você tem?
       <div className={styles.optionContainer}>
         {optionsQuestion7.map((ageRange) => (
           <label key={ageRange} className={styles.radioLabel}>

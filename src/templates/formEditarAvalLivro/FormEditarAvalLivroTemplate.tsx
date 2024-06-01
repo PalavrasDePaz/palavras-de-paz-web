@@ -1,199 +1,225 @@
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
+import { toast } from "react-toastify";
 
+import LoadingSpinner from "../../components/loadingSpinner/LoadingSpinner";
+import useGetBookEvalForm from "../../hooks/useGetBookEval";
+import usePutBookEvalForm from "../../hooks/usePutBookEvalForm";
 import BtnSubmit from "../formEditarTurmaRedacao/components/ButtonSalavarAlteracoes";
 import ItemTurma from "../formEditarTurmaRedacao/components/ItemTurma";
 
-import { FormData } from "./types/FormData";
+import { BookEval } from "./schema";
 
 import style from "./styles/FormEditarAvalLivro.module.css";
 
-// Dados iniciais para testar o formulário de forma provisória
-const initialData: FormData[] = [
-  {
-    nomeAvaliado: "José Gomes Filho",
-    matricula: 1,
-    idAvaliador: 1,
-    nomeAvaliador: "exemplo exemplo",
-    numeroTurma: 1,
-    dataEHora: "00:00 - 01/01/1900",
-    dataValidacao: "00:00 - 01/01/1900",
-    estetica: "lore ipsum",
-    dignidade: "lore ipsum",
-    clareza: "lore ipsum",
-    plagio: "lore ipsum",
-    observacao: "lore ipsum",
-    conceito: "lore ipsum",
-    opniao: "lore ipsum",
-    sociedade: "lore ipsum",
-    plagioParcial: "lore ipsum",
-    relevantes: "lore ipsum",
-    redacao: "lore ipsum",
-    portugues: "lore ipsum",
-    historiaObservacao: "lore ipsum",
-    historiaRelatorio: "lore ipsum",
-  },
-];
+interface props {
+  initialData: BookEval;
+  evaluationId: number;
+}
 
-export default function FormEditarAvalLivroTemplate() {
-  const [formData, setFormData] = useState<FormData[]>(initialData);
+export default function FormEditarAvalLivroTemplate({
+  initialData,
+  evaluationId,
+}: props) {
+  const [formData, setFormData] = useState<BookEval>(initialData);
 
-  const handleSubmit = () => {
-    // Implemente a lógica para salvar todas as alterações (pode enviar para um servidor, atualizar o estado global, etc.)
-    // Exemplo: console.log('Salvando alterações:', formData);
+  const {
+    data: responseData,
+    isSuccess,
+    isError,
+    isLoading,
+  } = useGetBookEvalForm(evaluationId.toString());
+  const {
+    mutate: mutatePutBookEval,
+    isSuccess: isMutateSuccess,
+    data: mutateResponseData,
+  } = usePutBookEvalForm();
+
+  useEffect(() => {
+    if (responseData && isSuccess) {
+      setFormData(responseData.data);
+    }
+  }, [responseData, isSuccess]);
+
+  useEffect(() => {
+    if (mutateResponseData && isMutateSuccess) {
+      toast.success("Atualizado com sucesso!", {
+        autoClose: 600,
+      });
+    }
+  }, [mutateResponseData, isMutateSuccess]);
+
+  const handleSubmit = async () => {
+    const formDataToSend = { ...formData } as any;
+    delete formDataToSend.evaluatorId;
+    delete formDataToSend.classId;
+    delete formDataToSend.readerRegistration;
+    delete formDataToSend.id;
+    mutatePutBookEval({
+      data: formDataToSend,
+      evaluationId: evaluationId.toString(),
+    });
   };
 
   const handleChange = (
     event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
-    index: number,
-    fieldName: keyof FormData
+    fieldName: keyof BookEval
   ) => {
     const { value } = event.target;
     setFormData((prevFormData) => {
-      const newData = [...prevFormData];
-      newData[index] = {
-        ...newData[index],
-        [fieldName]: value,
+      const newData = {
+        ...prevFormData,
+        [fieldName]: fieldName === "readHistories" ? value.split("\n") : value,
       };
       return newData;
     });
   };
 
   return (
-    <main className={style.container}>
-      {formData.map((data, index) => (
-        <section key={data.matricula}>
-          <h1 className={style.localizacaoTitulo}>{data.nomeAvaliado}</h1>
+    <>
+      {isError && <p>Erro ao carregar os dados</p>}
+      {isLoading && (
+        <div className={style.loadingSpinnerContainer}>
+          <LoadingSpinner />
+        </div>
+      )}
+      {!isLoading && !isError && (
+        <main className={style.container}>
+          <section key={formData.readerRegistration}>
+            <h1 className={style.localizacaoTitulo}>
+              {formData.volunteerName}
+            </h1>
 
-          <ItemTurma
-            inputType="input"
-            label="Matrícula"
-            value={data.matricula}
-            placeholder="Insira a matrícula"
-            onChange={(event) => handleChange(event, index, "matricula")}
-          />
-          <div className={style.noEdit}>
-            <p>
-              ID do avaliador: <span>{data.idAvaliador}</span>
-              <span>{data.nomeAvaliador}</span>
-            </p>
-            <p>
-              Nome: <span>{data.numeroTurma}</span>
-            </p>
-            <p>
-              Número da turma: <span>{data.numeroTurma}</span>
-            </p>
-            <p>
-              Data e hora: <span>{data.dataEHora}</span>
-            </p>
-            <p>
-              Data de validação: <span>{data.dataValidacao}</span>
-            </p>
-          </div>
+            <ItemTurma
+              inputType="input"
+              label="Matrícula"
+              value={formData.readerRegistration}
+              placeholder="Insira a matrícula"
+              onChange={(event) => handleChange(event, "readerRegistration")}
+            />
+            <div className={style.noEdit}>
+              <p>
+                ID do avaliador: <span>{formData.evaluatorId}</span> Nome:{" "}
+                <span>{formData.readerName}</span>
+              </p>
+              <p>
+                Número da turma: <span>{formData.classId}</span>
+              </p>
+              <p>
+                Data e hora: <span>{formData.createdAt}</span>
+              </p>
+              <p>
+                Data de validação: <span>{formData.expirationDate}</span>
+              </p>
+            </div>
 
-          <ItemTurma
-            inputType="textarea"
-            label="Estética"
-            value={data.estetica}
-            placeholder="Insira a estética"
-            onChange={(event) => handleChange(event, index, "estetica")}
-          />
-          <ItemTurma
-            inputType="textarea"
-            label="Dignidade"
-            value={data.dignidade}
-            placeholder="Insira a dignidade"
-            onChange={(event) => handleChange(event, index, "dignidade")}
-          />
-          <ItemTurma
-            inputType="textarea"
-            label="Clareza"
-            value={data.clareza}
-            placeholder="Insira a clareza"
-            onChange={(event) => handleChange(event, index, "clareza")}
-          />
-          <ItemTurma
-            inputType="textarea"
-            label="Plágio"
-            value={data.plagio}
-            placeholder="Insira o plágio"
-            onChange={(event) => handleChange(event, index, "plagio")}
-          />
-          <ItemTurma
-            inputType="textarea"
-            label="Observação"
-            value={data.observacao}
-            placeholder="Insira a observação"
-            onChange={(event) => handleChange(event, index, "observacao")}
-          />
-          <ItemTurma
-            inputType="textarea"
-            label="Conceito"
-            value={data.conceito}
-            placeholder="Insira o conceito"
-            onChange={(event) => handleChange(event, index, "conceito")}
-          />
-          <ItemTurma
-            inputType="textarea"
-            label="Opnião"
-            value={data.opniao}
-            placeholder="Insira a opnião"
-            onChange={(event) => handleChange(event, index, "opniao")}
-          />
-          <ItemTurma
-            inputType="textarea"
-            label="Sociedade"
-            value={data.sociedade}
-            placeholder="Insira a sociedade"
-            onChange={(event) => handleChange(event, index, "sociedade")}
-          />
-          <ItemTurma
-            inputType="textarea"
-            label="Plágio parcial"
-            value={data.plagioParcial}
-            placeholder="Insira o plágio parcial"
-            onChange={(event) => handleChange(event, index, "plagioParcial")}
-          />
-          <ItemTurma
-            inputType="textarea"
-            label="Relevantes"
-            value={data.relevantes}
-            placeholder="Insira os relevantes"
-            onChange={(event) => handleChange(event, index, "relevantes")}
-          />
-          <ItemTurma
-            inputType="textarea"
-            label="Redação"
-            value={data.redacao}
-            placeholder="Insira a redação"
-            onChange={(event) => handleChange(event, index, "redacao")}
-          />
-          <ItemTurma
-            inputType="textarea"
-            label="Português"
-            value={data.portugues}
-            placeholder="Insira o português"
-            onChange={(event) => handleChange(event, index, "portugues")}
-          />
-          <ItemTurma
-            inputType="textarea"
-            label="História observação"
-            value={data.historiaObservacao}
-            placeholder="Insira a história observação"
-            onChange={(event) =>
-              handleChange(event, index, "historiaObservacao")}
-          />
-          <ItemTurma
-            inputType="textarea"
-            label="História relatório"
-            value={data.historiaRelatorio}
-            placeholder="Insira a história relatório"
-            onChange={(event) =>
-              handleChange(event, index, "historiaRelatorio")}
-          />
+            <ItemTurma
+              inputType="textarea"
+              label="Estética"
+              value={formData.textAestheticsAvaliation}
+              placeholder="Insira a estética"
+              onChange={(event) =>
+                  handleChange(event, "textAestheticsAvaliation")}
+            />
+            <ItemTurma
+              inputType="textarea"
+              label="Dignidade"
+              value={formData.textReliabilityAvaliation}
+              placeholder="Insira a dignidade"
+              onChange={(event) =>
+                  handleChange(event, "textReliabilityAvaliation")}
+            />
+            <ItemTurma
+              inputType="textarea"
+              label="Clareza"
+              value={formData.textClarityAvaliation}
+              placeholder="Insira a clareza"
+              onChange={(event) =>
+                  handleChange(event, "textClarityAvaliation")}
+            />
+            <ItemTurma
+              inputType="textarea"
+              label="Plágio"
+              value={formData.isAppropriation}
+              placeholder="Insira o plágio"
+              onChange={(event) => handleChange(event, "isAppropriation")}
+            />
+            <ItemTurma
+              inputType="textarea"
+              label="Observação"
+              value={formData.observations}
+              placeholder="Insira a observação"
+              onChange={(event) => handleChange(event, "observations")}
+            />
+            <ItemTurma
+              inputType="textarea"
+              label="Conceito"
+              value={formData.concept}
+              placeholder="Insira o conceito"
+              onChange={(event) => handleChange(event, "concept")}
+            />
+            <ItemTurma
+              inputType="textarea"
+              label="Opnião"
+              value={formData.bookCriticalAnalysisAvaliation}
+              placeholder="Insira a opnião"
+              onChange={(event) =>
+                  handleChange(event, "bookCriticalAnalysisAvaliation")}
+            />
+            <ItemTurma
+              inputType="textarea"
+              label="Sociedade"
+              value={formData.societyCriticalAnalysisAvaliation}
+              placeholder="Insira a sociedade"
+              onChange={(event) =>
+                  handleChange(event, "societyCriticalAnalysisAvaliation")}
+            />
+            <ItemTurma
+              inputType="textarea"
+              label="Plágio parcial"
+              value={formData.isParcialPlagiarism}
+              placeholder="Insira o plágio parcial"
+              onChange={(event) => handleChange(event, "isParcialPlagiarism")}
+            />
+            <ItemTurma
+              inputType="textarea"
+              label="Relevantes"
+              value={formData.relevantPhrases}
+              placeholder="Insira os relevantes"
+              onChange={(event) => handleChange(event, "relevantPhrases")}
+            />
+            <ItemTurma
+              inputType="textarea"
+              label="Redação"
+              value={formData.syntheticAvaliation}
+              placeholder="Insira a redação"
+              onChange={(event) => handleChange(event, "syntheticAvaliation")}
+            />
+            <ItemTurma
+              inputType="textarea"
+              label="Português"
+              value={formData.grammarAvaliation}
+              placeholder="Insira o português"
+              onChange={(event) => handleChange(event, "grammarAvaliation")}
+            />
+            <ItemTurma
+              inputType="textarea"
+              label="História observação"
+              value={formData.observedHistories}
+              placeholder="Insira a história observação"
+              onChange={(event) => handleChange(event, "observedHistories")}
+            />
+            <ItemTurma
+              inputType="textarea"
+              label="História relatório"
+              value={formData.readHistories.join("\n")}
+              placeholder="Insira a história relatório"
+              onChange={(event) => handleChange(event, "readHistories")}
+            />
 
-          <BtnSubmit onClick={handleSubmit} />
-        </section>
-      ))}
-    </main>
+            <BtnSubmit onClick={handleSubmit} />
+          </section>
+        </main>
+      )}
+    </>
   );
 }

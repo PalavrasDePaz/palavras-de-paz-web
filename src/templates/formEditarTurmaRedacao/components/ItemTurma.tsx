@@ -61,7 +61,7 @@ const ItemTurma: React.FC<ItemTurmaProps> = ({
             />
           </button>
           <br />
-          <div className={style.valorTextArea}>{value}</div>
+          <span className={style.valorTextArea}>{value}</span>
         </p>
       )}
 

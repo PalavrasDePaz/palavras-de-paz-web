@@ -2,9 +2,16 @@ import * as yup from "yup";
 
 import { REQUIRED_FIELD } from "../../constants";
 
-export const schema = yup.object().shape({
-  reservationDate: yup.date().required(REQUIRED_FIELD),
-  evaluatedDate: yup.date().required(REQUIRED_FIELD),
+export const notebookAvalSchema = yup.object().shape({
+  idvol: yup.number().required(REQUIRED_FIELD),
+  idpep: yup.number().required(REQUIRED_FIELD),
+  idcad: yup.number().required(REQUIRED_FIELD),
+  studentPrisonUnit: yup.string().required(REQUIRED_FIELD),
+  evaluatorName: yup.string().required(REQUIRED_FIELD),
+  evaluatorEmail: yup.string().required(REQUIRED_FIELD),
+  studentRegistration: yup.number().required(REQUIRED_FIELD),
+  studentName: yup.string().required(REQUIRED_FIELD),
+  notebookDirectory: yup.string().required(REQUIRED_FIELD),
   subject1: yup.string().required(REQUIRED_FIELD),
   subject2: yup.string().required(REQUIRED_FIELD),
   subject3: yup.string().required(REQUIRED_FIELD),
@@ -32,4 +39,8 @@ export const schema = yup.object().shape({
   conclusion: yup.string().required(REQUIRED_FIELD),
   approved: yup.boolean().required(REQUIRED_FIELD),
   archivesExclusion: yup.boolean().required(REQUIRED_FIELD),
+  reservationDate: yup.string().required(REQUIRED_FIELD),
+  evaluatedDate: yup.string().required(REQUIRED_FIELD),
 });
+
+export type NotebookAval = yup.InferType<typeof notebookAvalSchema>;
