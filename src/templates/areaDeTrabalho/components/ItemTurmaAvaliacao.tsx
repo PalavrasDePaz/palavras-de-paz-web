@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import { useRouter } from "next/router";
 
@@ -125,6 +125,21 @@ function ItemTurmaAvaliacao({
   const preencher = "Preencher Formulário";
 
   const [check, setCheck] = useState(false);
+  const [dateConcludedState, setDateConcluded] = useState("--/--/--");
+  const handleConclusedChange = () => {
+    // ADICIONAR ROTA PARA CONCLUIR A AVALIAÇÃO
+    setCheck(!check);
+  };
+
+  useEffect(() => {
+    if (check) {
+      const date = new Date().toISOString();
+      const dateBR = date.split("T")[0].split("-").reverse().join("/");
+      setDateConcluded(dateBR);
+    } else {
+      setDateConcluded("--/--/--");
+    }
+  }, [check]);
 
   return (
     <div className={styles.avaliarRedacoes_status}>
@@ -141,9 +156,17 @@ function ItemTurmaAvaliacao({
           </label>
           <p>{`${idclass}-${place}`}</p>
           <p>{naoReservado}</p>
-          <p>{naoReservado}</p>
-          <input type="checkbox" id="teste" className={styles.check} />
-          <label htmlFor="teste" className={styles.switchConcl}>
+          <p>{dateConcludedState}</p>
+          <input
+            type="checkbox"
+            id={idclass.toString() + 1}
+            className={styles.check}
+            onChange={() => handleConclusedChange()}
+          />
+          <label
+            htmlFor={idclass.toString() + 1}
+            className={styles.switchConcl}
+          >
             <span className={styles.sliderConcl} />
           </label>
           <div className={styles.avaliarRedacoes_status_div}>
@@ -168,9 +191,17 @@ function ItemTurmaAvaliacao({
           <p>
             {dateReserved ? dateUTCFormat(dateReserved) : dateUTCGenerate()}
           </p>
-          <p>{dateConcluded ? dateUTCFormat(dateReserved) : naoReservado}</p>
-          <input type="checkbox" id="teste" className={styles.check} />
-          <label htmlFor="teste" className={styles.switchConcl}>
+          <p>{dateConcludedState}</p>
+          <input
+            type="checkbox"
+            id={idclass.toString() + 1}
+            className={styles.check}
+            onChange={() => handleConclusedChange()}
+          />
+          <label
+            htmlFor={idclass.toString() + 1}
+            className={styles.switchConcl}
+          >
             <span className={styles.sliderConcl} />
           </label>
           <div className={styles.avaliarRedacoes_status_div}>
