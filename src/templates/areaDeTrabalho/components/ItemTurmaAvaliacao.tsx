@@ -1,8 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import Image from "next/image";
-import Link from "next/link";
 import { useRouter } from "next/router";
-import { fi } from "date-fns/locale";
 
 import DownloadImage from "../../../../public/static/images/icons/download.svg";
 import { api } from "../../../api";
@@ -126,6 +124,8 @@ function ItemTurmaAvaliacao({
   const naoReservado = "--/--/--";
   const preencher = "Preencher Formulário";
 
+  const [check, setCheck] = useState(false);
+
   return (
     <div className={styles.avaliarRedacoes_status}>
       {!reserved ? (
@@ -142,6 +142,10 @@ function ItemTurmaAvaliacao({
           <p>{`${idclass}-${place}`}</p>
           <p>{naoReservado}</p>
           <p>{naoReservado}</p>
+          <input type="checkbox" id="teste" className={styles.check} />
+          <label htmlFor="teste" className={styles.switchConcl}>
+            <span className={styles.sliderConcl} />
+          </label>
           <div className={styles.avaliarRedacoes_status_div}>
             <Image src={DownloadImage} alt="icone de download" />
             <p>Download</p>
@@ -165,6 +169,10 @@ function ItemTurmaAvaliacao({
             {dateReserved ? dateUTCFormat(dateReserved) : dateUTCGenerate()}
           </p>
           <p>{dateConcluded ? dateUTCFormat(dateReserved) : naoReservado}</p>
+          <input type="checkbox" id="teste" className={styles.check} />
+          <label htmlFor="teste" className={styles.switchConcl}>
+            <span className={styles.sliderConcl} />
+          </label>
           <div className={styles.avaliarRedacoes_status_div}>
             <button
               onClick={() => downloadZIP(idclass, `${place}`)}

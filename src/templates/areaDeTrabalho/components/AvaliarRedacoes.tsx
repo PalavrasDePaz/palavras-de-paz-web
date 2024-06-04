@@ -35,6 +35,7 @@ export default function AvaliarRedacoes({ idvol }: AvaliarRedacoesProps) {
         <h2>Turma / Penitenciária</h2>
         <h2>Reservado em</h2>
         <h2>Concluido em</h2>
+        <h2>Turma Concluida</h2>
         <h2>Baixar Relatórios</h2>
         <h2>Formulário de avaliação</h2>
       </div>
