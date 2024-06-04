@@ -120,16 +120,26 @@ function ItemTurmaAvaliacao({
     updatedEssaysIn(updatedEssays);
     await putRevertReservationData(volunteerId, classId);
   };
-
   const naoReservado = "--/--/--";
   const preencher = "Preencher Formulário";
-
   const [check, setCheck] = useState(false);
   const [dateConcludedState, setDateConcluded] = useState("--/--/--");
-  const handleConclusedChange = () => {
-    // ADICIONAR ROTA PARA CONCLUIR A AVALIAÇÃO
+  const handleConclusedChange = (idClass: number) => {
     setCheck(!check);
+    if (check) {
+      localStorage.setItem("conclused", JSON.stringify(`${idClass}`));
+    } else {
+      localStorage.removeItem("conclused");
+    }
   };
+
+  useEffect(() => {
+    const conclused = localStorage.getItem("conclused");
+    if (conclused) {
+      console.log("concluido");
+      // ROTA DE CONCLUSÃO BACKEND
+    }
+  }, []);
 
   useEffect(() => {
     if (check) {
@@ -161,7 +171,7 @@ function ItemTurmaAvaliacao({
             type="checkbox"
             id={idclass.toString() + 1}
             className={styles.check}
-            onChange={() => handleConclusedChange()}
+            onChange={() => handleConclusedChange(idclass)}
           />
           <label
             htmlFor={idclass.toString() + 1}
@@ -196,7 +206,7 @@ function ItemTurmaAvaliacao({
             type="checkbox"
             id={idclass.toString() + 1}
             className={styles.check}
-            onChange={() => handleConclusedChange()}
+            onChange={() => handleConclusedChange(idclass)}
           />
           <label
             htmlFor={idclass.toString() + 1}
