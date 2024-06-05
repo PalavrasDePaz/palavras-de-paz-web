@@ -7,29 +7,13 @@ import { api } from "../../../api";
 import dateUTCFormat from "../../../helpers/dateUTCFormat";
 import dateUTCGenerate from "../../../helpers/dateUTCGenerate";
 import downloadZIP from "../../../helpers/getEssaysDownload";
+import {
+  ItemTurmaAvaliacaoProps,
+  OpenFormularioProps,
+} from "../types/FormRedacaoType";
 import { IEssays } from "../types/interfaces";
 
 import styles from "../styles/AvaliarRedacoes.module.css";
-
-type ItemTurmaAvaliacaoProps = {
-  essaysIn: IEssays[];
-  setEssaysIn: React.Dispatch<React.SetStateAction<IEssays[]>>;
-  idclass: number;
-  place: string;
-  idvol: number;
-  dateReserved: string;
-  dateConcluded: string;
-  reserved: boolean;
-};
-
-type OpenFormularioProps = {
-  idClass: number;
-  idVol: number;
-  Place: string;
-  DateReserved: string;
-  DateConcluded: string;
-  Reserved: boolean;
-};
 
 function ItemTurmaAvaliacao({
   essaysIn,
@@ -122,22 +106,20 @@ function ItemTurmaAvaliacao({
   };
   const naoReservado = "--/--/--";
   const preencher = "Preencher Formulário";
-  const [check, setCheck] = useState(false);
+  const [check, setCheck] = useState(
+    localStorage.getItem("conclused")?.includes(idclass.toString()) || false
+  );
   const [dateConcludedState, setDateConcluded] = useState("--/--/--");
-  const handleConclusedChange = (idClass: number) => {
+  const handleConclusedChange = () => {
     setCheck(!check);
-    if (check) {
-      localStorage.setItem("conclused", JSON.stringify(`${idClass}`));
-    } else {
-      localStorage.removeItem("conclused");
-    }
   };
 
   useEffect(() => {
-    const conclused = localStorage.getItem("conclused");
-    if (conclused) {
-      console.log("concluido");
-      // ROTA DE CONCLUSÃO BACKEND
+    if (
+      localStorage.getItem("conclused") &&
+      localStorage.getItem("conclused")?.includes(idclass.toString())
+    ) {
+      // Chamo API
     }
   }, []);
 
@@ -148,6 +130,22 @@ function ItemTurmaAvaliacao({
       setDateConcluded(dateBR);
     } else {
       setDateConcluded("--/--/--");
+    }
+  }, [check]);
+
+  useEffect(() => {
+    if (check) {
+      const conclused = JSON.parse(localStorage.getItem("conclused") || "[]");
+      if (!conclused.includes(idclass.toString())) {
+        conclused.push(idclass.toString());
+        localStorage.setItem("conclused", JSON.stringify(conclused));
+      }
+    } else {
+      const conclused = JSON.parse(localStorage.getItem("conclused") || "[]");
+      if (conclused.includes(idclass.toString())) {
+        conclused.splice(conclused.indexOf(idclass.toString()), 1);
+        localStorage.setItem("conclused", JSON.stringify(conclused));
+      }
     }
   }, [check]);
 
@@ -171,7 +169,8 @@ function ItemTurmaAvaliacao({
             type="checkbox"
             id={idclass.toString() + 1}
             className={styles.check}
-            onChange={() => handleConclusedChange(idclass)}
+            onChange={() => handleConclusedChange()}
+            checked={check}
           />
           <label
             htmlFor={idclass.toString() + 1}
@@ -206,7 +205,8 @@ function ItemTurmaAvaliacao({
             type="checkbox"
             id={idclass.toString() + 1}
             className={styles.check}
-            onChange={() => handleConclusedChange(idclass)}
+            onChange={() => handleConclusedChange()}
+            checked={check}
           />
           <label
             htmlFor={idclass.toString() + 1}
