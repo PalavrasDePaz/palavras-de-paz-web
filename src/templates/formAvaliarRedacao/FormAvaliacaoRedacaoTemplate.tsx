@@ -5,7 +5,6 @@ import ButtonSendForm from "../../components/buttonSendForm/ButtonSendForm";
 import HeaderForm from "../../components/headerForm/HeaderForm";
 import useGetUser from "../../hooks/useGetUser";
 import usePostBookEvalForm from "../../hooks/usePostBookEvaluations";
-/* import usePutNotebookEvalForm from "../../hooks/usePutNotebookEvalForm"; */
 import useUserEmail from "../../hooks/useUserEmail";
 
 import Question1 from "./components/Question1";

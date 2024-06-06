@@ -7,6 +7,7 @@ import { api } from "../../../api";
 import dateUTCFormat from "../../../helpers/dateUTCFormat";
 import dateUTCGenerate from "../../../helpers/dateUTCGenerate";
 import downloadZIP from "../../../helpers/getEssaysDownload";
+import usePatchBookClubClass from "../../../hooks/usePatchBookClubClass";
 import {
   ItemTurmaAvaliacaoProps,
   OpenFormularioProps,
@@ -41,7 +42,7 @@ function ItemTurmaAvaliacao({
       query: { idClass, idVol, Place, DateReserved, DateConcluded, Reserved },
     });
   };
-
+  const { mutate: mutateEvalForm } = usePatchBookClubClass();
   const sortedEssayReserved = (essays: IEssays[]) =>
     essays.sort(
       (a, b) =>
@@ -50,13 +51,11 @@ function ItemTurmaAvaliacao({
 
   const sortedEssayNotReserved = (essays: IEssays[]) =>
     essays.sort((a, b) => a.idclass - b.idclass);
-
   const putReservationData = async (volunteerId: number, classId: number) => {
     const reserveData = { idvol: volunteerId, idclass: classId };
     const response = await api.put("/book-club-class/reservation", reserveData);
     return response.data;
   };
-
   const putRevertReservationData = async (
     volunteerId: number,
     classId: number
@@ -68,7 +67,6 @@ function ItemTurmaAvaliacao({
     );
     return response.data;
   };
-
   const updatedEssaysFunction = (classId: number, reserveFlag: boolean) =>
     essaysIn.map((essay: IEssays) => {
       if (essay.idclass === classId) {
@@ -79,7 +77,6 @@ function ItemTurmaAvaliacao({
       }
       return essay;
     });
-
   const updatedEssaysIn = (updatedEssays: IEssays[]) => {
     const filterReserved = sortedEssayReserved(
       updatedEssays.filter((essay) => essay.reserved)
@@ -89,13 +86,11 @@ function ItemTurmaAvaliacao({
     );
     setEssaysIn([filterReserved, filterNotReserved].flat());
   };
-
   const handleReservation = async (volunteerId: number, classId: number) => {
     const updatedEssays = updatedEssaysFunction(classId, true);
     updatedEssaysIn(updatedEssays);
     await putReservationData(volunteerId, classId);
   };
-
   const handleRevertReservation = async (
     volunteerId: number,
     classId: number
@@ -119,7 +114,12 @@ function ItemTurmaAvaliacao({
       localStorage.getItem("conclused") &&
       localStorage.getItem("conclused")?.includes(idclass.toString())
     ) {
-      // Chamo API
+      mutateEvalForm({
+        data: {
+          endEvaluationDate: new Date(dateConcluded),
+        },
+        idclass: idclass.toString(),
+      });
     }
   }, []);
 
