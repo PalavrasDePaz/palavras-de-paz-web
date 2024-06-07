@@ -3,11 +3,16 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 
 import DownloadImage from "../../../../public/static/images/icons/download.svg";
-import { api } from "../../../api";
 import dateUTCFormat from "../../../helpers/dateUTCFormat";
 import dateUTCGenerate from "../../../helpers/dateUTCGenerate";
 import downloadZIP from "../../../helpers/getEssaysDownload";
 import usePatchBookClubClass from "../../../hooks/usePatchBookClubClass";
+import {
+  putReservationData,
+  putRevertReservationData,
+  sortedEssayNotReserved,
+  sortedEssayReserved,
+} from "../helpers/Reservations";
 import {
   ItemTurmaAvaliacaoProps,
   OpenFormularioProps,
@@ -42,31 +47,9 @@ function ItemTurmaAvaliacao({
       query: { idClass, idVol, Place, DateReserved, DateConcluded, Reserved },
     });
   };
-  const { mutate: mutateEvalForm } = usePatchBookClubClass();
-  const sortedEssayReserved = (essays: IEssays[]) =>
-    essays.sort(
-      (a, b) =>
-        new Date(a.dateReserved).getTime() - new Date(b.dateReserved).getTime()
-    );
 
-  const sortedEssayNotReserved = (essays: IEssays[]) =>
-    essays.sort((a, b) => a.idclass - b.idclass);
-  const putReservationData = async (volunteerId: number, classId: number) => {
-    const reserveData = { idvol: volunteerId, idclass: classId };
-    const response = await api.put("/book-club-class/reservation", reserveData);
-    return response.data;
-  };
-  const putRevertReservationData = async (
-    volunteerId: number,
-    classId: number
-  ) => {
-    const reserveData = { idvol: volunteerId, idclass: classId };
-    const response = await api.put(
-      `/book-club-class/revert-reservation/${classId}`,
-      reserveData
-    );
-    return response.data;
-  };
+  const { mutate: mutateEvalForm } = usePatchBookClubClass();
+
   const updatedEssaysFunction = (classId: number, reserveFlag: boolean) =>
     essaysIn.map((essay: IEssays) => {
       if (essay.idclass === classId) {
@@ -77,6 +60,7 @@ function ItemTurmaAvaliacao({
       }
       return essay;
     });
+
   const updatedEssaysIn = (updatedEssays: IEssays[]) => {
     const filterReserved = sortedEssayReserved(
       updatedEssays.filter((essay) => essay.reserved)
@@ -86,11 +70,13 @@ function ItemTurmaAvaliacao({
     );
     setEssaysIn([filterReserved, filterNotReserved].flat());
   };
+
   const handleReservation = async (volunteerId: number, classId: number) => {
     const updatedEssays = updatedEssaysFunction(classId, true);
     updatedEssaysIn(updatedEssays);
     await putReservationData(volunteerId, classId);
   };
+
   const handleRevertReservation = async (
     volunteerId: number,
     classId: number
@@ -99,24 +85,36 @@ function ItemTurmaAvaliacao({
     updatedEssaysIn(updatedEssays);
     await putRevertReservationData(volunteerId, classId);
   };
+
   const naoReservado = "--/--/--";
   const preencher = "Preencher Formulário";
+
   const [check, setCheck] = useState(
-    localStorage.getItem("conclused")?.includes(idclass.toString()) || false
+    JSON.parse(localStorage.getItem("conclusedDate") || "[]").some(
+      (element: { idclass: string }) => element.idclass === idclass.toString()
+    )
   );
+
   const [dateConcludedState, setDateConcluded] = useState("--/--/--");
-  const handleConclusedChange = () => {
-    setCheck(!check);
-  };
 
   useEffect(() => {
+    const conclusedDate = JSON.parse(
+      localStorage.getItem("conclusedDate") || "[]"
+    );
     if (
-      localStorage.getItem("conclused") &&
-      localStorage.getItem("conclused")?.includes(idclass.toString())
+      localStorage.getItem("conclusedDate") &&
+      conclusedDate.some(
+        (element: { idclass: string }) => element.idclass === idclass.toString()
+      )
     ) {
+      const elementDate = conclusedDate.find(
+        (element: { idclass: string }) => element.idclass === idclass.toString()
+      );
+      setDateConcluded(elementDate.date);
+      const dateFormat = dateConcludedState.split("/").reverse().join("-");
       mutateEvalForm({
         data: {
-          endEvaluationDate: new Date(dateConcluded),
+          endEvaluationDate: new Date(dateFormat),
         },
         idclass: idclass.toString(),
       });
@@ -127,25 +125,33 @@ function ItemTurmaAvaliacao({
     if (check) {
       const date = new Date().toISOString();
       const dateBR = date.split("T")[0].split("-").reverse().join("/");
+      const conclusedDate = JSON.parse(
+        localStorage.getItem("conclusedDate") || "[]"
+      );
       setDateConcluded(dateBR);
+      if (
+        !conclusedDate.some(
+          (element: { idclass: string }) =>
+            element.idclass === idclass.toString()
+        )
+      ) {
+        conclusedDate.push({ idclass: idclass.toString(), date: dateBR });
+        localStorage.setItem("conclusedDate", JSON.stringify(conclusedDate));
+      }
+      conclusedDate.forEach((element: { idclass: string; date: string }) => {
+        if (element.idclass === idclass.toString()) {
+          element.date = dateBR;
+        }
+      });
     } else {
       setDateConcluded("--/--/--");
-    }
-  }, [check]);
-
-  useEffect(() => {
-    if (check) {
-      const conclused = JSON.parse(localStorage.getItem("conclused") || "[]");
-      if (!conclused.includes(idclass.toString())) {
-        conclused.push(idclass.toString());
-        localStorage.setItem("conclused", JSON.stringify(conclused));
-      }
-    } else {
-      const conclused = JSON.parse(localStorage.getItem("conclused") || "[]");
-      if (conclused.includes(idclass.toString())) {
-        conclused.splice(conclused.indexOf(idclass.toString()), 1);
-        localStorage.setItem("conclused", JSON.stringify(conclused));
-      }
+      const conclusedDate = JSON.parse(
+        localStorage.getItem("conclusedDate") || "[]"
+      );
+      const newConclusedDate = conclusedDate.filter(
+        (element: { idclass: string }) => element.idclass !== idclass.toString()
+      );
+      localStorage.setItem("conclusedDate", JSON.stringify(newConclusedDate));
     }
   }, [check]);
 
@@ -164,14 +170,8 @@ function ItemTurmaAvaliacao({
           </label>
           <p>{`${idclass}-${place}`}</p>
           <p>{naoReservado}</p>
-          <p>{dateConcludedState}</p>
-          <input
-            type="checkbox"
-            id={idclass.toString() + 1}
-            className={styles.check}
-            onChange={() => handleConclusedChange()}
-            checked={check}
-          />
+          <p>{naoReservado}</p>
+          <input type="checkbox" className={styles.check} checked={false} />
           <label
             htmlFor={idclass.toString() + 1}
             className={styles.switchConcl}
@@ -188,7 +188,7 @@ function ItemTurmaAvaliacao({
         <>
           <input
             type="checkbox"
-            checked // ADICIONAR ROTA PARA REMOVER A RESERVA
+            checked
             onChange={() => handleRevertReservation(idvol, idclass)}
             id={idclass.toString()}
             className={styles.toggle}
@@ -205,7 +205,7 @@ function ItemTurmaAvaliacao({
             type="checkbox"
             id={idclass.toString() + 1}
             className={styles.check}
-            onChange={() => handleConclusedChange()}
+            onChange={() => setCheck(!check)}
             checked={check}
           />
           <label
