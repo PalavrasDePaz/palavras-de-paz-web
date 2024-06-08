@@ -4,6 +4,7 @@
 /* eslint-disable react/jsx-no-useless-fragment */
 /* eslint-disable react/jsx-max-depth */
 /* eslint-disable max-len */
+/* eslint-disable no-magic-numbers */
 import { ChangeEvent, useState } from "react";
 
 import SearchBar from "../../../../../components/forms/searchBar";
@@ -68,15 +69,21 @@ export default function TabelaTurmas() {
   const getPages = () => {
     const pages = [];
 
-    const totalPages = classes?.totalCount || 0;
+    const totalPages = classes ? Math.ceil(classes.totalCount / 30) : 1;
 
-    const limit = 5;
+    const numberPagesShouldHaveBefore = 2;
+    const initialPage =
+      currentPage > numberPagesShouldHaveBefore
+        ? currentPage - numberPagesShouldHaveBefore
+        : 1;
+    const remnantToAddAfter =
+      numberPagesShouldHaveBefore - (currentPage - initialPage);
 
-    const currentBlock = Math.ceil(currentPage / limit);
-
-    const initialPage = (currentBlock - 1) * limit + 1;
-
-    const finalPage = Math.min(initialPage + limit - 1, totalPages);
+    const numberPagesShouldHaveAfter = 2 + remnantToAddAfter;
+    const finalPage =
+      currentPage < totalPages - numberPagesShouldHaveAfter
+        ? currentPage + numberPagesShouldHaveAfter
+        : totalPages;
 
     for (let i = initialPage; i <= finalPage; i++) {
       pages.push(i);

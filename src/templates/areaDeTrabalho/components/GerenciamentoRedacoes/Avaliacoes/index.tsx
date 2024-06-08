@@ -1,6 +1,7 @@
 /* eslint-disable react/jsx-max-depth */
 /* eslint-disable max-len */
 /* eslint-disable no-plusplus */
+/* eslint-disable no-magic-numbers */
 import { useState } from "react";
 
 import SearchBar from "../../../../../components/forms/searchBar";
@@ -34,15 +35,21 @@ export default function TabelaAvaliacoes() {
   const getPages = () => {
     const pages = [];
 
-    const totalPages = bookEvals?.totalCount || 0;
+    const totalPages = bookEvals ? Math.ceil(bookEvals.totalCount / 30) : 1;
 
-    const limit = 5;
+    const numberPagesShouldHaveBefore = 2;
+    const initialPage =
+      currentPage > numberPagesShouldHaveBefore
+        ? currentPage - numberPagesShouldHaveBefore
+        : 1;
+    const remnantToAddAfter =
+      numberPagesShouldHaveBefore - (currentPage - initialPage);
 
-    const currentBlock = Math.ceil(currentPage / limit);
-
-    const initialPage = (currentBlock - 1) * limit + 1;
-
-    const finalPage = Math.min(initialPage + limit - 1, totalPages);
+    const numberPagesShouldHaveAfter = 2 + remnantToAddAfter;
+    const finalPage =
+      currentPage < totalPages - numberPagesShouldHaveAfter
+        ? currentPage + numberPagesShouldHaveAfter
+        : totalPages;
 
     for (let i = initialPage; i <= finalPage; i++) {
       pages.push(i);
@@ -74,7 +81,6 @@ export default function TabelaAvaliacoes() {
           <table className={styles.avaliacoes_table}>
             <thead>
               <tr>
-                <th> </th>
                 <th>ID do avaliador</th>
                 <th>Nome do avaliador</th>
                 <th>Matrícula do avaliado</th>
@@ -88,9 +94,6 @@ export default function TabelaAvaliacoes() {
             <tbody className={styles.avaliacoes_tbody}>
               {bookEvals?.nodes?.map((bookEval: BookEval) => (
                 <tr className={styles.avaliacoes_tr} key={bookEval.id}>
-                  <td>
-                    <input type="checkbox" />
-                  </td>
                   <td>{bookEval.evaluatorId}</td>
                   <td>{bookEval.volunteerName}</td>
                   <td>{bookEval.readerRegistration}</td>
