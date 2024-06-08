@@ -14,11 +14,13 @@ import style from "./styles/FormEditarAvalLivro.module.css";
 interface props {
   initialData: BookEval;
   evaluationId: number;
+  viewOnly: boolean;
 }
 
 export default function FormEditarAvalLivroTemplate({
   initialData,
   evaluationId,
+  viewOnly,
 }: props) {
   const [formData, setFormData] = useState<BookEval>(initialData);
 
@@ -95,6 +97,7 @@ export default function FormEditarAvalLivroTemplate({
               value={formData.readerRegistration}
               placeholder="Insira a matrícula"
               onChange={(event) => handleChange(event, "readerRegistration")}
+              viewOnly={viewOnly}
             />
             <div className={style.noEdit}>
               <p>
@@ -118,7 +121,8 @@ export default function FormEditarAvalLivroTemplate({
               value={formData.textAestheticsAvaliation}
               placeholder="Insira a estética"
               onChange={(event) =>
-                  handleChange(event, "textAestheticsAvaliation")}
+                handleChange(event, "textAestheticsAvaliation")}
+              viewOnly={viewOnly}
             />
             <ItemTurma
               inputType="textarea"
@@ -126,15 +130,16 @@ export default function FormEditarAvalLivroTemplate({
               value={formData.textReliabilityAvaliation}
               placeholder="Insira a dignidade"
               onChange={(event) =>
-                  handleChange(event, "textReliabilityAvaliation")}
+                handleChange(event, "textReliabilityAvaliation")}
+              viewOnly={viewOnly}
             />
             <ItemTurma
               inputType="textarea"
               label="Clareza"
               value={formData.textClarityAvaliation}
               placeholder="Insira a clareza"
-              onChange={(event) =>
-                  handleChange(event, "textClarityAvaliation")}
+              onChange={(event) => handleChange(event, "textClarityAvaliation")}
+              viewOnly={viewOnly}
             />
             <ItemTurma
               inputType="textarea"
@@ -142,6 +147,7 @@ export default function FormEditarAvalLivroTemplate({
               value={formData.isAppropriation}
               placeholder="Insira o plágio"
               onChange={(event) => handleChange(event, "isAppropriation")}
+              viewOnly={viewOnly}
             />
             <ItemTurma
               inputType="textarea"
@@ -149,6 +155,7 @@ export default function FormEditarAvalLivroTemplate({
               value={formData.observations}
               placeholder="Insira a observação"
               onChange={(event) => handleChange(event, "observations")}
+              viewOnly={viewOnly}
             />
             <ItemTurma
               inputType="textarea"
@@ -156,6 +163,7 @@ export default function FormEditarAvalLivroTemplate({
               value={formData.concept}
               placeholder="Insira o conceito"
               onChange={(event) => handleChange(event, "concept")}
+              viewOnly={viewOnly}
             />
             <ItemTurma
               inputType="textarea"
@@ -163,7 +171,8 @@ export default function FormEditarAvalLivroTemplate({
               value={formData.bookCriticalAnalysisAvaliation}
               placeholder="Insira a opnião"
               onChange={(event) =>
-                  handleChange(event, "bookCriticalAnalysisAvaliation")}
+                handleChange(event, "bookCriticalAnalysisAvaliation")}
+              viewOnly={viewOnly}
             />
             <ItemTurma
               inputType="textarea"
@@ -171,7 +180,8 @@ export default function FormEditarAvalLivroTemplate({
               value={formData.societyCriticalAnalysisAvaliation}
               placeholder="Insira a sociedade"
               onChange={(event) =>
-                  handleChange(event, "societyCriticalAnalysisAvaliation")}
+                handleChange(event, "societyCriticalAnalysisAvaliation")}
+              viewOnly={viewOnly}
             />
             <ItemTurma
               inputType="textarea"
@@ -179,6 +189,7 @@ export default function FormEditarAvalLivroTemplate({
               value={formData.isParcialPlagiarism}
               placeholder="Insira o plágio parcial"
               onChange={(event) => handleChange(event, "isParcialPlagiarism")}
+              viewOnly={viewOnly}
             />
             <ItemTurma
               inputType="textarea"
@@ -186,6 +197,7 @@ export default function FormEditarAvalLivroTemplate({
               value={formData.relevantPhrases}
               placeholder="Insira os relevantes"
               onChange={(event) => handleChange(event, "relevantPhrases")}
+              viewOnly={viewOnly}
             />
             <ItemTurma
               inputType="textarea"
@@ -193,6 +205,7 @@ export default function FormEditarAvalLivroTemplate({
               value={formData.syntheticAvaliation}
               placeholder="Insira a redação"
               onChange={(event) => handleChange(event, "syntheticAvaliation")}
+              viewOnly={viewOnly}
             />
             <ItemTurma
               inputType="textarea"
@@ -200,6 +213,7 @@ export default function FormEditarAvalLivroTemplate({
               value={formData.grammarAvaliation}
               placeholder="Insira o português"
               onChange={(event) => handleChange(event, "grammarAvaliation")}
+              viewOnly={viewOnly}
             />
             <ItemTurma
               inputType="textarea"
@@ -207,6 +221,7 @@ export default function FormEditarAvalLivroTemplate({
               value={formData.observedHistories}
               placeholder="Insira a história observação"
               onChange={(event) => handleChange(event, "observedHistories")}
+              viewOnly={viewOnly}
             />
             <ItemTurma
               inputType="textarea"
@@ -214,9 +229,10 @@ export default function FormEditarAvalLivroTemplate({
               value={formData.readHistories.join("\n")}
               placeholder="Insira a história relatório"
               onChange={(event) => handleChange(event, "readHistories")}
+              viewOnly={viewOnly}
             />
 
-            <BtnSubmit onClick={handleSubmit} />
+            {!viewOnly && <BtnSubmit onClick={handleSubmit} />}
           </section>
         </main>
       )}

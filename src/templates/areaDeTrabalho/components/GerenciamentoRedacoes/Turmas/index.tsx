@@ -3,27 +3,20 @@
 /* eslint-disable react/jsx-indent */
 /* eslint-disable react/jsx-no-useless-fragment */
 /* eslint-disable react/jsx-max-depth */
+/* eslint-disable max-len */
 import { ChangeEvent, useState } from "react";
-import { HiDownload } from "react-icons/hi";
-import { MdEditNote } from "react-icons/md";
 
 import SearchBar from "../../../../../components/forms/searchBar";
 import LoadingSpinner from "../../../../../components/loadingSpinner/LoadingSpinner";
 import GenericModal from "../../../../../components/modal";
 import { Class } from "../../../../../hooks/types";
-import useGetClasses from "../../../../../hooks/useGetClasses";
-/* import useGetClassSelected from "../../../../../hooks/useGetClassSelected"; */
-// import Form from "../../../../formEditarAvalLivro/FormEditarAvalLivroTemplate";
-/* eslint-disable-next-line max-len */
+import useGetBookClasses from "../../../../../hooks/useGetBookClasses";
 import FormularioEditarTurmaRedacaoTemplate from "../../../../formEditarTurmaRedacao/FormEditarTurmaRedacaoTemplate";
 import { BookClass } from "../../../../formEditarTurmaRedacao/schema";
 
-import styles from "./styles.module.css";
+import BookClassesReportDownloadButton from "./BookClassesReportDownloadButton";
 
-/* type TabelaTurmasProps = {
-  handleChangeActiveTab: () => void;
-};
- */
+import styles from "./styles.module.css";
 
 type CheckboxState = {
   [key: number]: boolean;
@@ -33,10 +26,12 @@ export default function TabelaTurmas() {
   const [currentPage, setCurrentPage] = useState(1);
   const [checkboxes, setCheckboxes] = useState<CheckboxState>({});
   const [selectedClasses, setSelectedClasses] = useState<Class[]>([]);
-
   const [classToEdit, setClassToEdit] = useState<Class | null>(null);
+  const [classToView, setClassToView] = useState<Class | null>(null);
 
-  const { data: classes, isLoading, isError } = useGetClasses(currentPage);
+  const { data: classes, isLoading, isError } = useGetBookClasses(currentPage);
+
+  const isCheckboxChecked = selectedClasses.length;
 
   const handleCheckboxChange = (event: ChangeEvent<HTMLInputElement>) => {
     const { name, checked } = event.target;
@@ -58,9 +53,11 @@ export default function TabelaTurmas() {
     }
   };
 
-  const isCheckboxChecked = selectedClasses.length;
+  const toggleModalView = (postClassToView: Class | null) => {
+    setClassToView(postClassToView);
+  };
 
-  const toggleModal = (postClassToEdit: Class | null) => {
+  const toggleModalEdit = (postClassToEdit: Class | null) => {
     setClassToEdit(postClassToEdit);
   };
 
@@ -70,6 +67,7 @@ export default function TabelaTurmas() {
 
   const getPages = () => {
     const pages = [];
+
     const totalPages = classes?.totalCount || 0;
 
     const limit = 5;
@@ -94,20 +92,14 @@ export default function TabelaTurmas() {
           <SearchBar />
         </div>
         <div className={styles.turmas_buttons_actions}>
-          <button disabled={!isCheckboxChecked} onClick={() => {}}>
-            <span className={styles.turmas_button_text}>Visualizar</span>
-            <span className={styles.turmas_button_icon}>
-              <MdEditNote size={24} />
-            </span>
-          </button>
-          <button disabled={!isCheckboxChecked} onClick={() => {}}>
-            <span className={styles.turmas_button_text}>Baixar</span>
-            <span className={styles.turmas_button_icon}>
-              <HiDownload size={24} />
-            </span>
-          </button>
+          {/* eslint-disable-next-line max-len */}
+          <BookClassesReportDownloadButton
+            classesToDownload={selectedClasses}
+            isCheckboxChecked={!!isCheckboxChecked}
+          />
         </div>
       </div>
+
       {!isLoading && !classes?.nodes?.length && (
         <p>Não há dados para serem exibidos</p>
       )}
@@ -117,6 +109,7 @@ export default function TabelaTurmas() {
           <LoadingSpinner />
         </div>
       )}
+
       {!isLoading && classes?.nodes?.length && (
         <div className={styles.turmas_table_container}>
           <table className={styles.turmas_table}>
@@ -125,6 +118,7 @@ export default function TabelaTurmas() {
                 <th> </th>
                 <th>Nome</th>
                 <th>ID</th>
+                <th> </th>
                 <th> </th>
               </tr>
             </thead>
@@ -143,10 +137,18 @@ export default function TabelaTurmas() {
                   <td>{classData.idclass}</td>
                   <td>
                     <button
-                      onClick={() => toggleModal(classData)}
+                      onClick={() => toggleModalView(classData)}
                       className={styles.visualize_button}
                     >
                       Visualizar
+                    </button>
+                  </td>
+                  <td>
+                    <button
+                      onClick={() => toggleModalEdit(classData)}
+                      className={styles.visualize_button}
+                    >
+                      Editar
                     </button>
                   </td>
                 </tr>
@@ -189,13 +191,27 @@ export default function TabelaTurmas() {
       )}
 
       <GenericModal
-        title="Edição turma de redação"
+        title="Visualizar turma de redação"
+        isShown={classToView != null}
+        onToggle={() => toggleModalView(null)}
+      >
+        {classToView != null && (
+          <FormularioEditarTurmaRedacaoTemplate
+            initialData={classToView as unknown as BookClass}
+            viewOnly
+          />
+        )}
+      </GenericModal>
+
+      <GenericModal
+        title="Editar turma de redação"
         isShown={classToEdit != null}
-        onToggle={() => toggleModal(null)}
+        onToggle={() => toggleModalEdit(null)}
       >
         {classToEdit != null && (
           <FormularioEditarTurmaRedacaoTemplate
             initialData={classToEdit as unknown as BookClass}
+            viewOnly={false}
           />
         )}
       </GenericModal>

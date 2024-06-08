@@ -3,6 +3,7 @@ import * as yup from "yup";
 import { REQUIRED_FIELD } from "../../constants";
 
 export const bookEvalSchema = yup.object().shape({
+  id: yup.number().notRequired(),
   volunteerName: yup.string().required(REQUIRED_FIELD),
   readerRegistration: yup.number().required(REQUIRED_FIELD),
   evaluatorId: yup.number().required(REQUIRED_FIELD),

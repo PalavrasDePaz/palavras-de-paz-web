@@ -1,5 +1,4 @@
-/* eslint-disable react/jsx-max-depth */
-import { useCallback, useState } from "react";
+import { useState } from "react";
 
 import TabelaAvaliacoes from "./Avaliacoes";
 import { Tabs } from "./Tabs";
@@ -9,10 +8,6 @@ import styles from "./styles.module.css";
 
 export default function GerenciamentoRedacoes() {
   const [activeTab, setActiveTab] = useState<number>(0);
-
-  const handleChangeActiveTab = useCallback(() => {
-    setActiveTab((prevActiveTab) => (prevActiveTab === 0 ? 1 : 0));
-  }, []);
 
   const tabsContent = [
     {

@@ -27,13 +27,13 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 2.3125rem;
+  margin-bottom: 1.3125rem;
 }
 
 .avaliacoes_searchBar {
   display: flex;
   justify-content: flex-start;
-  width: 250px;
+  max-width: 250px;
 }
 
 .avaliacoes_buttons_actions {
@@ -99,6 +99,10 @@
   padding-bottom: 16px;
 }
 
+.avaliacoes_table th:hover {
+  white-space: nowrap !important;
+}
+
 .avaliacoes_table .avaliacoes_tbody tr:nth-child(odd) {
   background-color: #f2f2f2;
 }
@@ -120,12 +124,22 @@
   padding-right: 16px;
   text-align: center;
   font-weight: bold;
+
+  max-width: 140px;
 }
 
 .avaliacoes_tbody .avaliacoes_tr td:nth-child(4),
 .avaliacoes_tbody .avaliacoes_tr td:nth-child(2) {
   padding-right: 16px;
-  text-align: start;
+}
+
+.visualize_button {
+  font-weight: bold;
+  color: #707070;
+}
+
+.visualize_button:hover {
+  color: #ffffff;
 }
 
 .avaliacoes_tbody .avaliacoes_tr td > input[type="checkbox"]:checked {
@@ -203,9 +217,29 @@
 }
 
 .avaliacoes_pagination {
+  display: flex;
+  gap: 8px;
   margin-top: 42px;
 }
 
 .avaliacoes_pagination span {
   font-weight: bold;
+}
+
+.avaliacoes_pagination_button {
+  padding: 10px;
+  width: 44px;
+  border-radius: 5px;
+}
+.avaliacoes_pagination_button_active {
+  background: #21aa85;
+  color: #ffffff;
+}
+
+.loadingSpinnerContainer {
+  height: 386px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

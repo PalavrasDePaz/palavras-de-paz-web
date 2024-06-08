@@ -1,7 +1,6 @@
 import { ChangeEvent, useEffect, useState } from "react";
 import { toast } from "react-toastify";
 
-import HeaderForm from "../../components/headerForm/HeaderForm";
 import LoadingSpinner from "../../components/loadingSpinner/LoadingSpinner";
 import useGetBookClassFromId from "../../hooks/useGetBookClassFromId";
 import usePutBookClass from "../../hooks/usePutBookClass";
@@ -17,10 +16,12 @@ import style from "./styles/FormEditarTurmaRedacaoTemplate.module.css";
 
 interface props {
   initialData: BookClass;
+  viewOnly: boolean;
 }
 
 export default function FormularioEditarTurmaRedacaoTemplate({
   initialData,
+  viewOnly,
 }: props) {
   const [formData, setFormData] = useState<BookClass>(initialData);
 
@@ -112,7 +113,9 @@ export default function FormularioEditarTurmaRedacaoTemplate({
                 <p className={style.subtitulo}>
                   Aqui você consegue alterar as informações desta turma
                 </p>
-                <ButtonDownloadRelatorios />
+                <ButtonDownloadRelatorios
+                  bookClassId={formData.idclass.toString()}
+                />
               </div>
             </div>
 
@@ -137,6 +140,7 @@ export default function FormularioEditarTurmaRedacaoTemplate({
               value={formData.reportReceiveDate}
               placeholder={novaData}
               onChange={(e) => handleChange(e, "reportReceiveDate")}
+              viewOnly={viewOnly}
             />
             <ItemTurma
               inputType="input"
@@ -144,6 +148,7 @@ export default function FormularioEditarTurmaRedacaoTemplate({
               value={formData.loanDate}
               placeholder={novaData}
               onChange={(e) => handleChange(e, "loanDate")}
+              viewOnly={viewOnly}
             />
             <ItemTurma
               inputType="input"
@@ -151,6 +156,7 @@ export default function FormularioEditarTurmaRedacaoTemplate({
               value={formData.returnDate}
               placeholder={novaData}
               onChange={(e) => handleChange(e, "returnDate")}
+              viewOnly={viewOnly}
             />
             <ItemTurma
               inputType="input"
@@ -158,6 +164,7 @@ export default function FormularioEditarTurmaRedacaoTemplate({
               value={formData.reportElaborationDate}
               placeholder={novaData}
               onChange={(e) => handleChange(e, "reportElaborationDate")}
+              viewOnly={viewOnly}
             />
             <ItemTurma
               inputType="input"
@@ -165,6 +172,7 @@ export default function FormularioEditarTurmaRedacaoTemplate({
               value={formData.presenceList}
               placeholder={novoNumero}
               onChange={(e) => handleChange(e, "presenceList")}
+              viewOnly={viewOnly}
             />
             <ItemTurma
               inputType="input"
@@ -172,6 +180,7 @@ export default function FormularioEditarTurmaRedacaoTemplate({
               value={formData.qrl}
               placeholder={novoNumero}
               onChange={(e) => handleChange(e, "qrl")}
+              viewOnly={viewOnly}
             />
             <ItemTurma
               inputType="input"
@@ -179,6 +188,7 @@ export default function FormularioEditarTurmaRedacaoTemplate({
               value={formData.sendDateParec}
               placeholder={novaData}
               onChange={(e) => handleChange(e, "sendDateParec")}
+              viewOnly={viewOnly}
             />
             <ItemTurma
               inputType="input"
@@ -186,6 +196,7 @@ export default function FormularioEditarTurmaRedacaoTemplate({
               value={formData.endEvaluationDate}
               placeholder={novaData}
               onChange={(e) => handleChange(e, "endEvaluationDate")}
+              viewOnly={viewOnly}
             />
             <ItemTurma
               inputType="input"
@@ -193,8 +204,9 @@ export default function FormularioEditarTurmaRedacaoTemplate({
               value={formData.sendDateFunap}
               placeholder={novaData}
               onChange={(e) => handleChange(e, "sendDateFunap")}
+              viewOnly={viewOnly}
             />
-            <BtnSubmit onClick={handleSubmit} />
+            {!viewOnly && <BtnSubmit onClick={handleSubmit} />}
           </section>
         </main>
       )}
