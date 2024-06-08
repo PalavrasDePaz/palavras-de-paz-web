@@ -38,17 +38,14 @@ export default function PrimeiroBox({ idVol }: IdVol) {
     return currentDate.getDate() <= tenthDay;
   }
 
-  const isWithinFirstTenDaysAndRequestUnsuccessful = () =>
-    isWithinFirstTenDays() && !isRequestSuccessful;
+  const isRequestUnsuccessful = () => !isRequestSuccessful;
 
   const [buttonText, setButtonText] = useState(
-    isWithinFirstTenDaysAndRequestUnsuccessful() ? "Declarar" : "Indisponível"
+    isRequestUnsuccessful() ? "Declarar" : "Indisponível"
   );
 
   useEffect(() => {
-    setButtonText(
-      isWithinFirstTenDaysAndRequestUnsuccessful() ? "Declarar" : "Indisponível"
-    );
+    setButtonText(isRequestUnsuccessful() ? "Declarar" : "Indisponível");
   }, [isRequestSuccessful]);
 
   const handleButtonClick = () => {
@@ -57,10 +54,9 @@ export default function PrimeiroBox({ idVol }: IdVol) {
     }
   };
 
-  const buttonClassName =
-    isWithinFirstTenDays() && isWithinFirstTenDaysAndRequestUnsuccessful()
-      ? `${styles.declarar_horas_btn} ${styles.enabledButton}`
-      : styles.declarar_horas_btn;
+  const buttonClassName = isRequestUnsuccessful()
+    ? `${styles.declarar_horas_btn} ${styles.enabledButton}`
+    : styles.declarar_horas_btn;
 
   const previousMonth = capitalizeFirstLetter(
     format(addMonths(new Date(), INDEX_PREVIOUS_MONTH), "MMMM", {

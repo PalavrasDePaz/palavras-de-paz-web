@@ -23,10 +23,7 @@ function FormLvntHoras() {
   const [formsResponded, setFormsResponded] = useState("notResponded");
 
   function isFormRenderable() {
-    const actualDate = new Date();
-    const maxDays = 10;
-    const actualDay = actualDate.getDate();
-    return actualDay <= maxDays && formsResponded !== "responded";
+    return formsResponded !== "responded";
   }
 
   const userEmail = useUserEmail();
