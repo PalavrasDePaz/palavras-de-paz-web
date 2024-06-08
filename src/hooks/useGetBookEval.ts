@@ -1,6 +1,6 @@
 import { AxiosResponse } from "axios";
 
-import { useQuery,UseQueryResult } from "@tanstack/react-query";
+import { useQuery, UseQueryResult } from "@tanstack/react-query";
 
 import { api } from "../api";
 import { BookEval } from "../templates/formEditarAvalLivro/schema";

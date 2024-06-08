@@ -25,3 +25,26 @@ export type Essays = {
   dateConcluded: string;
   folderLink: string;
 };
+
+export type Class = {
+  endEvaluationDate: string;
+  folderLink: null | string;
+  idclass: number;
+  idvol: number;
+  loanDate: string;
+  parec: null | string;
+  place: number;
+  placeName: string;
+  presSedex: string;
+  presSedex2: string;
+  presenceList: number;
+  qrl: number;
+  received: string;
+  reportElaborationDate: string;
+  reportReceiveDate: string;
+  returnDate: null | string;
+  sendDateFunap: string;
+  sendDateParec: string;
+  volunteerName: string;
+  yesList: string;
+};

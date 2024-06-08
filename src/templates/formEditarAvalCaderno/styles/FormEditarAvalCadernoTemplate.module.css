@@ -101,3 +101,11 @@
   flex-shrink: 0;
   margin: 20px auto;
 }
+
+.loadingSpinnerContainer {
+  height: 386px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

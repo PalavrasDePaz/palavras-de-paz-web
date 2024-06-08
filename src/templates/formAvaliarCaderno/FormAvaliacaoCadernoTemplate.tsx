@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 
-import ButtonSendForm from "../../components/buttonSendForm/ButtonSendForm";
+import ButtonSendForm from "../../components/buttonSendForm";
 import HeaderForm from "../../components/headerForm/HeaderForm";
 import useGetUser from "../../hooks/useGetUser";
 import usePutNotebookEvalForm from "../../hooks/usePutNotebookEvalForm";

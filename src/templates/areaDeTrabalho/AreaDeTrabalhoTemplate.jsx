@@ -9,6 +9,7 @@ import AvaliarRedacoes from "./components/AvaliarRedacoes";
 import DadosPresenca from "./components/DadosPresenca";
 import DetalhesCadastro from "./components/DetalhesCadastro";
 import DetalhesPresenca from "./components/DetalhesPresenca";
+import GerenciamentoRedacoes from "./components/GerenciamentoRedacoes";
 import HeaderAreaDeTrabalho from "./components/HeaderAreaDeTrabalho";
 import PrimeiroBox from "./components/PrimeiroBox";
 import WorkshopsAssistidos from "./components/WorkshopsAssistidos";
@@ -65,6 +66,12 @@ export default function AreaDeTrabalhoTemplate() {
             auth.bookPermission === true &&
             auth.notebookModulePermission === true &&
             prontoPraProducao === true && <AvaliarRedacoes idvol={idvol} />}
+
+          {auth.essayModulePermission &&
+            auth.essayModulePermission === true &&
+            prontoPraProducao === true && (
+              <GerenciamentoRedacoes idvol={idvol} />
+            )}
 
           {auth.manageVolunteerModulePermission &&
             auth.manageVolunteerModulePermission === true && <DadosPresenca />}

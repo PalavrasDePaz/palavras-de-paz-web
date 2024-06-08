@@ -21,6 +21,7 @@
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
+  width: 100%;
 }
 
 .localizacaoTitulo {
@@ -100,4 +101,12 @@
   align-items: center;
   flex-shrink: 0;
   margin: 20px auto;
+}
+
+.loadingSpinnerContainer {
+  height: 386px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
