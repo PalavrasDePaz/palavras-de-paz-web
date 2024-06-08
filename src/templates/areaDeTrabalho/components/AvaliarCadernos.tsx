@@ -124,7 +124,6 @@ const AvaliarCadernos = ({ idvol }: AvaliarCadernosProps) => {
       updateNotebooksIn(updatedNotebooks);
     }
   }, [notebooks]);
-  console.log(notebooksIn);
 
   return (
     <section className={styles.avaliar_section}>

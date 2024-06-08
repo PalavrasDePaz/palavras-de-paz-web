@@ -8,8 +8,10 @@ type GetBookClassReportForm = {
 
 const getBookClassReport = async (bookClassId: string) => {
   if (bookClassId === null) return;
-  const response = await api.get(`/book-club-class/download/${bookClassId}`);
-  return response.data;
+  const response = await api.get(`/book-club-class/download/${bookClassId}`, {
+    responseType: "blob",
+  });
+  return response;
 };
 
 const useGetBookClassReport = () =>

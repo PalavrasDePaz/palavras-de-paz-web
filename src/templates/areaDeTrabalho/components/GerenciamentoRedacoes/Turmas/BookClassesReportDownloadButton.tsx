@@ -18,7 +18,7 @@ export default function BookClassesReportDownloadButton({
   isCheckboxChecked,
 }: props) {
   const {
-    data: responseData,
+    data: response,
     isSuccess,
     isError,
     error,
@@ -32,12 +32,25 @@ export default function BookClassesReportDownloadButton({
   };
 
   useEffect(() => {
-    if (isSuccess && typeof responseData === "string") {
-      downloadClassesData(responseData);
+    if (isSuccess && response?.data) {
+      console.log(
+        response.config.url?.replaceAll("/book-club-class/download/", "")
+      );
+      downloadClassesData(
+        response.data,
+        response.config.url?.replaceAll("/book-club-class/download/", "")
+          ? `turma_${ 
+              response.config.url?.replaceAll(
+                "/book-club-class/download/",
+                ""
+              ) 
+              }.zip`
+          : "arquivo.zip"
+      );
     } else if (isError) {
-      toast.error(`Erro ao baixar relatórios: ${  (error as Error).message}`);
+      toast.error(`Erro ao baixar relatórios: ${(error as Error).message}`);
     }
-  }, [responseData, isSuccess, isError]);
+  }, [response, isSuccess, isError]);
 
   return (
     <button disabled={!isCheckboxChecked} onClick={handleDownloadClick}>
