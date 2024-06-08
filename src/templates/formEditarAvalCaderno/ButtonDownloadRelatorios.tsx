@@ -2,36 +2,36 @@ import { useEffect } from "react";
 import Image from "next/image";
 import { toast } from "react-toastify";
 
-import folderIcon from "../../../../public/static/images/icons/folder.svg";
-import downloadZipData from "../../../helpers/downloadZipData";
-import useGetBookClassReport from "../../../hooks/useGetBookClassReport";
+import folderIcon from "../../../public/static/images/icons/folder.svg";
+import downloadZipData from "../../helpers/downloadZipData";
+import useGetNotebookReport from "../../hooks/useGetNotebookReport";
 
-import style from "../styles/ButtonDownloadRelatorios.module.css";
+import style from "./styles/ButtonDownloadRelatorios.module.css";
 
 interface props {
-  bookClassId: string;
+  notebookId: string;
 }
 
-const ButtonDownloadRelatorios = ({ bookClassId }: props) => {
+const ButtonDownloadRelatorios = ({ notebookId }: props) => {
   const {
     data: response,
     isSuccess,
     isError,
     error,
     mutate,
-  } = useGetBookClassReport();
+  } = useGetNotebookReport();
 
   const handleDownloadClick = () => {
-    if (bookClassId) mutate({ bookClassId });
+    if (notebookId) mutate({ notebookId });
   };
 
   useEffect(() => {
     if (isSuccess && response?.data) {
       downloadZipData(
         response.data,
-        response.config.url?.replaceAll("/book-club-class/download/", "")
+        response.config.url?.replaceAll("/notebooks/download/", "")
           ? `turma_${response.config.url?.replaceAll(
-              "/book-club-class/download/",
+              "/notebooks/download/",
               ""
             )}.zip`
           : "arquivo.zip"

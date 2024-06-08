@@ -3,6 +3,7 @@ import * as yup from "yup";
 import { REQUIRED_FIELD } from "../../constants";
 
 export const notebookAvalSchema = yup.object().shape({
+  id: yup.number(),
   idvol: yup.number().required(REQUIRED_FIELD),
   idpep: yup.number().required(REQUIRED_FIELD),
   idcad: yup.number().required(REQUIRED_FIELD),

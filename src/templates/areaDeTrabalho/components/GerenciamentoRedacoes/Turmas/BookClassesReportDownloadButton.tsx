@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { HiDownload } from "react-icons/hi";
 import { toast } from "react-toastify";
 
-import downloadClassesData from "../../../../../helpers/classesDataDownload";
+import downloadZipData from "../../../../../helpers/downloadZipData";
 import { Class } from "../../../../../hooks/types";
 import useGetBookClassReport from "../../../../../hooks/useGetBookClassReport";
 
@@ -33,18 +33,13 @@ export default function BookClassesReportDownloadButton({
 
   useEffect(() => {
     if (isSuccess && response?.data) {
-      console.log(
-        response.config.url?.replaceAll("/book-club-class/download/", "")
-      );
-      downloadClassesData(
+      downloadZipData(
         response.data,
         response.config.url?.replaceAll("/book-club-class/download/", "")
-          ? `turma_${ 
-              response.config.url?.replaceAll(
-                "/book-club-class/download/",
-                ""
-              ) 
-              }.zip`
+          ? `turma_${response.config.url?.replaceAll(
+              "/book-club-class/download/",
+              ""
+            )}.zip`
           : "arquivo.zip"
       );
     } else if (isError) {

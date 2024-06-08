@@ -5,10 +5,10 @@ import HeaderForm from "../../components/headerForm/HeaderForm";
 import LoadingSpinner from "../../components/loadingSpinner/LoadingSpinner";
 import useGetNotebookById from "../../hooks/useGetNotebookById";
 import usePutNotebookEditEvalForm from "../../hooks/usePutNotebookEditEvalForm";
-import BtnDownload from "../formEditarTurmaRedacao/components/ButtonDownloadRelatorios";
 import BtnSubmit from "../formEditarTurmaRedacao/components/ButtonSalavarAlteracoes";
 import ItemTurma from "../formEditarTurmaRedacao/components/ItemTurma";
 
+import BtnDownload from "./ButtonDownloadRelatorios";
 import { NotebookAval } from "./schema";
 
 import style from "./styles/FormEditarAvalCadernoTemplate.module.css";
@@ -140,7 +140,7 @@ export default function FormEditarAvalCadernoTemplate() {
                     Aqui você consegue alterar as informações desta turma
                   </p>
                 </div>
-                <BtnDownload />
+                <BtnDownload notebookId={formData.id?.toString() || ""} />
               </div>
 
               <div className={style.noEdit}>

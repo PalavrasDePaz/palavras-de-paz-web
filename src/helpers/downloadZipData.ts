@@ -1,4 +1,4 @@
-function downloadClassesData(content: string, filename: string): void {
+function downloadZipData(content: string, filename: string): void {
   const blob = new Blob([content], { type: "application/octet-stream" });
 
   // Cria um link temporário para download
@@ -14,4 +14,4 @@ function downloadClassesData(content: string, filename: string): void {
   URL.revokeObjectURL(url);
 }
 
-export default downloadClassesData;
+export default downloadZipData;
