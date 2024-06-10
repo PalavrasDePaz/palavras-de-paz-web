@@ -49,7 +49,7 @@
 
 .avaliarRedacoes_titles {
   display: grid;
-  grid-template-columns: 80px 2fr repeat(4, 1fr);
+  grid-template-columns: 80px 2fr repeat(5, 1fr);
   box-sizing: border-box;
   align-items: flex-start;
   gap: 16px;
@@ -70,7 +70,7 @@
 
 .avaliarRedacoes_status {
   display: grid;
-  grid-template-columns: 60px 2fr repeat(4, 1fr);
+  grid-template-columns: 60px 2fr repeat(5, 1fr);
   align-items: flex-start;
   gap: 24px;
   place-items: center;
@@ -299,5 +299,39 @@
 }
 
 .toggle:checked ~ .switch .slider {
+  transform: translateX(16px);
+}
+
+.check {
+  display: none;
+}
+
+.switchConcl {
+  position: relative;
+  background: var(--Cinza-Mediano, #cdcdcd);
+  width: 40px;
+  height: 23px;
+  border-radius: 40px;
+  display: flex;
+  align-items: center;
+  padding: 2px;
+  transition: all 0.5s ease-in-out;
+  cursor: pointer;
+}
+
+.sliderConcl {
+  position: absolute;
+  background-color: white;
+  border-radius: 50%;
+  width: 20px;
+  height: 21px;
+  transition: all 0.5s ease-in-out;
+}
+
+.check:checked ~ .switchConcl {
+  background: var(--Verde-Escuro, #21aa85);
+}
+
+.check:checked ~ .switchConcl .sliderConcl {
   transform: translateX(16px);
 }
