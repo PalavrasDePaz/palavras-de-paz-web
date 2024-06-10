@@ -1,0 +1,28 @@
+.container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 5rem 0 10rem;
+}
+
+.button {
+  align-self: end;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  background-color: #21aa85;
+  color: #ffffff;
+  height: 64px;
+  width: 284px;
+  border-radius: 15px;
+  font-size: 18px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: 0.3s ease all;
+}
+
+.button:hover {
+  background-color: #05c290;
+}

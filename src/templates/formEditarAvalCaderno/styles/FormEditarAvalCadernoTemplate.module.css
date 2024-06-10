@@ -7,6 +7,22 @@
   margin-top: 20px;
 }
 
+.containerHeader {
+  display: flex;
+  justify-content: space-between;
+}
+
+.containerHeader > * {
+  position: static;
+}
+
+.containerHeaderStudentName {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
 .localizacaoTitulo {
   color: var(--Verde-Escuro, #21aa85);
   /* XXG */
@@ -84,4 +100,12 @@
   align-items: center;
   flex-shrink: 0;
   margin: 20px auto;
+}
+
+.loadingSpinnerContainer {
+  height: 386px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

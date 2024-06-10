@@ -1,3 +1,4 @@
+/* eslint-disable react/require-default-props */
 import React, { useState } from "react";
 import Image from "next/image";
 
@@ -13,6 +14,7 @@ interface ItemTurmaProps {
     event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => void;
   inputType: "input" | "textarea"; // Nova propriedade para determinar o tipo de entrada
+  viewOnly?: boolean;
 }
 
 const ItemTurma: React.FC<ItemTurmaProps> = ({
@@ -21,6 +23,7 @@ const ItemTurma: React.FC<ItemTurmaProps> = ({
   placeholder,
   onChange,
   inputType,
+  viewOnly,
 }) => {
   const [isEditing, setIsEditing] = useState<boolean>(false);
   const handleEditClick = () => {
@@ -36,36 +39,40 @@ const ItemTurma: React.FC<ItemTurmaProps> = ({
       {inputType === "input" ? (
         <p className={style.chave}>
           {label}: <span className={style.valor}>{value}</span>
-          <button
-            type="button"
-            onClick={handleEditClick}
-            className={style.editBtn}
-          >
-            <Image
-              src={editBtn}
-              alt="imagem de um lápis, como se fosse para editar"
-            />
-          </button>
+          {!viewOnly && (
+            <button
+              type="button"
+              onClick={handleEditClick}
+              className={style.editBtn}
+            >
+              <Image
+                src={editBtn}
+                alt="imagem de um lápis, como se fosse para editar"
+              />
+            </button>
+          )}
         </p>
       ) : (
         <p className={style.chave}>
           {label}
-          <button
-            type="button"
-            onClick={handleEditClick}
-            className={style.editBtn}
-          >
-            <Image
-              src={editBtn}
-              alt="imagem de um lápis, como se fosse para editar"
-            />
-          </button>
+          {!viewOnly && (
+            <button
+              type="button"
+              onClick={handleEditClick}
+              className={style.editBtn}
+            >
+              <Image
+                src={editBtn}
+                alt="imagem de um lápis, como se fosse para editar"
+              />
+            </button>
+          )}
           <br />
-          <div className={style.valorTextArea}>{value}</div>
+          <span className={style.valorTextArea}>{value}</span>
         </p>
       )}
 
-      {isEditing && (
+      {isEditing && !viewOnly && (
         <form>
           {inputType === "input" ? (
             <input
