@@ -152,7 +152,7 @@ const FormAvalRedacaoTemplate: React.FC<
           <section className={styles.sectionContainer}>
             <h3 className={styles.sectionTitle}>Identificação</h3>
             <StudentInfoInput
-              label=""
+              label="Nome do leitor*"
               type="text"
               onChange={(e) => {
                 handleChangeQuestions(e);
