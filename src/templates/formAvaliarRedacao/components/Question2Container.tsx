@@ -12,7 +12,7 @@ const Question2Container: React.FC<Question2AvalProps> = ({
   handleChangeQuestions,
 }) => (
   <>
-    <h3 className={styles.sectionTitle}>Parâmetros Avaliados</h3>
+    <h3 className={styles.sectionTitle}>Parâmetros Avaliados*</h3>
     <p className={styles.label}>Transcreva os resultados apontados.</p>
     <div className={styles.containerDiv}>
       <Question2

@@ -13,7 +13,7 @@ interface Question6AvalProps {
 
 const Question6: React.FC<Question6AvalProps> = ({ handleChangeQuestions }) => (
   <>
-    <h3 className={styles.sectionTitle}>Histórias Relatadas</h3>
+    <h3 className={styles.sectionTitle}>Histórias Relatadas*</h3>
     <p className={styles.label}>Transcreva os resultados apontados.</p>
     <label htmlFor="Não tem história descrita" className={styles.radioLabel}>
       <input
