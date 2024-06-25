@@ -14,6 +14,7 @@ const Question4: React.FC<Question4AvalProps> = ({ handleChangeQuestions }) => (
       className={styles.dropdown}
       name="concept"
       onChange={(e) => handleChangeQuestions(e)}
+      required
     >
       <option value="Selecione">Selecione</option>
       <option value="Relatório de leitura validado">

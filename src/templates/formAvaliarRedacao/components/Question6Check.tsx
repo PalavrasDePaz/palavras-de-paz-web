@@ -5,11 +5,13 @@ import styles from "../styles/QuestionAval.module.css";
 interface Question6AvalProps {
   handleChangeQuestions: (event: React.ChangeEvent<HTMLInputElement>) => void;
   label: string;
+  required: boolean;
 }
 
 const Question6: React.FC<Question6AvalProps> = ({
   handleChangeQuestions,
   label,
+  required,
 }) => (
   <div className={styles.checkboxContainer}>
     <label htmlFor={label} className={styles.radioLabel}>
@@ -19,6 +21,7 @@ const Question6: React.FC<Question6AvalProps> = ({
         id={label}
         onChange={(e) => handleChangeQuestions(e)}
         className={styles.radioInput}
+        required={required}
       />
       {label}
     </label>

@@ -23,6 +23,7 @@ const Question1: React.FC<Question1AvalProps> = ({ handleChangeQuestions }) => (
             id="isAppropriation"
             value="Sim"
             onChange={(e) => handleChangeQuestions(e)}
+            required
           />
           Sim
         </label>
@@ -50,6 +51,7 @@ const Question1: React.FC<Question1AvalProps> = ({ handleChangeQuestions }) => (
             id="isParcialPlagiarism"
             value="Sim"
             onChange={(e) => handleChangeQuestions(e)}
+            required
           />
           Sim
         </label>
