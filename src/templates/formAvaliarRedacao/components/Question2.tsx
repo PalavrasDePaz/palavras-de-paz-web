@@ -23,6 +23,7 @@ const Question2: React.FC<Question2AvalProps> = ({
         id="valido"
         value="Válido"
         onChange={(e) => handleChangeQuestions(e)}
+        required
       />
       Válido
     </label>

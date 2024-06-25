@@ -30,6 +30,7 @@ const StudentInfoInput: React.FC<StudentInfoInputProps> = ({
       onChange={onChange}
       name={name}
       readOnly={readOnly}
+      required
     />
   </label>
 );
