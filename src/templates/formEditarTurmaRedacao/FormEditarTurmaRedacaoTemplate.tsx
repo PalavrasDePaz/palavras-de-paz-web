@@ -119,13 +119,12 @@ export default function FormularioEditarTurmaRedacaoTemplate({
               </div>
             </div>
 
-            <h5 className={style.h5}>Voluntário que avaliou:</h5>
             <div className={style.noEdit}>
               <p>
-                Nome: <span>{formData.parec}</span>
+                Nome do voluntário: <span>{formData.parec}</span>
               </p>
               <p>
-                Id: <span>{formData.idvol}</span>
+                Id do voluntário: <span>{formData.idvol}</span>
               </p>
               <p>
                 ID da Turma: <span>{formData.idclass}</span>
@@ -168,7 +167,7 @@ export default function FormularioEditarTurmaRedacaoTemplate({
             />
             <ItemTurma
               inputType="input"
-              label="Relatórios lista de presença"
+              label="Relatórios da lista de presença"
               value={formData.presenceList}
               placeholder={novoNumero}
               onChange={(e) => handleChange(e, "presenceList")}
@@ -184,7 +183,7 @@ export default function FormularioEditarTurmaRedacaoTemplate({
             />
             <ItemTurma
               inputType="input"
-              label="Reserva dos voluntários"
+              label="Reserva do voluntário"
               value={formData.sendDateParec}
               placeholder={novaData}
               onChange={(e) => handleChange(e, "sendDateParec")}
@@ -205,6 +204,14 @@ export default function FormularioEditarTurmaRedacaoTemplate({
               placeholder={novaData}
               onChange={(e) => handleChange(e, "sendDateFunap")}
               viewOnly={viewOnly}
+            />
+            <ItemTurma
+              inputType="input"
+              label="Link da pasta"
+              value={formData.folderLink}
+              placeholder="Insira o link da pasta"
+              onChange={(e) => handleChange(e, "folderLink")}
+              viewOnly
             />
             {!viewOnly && <BtnSubmit onClick={handleSubmit} />}
           </section>

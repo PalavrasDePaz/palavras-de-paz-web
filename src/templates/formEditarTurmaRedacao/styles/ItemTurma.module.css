@@ -39,6 +39,21 @@
   word-wrap: break-word;
 }
 
+.valorSelectbox {
+  color: #707070;
+  font-family: "Open Sans";
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: 0.3px;
+  line-height: 20px;
+  width: fit-content;
+  margin-bottom: 0.5rem;
+}
+
+.valorSelectbox div {
+  width: fit-content;
+}
+
 .editBtn {
   margin-left: 5px;
   width: 24px;

@@ -5,7 +5,9 @@
 /* eslint-disable react/jsx-max-depth */
 /* eslint-disable max-len */
 /* eslint-disable no-magic-numbers */
-import { ChangeEvent, useState } from "react";
+/* eslint-disable max-lines */
+import { ChangeEvent, Dispatch, SetStateAction, useState } from "react";
+import { MdEditNote } from "react-icons/md";
 
 import SearchBar from "../../../../../components/forms/searchBar";
 import LoadingSpinner from "../../../../../components/loadingSpinner/LoadingSpinner";
@@ -22,13 +24,19 @@ import styles from "./styles.module.css";
 type CheckboxState = {
   [key: number]: boolean;
 };
+interface props {
+  selectedClasses: Class[];
+  setSelectedClasses: Dispatch<SetStateAction<Class[]>>;
+}
 
-export default function TabelaTurmas() {
+export default function TabelaTurmas({
+  selectedClasses,
+  setSelectedClasses,
+}: props) {
   const [currentPage, setCurrentPage] = useState(1);
   const [checkboxes, setCheckboxes] = useState<CheckboxState>({});
-  const [selectedClasses, setSelectedClasses] = useState<Class[]>([]);
   const [classToEdit, setClassToEdit] = useState<Class | null>(null);
-  const [classToView, setClassToView] = useState<Class | null>(null);
+  // const [classToView, setClassToView] = useState<Class | null>(null);
 
   const { data: classes, isLoading, isError } = useGetBookClasses(currentPage);
 
@@ -54,9 +62,9 @@ export default function TabelaTurmas() {
     }
   };
 
-  const toggleModalView = (postClassToView: Class | null) => {
-    setClassToView(postClassToView);
-  };
+  // const toggleModalView = (postClassToView: Class | null) => {
+  //   setClassToView(postClassToView);
+  // };
 
   const toggleModalEdit = (postClassToEdit: Class | null) => {
     setClassToEdit(postClassToEdit);
@@ -99,7 +107,12 @@ export default function TabelaTurmas() {
           <SearchBar />
         </div>
         <div className={styles.turmas_buttons_actions}>
-          {/* eslint-disable-next-line max-len */}
+          <button disabled={!isCheckboxChecked} onClick={() => {}}>
+            <span className={styles.turmas_button_text}>Visualizar</span>
+            <span className={styles.turmas_button_icon}>
+              <MdEditNote size={24} />
+            </span>
+          </button>
           <BookClassesReportDownloadButton
             classesToDownload={selectedClasses}
             isCheckboxChecked={!!isCheckboxChecked}
@@ -125,6 +138,13 @@ export default function TabelaTurmas() {
                 <th> </th>
                 <th>Nome</th>
                 <th>ID</th>
+                <th>Lista Presença</th>
+                <th>QRL</th>
+                <th>Data Receb. Relatório</th>
+                <th>PVoluntário</th>
+                <th>Data Envio Volunt.</th>
+                <th>Data Fim Aval.</th>
+                <th>Data Envio Funap</th>
                 <th> </th>
                 <th> </th>
               </tr>
@@ -142,22 +162,29 @@ export default function TabelaTurmas() {
                   </td>
                   <td>{classData.placeName}</td>
                   <td>{classData.idclass}</td>
+                  <td>{classData.presenceList}</td>
+                  <td>{classData.qrl}</td>
+                  <td>{classData.reportReceiveDate}</td>
+                  <td>{classData.parec}</td>
+                  <td>{classData.sendDateParec}</td>
+                  <td>{classData.endEvaluationDate}</td>
+                  <td>{classData.sendDateFunap}</td>
                   <td>
                     <button
-                      onClick={() => toggleModalView(classData)}
+                      onClick={() => toggleModalEdit(classData)}
                       className={styles.visualize_button}
                     >
-                      Visualizar
+                      Visualizar/Editar
                     </button>
                   </td>
-                  <td>
+                  {/* <td>
                     <button
                       onClick={() => toggleModalEdit(classData)}
                       className={styles.visualize_button}
                     >
                       Editar
                     </button>
-                  </td>
+                  </td> */}
                 </tr>
               ))}
             </tbody>
@@ -197,7 +224,7 @@ export default function TabelaTurmas() {
         </div>
       )}
 
-      <GenericModal
+      {/* <GenericModal
         title="Visualizar turma de redação"
         isShown={classToView != null}
         onToggle={() => toggleModalView(null)}
@@ -208,10 +235,10 @@ export default function TabelaTurmas() {
             viewOnly
           />
         )}
-      </GenericModal>
+      </GenericModal> */}
 
       <GenericModal
-        title="Editar turma de redação"
+        title="Visualizar/Editar turma de redação"
         isShown={classToEdit != null}
         onToggle={() => toggleModalEdit(null)}
       >

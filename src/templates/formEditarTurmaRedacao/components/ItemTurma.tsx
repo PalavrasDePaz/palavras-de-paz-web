@@ -1,4 +1,6 @@
 /* eslint-disable react/require-default-props */
+/* eslint-disable react/jsx-no-useless-fragment */
+/* eslint-disable react/no-array-index-key */
 import React, { useState } from "react";
 import Image from "next/image";
 
@@ -13,8 +15,9 @@ interface ItemTurmaProps {
   onChange: (
     event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => void;
-  inputType: "input" | "textarea"; // Nova propriedade para determinar o tipo de entrada
+  inputType: "input" | "textarea" | "selectbox"; // Nova propriedade para determinar o tipo de entrada
   viewOnly?: boolean;
+  options?: string[];
 }
 
 const ItemTurma: React.FC<ItemTurmaProps> = ({
@@ -24,6 +27,7 @@ const ItemTurma: React.FC<ItemTurmaProps> = ({
   onChange,
   inputType,
   viewOnly,
+  options,
 }) => {
   const [isEditing, setIsEditing] = useState<boolean>(false);
   const handleEditClick = () => {
@@ -36,45 +40,52 @@ const ItemTurma: React.FC<ItemTurmaProps> = ({
 
   return (
     <div className={style.ItemTurmaContainer}>
-      {inputType === "input" ? (
-        <p className={style.chave}>
-          {label}: <span className={style.valor}>{value}</span>
-          {!viewOnly && (
-            <button
-              type="button"
-              onClick={handleEditClick}
-              className={style.editBtn}
-            >
-              <Image
-                src={editBtn}
-                alt="imagem de um lápis, como se fosse para editar"
-              />
-            </button>
-          )}
-        </p>
-      ) : (
-        <p className={style.chave}>
-          {label}
-          {!viewOnly && (
-            <button
-              type="button"
-              onClick={handleEditClick}
-              className={style.editBtn}
-            >
-              <Image
-                src={editBtn}
-                alt="imagem de um lápis, como se fosse para editar"
-              />
-            </button>
-          )}
-          <br />
+      <p className={style.chave}>
+        {inputType === "input" && !isEditing && (
+          <>
+            {label}: <span className={style.valor}>{value}</span>
+          </>
+        )}
+        {inputType === "textarea" && <>{label}</>}
+        {inputType === "selectbox" && <>{label}</>}
+        {!viewOnly && (
+          <button
+            type="button"
+            onClick={handleEditClick}
+            className={style.editBtn}
+          >
+            <Image
+              src={editBtn}
+              alt="imagem de um lápis, como se fosse para editar"
+            />
+          </button>
+        )}
+        {inputType === "textarea" && !isEditing && (
           <span className={style.valorTextArea}>{value}</span>
-        </p>
-      )}
+        )}
+        {inputType === "selectbox" && !isEditing && (
+          <div className={style.valorSelectbox}>
+            {options?.map((option, index) => (
+              <div key={label + index}>
+                <input
+                  type="checkbox"
+                  id={`${label + index  }-${  option}`}
+                  name={`${label + index  }-${  option}`}
+                  checked={value === option}
+                  disabled
+                />
+                <label htmlFor={`${label + index  }-${  option}`}>
+                  {` ${  option}`}
+                </label>
+              </div>
+            ))}
+          </div>
+        )}
+      </p>
 
       {isEditing && !viewOnly && (
-        <form>
-          {inputType === "input" ? (
+        <div style={{ width: "fit-content" }}>
+          {inputType === "input" && (
             <input
               className={style.isEditing}
               type="text"
@@ -82,7 +93,8 @@ const ItemTurma: React.FC<ItemTurmaProps> = ({
               value={value}
               onChange={onChange}
             />
-          ) : (
+          )}
+          {inputType === "textarea" && (
             <textarea
               className={style.isEditingTextArea}
               placeholder={placeholder}
@@ -90,9 +102,28 @@ const ItemTurma: React.FC<ItemTurmaProps> = ({
               onChange={onChange}
             />
           )}
+          {inputType === "selectbox" && (
+            <div className={style.valorSelectbox}>
+              {options?.map((option, index) => (
+                <div key={label + index}>
+                  <input
+                    type="checkbox"
+                    className={`selectbox-${  label}`}
+                    id={`${label + index  }-${  option}`}
+                    name={`${label + index  }-${  option}`}
+                    value={option}
+                    onChange={onChange}
+                    checked={value === option}
+                  />
+                  <label htmlFor={`${label + index  }-${  option}`}>
+                    {` ${  option}`}
+                  </label>
+                </div>
+              ))}
+            </div>
+          )}
           <button onClick={handleSaveEdit}>✓</button>
-          {/* <button onClick={handleCancelEdit}>x</button> */}
-        </form>
+        </div>
       )}
     </div>
   );
