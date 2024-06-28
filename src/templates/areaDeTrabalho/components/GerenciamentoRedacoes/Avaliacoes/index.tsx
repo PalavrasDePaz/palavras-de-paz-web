@@ -7,22 +7,27 @@ import { useState } from "react";
 import SearchBar from "../../../../../components/forms/searchBar";
 import LoadingSpinner from "../../../../../components/loadingSpinner/LoadingSpinner";
 import GenericModal from "../../../../../components/modal";
+import { Class } from "../../../../../hooks/types";
 import useGetBookEvals from "../../../../../hooks/useGetBookEvals";
 import FormEditarAvalLivroTemplate from "../../../../formEditarAvalLivro/FormEditarAvalLivroTemplate";
 import { BookEval } from "../../../../formEditarAvalLivro/schema";
 
 import styles from "./styles.module.css";
 
-export default function TabelaAvaliacoes() {
+interface props {
+  selectedClasses: Class[];
+}
+
+export default function TabelaAvaliacoes({ selectedClasses }: props) {
   const [currentPage, setCurrentPage] = useState(1);
   const [bookEvalToEdit, setBookEvalToEdit] = useState<BookEval | null>(null);
-  const [bookEvalToView, setBookEvalToView] = useState<BookEval | null>(null);
+  // const [bookEvalToView, setBookEvalToView] = useState<BookEval | null>(null);
 
   const { data: bookEvals, isLoading, isError } = useGetBookEvals(currentPage);
 
-  const toggleModalView = (postBookEvalToView: BookEval | null) => {
-    setBookEvalToView(postBookEvalToView);
-  };
+  // const toggleModalView = (postBookEvalToView: BookEval | null) => {
+  //   setBookEvalToView(postBookEvalToView);
+  // };
 
   const toggleModalEdit = (postBookEvalToEdit: BookEval | null) => {
     setBookEvalToEdit(postBookEvalToEdit);
@@ -81,12 +86,12 @@ export default function TabelaAvaliacoes() {
           <table className={styles.avaliacoes_table}>
             <thead>
               <tr>
-                <th>ID do avaliador</th>
-                <th>Nome do avaliador</th>
-                <th>Matrícula do avaliado</th>
-                <th>Nome do avaliado</th>
+                <th>ID do voluntário</th>
+                <th>Nome do voluntário</th>
+                <th>Matrícula do leitor</th>
+                <th>Nome do leitor</th>
                 <th>Número da turma</th>
-                <th>Data e Hora</th>
+                <th>Data e hora da avaliação</th>
                 <th> </th>
                 <th> </th>
               </tr>
@@ -102,20 +107,20 @@ export default function TabelaAvaliacoes() {
                   <td>{new Date(bookEval.createdAt).toLocaleString()}</td>
                   <td>
                     <button
-                      onClick={() => toggleModalView(bookEval)}
+                      onClick={() => toggleModalEdit(bookEval)}
                       className={styles.visualize_button}
                     >
-                      Visualizar
+                      Visualizar/Editar
                     </button>
                   </td>
-                  <td>
+                  {/* <td>
                     <button
                       onClick={() => toggleModalEdit(bookEval)}
                       className={styles.visualize_button}
                     >
                       Editar
                     </button>
-                  </td>
+                  </td> */}
                 </tr>
               ))}
             </tbody>
@@ -156,7 +161,7 @@ export default function TabelaAvaliacoes() {
         </div>
       )}
 
-      <GenericModal
+      {/* <GenericModal
         title="Visualizar avaliação de livro"
         isShown={bookEvalToView != null}
         onToggle={() => toggleModalView(null)}
@@ -168,10 +173,10 @@ export default function TabelaAvaliacoes() {
             viewOnly
           />
         )}
-      </GenericModal>
+      </GenericModal> */}
 
       <GenericModal
-        title="Editar avaliação de livro"
+        title="Visualizar/Editar avaliação de livro"
         isShown={bookEvalToEdit != null}
         onToggle={() => toggleModalEdit(null)}
       >

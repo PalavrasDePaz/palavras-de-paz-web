@@ -1,5 +1,7 @@
 import { useState } from "react";
 
+import { Class } from "../../../../hooks/types";
+
 import TabelaAvaliacoes from "./Avaliacoes";
 import { Tabs } from "./Tabs";
 import TabelaTurmas from "./Turmas";
@@ -7,16 +9,22 @@ import TabelaTurmas from "./Turmas";
 import styles from "./styles.module.css";
 
 export default function GerenciamentoRedacoes() {
+  const [selectedClasses, setSelectedClasses] = useState<Class[]>([]);
   const [activeTab, setActiveTab] = useState<number>(0);
 
   const tabsContent = [
     {
       title: "Turmas",
-      content: <TabelaTurmas />,
+      content: (
+        <TabelaTurmas
+          selectedClasses={selectedClasses}
+          setSelectedClasses={setSelectedClasses}
+        />
+      ),
     },
     {
       title: "Avaliações",
-      content: <TabelaAvaliacoes />,
+      content: <TabelaAvaliacoes selectedClasses={selectedClasses} />,
     },
   ];
 
