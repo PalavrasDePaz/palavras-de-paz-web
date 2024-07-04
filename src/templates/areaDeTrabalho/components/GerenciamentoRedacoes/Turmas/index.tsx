@@ -136,12 +136,12 @@ export default function TabelaTurmas({
             <thead>
               <tr>
                 <th> </th>
-                <th>Nome</th>
+                <th>Nome Unidade Pris.</th>
                 <th>ID</th>
                 <th>Lista Presença</th>
                 <th>QRL</th>
                 <th>Data Receb. Relatório</th>
-                <th>PVoluntário</th>
+                <th>Voluntário</th>
                 <th>Data Envio Volunt.</th>
                 <th>Data Fim Aval.</th>
                 <th>Data Envio Funap</th>

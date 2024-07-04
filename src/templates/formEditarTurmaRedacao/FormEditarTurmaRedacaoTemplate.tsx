@@ -206,7 +206,7 @@ export default function FormularioEditarTurmaRedacaoTemplate({
               viewOnly={viewOnly}
             />
             <ItemTurma
-              inputType="input"
+              inputType="link"
               label="Link da pasta"
               value={formData.folderLink}
               placeholder="Insira o link da pasta"

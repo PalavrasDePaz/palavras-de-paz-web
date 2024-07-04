@@ -1,6 +1,9 @@
 /* eslint-disable react/require-default-props */
 /* eslint-disable react/jsx-no-useless-fragment */
 /* eslint-disable react/no-array-index-key */
+/* eslint-disable max-len */
+/* eslint-disable complexity */
+
 import React, { useState } from "react";
 import Image from "next/image";
 
@@ -15,7 +18,7 @@ interface ItemTurmaProps {
   onChange: (
     event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => void;
-  inputType: "input" | "textarea" | "selectbox"; // Nova propriedade para determinar o tipo de entrada
+  inputType: "input" | "textarea" | "selectbox" | "link";
   viewOnly?: boolean;
   options?: string[];
 }
@@ -48,6 +51,7 @@ const ItemTurma: React.FC<ItemTurmaProps> = ({
         )}
         {inputType === "textarea" && <>{label}</>}
         {inputType === "selectbox" && <>{label}</>}
+        {inputType === "link" && <>{label}: </>}
         {!viewOnly && (
           <button
             type="button"
@@ -64,28 +68,33 @@ const ItemTurma: React.FC<ItemTurmaProps> = ({
           <span className={style.valorTextArea}>{value}</span>
         )}
         {inputType === "selectbox" && !isEditing && (
-          <div className={style.valorSelectbox}>
+          <span className={style.valorSelectbox}>
             {options?.map((option, index) => (
-              <div key={label + index}>
+              <span key={label + index}>
                 <input
                   type="checkbox"
-                  id={`${label + index  }-${  option}`}
-                  name={`${label + index  }-${  option}`}
+                  id={`${label + index}-${option}`}
+                  name={`${label + index}-${option}`}
                   checked={value === option}
                   disabled
                 />
-                <label htmlFor={`${label + index  }-${  option}`}>
-                  {` ${  option}`}
+                <label htmlFor={`${label + index}-${option}`}>
+                  {` ${option}`}
                 </label>
-              </div>
+              </span>
             ))}
-          </div>
+          </span>
+        )}
+        {inputType === "link" && !isEditing && (
+          <a className={style.valor} href={String(value)} target="_blank" rel="noreferrer">
+            {value}
+          </a>
         )}
       </p>
 
       {isEditing && !viewOnly && (
         <div style={{ width: "fit-content" }}>
-          {inputType === "input" && (
+          {(inputType === "input" || inputType === "link") && (
             <input
               className={style.isEditing}
               type="text"
@@ -108,15 +117,15 @@ const ItemTurma: React.FC<ItemTurmaProps> = ({
                 <div key={label + index}>
                   <input
                     type="checkbox"
-                    className={`selectbox-${  label}`}
-                    id={`${label + index  }-${  option}`}
-                    name={`${label + index  }-${  option}`}
+                    className={`selectbox-${label}`}
+                    id={`${label + index}-${option}`}
+                    name={`${label + index}-${option}`}
                     value={option}
                     onChange={onChange}
                     checked={value === option}
                   />
-                  <label htmlFor={`${label + index  }-${  option}`}>
-                    {` ${  option}`}
+                  <label htmlFor={`${label + index}-${option}`}>
+                    {` ${option}`}
                   </label>
                 </div>
               ))}
