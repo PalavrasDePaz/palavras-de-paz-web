@@ -108,7 +108,7 @@ export default function FormEditarAvalLivroTemplate({
                 Número da turma: <span>{formData.classId}</span>
               </p>
               <p>
-                Data e hora: <span>{formData.createdAt}</span>
+                Carimbo de data/hora: <span>{formData.createdAt}</span>
               </p>
               <p>
                 Data de validação: <span>{formData.expirationDate}</span>
@@ -127,9 +127,9 @@ export default function FormEditarAvalLivroTemplate({
             />
             <ItemTurma
               inputType="selectbox"
-              label="Dignidade"
+              label="Fidedignidade"
               value={formData.textReliabilityAvaliation}
-              placeholder="Insira a dignidade"
+              placeholder="Insira a fidedignidade"
               onChange={(event) =>
                 handleChange(event, "textReliabilityAvaliation")}
               viewOnly={viewOnly}
@@ -146,21 +146,21 @@ export default function FormEditarAvalLivroTemplate({
             />
             <ItemTurma
               inputType="selectbox"
-              label="Plágio"
+              label="Apropriação indevida do Texto"
               value={formData.isAppropriation}
-              placeholder="Insira o plágio"
+              placeholder="Insira se houve apropriação indevida do Texto"
               onChange={(event) => handleChange(event, "isAppropriation")}
               viewOnly={viewOnly}
-              options={["true", "false"]}
+              options={["SIM", "NÃO"]}
             />
             <ItemTurma
               inputType="selectbox"
               label="Plágio parcial"
               value={formData.isParcialPlagiarism}
-              placeholder="Insira o plágio parcial"
+              placeholder="Insira houve plágio parcial"
               onChange={(event) => handleChange(event, "isParcialPlagiarism")}
               viewOnly={viewOnly}
-              options={["true", "false"]}
+              options={["SIM", "NÃO"]}
             />
             <ItemTurma
               inputType="textarea"
@@ -184,44 +184,10 @@ export default function FormEditarAvalLivroTemplate({
             />
             <ItemTurma
               inputType="textarea"
-              label="Opnião"
-              value={formData.bookCriticalAnalysisAvaliation}
-              placeholder="Insira a opnião"
-              onChange={(event) =>
-                handleChange(event, "bookCriticalAnalysisAvaliation")}
-              viewOnly={viewOnly}
-            />
-            <ItemTurma
-              inputType="textarea"
-              label="Sociedade"
-              value={formData.societyCriticalAnalysisAvaliation}
-              placeholder="Insira a sociedade"
-              onChange={(event) =>
-                handleChange(event, "societyCriticalAnalysisAvaliation")}
-              viewOnly={viewOnly}
-            />
-            <ItemTurma
-              inputType="textarea"
-              label="Relevantes"
+              label="Frases relevantes"
               value={formData.relevantPhrases}
               placeholder="Insira os relevantes"
               onChange={(event) => handleChange(event, "relevantPhrases")}
-              viewOnly={viewOnly}
-            />
-            <ItemTurma
-              inputType="textarea"
-              label="Redação"
-              value={formData.syntheticAvaliation}
-              placeholder="Insira a redação"
-              onChange={(event) => handleChange(event, "syntheticAvaliation")}
-              viewOnly={viewOnly}
-            />
-            <ItemTurma
-              inputType="textarea"
-              label="Português"
-              value={formData.grammarAvaliation}
-              placeholder="Insira o português"
-              onChange={(event) => handleChange(event, "grammarAvaliation")}
               viewOnly={viewOnly}
             />
             <ItemTurma
