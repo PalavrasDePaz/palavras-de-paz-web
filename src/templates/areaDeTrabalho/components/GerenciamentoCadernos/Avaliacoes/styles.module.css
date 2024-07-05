@@ -1,0 +1,248 @@
+.avaliacoes_section {
+  width: 100%;
+  max-width: 1300px;
+  margin: 0 auto;
+}
+
+.avaliacoes_section h1 {
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  padding: 20px;
+  margin: 0;
+  font-size: 40px;
+  text-align: center;
+  font-weight: bold;
+  background-color: #21aa85;
+  color: #ffffff;
+}
+
+.avaliacoes_itens {
+  /* min-width: 500px; */
+  background: #fff;
+  padding: 42px 40px;
+  border-radius: 15px;
+}
+
+.avaliacoes_actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.3125rem;
+}
+
+.avaliacoes_searchBar {
+  display: flex;
+  justify-content: flex-start;
+  max-width: 250px;
+}
+
+.avaliacoes_buttons_actions {
+  display: flex;
+  margin-left: 32px;
+  gap: 32px;
+}
+
+.avaliacoes_buttons_actions button {
+  width: 152px;
+  height: 48px;
+  font-size: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 700;
+  color: #fff;
+  background-color: #21aa85;
+  border: none;
+  border-radius: 15px;
+  transition: ease 0.3s all;
+}
+
+.avaliacoes_buttons_actions button:hover {
+  background-color: #05c290;
+}
+
+.avaliacoes_buttons_actions button:disabled {
+  max-width: 152px;
+  height: 48px;
+  font-size: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 700;
+  color: #fff;
+  background-color: #cdcdcd;
+  border: none;
+  border-radius: 15px;
+  transition: ease 0.3s all;
+  cursor: not-allowed;
+}
+
+.avaliacoes_table_container {
+  flex: 1;
+  overflow: auto;
+  max-height: 300px;
+}
+
+.avaliacoes_table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 600px;
+}
+
+.avaliacoes_table thead tr th:nth-child(4),
+.avaliacoes_table thead tr th:nth-child(2) {
+  text-align: center;
+}
+.avaliacoes_table thead tr th {
+  padding-right: 16px;
+  padding-top: 16px;
+  padding-bottom: 16px;
+}
+
+.avaliacoes_table th:hover {
+  white-space: nowrap !important;
+}
+
+.avaliacoes_table .avaliacoes_tbody tr:nth-child(odd) {
+  background-color: #f2f2f2;
+}
+
+.avaliacoes_table .avaliacoes_tbody tr:hover {
+  background-color: #05c290;
+  color: #fff;
+}
+
+.avaliacoes_table .avaliacoes_tbody tr:first-child {
+  padding-left: 1.5rem;
+}
+
+.avaliacoes_tbody .avaliacoes_tr td:first-child {
+  padding-left: 8px;
+}
+
+.avaliacoes_tbody .avaliacoes_tr td {
+  padding-right: 16px;
+  text-align: center;
+  font-weight: bold;
+  max-width: 140px;
+}
+
+.avaliacoes_tbody .avaliacoes_tr td:nth-child(4),
+.avaliacoes_tbody .avaliacoes_tr td:nth-child(2) {
+  padding-right: 16px;
+}
+
+.avaliacoes_tbody .avaliacoes_tr td:nth-child(1) {
+  max-width: 200px;
+}
+
+.visualize_button {
+  font-weight: bold;
+  color: #707070;
+}
+
+.visualize_button:hover {
+  color: #ffffff;
+}
+
+.avaliacoes_tbody .avaliacoes_tr td > input[type="checkbox"]:checked {
+  accent-color: #21aa85;
+  color: #fff !important;
+}
+
+@media (max-width: 1300px) {
+  .avaliacoes_button_text {
+    display: flex;
+  }
+
+  .avaliacoes_button_icon {
+    display: none;
+  }
+}
+@media (max-width: 800px) {
+  .avaliacoes_buttons_actions button {
+    width: 50px;
+  }
+
+  .avaliacoes_button_text {
+    display: none;
+  }
+
+  .avaliacoes_button_icon {
+    display: flex;
+  }
+}
+
+@media (max-width: 620px) {
+  .avaliacoes_actions {
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  .avaliacoes_searchBar {
+    display: flex;
+    justify-content: flex-start;
+    width: 100%;
+  }
+
+  .avaliacoes_buttons_actions {
+    display: flex;
+    justify-content: flex-start;
+    margin: 0;
+    width: 100%;
+  }
+
+  .avaliacoes_buttons_actions button {
+    width: 152px;
+  }
+
+  .avaliacoes_button_text {
+    display: flex;
+  }
+
+  .avaliacoes_button_icon {
+    display: none;
+  }
+}
+
+@media (max-width: 550px) {
+  .avaliacoes_buttons_actions button {
+    width: 152px;
+  }
+
+  .avaliacoes_button_text {
+    display: flex;
+  }
+
+  .avaliacoes_button_icon {
+    display: none;
+  }
+}
+
+.avaliacoes_pagination {
+  display: flex;
+  gap: 8px;
+  margin-top: 42px;
+}
+
+.avaliacoes_pagination span {
+  font-weight: bold;
+}
+
+.avaliacoes_pagination_button {
+  padding: 10px;
+  width: 44px;
+  border-radius: 5px;
+}
+.avaliacoes_pagination_button_active {
+  background: #21aa85;
+  color: #ffffff;
+}
+
+.loadingSpinnerContainer {
+  height: 386px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
