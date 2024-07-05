@@ -30,7 +30,7 @@ const Question2Container: React.FC<Question2AvalProps> = ({
         title="Clareza do texto"
         name="textClarityAvaliation"
       />
-      <Question2
+      {/* <Question2
         handleChangeQuestions={handleChangeQuestions}
         title="Análise Crítica - Opinião sobre a obra"
         name="bookCriticalAnalysisAvaliation"
@@ -49,7 +49,7 @@ const Question2Container: React.FC<Question2AvalProps> = ({
         handleChangeQuestions={handleChangeQuestions}
         title="Redação sintética"
         name="syntheticAvaliation"
-      />
+      /> */}
     </div>
   </>
 );
