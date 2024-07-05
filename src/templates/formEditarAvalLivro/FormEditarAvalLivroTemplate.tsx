@@ -108,7 +108,7 @@ export default function FormEditarAvalLivroTemplate({
                 Número da turma: <span>{formData.classId}</span>
               </p>
               <p>
-                Data e hora: <span>{formData.createdAt}</span>
+                Carimbo de data/hora: <span>{formData.createdAt}</span>
               </p>
               <p>
                 Data de validação: <span>{formData.expirationDate}</span>

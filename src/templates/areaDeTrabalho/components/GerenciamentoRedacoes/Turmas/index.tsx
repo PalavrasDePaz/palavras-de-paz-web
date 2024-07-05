@@ -136,7 +136,7 @@ export default function TabelaTurmas({
             <thead>
               <tr>
                 <th> </th>
-                <th>Nome Unidade Pris.</th>
+                <th>Uni. Prisional</th>
                 <th>ID</th>
                 <th>Lista Presença</th>
                 <th>QRL</th>
