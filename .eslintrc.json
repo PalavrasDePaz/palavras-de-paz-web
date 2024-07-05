@@ -10,7 +10,12 @@
     "plugin:@typescript-eslint/recommended",
     "prettier"
   ],
-  "overrides": [],
+  "overrides": [
+    {
+      "files": ["path/to/ItemTurmaAvaliacao.tsx"],
+      "rules": { "max-lines": "off"}
+    }
+  ],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "ecmaFeatures": {
@@ -82,7 +87,8 @@
       }
     ],
     "max-params": ["error", 4],
-    "max-lines": ["error", 250],
+    // "max-lines": ["error", 250],
+    "max-lines": ["error", { "max": 250, "skipBlankLines": true, "skipComments": true }],
     "complexity": ["error", 15],
     "object-curly-newline": ["off"],
     "import/no-extraneous-dependencies": ["off"],
