@@ -2,7 +2,7 @@ import * as yup from "yup";
 
 import { REQUIRED_FIELD } from "../../constants";
 
-export const notebookAvalSchema = yup.object().shape({
+export const notebookEvalSchema = yup.object().shape({
   id: yup.number(),
   idvol: yup.number().required(REQUIRED_FIELD),
   idpep: yup.number().required(REQUIRED_FIELD),
@@ -42,6 +42,7 @@ export const notebookAvalSchema = yup.object().shape({
   archivesExclusion: yup.boolean().required(REQUIRED_FIELD),
   reservationDate: yup.string().required(REQUIRED_FIELD),
   evaluatedDate: yup.string().required(REQUIRED_FIELD),
+  fullName: yup.string().optional(),
 });
 
-export type NotebookAval = yup.InferType<typeof notebookAvalSchema>;
+export type NotebookEval = yup.InferType<typeof notebookEvalSchema>;

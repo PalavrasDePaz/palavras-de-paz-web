@@ -48,3 +48,19 @@ export type Class = {
   volunteerName: string;
   yesList: string;
 };
+
+export type NotebookClass = {
+  id: number;
+  notebookDirectory: string;
+  placeId: number;
+  groupName: string;
+  report: boolean;
+  receivedDay: string;
+  releasedDay: string;
+  facilitatorName: string;
+  classOneDate: string;
+  classTenDate: string;
+  numEnrolled: number;
+  numEnrolledGotCertificate: number;
+  fullName: string;
+};

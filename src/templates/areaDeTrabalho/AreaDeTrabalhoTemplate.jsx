@@ -9,6 +9,7 @@ import AvaliarRedacoes from "./components/AvaliarRedacoes";
 import DadosPresenca from "./components/DadosPresenca";
 import DetalhesCadastro from "./components/DetalhesCadastro";
 import DetalhesPresenca from "./components/DetalhesPresenca";
+import GerenciamentoCadernos from "./components/GerenciamentoCadernos";
 import GerenciamentoRedacoes from "./components/GerenciamentoRedacoes";
 import HeaderAreaDeTrabalho from "./components/HeaderAreaDeTrabalho";
 import PrimeiroBox from "./components/PrimeiroBox";
@@ -69,9 +70,11 @@ export default function AreaDeTrabalhoTemplate() {
 
           {auth.essayModulePermission &&
             auth.essayModulePermission === true &&
-            prontoPraProducao === true && (
-              <GerenciamentoRedacoes idvol={idvol} />
-            )}
+            prontoPraProducao === true && <GerenciamentoRedacoes />}
+
+          {auth.essayModulePermission &&
+            auth.essayModulePermission === true &&
+            prontoPraProducao === true && <GerenciamentoCadernos />}
 
           {auth.manageVolunteerModulePermission &&
             auth.manageVolunteerModulePermission === true && <DadosPresenca />}
