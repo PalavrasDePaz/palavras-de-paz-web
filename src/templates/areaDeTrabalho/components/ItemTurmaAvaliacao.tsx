@@ -86,6 +86,16 @@ function ItemTurmaAvaliacao({
     await putRevertReservationData(volunteerId, classId);
   };
 
+  const handleSubmitDate = async (classId: number, date: string) => {
+    const dateFormat = date.split("/").reverse().join("-");
+    await mutateEvalForm({
+      data: {
+        endEvaluationDate: new Date(dateFormat),
+      },
+      idclass: classId.toString(),
+    });
+  };
+
   const naoReservado = "--/--/--";
   const preencher = "Preencher Formulário";
 
@@ -111,13 +121,7 @@ function ItemTurmaAvaliacao({
         (element: { idclass: string }) => element.idclass === idclass.toString()
       );
       setDateConcluded(elementDate.date);
-      const dateFormat = dateConcludedState.split("/").reverse().join("-");
-      mutateEvalForm({
-        data: {
-          endEvaluationDate: new Date(dateFormat),
-        },
-        idclass: idclass.toString(),
-      });
+      handleSubmitDate(idclass, elementDate.date);
     }
   }, []);
 
@@ -143,6 +147,7 @@ function ItemTurmaAvaliacao({
           element.date = dateBR;
         }
       });
+      handleSubmitDate(idclass, dateBR);
     } else {
       setDateConcluded("--/--/--");
       const conclusedDate = JSON.parse(
@@ -152,6 +157,7 @@ function ItemTurmaAvaliacao({
         (element: { idclass: string }) => element.idclass !== idclass.toString()
       );
       localStorage.setItem("conclusedDate", JSON.stringify(newConclusedDate));
+      handleSubmitDate(idclass, "--/--/--");
     }
   }, [check]);
 
