@@ -89,12 +89,19 @@ function ItemTurmaAvaliacao({
     await putRevertReservationData(volunteerId, classId);
   };
 
-  const handleSubmitDate = async (classId: number, date: string) => {
-    const dateFormat = date.split("/").reverse().join("-");
-    await mutateEvalForm({
-      data: { endEvaluationDate: new Date(dateFormat) },
-      idclass: classId.toString(),
-    });
+  const handleSubmitDate = async (classId: number, date: string | null) => {
+    if (date) {
+      const dateFormat = date.split("/").reverse().join("-");
+      await mutateEvalForm({
+        data: { endEvaluationDate: new Date(dateFormat) },
+        idclass: classId.toString(),
+      });
+    } else {
+      await mutateEvalForm({
+        data: { endEvaluationDate: new Date("") },
+        idclass: classId.toString(),
+      });
+    }
   };
 
   const naoReservado = "--/--/--";
@@ -158,7 +165,7 @@ function ItemTurmaAvaliacao({
         (element: { idclass: string }) => element.idclass !== idclass.toString()
       );
       localStorage.setItem("conclusedDate", JSON.stringify(newConclusedDate));
-      handleSubmitDate(idclass, "--/--/--");
+      handleSubmitDate(idclass, null);
     }
   }, [check]);
 
@@ -222,18 +229,18 @@ function ItemTurmaAvaliacao({
             <span className={styles.sliderConcl} />
           </label>
           <BtnDownload idclass={idclass} place={place} />
-          {reserved ? (
-            <FormButton
-              idClass={idclass}
-              idVol={idvol}
-              place={place}
-              dateReserved={dateReserved}
-              dateConcluded={dateConcluded}
-              reserved={reserved}
-            />
-          ) : (
-            <p className={styles.avaliarRedacoes_status_p5}>{preencher}</p>
-          )}
+          {/* {reserved ? ( */}
+          <FormButton
+            idClass={idclass}
+            idVol={idvol}
+            place={place}
+            dateReserved={dateReserved}
+            dateConcluded={dateConcluded}
+            reserved={reserved}
+          />
+          {/* ) : (
+            <p className={styles.avaliarRedacoes_status_p5}>{preencher}</p> */}
+          {/* )} */}
         </>
       )}
     </div>
