@@ -59,22 +59,21 @@ export default function AreaDeTrabalhoTemplate() {
           </aside>
           {auth.readPermission &&
             auth.readPermission === true &&
-            auth.essayModulePermission &&
-            auth.essayModulePermission === true &&
-            prontoPraProducao === true && <AvaliarCadernos idvol={idvol} />}
+            auth.notebookModulePermission === true  &&  <AvaliarCadernos idvol={idvol} />}
 
           {auth.bookPermission &&
             auth.bookPermission === true &&
+        
+            auth.essayModulePermission &&
+            auth.essayModulePermission === true  &&  <AvaliarRedacoes idvol={idvol} />}
+
+          {auth.essayModulePermission &&
+            auth.essayModulePermission === true &&
+              <GerenciamentoRedacoes />}
+
+          {auth.notebookModulePermission &&
             auth.notebookModulePermission === true &&
-            prontoPraProducao === true && <AvaliarRedacoes idvol={idvol} />}
-
-          {auth.essayModulePermission &&
-            auth.essayModulePermission === true &&
-            prontoPraProducao === true && <GerenciamentoRedacoes />}
-
-          {auth.essayModulePermission &&
-            auth.essayModulePermission === true &&
-            prontoPraProducao === true && <GerenciamentoCadernos />}
+              <GerenciamentoCadernos />}
 
           {auth.manageVolunteerModulePermission &&
             auth.manageVolunteerModulePermission === true && <DadosPresenca />}
