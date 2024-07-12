@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
-import { useRouter } from "next/router";
 
+// import { useRouter } from "next/router";
 import DownloadImage from "../../../../public/static/images/icons/download.svg";
 import dateUTCFormat from "../../../helpers/dateUTCFormat";
 import dateUTCGenerate from "../../../helpers/dateUTCGenerate";
-import downloadZIP from "../../../helpers/getEssaysDownload";
+// import downloadZIP from "../../../helpers/getEssaysDownload";
 import usePatchBookClubClass from "../../../hooks/usePatchBookClubClass";
 import {
   putReservationData,
@@ -15,9 +15,12 @@ import {
 } from "../helpers/Reservations";
 import {
   ItemTurmaAvaliacaoProps,
-  OpenFormularioProps,
+  // OpenFormularioProps,
 } from "../types/FormRedacaoType";
 import { IEssays } from "../types/interfaces";
+
+import BtnDownload from "./BtnDownload";
+import FormButton from "./FormButton";
 
 import styles from "../styles/AvaliarRedacoes.module.css";
 
@@ -31,22 +34,22 @@ function ItemTurmaAvaliacao({
   dateConcluded,
   reserved,
 }: ItemTurmaAvaliacaoProps) {
-  const router = useRouter();
+  // const router = useRouter();
 
-  const handleOpenFormulario = ({
-    idClass,
-    idVol,
-    Place,
-    DateReserved,
-    DateConcluded,
-    Reserved,
-  }: OpenFormularioProps) => {
-    localStorage.removeItem("form");
-    router.push({
-      pathname: "/formulario-avaliacao-redacao",
-      query: { idClass, idVol, Place, DateReserved, DateConcluded, Reserved },
-    });
-  };
+  // const handleOpenFormulario = ({
+  //   idClass,
+  //   idVol,
+  //   Place,
+  //   DateReserved,
+  //   DateConcluded,
+  //   Reserved,
+  // }: OpenFormularioProps) => {
+  //   localStorage.removeItem("form");
+  //   router.push({
+  //     pathname: "/formulario-avaliacao-redacao",
+  //     query: { idClass, idVol, Place, DateReserved, DateConcluded, Reserved },
+  //   });
+  // };
 
   const { mutate: mutateEvalForm } = usePatchBookClubClass();
 
@@ -86,6 +89,21 @@ function ItemTurmaAvaliacao({
     await putRevertReservationData(volunteerId, classId);
   };
 
+  const handleSubmitDate = async (classId: number, date: string | null) => {
+    if (date) {
+      const dateFormat = date.split("/").reverse().join("-");
+      await mutateEvalForm({
+        data: { endEvaluationDate: new Date(dateFormat) },
+        idclass: classId.toString(),
+      });
+    } else {
+      await mutateEvalForm({
+        data: { endEvaluationDate: new Date("") },
+        idclass: classId.toString(),
+      });
+    }
+  };
+
   const naoReservado = "--/--/--";
   const preencher = "Preencher Formulário";
 
@@ -111,13 +129,7 @@ function ItemTurmaAvaliacao({
         (element: { idclass: string }) => element.idclass === idclass.toString()
       );
       setDateConcluded(elementDate.date);
-      const dateFormat = dateConcludedState.split("/").reverse().join("-");
-      mutateEvalForm({
-        data: {
-          endEvaluationDate: new Date(dateFormat),
-        },
-        idclass: idclass.toString(),
-      });
+      handleSubmitDate(idclass, elementDate.date);
     }
   }, []);
 
@@ -143,6 +155,7 @@ function ItemTurmaAvaliacao({
           element.date = dateBR;
         }
       });
+      handleSubmitDate(idclass, dateBR);
     } else {
       setDateConcluded("--/--/--");
       const conclusedDate = JSON.parse(
@@ -152,6 +165,7 @@ function ItemTurmaAvaliacao({
         (element: { idclass: string }) => element.idclass !== idclass.toString()
       );
       localStorage.setItem("conclusedDate", JSON.stringify(newConclusedDate));
+      handleSubmitDate(idclass, null);
     }
   }, [check]);
 
@@ -214,37 +228,23 @@ function ItemTurmaAvaliacao({
           >
             <span className={styles.sliderConcl} />
           </label>
-          <div className={styles.avaliarRedacoes_status_div}>
-            <button
-              onClick={() => downloadZIP(idclass, `${place}`)}
-              className={styles.button_download}
-            >
-              <Image src={DownloadImage} alt="icone de download" />
-              <p>Download</p>
-            </button>
-          </div>
-          {reserved ? (
-            <button
-              className={styles.avaliarRedacoes_status_preencher_on}
-              onClick={() =>
-                handleOpenFormulario({
-                  idClass: idclass,
-                  idVol: idvol,
-                  Place: place,
-                  DateReserved: dateReserved,
-                  DateConcluded: dateConcluded,
-                  Reserved: reserved,
-                })}
-            >
-              {preencher}
-            </button>
-          ) : (
-            <p className={styles.avaliarRedacoes_status_p5}>{preencher}</p>
-          )}
+          <BtnDownload idclass={idclass} place={place} />
+          {/* {reserved ? ( */}
+          <FormButton
+            idClass={idclass}
+            idVol={idvol}
+            place={place}
+            dateReserved={dateReserved}
+            dateConcluded={dateConcluded}
+            reserved={reserved}
+          />
+          {/* ) : (
+            <p className={styles.avaliarRedacoes_status_p5}>{preencher}</p> */}
+          {/* )} */}
         </>
       )}
     </div>
   );
 }
 
-export default ItemTurmaAvaliacao;
+export { ItemTurmaAvaliacao };

@@ -4,7 +4,7 @@ import isReserved from "../../../helpers/isReserved";
 import useGetEssays from "../../../hooks/useGetEssays";
 import { IEssays } from "../types/interfaces";
 
-import ItemTurmaAvaliacao from "./ItemTurmaAvaliacao";
+import { ItemTurmaAvaliacao } from "./ItemTurmaAvaliacao";
 
 import styles from "../styles/AvaliarRedacoes.module.css";
 
