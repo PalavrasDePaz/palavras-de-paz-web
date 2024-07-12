@@ -165,7 +165,7 @@ export default function TabelaTurmas({
                   <td>{classData.presenceList}</td>
                   <td>{classData.qrl}</td>
                   <td>{classData.reportReceiveDate}</td>
-                  <td>{classData.parec}</td>
+                  <td>{classData.volunteerName}</td>
                   <td>{classData.sendDateParec}</td>
                   <td>{classData.endEvaluationDate}</td>
                   <td>{classData.sendDateFunap}</td>

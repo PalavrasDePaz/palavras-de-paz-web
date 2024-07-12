@@ -131,6 +131,11 @@
   padding-right: 16px;
   text-align: start;
 }
+.turmas_tbody .turmas_tr td:nth-child(8) {
+  padding-right: 16px;
+  text-align: start;
+  max-width: 160px;
+}
 
 .visualize_button {
   font-weight: bold;
