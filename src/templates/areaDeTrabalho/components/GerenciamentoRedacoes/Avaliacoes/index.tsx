@@ -91,7 +91,7 @@ export default function TabelaAvaliacoes({ selectedClasses }: props) {
                 <th>Matrícula do leitor</th>
                 <th>Nome do leitor</th>
                 <th>Número da turma</th>
-                <th>Data e hora da avaliação</th>
+                <th>Carimbo de data/hora</th>
                 <th> </th>
                 <th> </th>
               </tr>

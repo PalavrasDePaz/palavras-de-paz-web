@@ -139,7 +139,7 @@ export default function TabelaTurmas({
                 <th>Data da Turma 10</th>
                 <th>Total</th>
                 <th>Total com Certificados</th>
-                <th> </th>
+                <th>Uni. Prisional</th>
               </tr>
             </thead>
             <tbody className={styles.turmas_tbody}>
@@ -159,14 +159,7 @@ export default function TabelaTurmas({
                   <td>{classData.classTenDate}</td>
                   <td>{classData.numEnrolled}</td>
                   <td>{classData.numEnrolledGotCertificate}</td>
-                  <td>
-                    <button
-                      onClick={() => toggleModalEdit(classData)}
-                      className={styles.visualize_button}
-                    >
-                      Visualizar/Editar
-                    </button>
-                  </td>
+                  <td>{classData.fullName}</td>
                   {/* <td>
                     <button
                       onClick={() => toggleModalEdit(classData)}

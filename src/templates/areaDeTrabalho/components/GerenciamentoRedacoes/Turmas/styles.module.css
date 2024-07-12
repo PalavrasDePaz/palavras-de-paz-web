@@ -97,8 +97,11 @@
   outline: 1px solid #f2f2f2;
 }
 
-.turmas_table thead tr th:nth-child(4),
 .turmas_table thead tr th:nth-child(2) {
+  text-align: center;
+  max-width: 200px;
+}
+.turmas_table thead tr th:nth-child(4) {
   text-align: center;
 }
 .turmas_table thead tr th {
@@ -126,10 +129,19 @@
   font-weight: bold;
 }
 
-.turmas_tbody .turmas_tr td:nth-child(4),
 .turmas_tbody .turmas_tr td:nth-child(2) {
   padding-right: 16px;
   text-align: start;
+  max-width: 200px;
+}
+.turmas_tbody .turmas_tr td:nth-child(4) {
+  padding-right: 16px;
+  text-align: start;
+}
+.turmas_tbody .turmas_tr td:nth-child(7) {
+  padding-right: 16px;
+  text-align: start;
+  max-width: 120px;
 }
 
 .visualize_button {

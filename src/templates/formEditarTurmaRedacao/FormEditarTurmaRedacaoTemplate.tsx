@@ -5,7 +5,6 @@ import LoadingSpinner from "../../components/loadingSpinner/LoadingSpinner";
 import useGetBookClassFromId from "../../hooks/useGetBookClassFromId";
 import usePutBookClass from "../../hooks/usePutBookClass";
 
-import ButtonDownloadRelatorios from "./components/ButtonDownloadRelatorios";
 import BtnSubmit from "./components/ButtonSalavarAlteracoes";
 import ItemTurma from "./components/ItemTurma";
 import { BookClass } from "./schema";
@@ -113,9 +112,6 @@ export default function FormularioEditarTurmaRedacaoTemplate({
                 <p className={style.subtitulo}>
                   Aqui você consegue alterar as informações desta turma
                 </p>
-                <ButtonDownloadRelatorios
-                  bookClassId={formData.idclass.toString()}
-                />
               </div>
             </div>
 
