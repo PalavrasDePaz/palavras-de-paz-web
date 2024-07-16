@@ -6,6 +6,8 @@ const getBookClasses = async (currentPage: number) =>
   (await api.get(`/book-club-class?page=${currentPage}`)).data;
 
 const useGetBookClasses = (currentPage: number) =>
-  useQuery(["bookClasses", currentPage], () => getBookClasses(currentPage));
+  useQuery(["bookClasses", currentPage], () => getBookClasses(currentPage), {
+    enabled: currentPage !== undefined,
+  });
 
 export default useGetBookClasses;

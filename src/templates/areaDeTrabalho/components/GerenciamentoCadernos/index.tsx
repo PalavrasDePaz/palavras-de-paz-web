@@ -11,6 +11,7 @@ import styles from "./styles.module.css";
 export default function GerenciamentoCadernos() {
   const [selectedClasses, setSelectedClasses] = useState<NotebookClass[]>([]);
   const [activeTab, setActiveTab] = useState<number>(0);
+  const [currentPageTurmas, setCurrentPageTurmas] = useState(1);
 
   const tabsContent = [
     {
@@ -19,6 +20,9 @@ export default function GerenciamentoCadernos() {
         <TabelaTurmas
           selectedClasses={selectedClasses}
           setSelectedClasses={setSelectedClasses}
+          currentPage={currentPageTurmas}
+          setCurrentPage={setCurrentPageTurmas}
+          setActiveTab={setActiveTab}
         />
       ),
     },

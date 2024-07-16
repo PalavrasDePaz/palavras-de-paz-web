@@ -21,13 +21,12 @@ interface props {
 export default function TabelaAvaliacoes({ selectedClasses }: props) {
   const [currentPage, setCurrentPage] = useState(1);
   const [bookEvalToEdit, setBookEvalToEdit] = useState<BookEval | null>(null);
-  // const [bookEvalToView, setBookEvalToView] = useState<BookEval | null>(null);
 
-  const { data: bookEvals, isLoading, isError } = useGetBookEvals(currentPage);
-
-  // const toggleModalView = (postBookEvalToView: BookEval | null) => {
-  //   setBookEvalToView(postBookEvalToView);
-  // };
+  const {
+    data: bookEvals,
+    isLoading,
+    isError,
+  } = useGetBookEvals(currentPage, selectedClasses);
 
   const toggleModalEdit = (postBookEvalToEdit: BookEval | null) => {
     setBookEvalToEdit(postBookEvalToEdit);
@@ -113,14 +112,6 @@ export default function TabelaAvaliacoes({ selectedClasses }: props) {
                       Visualizar/Editar
                     </button>
                   </td>
-                  {/* <td>
-                    <button
-                      onClick={() => toggleModalEdit(bookEval)}
-                      className={styles.visualize_button}
-                    >
-                      Editar
-                    </button>
-                  </td> */}
                 </tr>
               ))}
             </tbody>
@@ -160,20 +151,6 @@ export default function TabelaAvaliacoes({ selectedClasses }: props) {
           </button>
         </div>
       )}
-
-      {/* <GenericModal
-        title="Visualizar avaliação de livro"
-        isShown={bookEvalToView != null}
-        onToggle={() => toggleModalView(null)}
-      >
-        {bookEvalToView != null && (
-          <FormEditarAvalLivroTemplate
-            initialData={bookEvalToView as unknown as BookEval}
-            evaluationId={bookEvalToView.id || 0}
-            viewOnly
-          />
-        )}
-      </GenericModal> */}
 
       <GenericModal
         title="Visualizar/Editar avaliação de livro"

@@ -28,7 +28,7 @@ export default function TabelaAvaliacoes({ selectedClasses }: props) {
     data: notebookEvals,
     isLoading,
     isError,
-  } = useGetNotebooksEvalsList(currentPage);
+  } = useGetNotebooksEvalsList(currentPage, selectedClasses);
 
   // const toggleModalView = (postBookEvalToView: BookEval | null) => {
   //   setBookEvalToView(postBookEvalToView);
@@ -94,7 +94,7 @@ export default function TabelaAvaliacoes({ selectedClasses }: props) {
             <thead>
               <tr>
                 <th>Uni. prisional</th>
-                <th>ID do voluntário</th>
+                <th>ID da turma</th>
                 <th>Nome do voluntário</th>
                 <th>Matrícula do aluno</th>
                 <th>Nome do aluno</th>
@@ -109,7 +109,11 @@ export default function TabelaAvaliacoes({ selectedClasses }: props) {
                 <tr className={styles.avaliacoes_tr} key={notebookEval.id}>
                   <td>{notebookEval.fullName}</td>
                   <td>{notebookEval.idpep}</td>
-                  <td>{notebookEval.evaluatorName}</td>
+                  <td>
+                    {notebookEval.evaluatorName?.length
+                      ? notebookEval.evaluatorName
+                      : "N/D"}
+                  </td>
                   <td>{notebookEval.studentRegistration}</td>
                   <td>{notebookEval.studentName}</td>
                   <td>
