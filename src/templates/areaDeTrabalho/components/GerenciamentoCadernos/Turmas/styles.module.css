@@ -242,3 +242,15 @@
   justify-content: center;
   align-items: center;
 }
+
+.notebook_directory {
+  background: #21aa85;
+  color: #ffffff;
+  padding: 4px;
+  width: 44px;
+  border-radius: 6px;
+}
+
+.notebook_directory:disabled {
+  background: #99bdb4;
+}

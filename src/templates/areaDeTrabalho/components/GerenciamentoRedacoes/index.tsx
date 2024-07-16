@@ -11,6 +11,7 @@ import styles from "./styles.module.css";
 export default function GerenciamentoRedacoes() {
   const [selectedClasses, setSelectedClasses] = useState<Class[]>([]);
   const [activeTab, setActiveTab] = useState<number>(0);
+  const [currentPageTurmas, setCurrentPageTurmas] = useState(1);
 
   const tabsContent = [
     {
@@ -19,6 +20,9 @@ export default function GerenciamentoRedacoes() {
         <TabelaTurmas
           selectedClasses={selectedClasses}
           setSelectedClasses={setSelectedClasses}
+          currentPage={currentPageTurmas}
+          setCurrentPage={setCurrentPageTurmas}
+          setActiveTab={setActiveTab}
         />
       ),
     },

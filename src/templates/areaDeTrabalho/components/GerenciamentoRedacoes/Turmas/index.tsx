@@ -21,22 +21,22 @@ import BookClassesReportDownloadButton from "./BookClassesReportDownloadButton";
 
 import styles from "./styles.module.css";
 
-type CheckboxState = {
-  [key: number]: boolean;
-};
 interface props {
   selectedClasses: Class[];
   setSelectedClasses: Dispatch<SetStateAction<Class[]>>;
+  currentPage: number;
+  setCurrentPage: Dispatch<SetStateAction<number>>;
+  setActiveTab: Dispatch<SetStateAction<number>>;
 }
 
 export default function TabelaTurmas({
   selectedClasses,
   setSelectedClasses,
+  currentPage,
+  setCurrentPage,
+  setActiveTab,
 }: props) {
-  const [currentPage, setCurrentPage] = useState(1);
-  const [checkboxes, setCheckboxes] = useState<CheckboxState>({});
   const [classToEdit, setClassToEdit] = useState<Class | null>(null);
-  // const [classToView, setClassToView] = useState<Class | null>(null);
 
   const { data: classes, isLoading, isError } = useGetBookClasses(currentPage);
 
@@ -44,7 +44,6 @@ export default function TabelaTurmas({
 
   const handleCheckboxChange = (event: ChangeEvent<HTMLInputElement>) => {
     const { name, checked } = event.target;
-    setCheckboxes((prevState) => ({ ...prevState, [name]: checked }));
 
     if (checked) {
       const matchedClass = classes?.nodes?.find(
@@ -61,10 +60,6 @@ export default function TabelaTurmas({
       );
     }
   };
-
-  // const toggleModalView = (postClassToView: Class | null) => {
-  //   setClassToView(postClassToView);
-  // };
 
   const toggleModalEdit = (postClassToEdit: Class | null) => {
     setClassToEdit(postClassToEdit);
@@ -107,7 +102,7 @@ export default function TabelaTurmas({
           <SearchBar />
         </div>
         <div className={styles.turmas_buttons_actions}>
-          <button disabled={!isCheckboxChecked} onClick={() => {}}>
+          <button disabled={!isCheckboxChecked} onClick={() => setActiveTab(1)}>
             <span className={styles.turmas_button_text}>Visualizar</span>
             <span className={styles.turmas_button_icon}>
               <MdEditNote size={24} />
@@ -146,7 +141,6 @@ export default function TabelaTurmas({
                 <th>Data Fim Aval.</th>
                 <th>Data Envio Funap</th>
                 <th> </th>
-                <th> </th>
               </tr>
             </thead>
             <tbody className={styles.turmas_tbody}>
@@ -156,7 +150,9 @@ export default function TabelaTurmas({
                     <input
                       type="checkbox"
                       name={classData.idclass.toString()}
-                      checked={checkboxes[classData.idclass] || false}
+                      checked={selectedClasses
+                        .map((c) => c.idclass)
+                        .includes(classData.idclass)}
                       onChange={handleCheckboxChange}
                     />
                   </td>
@@ -177,14 +173,6 @@ export default function TabelaTurmas({
                       Visualizar/Editar
                     </button>
                   </td>
-                  {/* <td>
-                    <button
-                      onClick={() => toggleModalEdit(classData)}
-                      className={styles.visualize_button}
-                    >
-                      Editar
-                    </button>
-                  </td> */}
                 </tr>
               ))}
             </tbody>
@@ -223,19 +211,6 @@ export default function TabelaTurmas({
           </button>
         </div>
       )}
-
-      {/* <GenericModal
-        title="Visualizar turma de redação"
-        isShown={classToView != null}
-        onToggle={() => toggleModalView(null)}
-      >
-        {classToView != null && (
-          <FormularioEditarTurmaRedacaoTemplate
-            initialData={classToView as unknown as BookClass}
-            viewOnly
-          />
-        )}
-      </GenericModal> */}
 
       <GenericModal
         title="Visualizar/Editar turma de redação"
