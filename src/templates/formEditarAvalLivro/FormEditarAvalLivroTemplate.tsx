@@ -16,6 +16,15 @@ interface props {
   evaluationId: number;
   viewOnly: boolean;
 }
+const toBoolean = (value: string) => value === "SIM";
+
+const formParserMap: Partial<
+  Record<keyof BookEval, (value: string) => BookEval[keyof BookEval]>
+> = {
+  readHistories: (value: string) => value.split("\n"),
+  isAppropriation: toBoolean,
+  isParcialPlagiarism: toBoolean,
+};
 
 export default function FormEditarAvalLivroTemplate({
   initialData,
@@ -51,7 +60,7 @@ export default function FormEditarAvalLivroTemplate({
   }, [mutateResponseData, isMutateSuccess]);
 
   const handleSubmit = async () => {
-    const formDataToSend = { ...formData } as any;
+    const formDataToSend = { ...formData } as Partial<BookEval>;
     delete formDataToSend.evaluatorId;
     delete formDataToSend.classId;
     delete formDataToSend.readerRegistration;
@@ -67,10 +76,11 @@ export default function FormEditarAvalLivroTemplate({
     fieldName: keyof BookEval
   ) => {
     const { value } = event.target;
+    const parser = formParserMap?.[fieldName];
     setFormData((prevFormData) => {
       const newData = {
         ...prevFormData,
-        [fieldName]: fieldName === "readHistories" ? value.split("\n") : value,
+        [fieldName]: parser ? parser(value) : value,
       };
       return newData;
     });
@@ -123,7 +133,7 @@ export default function FormEditarAvalLivroTemplate({
               onChange={(event) =>
                 handleChange(event, "textAestheticsAvaliation")}
               viewOnly={viewOnly}
-              options={["VALIDADO", "NAO VALIDADO"]}
+              options={["VALIDADO", "NÃO VALIDADO"]}
             />
             <ItemTurma
               inputType="selectbox"
@@ -133,7 +143,7 @@ export default function FormEditarAvalLivroTemplate({
               onChange={(event) =>
                 handleChange(event, "textReliabilityAvaliation")}
               viewOnly={viewOnly}
-              options={["VALIDADO", "NAO VALIDADO"]}
+              options={["VALIDADO", "NÃO VALIDADO"]}
             />
             <ItemTurma
               inputType="selectbox"
@@ -142,12 +152,12 @@ export default function FormEditarAvalLivroTemplate({
               placeholder="Insira a clareza"
               onChange={(event) => handleChange(event, "textClarityAvaliation")}
               viewOnly={viewOnly}
-              options={["VALIDADO", "NAO VALIDADO"]}
+              options={["VALIDADO", "NÃO VALIDADO"]}
             />
             <ItemTurma
               inputType="selectbox"
               label="Apropriação indevida do Texto"
-              value={formData.isAppropriation}
+              value={formData.isAppropriation ? "SIM" : "NÃO"}
               placeholder="Insira se houve apropriação indevida do Texto"
               onChange={(event) => handleChange(event, "isAppropriation")}
               viewOnly={viewOnly}
@@ -156,7 +166,7 @@ export default function FormEditarAvalLivroTemplate({
             <ItemTurma
               inputType="selectbox"
               label="Plágio parcial"
-              value={formData.isParcialPlagiarism}
+              value={formData.isParcialPlagiarism ? "SIM" : "NÃO"}
               placeholder="Insira houve plágio parcial"
               onChange={(event) => handleChange(event, "isParcialPlagiarism")}
               viewOnly={viewOnly}
