@@ -5,7 +5,7 @@ import { useMutation } from "@tanstack/react-query";
 import { api } from "../api";
 
 const schema = yup.object().shape({
-  endEvaluationDate: yup.date().required("Campo obrigatório"),
+  endEvaluationDate: yup.date().nullable(),
 });
 
 type BookClubClass = yup.InferType<typeof schema>;

@@ -10,7 +10,7 @@ interface Question3AvalProps {
 
 const Question3: React.FC<Question3AvalProps> = ({ handleChangeQuestions }) => (
   <>
-    <h3 className={styles.sectionTitle}>Observações do parcerista</h3>
+    <h3 className={styles.sectionTitle}>Observações do parecerista</h3>
     <p className={styles.label}>
       Descreva a justificativa do critério não validado ou a justificativa da
       percepção de plágio.

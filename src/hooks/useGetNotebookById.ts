@@ -13,6 +13,7 @@ const useGetNotebookById = (
 ): UseQueryResult<AxiosResponse<NotebookEval>> =>
   useQuery(["notebooks", notebookId], () => getNotebookById(notebookId), {
     enabled: !!notebookId,
+    refetchOnWindowFocus: false,
   });
 
 export default useGetNotebookById;

@@ -18,6 +18,7 @@ const useGetBookClassFromId = (
 ): UseQueryResult<BookClass> =>
   useQuery(["bookClass", bookClassId], () => getBookClassFromId(bookClassId), {
     enabled: !!bookClassId,
+    refetchOnWindowFocus: false,
   });
 
 export default useGetBookClassFromId;

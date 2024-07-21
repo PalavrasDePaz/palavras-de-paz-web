@@ -1,4 +1,5 @@
 export const CheckBoxType = [
+  "não tem história descrita",
   "Vida de Prem Rawat (Introd.)",
   "Rei Filipe II e Esparta (Cap 1)",
   "A Rainha e o colar (Cap 1)",

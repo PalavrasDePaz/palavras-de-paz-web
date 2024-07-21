@@ -19,10 +19,10 @@ const Question4: React.FC<Question4AvalProps> = ({ handleChangeQuestions }) => (
       <option value="" disabled selected>
         Selecione
       </option>
-      <option value="Relatório de leitura validado">
+      <option value="RELATÓRIO DE LEITURA VALIDADO">
         Relatório de leitura validado
       </option>
-      <option value="Relatório de leitura não validado">
+      <option value="RELATÓRIO DE LEITURA NÃO VALIDADO">
         Relatório de leitura não validado
       </option>
       {/* <option value="Não avaliado">Não avaliado</option> */}

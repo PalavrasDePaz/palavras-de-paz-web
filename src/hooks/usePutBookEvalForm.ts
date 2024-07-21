@@ -4,12 +4,12 @@ import { api } from "../api";
 import { BookEval } from "../templates/formEditarAvalLivro/schema";
 
 type PutBookEval = {
-  data: BookEval;
+  data: Partial<BookEval>;
   evaluationId: string | null;
 };
 
 const putNotebookEvalForm = async (
-  data: BookEval,
+  data: Partial<BookEval>,
   evaluationId: string | null
 ) => api.put(`/book-evaluations/${evaluationId}`, { ...data });
 

@@ -13,6 +13,7 @@ const useGetBookEvalForm = (
 ): UseQueryResult<AxiosResponse<BookEval>> =>
   useQuery(["getBookEval"], () => getBookEvalForm(evaluationId), {
     enabled: !!evaluationId,
+    refetchOnWindowFocus: false,
   });
 
 export default useGetBookEvalForm;
