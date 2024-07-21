@@ -21,7 +21,7 @@ const Question1: React.FC<Question1AvalProps> = ({ handleChangeQuestions }) => (
             type="radio"
             name="isAppropriation"
             id="isAppropriation"
-            value="Sim"
+            value="SIM"
             onChange={(e) => handleChangeQuestions(e)}
             required
           />

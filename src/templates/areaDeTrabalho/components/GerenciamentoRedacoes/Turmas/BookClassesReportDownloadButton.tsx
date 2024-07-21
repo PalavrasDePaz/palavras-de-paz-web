@@ -1,8 +1,6 @@
-import { useEffect } from "react";
+import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import { HiDownload } from "react-icons/hi";
-import { toast } from "react-toastify";
 
-import downloadZipData from "../../../../../helpers/downloadZipData";
 import { Class } from "../../../../../hooks/types";
 import useGetBookClassReport from "../../../../../hooks/useGetBookClassReport";
 
@@ -11,45 +9,45 @@ import styles from "./styles.module.css";
 interface props {
   classesToDownload: Class[];
   isCheckboxChecked: boolean;
+  setDownloadItemStatus: Dispatch<
+    SetStateAction<Record<string, "error" | "loading" | "success">>
+  >;
 }
 
 export default function BookClassesReportDownloadButton({
   classesToDownload,
   isCheckboxChecked,
+  setDownloadItemStatus,
 }: props) {
-  const {
-    data: response,
-    isSuccess,
-    isError,
-    error,
-    mutate,
-  } = useGetBookClassReport();
+  const [toDownload, setToDownload] = useState(false);
+  const [finishedDownloads, setFinishedDownloads] = useState(0);
 
-  const handleDownloadClick = () => {
-    classesToDownload.forEach((bookClass) => {
-      mutate({ bookClassId: bookClass.idclass.toString() });
-    });
-  };
+  const { mutate } = useGetBookClassReport(
+    setDownloadItemStatus,
+    setFinishedDownloads
+  );
 
   useEffect(() => {
-    if (isSuccess && response?.data) {
-      downloadZipData(
-        response.data,
-        response.config.url?.replaceAll("/book-club-class/download/", "")
-          ? `turma_${response.config.url?.replaceAll(
-              "/book-club-class/download/",
-              ""
-            )}.zip`
-          : "arquivo.zip"
-      );
-    } else if (isError) {
-      toast.error(`Erro ao baixar relatórios: ${(error as Error).message}`);
+    if (finishedDownloads === classesToDownload.length) {
+      setToDownload(false);
+    } else if (toDownload) {
+      if (finishedDownloads === 0) {
+        // setting all items from list to loading
+        const status = {} as Record<string, "error" | "loading" | "success">;
+        classesToDownload.forEach((classs) => {
+          status[classs.idclass.toString()] = "loading";
+        });
+        setDownloadItemStatus({ ...status });
+      }
+      mutate({
+        bookClassId: classesToDownload[finishedDownloads]?.idclass.toString(),
+      });
     }
-  }, [response, isSuccess, isError]);
+  }, [toDownload, finishedDownloads]);
 
   return (
-    <button disabled={!isCheckboxChecked} onClick={handleDownloadClick}>
-      <span className={styles.turmas_button_text}>Baixar</span>
+    <button disabled={!isCheckboxChecked} onClick={() => setToDownload(true)}>
+      <span className={styles.turmas_button_text}>Baixar Turmas</span>
       <span className={styles.turmas_button_icon}>
         <HiDownload size={24} />
       </span>

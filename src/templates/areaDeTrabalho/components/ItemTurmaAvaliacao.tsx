@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 
 // import { useRouter } from "next/router";
@@ -53,6 +53,19 @@ function ItemTurmaAvaliacao({
 
   const { mutate: mutateEvalForm } = usePatchBookClubClass();
 
+  const naoReservado = "--/--/--";
+  const preencher = "Preencher Formulário";
+
+  const [check, setCheck] = useState(!!dateConcluded);
+
+  const [dateConcludedState, setDateConcluded] = useState(() => {
+    if (dateConcluded) {
+      const date = new Date().toISOString();
+      const dateBR = date.split("T")[0].split("-").reverse().join("/");
+      return dateBR;
+    } return naoReservado;
+  });
+
   const updatedEssaysFunction = (classId: number, reserveFlag: boolean) =>
     essaysIn.map((essay: IEssays) => {
       if (essay.idclass === classId) {
@@ -89,85 +102,24 @@ function ItemTurmaAvaliacao({
     await putRevertReservationData(volunteerId, classId);
   };
 
-  const handleSubmitDate = async (classId: number, date: string | null) => {
-    if (date) {
-      const dateFormat = date.split("/").reverse().join("-");
-      await mutateEvalForm({
-        data: { endEvaluationDate: new Date(dateFormat) },
-        idclass: classId.toString(),
-      });
-    } else {
-      await mutateEvalForm({
-        data: { endEvaluationDate: new Date("") },
-        idclass: classId.toString(),
-      });
-    }
-  };
-
-  const naoReservado = "--/--/--";
-  const preencher = "Preencher Formulário";
-
-  const [check, setCheck] = useState(
-    JSON.parse(localStorage.getItem("conclusedDate") || "[]").some(
-      (element: { idclass: string }) => element.idclass === idclass.toString()
-    )
-  );
-
-  const [dateConcludedState, setDateConcluded] = useState("--/--/--");
-
-  useEffect(() => {
-    const conclusedDate = JSON.parse(
-      localStorage.getItem("conclusedDate") || "[]"
-    );
-    if (
-      localStorage.getItem("conclusedDate") &&
-      conclusedDate.some(
-        (element: { idclass: string }) => element.idclass === idclass.toString()
-      )
-    ) {
-      const elementDate = conclusedDate.find(
-        (element: { idclass: string }) => element.idclass === idclass.toString()
-      );
-      setDateConcluded(elementDate.date);
-      handleSubmitDate(idclass, elementDate.date);
-    }
-  }, []);
-
-  useEffect(() => {
-    if (check) {
+  const handleSubmitDate = async () => {
+    if (!check) {
       const date = new Date().toISOString();
       const dateBR = date.split("T")[0].split("-").reverse().join("/");
-      const conclusedDate = JSON.parse(
-        localStorage.getItem("conclusedDate") || "[]"
-      );
       setDateConcluded(dateBR);
-      if (
-        !conclusedDate.some(
-          (element: { idclass: string }) =>
-            element.idclass === idclass.toString()
-        )
-      ) {
-        conclusedDate.push({ idclass: idclass.toString(), date: dateBR });
-        localStorage.setItem("conclusedDate", JSON.stringify(conclusedDate));
-      }
-      conclusedDate.forEach((element: { idclass: string; date: string }) => {
-        if (element.idclass === idclass.toString()) {
-          element.date = dateBR;
-        }
+      mutateEvalForm({
+        data: { endEvaluationDate: new Date(date) },
+        idclass: idclass.toString(),
       });
-      handleSubmitDate(idclass, dateBR);
     } else {
-      setDateConcluded("--/--/--");
-      const conclusedDate = JSON.parse(
-        localStorage.getItem("conclusedDate") || "[]"
-      );
-      const newConclusedDate = conclusedDate.filter(
-        (element: { idclass: string }) => element.idclass !== idclass.toString()
-      );
-      localStorage.setItem("conclusedDate", JSON.stringify(newConclusedDate));
-      handleSubmitDate(idclass, null);
+      setDateConcluded(naoReservado);
+      mutateEvalForm({
+        data: { endEvaluationDate: null },
+        idclass: idclass.toString(),
+      });
     }
-  }, [check]);
+    setCheck((prev) => !prev);
+  };
 
   return (
     <div className={styles.avaliarRedacoes_status}>
@@ -219,7 +171,7 @@ function ItemTurmaAvaliacao({
             type="checkbox"
             id={idclass.toString() + 1}
             className={styles.check}
-            onChange={() => setCheck(!check)}
+            onChange={() => handleSubmitDate()}
             checked={check}
           />
           <label

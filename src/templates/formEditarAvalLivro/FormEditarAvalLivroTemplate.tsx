@@ -4,6 +4,7 @@ import { toast } from "react-toastify";
 import LoadingSpinner from "../../components/loadingSpinner/LoadingSpinner";
 import useGetBookEvalForm from "../../hooks/useGetBookEval";
 import usePutBookEvalForm from "../../hooks/usePutBookEvalForm";
+import { CheckBoxType } from "../formAvaliarRedacao/types";
 import BtnSubmit from "../formEditarTurmaRedacao/components/ButtonSalavarAlteracoes";
 import ItemTurma from "../formEditarTurmaRedacao/components/ItemTurma";
 
@@ -23,6 +24,7 @@ export default function FormEditarAvalLivroTemplate({
   viewOnly,
 }: props) {
   const [formData, setFormData] = useState<BookEval>(initialData);
+  const [readHistoriesState, setReadHistoriesState] = useState<string[]>([]);
 
   const {
     data: responseData,
@@ -30,6 +32,7 @@ export default function FormEditarAvalLivroTemplate({
     isError,
     isLoading,
   } = useGetBookEvalForm(evaluationId.toString());
+
   const {
     mutate: mutatePutBookEval,
     isSuccess: isMutateSuccess,
@@ -39,6 +42,7 @@ export default function FormEditarAvalLivroTemplate({
   useEffect(() => {
     if (responseData && isSuccess) {
       setFormData(responseData.data);
+      setReadHistoriesState(responseData.data.readHistories);
     }
   }, [responseData, isSuccess]);
 
@@ -51,7 +55,7 @@ export default function FormEditarAvalLivroTemplate({
   }, [mutateResponseData, isMutateSuccess]);
 
   const handleSubmit = async () => {
-    const formDataToSend = { ...formData } as any;
+    const formDataToSend = { ...formData } as Partial<BookEval>;
     delete formDataToSend.evaluatorId;
     delete formDataToSend.classId;
     delete formDataToSend.readerRegistration;
@@ -62,18 +66,53 @@ export default function FormEditarAvalLivroTemplate({
     });
   };
 
+  useEffect(() => {
+    setFormData((prevData) => ({
+      ...prevData,
+      readHistories: readHistoriesState,
+    }));
+  }, [readHistoriesState]);
+
+  const toBoolean = (value: string) => value === "SIM";
+
+  const formParserMap: Partial<
+    Record<
+      keyof BookEval,
+      (value: string, checked?: boolean) => BookEval[keyof BookEval]
+    >
+  > = {
+    isAppropriation: toBoolean,
+    isParcialPlagiarism: toBoolean,
+  };
+
   const handleChange = (
     event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
     fieldName: keyof BookEval
   ) => {
     const { value } = event.target;
-    setFormData((prevFormData) => {
-      const newData = {
-        ...prevFormData,
-        [fieldName]: fieldName === "readHistories" ? value.split("\n") : value,
-      };
-      return newData;
-    });
+
+    if (fieldName === "readHistories") {
+      const {checked} = event.target as HTMLInputElement;
+
+      setReadHistoriesState((prevReadHistories) => {
+        if (checked && !prevReadHistories.includes(value)) {
+          return [...prevReadHistories, value];
+        } if (!checked && prevReadHistories.includes(value)) {
+          return [...prevReadHistories.filter((str) => str !== value)];
+        }
+        return [...prevReadHistories];
+      });
+    } else {
+      const parser = formParserMap[fieldName];
+
+      setFormData((prevFormData) => {
+        const newData = {
+          ...prevFormData,
+          [fieldName]: parser ? parser(value) : value,
+        };
+        return newData;
+      });
+    }
   };
 
   return (
@@ -123,7 +162,7 @@ export default function FormEditarAvalLivroTemplate({
               onChange={(event) =>
                 handleChange(event, "textAestheticsAvaliation")}
               viewOnly={viewOnly}
-              options={["VALIDADO", "NAO VALIDADO"]}
+              options={["VALIDADO", "NÃO VALIDADO"]}
             />
             <ItemTurma
               inputType="selectbox"
@@ -133,7 +172,7 @@ export default function FormEditarAvalLivroTemplate({
               onChange={(event) =>
                 handleChange(event, "textReliabilityAvaliation")}
               viewOnly={viewOnly}
-              options={["VALIDADO", "NAO VALIDADO"]}
+              options={["VALIDADO", "NÃO VALIDADO"]}
             />
             <ItemTurma
               inputType="selectbox"
@@ -142,12 +181,12 @@ export default function FormEditarAvalLivroTemplate({
               placeholder="Insira a clareza"
               onChange={(event) => handleChange(event, "textClarityAvaliation")}
               viewOnly={viewOnly}
-              options={["VALIDADO", "NAO VALIDADO"]}
+              options={["VALIDADO", "NÃO VALIDADO"]}
             />
             <ItemTurma
               inputType="selectbox"
               label="Apropriação indevida do Texto"
-              value={formData.isAppropriation}
+              value={formData.isAppropriation ? "SIM" : "NÃO"}
               placeholder="Insira se houve apropriação indevida do Texto"
               onChange={(event) => handleChange(event, "isAppropriation")}
               viewOnly={viewOnly}
@@ -156,7 +195,7 @@ export default function FormEditarAvalLivroTemplate({
             <ItemTurma
               inputType="selectbox"
               label="Plágio parcial"
-              value={formData.isParcialPlagiarism}
+              value={formData.isParcialPlagiarism ? "SIM" : "NÃO"}
               placeholder="Insira houve plágio parcial"
               onChange={(event) => handleChange(event, "isParcialPlagiarism")}
               viewOnly={viewOnly}
@@ -191,12 +230,13 @@ export default function FormEditarAvalLivroTemplate({
               viewOnly={viewOnly}
             />
             <ItemTurma
-              inputType="textarea"
+              inputType="selectboxes"
               label="Histórias lidas"
-              value={formData.readHistories.join("\n")}
-              placeholder="Insira as história lidas separadas por 'enter'"
+              placeholder="Selecione as histórias lidas"
               onChange={(event) => handleChange(event, "readHistories")}
               viewOnly={viewOnly}
+              options={CheckBoxType}
+              values={readHistoriesState}
             />
             <ItemTurma
               inputType="textarea"

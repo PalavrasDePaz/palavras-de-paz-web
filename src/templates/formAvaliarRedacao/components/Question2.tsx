@@ -21,11 +21,11 @@ const Question2: React.FC<Question2AvalProps> = ({
         type="radio"
         name={name}
         id="valido"
-        value="Válido"
+        value="VALIDADO"
         onChange={(e) => handleChangeQuestions(e)}
         required
       />
-      Válido
+      VALIDADO
     </label>
     <label htmlFor="naoValidado" className={styles.radioLabel}>
       <input
@@ -33,21 +33,10 @@ const Question2: React.FC<Question2AvalProps> = ({
         type="radio"
         name={name}
         id="naoValidado"
-        value="Não validado"
+        value="NãO VALIDADO"
         onChange={(e) => handleChangeQuestions(e)}
       />
-      Não validado
-    </label>
-    <label htmlFor="naoAvaliado" className={styles.radioLabel}>
-      <input
-        className={styles.radioInput}
-        type="radio"
-        name={name}
-        id="naoAvaliado"
-        value="Não avaliado"
-        onChange={(e) => handleChangeQuestions(e)}
-      />
-      Não avaliado
+      NÃO VALIDADO
     </label>
   </div>
 );

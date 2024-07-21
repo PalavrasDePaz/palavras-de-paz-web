@@ -6,20 +6,16 @@
 /* eslint-disable max-len */
 /* eslint-disable no-magic-numbers */
 /* eslint-disable max-lines */
-import {
-  ChangeEvent,
-  Dispatch,
-  SetStateAction,
-  useEffect,
-  useState,
-} from "react";
-import { MdEditNote } from "react-icons/md";
+import { ChangeEvent, Dispatch, SetStateAction, useState } from "react";
+import { MdDownload , MdDownloadDone , MdEditNote , MdFileDownloadOff } from "react-icons/md";
 
 import SearchBar from "../../../../../components/forms/searchBar";
 import LoadingSpinner from "../../../../../components/loadingSpinner/LoadingSpinner";
 // import GenericModal from "../../../../../components/modal";
 import { NotebookClass } from "../../../../../hooks/types";
 import useGetNotebookClasses from "../../../../../hooks/useGetNotebookClasses";
+
+import NotebookClassesEvalsReportDownloadButton from "./NotebookClassesEvalsReportDownloadButton";
 
 // import FormularioEditarTurmaRedacaoTemplate from "../../../../formEditarTurmaRedacao/FormEditarTurmaRedacaoTemplate";
 import styles from "./styles.module.css";
@@ -46,6 +42,10 @@ export default function TabelaTurmas({
     isLoading,
     isError,
   } = useGetNotebookClasses(currentPage);
+
+  const [downloadItemStatus, setDownloadItemStatus] = useState<
+    Record<string, "loading" | "error" | "success">
+  >({});
 
   const isCheckboxChecked = selectedClasses.length;
 
@@ -115,6 +115,11 @@ export default function TabelaTurmas({
               <MdEditNote size={24} />
             </span>
           </button>
+          <NotebookClassesEvalsReportDownloadButton
+            classesToDownload={selectedClasses}
+            isCheckboxChecked={!!isCheckboxChecked}
+            setDownloadItemStatus={setDownloadItemStatus}
+          />
         </div>
       </div>
 
@@ -134,6 +139,7 @@ export default function TabelaTurmas({
             <thead>
               <tr>
                 <th> </th>
+                <th> </th>
                 <th>ID</th>
                 <th>Grupo</th>
                 <th>Data da Turma 1</th>
@@ -147,6 +153,23 @@ export default function TabelaTurmas({
             <tbody className={styles.turmas_tbody}>
               {classes?.nodes?.map((classData: NotebookClass) => (
                 <tr key={classData.id} className={styles.turmas_tr}>
+                  <td>
+                    {downloadItemStatus[String(classData.id)] === "loading" && (
+                      <span style={{ position: "relative" }}>
+                        <MdDownload
+                          className={styles.download_loading}
+                          data-loading
+                        />
+                        <span className={styles.download_animation} />
+                      </span>
+                    )}
+                    {downloadItemStatus[String(classData.id)] === "error" && (
+                      <MdFileDownloadOff data-error />
+                    )}
+                    {downloadItemStatus[String(classData.id)] === "success" && (
+                      <MdDownloadDone data-success />
+                    )}
+                  </td>
                   <td>
                     <input
                       type="checkbox"
