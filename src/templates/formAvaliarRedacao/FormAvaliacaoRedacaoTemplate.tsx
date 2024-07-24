@@ -196,7 +196,7 @@ const FormAvalRedacaoTemplate: React.FC<
           <section className={styles.sectionContainer}>
             <Question6
               handleChangeQuestions={handleChangeCheckboxes}
-              required={!!readHistoriesState.length}
+              required={!readHistoriesState.length}
             />
           </section>
           <section className={styles.sectionContainer}>
