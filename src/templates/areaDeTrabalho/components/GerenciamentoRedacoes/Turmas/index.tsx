@@ -13,7 +13,12 @@ import {
   useEffect,
   useState,
 } from "react";
-import { MdDownload , MdDownloadDone , MdEditNote , MdFileDownloadOff } from "react-icons/md";
+import {
+  MdDownload,
+  MdDownloadDone,
+  MdEditNote,
+  MdFileDownloadOff,
+} from "react-icons/md";
 
 import SearchBar from "../../../../../components/forms/searchBar";
 import LoadingSpinner from "../../../../../components/loadingSpinner/LoadingSpinner";
@@ -24,7 +29,6 @@ import FormularioEditarTurmaRedacaoTemplate from "../../../../formEditarTurmaRed
 import { BookClass } from "../../../../formEditarTurmaRedacao/schema";
 
 import BookClassesEvalsReportDownloadButton from "./BookClassesEvalsReportDownloadButton";
-import BookClassesReportDownloadButton from "./BookClassesReportDownloadButton";
 
 import styles from "./styles.module.css";
 
@@ -119,11 +123,6 @@ export default function TabelaTurmas({
               <MdEditNote size={24} />
             </span>
           </button>
-          <BookClassesReportDownloadButton
-            classesToDownload={selectedClasses}
-            isCheckboxChecked={!!isCheckboxChecked}
-            setDownloadItemStatus={setDownloadItemStatus}
-          />
           <BookClassesEvalsReportDownloadButton
             classesToDownload={selectedClasses}
             isCheckboxChecked={!!isCheckboxChecked}

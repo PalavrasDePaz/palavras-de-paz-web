@@ -41,7 +41,7 @@ export default function BookClassesEvalsReportDownloadButton({
 
   return (
     <button disabled={!isCheckboxChecked} onClick={() => setToDownload(true)}>
-      <span className={styles.turmas_button_text}>Baixar Avaliações</span>
+      <span className={styles.turmas_button_text}>Baixar</span>
       <span className={styles.turmas_button_icon}>
         <HiDownload size={24} />
       </span>

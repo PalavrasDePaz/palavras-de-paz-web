@@ -33,7 +33,7 @@ const Question2: React.FC<Question2AvalProps> = ({
         type="radio"
         name={name}
         id="naoValidado"
-        value="NãO VALIDADO"
+        value="NÃO VALIDADO"
         onChange={(e) => handleChangeQuestions(e)}
       />
       NÃO VALIDADO
