@@ -6,10 +6,12 @@ import styles from "../styles/QuestionAval.module.css";
 
 interface Question2AvalProps {
   handleChangeQuestions: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  required: boolean;
 }
 
 const Question2Container: React.FC<Question2AvalProps> = ({
   handleChangeQuestions,
+  required,
 }) => (
   <>
     <h3 className={styles.sectionTitle}>Parâmetros Avaliados*</h3>
@@ -19,16 +21,19 @@ const Question2Container: React.FC<Question2AvalProps> = ({
         handleChangeQuestions={handleChangeQuestions}
         title="Estética textual"
         name="textAestheticsAvaliation"
+        required={required}
       />
       <Question2
         handleChangeQuestions={handleChangeQuestions}
         title="Fidedignidade"
         name="textReliabilityAvaliation"
+        required={required}
       />
       <Question2
         handleChangeQuestions={handleChangeQuestions}
         title="Clareza do texto"
         name="textClarityAvaliation"
+        required={required}
       />
       {/* <Question2
         handleChangeQuestions={handleChangeQuestions}

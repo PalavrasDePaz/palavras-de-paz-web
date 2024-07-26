@@ -6,13 +6,7 @@
 /* eslint-disable max-len */
 /* eslint-disable no-magic-numbers */
 /* eslint-disable max-lines */
-import {
-  ChangeEvent,
-  Dispatch,
-  SetStateAction,
-  useEffect,
-  useState,
-} from "react";
+import { ChangeEvent, Dispatch, SetStateAction, useState } from "react";
 import {
   MdDownload,
   MdDownloadDone,
@@ -20,7 +14,6 @@ import {
   MdFileDownloadOff,
 } from "react-icons/md";
 
-import SearchBar from "../../../../../components/forms/searchBar";
 import LoadingSpinner from "../../../../../components/loadingSpinner/LoadingSpinner";
 import GenericModal from "../../../../../components/modal";
 import { Class } from "../../../../../hooks/types";
@@ -76,6 +69,16 @@ export default function TabelaTurmas({
     }
   };
 
+  const handleAllCheckboxClick = (
+    event: React.MouseEvent<HTMLInputElement>
+  ) => {
+    if (selectedClasses.length) {
+      setSelectedClasses([...[]]);
+    } else {
+      setSelectedClasses([...classes.nodes]);
+    }
+  };
+
   const toggleModalEdit = (postClassToEdit: Class | null) => {
     setClassToEdit(postClassToEdit);
   };
@@ -113,9 +116,6 @@ export default function TabelaTurmas({
   return (
     <div className={styles.turmas_itens}>
       <div className={styles.turmas_actions}>
-        <div className={styles.turmas_searchBar}>
-          <SearchBar />
-        </div>
         <div className={styles.turmas_buttons_actions}>
           <button disabled={!isCheckboxChecked} onClick={() => setActiveTab(1)}>
             <span className={styles.turmas_button_text}>Visualizar</span>
@@ -147,7 +147,15 @@ export default function TabelaTurmas({
             <thead>
               <tr>
                 <th> </th>
-                <th> </th>
+                <th>
+                  <input
+                    type="checkbox"
+                    checked={!!selectedClasses.length}
+                    onClick={handleAllCheckboxClick}
+                  />
+                  {!!selectedClasses.length &&
+                    ` ${  selectedClasses.length.toString()}`}
+                </th>
                 <th>Uni. Prisional</th>
                 <th>ID</th>
                 <th>Lista Presença</th>

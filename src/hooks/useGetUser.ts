@@ -18,6 +18,7 @@ const useGetUser = (email?: string): UseQueryResult<User | null> =>
     staleTime:
       MILLISECONDS_PER_SECOND * SECONDS_PER_MINUTE * CACHE_TIME_IN_MINUTES,
     enabled: !!email,
+    refetchOnWindowFocus: false,
   });
 
 export default useGetUser;

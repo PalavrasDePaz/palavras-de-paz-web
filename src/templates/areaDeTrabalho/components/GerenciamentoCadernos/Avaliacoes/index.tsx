@@ -72,11 +72,7 @@ export default function TabelaAvaliacoes({ selectedClasses }: props) {
 
   return (
     <div className={styles.avaliacoes_itens}>
-      <div className={styles.avaliacoes_actions}>
-        <div className={styles.avaliacoes_searchBar}>
-          <SearchBar />
-        </div>
-      </div>
+      <div className={styles.avaliacoes_actions} />
 
       {!isLoading && !notebookEvals?.nodes?.length && (
         <p>Não há dados para serem exibidos</p>

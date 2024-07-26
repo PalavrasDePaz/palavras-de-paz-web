@@ -4,7 +4,6 @@
 /* eslint-disable no-magic-numbers */
 import { useState } from "react";
 
-import SearchBar from "../../../../../components/forms/searchBar";
 import LoadingSpinner from "../../../../../components/loadingSpinner/LoadingSpinner";
 import GenericModal from "../../../../../components/modal";
 import { Class } from "../../../../../hooks/types";
@@ -64,11 +63,7 @@ export default function TabelaAvaliacoes({ selectedClasses }: props) {
 
   return (
     <div className={styles.avaliacoes_itens}>
-      <div className={styles.avaliacoes_actions}>
-        <div className={styles.avaliacoes_searchBar}>
-          <SearchBar />
-        </div>
-      </div>
+      <div className={styles.avaliacoes_actions} />
 
       {!isLoading && !bookEvals?.nodes?.length && (
         <p>Não há dados para serem exibidos</p>

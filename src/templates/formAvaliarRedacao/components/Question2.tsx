@@ -6,12 +6,14 @@ interface Question2AvalProps {
   handleChangeQuestions: (event: React.ChangeEvent<HTMLInputElement>) => void;
   title: string;
   name: string;
+  required: boolean;
 }
 
 const Question2: React.FC<Question2AvalProps> = ({
   handleChangeQuestions,
   title,
   name,
+  required,
 }) => (
   <div className={styles.optionContainer}>
     <p className={styles.radioLabel}>{title}</p>
@@ -23,7 +25,7 @@ const Question2: React.FC<Question2AvalProps> = ({
         id="valido"
         value="VALIDADO"
         onChange={(e) => handleChangeQuestions(e)}
-        required
+        required={required}
       />
       VALIDADO
     </label>
@@ -35,6 +37,7 @@ const Question2: React.FC<Question2AvalProps> = ({
         id="naoValidado"
         value="NÃO VALIDADO"
         onChange={(e) => handleChangeQuestions(e)}
+        required={required}
       />
       NÃO VALIDADO
     </label>
