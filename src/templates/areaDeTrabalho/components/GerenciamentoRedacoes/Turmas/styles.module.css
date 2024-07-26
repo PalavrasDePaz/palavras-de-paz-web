@@ -107,6 +107,9 @@
   text-align: center;
   max-width: 20px;
 }
+.turmas_table thead tr th:nth-child(2) {
+  white-space: nowrap;
+}
 .turmas_table thead tr th:nth-child(3) {
   text-align: center;
   max-width: 200px;

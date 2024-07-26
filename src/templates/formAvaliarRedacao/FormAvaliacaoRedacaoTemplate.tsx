@@ -74,6 +74,7 @@ const FormAvalRedacaoTemplate: React.FC<
   }, []);
 
   useEffect(() => {
+    console.log(readHistoriesState);
     setFormData((prevData) => ({
       ...prevData,
       readHistories: readHistoriesState,
@@ -86,12 +87,12 @@ const FormAvalRedacaoTemplate: React.FC<
     >
   ) => {
     const { name, value } = e.target;
-    if (value === "Sim") {
+    if (value === "SIM") {
       setFormData((prevData) => ({
         ...prevData,
         [name]: true,
       }));
-    } else if (value === "Não") {
+    } else if (value === "NÃO") {
       setFormData((prevData) => ({
         ...prevData,
         [name]: false,
@@ -105,24 +106,16 @@ const FormAvalRedacaoTemplate: React.FC<
   };
 
   const handleChangeCheckboxes = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { id } = e.target;
-    if (
-      readHistoriesState.some(
-        (history) => history === "Não tem história descrita"
-      )
-    ) {
-      setReadHistoriesState(["Não tem história descrita"]);
-    } else if (readHistoriesState.some((history) => history === id)) {
-      setReadHistoriesState(
-        readHistoriesState.filter((history) => history !== id)
-      );
-    } else {
-      setReadHistoriesState([...readHistoriesState, id]);
-    }
-    setFormData((prevData) => ({
-      ...prevData,
-      readHistories: readHistoriesState,
-    }));
+    const { value, checked } = e.target as HTMLInputElement;
+    setReadHistoriesState((prevReadHistories) => {
+      if (checked && !prevReadHistories.includes(value)) {
+        return [...prevReadHistories, value];
+      }
+      if (!checked && prevReadHistories.includes(value)) {
+        return [...prevReadHistories.filter((str) => str !== value)];
+      }
+      return [...prevReadHistories];
+    });
   };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -179,10 +172,28 @@ const FormAvalRedacaoTemplate: React.FC<
             </div>
           </section>
           <section className={styles.sectionContainer}>
-            <Question1 handleChangeQuestions={handleChangeQuestions} />
+            <Question1
+              handleChangeQuestions={handleChangeQuestions}
+              required={
+                formData.isAppropriation === undefined ||
+                formData.isAppropriation === null ||
+                formData.isParcialPlagiarism === undefined ||
+                formData.isParcialPlagiarism === null
+              }
+            />
           </section>
           <section className={styles.sectionContainer}>
-            <Question2Container handleChangeQuestions={handleChangeQuestions} />
+            <Question2Container
+              handleChangeQuestions={handleChangeQuestions}
+              required={
+                formData.textAestheticsAvaliation === undefined ||
+                formData.textAestheticsAvaliation === null ||
+                formData.textReliabilityAvaliation === undefined ||
+                formData.textReliabilityAvaliation === null ||
+                formData.textClarityAvaliation === undefined ||
+                formData.textClarityAvaliation === null
+              }
+            />
           </section>
           <section className={styles.sectionContainer}>
             <Question3 handleChangeQuestions={handleChangeQuestions} />
@@ -196,7 +207,11 @@ const FormAvalRedacaoTemplate: React.FC<
           <section className={styles.sectionContainer}>
             <Question6
               handleChangeQuestions={handleChangeCheckboxes}
-              required={!readHistoriesState.length}
+              required={
+                readHistoriesState === undefined ||
+                readHistoriesState === null ||
+                !readHistoriesState.length
+              }
             />
           </section>
           <section className={styles.sectionContainer}>

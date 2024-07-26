@@ -43,6 +43,17 @@ const ItemTurma: React.FC<ItemTurmaProps> = ({
     setIsEditing(false);
   };
 
+  function caseInsensitiveInclude(list: string[] | undefined, str: string) {
+    return !!list?.some((item) => item.toUpperCase() === str.toUpperCase());
+  }
+
+  function caseInsensitiveEquals(
+    str1: string | number | undefined,
+    str2: string | number | undefined
+  ) {
+    return String(str1).toUpperCase() === String(str2).toUpperCase();
+  }
+
   return (
     <div className={style.ItemTurmaContainer}>
       <p className={style.chave}>
@@ -79,7 +90,7 @@ const ItemTurma: React.FC<ItemTurmaProps> = ({
                   className="me-1"
                   id={`${label + index}-${option}`}
                   name={`${label}-${option}`}
-                  checked={value === option}
+                  checked={caseInsensitiveEquals(value, option)}
                   disabled
                 />
                 <label htmlFor={`${label + index}-${option}`}>{option}</label>
@@ -96,7 +107,7 @@ const ItemTurma: React.FC<ItemTurmaProps> = ({
                   className="me-1"
                   id={`${label + index}-${option}`}
                   name={`${label}-${option}`}
-                  checked={values?.includes(option)}
+                  checked={caseInsensitiveInclude(values, option)}
                   disabled
                 />
                 <label htmlFor={`${label + index}-${option}`}>{option}</label>
@@ -146,7 +157,7 @@ const ItemTurma: React.FC<ItemTurmaProps> = ({
                     name={`${label}-${option}`}
                     value={option}
                     onChange={onChange}
-                    checked={value === option}
+                    checked={caseInsensitiveEquals(value, option)}
                   />
                   <label htmlFor={`${label + index}-${option}`}>{option}</label>
                 </div>
@@ -164,7 +175,7 @@ const ItemTurma: React.FC<ItemTurmaProps> = ({
                     name={`${label}-${option}`}
                     value={option}
                     onChange={onChange}
-                    checked={values?.includes(option)}
+                    checked={caseInsensitiveInclude(values, option)}
                   />
                   <label htmlFor={`${label + index}-${option}`}>{option}</label>
                 </div>

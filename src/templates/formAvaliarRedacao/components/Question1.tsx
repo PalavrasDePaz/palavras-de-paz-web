@@ -4,9 +4,13 @@ import styles from "../styles/QuestionAval.module.css";
 
 interface Question1AvalProps {
   handleChangeQuestions: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  required: boolean;
 }
 
-const Question1: React.FC<Question1AvalProps> = ({ handleChangeQuestions }) => (
+const Question1: React.FC<Question1AvalProps> = ({
+  handleChangeQuestions,
+  required,
+}) => (
   <>
     <h3 className={styles.sectionTitle}>Critérios de não validação*</h3>
     <p className={styles.label}>Assinale o campo conforme avaliação.</p>
@@ -23,9 +27,9 @@ const Question1: React.FC<Question1AvalProps> = ({ handleChangeQuestions }) => (
             id="isAppropriation"
             value="SIM"
             onChange={(e) => handleChangeQuestions(e)}
-            required
+            required={required}
           />
-          Sim
+          SIM
         </label>
         <label htmlFor="isNotAppropriation" className={styles.radioLabel}>
           <input
@@ -33,10 +37,11 @@ const Question1: React.FC<Question1AvalProps> = ({ handleChangeQuestions }) => (
             type="radio"
             name="isAppropriation"
             id="isNotAppropriation"
-            value="Não"
+            value="NÃO"
             onChange={(e) => handleChangeQuestions(e)}
+            required={required}
           />
-          Não
+          NÃO
         </label>
       </div>
       <div className={styles.optionContainer}>
@@ -49,11 +54,11 @@ const Question1: React.FC<Question1AvalProps> = ({ handleChangeQuestions }) => (
             type="radio"
             name="isParcialPlagiarism"
             id="isParcialPlagiarism"
-            value="Sim"
+            value="SIM"
             onChange={(e) => handleChangeQuestions(e)}
-            required
+            required={required}
           />
-          Sim
+          SIM
         </label>
         <label htmlFor="isNotParcialPlagiarism" className={styles.radioLabel}>
           <input
@@ -61,10 +66,11 @@ const Question1: React.FC<Question1AvalProps> = ({ handleChangeQuestions }) => (
             type="radio"
             name="isParcialPlagiarism"
             id="isNotParcialPlagiarism"
-            value="Não"
+            value="NÃO"
             onChange={(e) => handleChangeQuestions(e)}
+            required={required}
           />
-          Não
+          NÃO
         </label>
       </div>
     </div>

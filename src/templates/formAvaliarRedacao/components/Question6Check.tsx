@@ -22,6 +22,7 @@ const Question6: React.FC<Question6AvalProps> = ({
         onChange={(e) => handleChangeQuestions(e)}
         className={styles.radioInput}
         required={required}
+        value={label}
       />
       {label}
     </label>
