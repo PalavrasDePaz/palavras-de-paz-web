@@ -96,11 +96,11 @@ const optionsQuestion1: IOptionsQuestion1[] = [
 ];
 
 const optionsQuestion2 = [
-  "Muito Provavel",
-  "Provavel",
+  "Muito provavelmente",
+  "Provavelmente",
   "Neutro",
   "Improvável",
-  "Muito Improvável",
+  "Muito improvável",
   "Não sei",
 ];
 
@@ -109,12 +109,12 @@ const optionsQuestion7 = ["Até 35 anos", "36 a 55 anos", "Mais de 55"];
 const optionsQuestion8 = ["Masculino", "Feminino", "Outros", "Não consta"];
 
 const optionsQuestion9 = [
-  "Ensino Fundamental Incompleto",
-  "Ensino Fundamental Completo",
-  "Ensino Médio Incompleto",
-  "Ensino Médio Completo",
-  "Ensino Superior Incompleto",
-  "Ensino Superior Completo",
+  "Ensino fundamental incompleto",
+  "Ensino fundamental completo",
+  "Ensino médio incompleto",
+  "Ensino médio completo",
+  "Ensino superior incompleto",
+  "Ensino superior completo",
   "Não consta",
 ];
 

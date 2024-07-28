@@ -154,7 +154,7 @@ export default function TabelaTurmas({
                     onClick={handleAllCheckboxClick}
                   />
                   {!!selectedClasses.length &&
-                    ` ${  selectedClasses.length.toString()}`}
+                    ` ${selectedClasses.length.toString()}`}
                 </th>
                 <th>Uni. Prisional</th>
                 <th>ID</th>
@@ -262,6 +262,7 @@ export default function TabelaTurmas({
           <FormularioEditarTurmaRedacaoTemplate
             initialData={classToEdit as unknown as BookClass}
             viewOnly={false}
+            volunteerFullName={classToEdit.volunteerName}
           />
         )}
       </GenericModal>

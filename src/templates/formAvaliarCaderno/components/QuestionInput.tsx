@@ -18,11 +18,11 @@ interface QuestionInputProps {
 }
 
 const options = [
-  "1. Discordo Totalmente",
+  "1. Discordo totalmente",
   "2. Discordo",
   "3. Não sei",
   "4. Concordo",
-  "5. Concordo Totalmente",
+  "5. Concordo totalmente",
 ];
 
 const QuestionInput: React.FC<QuestionInputProps> = ({
