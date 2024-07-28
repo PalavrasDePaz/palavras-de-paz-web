@@ -109,3 +109,14 @@
   justify-content: center;
   align-items: center;
 }
+
+.sectionTitle {
+  color: #21aa85;
+  font-family: Open Sans;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  letter-spacing: 0.72px;
+  white-space: nowrap;
+}

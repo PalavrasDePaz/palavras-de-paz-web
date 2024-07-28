@@ -16,11 +16,13 @@ import style from "./styles/FormEditarTurmaRedacaoTemplate.module.css";
 interface props {
   initialData: BookClass;
   viewOnly: boolean;
+  volunteerFullName: string;
 }
 
 export default function FormularioEditarTurmaRedacaoTemplate({
   initialData,
   viewOnly,
+  volunteerFullName,
 }: props) {
   const [formData, setFormData] = useState<BookClass>(initialData);
 
@@ -117,7 +119,7 @@ export default function FormularioEditarTurmaRedacaoTemplate({
 
             <div className={style.noEdit}>
               <p>
-                Nome do voluntário: <span>{formData.parec}</span>
+                Nome do voluntário: <span>{volunteerFullName}</span>
               </p>
               <p>
                 Id do voluntário: <span>{formData.idvol}</span>
