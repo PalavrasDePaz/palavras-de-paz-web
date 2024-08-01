@@ -33,6 +33,32 @@
   }
 }
 
+.meio-de-doacao {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  font-size: 24px;
+}
+
+.meio-de-doacao p {
+  margin: 2px 0;
+  align-self: flex-start;
+}
+
+.meio-de-doacao a,
+.meio-de-doacao a:visited,
+.meio-de-doacao a:hover {
+  margin: 16px 0;
+  border: 1px solid #ffffff;
+  background-color: #21aa85;
+  color: #fff;
+  border-radius: 5px;
+  padding: 0.8rem 1.3rem;
+  transition: background-color 0.3s;
+  text-decoration: none;
+  font-size: min(calc(12px + 3vw), 36px);
+}
+
 .doacoes-icones {
   display: flex;
   justify-content: center;
@@ -53,7 +79,7 @@
 .doacoes-atraves {
   display: flex;
   justify-content: center;
-  font-size: min(calc(12px + 3vw), 56px);
+  font-size: min(calc(12px + 3vw), 36px);
   padding-top: 10px;
   font-family: "Baloo", cursive, Arial, Helvetica, sans-serif;
 }
@@ -170,7 +196,7 @@
 }
 
 .relatorio-link {
-  font-size: min(calc(12px + 2.4vw), 40px);
+  font-size: min(calc(12px + 2.4vw), 32px);
   cursor: pointer;
   border: 1px solid #18ca99;
   border-radius: 10px;

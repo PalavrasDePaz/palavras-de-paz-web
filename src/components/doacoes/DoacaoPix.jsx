@@ -15,7 +15,7 @@ function copiarClipBoard() {
 function DoacaoPix() {
   return (
     <div className="doacoes-images-empresas ">
-      <h1 className="text-dark">Pix</h1>
+      <h2 className="text-dark">Pix</h2>
 
       <div className="doacoes-pix d-flex  justify-content-center border-0">
         <Image
