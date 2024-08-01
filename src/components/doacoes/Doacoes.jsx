@@ -82,19 +82,39 @@ function Doacoes() {
 
       <div>
         <div className="doacoes-atraves text-center">
-          <p>DOE ATRAVÉS</p>
+          <p>DOE ATRAVÉS DE</p>
+        </div>
+
+        <div className="meio-de-doacao">
+          <p>Conheça nossa nova plataforma de doações!</p>
+          <p>Clique no botão de doar e faça parte dessa corrente do bem.</p>
+          <p>
+            Com sua contribuição podemos manter as atividades atuais expandir
+            nossos sonhos de um mundo em Paz.
+          </p>
+          <a
+            href="https://palavrasdepaz.colabore.org/doacoes/single_step"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Doar!
+          </a>
+        </div>
+
+        <div className="doacoes-atraves text-center">
+          <p>DOE TAMBÉM POR</p>
         </div>
 
         <div className="doacoes-empresas ">
           <DoacaoPix />
 
           <div className="doacoes-images-empresas ">
-            <h1 className="text-black">Transferência</h1>
+            <h2 className="text-black">Transferência</h2>
             <div className="doacoes-images-empresas d-flex justify-content-center border-0">
-              <h2>Itau ag: 0646</h2>
-              <h2>conta: 66704-8</h2>
-              <h2>CNPJ:</h2>
-              <h2> 05920548/0001-73</h2>
+              <h3>Itau ag: 0646</h3>
+              <h3>conta: 66704-8</h3>
+              <h3>CNPJ:</h3>
+              <h3> 05920548/0001-73</h3>
             </div>
           </div>
         </div>
