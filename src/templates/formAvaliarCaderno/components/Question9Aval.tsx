@@ -28,6 +28,23 @@ const Question9Aval: React.FC<Question9AvalProps> = ({
             {educationLevel}
           </label>
         ))}
+        <label key="Outro" className={styles.radioLabel}>
+          Outro:
+          <input
+            className={styles.radioInput}
+            type="text"
+            name="question9"
+            onChange={handleChangeQuestions}
+            style={{
+              margin: 0,
+              padding: 8,
+              backgroundColor: "white",
+              marginLeft: 8,
+              borderRadius: 8,
+              border: "2px solid #21aa85",
+            }}
+          />
+        </label>
       </div>
     </label>
   </>

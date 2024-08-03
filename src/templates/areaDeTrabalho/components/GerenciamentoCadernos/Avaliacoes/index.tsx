@@ -90,7 +90,7 @@ export default function TabelaAvaliacoes({ selectedClasses }: props) {
             <thead>
               <tr>
                 <th>Uni. prisional</th>
-                <th>ID da turma</th>
+                <th>ID da Turma</th>
                 <th>Nome do voluntário</th>
                 <th>Matrícula do aluno</th>
                 <th>Nome do aluno</th>
@@ -104,14 +104,20 @@ export default function TabelaAvaliacoes({ selectedClasses }: props) {
               {notebookEvals?.nodes?.map((notebookEval: NotebookEval) => (
                 <tr className={styles.avaliacoes_tr} key={notebookEval.id}>
                   <td>{notebookEval.fullName}</td>
-                  <td>{notebookEval.idpep}</td>
+                  <td>
+                    {notebookEval.idpep != null ? notebookEval.idpep : "N/D"}
+                  </td>
                   <td>
                     {notebookEval.evaluatorName?.length
                       ? notebookEval.evaluatorName
                       : "N/D"}
                   </td>
                   <td>{notebookEval.studentRegistration}</td>
-                  <td>{notebookEval.studentName}</td>
+                  <td>
+                    {notebookEval.studentName?.length
+                      ? notebookEval.studentName
+                      : "N/D"}
+                  </td>
                   <td>
                     {notebookEval.evaluatedDate
                       ? new Date(notebookEval.evaluatedDate).toLocaleString()

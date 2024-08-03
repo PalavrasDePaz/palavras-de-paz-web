@@ -22,6 +22,7 @@ interface ItemTurmaProps {
   viewOnly?: boolean;
   options?: string[];
   values?: string[];
+  otherOption?: boolean;
 }
 
 const ItemTurma: React.FC<ItemTurmaProps> = ({
@@ -33,6 +34,7 @@ const ItemTurma: React.FC<ItemTurmaProps> = ({
   viewOnly,
   options,
   values,
+  otherOption,
 }) => {
   const [isEditing, setIsEditing] = useState<boolean>(false);
   const handleEditClick = () => {
@@ -96,6 +98,28 @@ const ItemTurma: React.FC<ItemTurmaProps> = ({
                 <label htmlFor={`${label + index}-${option}`}>{option}</label>
               </span>
             ))}
+            {otherOption && (
+              <span key={`${label  }9999`} style={{ width: 400 }}>
+                <label htmlFor={`${`${label  }9999`}-${"other"}`}>Outro:</label>
+                <input
+                  type="text"
+                  className="me-1"
+                  id={`${`${label  }9999`}-${"other"}`}
+                  name={`${label}-${"other"}`}
+                  defaultValue={value}
+                  disabled
+                  style={{
+                    margin: 0,
+                    padding: 4,
+                    backgroundColor: "white",
+                    marginLeft: 4,
+                    borderRadius: 8,
+                    border: "2px solid #21aa85",
+                    width: 300,
+                  }}
+                />
+              </span>
+            )}
           </span>
         )}
         {inputType === "selectboxes" && !isEditing && (
@@ -162,6 +186,28 @@ const ItemTurma: React.FC<ItemTurmaProps> = ({
                   <label htmlFor={`${label + index}-${option}`}>{option}</label>
                 </div>
               ))}
+              {otherOption && (
+                <div key={`${label  }9999`} style={{ width: 400 }}>
+                  <label htmlFor={`${`${label  }9999`}-${"other"}`}>Outro:</label>
+                  <input
+                    type="text"
+                    className="me-1"
+                    id={`${`${label  }9999`}-${"other"}`}
+                    name={`${label}-${"other"}`}
+                    defaultValue={value}
+                    onChange={onChange}
+                    style={{
+                      margin: 0,
+                      padding: 4,
+                      backgroundColor: "white",
+                      marginLeft: 4,
+                      borderRadius: 8,
+                      border: "2px solid #21aa85",
+                      width: 300,
+                    }}
+                  />
+                </div>
+              )}
             </div>
           )}
           {inputType === "selectboxes" && (
