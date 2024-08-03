@@ -37,6 +37,8 @@ export default function FormEditarAvalLivroTemplate({
     mutate: mutatePutBookEval,
     isSuccess: isMutateSuccess,
     data: mutateResponseData,
+    isError: mutateIsError,
+    error: mutateError,
   } = usePutBookEvalForm();
 
   useEffect(() => {
@@ -51,8 +53,12 @@ export default function FormEditarAvalLivroTemplate({
       toast.success("Atualizado com sucesso!", {
         autoClose: 600,
       });
+    } else if (mutateIsError && mutateError) {
+      toast.error(String((mutateError as any).message), {
+        autoClose: 600,
+      });
     }
-  }, [mutateResponseData, isMutateSuccess]);
+  }, [mutateResponseData, isMutateSuccess, mutateIsError, mutateError]);
 
   const handleSubmit = async () => {
     const formDataToSend = { ...formData } as Partial<BookEval>;
@@ -92,12 +98,13 @@ export default function FormEditarAvalLivroTemplate({
     const { value } = event.target;
 
     if (fieldName === "readHistories") {
-      const {checked} = event.target as HTMLInputElement;
+      const { checked } = event.target as HTMLInputElement;
 
       setReadHistoriesState((prevReadHistories) => {
         if (checked && !prevReadHistories.includes(value)) {
           return [...prevReadHistories, value];
-        } if (!checked && prevReadHistories.includes(value)) {
+        }
+        if (!checked && prevReadHistories.includes(value)) {
           return [...prevReadHistories.filter((str) => str !== value)];
         }
         return [...prevReadHistories];

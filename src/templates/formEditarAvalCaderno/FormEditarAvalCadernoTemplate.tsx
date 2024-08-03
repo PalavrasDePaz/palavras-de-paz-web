@@ -45,6 +45,8 @@ export default function FormEditarAvalCadernoTemplate({
     mutate: mutatePutBookEval,
     isSuccess: isMutateSuccess,
     data: mutateResponseData,
+    isError: mutateIsError,
+    error: mutateError,
   } = usePutNotebookEditEvalForm();
 
   useEffect(() => {
@@ -58,20 +60,21 @@ export default function FormEditarAvalCadernoTemplate({
       toast.success("Atualizado com sucesso!", {
         autoClose: 600,
       });
+    } else if (mutateIsError && mutateError) {
+      toast.error(String((mutateError as any).message), {
+        autoClose: 600,
+      });
     }
-  }, [mutateResponseData, isMutateSuccess]);
+  }, [mutateResponseData, isMutateSuccess, mutateIsError, mutateError]);
 
   const handleSubmit = () => {
     const formDataToSend = {
       ...formData,
-      evaluatedDate: new Date().toISOString(),
     } as Partial<NotebookEval>;
     delete formDataToSend.idpep;
     delete formDataToSend.idcad;
     delete formDataToSend.notebookDirectory;
     delete formDataToSend.fullName;
-    delete formDataToSend.reservationDate; // ver qual dos dois remover
-    delete formDataToSend.evaluatedDate; // ver qual dos dois remover
     mutatePutBookEval({
       data: formDataToSend as any,
       notebookEvalId: evaluationId.toString(),
@@ -91,6 +94,14 @@ export default function FormEditarAvalCadernoTemplate({
       return newData;
     });
   };
+
+  function resetDates() {
+    setFormData((prev) => ({
+      ...prev,
+      evaluatedDate: null,
+      reservationDate: null,
+    }));
+  }
 
   return (
     <>
@@ -138,12 +149,23 @@ export default function FormEditarAvalCadernoTemplate({
             />
             <ItemTurma
               inputType="textarea"
-              label="Nome do Aluno"
-              value={formData.studentName}
+              label="Data e hora da reserva"
+              value={formData.reservationDate ?? ""}
               placeholder=""
-              onChange={(event) => handleChange(event, "studentName")}
-              viewOnly={viewOnly}
+              onChange={(event) => handleChange(event, "reservationDate")}
+              viewOnly
             />
+            <ItemTurma
+              inputType="textarea"
+              label="Carimbo de data/hora"
+              value={formData.evaluatedDate ?? ""}
+              placeholder=""
+              onChange={(event) => handleChange(event, "evaluatedDate")}
+              viewOnly
+            />
+            <button className={style.resetEvalButton} onClick={resetDates}>
+              Resetar datas
+            </button>
             <h3 className={style.sectionTitle}>Conteúdos Relevantes</h3>
             <ItemTurma
               inputType="textarea"
