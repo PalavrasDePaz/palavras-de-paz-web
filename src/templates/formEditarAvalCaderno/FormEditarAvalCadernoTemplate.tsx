@@ -62,17 +62,18 @@ export default function FormEditarAvalCadernoTemplate({
   }, [mutateResponseData, isMutateSuccess]);
 
   const handleSubmit = () => {
-    const formDataToSend = { ...formData } as any;
+    const formDataToSend = {
+      ...formData,
+      evaluatedDate: new Date().toISOString(),
+    } as Partial<NotebookEval>;
     delete formDataToSend.idpep;
     delete formDataToSend.idcad;
-    delete formDataToSend.studentRegistration;
-    delete formDataToSend.studentName;
     delete formDataToSend.notebookDirectory;
-    delete formDataToSend.reservationDate;
-    delete formDataToSend.evaluatedDate;
     delete formDataToSend.fullName;
+    delete formDataToSend.reservationDate; // ver qual dos dois remover
+    delete formDataToSend.evaluatedDate; // ver qual dos dois remover
     mutatePutBookEval({
-      data: formDataToSend,
+      data: formDataToSend as any,
       notebookEvalId: evaluationId.toString(),
     });
   };
@@ -115,13 +116,34 @@ export default function FormEditarAvalCadernoTemplate({
 
             <div className={style.noEdit}>
               <p>
-                Matrícula: <span>{formData.studentRegistration}</span>
-              </p>
-              <p>
-                Id: <span>{formData.idvol}</span>
+                Id do Voluntário: <span>{formData.idvol}</span>
               </p>
             </div>
 
+            <ItemTurma
+              inputType="textarea"
+              label="Matrícula do Aluno"
+              value={formData.studentRegistration}
+              placeholder=""
+              onChange={(event) => handleChange(event, "studentRegistration")}
+              viewOnly={viewOnly}
+            />
+            <ItemTurma
+              inputType="textarea"
+              label="Nome do Aluno"
+              value={formData.studentName}
+              placeholder=""
+              onChange={(event) => handleChange(event, "studentName")}
+              viewOnly={viewOnly}
+            />
+            <ItemTurma
+              inputType="textarea"
+              label="Nome do Aluno"
+              value={formData.studentName}
+              placeholder=""
+              onChange={(event) => handleChange(event, "studentName")}
+              viewOnly={viewOnly}
+            />
             <h3 className={style.sectionTitle}>Conteúdos Relevantes</h3>
             <ItemTurma
               inputType="textarea"
@@ -321,6 +343,7 @@ export default function FormEditarAvalCadernoTemplate({
                 "Ensino superior completo",
                 "Não consta",
               ]}
+              otherOption
             />
 
             <h3 className={style.sectionTitle}>Avaliação da Questão 10</h3>

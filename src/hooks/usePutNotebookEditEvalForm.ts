@@ -8,12 +8,12 @@ import { schema } from "../templates/formAvaliarCaderno/schema";
 type NotebookEvalForm = yup.InferType<typeof schema>;
 
 type PutNotebookEvalForm = {
-  data: NotebookEvalForm;
+  data: Partial<NotebookEvalForm>;
   notebookEvalId: string | null;
 };
 
 const putNotebookEditEvalForm = async (
-  data: NotebookEvalForm,
+  data: Partial<NotebookEvalForm>,
   notebookEvalId: string | null
 ) => api.put(`/notebooks/evaluation/${notebookEvalId}`, { ...data });
 
