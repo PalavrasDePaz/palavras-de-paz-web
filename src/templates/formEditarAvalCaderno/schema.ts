@@ -40,8 +40,8 @@ export const notebookEvalSchema = yup.object().shape({
   conclusion: yup.string().required(REQUIRED_FIELD),
   approved: yup.boolean().required(REQUIRED_FIELD),
   archivesExclusion: yup.boolean().required(REQUIRED_FIELD),
-  reservationDate: yup.string().required(REQUIRED_FIELD),
-  evaluatedDate: yup.string().required(REQUIRED_FIELD),
+  reservationDate: yup.string().nullable(),
+  evaluatedDate: yup.string().nullable(),
   fullName: yup.string().optional(),
 });
 
