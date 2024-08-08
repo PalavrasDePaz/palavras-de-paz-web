@@ -15,6 +15,7 @@ import HeaderAreaDeTrabalho from "./components/HeaderAreaDeTrabalho";
 import PrimeiroBox from "./components/PrimeiroBox";
 import WorkshopsAssistidos from "./components/WorkshopsAssistidos";
 
+// import NewsAndAgenda from "./components/NewsAndAgenda";
 import "react-toastify/dist/ReactToastify.css";
 import styles from "./styles/AreaDeTrabalho.module.css";
 
@@ -57,34 +58,28 @@ export default function AreaDeTrabalhoTemplate() {
             <PrimeiroBox idVol={idvol} />
             <WorkshopsAssistidos idvol={idvol} />
           </aside>
-          {auth.readPermission &&
-            auth.readPermission === true &&
-            auth.notebookModulePermission === true  &&  <AvaliarCadernos idvol={idvol} />}
-
-          {auth.bookPermission &&
-            auth.bookPermission === true &&
-        
-            auth.essayModulePermission &&
-            auth.essayModulePermission === true  &&  <AvaliarRedacoes idvol={idvol} />}
-
-          {auth.essayModulePermission &&
-            auth.essayModulePermission === true &&
-              <GerenciamentoRedacoes />}
-
-          {auth.notebookModulePermission &&
-            auth.notebookModulePermission === true &&
-              <GerenciamentoCadernos />}
-
-          {auth.manageVolunteerModulePermission &&
-            auth.manageVolunteerModulePermission === true && <DadosPresenca />}
-
-          {auth.attendanceModulePermission &&
-            auth.attendanceModulePermission === true && <DetalhesPresenca />}
-
-          {auth.determineVolunteerModulePermission &&
-            auth.determineVolunteerModulePermission === true && (
-              <DetalhesCadastro />
+          {auth.readPermission === true &&
+            auth.notebookModulePermission === true && (
+              <AvaliarCadernos idvol={idvol} />
             )}
+
+          {auth.bookPermission === true && <AvaliarRedacoes idvol={idvol} />}
+
+          {auth.essayModulePermission === true && <GerenciamentoRedacoes />}
+
+          {auth.notebookModulePermission === true && <GerenciamentoCadernos />}
+
+          {auth.manageVolunteerModulePermission === true && <DadosPresenca />}
+
+          {auth.attendanceModulePermission === true && <DetalhesPresenca />}
+
+          {auth.determineVolunteerModulePermission === true && (
+            <DetalhesCadastro />
+          )}
+
+          {/* auth.notebookModulePermission === true && auth.essayModulePermission === true &&
+            <NewsAndAgenda /> */}
+
           <ToastContainer
             position="top-right"
             autoClose={5000}
