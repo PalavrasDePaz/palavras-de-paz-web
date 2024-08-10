@@ -98,7 +98,10 @@ export default function TabelaAvaliacoes({ selectedClasses }: props) {
                   <td>{bookEval.readerRegistration}</td>
                   <td>{bookEval.readerName}</td>
                   <td>{bookEval.classId}</td>
-                  <td>{new Date(bookEval.createdAt).toLocaleString()}</td>
+                  <td>
+                    {bookEval.createdAt &&
+                      new Date(bookEval.createdAt).toLocaleString()}
+                  </td>
                   <td>
                     <button
                       onClick={() => toggleModalEdit(bookEval)}
