@@ -159,6 +159,7 @@ export default function TabelaAvaliacoes({ selectedClasses }: props) {
           <FormEditarAvalLivroTemplate
             initialData={bookEvalToEdit as unknown as BookEval}
             evaluationId={bookEvalToEdit.id || 0}
+            volunteerName={bookEvalToEdit.volunteerName}
             viewOnly={false}
           />
         )}

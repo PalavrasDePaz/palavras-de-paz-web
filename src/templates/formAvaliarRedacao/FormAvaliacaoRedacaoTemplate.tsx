@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
+import { toast } from "react-toastify";
 
 import ButtonSendForm from "../../components/buttonSendForm";
 import HeaderForm from "../../components/headerForm/HeaderForm";
@@ -20,16 +21,22 @@ import StudentInfoInput from "./components/StudentInfoInput";
 
 import styles from "./styles/FormularioAvaliacaoRedacao.module.css";
 
-interface FormularioAvaliacaoCadernoProps {
+interface FormularioAvaliacaoRedacaoProps {
   onClose: () => void;
 }
 
 const FormAvalRedacaoTemplate: React.FC<
-  FormularioAvaliacaoCadernoProps
+  FormularioAvaliacaoRedacaoProps
 > = () => {
   const router = useRouter();
 
-  const { mutate: mutateEvalForm } = usePostBookEvalForm();
+  const {
+    mutate: mutateEvalForm,
+    isSuccess: isMutateSuccess,
+    data: mutateResponseData,
+    isError: mutateIsError,
+    error: mutateError,
+  } = usePostBookEvalForm();
 
   const userEmail = useUserEmail();
   const { data: user } = useGetUser(userEmail);
@@ -45,8 +52,8 @@ const FormAvalRedacaoTemplate: React.FC<
   const [formData, setFormData] = useState({
     readerName: "",
     readerRegistration: "",
-    classId: idClass,
-    evaluatorId: user?.idvol,
+    classId: "",
+    evaluatorId: 0,
     isParcialPlagiarism: null,
     isAppropriation: null,
     textAestheticsAvaliation: "",
@@ -66,14 +73,18 @@ const FormAvalRedacaoTemplate: React.FC<
   const [readHistoriesState, setReadHistoriesState] = useState<string[]>([]);
 
   useEffect(() => {
-    const data = localStorage.getItem("form")
-      ? JSON.parse(localStorage.getItem("form") || "null")
-      : null;
-    if (data) {
-      setFormData(data);
-    }
-    localStorage.setItem("form", JSON.stringify(formData));
-  }, []);
+    setFormData((prevData) => ({
+      ...prevData,
+      classId: String(idClass),
+    }));
+  }, [idClass]);
+
+  useEffect(() => {
+    setFormData((prevData) => ({
+      ...prevData,
+      evaluatorId: Number(user?.idvol),
+    }));
+  }, [user]);
 
   useEffect(() => {
     setFormData((prevData) => ({
@@ -129,8 +140,21 @@ const FormAvalRedacaoTemplate: React.FC<
         evaluatorId: Number(user?.idvol),
       } as unknown as BookEvalForm,
     });
-    onCloseForm();
   };
+
+  useEffect(() => {
+    if (mutateResponseData && isMutateSuccess) {
+      toast.success("Avaliação realizada com sucesso!", {
+        autoClose: 600,
+      });
+      // prompt("Deseja realizar outra avaliação avaliação?");
+      onCloseForm();
+    } else if (mutateIsError && mutateError) {
+      toast.error(String((mutateError as any).message), {
+        autoClose: 600,
+      });
+    }
+  }, [mutateResponseData, isMutateSuccess, mutateIsError, mutateError]);
 
   return (
     <>

@@ -17,12 +17,14 @@ import style from "./styles/FormEditarAvalLivro.module.css";
 interface props {
   initialData: BookEval;
   evaluationId: number;
+  volunteerName: string;
   viewOnly: boolean;
 }
 
 export default function FormEditarAvalLivroTemplate({
   initialData,
   evaluationId,
+  volunteerName,
   viewOnly,
 }: props) {
   const [formData, setFormData] = useState<BookEval>(initialData);
@@ -124,12 +126,6 @@ export default function FormEditarAvalLivroTemplate({
     }
   };
 
-  function getValidationDate(str: string) {
-    const date = new Date(str);
-    date.setDate(date.getDate() + 1);
-    return date.toISOString();
-  }
-
   function resetDates() {
     setFormData((prev) => ({
       ...prev,
@@ -148,12 +144,12 @@ export default function FormEditarAvalLivroTemplate({
       {!isLoading && !isError && (
         <main className={style.container}>
           <section>
-            <h1 className={style.localizacaoTitulo}>
-              {formData.volunteerName}
-            </h1>
             <div className={style.noEdit}>
               <p>
                 ID do voluntário: <span>{formData.evaluatorId}</span>
+              </p>
+              <p>
+                Nome do voluntário: <span>{volunteerName}</span>
               </p>
             </div>
             <ItemTurma
@@ -177,12 +173,10 @@ export default function FormEditarAvalLivroTemplate({
                 Número da turma: <span>{formData.classId}</span>
               </p>
               <p>
-                Carimbo de data/hora: <span>{formData.createdAt}</span>
-              </p>
-              <p>
-                Data de validação:{" "}
+                Carimbo de data/hora:
                 <span>
-                  {formData.createdAt && getValidationDate(formData.createdAt)}
+                  {formData.createdAt &&
+                    new Date(formData.createdAt).toLocaleString()}
                 </span>
               </p>
             </div>
