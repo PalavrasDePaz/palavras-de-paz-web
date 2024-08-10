@@ -104,7 +104,7 @@ const FormAvalCadTemplate: React.FC<FormularioAvaliacaoCadernoProps> = ({
     mutateEvalForm({
       data: {
         reservationDate: new Date(
-          (reservationDate && reservationDate.toString()) || "2000-01-01"
+          (reservationDate && reservationDate.toString()) || new Date()
         ),
         evaluatedDate: new Date(),
         subject1: formData.question1.question1.value,

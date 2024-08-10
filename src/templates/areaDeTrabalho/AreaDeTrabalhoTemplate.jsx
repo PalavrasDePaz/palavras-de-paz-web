@@ -12,10 +12,10 @@ import DetalhesPresenca from "./components/DetalhesPresenca";
 import GerenciamentoCadernos from "./components/GerenciamentoCadernos";
 import GerenciamentoRedacoes from "./components/GerenciamentoRedacoes";
 import HeaderAreaDeTrabalho from "./components/HeaderAreaDeTrabalho";
+import NewsAndAgenda from "./components/NewsAndAgenda";
 import PrimeiroBox from "./components/PrimeiroBox";
 import WorkshopsAssistidos from "./components/WorkshopsAssistidos";
 
-// import NewsAndAgenda from "./components/NewsAndAgenda";
 import "react-toastify/dist/ReactToastify.css";
 import styles from "./styles/AreaDeTrabalho.module.css";
 
@@ -77,8 +77,8 @@ export default function AreaDeTrabalhoTemplate() {
             <DetalhesCadastro />
           )}
 
-          {/* auth.notebookModulePermission === true && auth.essayModulePermission === true &&
-            <NewsAndAgenda /> */}
+          {auth.notebookModulePermission === true &&
+            auth.essayModulePermission === true && <NewsAndAgenda />}
 
           <ToastContainer
             position="top-right"

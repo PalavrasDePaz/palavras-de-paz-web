@@ -4,7 +4,9 @@ import { useRouter } from "next/router";
 import ButtonSendForm from "../../components/buttonSendForm";
 import HeaderForm from "../../components/headerForm/HeaderForm";
 import useGetUser from "../../hooks/useGetUser";
-import usePostBookEvalForm from "../../hooks/usePostBookEvaluations";
+import usePostBookEvalForm, {
+  BookEvalForm,
+} from "../../hooks/usePostBookEvaluations";
 import useUserEmail from "../../hooks/useUserEmail";
 
 import Question1 from "./components/Question1";
@@ -36,7 +38,7 @@ const FormAvalRedacaoTemplate: React.FC<
 
   const onCloseForm = () => {
     setTimeout(() => {
-      router.push("/area-de-trabalho");
+      router.reload();
     }, 1);
   };
 
@@ -45,8 +47,8 @@ const FormAvalRedacaoTemplate: React.FC<
     readerRegistration: "",
     classId: idClass,
     evaluatorId: user?.idvol,
-    isParcialPlagiarism: true,
-    isAppropriation: true,
+    isParcialPlagiarism: null,
+    isAppropriation: null,
     textAestheticsAvaliation: "",
     textReliabilityAvaliation: "",
     textClarityAvaliation: "",
@@ -74,7 +76,6 @@ const FormAvalRedacaoTemplate: React.FC<
   }, []);
 
   useEffect(() => {
-    console.log(readHistoriesState);
     setFormData((prevData) => ({
       ...prevData,
       readHistories: readHistoriesState,
@@ -126,7 +127,7 @@ const FormAvalRedacaoTemplate: React.FC<
         readerRegistration: Number(formData.readerRegistration),
         classId: Number(idClass),
         evaluatorId: Number(user?.idvol),
-      },
+      } as unknown as BookEvalForm,
     });
     onCloseForm();
   };
@@ -175,10 +176,7 @@ const FormAvalRedacaoTemplate: React.FC<
             <Question1
               handleChangeQuestions={handleChangeQuestions}
               required={
-                formData.isAppropriation === undefined ||
-                formData.isAppropriation === null ||
-                formData.isParcialPlagiarism === undefined ||
-                formData.isParcialPlagiarism === null
+                !formData.isAppropriation || !formData.isParcialPlagiarism
               }
             />
           </section>
@@ -186,12 +184,9 @@ const FormAvalRedacaoTemplate: React.FC<
             <Question2Container
               handleChangeQuestions={handleChangeQuestions}
               required={
-                formData.textAestheticsAvaliation === undefined ||
-                formData.textAestheticsAvaliation === null ||
-                formData.textReliabilityAvaliation === undefined ||
-                formData.textReliabilityAvaliation === null ||
-                formData.textClarityAvaliation === undefined ||
-                formData.textClarityAvaliation === null
+                !formData.textAestheticsAvaliation ||
+                !formData.textReliabilityAvaliation ||
+                !formData.textClarityAvaliation
               }
             />
           </section>

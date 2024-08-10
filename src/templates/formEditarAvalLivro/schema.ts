@@ -9,7 +9,7 @@ export const bookEvalSchema = yup.object().shape({
   evaluatorId: yup.number().required(REQUIRED_FIELD),
   readerName: yup.string().required(REQUIRED_FIELD),
   classId: yup.number().required(REQUIRED_FIELD),
-  createdAt: yup.string().required(REQUIRED_FIELD),
+  createdAt: yup.string().nullable(),
   expirationDate: yup.string().required(REQUIRED_FIELD),
   textAestheticsAvaliation: yup.string().required(REQUIRED_FIELD),
   textReliabilityAvaliation: yup.string().required(REQUIRED_FIELD),

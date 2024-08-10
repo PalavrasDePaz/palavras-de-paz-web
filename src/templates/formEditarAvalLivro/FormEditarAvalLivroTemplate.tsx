@@ -1,3 +1,5 @@
+/* eslint-disable max-lines */
+
 import { ChangeEvent, useEffect, useState } from "react";
 import { toast } from "react-toastify";
 
@@ -122,6 +124,19 @@ export default function FormEditarAvalLivroTemplate({
     }
   };
 
+  function getValidationDate(str: string) {
+    const date = new Date(str);
+    date.setDate(date.getDate() + 1);
+    return date.toISOString();
+  }
+
+  function resetDates() {
+    setFormData((prev) => ({
+      ...prev,
+      createdAt: null,
+    }));
+  }
+
   return (
     <>
       {isError && <p>Erro ao carregar os dados</p>}
@@ -132,11 +147,15 @@ export default function FormEditarAvalLivroTemplate({
       )}
       {!isLoading && !isError && (
         <main className={style.container}>
-          <section key={formData.readerRegistration}>
+          <section>
             <h1 className={style.localizacaoTitulo}>
               {formData.volunteerName}
             </h1>
-
+            <div className={style.noEdit}>
+              <p>
+                ID do voluntário: <span>{formData.evaluatorId}</span>
+              </p>
+            </div>
             <ItemTurma
               inputType="input"
               label="Matrícula do leitor"
@@ -145,11 +164,15 @@ export default function FormEditarAvalLivroTemplate({
               onChange={(event) => handleChange(event, "readerRegistration")}
               viewOnly={viewOnly}
             />
+            <ItemTurma
+              inputType="input"
+              label="Nome do leitor"
+              value={formData.readerName}
+              placeholder="Insira a matrícula"
+              onChange={(event) => handleChange(event, "readerName")}
+              viewOnly={viewOnly}
+            />
             <div className={style.noEdit}>
-              <p>
-                ID do voluntário: <span>{formData.evaluatorId}</span> Nome do
-                leitor: <span>{formData.readerName}</span>
-              </p>
               <p>
                 Número da turma: <span>{formData.classId}</span>
               </p>
@@ -157,10 +180,15 @@ export default function FormEditarAvalLivroTemplate({
                 Carimbo de data/hora: <span>{formData.createdAt}</span>
               </p>
               <p>
-                Data de validação: <span>{formData.expirationDate}</span>
+                Data de validação:{" "}
+                <span>
+                  {formData.createdAt && getValidationDate(formData.createdAt)}
+                </span>
               </p>
             </div>
-
+            <button className={style.resetEvalButton} onClick={resetDates}>
+              Resetar datas
+            </button>
             <ItemTurma
               inputType="selectbox"
               label="Estética"

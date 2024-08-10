@@ -5,7 +5,7 @@ import { useMutation } from "@tanstack/react-query";
 import { api } from "../api";
 import { schema } from "../templates/formAvaliarRedacao/schema";
 
-type BookEvalForm = yup.InferType<typeof schema>;
+export type BookEvalForm = yup.InferType<typeof schema>;
 
 type PostBookEvalForm = {
   data: BookEvalForm;

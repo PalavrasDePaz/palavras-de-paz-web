@@ -179,3 +179,13 @@ th:hover {
 .react-datepicker__day--keyboard-selected {
   background-color: var(--secondary-color) !important;
 }
+
+.jodit-workplace {
+  overflow: scroll !important;
+  min-height: 200px !important;
+  max-height: 400px !important;
+}
+
+.jodit-toolbar__box {
+  width: 100% !important;
+}
