@@ -129,6 +129,9 @@ export default function FormEditarAvalCadernoTemplate({
               <p>
                 Id do Voluntário: <span>{formData.idvol}</span>
               </p>
+              <p>
+                Nome do Voluntário: <span>{formData.evaluatorName}</span>
+              </p>
             </div>
 
             <ItemTurma
@@ -137,7 +140,7 @@ export default function FormEditarAvalCadernoTemplate({
               value={formData.studentRegistration}
               placeholder=""
               onChange={(event) => handleChange(event, "studentRegistration")}
-              viewOnly={viewOnly}
+              viewOnly
             />
             <ItemTurma
               inputType="textarea"
@@ -145,7 +148,7 @@ export default function FormEditarAvalCadernoTemplate({
               value={formData.studentName}
               placeholder=""
               onChange={(event) => handleChange(event, "studentName")}
-              viewOnly={viewOnly}
+              viewOnly
             />
             <ItemTurma
               inputType="textarea"

@@ -162,7 +162,7 @@ export default function TabelaTurmas({
                 <th>QRL</th>
                 <th>Data Receb. Relatório</th>
                 <th>Voluntário</th>
-                <th>Data Envio Volunt.</th>
+                <th>Data Reserva Volunt.</th>
                 <th>Data Fim Aval.</th>
                 <th>Data Envio Funap</th>
                 <th> </th>
@@ -201,11 +201,11 @@ export default function TabelaTurmas({
                   <td>{classData.idclass}</td>
                   <td>{classData.presenceList}</td>
                   <td>{classData.qrl}</td>
-                  <td>{classData.reportReceiveDate}</td>
-                  <td>{classData.volunteerName}</td>
-                  <td>{classData.sendDateParec}</td>
-                  <td>{classData.endEvaluationDate}</td>
-                  <td>{classData.sendDateFunap}</td>
+                  <td>{classData.reportReceiveDate ?? "N/D"}</td>
+                  <td>{classData.volunteerName ?? "N/D"}</td>
+                  <td>{classData.sendDateParec ?? "N/D"}</td>
+                  <td>{classData.endEvaluationDate ?? "N/D"}</td>
+                  <td>{classData.sendDateFunap ?? "N/D"}</td>
                   <td>
                     <button
                       onClick={() => toggleModalEdit(classData)}

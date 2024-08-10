@@ -94,3 +94,15 @@
   justify-content: center;
   align-items: center;
 }
+
+.resetEvalButton {
+  margin: 4px 0 24px 0;
+  border: 1px solid #ffffff;
+  background-color: #21aa85;
+  color: #fff;
+  border-radius: 5px;
+  padding: 0.4rem 0.8rem;
+  transition: background-color 0.3s;
+  text-decoration: none;
+  font-size: 16px;
+}

@@ -1,0 +1,83 @@
+.containerSectionDados {
+  background-color: #21aa85;
+  padding: 64px 88px 64px 92px;
+  border-radius: 15px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.dadosFirstDiv {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  padding: 32px 0;
+  gap: 10px;
+}
+
+.dadosFirstDiv h2 {
+  font-size: 48px;
+  line-height: 56px;
+  font-weight: 600;
+  color: #fff;
+}
+
+.dadosFirstDiv p {
+  color: #f2f2f2;
+  font-size: 12px;
+}
+
+.dadosSecondDiv {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 10px;
+  font-size: 18px;
+  color: hsla(0, 0%, 100%, 1);
+  margin-bottom: 32px;
+}
+
+.dadosSecondDiv div {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  position: relative;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em,
+    rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em,
+    rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;
+  transition: all 300ms;
+  cursor: pointer;
+}
+
+.dadosSecondDiv div:hover {
+  box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px,
+    rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px;
+}
+
+.dadosSecondDiv .newsThumbnail {
+  width: 100%;
+  height: 100%;
+}
+
+.dadosSecondDiv .newsDeleteButton {
+  position: absolute;
+  top: -12px;
+  right: -12px;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  fill: red;
+  background-color: white;
+  z-index: 999;
+  cursor: pointer;
+}
+
+.dadosSecondDiv .newsDeleteButton:hover {
+  box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px,
+    rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px;
+  transform: scale(1.2);
+  transition: transform 300ms;
+}
+
+.dadosSecondDiv .addNews {
+  width: 100%;
+  height: 100%;
+}

@@ -55,6 +55,12 @@ export default function FormularioEditarTurmaRedacaoTemplate({
     }
   }, [mutateResponseData, isMutateSuccess]);
 
+  function formatDate(str: string | null) {
+    if (str) {
+      return new Date(str).toISOString();
+    } return null;
+  }
+
   const handleSubmit = () => {
     const formDataToSend = { ...formData } as { [key: string]: any };
 
@@ -74,6 +80,34 @@ export default function FormularioEditarTurmaRedacaoTemplate({
       formDataToSend.parec == null ? "" : formDataToSend.parec;
     formDataToSend.folderLink =
       formDataToSend.folderLink == null ? "" : formDataToSend.folderLink;
+
+    formDataToSend.reportReceiveDate = formatDate(
+      formDataToSend.reportReceiveDate
+    );
+
+    formDataToSend.loanDate = formatDate(formDataToSend.loanDate);
+    if (!formDataToSend.loanDate) delete formDataToSend.loanDate;
+
+    formDataToSend.returnDate = formatDate(formDataToSend.returnDate);
+    if (!formDataToSend.returnDate) delete formDataToSend.returnDate;
+
+    formDataToSend.reportElaborationDate = formatDate(
+      formDataToSend.reportElaborationDate
+    );
+    if (!formDataToSend.reportElaborationDate)
+      delete formDataToSend.reportElaborationDate;
+
+    formDataToSend.sendDateParec = formatDate(formDataToSend.sendDateParec);
+    if (!formDataToSend.sendDateParec) delete formDataToSend.sendDateParec;
+
+    formDataToSend.endEvaluationDate = formatDate(
+      formDataToSend.endEvaluationDate
+    );
+    if (!formDataToSend.endEvaluationDate)
+      delete formDataToSend.endEvaluationDate;
+
+    formDataToSend.sendDateFunap = formatDate(formDataToSend.sendDateFunap);
+    if (!formDataToSend.sendDateFunap) delete formDataToSend.sendDateFunap;
 
     mutatePutBookEval({
       data: formDataToSend as any,
@@ -133,7 +167,7 @@ export default function FormularioEditarTurmaRedacaoTemplate({
             </div>
             <ItemTurma
               inputType="input"
-              label="Recibo dos relatórios"
+              label="Recebimento dos relatórios"
               value={formData.reportReceiveDate}
               placeholder={novaData}
               onChange={(e) => handleChange(e, "reportReceiveDate")}
