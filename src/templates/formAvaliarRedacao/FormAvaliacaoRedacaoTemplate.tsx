@@ -1,5 +1,10 @@
+/* eslint-disable react/no-unescaped-entities */
+/* eslint-disable max-len */
+/* eslint-disable max-lines */
+
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
+import { Button, Modal } from "react-bootstrap";
 import { toast } from "react-toastify";
 
 import ButtonSendForm from "../../components/buttonSendForm";
@@ -43,11 +48,19 @@ const FormAvalRedacaoTemplate: React.FC<
 
   const { idClass } = router.query;
 
-  const onCloseForm = () => {
+  const [showAfterSaveButton, setShowAfterSaveButton] = useState(false);
+
+  function handleNoChoice() {
+    setTimeout(() => {
+      router.push("/area-de-trabalho");
+    }, 1);
+  }
+
+  function handleYesChoice() {
     setTimeout(() => {
       router.reload();
     }, 1);
-  };
+  }
 
   const [formData, setFormData] = useState({
     readerName: "",
@@ -147,8 +160,7 @@ const FormAvalRedacaoTemplate: React.FC<
       toast.success("Avaliação realizada com sucesso!", {
         autoClose: 600,
       });
-      // prompt("Deseja realizar outra avaliação avaliação?");
-      onCloseForm();
+      setShowAfterSaveButton(true);
     } else if (mutateIsError && mutateError) {
       toast.error(String((mutateError as any).message), {
         autoClose: 600,
@@ -237,6 +249,28 @@ const FormAvalRedacaoTemplate: React.FC<
             <Question7 handleChangeQuestions={handleChangeQuestions} />
           </section>
           <ButtonSendForm onClick={() => handleSubmit} text="Enviar" />
+
+          <Modal
+            show={showAfterSaveButton}
+            onHide={() => handleNoChoice}
+            animation={false}
+          >
+            <Modal.Header closeButton>
+              <Modal.Title>Avaliação de Redação</Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+              Deseja realizar outra avaliação? Ao selecionar "Sim" os campos
+              ficarão limpos para serem preenchidos novamente.
+            </Modal.Body>
+            <Modal.Footer>
+              <Button variant="secondary" onClick={() => handleNoChoice}>
+                Não
+              </Button>
+              <Button variant="primary" onClick={() => handleYesChoice}>
+                Sim
+              </Button>
+            </Modal.Footer>
+          </Modal>
         </form>
       </main>
     </>
