@@ -182,8 +182,8 @@ th:hover {
 
 .jodit-workplace {
   overflow: scroll !important;
-  min-height: 200px !important;
-  max-height: 400px !important;
+  min-height: 300px !important;
+  max-height: 600px !important;
 }
 
 .jodit-toolbar__box {

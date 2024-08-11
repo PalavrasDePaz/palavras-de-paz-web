@@ -28,7 +28,7 @@
 
 .dadosSecondDiv {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(250px, 300px));
   gap: 10px;
   font-size: 18px;
   color: hsla(0, 0%, 100%, 1);
@@ -38,13 +38,20 @@
 .dadosSecondDiv div {
   width: 100%;
   height: auto;
-  aspect-ratio: 16 / 9;
+  aspect-ratio: 1;
+  object-fit: cover;
+  object-position: center;
   position: relative;
   box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em,
     rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em,
     rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;
   transition: all 300ms;
   cursor: pointer;
+}
+
+.dadosSecondDiv div img {
+  object-fit: cover;
+  object-position: center;
 }
 
 .dadosSecondDiv div:hover {

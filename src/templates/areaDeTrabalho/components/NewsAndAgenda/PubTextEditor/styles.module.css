@@ -1,0 +1,53 @@
+.textEditor {
+  width: 100%;
+  background-color: white;
+}
+
+.dropImageContainer {
+  margin: 16px 0;
+  width: fit-content;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.fieldDescription {
+  font-size: 24px;
+  font-weight: 500;
+  color: rgba(33, 170, 133);
+  width: fit-content;
+}
+
+.dropImageContainer .dragMessage {
+  font-size: 18px;
+  font-weight: 500;
+  width: fit-content;
+}
+.dropImageContainer .dragMessage[data-type="error"] {
+  color: red;
+}
+
+.dropImageContainer .dragMessage[data-type="sucess"] {
+  color: #18ca99;
+}
+
+.pubCover {
+  width: auto;
+  height: 10vh;
+  aspect-ratio: 1;
+  object-fit: cover;
+  object-position: center;
+}
+
+.savePubButton {
+  margin-top: 32px;
+  padding: 10px;
+  font-size: 18px;
+  color: white;
+  border-radius: 6px;
+  background-color: rgba(33, 170, 133);
+}
+
+.savePubButton:hover {
+  background-color: rgb(22, 128, 99);
+}
