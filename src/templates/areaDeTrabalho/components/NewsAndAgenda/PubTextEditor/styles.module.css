@@ -11,11 +11,19 @@
   align-items: center;
 }
 
-.fieldDescription {
+.pubCoverLabel {
   font-size: 24px;
   font-weight: 500;
-  color: rgba(33, 170, 133);
+  color: #21aa85;
   width: fit-content;
+}
+
+.pubContentLabel {
+  font-size: 24px;
+  font-weight: 500;
+  color: #21aa85;
+  width: fit-content;
+  margin-top: 32px;
 }
 
 .dropImageContainer .dragMessage {
@@ -33,10 +41,53 @@
 
 .pubCover {
   width: auto;
-  height: 10vh;
+  height: 15vh;
   aspect-ratio: 1;
   object-fit: cover;
   object-position: center;
+}
+
+.pubField label {
+  color: #21aa85;
+  font-family: Open Sans;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  letter-spacing: 0.48px;
+  margin: 8px 0;
+  width: 100%;
+}
+
+.pubField input {
+  color: var(--Cinza-Escuro, #707070);
+  border-radius: 8px;
+  border: 2px solid #21aa85;
+  background: #fff;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  width: 50%;
+  padding: 0.6rem;
+  font-size: 16px;
+}
+
+.pubField input[type="checkbox"] {
+  all: unset;
+}
+
+.pubField input[type="checkbox"]::before {
+  content: "";
+  display: inline-block;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 3px;
+  margin-right: 5px;
+  border: 2px solid #21aa85;
+  background: #fff;
+}
+
+.pubField input[type="checkbox"]:checked::before {
+  background: #21aa85;
+  border: 2px solid var(--Cinza-Escuro, #707070);
 }
 
 .savePubButton {
@@ -45,7 +96,7 @@
   font-size: 18px;
   color: white;
   border-radius: 6px;
-  background-color: rgba(33, 170, 133);
+  background-color: #21aa85;
 }
 
 .savePubButton:hover {

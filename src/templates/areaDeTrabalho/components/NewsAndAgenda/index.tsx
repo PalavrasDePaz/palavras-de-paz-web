@@ -6,52 +6,22 @@
 /* eslint-disable no-unused-expressions */
 /* eslint-disable react/no-array-index-key */
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { CiCirclePlus } from "react-icons/ci";
 import { MdCancel } from "react-icons/md";
 
+import brokenImage from "../../../../../public/static/images/broken-image.jpg";
 import GenericModal from "../../../../components/modal";
+import { Publication } from "../../../../hooks/types";
 
 import PubTextEditor from "./PubTextEditor";
 
 import styles from "./styles.module.css";
 
-interface Publication {
-  id: number | null;
-  img: string | null;
-  content?: string;
-}
-
-const exampleData: Publication[] = [
-  {
-    id: 0,
-    img: "https://mais1code.com.br/wp-content/uploads/2022/10/banner-Recovered-3-e1664897741745.png",
-    content: "exemplo 1",
-  },
-  {
-    id: 1,
-    img: "https://mais1code.com.br/wp-content/uploads/2022/10/banner-Recovered-3-e1664897741745.png",
-    content: "exemplo 2",
-  },
-  {
-    id: 2,
-    img: "https://mais1code.com.br/wp-content/uploads/2022/10/banner-Recovered-3-e1664897741745.png",
-    content: "exemplo 3",
-  },
-  {
-    id: 3,
-    img: "https://mais1code.com.br/wp-content/uploads/2022/10/banner-Recovered-3-e1664897741745.png",
-    content: "exemplo 4",
-  },
-  {
-    id: 4,
-    img: "https://mais1code.com.br/wp-content/uploads/2022/10/banner-Recovered-3-e1664897741745.png",
-    content: "exemplo 5",
-  },
-];
-
 export default function NewsAndAgenda() {
-  const [newsAndAgendaList, setNewsAndAgendaList] = useState(exampleData);
+  const [newsAndAgendaList, setNewsAndAgendaList] = useState(
+    [] as Publication[]
+  );
   const [selectedPublication, setSelectedPublication] =
     useState<Publication | null>(null);
 
@@ -66,6 +36,13 @@ export default function NewsAndAgenda() {
     });
   }
 
+  useEffect(() => {
+    const items = localStorage.getItem("newsAndAgendaList");
+    if (items) {
+      setNewsAndAgendaList(JSON.parse(items) as Publication[]);
+    }
+  }, []);
+
   return (
     <section className={styles.containerSectionDados}>
       <div className={styles.dadosFirstDiv}>
@@ -77,7 +54,7 @@ export default function NewsAndAgenda() {
             <img
               alt="imagem da publicação"
               className={styles.newsThumbnail}
-              src={pub.img ?? ""}
+              src={pub.img.length ? pub.img : brokenImage.src}
               onClick={() => setSelectedPublication(pub)}
             />
             <MdCancel
@@ -92,8 +69,13 @@ export default function NewsAndAgenda() {
             onClick={() =>
               setSelectedPublication({
                 id: null,
-                img: null,
+                img: "",
                 content: "",
+                title: "",
+                link: "",
+                summary: "",
+                active: false,
+                createdAt: null,
               })}
           />
         </div>
