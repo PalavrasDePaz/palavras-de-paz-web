@@ -51,15 +51,16 @@ const FormAvalRedacaoTemplate: React.FC<
   const [showAfterSaveButton, setShowAfterSaveButton] = useState(false);
 
   function handleNoChoice() {
+    setShowAfterSaveButton(false);
     setTimeout(() => {
       router.push("/area-de-trabalho");
-    }, 1);
+    }, 100);
   }
 
   function handleYesChoice() {
     setTimeout(() => {
       router.reload();
-    }, 1);
+    }, 100);
   }
 
   const [formData, setFormData] = useState({
@@ -252,7 +253,7 @@ const FormAvalRedacaoTemplate: React.FC<
 
           <Modal
             show={showAfterSaveButton}
-            onHide={() => handleNoChoice}
+            onHide={() => handleNoChoice()}
             animation={false}
           >
             <Modal.Header closeButton>
@@ -263,10 +264,10 @@ const FormAvalRedacaoTemplate: React.FC<
               ficarão limpos para serem preenchidos novamente.
             </Modal.Body>
             <Modal.Footer>
-              <Button variant="secondary" onClick={() => handleNoChoice}>
+              <Button variant="secondary" onClick={() => handleNoChoice()}>
                 Não
               </Button>
-              <Button variant="primary" onClick={() => handleYesChoice}>
+              <Button variant="primary" onClick={() => handleYesChoice()}>
                 Sim
               </Button>
             </Modal.Footer>
