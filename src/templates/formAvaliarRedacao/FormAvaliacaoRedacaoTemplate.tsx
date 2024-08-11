@@ -1,6 +1,7 @@
 /* eslint-disable react/no-unescaped-entities */
 /* eslint-disable max-len */
 /* eslint-disable max-lines */
+/* eslint-disable no-magic-numbers */
 
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
@@ -54,13 +55,14 @@ const FormAvalRedacaoTemplate: React.FC<
     setShowAfterSaveButton(false);
     setTimeout(() => {
       router.push("/area-de-trabalho");
-    }, 100);
+    }, 150);
   }
 
   function handleYesChoice() {
+    setShowAfterSaveButton(false);
     setTimeout(() => {
       router.reload();
-    }, 100);
+    }, 150);
   }
 
   const [formData, setFormData] = useState({
