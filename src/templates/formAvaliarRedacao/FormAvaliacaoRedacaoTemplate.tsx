@@ -1,6 +1,7 @@
 /* eslint-disable react/no-unescaped-entities */
 /* eslint-disable max-len */
 /* eslint-disable max-lines */
+/* eslint-disable no-magic-numbers */
 
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
@@ -51,15 +52,17 @@ const FormAvalRedacaoTemplate: React.FC<
   const [showAfterSaveButton, setShowAfterSaveButton] = useState(false);
 
   function handleNoChoice() {
+    setShowAfterSaveButton(false);
     setTimeout(() => {
       router.push("/area-de-trabalho");
-    }, 1);
+    }, 150);
   }
 
   function handleYesChoice() {
+    setShowAfterSaveButton(false);
     setTimeout(() => {
       router.reload();
-    }, 1);
+    }, 150);
   }
 
   const [formData, setFormData] = useState({
@@ -252,7 +255,7 @@ const FormAvalRedacaoTemplate: React.FC<
 
           <Modal
             show={showAfterSaveButton}
-            onHide={() => handleNoChoice}
+            onHide={() => handleNoChoice()}
             animation={false}
           >
             <Modal.Header closeButton>
@@ -263,10 +266,10 @@ const FormAvalRedacaoTemplate: React.FC<
               ficarão limpos para serem preenchidos novamente.
             </Modal.Body>
             <Modal.Footer>
-              <Button variant="secondary" onClick={() => handleNoChoice}>
+              <Button variant="secondary" onClick={() => handleNoChoice()}>
                 Não
               </Button>
-              <Button variant="primary" onClick={() => handleYesChoice}>
+              <Button variant="primary" onClick={() => handleYesChoice()}>
                 Sim
               </Button>
             </Modal.Footer>
