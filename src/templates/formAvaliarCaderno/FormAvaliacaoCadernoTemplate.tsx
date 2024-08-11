@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
+import { toast } from "react-toastify";
 
 import ButtonSendForm from "../../components/buttonSendForm";
 import HeaderForm from "../../components/headerForm/HeaderForm";
@@ -97,7 +98,13 @@ const FormAvalCadTemplate: React.FC<FormularioAvaliacaoCadernoProps> = ({
     }));
   };
 
-  const { mutate: mutateEvalForm } = usePutNotebookEvalForm();
+  const {
+    mutate: mutateEvalForm,
+    isSuccess: isMutateSuccess,
+    data: mutateResponseData,
+    isError: mutateIsError,
+    error: mutateError,
+  } = usePutNotebookEvalForm();
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -137,8 +144,20 @@ const FormAvalCadTemplate: React.FC<FormularioAvaliacaoCadernoProps> = ({
       },
       notebookId: notebookId as string,
     });
-    onCloseForm();
   };
+
+  useEffect(() => {
+    if (mutateResponseData && isMutateSuccess) {
+      toast.success("Avaliação realizada com sucesso!", {
+        autoClose: 600,
+      });
+      onCloseForm();
+    } else if (mutateIsError && mutateError) {
+      toast.error(String((mutateError as any).message), {
+        autoClose: 600,
+      });
+    }
+  }, [mutateResponseData, isMutateSuccess, mutateIsError, mutateError]);
 
   return (
     <>

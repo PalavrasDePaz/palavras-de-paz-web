@@ -18,7 +18,12 @@ const GenericModal: React.FC<ModalProps> = ({
 }) => (
   <div>
     {isShown && (
-      <Modal show={isShown} fullscreen={fullscreen} onHide={onToggle}>
+      <Modal
+        show={isShown}
+        fullscreen={fullscreen}
+        onHide={onToggle}
+        enforceFocus={false}
+      >
         <Modal.Header closeButton>
           <Modal.Title>{title}</Modal.Title>
         </Modal.Header>

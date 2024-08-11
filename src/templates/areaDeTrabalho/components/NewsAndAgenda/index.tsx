@@ -10,59 +10,38 @@ import React, { useEffect, useState } from "react";
 import { CiCirclePlus } from "react-icons/ci";
 import { MdCancel } from "react-icons/md";
 
-import TextEditor from "./TextEditor";
+import brokenImage from "../../../../../public/static/images/broken-image.jpg";
+import GenericModal from "../../../../components/modal";
+import { Publication } from "../../../../hooks/types";
+
+import PubTextEditor from "./PubTextEditor";
 
 import styles from "./styles.module.css";
 
-interface Publication {
-  id: number | null;
-  img: string | null;
-  content?: string;
-}
-
-const exampleData: Publication[] = [
-  {
-    id: 0,
-    img: "https://opengraph.githubassets.com/63291f4734814e3312e0c4f979509585209808a60a1789af5acc3c0a523d0513/zetachang/react-native-dotenv/issues/24",
-    content: "exemplo 1",
-  },
-  {
-    id: 1,
-    img: "https://opengraph.githubassets.com/63291f4734814e3312e0c4f979509585209808a60a1789af5acc3c0a523d0513/zetachang/react-native-dotenv/issues/24",
-    content: "exemplo 2",
-  },
-  {
-    id: 2,
-    img: "https://opengraph.githubassets.com/63291f4734814e3312e0c4f979509585209808a60a1789af5acc3c0a523d0513/zetachang/react-native-dotenv/issues/24",
-    content: "exemplo 3",
-  },
-  {
-    id: 3,
-    img: "https://opengraph.githubassets.com/63291f4734814e3312e0c4f979509585209808a60a1789af5acc3c0a523d0513/zetachang/react-native-dotenv/issues/24",
-    content: "exemplo 4",
-  },
-  {
-    id: 4,
-    img: "https://opengraph.githubassets.com/63291f4734814e3312e0c4f979509585209808a60a1789af5acc3c0a523d0513/zetachang/react-native-dotenv/issues/24",
-    content: "exemplo 5",
-  },
-];
-
-const TOTAL_QUANTITY = 6;
-
 export default function NewsAndAgenda() {
-  const [newsAndAgendaList, setNewsAndAgendaList] = useState(exampleData);
-  const [newsAndAgendaListToAdd, setNewsAndAgendaListToAdd] = useState<
-    number[]
-  >([]);
+  const [newsAndAgendaList, setNewsAndAgendaList] = useState(
+    [] as Publication[]
+  );
   const [selectedPublication, setSelectedPublication] =
     useState<Publication | null>(null);
 
+  const toggleModalEdit = (postPubToEdit: Publication | null) => {
+    setSelectedPublication(postPubToEdit);
+  };
+
+  function removePub(pub: Publication) {
+    setNewsAndAgendaList((prev) => {
+      const filteredList = [...prev].filter((item) => item.id !== pub.id);
+      return [...filteredList];
+    });
+  }
+
   useEffect(() => {
-    newsAndAgendaListToAdd;
-    const complementQuantity = TOTAL_QUANTITY - newsAndAgendaList.length;
-    setNewsAndAgendaListToAdd(new Array(complementQuantity).fill(0));
-  }, [newsAndAgendaList]);
+    const items = localStorage.getItem("newsAndAgendaList");
+    if (items) {
+      setNewsAndAgendaList(JSON.parse(items) as Publication[]);
+    }
+  }, []);
 
   return (
     <section className={styles.containerSectionDados}>
@@ -75,32 +54,45 @@ export default function NewsAndAgenda() {
             <img
               alt="imagem da publicação"
               className={styles.newsThumbnail}
-              src={pub.img ?? ""}
+              src={pub.img.length ? pub.img : brokenImage.src}
               onClick={() => setSelectedPublication(pub)}
             />
             <MdCancel
               className={styles.newsDeleteButton}
-              onClick={() => setSelectedPublication(null)}
+              onClick={() => removePub(pub)}
             />
           </div>
         ))}
-        {newsAndAgendaListToAdd.map((_complementItem, index) => (
-          <div key={index}>
-            <CiCirclePlus
-              className={styles.addNews}
-              onClick={() =>
-                setSelectedPublication({
-                  id: null,
-                  img: null,
-                  content: "",
-                })}
-            />
-          </div>
-        ))}
+        <div>
+          <CiCirclePlus
+            className={styles.addNews}
+            onClick={() =>
+              setSelectedPublication({
+                id: null,
+                img: "",
+                content: "",
+                title: "",
+                link: "",
+                summary: "",
+                active: false,
+                createdAt: null,
+              })}
+          />
+        </div>
       </div>
-      {selectedPublication && (
-        <TextEditor publicationId={selectedPublication.id} />
-      )}
+      <GenericModal
+        title="Publicação"
+        isShown={selectedPublication != null}
+        onToggle={() => toggleModalEdit(null)}
+      >
+        {selectedPublication != null && (
+          <PubTextEditor
+            publicationId={selectedPublication.id}
+            publicationList={newsAndAgendaList}
+            setPublicationList={setNewsAndAgendaList}
+          />
+        )}
+      </GenericModal>
     </section>
   );
 }

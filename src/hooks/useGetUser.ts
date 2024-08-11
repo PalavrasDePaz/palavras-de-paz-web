@@ -19,6 +19,7 @@ const useGetUser = (email?: string): UseQueryResult<User | null> =>
       MILLISECONDS_PER_SECOND * SECONDS_PER_MINUTE * CACHE_TIME_IN_MINUTES,
     enabled: !!email,
     refetchOnWindowFocus: false,
+    refetchOnReconnect: false,
   });
 
 export default useGetUser;

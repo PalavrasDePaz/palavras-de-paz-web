@@ -64,3 +64,14 @@ export type NotebookClass = {
   numEnrolledGotCertificate: number;
   fullName: string;
 };
+
+export type Publication = {
+  id: number | null;
+  img: string;
+  title: string;
+  link: string;
+  summary: string;
+  content: string;
+  active: boolean;
+  createdAt: Date | null;
+};
