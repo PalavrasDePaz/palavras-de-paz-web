@@ -22,17 +22,12 @@ export default function TabelaAvaliacoes({ selectedClasses }: props) {
   const [currentPage, setCurrentPage] = useState(1);
   const [notebookEvalToEdit, setNotebookEvalToEdit] =
     useState<NotebookEval | null>(null);
-  // const [notebookEvalToView, setNotebookEvalToView] = useState<NotebookEval | null>(null);
 
   const {
     data: notebookEvals,
     isLoading,
     isError,
   } = useGetNotebooksEvalsList(currentPage, selectedClasses);
-
-  // const toggleModalView = (postBookEvalToView: BookEval | null) => {
-  //   setBookEvalToView(postBookEvalToView);
-  // };
 
   const toggleModalEdit = (postNotebookEvalToEdit: NotebookEval | null) => {
     setNotebookEvalToEdit(postNotebookEvalToEdit);
@@ -136,14 +131,6 @@ export default function TabelaAvaliacoes({ selectedClasses }: props) {
                       Visualizar/Editar
                     </button>
                   </td>
-                  {/* <td>
-                    <button
-                      onClick={() => toggleModalEdit(bookEval)}
-                      className={styles.visualize_button}
-                    >
-                      Editar
-                    </button>
-                  </td> */}
                 </tr>
               ))}
             </tbody>
@@ -183,20 +170,6 @@ export default function TabelaAvaliacoes({ selectedClasses }: props) {
           </button>
         </div>
       )}
-
-      {/* <GenericModal
-        title="Visualizar avaliação de caderno"
-        isShown={notebookEvalToView != null}
-        onToggle={() => toggleModalView(null)}
-      >
-        {bookEvalToView != null && (
-          <FormEditarAvalCadernoTemplate
-            initialData={notebookEvalToView as unknown as NotebookEval}
-            evaluationId={notebookEvalToView.id || 0}
-            viewOnly
-          />
-        )}
-      </GenericModal> */}
 
       <GenericModal
         title="Visualizar/Editar avaliação de caderno"

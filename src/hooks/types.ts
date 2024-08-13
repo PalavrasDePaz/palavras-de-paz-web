@@ -70,6 +70,7 @@ export type Publication = {
   img: string;
   title: string;
   link: string;
+  host: string;
   summary: string;
   content: string;
   active: boolean;

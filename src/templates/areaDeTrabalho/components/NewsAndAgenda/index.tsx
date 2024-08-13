@@ -73,6 +73,7 @@ export default function NewsAndAgenda() {
                 content: "",
                 title: "",
                 link: "",
+                host: "",
                 summary: "",
                 active: false,
                 createdAt: null,

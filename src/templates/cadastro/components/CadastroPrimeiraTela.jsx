@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useEffect,useState } from "react";
+import { useRouter } from "next/router";
 import { useForm } from "react-hook-form";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 
@@ -12,6 +13,13 @@ import styles from "../styles/CadastroTelas.module.css";
 import styleButton from "../styles/CadastroTemplate.module.css";
 
 export default function cadastroPrimeiraTela({ buttonCallback, data } = props) {
+  const { query, isReady } = useRouter();
+  const [student, setStudent] = useState();
+
+  useEffect(() => {
+    if (isReady) setStudent(query.student === "true");
+  }, [isReady]);
+
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
 
   const changePasswordVisibility = () =>
@@ -47,13 +55,21 @@ export default function cadastroPrimeiraTela({ buttonCallback, data } = props) {
         <h1 className={styles.formTitle}>CADASTRO DE VOLUNTÁRIOS</h1>
 
         <p className={styles.formParagraph}>Seja bem-vindo(a)!</p>
-        <p className={styles.formParagraph}>
-          Preparamos este formulário para podermos te conhecer melhor, saber
-          sobre seus conhecimentos e experiências e para entendermos a sua
-          disponibilidade com o nosso voluntariado. Quanto mais você puder
-          compartilhar com a gente, mais conseguiremos te ajudar a alcançar seus
-          objetivos!
-        </p>
+        {student === true ? (
+          <p className={styles.formParagraph}>
+            Preparamos este formulário para podermos te conhecer melhor. Quanto
+            mais você puder compartilhar com a gente, mais conseguiremos te
+            ajudar a alcançar seus objetivos!
+          </p>
+        ) : (
+          <p className={styles.formParagraph}>
+            Preparamos este formulário para podermos te conhecer melhor, saber
+            sobre seus conhecimentos e experiências e para entendermos a sua
+            disponibilidade com o nosso voluntariado. Quanto mais você puder
+            compartilhar com a gente, mais conseguiremos te ajudar a alcançar
+            seus objetivos!
+          </p>
+        )}
         <p className={styles.formParagraph}>
           O preenchimento tomará no máximo dez minutos do seu tempo! Bora lá?
         </p>

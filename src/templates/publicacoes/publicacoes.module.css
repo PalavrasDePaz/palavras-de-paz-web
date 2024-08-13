@@ -22,6 +22,12 @@
   padding: 28px;
   display: flex;
   flex-wrap: wrap-reverse;
+  cursor: pointer;
+}
+
+.pubContainer img {
+  object-fit: cover;
+  object-position: center;
 }
 
 @media (max-width: 720px) {

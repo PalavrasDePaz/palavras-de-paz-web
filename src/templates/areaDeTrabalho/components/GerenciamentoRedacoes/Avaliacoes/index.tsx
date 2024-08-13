@@ -2,7 +2,9 @@
 /* eslint-disable max-len */
 /* eslint-disable no-plusplus */
 /* eslint-disable no-magic-numbers */
-import { useState } from "react";
+/* eslint-disable react/no-unescaped-entities */
+import { useEffect, useState } from "react";
+import { Button, Modal } from "react-bootstrap";
 
 import LoadingSpinner from "../../../../../components/loadingSpinner/LoadingSpinner";
 import GenericModal from "../../../../../components/modal";
@@ -20,6 +22,9 @@ interface props {
 export default function TabelaAvaliacoes({ selectedClasses }: props) {
   const [currentPage, setCurrentPage] = useState(1);
   const [bookEvalToEdit, setBookEvalToEdit] = useState<BookEval | null>(null);
+  const [bookEvalToDelete, setBookEvalToDelete] = useState<BookEval | null>(
+    null
+  );
 
   const {
     data: bookEvals,
@@ -60,6 +65,28 @@ export default function TabelaAvaliacoes({ selectedClasses }: props) {
 
     return pages;
   };
+
+  const [showDeleteConfirmationModal, setShowDeleteConfirmationModal] =
+    useState(false);
+
+  function showDeleteConfirmation(bookEval: BookEval) {
+    setBookEvalToDelete(bookEval);
+    setShowDeleteConfirmationModal(true);
+  }
+
+  function deleteEval() {
+    if (bookEvalToDelete) {
+      // TO-DO
+    }
+    setShowDeleteConfirmationModal(false);
+  }
+
+  const [auth, setAuth] = useState<Record<string, boolean>>({});
+
+  useEffect(() => {
+    const authObj = JSON.parse(localStorage.getItem("AUTH") ?? "{}");
+    setAuth(authObj);
+  }, []);
 
   return (
     <div className={styles.avaliacoes_itens}>
@@ -109,6 +136,17 @@ export default function TabelaAvaliacoes({ selectedClasses }: props) {
                     >
                       Visualizar/Editar
                     </button>
+                  </td>
+                  <td>
+                    {auth.notebookModulePermission &&
+                      auth.essayModulePermission && (
+                        <button
+                          className={styles.delete_button}
+                          onClick={() => showDeleteConfirmation(bookEval)}
+                        >
+                          Excluir
+                        </button>
+                      )}
                   </td>
                 </tr>
               ))}
@@ -164,6 +202,27 @@ export default function TabelaAvaliacoes({ selectedClasses }: props) {
           />
         )}
       </GenericModal>
+
+      <Modal show={showDeleteConfirmationModal} animation={false}>
+        <Modal.Header closeButton>
+          <Modal.Title>Excluir Avaliação de Redação</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          Deseja mesmo excluir essa avaliação? Ao selecionar "Sim" a avaliação
+          desaparecerá e não poderá mais ser visualizada/editada.
+        </Modal.Body>
+        <Modal.Footer>
+          <Button
+            variant="secondary"
+            onClick={() => setShowDeleteConfirmationModal(false)}
+          >
+            Não
+          </Button>
+          <Button variant="primary" onClick={() => deleteEval()}>
+            Sim
+          </Button>
+        </Modal.Footer>
+      </Modal>
     </div>
   );
 }

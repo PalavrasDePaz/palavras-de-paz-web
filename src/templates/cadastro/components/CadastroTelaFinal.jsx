@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect,useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 
@@ -10,28 +10,37 @@ import { FUTURE_ROLES, SKILLS } from "./constants";
 
 import styles from "../styles/CadastroTemplate.module.css";
 
-const filterValues = (valuesObj, optionsObject) =>
+const filterValues = (valuesObj, optionsObject) => {
+  if (!valuesObj) return [];
   // eslint-disable-next-line implicit-arrow-linebreak
-  Object.keys(valuesObj)
-    // Pegamos todos os valores de checkbox e transformamos em um array
-    .filter((key) => valuesObj[key] !== false)
-    // Trocamos os nomes de item pelos labels.
-    .map(
-      (item) => optionsObject.find((option) => option.value === item)?.label
-    );
+  return (
+    Object.keys(valuesObj)
+      // Pegamos todos os valores de checkbox e transformamos em um array
+      .filter((key) => valuesObj[key] !== false)
+      // Trocamos os nomes de item pelos labels.
+      .map(
+        (item) => optionsObject.find((option) => option.value === item)?.label
+      )
+  );
+};
 
 export default function cadastroTelaFinal({ data } = props) {
+  const { query, isReady } = useRouter();
+  const [student, setStudent] = useState();
+
+  useEffect(() => {
+    if (isReady) setStudent(query.student === "true");
+  }, [isReady]);
+
   const [isError, setIsError] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
-
-  const router = useRouter();
 
   // Workaround para transformar os valores dos checkbox em um array de strings
   const { interestFutureRoles, rolesPep, needDeclaration } = data;
   data.interestFutureRoles = filterValues(interestFutureRoles, FUTURE_ROLES);
   data.rolesPep = filterValues(rolesPep, SKILLS);
   // e transformar string em boolean
-  data.needDeclaration = needDeclaration === "sim";
+  data.needDeclaration = needDeclaration === "sim" || student;
 
   // se deficiência não for "sim", não mandamos o valor.
   // (pensando no caso de alguém que preenche, depois muda de ideia e prefere não dizer.)
@@ -47,16 +56,29 @@ export default function cadastroTelaFinal({ data } = props) {
     Object.entries(restOfData).filter(([, v]) => v != null)
   );
 
-  // Mandamos o dado
-  api
-    .post("/volunteers", apiObject)
-    .then(() => router.push("/login"))
-    .catch((error) => {
-      setIsError(true);
-      if (error.response.data.name) {
-        setErrorMessage(error.response.data.name);
+  useEffect(() => {
+    if (typeof student === "boolean") {
+      if (student === true) {
+        apiObject.desires = "";
+        apiObject.howFoundPep = "";
+        apiObject.knowledgePep = "";
+        apiObject.lifeExperience = "";
+        apiObject.needDeclaration = false;
+        apiObject.studiesKnowledge = "";
       }
-    });
+      console.log(apiObject);
+      // Mandamos o dado
+      api
+        .post("/volunteers", apiObject)
+        .then(() => router.push("/login"))
+        .catch((error) => {
+          setIsError(true);
+          if (error.response.data.name) {
+            setErrorMessage(error.response.data.name);
+          }
+        });
+    }
+  }, [student]);
 
   const getContent = () => {
     if (isError) {
