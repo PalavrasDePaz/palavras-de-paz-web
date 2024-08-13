@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 
 import styles from "../styles/Signature.module.css";
 
-export default function Signature({ controller }) {
+export default function Signature({ controller, student }) {
   function createSignature(controllerNumber) {
     const signatureClass = `signature_${controllerNumber}`;
 
@@ -13,8 +13,8 @@ export default function Signature({ controller }) {
       <>
         <div className={classNames} />
         <div className={classNames} />
-        <div className={classNames} />
-        <div className={classNames} />
+        {!student && <div className={classNames} />}
+        {!student && <div className={classNames} />}
       </>
     );
   }
@@ -28,4 +28,5 @@ export default function Signature({ controller }) {
 
 Signature.propTypes = {
   controller: PropTypes.number.isRequired,
+  student: PropTypes.bool.isRequired,
 };

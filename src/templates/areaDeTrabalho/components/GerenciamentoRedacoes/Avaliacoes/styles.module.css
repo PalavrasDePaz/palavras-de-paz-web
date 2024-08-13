@@ -141,6 +141,11 @@
   padding-right: 16px;
 }
 
+.avaliacoes_tbody .avaliacoes_tr td:nth-child(7),
+.avaliacoes_tbody .avaliacoes_tr td:nth-child(8) {
+  max-width: fit-content;
+}
+
 .visualize_button {
   font-weight: bold;
   color: #707070;
@@ -250,4 +255,16 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.delete_button {
+  background: #dd4545;
+  color: #ffffff;
+  padding: 6px 10px;
+  border-radius: 7px;
+}
+
+.delete_button:hover {
+  background: #ec0303;
+  transition: 150ms;
 }

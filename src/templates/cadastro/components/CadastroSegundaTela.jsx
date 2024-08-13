@@ -1,5 +1,6 @@
 /* eslint-disable max-lines */
-import React from "react";
+import React, { useEffect,useState } from "react";
+import { useRouter } from "next/router";
 import { Controller, useForm } from "react-hook-form";
 import PhoneInput, { isValidPhoneNumber } from "react-phone-number-input";
 
@@ -26,6 +27,13 @@ export default function cadastroSegundaTela({
   returnButton,
   data,
 } = props) {
+  const { query, isReady } = useRouter();
+  const [student, setStudent] = useState();
+
+  useEffect(() => {
+    if (isReady) setStudent(query.student === "true");
+  }, [isReady]);
+
   const {
     register,
     handleSubmit,
@@ -269,7 +277,7 @@ export default function cadastroSegundaTela({
           Anterior
         </button>
         <button type="submit" className={styleButton.cadastroFormSectionButton}>
-          Próximo
+          {student === true ? "Finalizar" : "Próximo"}
         </button>
       </div>
     </form>

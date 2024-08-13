@@ -157,7 +157,7 @@ export default function TabelaTurmas({
                     onClick={handleAllCheckboxClick}
                   />
                   {!!selectedClasses.length &&
-                    ` ${  selectedClasses.length.toString()}`}
+                    ` ${selectedClasses.length.toString()}`}
                 </th>
                 <th>ID</th>
                 <th>Grupo</th>
@@ -220,14 +220,6 @@ export default function TabelaTurmas({
                       </button>
                     </a>
                   </td>
-                  {/* <td>
-                    <button
-                      onClick={() => toggleModalEdit(classData)}
-                      className={styles.visualize_button}
-                    >
-                      Editar
-                    </button>
-                  </td> */}
                 </tr>
               ))}
             </tbody>
@@ -266,19 +258,6 @@ export default function TabelaTurmas({
           </button>
         </div>
       )}
-
-      {/* <GenericModal
-        title="Visualizar/Editar turma de redação"
-        isShown={classToEdit != null}
-        onToggle={() => toggleModalEdit(null)}
-      >
-        {classToEdit != null && (
-          <FormularioEditarTurmaRedacaoTemplate
-            initialData={classToEdit as unknown as NotebookClass}
-            viewOnly={false}
-          />
-        )}
-        </GenericModal> */}
     </div>
   );
 }

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useRouter } from "next/router";
 
 import HeaderWorkspace from "../../components/headerWorkspace/HeaderWorkspace";
 import { PALAVRAS_DE_PAZ_TOKEN } from "../../constants";
@@ -13,6 +14,13 @@ import Signature from "./components/Signature";
 import styles from "./styles/CadastroTemplate.module.css";
 
 export default function cadastroTemplate() {
+  const { query, isReady } = useRouter();
+  const [student, setStudent] = useState();
+
+  useEffect(() => {
+    if (isReady) setStudent(query.student === "true");
+  }, [isReady]);
+
   const [controller, setController] = useState(0);
   const [formData, setFormData] = useState({});
 
@@ -39,10 +47,15 @@ export default function cadastroTemplate() {
     setController((_controller) => _controller - 1);
   };
 
+  const lastPageCallback = (data) => {
+    updateForm(data);
+    setController(FINISHED);
+  };
+
   return (
     <>
       <HeaderWorkspace title="Cadastro de voluntário" />
-      <Signature controller={controller} />
+      <Signature controller={controller} student={student} />
       <div className={styles.main_container_form}>
         {controller === PAGE_1 && (
           <CadastroPrimeiraTela
@@ -52,7 +65,7 @@ export default function cadastroTemplate() {
         )}
         {controller === PAGE_2 && (
           <CadastroSegundaTela
-            buttonCallback={buttonCallback}
+            buttonCallback={student ? lastPageCallback : buttonCallback}
             returnButton={returnButton}
             data={formData}
           />

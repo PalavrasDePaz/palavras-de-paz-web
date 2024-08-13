@@ -88,6 +88,7 @@ export default function PubTextEditor({
         content: "",
         title: "",
         link: "",
+        host: "",
         summary: "",
         active: false,
         createdAt: null,
@@ -248,18 +249,17 @@ export default function PubTextEditor({
           const newList = [...filteredList, selectedPublication];
           const saved = saveInStorage(newList);
           return saved ? newList : prev;
-        } 
-          const newList = [
-            ...prev,
-            {
-              ...selectedPublication,
-              id: publicationList.length + 1,
-              createdAt: new Date(),
-            },
-          ];
-          const saved = saveInStorage(newList);
-          return saved ? newList : prev;
-        
+        }
+        const newList = [
+          ...prev,
+          {
+            ...selectedPublication,
+            id: publicationList.length + 1,
+            createdAt: new Date(),
+          },
+        ];
+        const saved = saveInStorage(newList);
+        return saved ? newList : prev;
       });
     }
   }
@@ -307,6 +307,15 @@ export default function PubTextEditor({
           value={selectedPublication?.link}
           name="link"
           onChange={(e) => handleChange(e, "link")}
+        />
+      </div>
+      <div className={styles.pubField}>
+        <label htmlFor="pubHost">Host:</label>
+        <input
+          id="pubHost"
+          value={selectedPublication?.host}
+          name="host"
+          onChange={(e) => handleChange(e, "host")}
         />
       </div>
       <div className={styles.pubField}>
