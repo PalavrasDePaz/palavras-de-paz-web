@@ -1,3 +1,4 @@
+/* eslint-disable no-restricted-globals */
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 
@@ -14,11 +15,15 @@ import Signature from "./components/Signature";
 import styles from "./styles/CadastroTemplate.module.css";
 
 export default function cadastroTemplate() {
-  const { query, isReady } = useRouter();
-  const [student, setStudent] = useState();
+  const { isReady } = useRouter();
+  const [student, setStudent] = useState(false);
 
   useEffect(() => {
-    if (isReady) setStudent(query.student === "true");
+    if (isReady) {
+      if (location.pathname === "/inscricaoEstudante") {
+        setStudent(true);
+      }
+    }
   }, [isReady]);
 
   const [controller, setController] = useState(0);
@@ -61,6 +66,7 @@ export default function cadastroTemplate() {
           <CadastroPrimeiraTela
             buttonCallback={buttonCallback}
             data={formData}
+            student={student}
           />
         )}
         {controller === PAGE_2 && (
@@ -68,6 +74,7 @@ export default function cadastroTemplate() {
             buttonCallback={student ? lastPageCallback : buttonCallback}
             returnButton={returnButton}
             data={formData}
+            student={student}
           />
         )}
         {controller === PAGE_3 && (
@@ -84,7 +91,9 @@ export default function cadastroTemplate() {
             data={formData}
           />
         )}
-        {controller === FINISHED && <CadastroTelaFinal data={formData} />}
+        {controller === FINISHED && (
+          <CadastroTelaFinal data={formData} student={student} />
+        )}
       </div>
     </>
   );

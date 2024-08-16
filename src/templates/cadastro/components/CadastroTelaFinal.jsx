@@ -1,4 +1,7 @@
-import React, { useEffect,useState } from "react";
+/* eslint-disable eqeqeq */
+/* eslint-disable no-magic-numbers */
+
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 
@@ -11,7 +14,8 @@ import { FUTURE_ROLES, SKILLS } from "./constants";
 import styles from "../styles/CadastroTemplate.module.css";
 
 const filterValues = (valuesObj, optionsObject) => {
-  if (!valuesObj) return [];
+  console.log(valuesObj);
+  if (valuesObj === undefined || valuesObj === null) return [];
   // eslint-disable-next-line implicit-arrow-linebreak
   return (
     Object.keys(valuesObj)
@@ -24,61 +28,57 @@ const filterValues = (valuesObj, optionsObject) => {
   );
 };
 
-export default function cadastroTelaFinal({ data } = props) {
-  const { query, isReady } = useRouter();
-  const [student, setStudent] = useState();
-
-  useEffect(() => {
-    if (isReady) setStudent(query.student === "true");
-  }, [isReady]);
+export default function cadastroTelaFinal({ data, student } = props) {
+  const router = useRouter();
 
   const [isError, setIsError] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
 
-  // Workaround para transformar os valores dos checkbox em um array de strings
-  const { interestFutureRoles, rolesPep, needDeclaration } = data;
-  data.interestFutureRoles = filterValues(interestFutureRoles, FUTURE_ROLES);
-  data.rolesPep = filterValues(rolesPep, SKILLS);
-  // e transformar string em boolean
-  data.needDeclaration = needDeclaration === "sim" || student;
-
-  // se deficiência não for "sim", não mandamos o valor.
-  // (pensando no caso de alguém que preenche, depois muda de ideia e prefere não dizer.)
-  data.disability = data.deficiencia === "sim" ? data.disability : null;
-
-  // Também não mandamos o valor do campo de deficiencia, só qual ela é, se houver.
-  // E nem a confirmação de password.
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const { deficiencia, passConfirmation, ...restOfData } = data;
-
-  // Removemos qualquer atributo que esteja nulo
-  const apiObject = Object.fromEntries(
-    Object.entries(restOfData).filter(([, v]) => v != null)
-  );
-
   useEffect(() => {
-    if (typeof student === "boolean") {
-      if (student === true) {
-        apiObject.desires = "";
-        apiObject.howFoundPep = "";
-        apiObject.knowledgePep = "";
-        apiObject.lifeExperience = "";
-        apiObject.needDeclaration = false;
-        apiObject.studiesKnowledge = "";
-      }
-      console.log(apiObject);
-      // Mandamos o dado
-      api
-        .post("/volunteers", apiObject)
-        .then(() => router.push("/login"))
-        .catch((error) => {
+    const { interestFutureRoles, rolesPep, needDeclaration } = data;
+    data.interestFutureRoles = filterValues(interestFutureRoles, FUTURE_ROLES);
+    data.rolesPep = filterValues(rolesPep, SKILLS);
+    // e transformar string em boolean
+    data.needDeclaration = needDeclaration === "sim" || student;
+
+    // se deficiência não for "sim", não mandamos o valor.
+    // (pensando no caso de alguém que preenche, depois muda de ideia e prefere não dizer.)
+    data.disability = data.deficiencia === "sim" ? data.disability : null;
+
+    // Também não mandamos o valor do campo de deficiencia, só qual ela é, se houver.
+    // E nem a confirmação de password.
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const { deficiencia, passConfirmation, ...restOfData } = data;
+
+    // Removemos qualquer atributo que esteja nulo
+    const apiObject = Object.fromEntries(
+      Object.entries(restOfData).filter(([, v]) => v != null)
+    );
+
+    if (student === true) {
+      apiObject.desires = "";
+      apiObject.howFoundPep = "";
+      apiObject.knowledgePep = "";
+      apiObject.lifeExperience = "";
+      apiObject.needDeclaration = false;
+      apiObject.studiesKnowledge = "";
+    }
+    console.log(apiObject);
+    // Mandamos o dado
+    api
+      .post("/volunteers", apiObject)
+      .then(() => router.push("/login"))
+      .catch((error) => {
+        if (error.response.status == 422) {
           setIsError(true);
           if (error.response.data.name) {
             setErrorMessage(error.response.data.name);
           }
-        });
-    }
-  }, [student]);
+        } else {
+          router.push("/login");
+        }
+      });
+  }, []);
 
   const getContent = () => {
     if (isError) {
