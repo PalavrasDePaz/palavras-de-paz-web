@@ -1,5 +1,4 @@
-import React, { useEffect,useState } from "react";
-import { useRouter } from "next/router";
+import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 
@@ -12,13 +11,14 @@ import { cadastroTela1Schema, MAX_CHARS } from "./schemas";
 import styles from "../styles/CadastroTelas.module.css";
 import styleButton from "../styles/CadastroTemplate.module.css";
 
-export default function cadastroPrimeiraTela({ buttonCallback, data } = props) {
-  const { query, isReady } = useRouter();
-  const [student, setStudent] = useState();
-
+export default function cadastroPrimeiraTela({
+  buttonCallback,
+  data,
+  student,
+} = props) {
   useEffect(() => {
-    if (isReady) setStudent(query.student === "true");
-  }, [isReady]);
+    console.log(student);
+  }, [student]);
 
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
 

@@ -1,6 +1,5 @@
 /* eslint-disable max-lines */
-import React, { useEffect,useState } from "react";
-import { useRouter } from "next/router";
+import React from "react";
 import { Controller, useForm } from "react-hook-form";
 import PhoneInput, { isValidPhoneNumber } from "react-phone-number-input";
 
@@ -26,14 +25,8 @@ export default function cadastroSegundaTela({
   buttonCallback,
   returnButton,
   data,
+  student,
 } = props) {
-  const { query, isReady } = useRouter();
-  const [student, setStudent] = useState();
-
-  useEffect(() => {
-    if (isReady) setStudent(query.student === "true");
-  }, [isReady]);
-
   const {
     register,
     handleSubmit,
