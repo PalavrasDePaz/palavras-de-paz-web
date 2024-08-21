@@ -5,27 +5,14 @@
 /* eslint-disable @typescript-eslint/no-empty-function */
 /* eslint-disable no-unused-expressions */
 
-import React, {
-  ChangeEvent,
-  useCallback,
-  useEffect,
-  useRef,
-  useState,
-} from "react";
-import dynamic from "next/dynamic";
-import { filesize } from "filesize";
+import React, { ChangeEvent, useCallback, useEffect, useState } from "react";
 import { useDropzone } from "react-dropzone";
 import { SlCloudUpload } from "react-icons/sl";
 import { toast } from "react-toastify";
-import { v4 as uuidv4 } from "uuid";
 
 import { Publication } from "../../../../../hooks/types";
 
 import styles from "./styles.module.css";
-
-const JoditEditor = dynamic(() => import("jodit-react"), {
-  ssr: false,
-});
 
 export interface IFile {
   id: string;
@@ -78,19 +65,12 @@ export default function PubTextEditor({
 
   const [content, setContent] = useState<string>("");
 
-  const editor = useRef(null);
-
   useEffect(() => {
     if (publicationId === null) {
       setSelectedPublication({
         id: null,
         img: "",
         content: "",
-        title: "",
-        link: "",
-        host: "",
-        summary: "",
-        active: false,
         createdAt: null,
       });
     } else {
@@ -123,27 +103,14 @@ export default function PubTextEditor({
     fieldName: keyof Publication
   ) => {
     const { value } = event.target;
-
-    if (fieldName === "active") {
-      const { checked } = event.target as HTMLInputElement;
-      setSelectedPublication((prev) => {
-        if (prev)
-          return {
-            ...prev,
-            active: checked,
-          };
-        return prev;
-      });
-    } else {
-      setSelectedPublication((prev) => {
-        if (prev)
-          return {
-            ...prev,
-            [fieldName]: value,
-          };
-        return prev;
-      });
-    }
+    setSelectedPublication((prev) => {
+      if (prev)
+        return {
+          ...prev,
+          [fieldName]: value,
+        };
+      return prev;
+    });
   };
 
   function convertFileToBase64(file: File) {
@@ -163,26 +130,14 @@ export default function PubTextEditor({
 
   const handleUpload = useCallback(
     async (files: File[]) => {
-      const newUploadedFile: IFile = {
-        file: files[0],
-        id: uuidv4(),
-        name: files[0].name,
-        readableSize: filesize(files[0].size),
-        preview: URL.createObjectURL(files[0]),
-        progress: 0,
-        uploaded: false,
-        error: false,
-        url: "",
-      };
-
       const stringBase64 = await convertFileToBase64(files[0]);
-      newUploadedFile.url = stringBase64 as string;
+      const url = stringBase64 as string;
       if (selectedPublication)
         setSelectedPublication((prev) => {
           if (prev)
             return {
               ...prev,
-              img: newUploadedFile.url,
+              img: url,
             };
           return prev;
         });
@@ -200,13 +155,14 @@ export default function PubTextEditor({
       accept: {
         "image/jpeg": [],
         "image/png": [],
+        "image/jpg": [],
       },
       onDrop,
     });
 
   const renderDragMessage = useCallback(() => {
     if (!isDragActive) {
-      return <p className={styles.dragMessage}>Arraste a imagem aqui...</p>;
+      return <p className={styles.dragMessage}>Arraste a imagem para cá...</p>;
     }
 
     if (isDragReject) {
@@ -283,62 +239,16 @@ export default function PubTextEditor({
       </div>
 
       <div className={styles.pubField}>
-        <label htmlFor="pubTitle">Título:</label>
-        <input
-          id="pubTitle"
-          value={selectedPublication?.title}
-          name="title"
-          onChange={(e) => handleChange(e, "title")}
+        <label htmlFor="pubcontent">Conteúdo:</label>
+        <textarea
+          id="pubContent"
+          value={selectedPublication?.content}
+          name="content"
+          onChange={(e) => handleChange(e, "content")}
+          cols={100}
+          rows={10}
         />
       </div>
-      <div className={styles.pubField}>
-        <label htmlFor="pubSummary">Resumo:</label>
-        <input
-          id="pubSummary"
-          value={selectedPublication?.summary}
-          name="summary"
-          onChange={(e) => handleChange(e, "summary")}
-        />
-      </div>
-      <div className={styles.pubField}>
-        <label htmlFor="pubLink">Link:</label>
-        <input
-          id="pubLink"
-          value={selectedPublication?.link}
-          name="link"
-          onChange={(e) => handleChange(e, "link")}
-        />
-      </div>
-      <div className={styles.pubField}>
-        <label htmlFor="pubHost">Host:</label>
-        <input
-          id="pubHost"
-          value={selectedPublication?.host}
-          name="host"
-          onChange={(e) => handleChange(e, "host")}
-        />
-      </div>
-      <div className={styles.pubField}>
-        <label htmlFor="pubActive" data-small>
-          Ativa:
-        </label>
-        <input
-          id="pubActive"
-          type="checkbox"
-          defaultChecked={selectedPublication?.active}
-          value={selectedPublication?.active ? "SIM" : "NÃO"}
-          name="active"
-          onChange={(e) => handleChange(e, "active")}
-        />
-      </div>
-
-      <p className={styles.pubContentLabel}>Conteúdo da publicação:</p>
-      <JoditEditor
-        ref={editor}
-        value={content}
-        config={config}
-        onBlur={(newContent) => setContent(newContent)}
-      />
 
       <button className={styles.savePubButton} onClick={() => savePub()}>
         Salvar

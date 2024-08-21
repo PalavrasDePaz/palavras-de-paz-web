@@ -9,6 +9,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  cursor: pointer;
 }
 
 .pubCoverLabel {
@@ -41,7 +42,7 @@
 
 .pubCover {
   width: auto;
-  height: 15vh;
+  height: 20vh;
   aspect-ratio: 1;
   object-fit: cover;
   object-position: center;

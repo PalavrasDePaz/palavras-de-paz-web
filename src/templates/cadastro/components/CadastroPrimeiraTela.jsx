@@ -52,14 +52,14 @@ export default function cadastroPrimeiraTela({
       onSubmit={handleSubmit(buttonCallback)}
     >
       <section>
-        <h1 className={styles.formTitle}>CADASTRO DE VOLUNTÁRIOS</h1>
+        <h1 className={styles.formTitle}>
+          {student ? "INSCRIÇÃO DE ESTUDANTE" : "CADASTRO DE VOLUNTÁRIOS"}
+        </h1>
 
         <p className={styles.formParagraph}>Seja bem-vindo(a)!</p>
         {student === true ? (
           <p className={styles.formParagraph}>
-            Preparamos este formulário para podermos te conhecer melhor. Quanto
-            mais você puder compartilhar com a gente, mais conseguiremos te
-            ajudar a alcançar seus objetivos!
+            Preparamos este formulário para podermos te conhecer melhor.
           </p>
         ) : (
           <p className={styles.formParagraph}>
@@ -70,9 +70,17 @@ export default function cadastroPrimeiraTela({
             seus objetivos!
           </p>
         )}
-        <p className={styles.formParagraph}>
-          O preenchimento tomará no máximo dez minutos do seu tempo! Bora lá?
-        </p>
+
+        {student === true ? (
+          <p className={styles.formParagraph}>
+            O preenchimento tomará no máximo cinco minutos do seu tempo! Bora
+            lá?
+          </p>
+        ) : (
+          <p className={styles.formParagraph}>
+            O preenchimento tomará no máximo dez minutos do seu tempo! Bora lá?
+          </p>
+        )}
 
         <section className={styles.cadastroFormSectionInputContainer}>
           <div className={styles.cadastroFormDiv}>

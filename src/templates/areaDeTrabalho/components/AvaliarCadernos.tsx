@@ -125,6 +125,8 @@ const AvaliarCadernos = ({ idvol }: AvaliarCadernosProps) => {
     }
   }, [notebooks]);
 
+  const reservationBlocked = notebooksIn.some((n) => n.reserved);
+
   return (
     <section className={styles.avaliar_section}>
       <h1>Avaliar Cadernos</h1>
@@ -155,6 +157,7 @@ const AvaliarCadernos = ({ idvol }: AvaliarCadernosProps) => {
                       type="checkbox"
                       onChange={() => handleReservation(notebookId)}
                       id={studentName}
+                      disabled={reservationBlocked}
                     />
                     <label htmlFor={studentName} className={styles.switch}>
                       <span className={styles.slider} />
