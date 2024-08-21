@@ -20,7 +20,7 @@ export default function cadastroTemplate() {
 
   useEffect(() => {
     if (isReady) {
-      if (location.pathname === "/inscricaoEstudante") {
+      if (location.pathname === "/inscricao") {
         setStudent(true);
       }
     }
@@ -59,7 +59,9 @@ export default function cadastroTemplate() {
 
   return (
     <>
-      <HeaderWorkspace title="Cadastro de voluntário" />
+      <HeaderWorkspace
+        title={student ? "Inscrição de Estudante" : "Cadastro de voluntário"}
+      />
       <Signature controller={controller} student={student} />
       <div className={styles.main_container_form}>
         {controller === PAGE_1 && (

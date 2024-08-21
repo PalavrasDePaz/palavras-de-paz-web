@@ -76,8 +76,7 @@ export default function AreaDeTrabalhoTemplate() {
             <DetalhesCadastro />
           )}
 
-          {auth.notebookModulePermission === true &&
-            auth.essayModulePermission === true && <NewsAndAgenda />}
+          {auth.moduleNewsPermission === true && <NewsAndAgenda />}
 
           <ToastContainer
             position="top-right"

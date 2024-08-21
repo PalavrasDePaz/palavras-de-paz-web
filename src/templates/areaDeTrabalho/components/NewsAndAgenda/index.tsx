@@ -71,11 +71,6 @@ export default function NewsAndAgenda() {
                 id: null,
                 img: "",
                 content: "",
-                title: "",
-                link: "",
-                host: "",
-                summary: "",
-                active: false,
                 createdAt: null,
               })}
           />

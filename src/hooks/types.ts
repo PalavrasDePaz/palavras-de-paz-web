@@ -68,11 +68,6 @@ export type NotebookClass = {
 export type Publication = {
   id: number | null;
   img: string;
-  title: string;
-  link: string;
-  host: string;
-  summary: string;
   content: string;
-  active: boolean;
   createdAt: Date | null;
 };

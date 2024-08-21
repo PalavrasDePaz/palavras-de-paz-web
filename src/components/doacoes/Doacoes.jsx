@@ -97,7 +97,7 @@ function Doacoes() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            Doar!
+            Doe Agora
           </a>
         </div>
 

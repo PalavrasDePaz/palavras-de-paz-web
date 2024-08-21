@@ -1,0 +1,26 @@
+.pubs {
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.pubContainer {
+  margin: 16px auto;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  cursor: pointer;
+  transition: all 250ms;
+}
+
+.pubContainer:hover {
+  transform: scale(1.03);
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px,
+    rgba(0, 0, 0, 0.22) 0px 15px 12px;
+}
+
+.pubContainer img {
+  object-fit: contain;
+  background-color: black;
+  object-position: center;
+  border-radius: 4px;
+}
