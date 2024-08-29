@@ -57,10 +57,7 @@ export default function AreaDeTrabalhoTemplate() {
             <PrimeiroBox idVol={idvol} />
             <WorkshopsAssistidos idvol={idvol} />
           </aside>
-          {auth.readPermission === true &&
-            auth.notebookModulePermission === true && (
-              <AvaliarCadernos idvol={idvol} />
-            )}
+          {auth.readPermission === true && <AvaliarCadernos idvol={idvol} />}
 
           {auth.bookPermission === true && <AvaliarRedacoes idvol={idvol} />}
 
