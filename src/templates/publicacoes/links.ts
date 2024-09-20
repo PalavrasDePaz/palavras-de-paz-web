@@ -1,6 +1,7 @@
 import img01 from "../../../public/static/images/linkPreviews/link01.png";
 import img02 from "../../../public/static/images/linkPreviews/link02.png";
 import img03 from "../../../public/static/images/linkPreviews/link03.png";
+import img04 from "../../../public/static/images/logo.svg";
 
 // Imagens dos previews geradas em https://link-previews.stephanbogner.de/
 
@@ -34,6 +35,16 @@ const LINKS = [
     title: 'O impacto de "Ouça a Sua Voz" nas Prisões Brasileiras',
     intro:
       "Em 14 de setembro de 2021, a HarperOne publicou o livro revolucionário de Prem Rawat, Ouça a Sua Voz: Como Encontrar a Paz em um Mundo Barulhento. Duas semanas depois, ele se tornou um best-seller do New York Times.",
+  },
+  {
+    id: 4,
+    href: "/publicacoes/arquivos/promovendo-o-bem-estar-duradouro-entre-os-profissionais-de-saude",
+    img: img04,
+    host: "Palavrasdepaz.org",
+    title:
+      "Promovendo o bem-estar duradouro entre os profissionais de saúde por meio de uma iniciativa de bem-estar interativa e online",
+    intro:
+      "Baseando-se em um estudo de métodos variados conduzido na Prisão Feminina de Adelaide, este artigo explora o impacto do programa no aprendizado dos participantes sobre paz interior.",
   },
 ];
 
