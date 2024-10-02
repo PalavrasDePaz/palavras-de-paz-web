@@ -6,6 +6,7 @@ import Center from "../../components/center";
 import FixedButton from "../../components/fixedbutton/FixedButton";
 import Footer from "../../components/footer/Footer";
 import Header from "../../components/header/Header";
+import Inscricoes from "../../components/inscricoes";
 import GreenBar from "../../components/molecules/greenbar/GreenBar";
 import SwiperJs from "../../components/swiper/Swiper";
 import Typography from "../../components/typography";
@@ -18,6 +19,19 @@ export default function HomeTemplate() {
       <Center>
         <CarouselSlide />
         <GreenBar />
+
+        <Box justify="center" padding="32px">
+          <Typography
+            family="Baloo, cursive"
+            fontSize="48px"
+            fontWeight="800"
+            lineHeight="75.55px"
+            color="black"
+            text="Programas"
+          />
+        </Box>
+
+        <Inscricoes />
 
         <Box justify="center" padding="32px">
           <Typography

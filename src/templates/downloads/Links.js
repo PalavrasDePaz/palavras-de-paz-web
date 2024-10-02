@@ -233,20 +233,6 @@ const Links = [
     body: "“A paz precisa estar na vida de todos. Não é o mundo que precisa de paz, são as pessoas. Quando as pessoas no mundo estiverem em paz, O mundo estará em paz.”",
     href: "arquivosDownload/v2/caderno de anotacoes.pdf",
   },
-  {
-    id: 34,
-    img: "static/images/downloads/caderno.png",
-    title: "Caderno de Anotações - Parte 1",
-    body: "“De todas as coisas que fazemos na vida para nos sentirmos bem, a paz é o que nos faz sentir melhor.”",
-    href: "arquivosDownload/cadernoAnotacoes1.pdf",
-  },
-  {
-    id: 35,
-    img: "static/images/downloads/caderno.png",
-    title: "Caderno de Anotações - Parte 2",
-    body: "“De todas as coisas que fazemos na vida para nos sentirmos bem, a paz é o que nos faz sentir melhor.”",
-    href: "arquivosDownload/cadernoAnotacoes2.pdf",
-  },
 ];
 
 export default Links;

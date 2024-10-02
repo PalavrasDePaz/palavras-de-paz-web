@@ -14,13 +14,13 @@ import Signature from "./components/Signature";
 
 import styles from "./styles/CadastroTemplate.module.css";
 
-export default function cadastroTemplate() {
+export default function CadastroTemplate() {
   const { isReady } = useRouter();
   const [student, setStudent] = useState(false);
 
   useEffect(() => {
     if (isReady) {
-      if (location.pathname === "/inscricao") {
+      if (location.pathname.startsWith("/inscricao")) {
         setStudent(true);
       }
     }
@@ -60,7 +60,9 @@ export default function cadastroTemplate() {
   return (
     <>
       <HeaderWorkspace
-        title={student ? "Inscrição de Estudante" : "Cadastro de voluntário"}
+        title={
+          student ? "Inscrição de Estudante UNIVESP" : "Cadastro de voluntário"
+        }
       />
       <Signature controller={controller} student={student} />
       <div className={styles.main_container_form}>

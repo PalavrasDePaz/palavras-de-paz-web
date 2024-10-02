@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable eqeqeq */
 /* eslint-disable no-magic-numbers */
 
@@ -14,7 +15,6 @@ import { FUTURE_ROLES, SKILLS } from "./constants";
 import styles from "../styles/CadastroTemplate.module.css";
 
 const filterValues = (valuesObj, optionsObject) => {
-  console.log(valuesObj);
   if (valuesObj === undefined || valuesObj === null) return [];
   // eslint-disable-next-line implicit-arrow-linebreak
   return (
@@ -28,8 +28,9 @@ const filterValues = (valuesObj, optionsObject) => {
   );
 };
 
-export default function cadastroTelaFinal({ data, student } = props) {
+export default function CadastroTelaFinal({ data, student } = props) {
   const router = useRouter();
+  const { idpep } = router.query;
 
   const [isError, setIsError] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
@@ -63,10 +64,10 @@ export default function cadastroTelaFinal({ data, student } = props) {
       apiObject.needDeclaration = false;
       apiObject.studiesKnowledge = "";
     }
-    console.log(apiObject);
     // Mandamos o dado
+    const idpepParam = `?idpep=${idpep}`;
     api
-      .post("/volunteers", apiObject)
+      .post(`/volunteers${student ? idpepParam : ""}`, apiObject)
       .then(() => router.push("/login"))
       .catch((error) => {
         if (error.response.status == 422) {
