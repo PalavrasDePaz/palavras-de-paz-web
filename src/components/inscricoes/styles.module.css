@@ -1,0 +1,34 @@
+.inscricoes {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  border: 1px solid #18ca99;
+  min-width: 240px;
+  border-radius: 10px;
+  padding: 10px;
+  color: #21aa85;
+}
+
+.title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 36px;
+  color: black;
+}
+
+.title strong {
+  color: #21aa85;
+}
+
+.button {
+  font-size: 20px;
+  padding: 10px;
+  white-space: nowrap;
+  background: rgba(33, 170, 133, 1);
+  color: white;
+  text-decoration: none;
+  border-radius: 4px;
+  margin: 0 8px;
+}
