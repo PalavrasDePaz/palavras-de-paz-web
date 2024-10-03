@@ -64,7 +64,7 @@ export default function GreenBar() {
             textAlign="center"
             fontWeight="bold"
             color="white"
-            text="programa em 2022"
+            text="programa em 2023"
             fontSize="25px"
             justify="center"
           />
