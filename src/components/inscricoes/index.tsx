@@ -6,7 +6,7 @@ export default function Inscricoes() {
   return (
     <div className={styles.inscricoes}>
       <h2 className={styles.title}>
-        Inscreva-se no Programa de Educação para Paz da <strong>UNIVESP</strong>
+        Inscreva-se no Programa de Educação para Paz da Universidade
       </h2>
 
       <div className="d-flex justify-content-center border-0">
