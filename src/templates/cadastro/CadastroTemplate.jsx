@@ -61,7 +61,9 @@ export default function CadastroTemplate() {
     <>
       <HeaderWorkspace
         title={
-          student ? "Inscrição de Estudante UNIVESP" : "Cadastro de voluntário"
+          student
+            ? "Inscrição de Estudante Universitário"
+            : "Cadastro de voluntário"
         }
       />
       <Signature controller={controller} student={student} />
