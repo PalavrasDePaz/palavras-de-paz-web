@@ -68,7 +68,6 @@ export default function FormEditarAvalLivroTemplate({
     const formDataToSend = { ...formData } as Partial<BookEval>;
     delete formDataToSend.evaluatorId;
     delete formDataToSend.classId;
-    delete formDataToSend.readerRegistration;
     delete formDataToSend.id;
     mutatePutBookEval({
       data: formDataToSend,
