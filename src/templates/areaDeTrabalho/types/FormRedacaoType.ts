@@ -9,6 +9,7 @@ export type ItemTurmaAvaliacaoProps = {
   dateReserved: string;
   dateConcluded: string;
   reserved: boolean;
+  folderLink: string;
 };
 
 export type OpenFormularioProps = {

@@ -1,8 +1,7 @@
 import React, { useState } from "react";
-import Image from "next/image";
+import { FaExternalLinkAlt } from "react-icons/fa";
 
 // import { useRouter } from "next/router";
-import DownloadImage from "../../../../public/static/images/icons/download.svg";
 import dateUTCFormat from "../../../helpers/dateUTCFormat";
 import dateUTCGenerate from "../../../helpers/dateUTCGenerate";
 // import downloadZIP from "../../../helpers/getEssaysDownload";
@@ -33,6 +32,7 @@ function ItemTurmaAvaliacao({
   dateReserved,
   dateConcluded,
   reserved,
+  folderLink,
 }: ItemTurmaAvaliacaoProps) {
   // const router = useRouter();
 
@@ -63,7 +63,8 @@ function ItemTurmaAvaliacao({
       const date = new Date().toISOString();
       const dateBR = date.split("T")[0].split("-").reverse().join("/");
       return dateBR;
-    } return naoReservado;
+    }
+    return naoReservado;
   });
 
   const updatedEssaysFunction = (classId: number, reserveFlag: boolean) =>
@@ -145,8 +146,10 @@ function ItemTurmaAvaliacao({
             <span className={styles.sliderConcl} />
           </label>
           <div className={styles.avaliarRedacoes_status_div}>
-            <Image src={DownloadImage} alt="icone de download" />
-            <p>Download</p>
+            <button className={styles.directory} disabled>
+              Abrir Link &nbsp;
+              <FaExternalLinkAlt />
+            </button>
           </div>
           <p className={styles.avaliarRedacoes_status_p5}>{preencher}</p>
         </>
@@ -180,7 +183,12 @@ function ItemTurmaAvaliacao({
           >
             <span className={styles.sliderConcl} />
           </label>
-          <BtnDownload idclass={idclass} place={place} />
+          <a href={folderLink} target="_blank" rel="noreferrer">
+            <button className={styles.directory} disabled={!folderLink?.length}>
+              Abrir Link &nbsp;
+              <FaExternalLinkAlt />
+            </button>
+          </a>
           {/* {reserved ? ( */}
           <FormButton
             idClass={idclass}
