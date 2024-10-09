@@ -345,3 +345,20 @@
 .check:checked ~ .switchConcl .sliderConcl {
   transform: translateX(16px);
 }
+
+.directory {
+  background: #21aa85;
+  color: #ffffff;
+  padding: 6px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.directory:disabled {
+  background: #99bdb4;
+  cursor: initial;
+}
+
+.directory svg {
+  vertical-align: initial;
+}

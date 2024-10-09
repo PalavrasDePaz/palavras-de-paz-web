@@ -35,13 +35,20 @@ export default function AvaliarRedacoes({ idvol }: AvaliarRedacoesProps) {
         <h2>Reservado em</h2>
         <h2>Concluido em</h2>
         <h2>Turma Concluida</h2>
-        <h2>Baixar Relatórios</h2>
+        <h2>Ver Relatórios</h2>
         <h2>Formulário de avaliação</h2>
       </div>
       <div className={styles.avaliar_itens}>
         {essaysIn &&
           essaysIn.map(
-            ({ idclass, place, dateReserved, dateConcluded, reserved }) => (
+            ({
+              idclass,
+              place,
+              dateReserved,
+              dateConcluded,
+              reserved,
+              folderLink,
+            }) => (
               <ItemTurmaAvaliacao
                 essaysIn={essaysIn}
                 setEssaysIn={setEssaysIn}
@@ -52,6 +59,7 @@ export default function AvaliarRedacoes({ idvol }: AvaliarRedacoesProps) {
                 dateConcluded={dateConcluded}
                 reserved={reserved}
                 key={idclass}
+                folderLink={folderLink}
               />
             )
           )}
