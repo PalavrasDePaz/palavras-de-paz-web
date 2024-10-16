@@ -7,6 +7,7 @@ export type User = {
   phoneNumber: string;
   country: string;
   password: string;
+  pep: number;
 };
 
 export type Notebook = {

@@ -54,7 +54,7 @@ export default function AreaDeTrabalhoTemplate() {
             <p>Aqui estão as suas atividades</p>
           </section>
           <aside className={styles.aside_container}>
-            <PrimeiroBox idVol={idvol} />
+            <PrimeiroBox idVol={idvol} user={user} />
             <WorkshopsAssistidos idvol={idvol} />
           </aside>
           {auth.readPermission === true && <AvaliarCadernos idvol={idvol} />}

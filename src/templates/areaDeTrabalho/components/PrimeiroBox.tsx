@@ -3,6 +3,7 @@ import { useRouter } from "next/router";
 import { addMonths, format } from "date-fns";
 import ptBR from "date-fns/locale/pt-BR";
 
+import { User } from "../../../hooks/types";
 import { useRequestStatus } from "../../../hooks/useCheckFormHoursHeader";
 import useGetEssaysCount from "../../../hooks/useGetEssaysCount";
 import useGetNotebooksCount from "../../../hooks/useGetNotebookCount";
@@ -11,6 +12,7 @@ import styles from "../styles/AreaDeTrabalho.module.css";
 
 interface IdVol {
   idVol: number;
+  user: User;
 }
 
 function capitalizeFirstLetter(str: string): string {
@@ -20,7 +22,9 @@ function capitalizeFirstLetter(str: string): string {
 
 const INDEX_PREVIOUS_MONTH = -1;
 
-export default function PrimeiroBox({ idVol }: IdVol) {
+const STUDENT_PEP = 693;
+
+export default function PrimeiroBox({ idVol, user }: IdVol) {
   const { data: notebooksCount } = useGetNotebooksCount(idVol);
   const { data: essaysCount } = useGetEssaysCount(idVol);
   const { push } = useRouter();
@@ -79,30 +83,34 @@ export default function PrimeiroBox({ idVol }: IdVol) {
           </button>
         </div>
       </div>
-      <div className={styles.horas_declaradas_container}>
-        <h3 className={styles.h3__text_horas}>{monthText}</h3>
-        <button
-          className={buttonClassName}
-          disabled={!isWithinFirstTenDays()}
-          onClick={handleButtonClick}
-        >
-          {buttonText}
-        </button>
-      </div>
-      <div className={styles.count_container}>
-        <div className={styles.container_h3}>
-          <h3 className={styles.h3__text}>
-            Cadernos avaliados:
-            <span className={styles.counts}> {notebooksCount?.count}</span>
-          </h3>
+      {user.pep !== STUDENT_PEP && (
+        <div className={styles.horas_declaradas_container}>
+          <h3 className={styles.h3__text_horas}>{monthText}</h3>
+          <button
+            className={buttonClassName}
+            disabled={!isWithinFirstTenDays()}
+            onClick={handleButtonClick}
+          >
+            {buttonText}
+          </button>
         </div>
-        <div className={styles.container_h3}>
-          <h3 className={styles.h3__text}>
-            Relatórios de leitura avaliados:
-            <span className={styles.counts}> {essaysCount?.count}</span>
-          </h3>
+      )}
+      {user.pep !== STUDENT_PEP && (
+        <div className={styles.count_container}>
+          <div className={styles.container_h3}>
+            <h3 className={styles.h3__text}>
+              Cadernos avaliados:
+              <span className={styles.counts}> {notebooksCount?.count}</span>
+            </h3>
+          </div>
+          <div className={styles.container_h3}>
+            <h3 className={styles.h3__text}>
+              Relatórios de leitura avaliados:
+              <span className={styles.counts}> {essaysCount?.count}</span>
+            </h3>
+          </div>
         </div>
-      </div>
+      )}
     </section>
   );
 }
