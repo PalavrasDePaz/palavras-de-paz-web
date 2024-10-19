@@ -56,9 +56,13 @@ export default function FormularioEditarTurmaRedacaoTemplate({
   }, [mutateResponseData, isMutateSuccess]);
 
   function formatDate(str: string | null) {
+    const HOURS_TO_ADD = 4;
     if (str) {
-      return new Date(str).toISOString();
-    } return null;
+      const date = new Date(str);
+      date.setUTCHours(date.getUTCHours() + HOURS_TO_ADD);
+      return date.toISOString();
+    }
+    return null;
   }
 
   const handleSubmit = () => {
