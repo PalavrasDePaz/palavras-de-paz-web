@@ -62,7 +62,7 @@ function Header() {
         </Box>
       </Navbar>
       <div className="side-buttons">
-        <a href="/voluntarie-se" rel="noopener noreferrer">
+        <a href="/cadastro" rel="noopener noreferrer">
           Voluntarie-se
         </a>
         <a
