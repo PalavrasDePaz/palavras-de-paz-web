@@ -18,9 +18,18 @@
   z-index: 2;
 }
 
-.styles-header > a {
-  font-size: 20px;
-  padding: 10px;
+.styles-header > .side-buttons {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+  padding: 4px;
+}
+
+.styles-header > .side-buttons > a {
+  font-size: 18px;
+  padding: 8px;
   white-space: nowrap;
   background: rgba(33, 170, 133, 1);
   color: white;
@@ -29,7 +38,7 @@
   margin: 0 8px;
 }
 
-.styles-header > a:hover {
+.styles-header > .side-buttons > a:hover {
   color: white;
   transition: transform 250ms;
   transform: scale(1.05);
