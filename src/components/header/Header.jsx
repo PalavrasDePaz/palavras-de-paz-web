@@ -61,13 +61,18 @@ function Header() {
           </Navbar.Offcanvas>
         </Box>
       </Navbar>
-      <a
-        href="https://palavrasdepaz.colabore.org/doacoes/single_step"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        Doe Agora
-      </a>
+      <div className="side-buttons">
+        <a href="/voluntarie-se" rel="noopener noreferrer">
+          Voluntarie-se
+        </a>
+        <a
+          href="https://palavrasdepaz.colabore.org/doacoes/single_step"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Doe Agora
+        </a>
+      </div>
     </container>
   );
 }
