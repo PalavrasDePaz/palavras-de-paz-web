@@ -8,7 +8,7 @@ export default function Inscricoes() {
     <div className={styles.inscricoes}>
       <h2 className={styles.title}>
         Inscreva-se no Programa de Educação para Paz e no Ouça sua Voz no âmbito
-        do prorama Oportunidade Já
+        do programa Oportunidade Já
       </h2>
 
       <div className="d-flex justify-content-center border-0">
