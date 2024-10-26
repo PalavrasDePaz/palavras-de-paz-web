@@ -1,10 +1,10 @@
 /* eslint-disable no-restricted-globals */
 import React, { useEffect, useState } from "react";
-import jwtDecode from "jwt-decode";
+import { useRouter } from "next/router";
 
 import HeaderWorkspace from "../../components/headerWorkspace/HeaderWorkspace";
 import { PALAVRAS_DE_PAZ_TOKEN } from "../../constants";
-import useLogin from "../../hooks/useLogin";
+import useGetUser from "../../hooks/useGetUser";
 
 import CadastroPrimeiraTela from "./components/CadastroPrimeiraTela";
 import CadastroSegundaTela from "./components/CadastroSegundaTela";
@@ -15,68 +15,32 @@ import Signature from "./components/Signature";
 import styles from "./styles/CadastroTemplate.module.css";
 
 export default function CadastroTemplate() {
+  const router = useRouter();
+
   const [controller, setController] = useState(0);
   const [formData, setFormData] = useState({});
 
-  const [isLoginFailed, setIsLoginFailed] = useState(false);
-  const [user, setUser] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
 
-  const loginMutation = useLogin();
-
-  // No caso de haver um usuário logado, primeiro deslogamos para depois fazer o cadastro.
-  useEffect(() => localStorage.removeItem(PALAVRAS_DE_PAZ_TOKEN), []);
+  useEffect(() => {
+    const token = localStorage.getItem(PALAVRAS_DE_PAZ_TOKEN);
+    if (!token) {
+      router.push("/login");
+    } else {
+      setIsLoading(false);
+    }
+  }, []);
 
   const PAGE_1 = 0;
   const PAGE_2 = 1;
   const PAGE_3 = 2;
   const FINISHED = 3;
 
-  useEffect(() => {
-    if (loginMutation.isSuccess) {
-      setIsLoginFailed(false);
-      setUser(loginMutation.data.data.volunteer);
-      localStorage.setItem(
-        PALAVRAS_DE_PAZ_TOKEN,
-        loginMutation.data.data.token
-      );
-      const {
-        attendanceModulePermission,
-        bookPermission,
-        certificationPermission,
-        determineVolunteerModulePermission,
-        essayModulePermission,
-        manageVolunteerModulePermission,
-        notebookModulePermission,
-        readPermission,
-        moduleNewsPermission,
-      } = jwtDecode(loginMutation.data.data.token);
-      localStorage.setItem(
-        "AUTH",
-        JSON.stringify({
-          attendanceModulePermission,
-          bookPermission,
-          certificationPermission,
-          determineVolunteerModulePermission,
-          essayModulePermission,
-          manageVolunteerModulePermission,
-          notebookModulePermission,
-          readPermission,
-          moduleNewsPermission,
-        })
-      );
-    } else if (loginMutation.isError) {
-      setController(PAGE_1);
-      setIsLoginFailed(true);
-    }
-  }, [loginMutation.isSuccess, loginMutation.isError]);
-
   const updateForm = (data) =>
     // eslint-disable-next-line implicit-arrow-linebreak
     setFormData((_formData) => ({ ..._formData, ...data }));
 
-  const loginCallback = (data) => {
-    updateForm(data);
-    loginMutation.mutate({ email: data.email, password: data.password });
+  const buttonCallbackFirstPage = () => {
     setController(controller + 1);
   };
 
@@ -90,16 +54,18 @@ export default function CadastroTemplate() {
     setController((_controller) => _controller - 1);
   };
 
+  // eslint-disable-next-line react/jsx-no-useless-fragment
+  if (isLoading) return <></>;
+
   return (
     <>
-      <HeaderWorkspace title="Cadastro de Voluntário para Universitários" />
+      <HeaderWorkspace title="Cadastro de Voluntário" />
       <Signature controller={controller} />
       <div className={styles.main_container_form}>
         {controller === PAGE_1 && (
           <CadastroPrimeiraTela
-            buttonCallback={loginCallback}
+            buttonCallback={buttonCallbackFirstPage}
             data={formData}
-            isLoginFailed={isLoginFailed}
           />
         )}
         {controller === PAGE_2 && (
@@ -116,9 +82,7 @@ export default function CadastroTemplate() {
             data={formData}
           />
         )}
-        {controller === FINISHED && (
-          <CadastroTelaFinal data={formData} user={user} />
-        )}
+        {controller === FINISHED && <CadastroTelaFinal data={formData} />}
       </div>
     </>
   );

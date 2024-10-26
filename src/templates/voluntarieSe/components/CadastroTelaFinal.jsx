@@ -13,6 +13,8 @@ import {
   UNEXPECTED_ERROR,
   VOLUNTEER_ALREADY_EXISTS,
 } from "../../../constants";
+import useGetUser from "../../../hooks/useGetUser";
+import useUserEmail from "../../../hooks/useUserEmail";
 
 import { FUTURE_ROLES, SKILLS } from "./constants";
 
@@ -32,13 +34,16 @@ const filterValues = (valuesObj, optionsObject) => {
   );
 };
 
-export default function CadastroTelaFinal({ data, user } = props) {
+export default function CadastroTelaFinal({ data } = props) {
   const router = useRouter();
 
   const [isError, setIsError] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
 
   const token = localStorage.getItem(PALAVRAS_DE_PAZ_TOKEN);
+
+  const userEmail = useUserEmail();
+  const { data: user } = useGetUser(userEmail);
 
   useEffect(() => {
     const { interestFutureRoles, rolesPep, needDeclaration } = data;
@@ -59,17 +64,23 @@ export default function CadastroTelaFinal({ data, user } = props) {
     finalObject.pep = 0;
 
     delete finalObject.idvol;
-    delete finalObject.pep;
-    delete finalObject.authorPermission;
     delete finalObject.isDisability;
     delete finalObject.opportunities;
     delete finalObject.createdAt;
+
+    delete finalObject.courseOne;
+    delete finalObject.courseTwo;
+    delete finalObject.authorization;
+    delete finalObject.authorPermission;
+    delete finalObject.bookclubPermission;
+    delete finalObject.notebookPermission;
+    delete finalObject.certificate;
 
     api
       .patch(`/volunteers/${data.email}`, finalObject, {
         headers: { Authorization: `Bearer ${token}` },
       })
-      .then(() => router.push("/login"))
+      .then(() => router.push("/area-de-trabalho"))
       .catch((error) => {
         if (error.response.status == 422) {
           setIsError(true);

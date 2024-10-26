@@ -99,7 +99,7 @@ export default function PrimeiroBox({ idVol, user }: IdVol) {
         <div className={styles.count_container}>
           <div className={styles.container_h3}>
             <h3 className={styles.h3__text}>
-              Cadernos avaliados:
+              Reflexões avaliadas:
               <span className={styles.counts}> {notebooksCount?.count}</span>
             </h3>
           </div>

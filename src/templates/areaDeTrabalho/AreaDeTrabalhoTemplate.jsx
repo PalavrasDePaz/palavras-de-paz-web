@@ -14,6 +14,7 @@ import GerenciamentoRedacoes from "./components/GerenciamentoRedacoes";
 import HeaderAreaDeTrabalho from "./components/HeaderAreaDeTrabalho";
 import NewsAndAgenda from "./components/NewsAndAgenda";
 import PrimeiroBox from "./components/PrimeiroBox";
+import VoluntarieSeButton from "./components/Voluntarie-se-Button";
 import WorkshopsAssistidos from "./components/WorkshopsAssistidos";
 
 import "react-toastify/dist/ReactToastify.css";
@@ -27,7 +28,7 @@ export default function AreaDeTrabalhoTemplate() {
     return null;
   }
 
-  const { idvol } = user;
+  const { idvol, pep } = user;
 
   const firstName = () => {
     const firstSpaceIndex = user.name.indexOf(" ");
@@ -53,10 +54,16 @@ export default function AreaDeTrabalhoTemplate() {
             <h2>id: {user?.idvol}</h2>
             <p>Aqui estão as suas atividades</p>
           </section>
+
+          {auth.moduleNewsPermission === true && pep !== 0 && (
+            <VoluntarieSeButton idvol={idvol} />
+          )}
+
           <aside className={styles.aside_container}>
             <PrimeiroBox idVol={idvol} user={user} />
             <WorkshopsAssistidos idvol={idvol} />
           </aside>
+
           {auth.readPermission === true && <AvaliarCadernos idvol={idvol} />}
 
           {auth.bookPermission === true && <AvaliarRedacoes idvol={idvol} />}
