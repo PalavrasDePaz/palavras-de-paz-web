@@ -172,7 +172,7 @@ export default function TabelaAvaliacoes({ selectedClasses }: props) {
       )}
 
       <GenericModal
-        title="Visualizar/Editar avaliação de caderno"
+        title="Visualizar/Editar avaliação de reflexão"
         isShown={notebookEvalToEdit != null}
         onToggle={() => toggleModalEdit(null)}
       >

@@ -96,7 +96,7 @@ export default function ParceirosTemplate() {
         <Box width="150px" direction="column" align="center" margin="20px 0">
           <Image src={card2} alt="" width="150%" height="150%" />
           <Typography
-            text={["ANNA SQUADRONI", <br />, "HELP DESK CADERNO DOS DETENTOS"]}
+            text={["ANNA SQUADRONI", <br />, "HELP DESK REFLEXÃO DOS DETENTOS"]}
             fontWeight="bold"
             fontSize="12px"
             textAlign="center"
@@ -105,7 +105,7 @@ export default function ParceirosTemplate() {
         <Box width="150px" direction="column" align="center" margin="20px 0">
           <Image src={card3} alt="" width="150%" height="150%" />
           <Typography
-            text={["CLEIDE DINARDI", <br />, "AVALIAÇÃO DOS CADERNOS"]}
+            text={["CLEIDE DINARDI", <br />, "AVALIAÇÃO DAS REFLEXÕES"]}
             fontWeight="bold"
             fontSize="12px"
             textAlign="center"
