@@ -1,0 +1,36 @@
+.inscricoes {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  min-width: 240px;
+  border-radius: 10px;
+  padding: 10px;
+  color: #21aa85;
+  background-color: #ffffff;
+  box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.2);
+  -webkit-box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.1);
+}
+
+.title {
+  font-size: 22px;
+  font-weight: bold;
+  margin-bottom: 36px;
+  color: black;
+}
+
+.title strong {
+  color: #21aa85;
+}
+
+.button {
+  font-size: 20px;
+  padding: 10px;
+  white-space: nowrap;
+  background: rgba(33, 170, 133, 1);
+  color: white;
+  text-decoration: none;
+  border-radius: 4px;
+  margin: 0 8px;
+}

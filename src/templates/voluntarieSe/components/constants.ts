@@ -11,17 +11,17 @@ export const countryArray = Object.values(countryObj).map((country) => ({
 
 export const HOW_FOUND_PEP = {
   fieldLabel: "Por onde você nos conheceu?",
-  options: [
-    "Atados",
-    "Instagram",
-    "Facebook",
-    "LinkedIn",
-    "Pepsico",
-    "Youtube",
-    "Website",
-    "Indicações",
-    "Outros",
-  ],
+  // options: [
+  //   "Atados",
+  //   "Instagram",
+  //   "Facebook",
+  //   "LinkedIn",
+  //   "Pepsico",
+  //   "Youtube",
+  //   "Website",
+  //   "Indicações",
+  //   "Outros",
+  // ],
 };
 
 export const KNOWLEDGE_PEP = {
