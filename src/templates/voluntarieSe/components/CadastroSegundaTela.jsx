@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useForm } from "react-hook-form";
 
 import { yupResolver } from "@hookform/resolvers/yup";
 
 import EmptyOption from "../../../components/forms/EmptyOption";
 import ErrorMessage from "../../../components/forms/ErrorMessage";
+import useGetUser from "../../../hooks/useGetUser";
+import useUserEmail from "../../../hooks/useUserEmail";
 
 import { HOW_FOUND_PEP, KNOWLEDGE_PEP, OPEN_TEXT_FIELDS } from "./constants";
 import { cadastroTela3Schema } from "./schemas";
@@ -19,14 +21,22 @@ export default function cadastroSegundaTela({
 } = props) {
   const [studiesKnowledge, lifeExperience, desires] = OPEN_TEXT_FIELDS;
 
+  const userEmail = useUserEmail();
+  const { data: user } = useGetUser(userEmail);
+
   const {
     register,
     handleSubmit,
     getValues,
     formState: { errors },
+    setValue,
   } = useForm({
     resolver: yupResolver(cadastroTela3Schema),
   });
+
+  useEffect(() => {
+    if (user) setValue("howFoundPep", String(user.pep));
+  }, [user]);
 
   const adjustTextAreaSize = (e) => {
     e.target.style.height = "inherit";
@@ -47,16 +57,14 @@ export default function cadastroSegundaTela({
             {HOW_FOUND_PEP.fieldLabel}
           </label>
           <select
-            defaultValue={data.howFoundPep || ""}
+            defaultValue={user?.pep || ""}
             className={styles.cadastroFormSectionInputText}
             {...register("howFoundPep")}
+            disabled
           >
-            <EmptyOption />
-            {HOW_FOUND_PEP.options.map((option) => (
-              <option key={option} value={option}>
-                {option}
-              </option>
-            ))}
+            <option key={user?.pep} value={user?.pep}>
+              Turma {user?.pep}
+            </option>
           </select>
           <ErrorMessage
             showError={errors.howFoundPep}
