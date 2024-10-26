@@ -3,7 +3,7 @@ import propTypes from "prop-types";
 
 import styles from "./ToggleSlideCheckoutButton.module.css";
 
-// Botão não implementado. Padronizar Avaliar Cadernos e Avaliar Redação para reutilizar componente
+// Botão não implementado. Padronizar Avaliar Reflexões e Avaliar Redação para reutilizar componente
 const ToggleSlideCheckoutButton = ({
   studentName,
   checked,

@@ -48,7 +48,7 @@ function VoluntariosMain() {
 
             <div className="voluntarios-text">
               <p>
-                Avaliador de Cadernos de detentos que fazem o curso de Educação
+                Avaliador de Reflexões de detentos que fazem o curso de Educação
                 para Paz; Parecerista do Clube de Leitura nas prisões;
                 Participantes de eventos com moradores de rua; Facilitadores do
                 curso; Tradutores; Operador do Zoom e outras plataformas; Social

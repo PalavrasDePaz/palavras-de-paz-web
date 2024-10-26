@@ -9,6 +9,7 @@ import { Button, Modal } from "react-bootstrap";
 import LoadingSpinner from "../../../../../components/loadingSpinner/LoadingSpinner";
 import GenericModal from "../../../../../components/modal";
 import { Class } from "../../../../../hooks/types";
+import useDeleteBookEval from "../../../../../hooks/useDeleteBookEvaluations";
 import useGetBookEvals from "../../../../../hooks/useGetBookEvals";
 import FormEditarAvalLivroTemplate from "../../../../formEditarAvalLivro/FormEditarAvalLivroTemplate";
 import { BookEval } from "../../../../formEditarAvalLivro/schema";
@@ -30,7 +31,11 @@ export default function TabelaAvaliacoes({ selectedClasses }: props) {
     data: bookEvals,
     isLoading,
     isError,
+    refetch: pageRefetch,
   } = useGetBookEvals(currentPage, selectedClasses);
+
+  const { mutate: mutateDelete, isSuccess: isSuccessDelete } =
+    useDeleteBookEval();
 
   const toggleModalEdit = (postBookEvalToEdit: BookEval | null) => {
     setBookEvalToEdit(postBookEvalToEdit);
@@ -75,11 +80,17 @@ export default function TabelaAvaliacoes({ selectedClasses }: props) {
   }
 
   function deleteEval() {
-    if (bookEvalToDelete) {
-      // TO-DO
+    if (bookEvalToDelete?.id) {
+      mutateDelete({ evaluationId: bookEvalToDelete.id });
     }
     setShowDeleteConfirmationModal(false);
   }
+
+  useEffect(() => {
+    if (isSuccessDelete) {
+      pageRefetch();
+    }
+  }, [isSuccessDelete]);
 
   const [auth, setAuth] = useState<Record<string, boolean>>({});
 
@@ -203,7 +214,13 @@ export default function TabelaAvaliacoes({ selectedClasses }: props) {
         )}
       </GenericModal>
 
-      <Modal show={showDeleteConfirmationModal} animation={false}>
+      <Modal
+        show={showDeleteConfirmationModal}
+        handleClose={() => setShowDeleteConfirmationModal(false)}
+        onHide={() => setShowDeleteConfirmationModal(false)}
+        centered
+        animation={false}
+      >
         <Modal.Header closeButton>
           <Modal.Title>Excluir Avaliação de Redação</Modal.Title>
         </Modal.Header>

@@ -163,11 +163,11 @@ const FormAvalCadTemplate: React.FC<FormularioAvaliacaoCadernoProps> = ({
     <>
       <HeaderForm />
       <header className={styles.headerContainer}>
-        <h1>AVALIAÇÃO DE CADERNOS CEP/FUNAP/SATPR</h1>
+        <h1>AVALIAÇÃO DE REFLEXÕES CEP/FUNAP/SATPR</h1>
       </header>
       <main className={styles.mainContainer}>
         <h2 className={styles.subtitle}>
-          Leitura de Cadernos dos Alunos do Projeto CEP/FUNAP/SATPR
+          Leitura de Reflexões dos Alunos do Projeto CEP/FUNAP/SATPR
         </h2>
         <form onSubmit={handleSubmit}>
           <section className={styles.sectionContainer}>

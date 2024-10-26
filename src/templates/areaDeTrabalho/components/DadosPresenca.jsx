@@ -181,7 +181,7 @@ const ModalDadosPresenca = ({ show, onHide }) => {
                 <tr>
                   <th>Nome</th>
                   <th>ID Vol</th>
-                  <th>Aval cadernos</th>
+                  <th>Aval reflexões</th>
                   <th>Aval livro</th>
                   <th>Cert</th>
                   <th>habil-leitura</th>

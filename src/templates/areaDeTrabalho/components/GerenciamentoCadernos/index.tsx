@@ -34,7 +34,7 @@ export default function GerenciamentoCadernos() {
 
   return (
     <section className={styles.gerenciamento_section}>
-      <h1>Gerenciamento de Cadernos</h1>
+      <h1>Gerenciamento de Reflexões</h1>
       <Tabs
         tabs={tabsContent}
         setActiveTab={setActiveTab}

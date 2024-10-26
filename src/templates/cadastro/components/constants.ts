@@ -62,7 +62,7 @@ export const FUTURE_ROLES = [
   { label: "Facilitador virtual", value: "facilitadorVirtual" },
   { label: "Avaliador remoto", value: "avaliadorRemoto" },
   { label: "Captação de voluntário", value: "captaçãoDeVoluntario" },
-  { label: "Leitura de caderno de presos Virtual", value: "leituraDeCaderno" },
+  { label: "Leitura de reflexão de presos Virtual", value: "leituraDeCaderno" },
   { label: "Tradutor remoto", value: "tradutorRemoto" },
   { label: "Divulgação", value: "divulgacao" },
   { label: "Captação de grupos", value: "captacaoDeGrupos" },

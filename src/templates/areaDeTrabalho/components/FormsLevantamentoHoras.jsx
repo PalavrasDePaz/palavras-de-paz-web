@@ -79,7 +79,7 @@ function FormLvntHoras() {
               base de horas das DHA (declarações de horas por atividade).
             </p>
             <p className={styles.section_p2}>
-              Avaliadores de cadernos e avaliadores de redações não precisam
+              Avaliadores de reflexões e avaliadores de redações não precisam
               enviar esse formulário. Se você, além de avaliação, realiza também
               outras atividades, as declare neste formulário.
             </p>
