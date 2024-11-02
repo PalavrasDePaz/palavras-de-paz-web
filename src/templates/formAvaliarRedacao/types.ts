@@ -61,5 +61,6 @@ export const CheckBoxType = [
   "Carpe Diem (Cap 12)",
   "Lobo bom, lobo mau (Cap 12)",
   "O pássaro e a gaiola (Cap 12)",
+  "A menina que perdeu o celular (Cap 1)",
   "Outra (descrever no próximo item)",
 ];
