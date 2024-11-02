@@ -34,6 +34,7 @@ export default class MyDocument extends Document {
     return (
       <Html lang="pt-BR">
         <Head>
+          <Analytics />
           <link rel="preconnect" href="https://fonts.googleapis.com" />
           <link
             rel="preconnect"
@@ -77,10 +78,18 @@ export default class MyDocument extends Document {
           />
         </Head>
         <body>
+          <noscript>
+            <iframe
+              title="googleTagManager"
+              src="https://www.googletagmanager.com/ns.html?id=GTM-WWNSJ75N"
+              height="0"
+              width="0"
+              style={{ display: "none", visibility: "hidden" }}
+            />
+          </noscript>
           <Main />
           <NextScript />
         </body>
-        <Analytics />
       </Html>
     );
   }
