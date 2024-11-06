@@ -61,7 +61,6 @@ export default function CadastroTelaFinal({ data } = props) {
     );
 
     const finalObject = { ...user, ...apiObject };
-    finalObject.pep = 0;
 
     delete finalObject.idvol;
     delete finalObject.isDisability;
@@ -78,7 +77,10 @@ export default function CadastroTelaFinal({ data } = props) {
 
     api
       .patch(`/volunteers/${data.email}`, finalObject, {
-        headers: { Authorization: `Bearer ${token}` },
+        headers: {
+          Authorization: `Bearer ${token}`,
+          turma: finalObject.howFoundPep,
+        },
       })
       .then(() => router.push("/area-de-trabalho"))
       .catch((error) => {
