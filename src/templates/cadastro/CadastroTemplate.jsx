@@ -62,7 +62,7 @@ export default function CadastroTemplate() {
       <HeaderWorkspace
         title={
           student
-            ? "Inscrição de Estudante Universitário"
+            ? "Inscrição para o Programa de Educação para Paz"
             : "Cadastro de voluntário"
         }
       />
