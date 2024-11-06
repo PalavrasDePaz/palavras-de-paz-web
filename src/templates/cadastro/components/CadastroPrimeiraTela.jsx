@@ -54,7 +54,7 @@ export default function cadastroPrimeiraTela({
       <section>
         <h1 className={styles.formTitle}>
           {student
-            ? "INSCRIÇÃO DE ESTUDANTE UNIVERSITÁRIO"
+            ? "INSCRIÇÃO PARA O PROGRAMA DE EDUCAÇÃO PARA PAZ"
             : "CADASTRO DE VOLUNTÁRIOS"}
         </h1>
 
