@@ -181,6 +181,7 @@ const ModalDadosPresenca = ({ show, onHide }) => {
                 <tr>
                   <th>Nome</th>
                   <th>ID Vol</th>
+                  <th>ID Pep</th>
                   <th>Aval reflexões</th>
                   <th>Aval livro</th>
                   <th>Cert</th>
@@ -223,6 +224,7 @@ const ModalDadosPresenca = ({ show, onHide }) => {
                   <tr key={presenca.id}>
                     <td>{presenca.nome}</td>
                     <td>{presenca.idvol}</td>
+                    <td>{presenca.idpep}</td>
                     <td>{presenca["aval cadernos"]}</td>
                     <td>{presenca["aval livro"]}</td>
                     <td>{presenca.cert}</td>
