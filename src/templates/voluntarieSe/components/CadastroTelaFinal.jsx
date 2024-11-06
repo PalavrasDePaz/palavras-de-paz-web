@@ -62,6 +62,7 @@ export default function CadastroTelaFinal({ data } = props) {
 
     const finalObject = { ...user, ...apiObject };
 
+    delete finalObject.pep;
     delete finalObject.idvol;
     delete finalObject.isDisability;
     delete finalObject.opportunities;
@@ -76,7 +77,7 @@ export default function CadastroTelaFinal({ data } = props) {
     delete finalObject.certificate;
 
     api
-      .patch(`/volunteers/${data.email}`, finalObject, {
+      .patch(`/volunteers/${finalObject.email}`, finalObject, {
         headers: {
           Authorization: `Bearer ${token}`,
           turma: finalObject.howFoundPep,
