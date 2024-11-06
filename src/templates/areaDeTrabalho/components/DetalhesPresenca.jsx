@@ -204,6 +204,7 @@ const ModalDetalhesPresenca = ({ show, onHide, selectedDate }) => {
                 <tr>
                   <th>Data de Submissão</th>
                   <th>ID Voluntário</th>
+                  <th>ID Pep</th>
                   <th>Nome</th>
                   <th>Assunto do Workshop</th>
                   <th>Desafio Enfrentado</th>
@@ -225,6 +226,7 @@ const ModalDetalhesPresenca = ({ show, onHide, selectedDate }) => {
                       )}
                     </td>
                     <td>{attendance.idvol}</td>
+                    <td>{attendance.idpep}</td>
                     <td>{attendance.name}</td>
                     <td>{attendance.workshopSubject}</td>
                     <td>{attendance.whatChallengedYou}</td>

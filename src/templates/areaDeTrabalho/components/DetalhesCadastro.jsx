@@ -213,6 +213,7 @@ const ModalDetalhesCadastro = ({ show, onHide, selectedDate }) => {
                 <tr>
                   <th>Data de Submissão</th>
                   <th>ID Voluntário</th>
+                  <th>ID Pep</th>
                   <th>Nome</th>
                   <th>Data de Nascimento</th>
                   <th>Email</th>
@@ -247,6 +248,7 @@ const ModalDetalhesCadastro = ({ show, onHide, selectedDate }) => {
                       {format(new Date(attendance.createdAt), "dd/MM/yyyy")}
                     </td>
                     <td>{attendance.idvol}</td>
+                    <td>{attendance.pep}</td>
                     <td>{attendance.name}</td>
                     <td>{formatBirthDate(attendance?.birthDate)}</td>
                     <td>{attendance?.email}</td>
