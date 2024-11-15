@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-no-useless-fragment */
 /* eslint-disable react/prop-types */
 /* eslint-disable eqeqeq */
 /* eslint-disable no-magic-numbers */
@@ -37,7 +38,9 @@ const filterValues = (valuesObj, optionsObject) => {
 export default function CadastroTelaFinal({ data } = props) {
   const router = useRouter();
 
+  const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
 
   const token = localStorage.getItem(PALAVRAS_DE_PAZ_TOKEN);
@@ -76,6 +79,7 @@ export default function CadastroTelaFinal({ data } = props) {
     delete finalObject.notebookPermission;
     delete finalObject.certificate;
 
+    setIsLoading(true);
     api
       .patch(`/volunteers/${finalObject.email}`, finalObject, {
         headers: {
@@ -83,15 +87,21 @@ export default function CadastroTelaFinal({ data } = props) {
           turma: finalObject.howFoundPep,
         },
       })
-      .then(() => router.push("/area-de-trabalho"))
+      .then(() => {
+        setIsLoading(false);
+        setIsSuccess(true);
+        setTimeout(() => {
+          window.location.replace("/area-de-trabalho");
+        }, 3000);
+      })
       .catch((error) => {
+        setIsLoading(false);
+        setIsError(true);
         if (error.response.status == 422) {
-          setIsError(true);
           if (error.response.data.name) {
             setErrorMessage(error.response.data.name);
           }
         } else if (!token?.length) {
-          setIsError(true);
           setErrorMessage(
             "Erro ao processar usuário. Por favor, reinicie o processo."
           );
@@ -101,31 +111,50 @@ export default function CadastroTelaFinal({ data } = props) {
       });
   }, []);
 
-  const getContent = () => {
-    if (isError) {
-      const existingUser = errorMessage === VOLUNTEER_ALREADY_EXISTS;
-      const message = existingUser
-        ? VOLUNTEER_ALREADY_EXISTS
-        : UNEXPECTED_ERROR;
-      return (
-        <p className={styles.formParagraph} style={{ color: "red" }}>
-          {message}
-        </p>
-      );
-    }
-
-    return <LoadingSpinner />;
-  };
-
   return (
     <section>
-      {getContent()}
-      {isError && (
+      {isLoading && (
+        <div
+          style={{
+            display: "flex",
+            width: "100%",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <LoadingSpinner />
+        </div>
+      )}
+      {!isLoading && isError ? (
+        (() => {
+          const existingUser = errorMessage === VOLUNTEER_ALREADY_EXISTS;
+          const message = existingUser
+            ? VOLUNTEER_ALREADY_EXISTS
+            : UNEXPECTED_ERROR;
+          return (
+            <p className={styles.formParagraph} style={{ color: "red" }}>
+              {message}
+            </p>
+          );
+        })()
+      ) : (
+        <></>
+      )}
+      {!isLoading && isError && (
         <Link href="/">
           <button className={styles.cadastroFormSectionButton}>
             Voltar para a página inicial
           </button>
         </Link>
+      )}
+      {isSuccess && (
+        <p
+          className={styles.formParagraph}
+          style={{ textAlign: "center", fontWeight: "bold", fontSize: 22 }}
+        >
+          Processo concluído com sucesso! Você será redirecionado para página
+          inicial em breve.
+        </p>
       )}
     </section>
   );
