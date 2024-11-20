@@ -63,7 +63,11 @@ export default function CadastroTelaFinal({ data } = props) {
       Object.entries(restOfData).filter(([, v]) => v != null)
     );
 
-    const finalObject = { ...user, ...apiObject };
+    const finalObject = {
+      ...user,
+      ...apiObject,
+      bachelor: apiObject?.bachelor ?? "",
+    };
 
     delete finalObject.pep;
     delete finalObject.idvol;
