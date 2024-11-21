@@ -149,15 +149,12 @@ export default function TabelaAvaliacoes({ selectedClasses }: props) {
                     </button>
                   </td>
                   <td>
-                    {auth.notebookModulePermission &&
-                      auth.essayModulePermission && (
-                        <button
-                          className={styles.delete_button}
-                          onClick={() => showDeleteConfirmation(bookEval)}
-                        >
-                          Excluir
-                        </button>
-                      )}
+                    <button
+                      className={styles.delete_button}
+                      onClick={() => showDeleteConfirmation(bookEval)}
+                    >
+                      Excluir
+                    </button>
                   </td>
                 </tr>
               ))}
