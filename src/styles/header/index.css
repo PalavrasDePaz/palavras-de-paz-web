@@ -129,3 +129,18 @@ a.nav-link:hover {
     max-width: 200px;
   }
 }
+
+.blinkingLink {
+  animation: blink-animation 1.5s infinite;
+  font-weight: 500;
+}
+
+@keyframes blink-animation {
+  0%,
+  100% {
+    color: rgba(33, 170, 133, 1);
+  }
+  50% {
+    color: black;
+  }
+}

@@ -67,8 +67,9 @@ export type NotebookClass = {
 };
 
 export type Publication = {
-  id: number | null;
-  img: string;
-  content: string;
-  createdAt: Date | null;
+  title: string;
+  description: string;
+  fileName: string;
+  fileUrl: string;
+  file: File | null;
 };
