@@ -11,6 +11,8 @@ import { SlCloudUpload } from "react-icons/sl";
 import { toast } from "react-toastify";
 
 import { Publication } from "../../../../../hooks/types";
+import useUpdateSchedule from "../../../../../hooks/useUpdateSchedule";
+import useUploadSchedule from "../../../../../hooks/useUploadSchedule";
 
 import styles from "./styles.module.css";
 
@@ -26,84 +28,40 @@ export interface IFile {
   url: string;
 }
 
-const config = {
-  readonly: false,
-  placeholder: "",
-  uploader: {
-    insertImageAsBase64URI: true,
-    imagesExtensions: ["jpg", "png", "jpeg"],
-    process: (
-      formData: FormData,
-      xhr: XMLHttpRequest,
-      editor: any,
-      files: File[]
-    ) => {
-      const reader = new FileReader();
-      reader.onload = (event) => {
-        const base64String = event?.target?.result;
-        editor.selection.insertImage(base64String);
-      };
-      reader.readAsDataURL(files[0]);
-      return false;
-    },
-  },
-};
-
 interface Props {
-  publicationId: number | null;
-  publicationList: Publication[];
-  setPublicationList: React.Dispatch<React.SetStateAction<Publication[]>>;
+  selectedPublication: Publication;
+  setNewsAndAgendaList: React.Dispatch<
+    React.SetStateAction<Record<number, Publication>>
+  >;
 }
 
 export default function PubTextEditor({
-  publicationId,
-  publicationList,
-  setPublicationList,
-}: Props) {
-  const [selectedPublication, setSelectedPublication] =
-    useState<Publication | null>(null);
+  selectedPublication,
+  setNewsAndAgendaList,
+}: Readonly<Props>) {
+  const isNewPublication = !selectedPublication.file;
+  const [publication, setPublication] = useState(selectedPublication);
 
-  const [content, setContent] = useState<string>("");
+  const {
+    mutate: mutateUpload,
+    isSuccess: isSuccessUpload,
+    isError: isErrorUpload,
+    reset: resetUpload,
+  } = useUploadSchedule();
 
-  useEffect(() => {
-    if (publicationId === null) {
-      setSelectedPublication({
-        id: null,
-        img: "",
-        content: "",
-        createdAt: null,
-      });
-    } else {
-      const searchedPublication = publicationList.filter(
-        (data) => data.id === publicationId
-      )[0];
-      if (searchedPublication) {
-        setSelectedPublication(searchedPublication);
-      }
-    }
-  }, [publicationId]);
-
-  useEffect(() => {
-    if (selectedPublication?.content !== undefined) {
-      setContent(selectedPublication.content);
-    }
-  }, [selectedPublication]);
-
-  useEffect(() => {
-    if (selectedPublication) {
-      setSelectedPublication({
-        ...selectedPublication,
-        content,
-      });
-    }
-  }, [content]);
+  const {
+    mutate: mutateUpdate,
+    isSuccess: isSuccessUpdate,
+    isError: isErrorUpdate,
+    reset: resetUpdate,
+  } = useUpdateSchedule();
 
   const handleChange = (
     event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
     fieldName: keyof Publication
   ) => {
     const { value } = event.target;
-    setSelectedPublication((prev) => {
+    setPublication((prev) => {
       if (prev)
         return {
           ...prev,
@@ -132,15 +90,15 @@ export default function PubTextEditor({
     async (files: File[]) => {
       const stringBase64 = await convertFileToBase64(files[0]);
       const url = stringBase64 as string;
-      if (selectedPublication)
-        setSelectedPublication((prev) => {
-          if (prev)
-            return {
-              ...prev,
-              img: url,
-            };
-          return prev;
-        });
+      setPublication((prev) => {
+        if (prev)
+          return {
+            ...prev,
+            fileUrl: url,
+            file: new File([files[0]], `${selectedPublication.fileName}.jpg`),
+          };
+        return prev;
+      });
     },
     [convertFileToBase64]
   );
@@ -180,58 +138,43 @@ export default function PubTextEditor({
     );
   }, [isDragActive, isDragReject]);
 
-  function saveInStorage(list: Publication[]) {
-    try {
-      localStorage.setItem("newsAndAgendaList", JSON.stringify(list));
-      toast.success("Salvo com sucesso!", {
-        autoClose: 600,
-      });
-      return true;
-    } catch (error) {
-      toast.info("Seu limite de espaço foi atingido!");
-      return false;
-    }
+  function savePub() {
+    mutateUpload({ data: publication });
   }
 
-  // chamar mutate pra salvar no backend em breve
-  function savePub() {
-    if (selectedPublication) {
-      // fazer futuras validações nesse trecho
-      setPublicationList((prev) => {
-        if (selectedPublication.id !== null) {
-          const filteredList = [...prev].filter(
-            (item) => item.id !== selectedPublication.id
-          );
-          const newList = [...filteredList, selectedPublication];
-          const saved = saveInStorage(newList);
-          return saved ? newList : prev;
-        }
-        const newList = [
-          ...prev,
-          {
-            ...selectedPublication,
-            id: publicationList.length + 1,
-            createdAt: new Date(),
-          },
-        ];
-        const saved = saveInStorage(newList);
-        return saved ? newList : prev;
-      });
-    }
+  function updatePub() {
+    mutateUpdate({ data: publication });
   }
+
+  function saveOrUpdatePub() {
+    isNewPublication ? savePub() : updatePub();
+  }
+
+  useEffect(() => {
+    if (isSuccessUpload || isSuccessUpdate) {
+      toast.success("Salva com sucesso!");
+      setNewsAndAgendaList((prev) => ({
+        ...prev,
+        [Number(publication.fileName.replace("schedule", ""))]: publication,
+      }));
+      resetUpdate();
+      resetUpload();
+    } else if (isErrorUpload || isErrorUpdate) {
+      toast.error("Erro ao salvar!");
+    }
+  }, [isSuccessUpload, isSuccessUpdate, isErrorUpload, isErrorUpdate]);
 
   return (
     <article className={styles.textEditor}>
       <div className={styles.dropImageContainer} {...getRootProps()}>
         <p className={styles.pubCoverLabel}>Capa da publicação:</p>
-        {selectedPublication?.img && (
+        {publication?.fileUrl?.length ? (
           <img
             className={styles.pubCover}
             alt="Capa da publicação"
-            src={selectedPublication.img}
+            src={publication.fileUrl}
           />
-        )}
-        {!selectedPublication?.img && (
+        ) : (
           <SlCloudUpload className={styles.pubCover} />
         )}
         <input {...getInputProps()} />
@@ -242,15 +185,18 @@ export default function PubTextEditor({
         <label htmlFor="pubcontent">Conteúdo:</label>
         <textarea
           id="pubContent"
-          value={selectedPublication?.content}
-          name="content"
-          onChange={(e) => handleChange(e, "content")}
+          value={publication?.description}
+          name="description"
+          onChange={(e) => handleChange(e, "description")}
           cols={100}
           rows={10}
         />
       </div>
 
-      <button className={styles.savePubButton} onClick={() => savePub()}>
+      <button
+        className={styles.savePubButton}
+        onClick={() => saveOrUpdatePub()}
+      >
         Salvar
       </button>
     </article>

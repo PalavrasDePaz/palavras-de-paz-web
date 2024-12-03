@@ -1,3 +1,5 @@
+/* eslint-disable react/jsx-no-useless-fragment */
+/* eslint-disable no-magic-numbers */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 
@@ -6,10 +8,8 @@ import Image from "next/image";
 import { useMediaQuery } from "react-responsive";
 
 import Logo from "../../../public/static/images/logo.svg";
-import GenericModal from "../../components/modal";
+import { api } from "../../api";
 import { Publication } from "../../hooks/types";
-
-import NewsAndAgendaPublication from "./NewsAndAgendaPublication";
 
 import styles from "./publicacoes.module.css";
 
@@ -17,50 +17,68 @@ const Publicacoes = () => {
   const isSmall = useMediaQuery({ query: "(max-width: 576px)" });
 
   const [newsAndAgendaList, setNewsAndAgendaList] = useState(
-    [] as Publication[]
+    {} as Record<number, Publication>
   );
 
+  async function groupSchedules() {
+    const indexes = [1, 2, 3, 4, 5];
+
+    indexes.forEach(async (index) => {
+      const publication = {
+        title: `schedule${index}`,
+        description: "",
+        fileName: `schedule${index}`,
+        fileUrl: "",
+        file: null,
+      } as Publication;
+
+      try {
+        const imageResponse = await api.get(`/static/schedule${index}.jpg`, {
+          responseType: "blob",
+        });
+        publication.file = imageResponse.data;
+        publication.fileUrl = URL.createObjectURL(imageResponse.data);
+      } catch (e) {
+        console.error(e);
+      }
+
+      try {
+        const jsonResponse = await api.get(`/static/schedule${index}.json`);
+        publication.title = jsonResponse.data?.title;
+        publication.description = jsonResponse.data?.description;
+      } catch (e) {
+        console.error(e);
+      }
+
+      setNewsAndAgendaList((prev) => ({ ...prev, [index]: publication }));
+    });
+  }
+
   useEffect(() => {
-    const items = localStorage.getItem("newsAndAgendaList");
-    if (items) {
-      setNewsAndAgendaList(JSON.parse(items) as Publication[]);
-    }
+    groupSchedules();
   }, []);
-
-  const [selectedPublication, setSelectedPublication] =
-    useState<Publication | null>(null);
-
-  const toggleModalEdit = (selectedPublicationToView: Publication | null) => {
-    setSelectedPublication(selectedPublicationToView);
-  };
 
   return (
     <div className={styles.pubs}>
-      {newsAndAgendaList.map((pub) => (
-        <div
-          className={styles.pubContainer}
-          style={{
-            width: isSmall ? "90%" : "500px",
-            height: "auto",
-            aspectRatio: "1/1",
-            position: "relative",
-          }}
-          onClick={() => toggleModalEdit(pub)}
-          key={pub.id}
-        >
-          <Image src={pub.img || Logo} alt="Agenda da ONG" layout="fill" />
-        </div>
-      ))}
+      {Object.keys(newsAndAgendaList).map((key) => {
+        const pub = newsAndAgendaList[Number(key)];
 
-      <GenericModal
-        title="Publicação"
-        isShown={selectedPublication != null}
-        onToggle={() => toggleModalEdit(null)}
-      >
-        {selectedPublication != null && (
-          <NewsAndAgendaPublication publication={selectedPublication} />
-        )}
-      </GenericModal>
+        if (pub.file)
+          return (
+            <div className={styles.pubContainer}>
+              <div className={styles.pubContainerImg} key={pub.fileName}>
+                <Image
+                  src={pub.fileUrl || Logo}
+                  alt="Agenda da ONG"
+                  layout="fill"
+                />
+              </div>
+              <p>{pub.description}</p>
+            </div>
+          );
+
+        return <></>;
+      })}
     </div>
   );
 };
