@@ -53,7 +53,7 @@ function Header() {
                 <Nav.Link href="/parcerias">Parcerias</Nav.Link>
                 <Nav.Link href="/publicacoes ">Publicações</Nav.Link>
                 <Nav.Link href="/agenda " className="blinkingLink">
-                  Agenda
+                  Agenda & News
                 </Nav.Link>
                 {new Date() >= new Date("2023-12-17") && (
                   <Nav.Link href="/login">Login</Nav.Link>
