@@ -40,6 +40,19 @@
   color: hsla(0, 0%, 100%, 1);
 }
 
+.dadosSecondDivFrasesRelevantes {
+  grid-column: 2;
+  padding-inline: 120px 16px;
+  padding-top: 64px;
+  display: flex;
+  align-items: center;
+  align-self: flex-end;
+  justify-content: flex-end;
+  gap: 10px;
+  font-size: 18px;
+  color: hsla(0, 0%, 100%, 1);
+}
+
 .dadosSecondDiv a {
   text-decoration: none;
   color: hsla(0, 0%, 100%, 1);

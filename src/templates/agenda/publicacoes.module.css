@@ -1,8 +1,14 @@
 .pubs {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
   gap: 8px;
   margin-top: 16px;
+}
+
+@media (max-width: 550px) {
+  .pubs {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  }
 }
 
 .pubContainer {
