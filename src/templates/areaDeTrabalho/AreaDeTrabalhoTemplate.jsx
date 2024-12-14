@@ -9,6 +9,7 @@ import AvaliarRedacoes from "./components/AvaliarRedacoes";
 import DadosPresenca from "./components/DadosPresenca";
 import DetalhesCadastro from "./components/DetalhesCadastro";
 import DetalhesPresenca from "./components/DetalhesPresenca";
+import ExtrairFrasesRelevantes from "./components/ExtrairFrasesRelevantes";
 import GerenciamentoCadernos from "./components/GerenciamentoCadernos";
 import GerenciamentoRedacoes from "./components/GerenciamentoRedacoes";
 import HeaderAreaDeTrabalho from "./components/HeaderAreaDeTrabalho";
@@ -77,6 +78,8 @@ export default function AreaDeTrabalhoTemplate() {
           {auth.determineVolunteerModulePermission === true && (
             <DetalhesCadastro />
           )}
+
+          {auth.moduleNewsPermission === true && <ExtrairFrasesRelevantes />}
 
           {auth.moduleNewsPermission === true && <NewsAndAgenda />}
 
