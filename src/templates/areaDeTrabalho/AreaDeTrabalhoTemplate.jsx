@@ -79,7 +79,7 @@ export default function AreaDeTrabalhoTemplate() {
             <DetalhesCadastro />
           )}
 
-          {auth.moduleNewsPermission === true && <ExtrairFrasesRelevantes />}
+          {auth.moduleRelevants === true && <ExtrairFrasesRelevantes />}
 
           {auth.moduleNewsPermission === true && <NewsAndAgenda />}
 

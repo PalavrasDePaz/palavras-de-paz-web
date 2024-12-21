@@ -95,6 +95,7 @@ const LoginForm = ({ logIn } = props) => {
         notebookModulePermission,
         readPermission,
         moduleNewsPermission,
+        moduleRelevants,
       } = jwtDecode(loginData.data.token);
       localStorage.setItem(
         "AUTH",
@@ -108,6 +109,7 @@ const LoginForm = ({ logIn } = props) => {
           notebookModulePermission,
           readPermission,
           moduleNewsPermission,
+          moduleRelevants,
         })
       );
       logIn(loginData.data.volunteer.email);
