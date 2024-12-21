@@ -13,6 +13,8 @@ import { Publication } from "../../hooks/types";
 
 import styles from "./publicacoes.module.css";
 
+const urlRegex = /https?:\/\/\S*(?=\s|$)/g;
+
 const Publicacoes = () => {
   const isSmall = useMediaQuery({ query: "(max-width: 576px)" });
 
@@ -62,6 +64,17 @@ const Publicacoes = () => {
     <div className={styles.pubs}>
       {Object.keys(newsAndAgendaList).map((key) => {
         const pub = newsAndAgendaList[Number(key)];
+        let { description } = pub;
+
+        const matches = description.match(urlRegex) ?? [];
+        const uniqueMatches = matches.filter(
+          (url, index, self) => self.indexOf(url) === index
+        );
+
+        uniqueMatches?.forEach((match) => {
+          const urlString = ` <a href="${match}" target="_blank">${match}</a> `;
+          description = description.replaceAll(match, urlString);
+        });
 
         if (pub.file)
           return (
@@ -73,7 +86,7 @@ const Publicacoes = () => {
                   layout="fill"
                 />
               </div>
-              <p>{pub.description}</p>
+              <p dangerouslySetInnerHTML={{ __html: description }} />
             </div>
           );
 

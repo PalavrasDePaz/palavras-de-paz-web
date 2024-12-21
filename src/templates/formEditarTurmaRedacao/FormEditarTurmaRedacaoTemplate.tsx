@@ -107,11 +107,8 @@ export default function FormularioEditarTurmaRedacaoTemplate({
     formDataToSend.endEvaluationDate = formatDate(
       formDataToSend.endEvaluationDate
     );
-    if (!formDataToSend.endEvaluationDate)
-      delete formDataToSend.endEvaluationDate;
 
     formDataToSend.sendDateFunap = formatDate(formDataToSend.sendDateFunap);
-    if (!formDataToSend.sendDateFunap) delete formDataToSend.sendDateFunap;
 
     mutatePutBookEval({
       data: formDataToSend as any,
