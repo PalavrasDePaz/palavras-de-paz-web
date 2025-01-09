@@ -65,6 +65,7 @@ const Publicacoes = () => {
       {Object.keys(newsAndAgendaList).map((key) => {
         const pub = newsAndAgendaList[Number(key)];
         let { description } = pub;
+        const { file, fileUrl, fileName } = pub;
 
         const matches = description.match(urlRegex) ?? [];
         const uniqueMatches = matches.filter(
@@ -76,12 +77,12 @@ const Publicacoes = () => {
           description = description.replaceAll(match, urlString);
         });
 
-        if (pub.file)
+        if (file || description)
           return (
             <div className={styles.pubContainer}>
-              <div className={styles.pubContainerImg} key={pub.fileName}>
+              <div className={styles.pubContainerImg} key={fileName}>
                 <Image
-                  src={pub.fileUrl || Logo}
+                  src={fileUrl || Logo}
                   alt="Agenda da ONG"
                   layout="fill"
                 />
