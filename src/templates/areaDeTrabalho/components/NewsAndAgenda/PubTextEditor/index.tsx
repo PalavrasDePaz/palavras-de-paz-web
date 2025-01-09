@@ -39,7 +39,8 @@ export default function PubTextEditor({
   selectedPublication,
   setNewsAndAgendaList,
 }: Readonly<Props>) {
-  const isNewPublication = !selectedPublication.file;
+  const isNewPublication =
+    !selectedPublication.file && !selectedPublication.description;
   const [publication, setPublication] = useState(selectedPublication);
 
   const {

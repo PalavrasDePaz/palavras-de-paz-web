@@ -1,3 +1,4 @@
+/* eslint-disable complexity */
 /* eslint-disable react/jsx-curly-newline */
 /* eslint-disable max-lines */
 /* eslint-disable @typescript-eslint/no-unused-vars */
@@ -29,6 +30,7 @@ export default function NewsAndAgenda() {
 
   const [selectedPublication, setSelectedPublication] =
     useState<Publication | null>(null);
+  const [pubToDelete, setPubToDelete] = useState<Publication | null>(null);
 
   const {
     mutate: mutateDelete,
@@ -80,28 +82,32 @@ export default function NewsAndAgenda() {
 
   function removePub(pub: Publication) {
     mutateDelete({ data: pub });
-    setNewsAndAgendaList((prev) => {
-      const scheduleIndex = Number(pub.fileName.replace("schedule", ""));
-      return {
-        ...prev,
-        [scheduleIndex]: {
-          title: `schedule${scheduleIndex}`,
-          description: "",
-          fileName: `schedule${scheduleIndex}`,
-          fileUrl: "",
-          file: null,
-        },
-      };
-    });
+    setPubToDelete(pub);
   }
 
   useEffect(() => {
-    if (isSuccessDelete) {
+    if (isSuccessDelete && pubToDelete) {
       toast.success("Excluída com sucesso!");
+      setNewsAndAgendaList((prev) => {
+        const scheduleIndex = Number(
+          pubToDelete?.fileName.replace("schedule", "")
+        );
+        return {
+          ...prev,
+          [scheduleIndex]: {
+            title: `schedule${scheduleIndex}`,
+            description: "",
+            fileName: `schedule${scheduleIndex}`,
+            fileUrl: "",
+            file: null,
+          },
+        };
+      });
+      setPubToDelete(null);
     } else if (isErrorDelete) {
       toast.error("Ocorreu um erro ao tentar excluir!");
     }
-  }, [isSuccessDelete, isErrorDelete]);
+  }, [isSuccessDelete, isErrorDelete, pubToDelete]);
 
   return (
     <section className={styles.containerSectionDados}>
@@ -109,12 +115,16 @@ export default function NewsAndAgenda() {
         <h2>News and agenda</h2>
       </div>
       <div className={styles.dadosSecondDiv}>
-        {newsAndAgendaList[1]?.file ? (
+        {newsAndAgendaList[1]?.file || newsAndAgendaList[1]?.description ? (
           <div>
             <img
               alt="imagem da publicação 1"
               className={styles.newsThumbnail}
-              src={newsAndAgendaList[1].fileUrl ?? brokenImage.src}
+              src={
+                !newsAndAgendaList[1].fileUrl
+                  ? brokenImage.src
+                  : newsAndAgendaList[1].fileUrl
+              }
               onClick={() => setSelectedPublication(newsAndAgendaList[1])}
             />
             <MdCancel
@@ -139,12 +149,16 @@ export default function NewsAndAgenda() {
           </div>
         )}
 
-        {newsAndAgendaList[2]?.file ? (
+        {newsAndAgendaList[2]?.file || newsAndAgendaList[2]?.description ? (
           <div>
             <img
               alt="imagem da publicação 2"
               className={styles.newsThumbnail}
-              src={newsAndAgendaList[2].fileUrl ?? brokenImage.src}
+              src={
+                !newsAndAgendaList[2].fileUrl
+                  ? brokenImage.src
+                  : newsAndAgendaList[2].fileUrl
+              }
               onClick={() => setSelectedPublication(newsAndAgendaList[2])}
             />
             <MdCancel
@@ -169,12 +183,16 @@ export default function NewsAndAgenda() {
           </div>
         )}
 
-        {newsAndAgendaList[3]?.file ? (
+        {newsAndAgendaList[3]?.file || newsAndAgendaList[3]?.description ? (
           <div>
             <img
               alt="imagem da publicação 3"
               className={styles.newsThumbnail}
-              src={newsAndAgendaList[3].fileUrl ?? brokenImage.src}
+              src={
+                !newsAndAgendaList[3].fileUrl
+                  ? brokenImage.src
+                  : newsAndAgendaList[3].fileUrl
+              }
               onClick={() => setSelectedPublication(newsAndAgendaList[3])}
             />
             <MdCancel
@@ -199,12 +217,16 @@ export default function NewsAndAgenda() {
           </div>
         )}
 
-        {newsAndAgendaList[4]?.file ? (
+        {newsAndAgendaList[4]?.file || newsAndAgendaList[4]?.description ? (
           <div>
             <img
               alt="imagem da publicação 4"
               className={styles.newsThumbnail}
-              src={newsAndAgendaList[4].fileUrl ?? brokenImage.src}
+              src={
+                !newsAndAgendaList[4].fileUrl
+                  ? brokenImage.src
+                  : newsAndAgendaList[4].fileUrl
+              }
               onClick={() => setSelectedPublication(newsAndAgendaList[4])}
             />
             <MdCancel
@@ -229,12 +251,16 @@ export default function NewsAndAgenda() {
           </div>
         )}
 
-        {newsAndAgendaList[5]?.file ? (
+        {newsAndAgendaList[5]?.file || newsAndAgendaList[5]?.description ? (
           <div>
             <img
               alt="imagem da publicação 5"
               className={styles.newsThumbnail}
-              src={newsAndAgendaList[5].fileUrl ?? brokenImage.src}
+              src={
+                !newsAndAgendaList[5].fileUrl
+                  ? brokenImage.src
+                  : newsAndAgendaList[5].fileUrl
+              }
               onClick={() => setSelectedPublication(newsAndAgendaList[5])}
             />
             <MdCancel
