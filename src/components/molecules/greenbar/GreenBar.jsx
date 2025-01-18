@@ -17,7 +17,7 @@ export default function GreenBar() {
           <Typography
             fontWeight="600"
             color="white"
-            text="6000"
+            text="15000"
             fontSize="40px"
             justify="center"
           />
@@ -48,7 +48,7 @@ export default function GreenBar() {
           <Typography
             fontWeight="600"
             color="white"
-            text="5000"
+            text="10000"
             fontSize="40px"
             justify="center"
           />
@@ -64,7 +64,7 @@ export default function GreenBar() {
             textAlign="center"
             fontWeight="bold"
             color="white"
-            text="programa em 2023"
+            text="programa em 2024"
             fontSize="25px"
             justify="center"
           />
