@@ -14,6 +14,6 @@ const getEssaysCount = async (idVol: number): Promise<EssaysCountResponse> => {
 const useGetEssaysCount = (
   idVol: number
 ): UseQueryResult<EssaysCountResponse> =>
-  useQuery(["count", idVol], () => getEssaysCount(idVol));
+  useQuery(["bookClubCount", idVol], () => getEssaysCount(idVol));
 
 export default useGetEssaysCount;

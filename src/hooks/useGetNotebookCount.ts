@@ -16,6 +16,6 @@ const getNotebooksCount = async (
 const useGetNotebooksCount = (
   idVol: number
 ): UseQueryResult<NotebooksCountResponse> =>
-  useQuery(["count", idVol], () => getNotebooksCount(idVol));
+  useQuery(["notebookCount", idVol], () => getNotebooksCount(idVol));
 
 export default useGetNotebooksCount;
