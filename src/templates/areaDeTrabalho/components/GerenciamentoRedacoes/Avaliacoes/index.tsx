@@ -118,6 +118,7 @@ export default function TabelaAvaliacoes({ selectedClasses }: props) {
           <table className={styles.avaliacoes_table}>
             <thead>
               <tr>
+                <th>ID</th>
                 <th>ID do voluntário</th>
                 <th>Nome do voluntário</th>
                 <th>Matrícula do leitor</th>
@@ -131,6 +132,7 @@ export default function TabelaAvaliacoes({ selectedClasses }: props) {
             <tbody className={styles.avaliacoes_tbody}>
               {bookEvals?.nodes?.map((bookEval: BookEval) => (
                 <tr className={styles.avaliacoes_tr} key={bookEval.id}>
+                  <td>{bookEval.id}</td>
                   <td>{bookEval.evaluatorId}</td>
                   <td>{bookEval.volunteerName}</td>
                   <td>{bookEval.readerRegistration}</td>
