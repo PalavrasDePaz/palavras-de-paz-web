@@ -6,7 +6,6 @@ import Image from "next/image";
 import card1 from "../../../public/static/images/quemsomos/CameraIdentification.svg";
 import card2 from "../../../public/static/images/quemsomos/PuzzleMatching.svg";
 import card3 from "../../../public/static/images/quemsomos/ValorSecundario.svg";
-import aboutVideo from "../../../public/static/videos/about.mp4";
 import Banner from "../../components/banner";
 import Box from "../../components/box";
 import Button from "../../components/button/button";
