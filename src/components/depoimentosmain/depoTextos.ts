@@ -37,10 +37,12 @@ const textos = [
   },
   {
     id: 6,
-    texto:
-      "O Programa da Paz é fundamental para a sociedade em si, aborda temas essências para a humanidade, ou seja, para todos os seres humanos terem o conhecimento, compreensão do valor da vida, do valor de se ter paz interior, da dignidade com nossos direitos básicos, do nosso mundo interior onde devemos ser donos, reis do nosso castelo,  da apreciação da felicidade nas coisas mais simples, do poder de escolha para as sementes boas da vida, da consciência de si mesmo, sendo gentis conosco primeiro para podermos ser gentis com o próximo,  nós fazemos ter consciência, contentamento, compreensão de que todos nós temos lados bons e lados ruim mas com clareza em busca de manter o equilibro  da força interior e entendimento para buscar as coisas boas da vida, independente da situação, ou seja hoje pode estar chovendo mas amanhã o sol novamente vem para brilhar, não parar. Tudo é essencial para nosso crescimento pessoal, onde estamos em constante evolução podendo mudar e esperança de obter sucesso nas nossas realizações.",
-    name: "Pollyanna/Participante",
-    image: "/static/images/depo_8.png",
+    texto: `Tenho muito orgulho em ter apoiado a parceria entre nossas instituições porque acredito
+        no trabalho em rede principalmente quando as organizações tem como propósito construir uma sociedade melhor, mais justa e democrática.
+        Levar a cultura de  paz para ambientes de aprisionamento e pensar em como a juventude
+        pode pautar a educação para a paz atrelada aos objetivos do desenvolvimento sustentável é muito interessante.`,
+    name: "Mariana Prado/Parceira/International Youth Day",
+    image: "/static/images/depo_2.png",
   },
 ];
 

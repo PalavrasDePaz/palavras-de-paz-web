@@ -13,13 +13,15 @@ export const CardContent = styled.div`
   display: flex;
   flex-direction: column;
   text-align: center;
-  jusity-content: center;
+  justify-content: center;
   align-items: center;
-  border: 1px solid rgba(24, 202, 153, 1);
+  /* border: 1px solid rgba(24, 202, 153, 1); */
   border-radius: 10px;
   width: 696px;
-  max-width: 100%;
-  margin: 64px 0;
+  max-width: 370px;
+
+  /* max-width: 100%; */
+  margin: 34px 0;
 `;
 
 export const CardContainer = styled.div`
