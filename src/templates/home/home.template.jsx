@@ -33,12 +33,12 @@ export default function HomeTemplate() {
 
         <Inscricoes />
 
-        <Box justify="center" padding="32px">
+        <Box justify="center" padding="22px">
           <Typography
             family="Baloo, cursive"
             fontSize="48px"
             fontWeight="800"
-            lineHeight="75.55px"
+            lineHeight="65.55px"
             color="black"
             text="Depoimentos"
           />

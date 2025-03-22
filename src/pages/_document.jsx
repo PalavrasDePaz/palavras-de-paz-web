@@ -76,6 +76,7 @@ export default class MyDocument extends Document {
             property="og:image"
             content="https://www.palavrasdepaz.org/_next/static/media/logo.a78a7b1d.svg"
           />
+          <script async src="//www.instagram.com/embed.js" />
         </Head>
         <body>
           <noscript>
@@ -90,6 +91,7 @@ export default class MyDocument extends Document {
           <Main />
           <NextScript />
         </body>
+        <script src="https://player.vimeo.com/api/player.js" />
       </Html>
     );
   }
