@@ -1,7 +1,8 @@
 /* eslint-disable react/jsx-max-depth */
+import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Nav, Navbar, Offcanvas } from "react-bootstrap";
+import { Nav, Navbar, NavDropdown, Offcanvas } from "react-bootstrap";
 
 import Logo from "../../../public/static/images/logo.svg";
 import Box from "../box";
@@ -9,6 +10,16 @@ import Box from "../box";
 const expand = "xl";
 
 function Header() {
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+
+  const handleToggle = (isOpen) => {
+    setDropdownOpen(isOpen);
+  };
+
+  const handleSelect = () => {
+    setDropdownOpen(false);
+  };
+
   return (
     <container className="styles-header">
       <Navbar key={expand} expand={expand} style={{ width: "100%" }}>
@@ -47,7 +58,25 @@ function Header() {
             <Offcanvas.Body className="w-100">
               <Nav id="buttons-header" className="flex-grow-1">
                 <Nav.Link href="/sobre-nos">Quem Somos</Nav.Link>
-                <Nav.Link href="/programa">O Programa</Nav.Link>
+                {/* <Nav.Link href="/programa">Atividades</Nav.Link> */}
+                <NavDropdown
+                  title="Atividades"
+                  id="basic-navbar-nav"
+                  show={dropdownOpen}
+                  onToggle={handleToggle}
+                  onSelect={handleSelect}
+                >
+                  <NavDropdown.Item href="/programa" eventKey="1">
+                    Programa de educação para a paz
+                  </NavDropdown.Item>
+                  <NavDropdown.Item
+                    href="/leitura-livro-ouca-sua-voz"
+                    eventKey="2"
+                  >
+                    Leitura do livro Ouça a sua voz nas unidades prisionais
+                  </NavDropdown.Item>
+                </NavDropdown>
+
                 <Nav.Link href="/voluntarios">Voluntários</Nav.Link>
                 <Nav.Link href="/doacoes">Doações</Nav.Link>
                 <Nav.Link href="/parcerias">Parcerias</Nav.Link>

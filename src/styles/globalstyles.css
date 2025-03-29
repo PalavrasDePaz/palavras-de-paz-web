@@ -186,6 +186,10 @@ th:hover {
   max-height: 600px !important;
 }
 
+.dropdown-menu {
+  display: none;
+}
+
 .jodit-toolbar__box {
   width: 100% !important;
 }

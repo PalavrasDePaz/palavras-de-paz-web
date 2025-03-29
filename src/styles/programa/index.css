@@ -10,6 +10,26 @@
   letter-spacing: 1px;
   font-family: "opan sans", Arial, Helvetica, sans-serif;
 }
+
+.programa-titulos {
+  font-size: 28px;
+  font-weight: bold;
+  font-family: "Baloo", Arial, Helvetica, sans-serif !important;
+  margin-bottom: 18px;
+}
+
+.programa-subtitulo {
+  font-size: 24px;
+}
+
+.programa-subtitulo-card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin: auto;
+}
+
 .container-programa {
   display: flex;
   justify-content: center;
