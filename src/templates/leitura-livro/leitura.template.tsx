@@ -5,15 +5,15 @@ import Center from "../../components/center";
 import FixedButton from "../../components/fixedbutton/FixedButton";
 import Footer from "../../components/footer/Footer";
 import Header from "../../components/header/Header";
-import OPrograma from "../../components/programa/OPrograma";
+import LeituraLivroComponent from "../../components/leitura-livro/Leitura-livro";
 
-function ProgramaTemplate() {
+function LeituraLivroTemplate() {
   return (
     <>
       <Header />
-      <Banner title="Programa de Educação para a Paz" />
+      <Banner title="LEITURA DO LIVRO OUÇA A SUA VOZ NAS UNIDADES PRISIONAIS" />
       <Center>
-        <OPrograma />
+        <LeituraLivroComponent />
       </Center>
       <FixedButton />
       <Footer />
@@ -21,4 +21,4 @@ function ProgramaTemplate() {
   );
 }
 
-export default ProgramaTemplate;
+export default LeituraLivroTemplate;
