@@ -14,7 +14,7 @@ const Links = [
     img: "static/images/downloads/pedra.png",
     title: "Tema 2 - O Home de Negócios e a Pedra Mágica",
     body: "HAVIA UM HOMEM DE NEGÓCIOS que tinha um pequeno comércio. Claro que, sendo um homem de negócios, o seu desejo era obter o maior lucro possível.",
-    href: "arquivosDownload/v2/tema 2 - Apreciacao.pdf",
+    href: "arquivosDownload/v2/Tema 2 - Apreciacao.pdf",
   },
   {
     id: 3,
@@ -28,7 +28,7 @@ const Links = [
     img: "static/images/downloads/leao.png",
     title: "Tema 4 - o Leão e as Ovelhas",
     body: "Por vezes, esquecemo-nos de quem somos. Deixamo-nos envolver tanto nas nossas causas, nas nossas definições, que não vemos que cada ser humano em a mesma ambição: ser feliz, estar em paz.",
-    href: "arquivosDownload/v2/tema 4 - Auto Conhecimento.pdf",
+    href: "arquivosDownload/v2/Tema 4 - Auto Conhecimento.pdf",
   },
   {
     id: 5,
@@ -42,7 +42,7 @@ const Links = [
     img: "static/images/downloads/arqueiro.png",
     title: "Tema 6 - O Arqueiro e o Vendedor de Azeite",
     body: "HAVIA UM HOMEM que era um arqueiro muito bom. Conseguia disparar uma flecha, acertar no alvo e, depois, com outra flecha, rachar a primeira. Costumava andar de aldeia em aldeia a mostrar as suas habilidades.",
-    href: "arquivosDownload/v2/tema 6 - Compreensao.pdf",
+    href: "arquivosDownload/v2/Tema 6 - Compreensao.pdf",
   },
   {
     id: 7,
