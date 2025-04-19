@@ -26,6 +26,7 @@
 }
 .container7 {
   display: flex;
+  gap: 10px;
   padding: 10px;
 }
 .container8 * {
