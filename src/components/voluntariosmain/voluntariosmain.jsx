@@ -1,10 +1,10 @@
+/* eslint-disable jsx-a11y/media-has-caption */
 /* eslint-disable react/jsx-max-depth */
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 
 import LogoVoluntarios from "../../../public/static/images/voluntarios.png";
-// import cadastroTemplate from "../../templates/cadastro/CadastroTemplate";
 import Center from "../center";
 
 import styles from "./VoluntariosMain.module.css";
@@ -124,6 +124,20 @@ function VoluntariosMain() {
             )}
           </div>
         </container>
+
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            marginTop: 10,
+            marginBottom: 30,
+          }}
+        >
+          <video controls style={{ width: "100%", maxWidth: 600 }}>
+            <source src="/static/videos/voluntarios.mp4" type="video/mp4" />
+            Seu navegador não suporta o elemento de vídeo.
+          </video>
+        </div>
       </Center>
       <div className="voluntarios-banner-botton">
         <p>&quot;Precisamos nos ver como fonte de paz. Se adotarmos essa</p>
