@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/media-has-caption */
 import Image from "next/image";
 
 import textos from "./depoTextos";
@@ -29,6 +30,30 @@ function DepoimentosMain() {
           </div>
         </div>
       ))}
+
+      <div className="grid-col-span-2">
+        <div
+          className="depoimentos-text"
+          style={{ justifyContent: "center", flexDirection: "column" }}
+        >
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              marginTop: 10,
+              marginBottom: 30,
+            }}
+          >
+            <video controls style={{ width: "100%", maxWidth: 300 }}>
+              <source src="/static/videos/depoimentos.mp4" type="video/mp4" />
+              Seu navegador não suporta o elemento de vídeo.
+            </video>
+          </div>
+          <b style={{ fontSize: "1.25rem", marginBottom: 30 }}>
+            Daniel/Diretor de CPP de Jardinópolis
+          </b>
+        </div>
+      </div>
     </section>
   );
 }
