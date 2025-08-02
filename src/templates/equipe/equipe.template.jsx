@@ -1,20 +1,22 @@
+/* eslint-disable max-len */
 /* eslint-disable max-lines */
 /* eslint-disable react/jsx-key */
 import Image from "next/image";
 
-import card6 from "../../../public/static/images/equipe/Ellipse-A.svg";
-import card12 from "../../../public/static/images/equipe/Ellipse2.svg";
-import card1 from "../../../public/static/images/equipe/Ellipse2-1.svg";
-import card2 from "../../../public/static/images/equipe/Ellipse2-2.svg";
-import card3 from "../../../public/static/images/equipe/Ellipse2-3.svg";
-import card4 from "../../../public/static/images/equipe/Ellipse2-4.svg";
+import beatrizDouto from "../../../public/static/images/equipe/beatriz-douto.png";
+import cleideDenardi from "../../../public/static/images/equipe/cleide-denardi.png";
+import daniloJesi from "../../../public/static/images/equipe/danilo-jesi.png";
 import card13 from "../../../public/static/images/equipe/Ellipse2-5.svg";
 import card5 from "../../../public/static/images/equipe/Ellipse2-6.svg";
 import card7 from "../../../public/static/images/equipe/Ellipse2-8.svg";
 import card8 from "../../../public/static/images/equipe/Ellipse2-9.svg";
-import card9 from "../../../public/static/images/equipe/Ellipse2-10.svg";
-import card10 from "../../../public/static/images/equipe/Ellipse2-11.svg";
 import card11 from "../../../public/static/images/equipe/Ellipse2-12.svg";
+import igorCoelho from "../../../public/static/images/equipe/igor-coelho.png";
+import julianaAndrade from "../../../public/static/images/equipe/juliana-andrade.png";
+import lucimarShiroma from "../../../public/static/images/equipe/lucimar-shiroma.png";
+import mariliaRibeiro from "../../../public/static/images/equipe/marilia-ribeiro.png";
+import soraia from "../../../public/static/images/equipe/soraia.png";
+import zezeCole from "../../../public/static/images/equipe/zeze-cole.png";
 import Banner from "../../components/banner";
 import Box from "../../components/box";
 import Button from "../../components/button/button";
@@ -76,54 +78,186 @@ export default function ParceirosTemplate() {
         justify="center"
       >
         <Box width="150px" direction="column" align="center" margin="20px 0">
-          <Image src={card6} alt="" width="150%" height="150%" />
+          <div
+            style={{
+              overflow: "hidden",
+              borderRadius: "50%",
+              borderWidth: "2px",
+              borderStyle: "solid",
+              borderColor: "#05c290",
+              width: "150px",
+              height: "150px",
+            }}
+          >
+            <Image
+              src={lucimarShiroma}
+              alt=""
+              width="150"
+              height="150"
+              style={{
+                borderRadius: "50%",
+              }}
+            />
+          </div>
           <Typography
-            text={["ANA PAULA BORO", <br />, "SOCIAL MEDIA"]}
+            text={[
+              "LUCIMAR SHIROMA",
+              <br />,
+              "TUTORA DE NOVOS VOLUNTÁRIOS PARA REFLEXÕES",
+            ]}
             fontWeight="bold"
             fontSize="12px"
             textAlign="center"
           />
         </Box>
         <Box width="150px" direction="column" align="center" margin="20px 0">
-          <Image src={card1} alt="" width="150%" height="150%" />
+          <div
+            style={{
+              overflow: "hidden",
+              borderRadius: "50%",
+              borderWidth: "2px",
+              borderStyle: "solid",
+              borderColor: "#05c290",
+              width: "150px",
+              height: "150px",
+            }}
+          >
+            <Image
+              src={soraia}
+              alt=""
+              width="150"
+              height="150"
+              style={{
+                borderRadius: "50%",
+              }}
+            />
+          </div>
           <Typography
-            text={["ANAÍDE SURANO", <br />, "ESTATÍSTICAS"]}
+            text={["SORAIA", <br />, "FACILITADORA - SUPORTE EVENTOS"]}
             fontWeight="bold"
             fontSize="12px"
             textAlign="center"
           />
         </Box>
         <Box width="150px" direction="column" align="center" margin="20px 0">
-          <Image src={card2} alt="" width="150%" height="150%" />
+          <div
+            style={{
+              overflow: "hidden",
+              borderRadius: "50%",
+              borderWidth: "2px",
+              borderStyle: "solid",
+              borderColor: "#05c290",
+              width: "150px",
+              height: "150px",
+            }}
+          >
+            <Image
+              src={beatrizDouto}
+              alt=""
+              width="150"
+              height="150"
+              style={{
+                borderRadius: "50%",
+              }}
+            />
+          </div>
           <Typography
-            text={["ANNA SQUADRONI", <br />, "HELP DESK REFLEXÃO DOS DETENTOS"]}
+            text={[
+              "BEATRIZ DOUTO",
+              <br />,
+              "COORDENADORA DE TRADUÇÃO E REVISÃO",
+            ]}
             fontWeight="bold"
             fontSize="12px"
             textAlign="center"
           />
         </Box>
         <Box width="150px" direction="column" align="center" margin="20px 0">
-          <Image src={card3} alt="" width="150%" height="150%" />
+          <div
+            style={{
+              overflow: "hidden",
+              borderRadius: "50%",
+              borderWidth: "2px",
+              borderStyle: "solid",
+              borderColor: "#05c290",
+              width: "150px",
+              height: "150px",
+            }}
+          >
+            <Image
+              src={cleideDenardi}
+              alt=""
+              width="150"
+              height="150"
+              style={{
+                borderRadius: "50%",
+              }}
+            />
+          </div>
           <Typography
-            text={["CLEIDE DINARDI", <br />, "AVALIAÇÃO DAS REFLEXÕES"]}
+            text={["CLEIDE DENARDI", <br />, "AVALIAÇÃO DAS REFLEXÕES"]}
             fontWeight="bold"
             fontSize="12px"
             textAlign="center"
           />
         </Box>
         <Box width="150px" direction="column" align="center" margin="20px 0">
-          <Image src={card4} alt="" width="150%" height="150%" />
+          <div
+            style={{
+              overflow: "hidden",
+              borderRadius: "50%",
+              borderWidth: "2px",
+              borderStyle: "solid",
+              borderColor: "#05c290",
+              width: "150px",
+              height: "150px",
+            }}
+          >
+            <Image
+              src={julianaAndrade}
+              alt=""
+              width="150"
+              height="150"
+              style={{
+                borderRadius: "50%",
+              }}
+            />
+          </div>
           <Typography
-            text={["DIVA DA SILVA", <br />, "FACILITADORA"]}
+            text={[
+              "JULIANA ANDRADE",
+              <br />,
+              "GESTÃO DE PESSOAS - BUSINESS PARTNER",
+            ]}
             fontWeight="bold"
             fontSize="12px"
             textAlign="center"
           />
         </Box>
         <Box width="150px" direction="column" align="center" margin="20px 0">
-          <Image src={card12} alt="" width="150%" height="150%" />
+          <div
+            style={{
+              overflow: "hidden",
+              borderRadius: "50%",
+              borderWidth: "2px",
+              borderStyle: "solid",
+              borderColor: "#05c290",
+              width: "150px",
+              height: "150px",
+            }}
+          >
+            <Image
+              src={mariliaRibeiro}
+              alt=""
+              width="150"
+              height="150"
+              style={{
+                borderRadius: "50%",
+              }}
+            />
+          </div>
           <Typography
-            text={["FERNANDA SERRA", <br />, "TRADUÇÃO"]}
+            text={["MARILIA RIBEIRO", <br />, "SUPORTE TI E AVALIAÇÕES"]}
             fontWeight="bold"
             fontSize="12px"
             textAlign="center"
@@ -163,25 +297,98 @@ export default function ParceirosTemplate() {
         <Box width="150px" direction="column" align="center" margin="20px 0">
           <Image src={card8} alt="" width="150%" height="150%" />
           <Typography
-            text={["PAULLA KOCHUTT", <br />, "CURSOS PARA VOLUNTÁRIADOS"]}
+            text={[
+              "PAULLA KOCHUTT",
+              <br />,
+              "COORDENADORA DAS AVALIAÇÕES DE REDAÇÕES DO LIVRO E COORDENADORA DE CAPTAÇÃO DE RECURSOS",
+            ]}
             fontWeight="bold"
             fontSize="12px"
             textAlign="center"
           />
         </Box>
         <Box width="150px" direction="column" align="center" margin="20px 0">
-          <Image src={card9} alt="" width="150%" height="150%" />
+          <div
+            style={{
+              overflow: "hidden",
+              borderRadius: "50%",
+              borderWidth: "2px",
+              borderStyle: "solid",
+              borderColor: "#05c290",
+              width: "150px",
+              height: "150px",
+            }}
+          >
+            <Image
+              src={zezeCole}
+              alt=""
+              width="150"
+              height="150"
+              style={{
+                borderRadius: "50%",
+              }}
+            />
+          </div>
           <Typography
-            text={["SUSANNE BUSSEM", <br />, "CURSO PARA VOLUNTÁRIOS"]}
+            text={["ZEZE COLE", <br />, "FACILITADORA E OPERADORA"]}
             fontWeight="bold"
             fontSize="12px"
             textAlign="center"
           />
         </Box>
         <Box width="150px" direction="column" align="center" margin="20px 0">
-          <Image src={card10} alt="" width="150%" height="150%" />
+          <div
+            style={{
+              overflow: "hidden",
+              borderRadius: "50%",
+              borderWidth: "2px",
+              borderStyle: "solid",
+              borderColor: "#05c290",
+              width: "150px",
+              height: "150px",
+            }}
+          >
+            <Image
+              src={igorCoelho}
+              alt=""
+              width="150"
+              height="150"
+              style={{
+                borderRadius: "50%",
+              }}
+            />
+          </div>
           <Typography
-            text={["TALITA GIANE", <br />, "MORADORES EM SITUAÇÃO DE RUA"]}
+            text={["IGOR COELHO", <br />, "FACILITADOR E SUPORTE TI"]}
+            fontWeight="bold"
+            fontSize="12px"
+            textAlign="center"
+          />
+        </Box>
+        <Box width="150px" direction="column" align="center" margin="20px 0">
+          <div
+            style={{
+              overflow: "hidden",
+              borderRadius: "50%",
+              borderWidth: "2px",
+              borderStyle: "solid",
+              borderColor: "#05c290",
+              width: "150px",
+              height: "150px",
+            }}
+          >
+            <Image
+              src={daniloJesi}
+              alt=""
+              width="150"
+              height="150"
+              style={{
+                borderRadius: "50%",
+              }}
+            />
+          </div>
+          <Typography
+            text={["DANILO JESI", <br />, "FACILITADOR"]}
             fontWeight="bold"
             fontSize="12px"
             textAlign="center"
