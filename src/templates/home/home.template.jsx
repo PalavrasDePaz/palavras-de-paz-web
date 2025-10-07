@@ -8,6 +8,7 @@ import Footer from "../../components/footer/Footer";
 import Header from "../../components/header/Header";
 import Inscricoes from "../../components/inscricoes";
 import GreenBar from "../../components/molecules/greenbar/GreenBar";
+import Peak from "../../components/peak";
 import SwiperJs from "../../components/swiper/Swiper";
 import Typography from "../../components/typography";
 
@@ -32,6 +33,8 @@ export default function HomeTemplate() {
         </Box>
 
         <Inscricoes />
+
+        <Peak />
 
         <Box justify="center" padding="22px">
           <Typography
