@@ -62,8 +62,8 @@ export default function SwiperJs() {
 
           <Swiper
             style={{
-              paddingLeft: "40px",
-              paddingRight: "25px",
+              paddingLeft: "64px",
+              paddingRight: "64px",
               alignItems: "center",
               justifyContent: "center",
               width: "100%",
