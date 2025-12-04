@@ -4,12 +4,10 @@ import { REQUIRED_FIELD } from "../../constants";
 export const notebookEvalSchema = yup.object().shape({
   idvol: yup.number().required(REQUIRED_FIELD),
 
-  // ❗ Campos opcionais no backend
   studentPrisonUnit: yup.string().nullable(),
   evaluatorName: yup.string().required(REQUIRED_FIELD),
   evaluatorEmail: yup.string().nullable(),
 
-  // ❗ PERGUNTAS DO CADERNO (todas opcionais no backend)
   subject1: yup.string().nullable(),
   subject2: yup.string().nullable(),
   subject3: yup.string().nullable(),
@@ -41,17 +39,6 @@ export const notebookEvalSchema = yup.object().shape({
 
   approved: yup.boolean().required(REQUIRED_FIELD),
   archivesExclusion: yup.boolean().required(REQUIRED_FIELD),
-
-  // ❗ Campos PROIBIDOS no backend — não devem estar no schema
-  // idcad: ❌ REMOVE
-  // idpep: ❌ REMOVE
-  // studentName: ❌ REMOVE
-  // studentRegistration: ❌ REMOVE
-  // notebookDirectory: ❌ REMOVE
-  // reservationDate: ❌ REMOVE
-  // evaluatedDate: ❌ REMOVE
-
-  fullName: yup.string().optional(),
 });
 
 export type NotebookEval = yup.InferType<typeof notebookEvalSchema>;
