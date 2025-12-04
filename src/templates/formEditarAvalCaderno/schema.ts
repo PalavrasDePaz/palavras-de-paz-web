@@ -48,10 +48,10 @@ export const notebookEvalSchema = yup.object().shape({
 export type NotebookEval = yup.InferType<typeof notebookEvalSchema> & {
   idcad?: number;
   id: number;
-  fullName: string | null; 
-  idpep?: number | null;
-  studentName?: string | null;
+  fullName: string; 
+  idpep?: number;
+  studentName?: string;
   studentRegistration?: number;
-  reservationDate?: string | null;
-  evaluatedDate?: string | null;
+  reservationDate?: string;
+  evaluatedDate?: string;
 };
