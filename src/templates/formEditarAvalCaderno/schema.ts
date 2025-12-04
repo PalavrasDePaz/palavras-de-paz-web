@@ -41,11 +41,16 @@ export const notebookEvalSchema = yup.object().shape({
   archivesExclusion: yup.boolean().required(REQUIRED_FIELD),
 });
 
-export type NotebookEval = {
-  id: number; 
-  idpep?: number | null; 
+// ---------------------------------------------------
+// 🔥 TIPO FINAL → usado pela tabela e form
+// ---------------------------------------------------
+
+export type NotebookEval = yup.InferType<typeof notebookEvalSchema> & {
+  id: number;
+  fullName: string | null; 
+  idpep?: number | null;
   studentName?: string | null;
   studentRegistration?: number | null;
   reservationDate?: string | null;
   evaluatedDate?: string | null;
-} & yup.InferType<typeof notebookEvalSchema>;
+};
