@@ -1,54 +1,48 @@
 import * as yup from "yup";
+
 import { REQUIRED_FIELD } from "../../constants";
 
 export const notebookEvalSchema = yup.object().shape({
+  id: yup.number(),
   idvol: yup.number().required(REQUIRED_FIELD),
-
-  studentPrisonUnit: yup.string().nullable(),
+  idpep: yup.number().required(REQUIRED_FIELD),
+  idcad: yup.number().required(REQUIRED_FIELD),
+  studentPrisonUnit: yup.string().required(REQUIRED_FIELD),
   evaluatorName: yup.string().required(REQUIRED_FIELD),
-  evaluatorEmail: yup.string().nullable(),
-
-  subject1: yup.string().nullable(),
-  subject2: yup.string().nullable(),
-  subject3: yup.string().nullable(),
-  subject4: yup.string().nullable(),
-  subject5: yup.string().nullable(),
-  subject6: yup.string().nullable(),
-  subject7: yup.string().nullable(),
-  subject8: yup.string().nullable(),
-  subject9: yup.string().nullable(),
-  subject10: yup.string().nullable(),
-
-  relevantContent: yup.string().nullable(),
-
-  a1: yup.string().nullable(),
-  a2: yup.string().nullable(),
-  a3: yup.string().nullable(),
-  a4: yup.string().nullable(),
-  a5: yup.string().nullable(),
-  a6: yup.string().nullable(),
-  a7: yup.string().nullable(),
-  a8: yup.string().nullable(),
-  a9: yup.string().nullable(),
-  a10: yup.string().nullable(),
-  a11: yup.string().nullable(),
-  a12: yup.string().nullable(),
-  a13: yup.string().nullable(),
-
-  conclusion: yup.string().nullable(),
-
+  evaluatorEmail: yup.string().required(REQUIRED_FIELD),
+  studentRegistration: yup.number().required(REQUIRED_FIELD),
+  studentName: yup.string().required(REQUIRED_FIELD),
+  notebookDirectory: yup.string().required(REQUIRED_FIELD),
+  subject1: yup.string().required(REQUIRED_FIELD),
+  subject2: yup.string().required(REQUIRED_FIELD),
+  subject3: yup.string().required(REQUIRED_FIELD),
+  subject4: yup.string().required(REQUIRED_FIELD),
+  subject5: yup.string().required(REQUIRED_FIELD),
+  subject6: yup.string().required(REQUIRED_FIELD),
+  subject7: yup.string().required(REQUIRED_FIELD),
+  subject8: yup.string().required(REQUIRED_FIELD),
+  subject9: yup.string().required(REQUIRED_FIELD),
+  subject10: yup.string().required(REQUIRED_FIELD),
+  relevantContent: yup.string().required(REQUIRED_FIELD),
+  a1: yup.string().required(REQUIRED_FIELD),
+  a2: yup.string().required(REQUIRED_FIELD),
+  a3: yup.string().required(REQUIRED_FIELD),
+  a4: yup.string().required(REQUIRED_FIELD),
+  a5: yup.string().required(REQUIRED_FIELD),
+  a6: yup.string().required(REQUIRED_FIELD),
+  a7: yup.string().required(REQUIRED_FIELD),
+  a8: yup.string().required(REQUIRED_FIELD),
+  a9: yup.string().required(REQUIRED_FIELD),
+  a10: yup.string().required(REQUIRED_FIELD),
+  a11: yup.string().required(REQUIRED_FIELD),
+  a12: yup.string().required(REQUIRED_FIELD),
+  a13: yup.string().required(REQUIRED_FIELD),
+  conclusion: yup.string().required(REQUIRED_FIELD),
   approved: yup.boolean().required(REQUIRED_FIELD),
   archivesExclusion: yup.boolean().required(REQUIRED_FIELD),
+  reservationDate: yup.string().nullable(),
+  evaluatedDate: yup.string().nullable(),
+  fullName: yup.string().optional(),
 });
 
-
-export type NotebookEval = yup.InferType<typeof notebookEvalSchema> & {
-  idcad?: number;
-  id: number;
-  fullName: string; 
-  idpep?: number;
-  studentName?: string;
-  studentRegistration?: number;
-  reservationDate?: string | null;
-  evaluatedDate?: string | null;
-};
+export type NotebookEval = yup.InferType<typeof notebookEvalSchema>;

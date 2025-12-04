@@ -67,19 +67,32 @@ export default function FormEditarAvalCadernoTemplate({
     }
   }, [mutateResponseData, isMutateSuccess, mutateIsError, mutateError]);
 
-  const handleSubmit = () => {
-    const formDataToSend = {
-      ...formData,
-    } as Partial<NotebookEval>;
-    delete formDataToSend.idpep;
-    // delete formDataToSend.idcad;
-    // delete formDataToSend.notebookDirectory;
-    // delete formDataToSend.fullName;
-    mutatePutBookEval({
-      data: formDataToSend as any,
-      notebookEvalId: evaluationId.toString(),
-    });
-  };
+const handleSubmit = () => {
+  const formDataToSend = { ...formData } as Partial<NotebookEval>;
+
+  // ❌ Campos proibidos pelo backend no update
+  delete formDataToSend.id;
+  delete formDataToSend.idvol;
+  delete formDataToSend.idpep;
+  delete formDataToSend.idcad;
+  delete formDataToSend.studentName;
+  delete formDataToSend.studentRegistration;
+  delete formDataToSend.studentPrisonUnit;
+  delete formDataToSend.evaluatorName;
+  delete formDataToSend.evaluatorEmail;
+  delete formDataToSend.notebookDirectory;
+  delete formDataToSend.reservationDate;
+  delete formDataToSend.evaluatedDate;
+  delete formDataToSend.fullName;
+  delete formDataToSend.approved;
+  delete formDataToSend.archivesExclusion;
+
+  mutatePutBookEval({
+    data: formDataToSend,
+    notebookEvalId: evaluationId.toString(),
+  });
+};
+
 
   const handleChange = (
     event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
