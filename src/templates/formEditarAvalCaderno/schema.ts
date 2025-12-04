@@ -51,7 +51,7 @@ export type NotebookEval = yup.InferType<typeof notebookEvalSchema> & {
   fullName: string | null; 
   idpep?: number | null;
   studentName?: string | null;
-  studentRegistration?: number | null;
+  studentRegistration?: number;
   reservationDate?: string | null;
   evaluatedDate?: string | null;
 };
