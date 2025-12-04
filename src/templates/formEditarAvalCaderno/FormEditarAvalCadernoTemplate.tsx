@@ -72,9 +72,9 @@ export default function FormEditarAvalCadernoTemplate({
       ...formData,
     } as Partial<NotebookEval>;
     delete formDataToSend.idpep;
-    delete formDataToSend.idcad;
-    delete formDataToSend.notebookDirectory;
-    delete formDataToSend.fullName;
+    // delete formDataToSend.idcad;
+    // delete formDataToSend.notebookDirectory;
+    // delete formDataToSend.fullName;
     mutatePutBookEval({
       data: formDataToSend as any,
       notebookEvalId: evaluationId.toString(),
