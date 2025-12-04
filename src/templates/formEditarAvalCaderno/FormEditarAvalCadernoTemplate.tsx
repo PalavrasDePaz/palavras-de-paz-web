@@ -70,7 +70,7 @@ export default function FormEditarAvalCadernoTemplate({
 const handleSubmit = () => {
   const formDataToSend = { ...formData } as Partial<NotebookEval>;
 
-  // ❌ Campos proibidos pelo backend no update
+  // Remover campos não permitidos no update
   delete formDataToSend.id;
   delete formDataToSend.idvol;
   delete formDataToSend.idpep;
@@ -81,8 +81,11 @@ const handleSubmit = () => {
   delete formDataToSend.evaluatorName;
   delete formDataToSend.evaluatorEmail;
   delete formDataToSend.notebookDirectory;
+
+  // Remover campos com tipos incompatíveis com o backend
   delete formDataToSend.reservationDate;
   delete formDataToSend.evaluatedDate;
+
   delete formDataToSend.fullName;
   delete formDataToSend.approved;
   delete formDataToSend.archivesExclusion;
@@ -92,7 +95,6 @@ const handleSubmit = () => {
     notebookEvalId: evaluationId.toString(),
   });
 };
-
 
   const handleChange = (
     event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
