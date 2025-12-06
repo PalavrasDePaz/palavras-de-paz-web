@@ -1,56 +1,47 @@
 import * as yup from "yup";
+
 import { REQUIRED_FIELD } from "../../constants";
 
 export const notebookEvalSchema = yup.object().shape({
-  idvol: yup.number().required(REQUIRED_FIELD),
-
-  // ❗ Campos opcionais no backend
-  studentPrisonUnit: yup.string().nullable(),
-  evaluatorName: yup.string().required(REQUIRED_FIELD),
-  evaluatorEmail: yup.string().nullable(),
-
-  // ❗ PERGUNTAS DO CADERNO (todas opcionais no backend)
-  subject1: yup.string().nullable(),
-  subject2: yup.string().nullable(),
-  subject3: yup.string().nullable(),
-  subject4: yup.string().nullable(),
-  subject5: yup.string().nullable(),
-  subject6: yup.string().nullable(),
-  subject7: yup.string().nullable(),
-  subject8: yup.string().nullable(),
-  subject9: yup.string().nullable(),
-  subject10: yup.string().nullable(),
-
-  relevantContent: yup.string().nullable(),
-
-  a1: yup.string().nullable(),
-  a2: yup.string().nullable(),
-  a3: yup.string().nullable(),
-  a4: yup.string().nullable(),
-  a5: yup.string().nullable(),
-  a6: yup.string().nullable(),
-  a7: yup.string().nullable(),
-  a8: yup.string().nullable(),
-  a9: yup.string().nullable(),
-  a10: yup.string().nullable(),
-  a11: yup.string().nullable(),
-  a12: yup.string().nullable(),
-  a13: yup.string().nullable(),
-
-  conclusion: yup.string().nullable(),
-
+  id: yup.number(),
+  idvol: yup.number().optional(),
+  idpep: yup.number().optional(),
+  idcad: yup.number().optional(),
+  studentPrisonUnit: yup.string().optional(),
+  evaluatorName: yup.string().optional(),
+  evaluatorEmail: yup.string().optional(),
+  studentRegistration: yup.number().optional(),
+  studentName: yup.string().optional(),
+  notebookDirectory: yup.string().optional(),
+  subject1: yup.string().required(REQUIRED_FIELD),
+  subject2: yup.string().required(REQUIRED_FIELD),
+  subject3: yup.string().required(REQUIRED_FIELD),
+  subject4: yup.string().required(REQUIRED_FIELD),
+  subject5: yup.string().required(REQUIRED_FIELD),
+  subject6: yup.string().required(REQUIRED_FIELD),
+  subject7: yup.string().required(REQUIRED_FIELD),
+  subject8: yup.string().required(REQUIRED_FIELD),
+  subject9: yup.string().required(REQUIRED_FIELD),
+  subject10: yup.string().required(REQUIRED_FIELD),
+  relevantContent: yup.string().required(REQUIRED_FIELD),
+  a1: yup.string().required(REQUIRED_FIELD),
+  a2: yup.string().required(REQUIRED_FIELD),
+  a3: yup.string().required(REQUIRED_FIELD),
+  a4: yup.string().required(REQUIRED_FIELD),
+  a5: yup.string().required(REQUIRED_FIELD),
+  a6: yup.string().required(REQUIRED_FIELD),
+  a7: yup.string().required(REQUIRED_FIELD),
+  a8: yup.string().required(REQUIRED_FIELD),
+  a9: yup.string().required(REQUIRED_FIELD),
+  a10: yup.string().required(REQUIRED_FIELD),
+  a11: yup.string().required(REQUIRED_FIELD),
+  a12: yup.string().required(REQUIRED_FIELD),
+  a13: yup.string().required(REQUIRED_FIELD),
+  conclusion: yup.string().required(REQUIRED_FIELD),
   approved: yup.boolean().required(REQUIRED_FIELD),
   archivesExclusion: yup.boolean().required(REQUIRED_FIELD),
-
-  // ❗ Campos PROIBIDOS no backend — não devem estar no schema
-  // idcad: ❌ REMOVE
-  // idpep: ❌ REMOVE
-  // studentName: ❌ REMOVE
-  // studentRegistration: ❌ REMOVE
-  // notebookDirectory: ❌ REMOVE
-  // reservationDate: ❌ REMOVE
-  // evaluatedDate: ❌ REMOVE
-
+  reservationDate: yup.string().nullable(),
+  evaluatedDate: yup.string().nullable(),
   fullName: yup.string().optional(),
 });
 
