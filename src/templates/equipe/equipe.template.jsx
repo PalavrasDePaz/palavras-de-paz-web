@@ -3,19 +3,22 @@
 /* eslint-disable react/jsx-key */
 import Image from "next/image";
 
+import alexandre from "../../../public/static/images/equipe/alexandre.jpg";
 import beatrizDouto from "../../../public/static/images/equipe/beatriz-douto.png";
-import cleideDenardi from "../../../public/static/images/equipe/cleide-denardi.png";
+import carolinaAssaf from "../../../public/static/images/equipe/carolina-assaf.jpg";
 import daniloJesi from "../../../public/static/images/equipe/danilo-jesi.png";
 import card13 from "../../../public/static/images/equipe/Ellipse2-5.svg";
 import card5 from "../../../public/static/images/equipe/Ellipse2-6.svg";
-import card7 from "../../../public/static/images/equipe/Ellipse2-8.svg";
 import card8 from "../../../public/static/images/equipe/Ellipse2-9.svg";
 import card11 from "../../../public/static/images/equipe/Ellipse2-12.svg";
+import fernanda from "../../../public/static/images/equipe/fernanda.jpg";
 import igorCoelho from "../../../public/static/images/equipe/igor-coelho.png";
 import julianaAndrade from "../../../public/static/images/equipe/juliana-andrade.png";
-import lucimarShiroma from "../../../public/static/images/equipe/lucimar-shiroma.png";
+import keturiMonteiro from "../../../public/static/images/equipe/keturi-monteiro.jpg";
+import layslaSantos from "../../../public/static/images/equipe/laysla-santos.jpg";
 import mariliaRibeiro from "../../../public/static/images/equipe/marilia-ribeiro.png";
 import soraia from "../../../public/static/images/equipe/soraia.png";
+import talitaMelo from "../../../public/static/images/equipe/talita-melo.jpg";
 import zezeCole from "../../../public/static/images/equipe/zeze-cole.png";
 import Banner from "../../components/banner";
 import Box from "../../components/box";
@@ -90,7 +93,7 @@ export default function ParceirosTemplate() {
             }}
           >
             <Image
-              src={lucimarShiroma}
+              src={carolinaAssaf}
               alt=""
               width="150"
               height="150"
@@ -101,9 +104,9 @@ export default function ParceirosTemplate() {
           </div>
           <Typography
             text={[
-              "LUCIMAR SHIROMA",
+              "CAROLINA ASSAF ISERI",
               <br />,
-              "TUTORA DE NOVOS VOLUNTÁRIOS PARA REFLEXÕES",
+              "COORDENADORA DO SETOR DE REFLEXÕES",
             ]}
             fontWeight="bold"
             fontSize="12px"
@@ -185,7 +188,7 @@ export default function ParceirosTemplate() {
             }}
           >
             <Image
-              src={cleideDenardi}
+              src={alexandre}
               alt=""
               width="150"
               height="150"
@@ -195,7 +198,7 @@ export default function ParceirosTemplate() {
             />
           </div>
           <Typography
-            text={["CLEIDE DENARDI", <br />, "AVALIAÇÃO DAS REFLEXÕES"]}
+            text={["ALEXANDRE", <br />, "COORDENADOR DE RECURSOS FINANCEIROS"]}
             fontWeight="bold"
             fontSize="12px"
             textAlign="center"
@@ -286,9 +289,95 @@ export default function ParceirosTemplate() {
           />
         </Box>
         <Box width="150px" direction="column" align="center" margin="20px 0">
-          <Image src={card7} alt="" width="150%" height="150%" />
+          <div
+            style={{
+              overflow: "hidden",
+              borderRadius: "50%",
+              borderWidth: "2px",
+              borderStyle: "solid",
+              borderColor: "#05c290",
+              width: "150px",
+              height: "150px",
+            }}
+          >
+            <Image
+              src={fernanda}
+              alt=""
+              width="150"
+              height="150"
+              style={{
+                borderRadius: "50%",
+              }}
+            />
+          </div>
           <Typography
-            text={["PAOLA SQUADRONI", <br />, "CLUBE DE LEITURA"]}
+            text={["FERNANDA", <br />, "COORDENADORA DE QUALIDADE"]}
+            fontWeight="bold"
+            fontSize="12px"
+            textAlign="center"
+          />
+        </Box>
+        <Box width="150px" direction="column" align="center" margin="20px 0">
+          <div
+            style={{
+              overflow: "hidden",
+              borderRadius: "50%",
+              borderWidth: "2px",
+              borderStyle: "solid",
+              borderColor: "#05c290",
+              width: "150px",
+              height: "150px",
+            }}
+          >
+            <Image
+              src={keturiMonteiro}
+              alt=""
+              width="150"
+              height="150"
+              style={{
+                borderRadius: "50%",
+              }}
+            />
+          </div>
+          <Typography
+            text={[
+              "KETURI MONTEIRO",
+              <br />,
+              "COORDENADORA DE RECRUTAMENTO, SELEÇÃO E ONBOARDING",
+            ]}
+            fontWeight="bold"
+            fontSize="12px"
+            textAlign="center"
+          />
+        </Box>
+        <Box width="150px" direction="column" align="center" margin="20px 0">
+          <div
+            style={{
+              overflow: "hidden",
+              borderRadius: "50%",
+              borderWidth: "2px",
+              borderStyle: "solid",
+              borderColor: "#05c290",
+              width: "150px",
+              height: "150px",
+            }}
+          >
+            <Image
+              src={talitaMelo}
+              alt=""
+              width="150"
+              height="150"
+              style={{
+                borderRadius: "50%",
+              }}
+            />
+          </div>
+          <Typography
+            text={[
+              "TALITA MELO",
+              <br />,
+              "COORDENADORA DE COMUNICAÇÕES E MÍDIAS SOCIAIS",
+            ]}
             fontWeight="bold"
             fontSize="12px"
             textAlign="center"
@@ -301,6 +390,39 @@ export default function ParceirosTemplate() {
               "PAULLA KOCHUTT",
               <br />,
               "COORDENADORA DAS AVALIAÇÕES DE REDAÇÕES DO LIVRO E COORDENADORA DE CAPTAÇÃO DE RECURSOS",
+            ]}
+            fontWeight="bold"
+            fontSize="12px"
+            textAlign="center"
+          />
+        </Box>
+        <Box width="150px" direction="column" align="center" margin="20px 0">
+          <div
+            style={{
+              overflow: "hidden",
+              borderRadius: "50%",
+              borderWidth: "2px",
+              borderStyle: "solid",
+              borderColor: "#05c290",
+              width: "150px",
+              height: "150px",
+            }}
+          >
+            <Image
+              src={layslaSantos}
+              alt=""
+              width="150"
+              height="150"
+              style={{
+                borderRadius: "50%",
+              }}
+            />
+          </div>
+          <Typography
+            text={[
+              "LAYSLA SANTOS",
+              <br />,
+              "COORDENADORA DE CARGOS E SALÁRIOS",
             ]}
             fontWeight="bold"
             fontSize="12px"
