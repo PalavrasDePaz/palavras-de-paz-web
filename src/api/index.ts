@@ -4,10 +4,8 @@ import axios from "axios";
 
 import { PALAVRAS_DE_PAZ_TOKEN } from "../constants";
 
-export const BASE_URL = "https://palavrasdepaz.org/app";
-
 export const api = axios.create({
-  baseURL: BASE_URL,
+  baseURL: "/app",
 });
 
 api.interceptors.request.use(
@@ -17,9 +15,8 @@ api.interceptors.request.use(
     if (token) {
       config.headers.Authorization = `Bearer ${token}`;
     }
+
     return config;
   },
-  (error) => {
-    Promise.reject(error);
-  }
+  (error) => Promise.reject(error)
 );
