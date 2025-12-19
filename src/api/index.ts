@@ -4,7 +4,7 @@ import axios from "axios";
 
 import { PALAVRAS_DE_PAZ_TOKEN } from "../constants";
 
-export const BASE_URL = "https://api.palavrasdepaz.org/app";
+export const BASE_URL = "https://palavrasdepaz.org/app";
 
 export const api = axios.create({
   baseURL: BASE_URL,
