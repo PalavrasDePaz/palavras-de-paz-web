@@ -5,7 +5,7 @@ import axios from "axios";
 import { PALAVRAS_DE_PAZ_TOKEN } from "../constants";
 
 export const api = axios.create({
-  baseURL: "https://api.palavrasdepaz.org",
+  baseURL: "https://api.palavrasdepaz.org:21043",
 });
 
 api.interceptors.request.use(
