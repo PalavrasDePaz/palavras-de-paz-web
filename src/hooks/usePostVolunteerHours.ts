@@ -41,3 +41,21 @@ const usePostVolunteerHours = () => {
 };
 
 export default usePostVolunteerHours;
+
+/* 
+Envia as horas trabalhadas de um voluntário à API e gerencia o status da resposta.
+
+Retorno:
+  Um objeto com duas propriedades:
+    responseStatus: String indicando o status da requisição ("notResponded", "responded", ou potencialmente outro valor caso ocorra um erro inesperado).
+    postVolunteerHours: Função para enviar as horas do voluntário à API.
+
+Detalhes:
+  O código usa o hook useState do React para gerenciar o status da resposta.
+  A função postVolunteerHours realiza uma requisição POST à rota da API /volunteers/hours com os dados do voluntário.
+  O código trata os seguintes status de resposta da API:
+  201 (Created): Sucesso no envio das horas.
+  400 (Bad Request): Erro na requisição, provavelmente devido a dados inválidos.
+  409 (Conflict): Conflito, provavelmente devido a horas já enviadas para o mesmo período.
+  O código usa console.error para registrar erros, mas poderia implementá-los em uma interface de usuário ou mecanismo de logging mais apropriado.
+*/
