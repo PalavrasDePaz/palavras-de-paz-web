@@ -11,7 +11,6 @@ import card13 from "../../../public/static/images/equipe/Ellipse2-5.svg";
 import card5 from "../../../public/static/images/equipe/Ellipse2-6.svg";
 import card8 from "../../../public/static/images/equipe/Ellipse2-9.svg";
 import card11 from "../../../public/static/images/equipe/Ellipse2-12.svg";
-import fernanda from "../../../public/static/images/equipe/fernanda.jpg";
 import igorCoelho from "../../../public/static/images/equipe/igor-coelho.png";
 import julianaAndrade from "../../../public/static/images/equipe/juliana-andrade.png";
 import keturiMonteiro from "../../../public/static/images/equipe/keturi-monteiro.jpg";
@@ -283,35 +282,6 @@ export default function ParceirosTemplate() {
               <br />,
               "COORDENADORIADE INTEGRIDADE E EXPERIÊNCIA",
             ]}
-            fontWeight="bold"
-            fontSize="12px"
-            textAlign="center"
-          />
-        </Box>
-        <Box width="150px" direction="column" align="center" margin="20px 0">
-          <div
-            style={{
-              overflow: "hidden",
-              borderRadius: "50%",
-              borderWidth: "2px",
-              borderStyle: "solid",
-              borderColor: "#05c290",
-              width: "150px",
-              height: "150px",
-            }}
-          >
-            <Image
-              src={fernanda}
-              alt=""
-              width="150"
-              height="150"
-              style={{
-                borderRadius: "50%",
-              }}
-            />
-          </div>
-          <Typography
-            text={["FERNANDA", <br />, "COORDENADORA DE QUALIDADE"]}
             fontWeight="bold"
             fontSize="12px"
             textAlign="center"
