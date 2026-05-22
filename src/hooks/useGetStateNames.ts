@@ -35,3 +35,13 @@ const useGetStateNames = () => {
 };
 
 export default useGetStateNames;
+
+/* 
+Busca e armazena uma lista de nomes de estados brasileiros a partir de uma API do IBGE.
+
+Retorno:
+  Um array de strings contendo os nomes dos estados.
+
+Detalhes:
+  O código utiliza o hook useEffect do React para buscar os dados na inicialização do componente.
+*/
