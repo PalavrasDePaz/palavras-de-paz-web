@@ -32,13 +32,15 @@ function CarouselSlide() {
         <SwiperSlide key={item.id}>
           <S.SlideContainer>
             <Box>
-              <Image
-                src={item.image}
-                alt={item.text}
-                width={1920}
-                height={840}
-              />
-              <S.TextSlide>{item.text}</S.TextSlide>
+              <S.StyledImageWrapper>
+                <Image
+                  src={item.image}
+                  alt={item.text}
+                  width={1920}
+                  height={840}
+                />
+                <S.TextSlide>{item.text}</S.TextSlide>
+              </S.StyledImageWrapper>
             </Box>
           </S.SlideContainer>
         </SwiperSlide>
