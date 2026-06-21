@@ -16,7 +16,6 @@ function TextField({ fieldName, question, register }: TextFieldProps) {
         {question}
       </label>
       <textarea
-        maxLength={300}
         className={styles.presencaInputText}
         {...register(fieldName)}
       />

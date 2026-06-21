@@ -17,3 +17,10 @@ export const TextSlide = styled.h1`
   font-weight: 600;
   line-height: 1.55;
 `;
+
+export const StyledImageWrapper = styled.div`
+  img {
+    object-fit: contain;
+    object-position: center;
+  }
+`;
