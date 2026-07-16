@@ -74,23 +74,16 @@ function Doacoes() {
         </div>
       </div>
 
-      <Link href="/doacoes/relatorio-semestral-2023-01">
-        <div className="relatorio-link text-center">
-          RELATÓRIO DO 1º SEMESTRE DE 2023
-        </div>
-      </Link>
-
       <div>
         <div className="doacoes-atraves text-center">
           <p>DOE ATRAVÉS DE</p>
         </div>
 
         <div className="meio-de-doacao">
-          <p>Conheça nossa nova plataforma de doações!</p>
-          <p>Clique no botão de doar e faça parte dessa corrente do bem.</p>
           <p>
-            Com sua contribuição podemos manter as atividades atuais expandir
-            nossos sonhos de um mundo em Paz.
+            Com sua contribuição, podemos manter nossas atividades e ampliar
+            nossos projetos, levando o Programa de Educação para a Paz e outras
+            iniciativas a cada vez mais pessoas.
           </p>
           <a
             href="https://palavrasdepaz.colabore.org/doacoes/single_step"
@@ -102,7 +95,7 @@ function Doacoes() {
         </div>
 
         <div className="doacoes-atraves text-center">
-          <p>DOE TAMBÉM POR</p>
+          <p>DOE POR</p>
         </div>
 
         <div className="doacoes-empresas ">
