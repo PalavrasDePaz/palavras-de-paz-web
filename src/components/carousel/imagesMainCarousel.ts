@@ -12,8 +12,8 @@ import img13 from "../../../public/static/images/img13.jpg";
 import img14 from "../../../public/static/images/img14.jpg";
 
 const imagesMainCarousel = [
-  { id: 1, image: img11, text: "" },
   { id: 2, image: img14, text: "" },
+  { id: 1, image: img11, text: "" },
   { id: 3, image: img12, text: "" },
   { id: 4, image: img13, text: "" },
   { id: 5, image: img06, text: "Projeto com População Carcerária" },
