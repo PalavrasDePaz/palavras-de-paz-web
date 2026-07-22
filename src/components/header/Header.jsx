@@ -96,13 +96,6 @@ function Header() {
         <a href="/cadastro" rel="noopener noreferrer">
           Voluntarie-se
         </a>
-        <a
-          href="https://palavrasdepaz.colabore.org/doacoes/single_step"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Doe Agora
-        </a>
       </div>
     </container>
   );

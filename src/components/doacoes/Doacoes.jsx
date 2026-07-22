@@ -85,13 +85,6 @@ function Doacoes() {
             nossos projetos, levando o Programa de Educação para a Paz e outras
             iniciativas a cada vez mais pessoas.
           </p>
-          <a
-            href="https://palavrasdepaz.colabore.org/doacoes/single_step"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Doe Agora
-          </a>
         </div>
 
         <div className="doacoes-atraves text-center">
