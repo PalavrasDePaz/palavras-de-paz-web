@@ -1,0 +1,131 @@
+.title,
+.animated_number_1,
+.animated_number_2,
+.animated_number_3,
+.animated_number_4,
+.animated_number_5 {
+  font-weight: 600;
+  color: white;
+  font-size: 40px;
+  text-align: center;
+}
+
+@property --num_1 {
+  syntax: "<integer>";
+  initial-value: 0;
+  inherits: false;
+}
+
+.animated_number_1 {
+  animation: counter_1 3s 1 normal ease-in-out forwards;
+  counter-set: num_1 var(--num_1);
+}
+.animated_number_1::after {
+  color: white !important;
+  content: counter(num_1);
+}
+
+@keyframes counter_1 {
+  from {
+    --num_1: 0;
+  }
+  to {
+    --num_1: 50;
+  }
+}
+
+@property --num_2 {
+  syntax: "<integer>";
+  initial-value: 0;
+  inherits: false;
+}
+
+.animated_number_2 {
+  animation: counter_2 3s 1 normal ease-in-out forwards;
+  counter-set: num_2 var(--num_2);
+}
+.animated_number_2::after {
+  color: white !important;
+  content: counter(num_2);
+}
+
+@keyframes counter_2 {
+  from {
+    --num_2: 0;
+  }
+  to {
+    --num_2: 160;
+  }
+}
+
+@property --num_3 {
+  syntax: "<integer>";
+  initial-value: 0;
+  inherits: false;
+}
+
+.animated_number_3 {
+  animation: counter_3 3s 1 normal ease-in-out forwards;
+  counter-set: num_3 var(--num_3);
+}
+.animated_number_3::after {
+  color: white !important;
+  content: counter(num_3);
+}
+
+@keyframes counter_3 {
+  from {
+    --num_3: 0;
+  }
+  to {
+    --num_3: 4000;
+  }
+}
+
+@property --num_4 {
+  syntax: "<integer>";
+  initial-value: 0;
+  inherits: false;
+}
+
+.animated_number_4 {
+  animation: counter_4 3s 1 normal ease-in-out forwards;
+  counter-set: num_4 var(--num_4);
+}
+.animated_number_4::after {
+  color: white !important;
+  content: counter(num_4);
+}
+
+@keyframes counter_4 {
+  from {
+    --num_4: 0;
+  }
+  to {
+    --num_4: 30000;
+  }
+}
+
+@property --num_5 {
+  syntax: "<integer>";
+  initial-value: 0;
+  inherits: false;
+}
+
+.animated_number_5 {
+  animation: counter_5 3s 1 normal ease-in-out forwards;
+  counter-set: num_5 var(--num_5);
+}
+.animated_number_5::after {
+  color: white !important;
+  content: counter(num_5);
+}
+
+@keyframes counter_5 {
+  from {
+    --num_5: 0;
+  }
+  to {
+    --num_5: 100;
+  }
+}
