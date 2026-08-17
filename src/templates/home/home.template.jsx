@@ -12,6 +12,8 @@ import Peak from "../../components/peak";
 import SwiperJs from "../../components/swiper/Swiper";
 import Typography from "../../components/typography";
 
+import styles from "./styles.module.css";
+
 export default function HomeTemplate() {
   return (
     <div className="animate__animated animate__fadeIn animate__delay-1s">
@@ -19,6 +21,12 @@ export default function HomeTemplate() {
 
       <Center>
         <CarouselSlide />
+
+        <h2 className={styles.title}>
+          15 anos com o Programa de Educação para Paz da Fundação TPRF Gratuito
+          no Brasil
+        </h2>
+
         <GreenBar />
 
         <Box justify="center" padding="32px">
