@@ -1,5 +1,6 @@
 /* eslint-disable max-len */
 import Link from "next/link";
+import { QRCodeCanvas } from "qrcode.react";
 
 import styles from "./styles.module.css";
 
@@ -22,9 +23,21 @@ export default function Peak() {
       <h2 className={styles.text}>link para o curso em português👇</h2>
 
       <h5 className="d-flex justify-content-center border-0">
-        <Link href="https://www.intelligentexistence.com/peak-portuguese-br/">
-          https://www.intelligentexistence.com/peak-portuguese-br/
+        <Link href="https://www.premrawat.com/pt-br/caminho-para-a-paz/">
+          premrawat.com/pt-br/caminho-para-a-paz
         </Link>
+      </h5>
+
+      <div className={styles.qrCode}>
+        <QRCodeCanvas
+          value="https://www.premrawat.com/pt-br/caminho-para-a-paz/"
+          size={300}
+          level="H"
+        />
+      </div>
+
+      <h5 className={styles.textQrCode}>
+        Aponte a câmera do celular para o QR Code e acesse o curso.
       </h5>
     </div>
   );

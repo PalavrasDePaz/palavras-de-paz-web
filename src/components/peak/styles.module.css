@@ -40,3 +40,15 @@
   border-radius: 4px;
   margin: 0 8px;
 }
+
+.qrCode {
+  margin-top: 16px;
+  margin-bottom: 16px;
+}
+
+.textQrCode {
+  font-size: 20px;
+  font-weight: normal;
+  margin-bottom: 36px;
+  color: rgba(33, 170, 133, 1);
+}
