@@ -75,6 +75,9 @@ function Header() {
                   >
                     Leitura do livro Ouça a sua voz nas unidades prisionais
                   </NavDropdown.Item>
+                  <NavDropdown.Item href="/words-of-peace-tv" eventKey="3">
+                    Words of peace TV
+                  </NavDropdown.Item>
                 </NavDropdown>
 
                 <Nav.Link href="/voluntarios">Voluntários</Nav.Link>

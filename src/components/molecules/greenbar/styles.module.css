@@ -8,6 +8,7 @@
   color: white;
   font-size: 40px;
   text-align: center;
+  font-variant-numeric: tabular-nums;
 }
 
 @property --num_1 {
